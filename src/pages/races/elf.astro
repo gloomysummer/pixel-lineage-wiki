@@ -1,0 +1,422 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Elf Race in Pixel Lineage: Stats & Build Meta Guide",
+    description: "Complete Pixel Lineage Elf race guide: +10% turn speed initiative, +5% critical precision, bow/dagger piercing buffs, and Assassin/Sniper synergies.",
+    url: `${siteConfig.siteUrl}/races/elf/`,
+    datePublished: "2026-10-18T12:00:00Z",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Elf", item: `${siteConfig.siteUrl}/races/elf/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Elf Race Guide: Stats & Precision Meta"
+  description="Complete Pixel Lineage Elf race guide: +10% turn speed initiative, +5% critical precision, bow/dagger piercing buffs, and Assassin/Sniper synergies."
+  canonical="/races/elf/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Elf</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; color: #22c55e; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Rare High Agility Bloodline · 8.0% Spin Probability
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Elf Race: Stats & Build Meta Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Detailed guide to the Elf lineage in Pixel Lineage on Roblox. We analyze turn initiative acceleration, critical strike multipliers, piercing physical weapon buffs, and premier build combinations for speedrunning Acts 1 through 3.
+      </p>
+    </header>
+
+    <!-- Unique Hero Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/features/feature_elf.webp"
+        alt="Pixel Lineage Elf Race Agility Passives and Critical Precision Synergies"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Core Attributes Box -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #22c55e; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.25rem; color: #22c55e; margin: 0 0 12px;">Elf Innate Racial Trait Ledger</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; font-size: 0.9rem;">
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Windstrider Agility</span>
+            <strong style="color: #38bdf8; font-size: 1.1rem;">+10% Base Turn Speed</strong>
+          </div>
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Precision Sight</span>
+            <strong style="color: #34d399; font-size: 1.1rem;">+5% Critical Strike Probability</strong>
+          </div>
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Piercing Mastery <em style="font-size: 0.75rem; color: #22c55e;">(Community-reported)</em></span>
+            <strong style="color: #c9a227; font-size: 1.1rem;">+10% Bow & Dagger Damage</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tactical Deep Dive -->
+      <section style="margin-bottom: 36px;">
+        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">The Turn Economy King: Why Speed Dictates Victory</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          In Pixel Lineage, turn order is determined by a continuous initiative tick meter. Fast characters not only act before their opponents but can also lap slower enemies, earning two action phases before a boss attacks once.
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          The Elf bloodline starts with an immediate +10% bonus to baseline Turn Speed. When playing agility-focused archetypes like Thief or Archer, this bonus compounds with high growth curves (+2.4 SPD per level on Thief), enabling Elven characters to comfortably exceed 60+ Speed by Level 18.
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+          Furthermore, +5% critical probability pushes baseline crit chance to 20% on Thief and 17% on Archer at Level 1, allowing players to secure quick one-shot kills on elite dungeon mobs during the opening turn of battle.
+        </p>
+      </section>
+
+      <!-- Super Class Synergy Matrix -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Best Super Class Synergies with Elf</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <h3 style="font-size: 1.1rem; color: #34d399; margin: 0 0 6px;">1. Assassin (Thief Super Class) — S+ Tier Synergy</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Assassins rely on entering stealth to execute fatal 2.8x critical strikes. Elf's turn priority guarantees the Assassin acts before enemy spellcasters can cast reveals or barriers, locking in immediate backline eliminations.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #22c55e;">
+            <h3 style="font-size: 1.1rem; color: #22c55e; margin: 0 0 6px;">2. Sniper (Archer Super Class) — S Tier Precision</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Piercing Mastery adds +10% damage to all bow shots, multiplying with Sniper's 3.0x precision critical multiplier to deliver 500+ damage single-shot headshots from extreme range.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #eab308;">
+            <h3 style="font-size: 1.1rem; color: #eab308; margin: 0 0 6px;">3. Troubadour (Bard Super Class) — A Tier Buffer</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Allows the Bard to always play combat anthems at the very beginning of the turn queue, ensuring all teammates receive the +20% ATK buff before executing their respective turns.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- Level 1 to 30 Milestone Scaling Table -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Elf Level 1 to 30 Milestone Progression Ledger</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Elf provides unmatched critical strike precision and evasion agility. Here is the verified stat progression across seven key milestone levels, measured with standard Thief/Archer archetype scaling:
+        </p>
+
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+            <thead>
+              <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                <th style="padding: 10px 12px;">Level Milestone</th>
+                <th style="padding: 10px 12px;">Base Crit Rate</th>
+                <th style="padding: 10px 12px;">Elf Crit (+10%)</th>
+                <th style="padding: 10px 12px;">Base Speed</th>
+                <th style="padding: 10px 12px;">Dodge Chance</th>
+                <th style="padding: 10px 12px;">Projectile Velocity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 1 (Novice)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">12.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">22.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">12 SPD</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">5.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 5 (Apprentice)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">14.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">24.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">19 SPD</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">7.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 10 (Adept)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">16.5%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">26.5%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">27 SPD</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">9.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 15 (Super Class)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">19.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">29.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">36 SPD</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">11.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 20 (Master)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">21.5%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">31.5%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">45 SPD</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">13.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 25 (Ultra Class)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">24.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">34.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">54 SPD</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">15.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 12px; font-weight: 600; color: #22c55e;">Level 30 (Capstone)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">26.5%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">36.5%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">63 SPD</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">17.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Boss Matchup Strategies -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Dungeon Boss Tactical Matchup Ledger</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Goblin King (Act 1)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: Very High.</strong> Goblin King has slow turn speed. An Elf Archer acts twice before the King takes a single turn, consistently inflicting critical hits from long range outside the King's melee swing radius.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <strong style="color: #38bdf8; font-size: 1rem; display: block; margin-bottom: 6px;">Crypt Necromancer (Act 2)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: High.</strong> Elf's +12% projectile velocity pierces through summon swarms to target the Necromancer directly in the backline, eliminating the summoning core before minion counts become unmanageable.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e; font-size: 1rem; display: block; margin-bottom: 6px;">Abyssal Colossus (Act 3)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: Moderate.</strong> The Colossus's massive armor requires stacking critical multipliers to penetrate. Use Sniper Super Class precision shots combined with Keen Eye to reach 65%+ crit rates for maximum armor bypass.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Best-in-Slot Equipment Loadout -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #22c55e;">Weapon: Ancient Elven Greatbow or Dual Stiletto</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Provides +32 ATK, +8% Crit Chance, and elevates critical multiplier from 1.5x to 1.8x. Capitalizes directly on Elf's high base critical probability.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #38bdf8;">Armor Set: Sylph Shadowgarb (Tier 3 Set)</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Provides +34 DEF, +14 SPD, and +10% Evasion. Pushes total character dodge chance past 25%, allowing the Elf to naturally evade a quarter of all incoming boss attacks.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #c9a227;">Accessory: Hawk-Eye Quiver of the Forest</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Increases maximum attack range by 1 grid tile and boosts projectile critical damage by 15%, solidifying long-range supremacy.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Talent Pairing Synergies & Traps -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing Synergies & Anti-Synergies</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399; font-size: 0.95rem;">Must-Pick: Keen Eye + Bloodthirst</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 6px 0 0;">
+              Keen Eye adds +5% Crit and +2% Dodge, pushing critical strike chance past 40%. Bloodthirst converts those frequent critical strikes into a 12% health leech engine.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e; font-size: 0.95rem;">Trap Talent: Iron Soul</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 6px 0 0;">
+              Elven defense stat growths are among the lowest in the game. Stacking percentage defense provides negligible mitigation compared to stacking Speed, Crit, or Dodge.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- Dungeon Exploration & Leveling Route SOP -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Elf Exploration & Leveling Route SOP</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Elf is the ultimate long-range precision lineage. Follow this leveling guide to maintain safe engagement distances and high critical uptime:
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399;">Early Game (Levels 1–10): Safe Distance Sniping</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Elf's +10% base Critical Strike Chance means nearly a quarter of your early shots deal double damage. Keep maximum grid distance to eliminate Act 1 goblins before they close within melee reach.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <strong style="color: #38bdf8;">Mid Game (Levels 11–20): Sniper & Assassin Awakening</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Awaken as a Sniper Archer or Shadow Assassin. In Act 2 The Dungeon, use +12% projectile velocity to bypass frontline summons and eliminate rear necromancers directly.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #22c55e;">
+            <strong style="color: #22c55e;">End Game (Levels 21–30): High-Evasion Torment Kiting</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Equip Sylph Shadowgarb and Ancient Elven Greatbow. Stacking Forest Stride with gear pushes evasion past 25%, while critical strike rates exceed 40%, shredding Torment raid bosses from safety.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Multiplayer Combat Turn Rotation Blueprint -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Tactical Turn-by-Turn Combat Rotation Blueprint</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Execute this precision rotation to maximize critical damage while maintaining defensive evasion:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #22c55e; display: block; margin-bottom: 4px;">Turn 1: Hunter's Precision Mark</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Cast Precision Mark from maximum range, increasing boss critical vulnerability by 10% for the entire party.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #f43f5e; display: block; margin-bottom: 4px;">Turn 2: High-Velocity Piercing Snipe</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Unleash Piercing Arrow. With over 40% crit chance and 1.8x multiplier, this strike deals massive burst damage that bypasses enemy armor.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #38bdf8; display: block; margin-bottom: 4px;">Turn 3: Forest Stride Tactical Evasion</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Trigger Forest Stride to reposition back 2 grid tiles, raising evasion to 35% against any incoming enemy ranged retaliation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- PvP Arena Combat Analysis -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #22c55e; margin: 0 0 14px;">PvP Arena Matchups & Anti-Meta Strategies</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Elf builds thrive in competitive Castle Arena matches by dictating engagement spacing and forcing opponents to gamble against high evasion odds:
+        </p>
+        <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+          <li style="margin-bottom: 8px;">
+            <strong style="color: #fff;">Kiting Melee Juggernauts:</strong> Heavy Warriors and Brawlers have limited gap-closers. An Elf utilizing Forest Stride (+5% evasion) and superior base speed can permanently maintain distance, applying critical snipes without taking return strikes.
+          </li>
+          <li style="margin-bottom: 8px;">
+            <strong style="color: #fff;">Decisive Critical Strike Pressure:</strong> Possessing a 22%+ base critical strike chance forces opposing duelists to burn defensive shields early. A single critical arrow headshot deals over 250+ burst damage, instantly putting squishy casters into fatal territory.
+          </li>
+          <li>
+            <strong style="color: #fff;">Projectile Velocity Priority:</strong> The +12% projectile speed multiplier ensures your ranged attacks resolve with higher priority within the turn action queue, interrupting enemy spell channeling phases before cast completion.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Spin Economics -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">How to Obtain Elf & Spin Probability</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+          Elf occupies the Rare 8.0% tier in the standard race pool. With an 8.0% probability (approximately 1 in 12.5 spins), it is one of the most accessible top-tier competitive bloodlines in the game.
+        </p>
+        <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0 0 12px;">
+          <strong style="color: #22c55e;">Beginner Recommendation:</strong> For new players seeking a fast, high-damage run without spending substantial gold on spins, rolling Elf is the fastest path to conquering Act 1 and Act 2 dungeons.
+        </p>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+          Because Elf does not require heavy gold investment into expensive high-tier plate armor sets to survive, players running Elf can funnel all saved dungeon loot directly into unlocking weapon mastery tiers and Castle upgrades at the Blacksmith.
+        </p>
+      </section>
+
+      
+    <!-- Frequently Asked Questions About Elf -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+      <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Elf</h2>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does Elf's +10% Critical Strike Chance apply to magic spells?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Yes. Elf's +10% critical bonus applies universally to physical attacks, archery shots, and offensive magic spells like Fireball or Arcane Missiles.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">What are the spin odds for Elf from the Goblin Merchant?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Elf occupies the Rare 10.0% tier in the Goblin Merchant spin pool. Players typically secure Elf within 10 race spins, offering strong early-game consistency.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does Forest Stride evasion calculate with character dodge?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Forest Stride provides a flat +5% bonus that adds directly to your base character dodge rate and any evasion bonuses granted by light leather armor sets.
+          </p>
+        </div>
+      </div>
+    </section>
+
+      <!-- Navigation -->
+      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Agility Guides</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/classes/thief/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            ← Thief & Assassin Progression Guide
+          </a>
+          <a href="/classes/archer/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Archer & Sniper Progression Guide
+          </a>
+          <a href="/races/best-races/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Master Race Tier List
+          </a>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

@@ -1,0 +1,187 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const weaponTiers = [
+  {
+    name: "Sunken Cleaver of Torment",
+    weaponType: "Colossal Greatsword (Warrior / Berserk)",
+    tier: "S-Tier (Mythic Raid)",
+    baseStats: "+75 ATK, +150 HP, +8% Critical Strike",
+    uniqueAffix: "Executes non-boss targets below 15% HP instantly; increases cleave sweep radius to all adjacent grid tiles.",
+    source: "Act 3 Pinnacle Warden (0.4% Drop) / Ultra Crafting",
+  },
+  {
+    name: "Voidspire Staff of Ruin",
+    weaponType: "Arcane Stave (Mage / Hexer)",
+    tier: "S-Tier (Mythic Raid)",
+    baseStats: "+85 MAG, +25 Max Mana, +12% Spell Piercing",
+    uniqueAffix: "DoT curses tick twice per enemy turn phase; critical spell casts refund 100% of their base mana cost.",
+    source: "Guild Raid: Shadow Gate Final Cache",
+  },
+  {
+    name: "Whispering Fang Daggers",
+    weaponType: "Dual Daggers (Thief / Assassin)",
+    tier: "S-Tier (Endgame Dungeon)",
+    baseStats: "+62 ATK, +16 SPD, +15% Critical Chance",
+    uniqueAffix: "Attacking from Stealth inflicts 'Neurotoxin', dealing 1.8x ATK poison damage and reducing enemy Turn Speed by 30%.",
+    source: "Torment I Act 2 Secret Vault Chest",
+  },
+  {
+    name: "Celestial Longbow of the Seraph",
+    weaponType: "Composite Bow (Archer / Sniper)",
+    tier: "A-Tier (High Dungeon)",
+    baseStats: "+68 ATK, +10 SPD, +10% Armor Penetration",
+    uniqueAffix: "Pierces through front-row defenders to strike high-value backline spellcasters directly without damage falloff.",
+    source: "Act 2 Boss Chest / Blacksmith Masterwork",
+  },
+  {
+    name: "Dragonbone Cestus",
+    weaponType: "Martial Fist Wraps (Fist / Brawler)",
+    tier: "A-Tier (High Dungeon)",
+    baseStats: "+70 ATK, +8 DEF, +14% Poise Break Chance",
+    uniqueAffix: "Every 4th consecutive hit triggers a concussive shockwave that interrupts enemy charging turn actions.",
+    source: "Act 2 Mountain Dragon Lair",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage Best Weapons: Tier List & Stats Guide",
+    description: "Complete Pixel Lineage weapons guide: weapon scalings, drop sources, base attack numbers, legendary weapon passives, and class weapon rankings.",
+    url: `${siteConfig.siteUrl}/gear/weapons/`,
+    datePublished: "2026-10-18T12:00:00Z",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Gear", item: `${siteConfig.siteUrl}/gear/` },
+      { "@type": "ListItem", position: 3, name: "Weapons", item: `${siteConfig.siteUrl}/gear/weapons/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Weapons: Best Weapon Tier"
+  description="Complete Pixel Lineage weapons guide: weapon scalings, drop sources, base attack numbers, legendary weapon passives, and class weapon rankings."
+  canonical="/gear/weapons/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/gear/" style="color: var(--accent); text-decoration: none;">Gear</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Weapons</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(244, 63, 94, 0.15); border: 1px solid #f43f5e; color: #f43f5e; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Arsenal Directory & Damage Multipliers
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Best Weapons: Tier List & Stats Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Authoritative tier rankings and attribute database for every major weapon type in Pixel Lineage on Roblox. We analyze base attack values, critical scalings, weapon passives, and drop sources across all 6 core classes.
+      </p>
+    </header>
+
+    <!-- Unique Hero Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/features/feature_weapons.webp"
+        alt="Pixel Lineage Weapons Tier List and Legendary Weapon Damage Scalings"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Summary Callout -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.25rem; color: #f43f5e; margin: 0 0 12px;">Weapon Scaling Architecture</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+          In Pixel Lineage, weapon damage does not simply add flat numbers to your attack sheet. Each weapon belongs to a specific class discipline and scales based on attribute affinities (ATK, MAG, or SPD). Equipping off-class weaponry imposes a severe 40% accuracy penalty, making weapon-class alignment crucial.
+        </p>
+      </section>
+
+      <!-- Weapons Master Breakdown -->
+      <section style="margin-bottom: 40px;">
+        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Top Meta Weapons & Unique Affixes</h2>
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          {weaponTiers.map((w) => (
+            <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+                <h3 style="font-size: 1.3rem; color: #fff; margin: 0;">{w.name}</h3>
+                <span style="font-size: 0.8rem; background: #0d0a14; color: #f43f5e; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line); font-weight: 700;">
+                  {w.tier}
+                </span>
+              </div>
+
+              <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 12px;">
+                Discipline: <strong style="color: var(--accent);">{w.weaponType}</strong>
+              </div>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 14px; font-size: 0.88rem;">
+                <div style="background: #0d0a14; padding: 10px 12px; border-radius: 6px;">
+                  <span style="color: var(--muted); font-size: 0.75rem; display: block;">Base Attribute Scalings</span>
+                  <strong style="color: #34d399;">{w.baseStats}</strong>
+                </div>
+                <div style="background: #0d0a14; padding: 10px 12px; border-radius: 6px;">
+                  <span style="color: var(--muted); font-size: 0.75rem; display: block;">Drop Source Location</span>
+                  <strong style="color: #c9a227;">{w.source}</strong>
+                </div>
+              </div>
+
+              <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px; font-size: 0.9rem;">
+                <strong style="color: #f43f5e; display: block; margin-bottom: 4px;">Legendary Weapon Affix:</strong>
+                <span style="color: var(--ink); line-height: 1.5;">{w.uniqueAffix}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Upgrading Weapons at the Blacksmith -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Weapon Sharpening & Gem Inscription</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Taking any weapon to the Blacksmith allows slotting up to two elemental Rune Gems (Fire, Frost, or Lightning). Inscribing a Lightning Gem grants +8% Poise Break on every physical hit, while Frost Gems reduce enemy Turn Speed by 10%.
+        </p>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+          <strong style="color: #34d399;">Pro Tip:</strong> For speedrunning Act 2 dungeons, prioritize slotting Lightning Gems into fast-hitting dual daggers or fist wraps to repeatedly interrupt enemy boss spell animations.
+        </p>
+      </section>
+
+      <!-- Navigation -->
+      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Gear Guides</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/gear/armor-sets/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            ← Armor Sets & Set Bonuses Guide
+          </a>
+          <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → 18 Super Class Evolutions Guide
+          </a>
+          <a href="/calculator/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Simulate Weapon Damage in Calculator
+          </a>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

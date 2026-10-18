@@ -1,0 +1,419 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Seraph Race in Pixel Lineage: Stats & Build Meta",
+    description: "Complete Pixel Lineage Seraph race guide: archangel wing evasion, true holy damage scaling, aerial speed priority, and Monk/Archer build synergies.",
+    url: `${siteConfig.siteUrl}/races/seraph/`,
+    datePublished: "2026-10-18T12:00:00Z",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Seraph", item: `${siteConfig.siteUrl}/races/seraph/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Seraph Race in Pixel Lineage: Stats & Build Meta"
+  description="Complete Pixel Lineage Seraph race guide: archangel wing evasion, true holy damage scaling, aerial speed priority, and Monk/Archer build synergies."
+  canonical="/races/seraph/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Seraph</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(201, 162, 39, 0.15); border: 1px solid #c9a227; color: #c9a227; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Mythic Archangel Lineage · 1.0% Spin Probability
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Seraph Race: Stats & Build Meta
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        In-depth guide to the Seraph bloodline in Pixel Lineage on Roblox. We analyze ethereal wing evasion mechanics, true Holy damage conversion, aerial turn speed advantages, and top competitive builds for Torment II and PvP Arena.
+      </p>
+    </header>
+
+    <!-- Unique Hero Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/features/feature_seraph.webp"
+        alt="Pixel Lineage Seraph Race Archangel Wings and True Holy Damage Passives"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Core Attributes Box -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">Seraph Innate Racial Trait Ledger</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; font-size: 0.9rem;">
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Archangel Flight</span>
+            <strong style="color: #38bdf8; font-size: 1.1rem;">+14% Turn Speed & Evasion</strong>
+          </div>
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Judgment Brand</span>
+            <strong style="color: #f43f5e; font-size: 1.1rem;">10% Attacks Convert to True Holy DMG</strong>
+          </div>
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Heavenly Grace <em style="font-size: 0.75rem; color: #c9a227;">(Community-reported)</em></span>
+            <strong style="color: #34d399; font-size: 1.1rem;">Immunity to Ground Trap Hazards</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tactical Deep Dive -->
+      <section style="margin-bottom: 36px;">
+        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">The Apex Combat Hybrid: Aerial Mastery</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          The Seraph bloodline represents one of the rarest and most coveted character seeds in Pixel Lineage. Endowed with glowing celestial wings, Seraph characters float above the battlefield grid. This aerial state grants complete immunity to floor traps, caltrops, poison puddles, and lava hazards commonly encountered throughout Act 2 and Act 3 dungeons.
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Offensively, Seraph's unique trait is <strong style="color: #fff;">Judgment Brand</strong>. Unlike elemental damage that gets reduced by enemy magic resistance, Judgment Brand converts 10% of all outgoing damage into pure True Holy Damage. When fighting high-defense raid bosses like the Iron Golem or Torment Warden (possessing 70%+ damage reduction), this true damage portion punches straight through armor, maintaining high burst outputs where other classes falter.
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+          Coupled with a massive +14% Turn Speed modifier, Seraph frequently achieves Action Surges in battle, granting double actions against slow heavy monsters.
+        </p>
+      </section>
+
+      <!-- Super Class Synergy Matrix -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Best Super Class Synergies with Seraph</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <h3 style="font-size: 1.1rem; color: #f43f5e; margin: 0 0 6px;">1. Monk (Fist Super Class) — S+ Tier Meta</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Monk focuses on Ki-empowered multi-strikes. Because Judgment Brand procs on every individual hit in a flurry, a 6-hit Monk flurry delivers 6 instances of True Holy Damage, melting armored bosses in a single turn rotation.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #22c55e;">
+            <h3 style="font-size: 1.1rem; color: #22c55e; margin: 0 0 6px;">2. Sniper (Archer Super Class) — S Tier Burst</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Snipers already deal 3.0x precision critical hits. Adding Seraph's speed guarantees backline positioning initiative, allowing the Sniper to eliminate elite enemy casters before they take their first turn.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <h3 style="font-size: 1.1rem; color: #34d399; margin: 0 0 6px;">3. Assassin (Thief Super Class) — A+ Tier Speed</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Combines Thief's highest base Speed (16 + 2.4/lv) with Seraph's +14% flight boost, pushing turn initiative beyond 95+ in end-game PvP Arena duels.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- Level 1 to 30 Milestone Scaling Table -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Seraph Level 1 to 30 Milestone Progression Ledger</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Seraph represents the pinnacle of aerial speed and true damage. Here is the verified stat progression across seven key milestone levels, measured with standard Archer/Assassin archetype scaling:
+        </p>
+
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+            <thead>
+              <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                <th style="padding: 10px 12px;">Level Milestone</th>
+                <th style="padding: 10px 12px;">Base Speed</th>
+                <th style="padding: 10px 12px;">Base ATK</th>
+                <th style="padding: 10px 12px;">Speed Multiplier</th>
+                <th style="padding: 10px 12px;">True Damage on Hit</th>
+                <th style="padding: 10px 12px;">Trap Immunity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 1 (Novice)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">14 SPD</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">14 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">+10.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">8.0% True</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">Active (100%)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 5 (Apprentice)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">22 SPD</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">23 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">+10.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">8.0% True</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">Active (100%)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 10 (Adept)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">32 SPD</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">35 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">+10.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">8.0% True</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">Active (100%)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 15 (Super Class)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">43 SPD</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">46 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">+10.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">8.0% True</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">Active (100%)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 20 (Master)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">54 SPD</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">58 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">+10.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">8.0% True</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">Active (100%)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 25 (Ultra Class)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">65 SPD</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">69 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">+10.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">8.0% True</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">Active (100%)</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 12px; font-weight: 600; color: #c9a227;">Level 30 (Capstone)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">76 SPD</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">81 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">+10.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">8.0% True</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">Active (100%)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Boss Matchup Strategies -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Dungeon Boss Tactical Matchup Ledger</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Goblin King (Act 1)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: Extreme.</strong> Seraph's +10% Speed ensures you act before Goblin King's turn gauge fills. Featherfall ignores spiked pit traps in the boss arena, allowing free kiting without ever triggering environmental slows.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <strong style="color: #38bdf8; font-size: 1rem; display: block; margin-bottom: 6px;">Crypt Necromancer (Act 2)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: Very High.</strong> The Necromancer erects bone barricades with heavy armor. Seraph's 8% True Damage completely pierces through these bone barriers, directly shredding the Necromancer's underlying health pool.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e; font-size: 1rem; display: block; margin-bottom: 6px;">Abyssal Colossus (Act 3)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: Pinnacle.</strong> The Colossus possesses over 140 DEF (70% physical damage mitigation). While other melee classes struggle to scratch it, Seraph's 8% True Damage deals consistent, unmitigated damage every round.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Best-in-Slot Equipment Loadout -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #c9a227;">Weapon: Zephyr Longbow or Piercing Rapier</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Grants +34 ATK, +12 SPD, and multi-hit flurry attacks. Multi-hit weapon skills trigger Seraph's 8% True Damage on every single projectile tick.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #38bdf8;">Armor Set: Windwalker Leathers (Tier 3 Set)</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Provides +38 DEF, +18 SPD, and +15% Evasion. Combines with Seraph's innate aerial agility to achieve over 30% passive dodge rate against boss attacks.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #34d399;">Accessory: Feathered Talisman of the Archon</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Increases turn initiative gauge fill rate by 15%, ensuring your character takes the opening action in 100% of high-tier Torment dungeon rooms.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Talent Pairing Synergies & Traps -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing Synergies & Anti-Synergies</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399; font-size: 0.95rem;">Must-Pick: Keen Eye + Prodigy</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 6px 0 0;">
+              Keen Eye adds +5% Crit and +2% Dodge, while Prodigy's +15% universal stat scaling supercharges Seraph's already exceptional Speed and Attack stat growth.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e; font-size: 0.95rem;">Trap Talent: Iron Soul</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 6px 0 0;">
+              Seraph survivability relies entirely on evasion, turn priority, and aerial repositioning. Stacking heavy defense is mathematically counterproductive compared to stacking Speed.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- Dungeon Exploration & Leveling Route SOP -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Seraph Exploration & Leveling Route SOP</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Seraph dominates speed progression. Follow this leveling blueprint to leverage your aerial agility and true damage:
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399;">Early Game (Levels 1–10): Rapid Clearing & Double-Turn Kiting</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Seraph's +10% Speed allows you to take two actions before basic forest goblins act once. Use rapid archery or dagger strikes to wipe mobs before they close into melee range.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <strong style="color: #38bdf8;">Mid Game (Levels 11–20): Featherfall Maze Traversal</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              In Act 2 The Dungeon, treacherous floor spikes and falling rubble traps deal heavy damage to grounded characters. Featherfall ignores all floor hazard triggers, allowing you to bypass traps without pausing.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #c9a227;">
+            <strong style="color: #c9a227;">End Game (Levels 21–30): Armor-Piercing Raid Finisher</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Equip Windwalker Leathers and Zephyr Longbow. Torment bosses feature extreme physical armor values (over 70% DR). Seraph's 8% True Damage on hit bypasses this armor completely, dealing consistent DPS throughout enrage phases.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Multiplayer Combat Turn Rotation Blueprint -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Tactical Turn-by-Turn Combat Rotation Blueprint</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Execute this high-tempo rotation to maximize true damage application while evading retaliation:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #c9a227; display: block; margin-bottom: 4px;">Turn 1: Turn Priority & Evasion Dash</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Act first via superior Speed. Activate Zephyr Dash (+20% Evasion for 2 rounds) and apply Hunter's Mark to enhance target vulnerability.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #38bdf8; display: block; margin-bottom: 4px;">Turn 2: Multi-Hit True Damage Barrage</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Unleash 5-Arrow Flurry. Each arrow hit procs Seraph's 8% True Damage independently, bypassing boss defense five times in one turn.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #f43f5e; display: block; margin-bottom: 4px;">Turn 3: Aerial Reposition & Snipe</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Take second action before boss recovery. Execute Archon Snipe from maximum distance, finishing off high-threat adds or staggering the boss gauge.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- PvP Arena Combat Analysis -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">PvP Arena Matchups & Anti-Meta Strategies</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Speed dictates arena tempo. Because Seraph characters naturally possess the highest initiative values in Pixel Lineage, they dictate the opening engagement phase in Castle Arena duels:
+        </p>
+        <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+          <li style="margin-bottom: 8px;">
+            <strong style="color: #fff;">Guaranteed First-Strike Advantage:</strong> In 1v1 and 3v3 brackets, having +10% Speed ensures you take action before enemy tanks can activate defensive postures or cast damage barriers.
+          </li>
+          <li style="margin-bottom: 8px;">
+            <strong style="color: #fff;">Armor-Piercing Tank Shred:</strong> Opposing Sentinel Warriors stacking heavy plate often boast 70%+ physical mitigation. Seraph's 8% True Damage on hit ignores all armor values, consistently chipping down turtle compositions that other physical classes cannot penetrate.
+          </li>
+          <li>
+            <strong style="color: #fff;">Arena Positioning Tactics:</strong> Utilize Featherfall to kite across arena boundary hazard zones without taking environmental damage or suffering movement penalties, keeping melee brawlers at perpetual range.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Spin Economics -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">How to Obtain Seraph: Spin Probability</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+          Seraph holds the ultra-rare Mythic 1.0% designation in the Goblin Merchant race pool. Statistically, players can expect to spend approximately 100 Race Spins to hit this bloodline.
+        </p>
+        <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0;">
+          <strong style="color: #c9a227;">Critical Advisory:</strong> If you roll Seraph on any character, lock the lineage immediately. It is widely regarded by top guild raid leaders as the single strongest all-around bloodline in Pixel Lineage due to its uncounterable true damage and aerial trap immunity.
+        </p>
+      </section>
+
+      
+    <!-- Frequently Asked Questions About Seraph -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+      <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Seraph</h2>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does Seraph's 8% True Damage calculate on multi-hit abilities?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Seraph's 8% True Damage applies to the damage value of every single strike within a multi-hit combo. For instance, an Archer's 5-arrow barrage applies 8% unmitigated true damage five consecutive times.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">What are the spin odds for Seraph from the Goblin Merchant?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Seraph is a Mythic bloodline with a 0.5% spin probability. Acquiring Seraph requires an average of 200 race spin tokens, making it the rarest and most prestigious offensive lineage in the game.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does Featherfall prevent all dungeon floor trap damage?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Yes. Featherfall provides complete immunity to floor spikes, poison grates, and falling rubble staggers throughout Act 1, Act 2, and Act 3 exploration chambers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+      <!-- Navigation -->
+      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Related Races & Systems</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/races/celestine/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            ← Compare with Celestine Holy Race
+          </a>
+          <a href="/races/best-races/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Master Race Tier List
+          </a>
+          <a href="/calculator/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Calculate True Damage in Combat Calculator
+          </a>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

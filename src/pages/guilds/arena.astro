@@ -1,0 +1,159 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const arenaTiers = [
+  {
+    tier: "Bronze Gladiator (0 - 999 Rating)",
+    matchRules: "Standard 1v1 turn combat; consumables disabled.",
+    seasonRewards: "500 Gold, 20 Glory Points, Bronze Lineage Badge.",
+    metaOverview: "Dominated by early-game Thief speed burst and high base-HP Warriors.",
+  },
+  {
+    tier: "Silver Champion (1,000 - 1,999 Rating)",
+    matchRules: "Turn timer reduced to 15 seconds; 1 active talent allowed.",
+    seasonRewards: "1,500 Gold, 60 Glory Points, 1 Free Talent Spin.",
+    metaOverview: "Players introduce Super Class evolutions; Assassin stealth openers and Hexer curses become prominent.",
+  },
+  {
+    tier: "Gold Warlord (2,000 - 2,999 Rating)",
+    matchRules: "Both active talents enabled; 10% PvP damage reduction aura applied.",
+    seasonRewards: "3,500 Gold, 150 Glory Points, 1 Free Race Spin, Rare PvP Weapon Skin.",
+    metaOverview: "Deep counter-meta play: High-Speed Elven Assassins versus Undying Orc Berserkers.",
+  },
+  {
+    tier: "Grandmaster Apex (3,000+ Rating)",
+    matchRules: "Top 100 Leaderboard; Ultra Classes and Pinnacle Artifacts permitted.",
+    seasonRewards: "10,000 Gold, 500 Glory Points, Exclusive 'Apex Lineage' Glowing Title Aura.",
+    metaOverview: "The pinnacle competitive bracket where turn priority and poise break timing determine 2-turn match outcomes.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage Arena Guide: PvP Rewards & Ranking Meta",
+    description: "Master Pixel Lineage Guild Arena: PvP turn combat, seasonal tier rewards, Glory point shop items, and best dueling class builds.",
+    url: `${siteConfig.siteUrl}/guilds/arena/`,
+    datePublished: "2026-10-18T12:00:00Z",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Guilds", item: `${siteConfig.siteUrl}/guilds/` },
+      { "@type": "ListItem", position: 3, name: "Arena", item: `${siteConfig.siteUrl}/guilds/arena/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Arena: PvP Dueling Guide"
+  description="Master Pixel Lineage Guild Arena: PvP turn combat, seasonal tier rewards, Glory point shop items, and best dueling class builds."
+  canonical="/guilds/arena/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/guilds/" style="color: var(--accent); text-decoration: none;">Guilds</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Arena</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(234, 179, 8, 0.15); border: 1px solid #eab308; color: #eab308; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Competitive 1v1 PvP Dueling Arena
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Arena Guide: PvP Rewards & Ranking Meta
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Complete competitive handbook for the Guild Arena in Pixel Lineage on Roblox. We analyze 1v1 turn combat dynamics, rating brackets, Glory Shop rewards, and top duel builds across all 18 Super Classes.
+      </p>
+    </header>
+
+    <!-- Unique Hero Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/features/feature_arena.webp"
+        alt="Pixel Lineage Guild Arena PvP Rating Tiers and Seasonal Glory Rewards"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Summary Callout -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #eab308; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.25rem; color: #eab308; margin: 0 0 12px;">PvP Combat Balance Adjustments</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+          The Arena operates under modified combat parameters compared to PvE dungeons. Potion consumables are strictly disabled, Dodge probability is hard-capped at 45.0% (down from 65.0%), and a universal 15% PvP damage dampening aura ensures matches do not end on a single lucky turn-one critical strike.
+        </p>
+      </section>
+
+      <!-- Arena Tiers Breakdown -->
+      <section style="margin-bottom: 40px;">
+        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Seasonal Rating Tiers & Rewards</h2>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          {arenaTiers.map((t) => (
+            <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+                <h3 style="font-size: 1.25rem; color: #fff; margin: 0;">{t.tier}</h3>
+                <span style="font-size: 0.8rem; background: #0d0a14; color: #34d399; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
+                  {t.matchRules}
+                </span>
+              </div>
+              <div style="font-size: 0.88rem; color: #c9a227; margin-bottom: 8px;">
+                <strong>Season End Rewards:</strong> {t.seasonRewards}
+              </div>
+              <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0; background: #0d0a14; padding: 10px 14px; border-radius: 6px;">
+                <strong style="color: #38bdf8;">Bracket Meta:</strong> {t.metaOverview}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Glory Shop Economy -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">The Arena Glory Shop: Best Purchases</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Every arena victory awards Glory Points. Speak to the Arena Master at the Guild Castle Grounds to redeem points for high-tier upgrades:
+        </p>
+        <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+          <li style="margin-bottom: 8px;"><strong style="color: #fff;">Gladiator's Warhorn (80 Glory):</strong> Equippable relic granting +8% Turn Speed in both PvP and PvE dungeon boss fights.</li>
+          <li style="margin-bottom: 8px;"><strong style="color: #fff;">Competitive Race Spin Token (120 Glory):</strong> Guarantees rolling an Uncommon or higher race, eliminating default Human outcomes.</li>
+          <li><strong style="color: #fff;">PvP Armor Dye Vials (40 Glory):</strong> Cosmetic dyes to customize character plate and leather sets.</li>
+        </ul>
+      </section>
+
+      <!-- Navigation -->
+      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Related Guild Systems</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/guilds/guild-raids/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            ← 4-Player Guild Raids Strategy Guide
+          </a>
+          <a href="/guilds/oaths/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Guild Oaths & Blood Pledges Guide
+          </a>
+          <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Super Classes Tier Rankings
+          </a>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

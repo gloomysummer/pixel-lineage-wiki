@@ -1,0 +1,171 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const patches = [
+  {
+    version: "Build 1.0.3 (HOLLOWEEN + RACE EVO)",
+    releaseDate: "October 13, 2026",
+    summary: "Major seasonal update adding the Dullahan race, Halloween candy event currency, and dungeon evolution balance adjustments.",
+    highlights: [
+      "Added limited-time Dullahan headless race with poise immunity to the event spin pool.",
+      "Introduced Halloween Candies redeemable for exclusive pumpkin vanity cosmetics and temporary race spin tokens.",
+      "Buffed Berserk missing-HP scaling from +1.5% to +2.0% ATK per 1% lost health.",
+      "Fixed Goblin Merchant code redemption validation caching delays.",
+    ],
+  },
+  {
+    version: "Build 1.0.2 (Dungeons & Guild Raids Expansion)",
+    releaseDate: "October 06, 2026",
+    summary: "Introduced 4-player cooperative Guild Raids, the Shadow Gate encounter, and Act 3 Torment difficulty scaling.",
+    highlights: [
+      "Launched the Guild Castle and Altar oath binding systems.",
+      "Added the Ultra Sigil drop table to Torment II and Pinnacle Raid bosses.",
+      "Normalized Thief dodge probability hard cap to 65.0% to prevent infinite immunity.",
+      "Added active promo code OCTOBER awarding free race and talent spins.",
+    ],
+  },
+  {
+    version: "Build 1.0.1 (Balance & Performance Hotfix)",
+    releaseDate: "September 30, 2026",
+    summary: "Turn initiative timing fixes, server crash prevention, and starter class balancing.",
+    highlights: [
+      "Adjusted Mage base MAG scaling from +2.5 to +2.8 per level to reward glass-cannon playstyles.",
+      "Resolved turn-order freezing when two players tied for exact Speed ticks.",
+      "Fixed Auction House listing fees and item duplication exploits.",
+    ],
+  },
+  {
+    version: "Build 1.0.0 (Official Roblox Release)",
+    releaseDate: "September 25, 2026",
+    summary: "Initial public launch of Pixel Lineage on Roblox with 6 base classes and 18 Super Classes.",
+    highlights: [
+      "Released Acts 1 and 2 of the dungeon crawling campaign.",
+      "Implemented the permanent Trainer's Shrine specialization mechanic.",
+      "Launched the Goblin Merchant starter promo code redemption system.",
+    ],
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage Patch Notes: Weekly Updates & Changes",
+    description: "Complete Pixel Lineage patch notes archive: weekly updates, Halloween race additions, class balance changes, and bug fixes directly from official logs.",
+    url: `${siteConfig.siteUrl}/updates/patch-notes/`,
+    datePublished: "2026-10-18T12:00:00Z",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Updates", item: `${siteConfig.siteUrl}/updates/` },
+      { "@type": "ListItem", position: 3, name: "Patch Notes", item: `${siteConfig.siteUrl}/updates/patch-notes/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Patch Notes: Update Log"
+  description="Complete Pixel Lineage patch notes archive: weekly updates, Halloween race additions, class balance changes, and bug fixes directly from official logs."
+  canonical="/updates/patch-notes/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/updates/" style="color: var(--accent); text-decoration: none;">Updates</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Patch Notes</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(52, 211, 153, 0.15); border: 1px solid #34d399; color: #34d399; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Official Development Log & Update Archive
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Patch Notes: Weekly Updates & Changes
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Chronological archive of all balance updates, content expansions, and hotfixes for Pixel Lineage on Roblox. We track weekly developer commitments, class buff/nerf formulas, and event announcements.
+      </p>
+    </header>
+
+    <!-- Unique Hero Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/features/feature_patches.webp"
+        alt="Pixel Lineage Patch Notes Weekly Developer Updates and Balance Changes"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Summary Callout -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.25rem; color: #34d399; margin: 0 0 12px;">Developer Commitment: Weekly Content Cycles</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+          The official development team maintains an explicit commitment: <em>"Game will be updated weekly. This is a fast turn-based roguelike RPG game, it is not meant to be easy."</em> Every Tuesday evening, server restarts deploy balance adjustments and refresh active promotional code buffers.
+        </p>
+      </section>
+
+      <!-- Patches Master Timeline -->
+      <section style="margin-bottom: 40px;">
+        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Complete Version History & Change Logs</h2>
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          {patches.map((p) => (
+            <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+                <h3 style="font-size: 1.25rem; color: #fff; margin: 0;">{p.version}</h3>
+                <span style="font-size: 0.8rem; background: #0d0a14; color: #c9a227; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
+                  Released: {p.releaseDate}
+                </span>
+              </div>
+
+              <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.5; margin: 0 0 14px;">
+                {p.summary}
+              </p>
+
+              <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+                <strong style="color: #38bdf8; display: block; margin-bottom: 6px; font-size: 0.88rem;">Key Patch Highlights:</strong>
+                <ul style="color: var(--muted); font-size: 0.86rem; line-height: 1.6; padding-left: 18px; margin: 0;">
+                  {p.highlights.map((h) => (
+                    <li>{h}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Navigation -->
+      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Game Resources</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/codes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Active Promo Codes Ledger
+          </a>
+          <a href="/races/dullahan/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Halloween Dullahan Race Guide
+          </a>
+          <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → 18 Super Class Evolution Tree
+          </a>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

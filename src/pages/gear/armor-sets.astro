@@ -1,0 +1,187 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const armorSets = [
+  {
+    name: "Iron Vanguard Regalia",
+    tier: "Tier 1 (Level 5-12)",
+    defenseRating: "+25 Total DEF, +40 Max HP",
+    setBonus: "2-Piece: +5% Physical Damage Reduction | 4-Piece: +10% Stun Resistance",
+    craftingCost: "120 Iron Ingots & 400 Gold at the Blacksmith",
+    bestFor: "Early Act 1 progression for Warriors and Brawlers.",
+  },
+  {
+    name: "Shadowstalker Leathers",
+    tier: "Tier 1 (Level 5-12)",
+    defenseRating: "+14 Total DEF, +8 Turn Speed, +6% Crit",
+    setBonus: "2-Piece: +4% Dodge Probability | 4-Piece: 10% Chance to refund 1 Energy on critical hit",
+    craftingCost: "80 Cured Leather & 350 Gold at the Blacksmith",
+    bestFor: "Thieves and Archers seeking turn initiative and evasion.",
+  },
+  {
+    name: "Arcane Weaver Silks",
+    tier: "Tier 2 (Level 12-22)",
+    defenseRating: "+18 Total DEF, +28 MAG, +15 Max Mana",
+    setBonus: "2-Piece: +8% Elemental Spell Power | 4-Piece: 15% Mana cost reduction on Tier-2 Spells",
+    craftingCost: "60 Astral Thread & 850 Gold at the Blacksmith",
+    bestFor: "Mages and Bards transitioning into Act 2 Dungeon Depths.",
+  },
+  {
+    name: "Dwarven Colossus Plate",
+    tier: "Tier 2 (Level 15-25)",
+    defenseRating: "+65 Total DEF, +120 Max HP, -4 SPD",
+    setBonus: "2-Piece: +12% Armor Hardening | 4-Piece: 'Impenetrable Bastion' (absorbs 1 fatal strike every 5 turns)",
+    craftingCost: "200 Mithril Ore & 1,500 Gold at the Blacksmith",
+    bestFor: "Sentinel Warriors and tanking frontline builds.",
+  },
+  {
+    name: "Eclipse Netherplate",
+    tier: "Tier 3 Endgame (Level 25-30+)",
+    defenseRating: "+110 Total DEF, +220 Max HP, +25 ATK/MAG",
+    setBonus: "2-Piece: +15% All Attribute Scaling | 4-Piece: 'Abyssal Dominance' (25% outgoing damage converted to True Damage)",
+    craftingCost: "Torment II Pinnacle Boss Drop / 5,000 Gold + 2 Ultra Sigil Shards",
+    bestFor: "Endgame Torment III and competitive Guild Raids.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage Armor Sets: Stats & Tier Bonus Guide",
+    description: "Complete Pixel Lineage armor sets guide: defense ratings, set bonuses, crafting materials at the Blacksmith, and optimal gear progression for all 6 classes.",
+    url: `${siteConfig.siteUrl}/gear/armor-sets/`,
+    datePublished: "2026-10-18T12:00:00Z",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Gear", item: `${siteConfig.siteUrl}/gear/` },
+      { "@type": "ListItem", position: 3, name: "Armor Sets", item: `${siteConfig.siteUrl}/gear/armor-sets/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Armor Sets & Set Bonuses"
+  description="Complete Pixel Lineage armor sets guide: defense ratings, set bonuses, crafting materials at the Blacksmith, and optimal gear progression for all 6 classes."
+  canonical="/gear/armor-sets/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/gear/" style="color: var(--accent); text-decoration: none;">Gear</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Armor Sets</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(201, 162, 39, 0.15); border: 1px solid #c9a227; color: #c9a227; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Equipment Progression & Crafting Ledger
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Armor Sets: Stats & Tier Bonus Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Exhaustive database of armor sets in Pixel Lineage on Roblox. We analyze 2-piece and 4-piece set bonuses, damage reduction formulas at the Blacksmith forge, material acquisition routes, and class-specific armor optimization.
+      </p>
+    </header>
+
+    <!-- Unique Hero Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/features/feature_armor.webp"
+        alt="Pixel Lineage Armor Sets Defense Ratings and Crafting Material Costs"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Summary Callout -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">How Set Bonuses Reshape Turn Combat</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+          Wearing matching equipment pieces activates powerful synergistic passives called Set Bonuses. While single legendary pieces offer high standalone stats, completing a 4-piece armor set activates game-changing mechanics—such as energy refunds on critical hits, fatal strike absorption, and true damage conversions.
+        </p>
+      </section>
+
+      <!-- Armor Sets Master Breakdown -->
+      <section style="margin-bottom: 40px;">
+        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Tier 1 to Tier 3 Armor Progression Sets</h2>
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          {armorSets.map((a) => (
+            <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+                <h3 style="font-size: 1.3rem; color: #fff; margin: 0;">{a.name}</h3>
+                <span style="font-size: 0.8rem; background: #0d0a14; color: #38bdf8; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
+                  {a.tier}
+                </span>
+              </div>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 14px; font-size: 0.88rem;">
+                <div style="background: #0d0a14; padding: 10px 12px; border-radius: 6px;">
+                  <span style="color: var(--muted); font-size: 0.75rem; display: block;">Base Defense Pool</span>
+                  <strong style="color: #34d399;">{a.defenseRating}</strong>
+                </div>
+                <div style="background: #0d0a14; padding: 10px 12px; border-radius: 6px;">
+                  <span style="color: var(--muted); font-size: 0.75rem; display: block;">Crafting & Upgrade Cost</span>
+                  <strong style="color: #c9a227;">{a.craftingCost}</strong>
+                </div>
+              </div>
+
+              <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px; margin-bottom: 10px; font-size: 0.9rem;">
+                <strong style="color: #38bdf8; display: block; margin-bottom: 4px;">Set Bonus Thresholds:</strong>
+                <span style="color: var(--ink); line-height: 1.5;">{a.setBonus}</span>
+              </div>
+
+              <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+                <strong style="color: #fff;">Tactical Fit:</strong> {a.bestFor}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Blacksmith Upgrading Mechanics -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">The Blacksmith Forge: Reinforcement & Durability</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          The Blacksmith NPC is located in the west forge of the Starter Village. Every armor piece can be reinforced up to +5 Quality using Refined Ore and Gold. Each reinforcement rank increases flat DEF by +10% without altering character weight or speed penalties.
+        </p>
+        <div style="background: #0d0a14; border: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 16px; border-radius: 6px; font-size: 0.88rem; color: var(--muted);">
+          <strong style="color: #f43f5e;">Permadeath Durability Rule:</strong> Falling in combat degrades armor durability by 20%. If an armor set reaches 0% durability, its set bonus deactivates until repaired at the Blacksmith anvil.
+        </div>
+      </section>
+
+      <!-- Navigation -->
+      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Equipment Resources</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/gear/weapons/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Best Weapons Tier List & Scaling Guide
+          </a>
+          <a href="/gear/legendary-powers/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Legendary Artifacts & Unique Effects
+          </a>
+          <a href="/calculator/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Test Armor EHP in Interactive Calculator
+          </a>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

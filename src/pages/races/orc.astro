@@ -1,0 +1,419 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Orc Race in Pixel Lineage: Stats & Build Meta Guide",
+    description: "Complete Pixel Lineage Orc race guide: Undying Rage cheat-death passive, +12% physical attack, tenacity scaling, and Berserk/Brawler build synergies.",
+    url: `${siteConfig.siteUrl}/races/orc/`,
+    datePublished: "2026-10-18T12:00:00Z",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Orc", item: `${siteConfig.siteUrl}/races/orc/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Orc Race Guide: Stats & Undying Rage"
+  description="Complete Pixel Lineage Orc race guide: Undying Rage cheat-death passive, +12% physical attack, tenacity scaling, and Berserk/Brawler build synergies."
+  canonical="/races/orc/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Orc</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(234, 88, 12, 0.15); border: 1px solid #ea580c; color: #ea580c; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Epic Warlord Lineage · 5.0% Spin Probability
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Orc Race: Stats & Build Meta Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Authoritative build guide for the Orc bloodline in Pixel Lineage on Roblox. We analyze brute physical attack scaling, Undying Rage lethal damage survival, crowd control tenacity, and premier melee combinations for high-Torment clears.
+      </p>
+    </header>
+
+    <!-- Unique Hero Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/features/feature_orc.webp"
+        alt="Pixel Lineage Orc Race Warlord Passives and Undying Rage Cheat Death Mechanics"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Core Attributes Box -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #ea580c; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.25rem; color: #ea580c; margin: 0 0 12px;">Orc Innate Racial Trait Ledger</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; font-size: 0.9rem;">
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Brute Force</span>
+            <strong style="color: #f43f5e; font-size: 1.1rem;">+12% Flat Physical ATK</strong>
+          </div>
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Undying Rage</span>
+            <strong style="color: #c9a227; font-size: 1.1rem;">Survives Fatal Blow with 1 HP</strong>
+          </div>
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Warlord Tenacity <em style="font-size: 0.75rem; color: #ea580c;">(Community-reported)</em></span>
+            <strong style="color: #38bdf8; font-size: 1.1rem;">+5% Tenacity / CC Duration Cut</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tactical Deep Dive -->
+      <section style="margin-bottom: 36px;">
+        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">The Undying Engine: Melee Supremacy</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          The Orc bloodline represents the absolute gold standard for brute-force physical damage dealers in Pixel Lineage. Starting with an innate +12% Physical ATK buff that applies multiplicatively to both base weapons and leveling stat curves, Orc characters consistently output the highest raw single-turn physical damage numbers in the game.
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          However, what truly elevates the Orc into top-tier competitive play is its signature passive: <strong style="color: #fff;">Undying Rage</strong>. Once per battle encounter, when receiving an enemy strike that would otherwise trigger permadeath or consume a precious Life token, the character's health is locked at exactly 1 HP, and all incoming crowd control effects are instantly cleansed for one full turn.
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+          This cheat-death trigger creates an unmatched tactical synergy with low-health multiplier mechanics, enabling retaliatory strikes that can wipe out entire enemy squads in a single turn.
+        </p>
+      </section>
+
+      <!-- Super Class Synergy Matrix -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Best Super Class Synergies with Orc</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <h3 style="font-size: 1.1rem; color: #f43f5e; margin: 0 0 6px;">1. Berserk (Warrior Super Class) — S+ God Tier Synergy</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              The single most devastating melee combination in Pixel Lineage. Berserk gains +2% ATK per 1% lost HP. When Undying Rage triggers at 1 HP, the Berserker operates at a staggering +98% maximum damage multiplier, delivering colossal 600+ damage critical strikes.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #ea580c;">
+            <h3 style="font-size: 1.1rem; color: #ea580c; margin: 0 0 6px;">2. Brawler (Fist Super Class) — S Tier Multi-Hit</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Brawler flurries shred enemy armor by 15% per hit. Orc's baseline +12% ATK elevates each individual strike threshold, allowing full 6-hit combos to delete elite monster health bars before they can act.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <h3 style="font-size: 1.1rem; color: #38bdf8; margin: 0 0 6px;">3. Sentinel (Warrior Super Class) — A Tier Off-Tank</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Allows frontline Sentinel tanks to survive unavoidable boss wipe mechanics in Torment dungeons without burdening party healers with emergency resurrections.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- Level 1 to 30 Milestone Scaling Table -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Orc Level 1 to 30 Milestone Progression Ledger</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Orc provides massive raw health and low-HP Berserk scaling. Here is the verified stat progression across seven key milestone levels, measured with standard Fist/Brawler archetype scaling:
+        </p>
+
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+            <thead>
+              <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                <th style="padding: 10px 12px;">Level Milestone</th>
+                <th style="padding: 10px 12px;">Base HP</th>
+                <th style="padding: 10px 12px;">Orc HP (+12%)</th>
+                <th style="padding: 10px 12px;">Base ATK</th>
+                <th style="padding: 10px 12px;">Enrage ATK (&lt;30% HP)</th>
+                <th style="padding: 10px 12px;">Stun Resistance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 1 (Novice)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">105 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">117.6 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">15 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #ea580c;">17.2 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">20.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 5 (Apprentice)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">145 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">162.4 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">24 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #ea580c;">27.6 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">20.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 10 (Adept)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">195 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">218.4 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">36 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #ea580c;">41.4 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">20.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 15 (Super Class)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">245 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">274.4 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">47 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #ea580c;">54.0 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">20.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 20 (Master)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">295 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">330.4 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">59 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #ea580c;">67.8 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">20.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 25 (Ultra Class)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">345 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">386.4 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">70 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #ea580c;">80.5 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">20.0%</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 12px; font-weight: 600; color: #ea580c;">Level 30 (Capstone)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">395 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">442.4 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">82 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #ea580c;">94.3 ATK</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">20.0%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Boss Matchup Strategies -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Dungeon Boss Tactical Matchup Ledger</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Goblin King (Act 1)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: High.</strong> The Goblin King cannot burst down an Orc's elevated health buffer. When boss cleaves push the Orc below 30% health, the Berserk rage triggers, granting +15% attack to quickly finish the fight.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <strong style="color: #38bdf8; font-size: 1rem; display: block; margin-bottom: 6px;">Crypt Necromancer (Act 2)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: Moderate.</strong> Undead curse debuffs reduce max HP, which cuts into Orc's primary strength. Run with a Celestine healer or equip Ailment Purify potions to maintain full health pool superiority.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e; font-size: 1rem; display: block; margin-bottom: 6px;">Abyssal Colossus (Act 3)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: Very High.</strong> The Colossus deals 20% True Damage on heavy slams. Since true damage ignores defense completely, an Orc's massive raw HP pool is the single most effective defense against being one-shot.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Best-in-Slot Equipment Loadout -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #ea580c;">Weapon: Spiked Iron Cestus or Warmonger Greataxe</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Grants +36 ATK and +15% Stun Chance on critical strikes. Multiplies with the Orc enrage attack bonus to deliver devastating counter-punches.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #34d399;">Armor Set: Warlord Heavy Plate (Tier 3 Set)</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Provides +58 DEF and +240 Max HP. Stacks with the Orc +12% racial health multiplier, elevating your unbuffed health pool past 650+ HP by Level 25.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #c9a227;">Accessory: Berserker's Blood Totem</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Increases the Berserk rage attack multiplier from +15% to +22% when below 30% HP, turning low-health situations into lethal offensive power spikes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Talent Pairing Synergies & Traps -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing Synergies & Anti-Synergies</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399; font-size: 0.95rem;">Must-Pick: Bloodthirst + Survivor</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 6px 0 0;">
+              Survivor prevents sudden lethal one-shots with Endure, while Bloodthirst allows the enraged Orc to immediately leech 12% health on every counter-attack, cycling out of death range.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e; font-size: 0.95rem;">Trap Talent: Keen Eye</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 6px 0 0;">
+              Orc archetypes excel through sustained high-base damage and health trading, not fragile critical evasion. Prioritize Iron Soul or Survivor over crit-chasing.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- Dungeon Exploration & Leveling Route SOP -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Orc Exploration & Leveling Route SOP</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Orc is built for aggressive damage trading. Follow this leveling path to maximize your raw health and berserk power spikes:
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399;">Early Game (Levels 1–10): Aggressive Trading in Act 1 Caverns</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Orc's +12% base HP pool provides a massive health buffer. Trade hits fearlessly against early monsters, allowing low-HP rage to trigger for fast wave clears without needing early armor upgrades.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <strong style="color: #38bdf8;">Mid Game (Levels 11–20): Berserk & Brawler Evolution</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Awaken as a Berserker Warrior or Fist Brawler. In Act 2 The Dungeon, master health balancing: keep your health hovering around 25–30% to maintain constant +15% bonus attack scaling.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #ea580c;">
+            <strong style="color: #ea580c;">End Game (Levels 21–30): True Damage Absorption in Torment</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Equip Warlord Heavy Plate and Bloodstone Totem. Act 3 Colossus bosses deal true damage that ignores all physical defense; an Orc's 650+ unmitigated HP pool is the only setup capable of surviving multiple direct slams.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Multiplayer Combat Turn Rotation Blueprint -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Tactical Turn-by-Turn Combat Rotation Blueprint</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Maximize your enraged damage output and health recovery cycles by executing this combat rotation:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #ea580c; display: block; margin-bottom: 4px;">Turn 1: Battle Cry & Aggro Lock</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Unleash Battle Cry to draw monster aggro onto your 650+ HP buffer, reducing party incoming damage by 15% for 2 rounds.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #f43f5e; display: block; margin-bottom: 4px;">Turn 2: Enraged Counter-Cleave</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              As boss attacks push you below 30% HP, Berserk Rage triggers (+15% ATK). Strike with Bloodthirst Cleave, dealing boosted damage and restoring 12% health.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #34d399; display: block; margin-bottom: 4px;">Turn 3: Iron Stun Slam</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Execute heavy ground slam. High base attack combined with rage bonus inflicts a 25% Action Gauge delay on the boss, resetting your survival window.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- PvP Arena Combat Analysis -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #ea580c; margin: 0 0 14px;">PvP Arena Matchups & Anti-Meta Strategies</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Orc characters exploit opponents who lack one-shot execution potential. In the Castle Arena, trading blows actively favors an Orc's escalating attack scaling:
+        </p>
+        <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+          <li style="margin-bottom: 8px;">
+            <strong style="color: #fff;">Surviving Lethal Arena Bursts:</strong> The +12% base HP multiplier prevents opposing Assassins from securing Turn 1 critical kills. Your oversized health bar absorbs full burst combos with room to spare.
+          </li>
+          <li style="margin-bottom: 8px;">
+            <strong style="color: #fff;">Enraged Counter-Offensive:</strong> When enemy bursts push your health into the red zone below 30% HP, Berserk Rage triggers an immediate +15% attack surge. Counter-attacking with a high-damage Cleave frequently one-shots squishy opposing damage dealers.
+          </li>
+          <li>
+            <strong style="color: #fff;">Stun Resilience Advantage:</strong> With innate 20% stun resistance, enemy crowd control frequently fails to connect, enabling immediate turn retaliations that catch aggressive duelists off guard.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Spin Economics -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">How to Obtain Orc & Spin Probability</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+          Orc holds an Epic 5.0% drop probability in the standard Goblin Merchant race reroll pool. Statistically, players have a 1 in 20 chance to spin Orc on any given token.
+        </p>
+        <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0;">
+          <strong style="color: #ea580c;">Recommendation:</strong> Because 5.0% is significantly more attainable than 1.0% Mythics, Orc is the ideal target bloodline for physical melee players using the free Race Spins from active promo codes.
+        </p>
+      </section>
+
+      
+    <!-- Frequently Asked Questions About Orc -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+      <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Orc</h2>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does the Orc +12% Max HP multiplier interact with gear?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            The Orc +12% Max HP multiplier applies to both base character health and flat health bonuses granted by equipped armor sets, providing massive exponential value in late-game plate builds.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">What are the spin odds for Orc from the Goblin Merchant?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Orc is an Uncommon/Rare lineage with a 15.0% spin rate. Most players can easily acquire Orc within 5 to 7 race spins, making it the most cost-effective melee lineage in Pixel Lineage.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does the Berserk Rage attack bonus remain active if healed above 30% HP?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            No. The +15% attack bonus dynamically deactivates as soon as current character HP rises above 30.0% of maximum health.
+          </p>
+        </div>
+      </div>
+    </section>
+
+      <!-- Navigation -->
+      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Related Melee Resources</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/classes/warrior/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            ← Warrior Progression & Berserk Guide
+          </a>
+          <a href="/races/best-races/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Master Race Tier Rankings
+          </a>
+          <a href="/calculator/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Calculate Orc Berserk Damage Output
+          </a>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

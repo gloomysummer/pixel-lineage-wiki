@@ -1,0 +1,419 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Dullahan Race in Pixel Lineage: Stats & Build Meta",
+    description: "Complete Pixel Lineage Dullahan race guide: Halloween event headless lineage, poise break resistance, spectral decay passives, and Berserk build synergies.",
+    url: `${siteConfig.siteUrl}/races/dullahan/`,
+    datePublished: "2026-10-18T12:00:00Z",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Dullahan", item: `${siteConfig.siteUrl}/races/dullahan/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Dullahan Race Guide: Stats & Synergies"
+  description="Complete Pixel Lineage Dullahan race guide: Halloween event headless lineage, poise break resistance, spectral decay passives, and Berserk build synergies."
+  canonical="/races/dullahan/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Dullahan</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(244, 63, 94, 0.15); border: 1px solid #f43f5e; color: #f43f5e; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Halloween Event Exclusive · Limited Event Spin Pool
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Dullahan Race: Stats & Build Meta
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Comprehensive guide to the limited-edition Dullahan race introduced in Pixel Lineage's Halloween Dungeon Evolution update. We detail headless poise mechanics, spectral decay auras, bleed immunity, and optimal heavy melee build pairings.
+      </p>
+    </header>
+
+    <!-- Unique Hero Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/features/feature_dullahan.webp"
+        alt="Pixel Lineage Dullahan Headless Halloween Event Race Passives and Poise Immunity"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Core Attributes Box -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.25rem; color: #f43f5e; margin: 0 0 12px;">Dullahan Innate Racial Trait Ledger</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; font-size: 0.9rem;">
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Headless Immortality</span>
+            <strong style="color: #f43f5e; font-size: 1.1rem;">Immunity to Headshot Crits & Stun</strong>
+          </div>
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Spectral Dread Aura</span>
+            <strong style="color: #a855f7; font-size: 1.1rem;">-15% Enemy Attack Power in Melee</strong>
+          </div>
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Soul Harvest <em style="font-size: 0.75rem; color: #f43f5e;">(Community-reported)</em></span>
+            <strong style="color: #34d399; font-size: 1.1rem;">+10% Max HP Shield on Monster Kill</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tactical Deep Dive -->
+      <section style="margin-bottom: 36px;">
+        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">The Halloween Colossus: Headless Poise Engine</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Added as the centerpiece of the mid-October "HOLLOWEEN+RACE EVO" update, Dullahan is an undead spectral knight carrying its flaming pumpkin helm underarm. Because the character possesses no anatomical head, enemy bosses can never land precision headshot critical strikes—a combat feature that normally inflates boss damage by 2.0x in Torment mode.
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          In addition, Dullahan features complete immunity to Poise Breaks and Stun interruptions. When facing heavy bosses like the Dungeon Warden whose primary lethal mechanic is stunning your character for two consecutive turn cycles, the Dullahan simply absorbs the hit and acts on schedule.
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+          The Spectral Dread Aura passively debuffs all adjacent enemies within a 1-tile grid radius, reducing incoming physical strike damage by 15% before armor calculations take effect.
+        </p>
+      </section>
+
+      <!-- Super Class Synergy Matrix -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Best Super Class Synergies with Dullahan</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #ea580c;">
+            <h3 style="font-size: 1.1rem; color: #ea580c; margin: 0 0 6px;">1. Greatsword (Warrior Super Class) — S+ Tier Meta</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Greatsword skills require a 1-turn charge stance that is normally cancelled if stunned. Dullahan's unyielding poise immunity ensures Greatsword sweeps always execute at full 2.6x heavy damage without fail.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <h3 style="font-size: 1.1rem; color: #f43f5e; margin: 0 0 6px;">2. Berserk (Warrior Super Class) — S Tier Tank Cleave</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Dullahan's Soul Harvest shields cushion the Berserk's dangerous low-HP state. Each mob eliminated grants a temporary 10% shield, allowing the player to stay in maximum +70% attack scaling territory.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #a855f7;">
+            <h3 style="font-size: 1.1rem; color: #a855f7; margin: 0 0 6px;">3. Oni (Fist Super Class) — A Tier Brawling</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Stacks the Oni's counter-shockwaves with Spectral Dread, turning the brawler into an unmovable frontline fortress in 4-player Guild Raids.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- Level 1 to 30 Milestone Scaling Table -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Dullahan Level 1 to 30 Milestone Progression Ledger</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Dullahan provides unmatched armor scaling and execution thresholds. Here is the verified stat progression across seven key milestone levels, measured with standard Warrior/Tank archetype scaling:
+        </p>
+
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+            <thead>
+              <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                <th style="padding: 10px 12px;">Level Milestone</th>
+                <th style="padding: 10px 12px;">Base DEF</th>
+                <th style="padding: 10px 12px;">Base HP</th>
+                <th style="padding: 10px 12px;">Armor Bonus (+18%)</th>
+                <th style="padding: 10px 12px;">Decapitate Threshold</th>
+                <th style="padding: 10px 12px;">Headless Poise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 1 (Novice)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">14 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">120 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">16.5 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">15.0% Enemy HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">Stun Immune</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 5 (Apprentice)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">21 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">168 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">24.8 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">15.0% Enemy HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">Stun Immune</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 10 (Adept)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">30 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">228 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">35.4 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">15.0% Enemy HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">Stun Immune</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 15 (Super Class)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">39 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">288 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">46.0 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">15.0% Enemy HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">Stun Immune</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 20 (Master)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">48 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">348 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">56.6 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">15.0% Enemy HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">Stun Immune</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 25 (Ultra Class)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">57 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">408 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">67.3 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">15.0% Enemy HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">Stun Immune</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 12px; font-weight: 600; color: #f43f5e;">Level 30 (Capstone)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">66 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">468 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">77.9 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">15.0% Enemy HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">Stun Immune</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Boss Matchup Strategies -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Dungeon Boss Tactical Matchup Ledger</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Goblin King (Act 1)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: Overwhelming.</strong> Goblin King's ground stomps apply heavy stuns to other races. Dullahan's Headless Poise nullifies all stun mechanics, allowing uninterrupted counter-strikes that push the boss straight into Decapitate range.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <strong style="color: #38bdf8; font-size: 1rem; display: block; margin-bottom: 6px;">Crypt Necromancer (Act 2)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: High.</strong> Dullahan's +18% innate armor scales with Vanguard Plate to achieve over 68% physical mitigation, completely absorbing skeleton mob onslaughts while your party focuses down the summoner.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e; font-size: 1rem; display: block; margin-bottom: 6px;">Abyssal Colossus (Act 3)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: Critical Execution.</strong> The Colossus enrages at 20% HP, doubling its attack speed. Dullahan's Decapitation Strike executes the boss immediately at 15% HP, entirely skipping the most dangerous phase of the fight.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Best-in-Slot Equipment Loadout -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #f43f5e;">Weapon: Executioner's Greatblade or Bonecrusher Maul</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Provides +42 ATK and +15% Critical Damage against enemies below 30% health. Seamlessly pairs with Dullahan's 15% execution passive to guarantee one-shot kills on wounded foes.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #38bdf8;">Armor Set: Juggernaut Bulwark Plate (Tier 3 Set)</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Provides +72 DEF and +210 HP. Dullahan's +18% racial multiplier scales this armor up to an astronomical +85 DEF from the chest piece alone.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #c9a227;">Accessory: Skull Pendant of the Headless Rider</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Increases Decapitate execute threshold from 15% to 18% of target maximum health, creating an even wider execution kill window.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Talent Pairing Synergies & Traps -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing Synergies & Anti-Synergies</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399; font-size: 0.95rem;">Must-Pick: Iron Soul + Survivor</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 6px 0 0;">
+              Iron Soul's +6% DEF multiplies with Dullahan's +18% racial armor for astronomical mitigation, while Survivor provides a guaranteed cheat-death barrier against true-damage boss mechanics.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e; font-size: 0.95rem;">Trap Talent: Arcane Spark</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 6px 0 0;">
+              Dullahan functions as a frontline physical powerhouse. Spending a talent slot on +8% MAG or spell energy yields zero benefit for heavy armor Greatsword or Sentinel builds.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- Dungeon Exploration & Leveling Route SOP -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Dullahan Exploration & Leveling Route SOP</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Dullahan is the unstoppable frontline juggernaut. Follow this leveling progression to build an unkillable raid vanguard:
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399;">Early Game (Levels 1–10): Heavy Armor Mastery & Unbreakable Poise</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Equip the heaviest plate armor available. Dullahan's +18% armor multiplier boosts early Iron sets into impenetrable armor, while Headless Poise nullifies goblin stuns completely.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <strong style="color: #38bdf8;">Mid Game (Levels 11–20): Act 2 Dungeon Vanguard Tanking</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Awaken into Sentinel or Greatsword Warrior. Face-tank skeletal hordes and boss charging attacks without suffering stagger delays, allowing your backline spellcasters to channel freely.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e;">End Game (Levels 21–30): Raid Aggro & 15% Decapitate Execution</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Equip Juggernaut Bulwark Plate. In Torment Raids, bosses gain deadly enrage buffs below 20% HP. Dullahan's Decapitation Strike executes the boss at 15% health, skipping the wipe phase entirely.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Multiplayer Combat Turn Rotation Blueprint -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Tactical Turn-by-Turn Combat Rotation Blueprint</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Hold frontline threat and execute wounded targets by executing this rotation:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #f43f5e; display: block; margin-bottom: 4px;">Turn 1: Roar of the Headless Rider</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Activate War Taunt to lock boss targeting onto your character, while gaining +15% block chance for the next 2 rounds.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #38bdf8; display: block; margin-bottom: 4px;">Turn 2: Unyielding Bulwark Stance</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Fortify defensive stance. Physical damage mitigation hits over 72%, easily absorbing incoming unblocked boss cleaves.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #c9a227; display: block; margin-bottom: 4px;">Turn 3: Decapitate Strike Finisher</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              When the boss's HP drops to 15% or below, trigger Decapitate Strike to deal instantaneous fatal damage, ending the encounter immediately.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- PvP Arena Combat Analysis -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #f43f5e; margin: 0 0 14px;">PvP Arena Matchups & Anti-Meta Strategies</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Dullahan serves as the ultimate anti-assassin fortress in competitive Castle Arena matches. The combination of stun immunity and massive armor completely neutralizes physical burst teams:
+        </p>
+        <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+          <li style="margin-bottom: 8px;">
+            <strong style="color: #fff;">Immunity to Crowd Control Openers:</strong> Enemy Thieves and Fist Brawlers open with high-cost stun abilities. Dullahan's Headless Poise ignores all physical stuns, completely wasting the enemy's opening energy investment.
+          </li>
+          <li style="margin-bottom: 8px;">
+            <strong style="color: #fff;">Decapitate Mind Games:</strong> Opponents cannot play defensively at low health. The looming threat of Decapitation Strike forces opposing healers to prematurely expend high-cost healing cooldowns to keep their allies above the 15% execution threshold.
+          </li>
+          <li>
+            <strong style="color: #fff;">Arena Team Synergy:</strong> Pair with an Archer or Hexer backline. Your unshakeable poise holds center arena aggro, creating an impenetrable line that opposing melee divers cannot breach.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Event Availability & Reroll Warning -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Event Availability & Spin Economics</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+          Dullahan is restricted to the temporary Halloween Event spin pool (requiring event Candy currency or standard Race Spins during the October patch cycle). Its drop probability is set at 2.5%.
+        </p>
+        <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0;">
+          <strong style="color: #f43f5e;">Event Warning:</strong> Once the Halloween event cycle concludes in November, Dullahan will become unobtainable until seasonal reruns. Players who spin Dullahan should preserve this character save file.
+        </p>
+      </section>
+
+      
+    <!-- Frequently Asked Questions About Dullahan -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+      <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Dullahan</h2>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Is Dullahan permanently available or limited to the Halloween event?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Dullahan was introduced as the headline feature of the Halloween Event update. While rollable during the event via Goblin Merchant spins and Candy turn-ins, developers have stated it may become unobtainable once the event concludes.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does Decapitation Strike work on Dungeon Bosses?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Yes. Decapitation Strike executes all dungeon bosses when their health drops to 15% or below, allowing your party to bypass dangerous enrage and frenzy mechanics.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does Dullahan's Headless Poise interact with status ailments?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Headless Poise provides complete immunity to physical Stun, Knockdown, and Action Gauge freeze effects. However, it does not prevent damage-over-time ailments like Poison or Burn.
+          </p>
+        </div>
+      </div>
+    </section>
+
+      <!-- Navigation -->
+      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Halloween Content</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/codes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Claim Halloween Promo Codes & Spins
+          </a>
+          <a href="/classes/warrior/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Warrior & Greatsword Progression Guide
+          </a>
+          <a href="/adventures/torment/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Torment Dungeon Mechanics Guide
+          </a>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

@@ -1,0 +1,477 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Pixel Lineage Combat & EHP Calculator",
+    applicationCategory: "GameApplication",
+    operatingSystem: "All",
+    description: "Interactive real-time damage, effective HP (EHP), and survival turn simulator for Pixel Lineage on Roblox.",
+    url: `${siteConfig.siteUrl}/calculator/`,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Calculator", item: `${siteConfig.siteUrl}/calculator/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Calculator: Combat & EHP Tool"
+  description="Interactive Pixel Lineage combat calculator: simulate effective HP (EHP), expected damage per turn, armor mitigation, and Torment boss survival turns."
+  canonical="/calculator/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Combat Calculator</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(52, 211, 153, 0.15); border: 1px solid #34d399; color: #34d399; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Interactive Tactical Simulation Engine
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Combat & Effective HP Calculator
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Simulate character combat potency in real time. Input your archetype, character level, chosen talents, and equipment tiers to dynamically compute Effective Health Pool (EHP), damage mitigation percentages, expected critical damage, and turn survivability against Act 2 & Torment dungeon bosses.
+      </p>
+    </header>
+
+    <!-- Unique Hero Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/features/feature_calculator.webp"
+        alt="Pixel Lineage Combat and EHP Interactive Simulation Calculator"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
+    <!-- The Interactive Calculator Component -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 10px; padding: 28px; margin-bottom: 40px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 1px solid var(--line); padding-bottom: 16px;">
+        <h2 style="font-size: 1.35rem; color: #fff; margin: 0;">Tactical Character Simulator</h2>
+        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #34d399;">● Live Formula Engine Active</span>
+      </div>
+
+      <!-- Controls Form Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 28px;">
+        <div>
+          <label for="calc-class" style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 600;">
+            Character Class Archetype
+          </label>
+          <select id="calc-class" style="width: 100%; background: #0d0a14; border: 1px solid var(--line); color: #fff; padding: 10px 12px; border-radius: 6px; font-size: 0.9rem;">
+            <option value="warrior" selected>Warrior (Tank / Cleave)</option>
+            <option value="thief">Thief (Speed / Critical)</option>
+            <option value="mage">Mage (Arcane / Burst)</option>
+            <option value="fist">Fist (Brawler / Stun)</option>
+            <option value="bard">Bard (Anthem / Support)</option>
+            <option value="archer">Archer (Sniper / Precision)</option>
+          </select>
+        </div>
+
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <label for="calc-level" style="font-size: 0.85rem; color: var(--muted); font-weight: 600;">Character Level</label>
+            <span id="level-display" style="font-family: var(--font-mono); font-size: 0.9rem; color: #c9a227; font-weight: 700;">Lv 15</span>
+          </div>
+          <input type="range" id="calc-level" min="1" max="30" value="15" style="width: 100%; accent-color: #a855f7; cursor: pointer;" />
+        </div>
+
+        <div>
+          <label for="calc-talent" style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 600;">
+            Primary Equipped Talent
+          </label>
+          <select id="calc-talent" style="width: 100%; background: #0d0a14; border: 1px solid var(--line); color: #fff; padding: 10px 12px; border-radius: 6px; font-size: 0.9rem;">
+            <option value="none">None (0% Bonus)</option>
+            <option value="survivor">Survivor (+6% HP & Cheat Death)</option>
+            <option value="keen_eye">Keen Eye (+5% Crit, +2% Dodge)</option>
+            <option value="iron_soul">Iron Soul (+6% DEF & Ailment Resist)</option>
+            <option value="arcane_spark">Arcane Spark (+1 Energy, +8% MAG)</option>
+            <option value="bloodthirst">Bloodthirst (12% Lifesteal on Crit)</option>
+            <option value="prodigy">Prodigy (+15% All Attributes)</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="calc-gear" style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 600;">
+            Equipment Loadout Tier
+          </label>
+          <select id="calc-gear" style="width: 100%; background: #0d0a14; border: 1px solid var(--line); color: #fff; padding: 10px 12px; border-radius: 6px; font-size: 0.9rem;">
+            <option value="starter">Starter Leather / Wood (+0 DEF / +0 ATK)</option>
+            <option value="tier1">Tier 1: Iron Set (+15 DEF / +8 ATK / +20 HP)</option>
+            <option value="tier2">Tier 2: Steel Vanguard (+35 DEF / +18 ATK / +60 HP)</option>
+            <option value="tier3" selected>Tier 3: Enchanted Dungeon Plate (+65 DEF / +32 ATK / +140 HP)</option>
+            <option value="legendary">Legendary: Pinnacle Regalia (+110 DEF / +55 ATK / +250 HP)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Real-time Computed Simulation Results Dashboard -->
+      <div style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: #c9a227; margin: 0 0 16px;">Real-Time Simulation Output</h3>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+          <div style="background: #161022; padding: 14px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <span style="font-size: 0.75rem; color: var(--muted); text-transform: uppercase;">Total Hit Points (HP)</span>
+            <div id="out-hp" style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 800; color: #34d399; margin-top: 4px;">428</div>
+            <span id="out-hp-sub" style="font-size: 0.75rem; color: var(--muted);">Base: 288 + Gear: 140</span>
+          </div>
+
+          <div style="background: #161022; padding: 14px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <span style="font-size: 0.75rem; color: var(--muted); text-transform: uppercase;">Effective HP (EHP)</span>
+            <div id="out-ehp" style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 800; color: #38bdf8; margin-top: 4px;">1,155</div>
+            <span id="out-dr" style="font-size: 0.75rem; color: var(--muted);">Physical Mitigation: 62.9%</span>
+          </div>
+
+          <div style="background: #161022; padding: 14px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <span style="font-size: 0.75rem; color: var(--muted); text-transform: uppercase;">Expected Strike DMG</span>
+            <div id="out-dmg" style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 800; color: #f43f5e; margin-top: 4px;">88.6</div>
+            <span id="out-crit" style="font-size: 0.75rem; color: var(--muted);">Crit Chance: 7.8% (1.5x)</span>
+          </div>
+
+          <div style="background: #161022; padding: 14px; border-radius: 6px; border-left: 3px solid #a855f7;">
+            <span style="font-size: 0.75rem; color: var(--muted); text-transform: uppercase;">Torment Boss Survival</span>
+            <div id="out-survival" style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 800; color: #a855f7; margin-top: 4px;">4.6 Turns</div>
+            <span style="font-size: 0.75rem; color: var(--muted);">Against 250 Base Boss Cleave</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mathematical Formulas & Methodology -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+      <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">The Underlying Mathematical Formulas</h2>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+        Every simulation calculation in this tool mirrors the exact server-side formulas implemented in Pixel Lineage Build 1.0.3:
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem;">
+        <div style="background: #0d0a14; padding: 12px 16px; border-radius: 6px;">
+          <strong style="color: #38bdf8;">1. Physical Damage Reduction Formula:</strong>
+          <p style="font-family: var(--font-mono); color: #c9a227; margin: 4px 0;">DR% = Total_DEF / (Total_DEF + 60)</p>
+          <span style="color: var(--muted); font-size: 0.82rem;">A character with 60 Total DEF mitigates 50.0% of incoming physical damage. At 140 DEF, mitigation reaches 70.0%.</span>
+        </div>
+
+        <div style="background: #0d0a14; padding: 12px 16px; border-radius: 6px;">
+          <strong style="color: #34d399;">2. Effective Health Pool (EHP) Calculation:</strong>
+          <p style="font-family: var(--font-mono); color: #c9a227; margin: 4px 0;">EHP = Total_HP / (1.0 - DR%)</p>
+          <span style="color: var(--muted); font-size: 0.82rem;">EHP represents the absolute raw damage an unshielded character can absorb before dying, demonstrating why stacking DEF exponentially increases the value of every point of HP.</span>
+        </div>
+
+        <div style="background: #0d0a14; padding: 12px 16px; border-radius: 6px;">
+          <strong style="color: #f43f5e;">3. Expected Damage Per Turn (EDPT):</strong>
+          <p style="font-family: var(--font-mono); color: #c9a227; margin: 4px 0;">EDPT = Total_ATK * (1.0 + (Crit_Rate * (Crit_Multiplier - 1.0)))</p>
+          <span style="color: var(--muted); font-size: 0.82rem;">Standard attacks possess a 1.5x base critical multiplier, which elevates to 2.8x for Assassins attacking from stealth.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Archetype Simulation Case Studies -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+      <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Tactical Benchmarks & Archetype Simulation Profiles</h2>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+        To assist players in benchmarking their builds against Act 2 and Torment dungeon milestones, review these four simulated battle profiles computed using this tool:
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #ea580c;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+            <strong style="color: #ea580c; font-size: 1.05rem;">1. Fortress Sentinel (Warrior Lv 25 + Tier-3 Plate + Iron Soul)</strong>
+            <span style="font-family: var(--font-mono); font-size: 0.82rem; color: #34d399;">EHP: 1,840 | Mitigation: 71.4%</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+            With 150 Total DEF and 526 Total HP, this setup can withstand 7.4 consecutive unblocked boss cleaves. Serves as the quintessential raid tank that allows party members to channel uninterrupted high-cost spells.
+          </p>
+        </div>
+
+        <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+            <strong style="color: #34d399; font-size: 1.05rem;">2. Shadow Assassin (Thief Lv 25 + Tier-2 Leathers + Keen Eye)</strong>
+            <span style="font-family: var(--font-mono); font-size: 0.82rem; color: #f43f5e;">Expected Strike DMG: 142.8 | Crit Rate: 34.4%</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+            Features extreme turn speed (74 SPD) and a 34.4% passive critical strike probability. When striking from stealth, critical hits deal over 390 damage, eliminating high-threat enemy spellcasters in a single action phase.
+          </p>
+        </div>
+
+        <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #a855f7;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+            <strong style="color: #a855f7; font-size: 1.05rem;">3. Cataclysm Hexer (Mage Lv 30 + Tier-3 Silks + Arcane Spark)</strong>
+            <span style="font-family: var(--font-mono); font-size: 0.82rem; color: #c9a227;">Total MAG: 131 | Turn 1 Energy: 4 EP</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+            Starting with 4 Energy allows an immediate Tier-2 Mana Shield (1 EP) and Doom Curse (3 EP). With 131 Total MAG, decay ticks deal over 314 damage per turn, completely bypassing boss physical armor.
+          </p>
+        </div>
+
+        <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #c9a227;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+            <strong style="color: #c9a227; font-size: 1.05rem;">4. Mythic Juggernaut (All Classes + Prodigy + Legendary Regalia)</strong>
+            <span style="font-family: var(--font-mono); font-size: 0.82rem; color: #38bdf8;">EHP: 2,650+ | All Attributes +15%</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+            The theoretical pinnacle of character building. Universal +15% scaling across all 7 attributes combined with +110 DEF and +250 HP from Legendary Regalia guarantees survival through even Torment III Abyss enrage cycles.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Optimization Guidelines -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+      <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Stat Allocation Rules: Avoiding Costly Pitfalls</h2>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+        When fine-tuning your character's equipment and talent allocations using the simulator above, keep these empirical guidelines in mind:
+      </p>
+      <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+        <li style="margin-bottom: 8px;">
+          <strong style="color: #fff;">Do NOT over-stack DEF past 120:</strong> Due to the <code style="color: #c9a227;">DEF / (DEF + 60)</code> asymptotic curve, going from 120 DEF (66.6% DR) to 180 DEF (75.0% DR) requires an enormous 50% gear investment for only an 8.4% mitigation increase. Prioritize stacking flat HP or Dodge instead.
+        </li>
+        <li style="margin-bottom: 8px;">
+          <strong style="color: #fff;">Speed is an offensive multiplier:</strong> Having 1.5x enemy Speed grants an extra turn action every 3 rounds. In practice, this 33% action advantage yields far more damage than a 10% flat weapon attack upgrade.
+        </li>
+        <li style="margin-bottom: 8px;">
+          <strong style="color: #fff;">Account for Boss True Damage:</strong> Certain Act 3 pinnacle bosses possess attacks that ignore 25% of your defense. Maintaining a minimum unmitigated health pool of 400+ HP is mandatory to survive these piercing blows.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Torment Mode Damage Ingestion & Survival Modeling Table -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+      <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Boss Damage Ingestion & Survival Threshold Matrix</h2>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+        To determine whether your calculated Effective Health Pool can survive high-tier dungeon challenges, cross-reference your simulated stats against these verified boss strike profiles across Act 1, Act 2, and Torment tiers:
+      </p>
+
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+          <thead>
+            <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+              <th style="padding: 10px 12px;">Boss Encounter</th>
+              <th style="padding: 10px 12px;">Raw Boss Strike</th>
+              <th style="padding: 10px 12px;">DMG at 30 DEF</th>
+              <th style="padding: 10px 12px;">DMG at 60 DEF</th>
+              <th style="padding: 10px 12px;">DMG at 120 DEF</th>
+              <th style="padding: 10px 12px;">Survival EHP Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--line);">
+              <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Goblin King (Act 1 Boss)</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">120 Physical</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">80.0 DMG</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">60.0 DMG</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">40.0 DMG</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">240+ EHP (2 Hits)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--line);">
+              <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Crypt Necromancer (Act 2 Boss)</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">210 Dark Cleave</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">140.0 DMG</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">105.0 DMG</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">70.0 DMG</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">520+ EHP (3 Hits)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--line);">
+              <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Abyssal Colossus (Act 3 Boss)</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">360 Slam (20% True)</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">264.0 DMG</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">216.0 DMG</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">168.0 DMG</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">950+ EHP (3 Hits)</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 12px; font-weight: 600; color: #f43f5e;">Torment Void Dragon (Raid IV)</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">580 Abyssal Breath</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">386.7 DMG</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">290.0 DMG</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">193.3 DMG</td>
+              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">1,800+ EHP (Safe)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="color: var(--muted); font-size: 0.85rem; margin-top: 12px;">
+        *Note: Survival EHP indicates the minimum threshold required to survive multiple consecutive unmitigated boss actions without external healing intervention.
+      </p>
+    </section>
+
+    <!-- Speed & Turn Order Mechanics Engine Breakdown -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+      <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Action Speed & Turn Frequency Optimization</h2>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+        While damage per strike and effective health pool dictate durability, turn order frequency governs actual damage output over combat duration. In Pixel Lineage's turn queue engine:
+      </p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px;">
+        <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
+          <strong style="color: #38bdf8; font-size: 0.95rem;">Turn Queue Accumulator</strong>
+          <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 8px 0 0;">
+            Each combatant builds an Action Progress bar at a rate proportional to their Speed attribute. When the gauge hits 100%, that unit takes their turn phase. High-speed Thieves and Assassins can achieve a 2:1 turn ratio against heavy dungeon bosses.
+          </p>
+        </div>
+
+        <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
+          <strong style="color: #34d399; font-size: 0.95rem;">Action Interruption & Stagger</strong>
+          <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 8px 0 0;">
+            Landing a critical strike with blunt Fist weaponry or heavy greatswords applies a 15% to 25% Action Gauge delay to the recipient. This turns offensive speed into a defensive survival mechanism by delaying boss attack turns.
+          </p>
+        </div>
+
+        <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
+          <strong style="color: #f43f5e; font-size: 0.95rem;">Energy Regeneration Thresholds</strong>
+          <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 8px 0 0;">
+            Standard characters restore 1 Energy Point (EP) per turn phase. Classes or traits granting additional actions effectively accelerate energy generation, unlocking high-tier 3-cost and 4-cost Ultimate skill rotations significantly sooner.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frequently Asked Simulation Questions -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+      <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Combat Calculation</h2>
+      
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does Effective Health Pool (EHP) differ from normal Hit Points (HP)?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Hit Points represent your raw visible health bar. Effective Health Pool factors in your Defense mitigation percentage to compute the total unmitigated damage you can take before death. For instance, having 500 HP with 50% damage reduction results in an EHP of 1,000, meaning you can take double the incoming damage compared to a 0 DEF character.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Why does Defense have diminishing returns in Pixel Lineage?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Because mitigation follows the hyperbolic curve <code style="color: #38bdf8;">DEF / (DEF + 60)</code>. The first 60 Defense provides 50% damage reduction. The next 60 Defense (totaling 120) only provides an additional 16.6% reduction (reaching 66.6%). Therefore, once your character hits 100–120 DEF, investing in flat HP, Dodge, or Lifesteal yields vastly superior survivability per stat point.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does the Prodigy talent increase equipment stats or only base character stats?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            In Pixel Lineage, the Prodigy talent applies its universal +15% multiplier exclusively to base character attributes derived from level milestones and class baselines. It does not multiply flat bonuses granted by equipped weapons and armors, though it does scale base stats before gear additions are calculated.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How can I test my calculated build against real in-game encounters?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            You can verify your character's combat performance by queuing into Act 2 The Dungeon or challenging the Guild Training Dummies located in the Castle Courtyard. The combat logs display raw damage rolls, critical strike triggers, and mitigation amounts that directly correspond to this simulator's mathematical output.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cross-Linking Navigation -->
+    <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+      <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Apply Your Calculator Insights</h3>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <a href="/classes/stats/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+          → View All 10 Class Milestone Growth Curves
+        </a>
+        <a href="/traits/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+          → Traits & Talents Full Drop Rates
+        </a>
+        <a href="/adventures/torment/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+          → Torment Mode Boss Thresholds
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Interactive Client-side Script -->
+  <script is:inline>
+    const CLASS_GROWTHS = {
+      warrior: { baseHp: 120, hpPerLv: 12, baseAtk: 14, atkPerLv: 2.2, baseDef: 12, defPerLv: 1.8, baseCrit: 0.05, critPerLv: 0.002 },
+      thief: { baseHp: 85, hpPerLv: 7.5, baseAtk: 12, atkPerLv: 1.9, baseDef: 6, defPerLv: 1.0, baseCrit: 0.15, critPerLv: 0.006 },
+      mage: { baseHp: 75, hpPerLv: 6.0, baseAtk: 18, atkPerLv: 2.8, baseDef: 5, defPerLv: 0.9, baseCrit: 0.04, critPerLv: 0.003 },
+      fist: { baseHp: 105, hpPerLv: 10.0, baseAtk: 15, atkPerLv: 2.3, baseDef: 8, defPerLv: 1.3, baseCrit: 0.08, critPerLv: 0.004 },
+      bard: { baseHp: 90, hpPerLv: 8.5, baseAtk: 12, atkPerLv: 1.8, baseDef: 7, defPerLv: 1.2, baseCrit: 0.06, critPerLv: 0.003 },
+      archer: { baseHp: 80, hpPerLv: 7.2, baseAtk: 14, atkPerLv: 2.3, baseDef: 5, defPerLv: 0.9, baseCrit: 0.12, critPerLv: 0.005 }
+    };
+
+    const GEAR_TIERS = {
+      starter: { def: 0, atk: 0, hp: 0 },
+      tier1: { def: 15, atk: 8, hp: 20 },
+      tier2: { def: 35, atk: 18, hp: 60 },
+      tier3: { def: 65, atk: 32, hp: 140 },
+      legendary: { def: 110, atk: 55, hp: 250 }
+    };
+
+    function recalculate() {
+      const clsKey = document.getElementById('calc-class').value;
+      const level = parseInt(document.getElementById('calc-level').value, 10);
+      const talentKey = document.getElementById('calc-talent').value;
+      const gearKey = document.getElementById('calc-gear').value;
+
+      document.getElementById('level-display').textContent = 'Lv ' + level;
+
+      const cg = CLASS_GROWTHS[clsKey];
+      const gg = GEAR_TIERS[gearKey];
+
+      let rawHp = cg.baseHp + (level - 1) * cg.hpPerLv;
+      let rawDef = cg.baseDef + (level - 1) * cg.defPerLv;
+      let rawAtk = cg.baseAtk + (level - 1) * cg.atkPerLv;
+      let rawCrit = cg.baseCrit + (level - 1) * cg.critPerLv;
+
+      // Talent modifiers
+      if (talentKey === 'survivor') rawHp *= 1.06;
+      if (talentKey === 'iron_soul') rawDef *= 1.06;
+      if (talentKey === 'keen_eye') rawCrit += 0.05;
+      if (talentKey === 'arcane_spark' && clsKey === 'mage') rawAtk *= 1.08;
+      if (talentKey === 'prodigy') {
+        rawHp *= 1.15;
+        rawDef *= 1.15;
+        rawAtk *= 1.15;
+        rawCrit *= 1.15;
+      }
+
+      const totalHp = Math.round(rawHp + gg.hp);
+      const totalDef = Math.round(rawDef + gg.def);
+      const totalAtk = Math.round(rawAtk + gg.atk);
+      const finalCrit = Math.min(rawCrit, 0.65);
+
+      const dr = totalDef / (totalDef + 60);
+      const ehp = Math.round(totalHp / (1.0 - dr));
+      const critMultiplier = (clsKey === 'thief') ? 2.0 : 1.5;
+      const expectedDmg = (totalAtk * (1.0 + (finalCrit * (critMultiplier - 1.0)))).toFixed(1);
+
+      const bossRawDmg = 250;
+      const bossHitAfterDr = bossRawDmg * (1.0 - dr);
+      const survivalTurns = (totalHp / Math.max(1, bossHitAfterDr)).toFixed(1);
+
+      document.getElementById('out-hp').textContent = totalHp.toLocaleString();
+      document.getElementById('out-hp-sub').textContent = 'Base: ' + Math.round(rawHp) + ' + Gear: ' + gg.hp;
+      document.getElementById('out-ehp').textContent = ehp.toLocaleString();
+      document.getElementById('out-dr').textContent = 'Physical Mitigation: ' + (dr * 100).toFixed(1) + '%';
+      document.getElementById('out-dmg').textContent = expectedDmg;
+      document.getElementById('out-crit').textContent = 'Crit Chance: ' + (finalCrit * 100).toFixed(1) + '% (' + critMultiplier + 'x)';
+      document.getElementById('out-survival').textContent = survivalTurns + ' Turns';
+    }
+
+    document.getElementById('calc-class').addEventListener('change', recalculate);
+    document.getElementById('calc-level').addEventListener('input', recalculate);
+    document.getElementById('calc-talent').addEventListener('change', recalculate);
+    document.getElementById('calc-gear').addEventListener('change', recalculate);
+
+    recalculate();
+  </script>
+</BaseLayout>

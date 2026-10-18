@@ -1,0 +1,162 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const rankProgression = [
+  {
+    rank: "Novice Lineage (Rank 1-5)",
+    requirements: "Complete Act 1 Prologue & Reach Level 10",
+    accountBuffs: "+5 Base HP to all future characters; 5% Gold retention upon permadeath.",
+    unlockedPerks: "Access to Starter Inn & Goblin Merchant promo code redemption.",
+  },
+  {
+    rank: "Adept Lineage (Rank 6-12)",
+    requirements: "Defeat Act 2 Dungeon Warden & Reach Level 20",
+    accountBuffs: "+10 Base HP, +2 Base ATK/MAG; 15% Gold retention upon permadeath.",
+    unlockedPerks: "Unlocks 2nd active talent slot; access to Guild Altar and Oaths.",
+  },
+  {
+    rank: "Master Lineage (Rank 13-20)",
+    requirements: "Clear Torment I & Complete 5 Guild Raids",
+    accountBuffs: "+25 Base HP, +5 Base ATK/DEF/MAG; 30% Gold retention; 1 Free Extra Life.",
+    unlockedPerks: "Unlocks Auction House trading; access to Ultra Sigil pinnacle trials.",
+  },
+  {
+    rank: "Sovereign Lineage (Rank 21+ Apex)",
+    requirements: "Clear Torment III Abyss & Forge an Ultra Class",
+    accountBuffs: "+50 Base HP, +10 All Core Attributes; 50% Gold retention; permanent cosmetic aura.",
+    unlockedPerks: "Pinnacle Grandmaster Arena bracket; Sovereign Throne room access.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage Ranks: Account Milestones & Buffs Guide",
+    description: "Complete Pixel Lineage ranks guide: Bronze to Sovereign ranks, account-wide stat bonuses, permadeath inheritance buffs, and rapid ranking methods.",
+    url: `${siteConfig.siteUrl}/adventures/lineage-ranks/`,
+    datePublished: "2026-10-18T12:00:00Z",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Adventures", item: `${siteConfig.siteUrl}/adventures/` },
+      { "@type": "ListItem", position: 3, name: "Lineage Ranks", item: `${siteConfig.siteUrl}/adventures/lineage-ranks/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Ranks: Milestone Perks"
+  description="Complete Pixel Lineage ranks guide: Bronze to Sovereign ranks, account-wide stat bonuses, permadeath inheritance buffs, and rapid ranking methods."
+  canonical="/adventures/lineage-ranks/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/adventures/" style="color: var(--accent); text-decoration: none;">Adventures</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Lineage Ranks</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(201, 162, 39, 0.15); border: 1px solid #c9a227; color: #c9a227; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Account-Wide Meta Progression System
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Ranks: Account Milestones & Buffs Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Authoritative handbook on Lineage Ranks and account-wide prestige progression in Pixel Lineage on Roblox. We analyze permanent inheritance stat bonuses, gold retention mechanics across permadeath restarts, and fast-ranking strategies.
+      </p>
+    </header>
+
+    <!-- Unique Hero Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/features/feature_ranks.webp"
+        alt="Pixel Lineage Lineage Ranks Account Inheritance Buffs and Milestone Progression"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Summary Callout -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">Permanent Progress Across Character Permadeaths</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+          While individual character lives are vulnerable to permadeath in Pixel Lineage, your <strong>Lineage Rank</strong> is permanently engraved onto your Roblox account. Every dungeon cleared, boss defeated, and raid conquered earns Knowledge points that elevate your Lineage Rank, granting permanent base stat buffs to all future descendants.
+        </p>
+      </section>
+
+      <!-- Ranks Master Breakdown -->
+      <section style="margin-bottom: 40px;">
+        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Lineage Rank Progression Tiers & Inheritance Buffs</h2>
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          {rankProgression.map((r) => (
+            <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+                <h3 style="font-size: 1.3rem; color: #fff; margin: 0;">{r.rank}</h3>
+                <span style="font-size: 0.8rem; background: #0d0a14; color: #34d399; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
+                  {r.requirements}
+                </span>
+              </div>
+
+              <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px; margin-bottom: 10px; font-size: 0.9rem;">
+                <strong style="color: #c9a227; display: block; margin-bottom: 4px;">Permanent Account-Wide Buff:</strong>
+                <span style="color: var(--ink);">{r.accountBuffs}</span>
+              </div>
+
+              <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+                <strong style="color: #38bdf8;">Unlocked Perks & Features:</strong> {r.unlockedPerks}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- How to Farm Knowledge Points -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Fast Knowledge Farming: How to Level Your Lineage</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          To rapidly push your lineage rank towards Sovereign status, prioritize these high-efficiency Knowledge routes:
+        </p>
+        <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+          <li style="margin-bottom: 8px;"><strong style="color: #fff;">Torment I Speed Clears:</strong> Defeating the Act 1 and Act 2 bosses on Torment difficulty awards 450 Knowledge per full clear.</li>
+          <li style="margin-bottom: 8px;"><strong style="color: #fff;">Human Racial Perk:</strong> Playing a Human lineage grants an innate +10% Knowledge gain modifier, accelerating early ranking.</li>
+          <li><strong style="color: #fff;">Guild Raid Milestones:</strong> Weekly guild boss participation guarantees a lump sum of 1,000 Knowledge upon server reset.</li>
+        </ul>
+      </section>
+
+      <!-- Navigation -->
+      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Related Progression Guides</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/adventures/difficulty/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            ← Difficulty Modes & Risk-Reward Guide
+          </a>
+          <a href="/classes/stats/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Class Stat Growths & Level Curves
+          </a>
+          <a href="/guilds/guild-raids/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Guild Raids 4-Player Guide
+          </a>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

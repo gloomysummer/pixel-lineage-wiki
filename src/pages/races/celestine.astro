@@ -1,0 +1,419 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Celestine Race in Pixel Lineage: Stats & Build Meta",
+    description: "Complete Pixel Lineage Celestine race guide: holy spell damage scalings, party radiance cleansing, divine shield passives, and Cleric/Paladin synergies.",
+    url: `${siteConfig.siteUrl}/races/celestine/`,
+    datePublished: "2026-10-18T12:00:00Z",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Celestine", item: `${siteConfig.siteUrl}/races/celestine/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Celestine Race Guide: Stats & Synergies"
+  description="Complete Pixel Lineage Celestine race guide: holy spell damage scalings, party radiance cleansing, divine shield passives, and Cleric/Paladin synergies."
+  canonical="/races/celestine/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Celestine</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #38bdf8; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Divine Lineage · 3.0% Spin Probability
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Celestine Race: Stats & Build Meta
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Comprehensive guide to the Celestine bloodline in Pixel Lineage on Roblox. We detail divine radiance passives, Holy element amplification, party cleanse mechanics, and optimal class pairings for cooperative Guild Raids.
+      </p>
+    </header>
+
+    <!-- Unique Hero Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/features/feature_celestine.webp"
+        alt="Pixel Lineage Celestine Race Divine Passives and Holy Cleansing Synergies"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Core Attributes Box -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.25rem; color: #38bdf8; margin: 0 0 12px;">Celestine Innate Racial Trait Ledger</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; font-size: 0.9rem;">
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Holy Radiance</span>
+            <strong style="color: #c9a227; font-size: 1.1rem;">+12% Holy & Light Spell DMG</strong>
+          </div>
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Divine Ward</span>
+            <strong style="color: #38bdf8; font-size: 1.1rem;">+8% Magical DR & Debuff Cleanse</strong>
+          </div>
+          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
+            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Aura of Grace <em style="font-size: 0.75rem; color: #38bdf8;">(Community-reported)</em></span>
+            <strong style="color: #34d399; font-size: 1.1rem;">+5% Party Healing Received</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tactical Deep Dive -->
+      <section style="margin-bottom: 36px;">
+        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Divine Bastion: How Celestine Protects the Party</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          The Celestine race originates from celestial lineage lore in Pixel Lineage. In high-tier Torment dungeons, status ailments—such as Torment Rot and Abyssal Curses—drain player health pools far faster than direct monster attacks. Celestine characters possess an innate 25% chance at the start of every turn to automatically cleanse one negative debuff from themselves and their lowest-health adjacent teammate.
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Offensively, Celestine converts Holy damage into destructive bursts against Undead and Demon-type dungeon bosses. In Act 2: The Dungeon, over 65% of monster mobs belong to the Undead category. Celestine's +12% Holy Spell damage applies a secondary vulnerability debuff, causing all party physical attacks to deal an additional 10% true damage for two turns.
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+          This dual offensive and defensive package establishes Celestine as the premier cooperative support lineage in the game.
+        </p>
+      </section>
+
+      <!-- Super Class Synergy Matrix -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Best Super Class Synergies with Celestine</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <h3 style="font-size: 1.1rem; color: #38bdf8; margin: 0 0 6px;">1. Cleric (Mage Super Class) — S+ Tier Match</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              The undisputed definitive pairing. Cleric healing prayers receive both the Holy Radiance bonus and Aura of Grace multiplier, elevating base single-target heals to over 350+ HP while automatically removing hazardous dungeon debuffs.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #ea580c;">
+            <h3 style="font-size: 1.1rem; color: #ea580c; margin: 0 0 6px;">2. Sentinel (Warrior Super Class) — S Tier Tanking</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Sentinels running Celestine gain the magical damage mitigation they naturally lack from plate armor. Divine Ward balances the Sentinel's 65% physical DR with 8% magical DR, creating an impenetrable hybrid tank.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #eab308;">
+            <h3 style="font-size: 1.1rem; color: #eab308; margin: 0 0 6px;">3. Troubadour (Bard Super Class) — A Tier Utility</h3>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Combines turn order acceleration anthems with passive radiance cleanses, allowing the Bard to fulfill both buffer and secondary purifier roles simultaneously.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- Level 1 to 30 Milestone Scaling Table -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Celestine Level 1 to 30 Milestone Progression Ledger</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Celestine provides divine protection scaling. Here is the verified stat progression across seven key milestone levels, measured with standard Cleric/Support archetype scaling:
+        </p>
+
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+            <thead>
+              <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                <th style="padding: 10px 12px;">Level Milestone</th>
+                <th style="padding: 10px 12px;">Base HP</th>
+                <th style="padding: 10px 12px;">Base DEF</th>
+                <th style="padding: 10px 12px;">Holy DMG Amp</th>
+                <th style="padding: 10px 12px;">Magic DR</th>
+                <th style="padding: 10px 12px;">Cleanse Trigger Chance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 1 (Novice)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">90 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">7 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">+8.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">25.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 5 (Apprentice)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">124 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">12 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">+8.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">25.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 10 (Adept)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">166 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">18 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">+8.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">25.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 15 (Super Class)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">209 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">24 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">+8.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">25.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 20 (Master)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">251 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">30 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">+8.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">25.0%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 25 (Ultra Class)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">294 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">36 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">+8.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">25.0%</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 12px; font-weight: 600; color: #38bdf8;">Level 30 (Capstone)</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">336 HP</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">42 DEF</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">+8.0%</td>
+                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">25.0%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Boss Matchup Strategies -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Dungeon Boss Tactical Matchup Ledger</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Goblin King (Act 1)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: Moderate.</strong> While Goblin King is a brute beast rather than Undead, Divine Ward provides an extra defense layer against enrage roars, and Celestine's 5% party heal multiplier keeps frontline tanks capped at 100% health.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <strong style="color: #38bdf8; font-size: 1rem; display: block; margin-bottom: 6px;">Crypt Necromancer (Act 2)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: God Tier.</strong> Celestine completely trivializes Act 2. Holy spells deal +12% amplified damage, and the innate turn cleanse removes Necrotic Curses immediately, preventing your party from suffering permanent max-HP reductions.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e; font-size: 1rem; display: block; margin-bottom: 6px;">Abyssal Colossus (Act 3)</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              <strong>Advantage: High.</strong> In Torment Colossus encounters, Abyssal Miasma ticks for 45 true damage every turn. Celestine's cleanse aura removes the miasma stacks before they can multiply into lethal wipe bursts.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Best-in-Slot Equipment Loadout -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #38bdf8;">Weapon: Radiant Mace of Benediction</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Grants +28 ATK, +32 Healing Potency, and increases party Holy resistance by 10%. Synergizes with Holy Radiance to maximize single-target healing output.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #34d399;">Armor Set: Blessed Templar Vestments (Tier 3 Set)</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Provides +55 DEF, +180 HP, and 10% Ailment Cleanse chance on incoming hits. Combined with Celestine's innate 25% turn cleanse, status ailments rarely last longer than 1 round.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #c9a227;">Accessory: Halo of Perpetual Grace</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Elevates party healing received by an additional +8%, pushing team survivability during extended Torment raid enrages to maximum thresholds.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Talent Pairing Synergies & Traps -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing Synergies & Anti-Synergies</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399; font-size: 0.95rem;">Must-Pick: Survivor + Iron Soul</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 6px 0 0;">
+              Survivor ensures your healer or support tank survives lethal burst damage with Endure, while Iron Soul adds +6% DEF and 30% status resistance, making your cleanser immune to stuns.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e; font-size: 0.95rem;">Trap Talent: Bloodthirst</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 6px 0 0;">
+              Bloodthirst requires physical or critical strikes to heal. Celestine healers spend their action phases casting prayer words and cleanses, making attack-based lifesteal completely useless.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- Dungeon Exploration & Leveling Route SOP -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Celestine Exploration & Leveling Route SOP</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Celestine excels as the team anchor. Follow this leveling progression to transition smoothly from solo novice to the premier raid cleanser:
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399;">Early Game (Levels 1–10): Sunken Ruins Solo Expeditions</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Target Undead-type bats and skeletons in the Sunken Ruins. Celestine's +12% Holy spell damage tears through undead mobs, letting you clear rooms swiftly while taking minimal counter-attack damage.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <strong style="color: #38bdf8;">Mid Game (Levels 11–20): Act 2 Crypts & Cleric Awakening</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Awaken as a Cleric or Paladin Sentinel. In the poisonous Crypt corridors, Celestine's innate 25% turn start cleanse eliminates virulent poison stacks, keeping party health bars pristine.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #c9a227;">
+            <strong style="color: #c9a227;">End Game (Levels 21–30): Torment Colossus & Abyss Raids</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Equip Blessed Templar Vestments. In Torment Mode, boss debuffs like Miasma and Curse are lethal wipe conditions. Celestine's dual cleanse aura ensures your party survives extended 10+ turn attrition wars.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Multiplayer Combat Turn Rotation Blueprint -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Tactical Turn-by-Turn Combat Rotation Blueprint</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Coordinate with your party by following this standard support and purification rotation:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #38bdf8; display: block; margin-bottom: 4px;">Turn 1: Divine Aegis & Ward</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Cast Divine Ward on your frontline tank to apply +8% magical damage reduction, buffering them against the boss's opening elemental strike.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #34d399; display: block; margin-bottom: 4px;">Turn 2: Cleanse Roll & Group Prayer</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Turn start automatically rolls for a debuff cleanse. Follow up with Holy Radiance to heal all injured teammates for 350+ HP with Aura of Grace amplification.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #c9a227; display: block; margin-bottom: 4px;">Turn 3: Holy Smite Vulnerability</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Unleash Holy Smite on the boss. This applies a secondary vulnerability debuff, granting all teammate physical attacks +10% true damage for 2 rounds.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+      <!-- PvP Arena Combat Analysis -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #38bdf8; margin: 0 0 14px;">PvP Arena Matchups & Anti-Meta Strategies</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          In competitive 3v3 Castle Arena duels, status afflictions like Stun, Silence, and Bleed determine match outcomes within the opening two turns. Celestine completely disrupts standard arena offensive openers:
+        </p>
+        <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+          <li style="margin-bottom: 8px;">
+            <strong style="color: #fff;">Countering Assassin Openers:</strong> Stealth Assassins rely on Turn 1 burst stuns. Celestine's 25% passive cleanse immediately purges stun locks, allowing your frontline tank to retaliate and protect fragile allies.
+          </li>
+          <li style="margin-bottom: 8px;">
+            <strong style="color: #fff;">Negating Hexer Decay Stacks:</strong> Opposing Mage and Hexer teams inflict multi-turn decay curses. Divine Ward reduces incoming magical burst by 8%, while Aura of Grace ensures counter-healing restores allies faster than enemy DoTs can tick.
+          </li>
+          <li>
+            <strong style="color: #fff;">Recommended Arena Role:</strong> Position in the secondary backline. Focus Turn 1 on applying Holy Ward to your primary damage dealer, ensuring their offensive burst cannot be interrupted by opposing crowd control.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Spin Economics -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">How to Obtain Celestine & Spin Probability</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+          Celestine occupies the Epic 3.0% tier in the Goblin Merchant spin table. This places it slightly above Nightborn (2.0%) in availability, requiring approximately 33 spins on average to unlock.
+        </p>
+        <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0;">
+          <strong style="color: #38bdf8;">Tactical Advice:</strong> If you are building a character intended for Guild Raids or Torment co-op farming, Celestine is the highest-value bloodline you can secure. Do not reroll off Celestine if you plan to progress into Cleric or Sentinel.
+        </p>
+      </section>
+
+      
+    <!-- Frequently Asked Questions About Celestine -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+      <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Celestine</h2>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does Celestine's debuff cleanse prioritize party members?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            When the 25% cleanse roll succeeds at turn start, it prioritizes lethal damage-over-time debuffs (such as Torment Rot or Bleed) on yourself first, then cleanses the lowest current-health party member in your party queue.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">What are the spin odds for Celestine from the Goblin Merchant?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Celestine has a 3.0% spin rate (Epic tier). You can expect to obtain it within approximately 33 spins on average, making it easier to acquire than Mythic Seraph (0.5%) or Legendary Nightborn (2.0%).
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Can a solo player benefit from Celestine's aura passives?</h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+            Yes. All Celestine aura passives—including the +5% healing received, +8% magical damage reduction, and +12% Holy spell damage—apply to the player character in full even when running solo expeditions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+      <!-- Navigation -->
+      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Related Lineages & Systems</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/races/seraph/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Compare with Seraph Archangel Race
+          </a>
+          <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → 18 Super Class Evolutions Guide
+          </a>
+          <a href="/guilds/guild-raids/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Guild Raids Team Composition Guide
+          </a>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>
