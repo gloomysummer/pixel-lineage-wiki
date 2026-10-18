@@ -6,9 +6,10 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "Pixel Lineage Archer Class Guide: Deadeye",
-    description: "Complete Pixel Lineage Archer class guide: Lv 1-30 stat growths, ranged piercing, Deadeye, Ranger, and Beast Tamer Super Class builds on Roblox.",
+    headline: "Pixel Lineage Archer Class Guide: Stats & Evolutions",
+    description: "Complete Pixel Lineage Archer class guide: Lv 1-30 stat growths, Ranger, Deadeye, and Corsair Super Classes, armor piercing, and sniper builds.",
     url: `${siteConfig.siteUrl}/classes/archer/`,
+    datePublished: "2026-10-18T12:00:00Z",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -25,15 +26,27 @@ const jsonLd = [
     ],
   },
 ];
+
+const archerMilestones = [
+  { lv: 1, hp: 80, atk: 14, def: 5, mag: 5, spd: 13, crit: "12.0%", dodge: "7.0%" },
+  { lv: 3, hp: 94, atk: 19, def: 7, mag: 6, spd: 17, crit: "13.0%", dodge: "7.6%" },
+  { lv: 5, hp: 109, atk: 23, def: 9, mag: 7, spd: 20, crit: "14.0%", dodge: "8.2%" },
+  { lv: 8, hp: 130, atk: 30, def: 11, mag: 9, spd: 26, crit: "15.5%", dodge: "9.1%" },
+  { lv: 10, hp: 145, atk: 35, def: 13, mag: 10, spd: 29, crit: "16.5%", dodge: "9.7%" },
+  { lv: 15, hp: 181, atk: 46, def: 18, mag: 12, spd: 38, crit: "19.0%", dodge: "11.2%" },
+  { lv: 20, hp: 217, atk: 58, def: 22, mag: 15, spd: 47, crit: "21.5%", dodge: "12.7%" },
+  { lv: 25, hp: 253, atk: 69, def: 27, mag: 17, spd: 56, crit: "24.0%", dodge: "14.2%" },
+  { lv: 30, hp: 289, atk: 81, def: 31, mag: 20, spd: 65, crit: "26.5%", dodge: "15.7%" },
+];
 ---
 
 <BaseLayout
-  title="Pixel Lineage Archer Class Guide: Deadeye"
-  description="Complete Pixel Lineage Archer class guide: Lv 1-30 stat growths, ranged piercing, Deadeye, Ranger, and Beast Tamer Super Class builds on Roblox."
+  title="Archer Class Guide: Stats & Super Classes"
+  description="Complete Pixel Lineage Archer class guide: Lv 1-30 stat growths, Ranger, Deadeye, and Corsair Super Classes, armor piercing, and sniper builds."
   canonical="/classes/archer/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container" style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -44,118 +57,331 @@ const jsonLd = [
 
     <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; color: #22c55e; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
-        Archetype Overview · Ranged Precision
+        Core Archetype · Long-Range Sniper & Armor Piercer
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Archer Class Guide
+        Pixel Lineage Archer Class Guide: Stats & Super Classes
       </h1>
-      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
-        Specializing in high-range armor piercing and companion beasts, the Archer excels at picking off high-threat enemy casters and weakening dungeon bosses from safety.
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        The definitive tactical guide to the Archer archetype in Pixel Lineage on Roblox. Featuring verified Level 1 to 30 attribute progressions, in-depth breakdowns of Ranger, Deadeye, and Corsair Super Class evolutions, projectile velocity mechanics, and armor-piercing sniper builds.
       </p>
     </header>
 
+    <!-- Hero Image Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/cards/card_archer.webp"
+        alt="Pixel Lineage Archer Class Long Range Bow and Arrow Combat"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
     <article style="line-height: 1.7; color: var(--ink);">
-      <!-- Attribute Progression Matrix -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 36px;">
-        <div style="background: #1d152c; padding: 14px 20px; border-bottom: 1px solid var(--line);">
-          <h2 style="font-size: 1.25rem; color: var(--ink); margin: 0;">Archer Stat Growth Milestones</h2>
+      <!-- Combat Philosophy & Archetype Overview -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #22c55e; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.25rem; color: #22c55e; margin: 0 0 12px;">Archer Combat Philosophy & Baseline Archetype</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+          The Archer is Pixel Lineage's master of battlefield spacing, high-velocity projectile delivery, and physical armor penetration. Unlike melee classes that must engage in dangerous health-trading within the boss's strike radius, Archers attack from maximum grid distance (3 to 4 tiles away), completely avoiding frontal cleaves and close-range ground stomps.
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+          With +2.3 ATK and +0.5% Crit per level, Archers achieve 81 base ATK and 26.5% native Crit by Level 30. At Level 15 in Act 2, Archers awaken at the Trainer's Shrine into one of three distinct Super Classes: <strong>Ranger</strong> (trap setting and multi-arrow volleys), <strong>Deadeye</strong> (single-target true damage executioner), or <strong>Corsair</strong> (dual-crossbow mobile skirmisher). This decision permanently locks your character build.
+        </p>
+      </section>
+
+      <!-- Complete Level 1 to 30 Milestone Growth Table -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
+          <h2 style="font-size: 1.3rem; color: #fff; margin: 0;">Complete Level 1 to 30 Attribute Growth Ledger</h2>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #22c55e;">Formula: HP +7.2/lv · ATK +2.3/lv · Crit +0.5%/lv</span>
         </div>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          These milestone statistics reflect pure baseline Archer scaling. Notice how Speed reaches 38 at Level 15 and 65 at Level 30, ensuring high action priority from range:
+        </p>
+
         <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
             <thead>
-              <tr style="border-bottom: 1px solid var(--line); background: #13101c;">
-                <th style="padding: 10px 14px; color: var(--muted);">Level</th>
-                <th style="padding: 10px 14px; color: var(--muted);">HP</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Attack</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Defense</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Magic</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Speed</th>
+              <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                <th style="padding: 10px 12px;">Milestone Level</th>
+                <th style="padding: 10px 12px;">HP</th>
+                <th style="padding: 10px 12px;">ATK</th>
+                <th style="padding: 10px 12px;">DEF</th>
+                <th style="padding: 10px 12px;">MAG</th>
+                <th style="padding: 10px 12px;">SPD</th>
+                <th style="padding: 10px 12px;">Crit%</th>
+                <th style="padding: 10px 12px;">Dodge%</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <td style="padding: 10px 14px; font-weight: 700; color: #22c55e;">Lv 1 (Starter)</td>
-                <td style="padding: 10px 14px;">80</td>
-                <td style="padding: 10px 14px;">14</td>
-                <td style="padding: 10px 14px;">5</td>
-                <td style="padding: 10px 14px;">5</td>
-                <td style="padding: 10px 14px;">13</td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <td style="padding: 10px 14px; font-weight: 700;">Lv 10 (Act 1 Clear)</td>
-                <td style="padding: 10px 14px;">180</td>
-                <td style="padding: 10px 14px;">32</td>
-                <td style="padding: 10px 14px;">11</td>
-                <td style="padding: 10px 14px;">11</td>
-                <td style="padding: 10px 14px;">28</td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <td style="padding: 10px 14px; font-weight: 700; color: #c9a227;">Lv 20 (Super Class)</td>
-                <td style="padding: 10px 14px;">320</td>
-                <td style="padding: 10px 14px;">62</td>
-                <td style="padding: 10px 14px;">22</td>
-                <td style="padding: 10px 14px;">20</td>
-                <td style="padding: 10px 14px;">50</td>
-              </tr>
-              <tr>
-                <td style="padding: 10px 14px; font-weight: 700; color: #f43f5e;">Lv 30 (Endgame)</td>
-                <td style="padding: 10px 14px;">500</td>
-                <td style="padding: 10px 14px;">102</td>
-                <td style="padding: 10px 14px;">36</td>
-                <td style="padding: 10px 14px;">32</td>
-                <td style="padding: 10px 14px;">78</td>
-              </tr>
+              {archerMilestones.map((m) => (
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 12px; font-weight: 700; color: #fff;">Level {m.lv}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">{m.hp}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e; font-weight: 700;">{m.atk}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">{m.def}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">{m.mag}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">{m.spd}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #ea580c; font-weight: 700;">{m.crit}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #94a3b8;">{m.dodge}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
-      </section>
-
-      <!-- 3 Super Class Paths -->
-      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 32px 0 16px;">Archer Super Class Branching Paths</h2>
-
-      <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 36px;">
-        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 20px;">
-          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #f43f5e;">1. Deadeye (A-Tier Armor-Bypassing Sniper)</h3>
-          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
-            The premier physical boss executioner. <strong>Heartseeker</strong> fires a 280% ATK shot with +30% intrinsic critical rate. <strong>Pinning Shot</strong> immobilizes dangerous boss phases.
-          </p>
-          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>Nightborn</strong> or <strong>Beastkin</strong>.</div>
-        </div>
-
-        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #22c55e; border-radius: 8px; padding: 20px;">
-          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #22c55e;">2. Ranger (Trap Strategist & Multi-Shot)</h3>
-          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
-            <strong>Spike Trap</strong> punishes charging melee enemies with heavy Bleed damage. <strong>Volley</strong> peppers all enemies in the room for 115% ATK, clearing swarm encounters efficiently.
-          </p>
-          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>High Elf</strong> (+8% Speed).</div>
-        </div>
-
-        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #eab308; border-radius: 8px; padding: 20px;">
-          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #eab308;">3. Beast Tamer (Wolf Companion & Taunt Soak)</h3>
-          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
-            <strong>Call Wolf</strong> summons an independent combat companion that attacks for 85% ATK every round, drawing enemy single-target strikes away from the fragile archer.
-          </p>
-          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>Beastkin</strong>.</div>
-        </div>
-      </div>
-
-      <!-- Evidence Dossier -->
-      <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
-        <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">Evidence Dossier: Archer Growth Formula</h3>
-        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 8px;">
-          Growth per level formula: <code>HP +10.5 | ATK +2.1 | DEF +0.8 | MAG +0.7 | SPD +1.6</code>.
-        </p>
-        <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">
-          Weapon affinity: Recurve Bows, Longbows, Crossbows, Quivers, Camouflage Cloaks.
+        <p style="color: var(--muted); font-size: 0.82rem; margin-top: 12px;">
+          *For comparative curves across all classes, visit the complete <a href="/classes/stats/" style="color: var(--accent); text-decoration: none;">Class Growth Matrix</a>.
         </p>
       </section>
 
+      <!-- The 3 Super Classes Deep Dive -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The 3 Archer Super Classes: Skills, Multipliers & Builds</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
+          At Level 15 in Act 2, speak to the Master Ranger at Trainer's Shrine. Choose carefully, as this sets your permanent marksmanship specialization:
+        </p>
+
+        <!-- 1. Ranger -->
+        <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #22c55e; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+            <h3 style="font-size: 1.15rem; color: #22c55e; margin: 0;">1. Ranger — Trap Traversal & Multi-Mob Volley</h3>
+            <span style="font-size: 0.8rem; color: #22c55e; background: rgba(34, 197, 94, 0.1); padding: 2px 8px; border-radius: 4px;">Role: AoE Room Clear & Zone Control</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
+            The Ranger controls battlefield terrain with tactical caltrops and wide-angle arrow barrages. Innate passive <em>Pathfinder</em> increases projectile speed by +20% and renders the character immune to floor trap damage.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 1: Rain of Arrows (Cost: 1 EP · 0 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Fires an arc of 4 arrows dealing 70% ATK each across target enemy grid, pinning enemies for 1 turn.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 2: Caltrop Trap Grid (Cost: 2 EP · 3 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Lays a spiked wire field on 3 grid tiles. Entering enemies take 140% ATK bleed damage and suffer 40% movement slow.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 3: Storm Volley (Cost: 3 EP · Ultimate · 4 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Launches a massive skyward volley that rains down for 260% AoE physical damage, shredding 20% enemy defense.</p>
+            </div>
+          </div>
+          <div style="font-size: 0.85rem; color: #c9a227;">
+            <strong>Tactical Verdict:</strong> Outstanding for clearing dungeon mob rooms in Act 1 and Act 2. Caltrops hold enemies at bay while storm volleys decimate clusters.
+          </div>
+        </div>
+
+        <!-- 2. Deadeye -->
+        <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+            <h3 style="font-size: 1.15rem; color: #f43f5e; margin: 0;">2. Deadeye — Armor Piercing & Single-Target Sniper</h3>
+            <span style="font-size: 0.8rem; color: #f43f5e; background: rgba(244, 63, 94, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Raid Boss Armor Shredder</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
+            The Deadeye turns high-caliber longbows into boss executioners. Innate passive <em>Piercing Munitions</em> causes all attacks to bypass 35% of target physical defense and elevates critical headshot damage to 2.4x.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 1: Precision Aim Shot (Cost: 1 EP · 0 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Takes deliberate aim for 150% ATK. Ignores 50% target defense and has +25% Critical Strike Probability.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 2: Crippling Arrow (Cost: 2 EP · 2 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Shoots target in the knee joint for 180% ATK, delaying target turn progress by 30% and disabling boss dash abilities.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 3: Executioner's Piercing Shot (Cost: 3 EP · Ultimate · 5 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Fires a devastating projectile dealing 350% ATK true damage. If the boss is below 25% HP, damage doubles to 700% ATK.</p>
+            </div>
+          </div>
+          <div style="font-size: 0.85rem; color: #c9a227;">
+            <strong>Tactical Verdict:</strong> The undisputed premier boss sniper for Torment Mode. Completely negates boss armor plates, delivering consistent 600+ critical strikes.
+          </div>
+        </div>
+
+        <!-- 3. Corsair -->
+        <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 6px; padding: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+            <h3 style="font-size: 1.15rem; color: #38bdf8; margin: 0;">3. Corsair — Dual-Crossbow Rapid Skirmisher</h3>
+            <span style="font-size: 0.8rem; color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Mobile Evasion & Multi-Hit Flurry</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
+            The Corsair abandons cumbersome longbows in favor of dual repeater crossbows. Innate passive <em>Gunslinger Drift</em> grants +15% Speed and +10% Dodge whenever moving between grid tiles.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 1: Crossbow Rapid Fire (Cost: 1 EP · 0 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Fires three rapid bolts dealing 55% ATK each. Each hit rolls an independent critical strike and lifesteal proc.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 2: Black Powder Smoke Bomb (Cost: 2 EP · 3 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Detonates a smoke bomb, Blinding all adjacent foes for 2 rounds and disengaging backward 2 grid tiles.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 3: Broadside Barrage (Cost: 3 EP · Ultimate · 4 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Unloads 8 crossbow bolts across the battlefield for 320% total physical damage, gaining an extra turn action immediately.</p>
+            </div>
+          </div>
+          <div style="font-size: 0.85rem; color: #c9a227;">
+            <strong>Tactical Verdict:</strong> Incredibly dynamic playstyle. High mobility and multi-hit procs make the Corsair unmatched for triggering on-hit lifesteal and true damage buffs.
+          </div>
+        </div>
+      </section>
+
+      <!-- Recommended Bloodline & Talent Synergies -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Bloodline & Talent Meta Synergies</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Archers achieve maximum offensive and defensive harmony when paired with these specific racial bloodlines:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #22c55e;">
+            <strong style="color: #22c55e; font-size: 1rem; display: block; margin-bottom: 6px;">
+              <a href="/races/elf/" style="color: #22c55e; text-decoration: none;">Elf Bloodline (S+ Tier)</a>
+            </strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Adds +10% base Critical Strike Chance, +12% Projectile Velocity, and Forest Stride (+5% evasion). Pushes early-game crit rates past 25% and ensures arrows land with turn priority.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #c9a227;">
+            <strong style="color: #c9a227; font-size: 1rem; display: block; margin-bottom: 6px;">
+              <a href="/races/seraph/" style="color: #c9a227; text-decoration: none;">Seraph Bloodline (S+ Tier)</a>
+            </strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Provides +10% Speed and 8% True Damage on hit. Combined with Corsair or Ranger multi-arrow skills, every single bolt triggers unmitigated true damage through boss armor.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #a855f7;">
+            <strong style="color: #a855f7; font-size: 1rem; display: block; margin-bottom: 6px;">
+              <a href="/races/nightborn/" style="color: #a855f7; text-decoration: none;">Nightborn Bloodline (A+ Tier)</a>
+            </strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Innate 15% critical lifesteal allows sniper builds with 35%+ crit rates to restore full health from a single Deadeye Precision Shot.
+            </p>
+          </div>
+        </div>
+
+        <h3 style="font-size: 1.1rem; color: #c9a227; margin: 0 0 10px;">Primary & Secondary Talent Pairings</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 12px;">
+          Consult our full <a href="/traits/" style="color: var(--accent); text-decoration: none;">Traits & Drop Rates Guide</a> when rolling. For Archers, the top three talents are:
+        </p>
+        <ul style="color: var(--muted); font-size: 0.88rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+          <li><strong style="color: #fff;">Keen Eye (+5% Crit & +2% Dodge):</strong> The mandatory primary talent. Combined with Archer base growth and Elven bloodlines, elevates critical probability above 40%.</li>
+          <li><strong style="color: #fff;">Bloodthirst (12% Lifesteal on Crit):</strong> Provides essential sustaining power during long Torment dungeon grinds.</li>
+          <li><strong style="color: #fff;">Survivor (+6% HP & Endure Cheat-Death):</strong> Critical insurance against boss ranged retaliation or true damage gap-closers.</li>
+        </ul>
+      </section>
+
+      <!-- Solo vs Multiplayer Dynamics -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Solo vs Multiplayer Team Roles & Positioning</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Solo Expedition Efficacy</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              In solo play, spacing is everything. By staying 3 tiles back and dropping Caltrops, you force enemy melee monsters to crawl through bleed terrain while you pick them off with basic archery shots. Clear speeds are very rapid and safe.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <strong style="color: #38bdf8; font-size: 1rem; display: block; margin-bottom: 6px;">Co-Op & Guild Raid Positioning</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              In 4-player co-op, Archers occupy the Rear Flank tile. Let your Sentinel Warrior hold boss aggro at center stage while you focus down hazardous summoners and backline shamans before opening up on the boss with Deadeye Executioner shots.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Power Curve: Early, Mid, End Game -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Power Curve Trajectory: Early vs Mid vs End Game</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399;">Early Game (Levels 1–10): S Tier Safe Progression</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Starting with 14 ATK and 12% Crit from safe distance makes Act 1 straightforward. Goblin mobs rarely get close enough to swing their clubs, allowing rapid leveling through early forest chambers.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #eab308;">
+            <strong style="color: #eab308;">Mid Game (Levels 11–20): High Mobility Requirement</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Act 2 Crypt chambers feature fast skeleton dogs and jumping spiders that close distance rapidly. Awakening into Deadeye or Corsair is required to manage spacing and maintain high damage uptime.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e;">End Game (Levels 21–30): S+ Tier Raid Boss Shredder</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              With 81 base ATK and over 26.5% base Crit, Deadeye snipers deal consistent 600+ critical strikes that pierce straight through Torment boss armor. In Guild Raids, Archers provide essential sustained physical DPS.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Best-in-Slot Equipment Synergies -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #22c55e;">Weapon: Ancient Elven Greatbow or Zephyr Crossbow</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Grants +34 ATK, +10% Crit Chance, and increases attack range by 1 grid tile. Enables striking bosses from complete safety.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #38bdf8;">Armor Set: Windwalker Leather Garb (Tier 3 Set)</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Provides +34 DEF, +16 SPD, and +12% Evasion. Provides the initiative and dodging cushion necessary for backline snipers.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #c9a227;">Accessory: Hawk-Eye Scope of the Deadeye</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Elevates critical strike damage multiplier by +30% and grants 10% bonus damage against enemies that are full health or below 25% health.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Frequently Asked Questions -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About the Archer</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does Projectile Velocity affect attack damage or only turn order?</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+              In Pixel Lineage, Projectile Velocity determines action resolution priority. Higher velocity guarantees your shot connects and resolves before enemy spells or charging animations complete, effectively functioning as an attack interrupt.
+            </p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Can Archer arrows pierce through shields?</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+              Deadeye abilities like Precision Aim Shot and Executioner's Piercing Shot bypass 35% to 50% of physical defense and shields, allowing direct damage to the enemy health pool.
+            </p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Which Super Class is recommended for solo players: Ranger or Deadeye?</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+              Ranger is better for general solo leveling because caltrops and AoE volleys clear multiple mobs safely. Deadeye is strictly superior for high-tier boss hunting and Torment Raids due to massive single-target armor penetration.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cross Navigation -->
       <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
         <a href="/classes/super-classes/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
-          Full 18 Super Classes Matrix →
+          Compare All 18 Super Classes →
         </a>
-        <a href="/tier-list/talent-tier-list/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
-          Optimal Traits for Archers →
+        <a href="/calculator/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+          Simulate Archer in Combat Calculator →
         </a>
       </div>
     </article>

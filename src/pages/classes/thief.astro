@@ -6,9 +6,10 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "Pixel Lineage Thief Class Guide: Evolutions",
-    description: "Complete Pixel Lineage Thief class guide: Lv 1-30 stat growths, speed scaling, Assassin, Rogue, and Corsair Super Class builds on Roblox.",
+    headline: "Pixel Lineage Thief Class Guide: Stats & Evolutions",
+    description: "Complete Pixel Lineage Thief class guide: Lv 1-30 stat growths, Rogue, Assassin, and Beast Tamer Super Classes, speed turn loops, and crit builds.",
     url: `${siteConfig.siteUrl}/classes/thief/`,
+    datePublished: "2026-10-18T12:00:00Z",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -25,15 +26,27 @@ const jsonLd = [
     ],
   },
 ];
+
+const thiefMilestones = [
+  { lv: 1, hp: 85, atk: 12, def: 6, mag: 5, spd: 16, crit: "15.0%", dodge: "12.0%" },
+  { lv: 3, hp: 100, atk: 16, def: 8, mag: 6, spd: 21, crit: "16.2%", dodge: "13.0%" },
+  { lv: 5, hp: 115, atk: 20, def: 10, mag: 7, spd: 26, crit: "17.4%", dodge: "14.0%" },
+  { lv: 8, hp: 138, atk: 25, def: 13, mag: 9, spd: 33, crit: "19.2%", dodge: "15.5%" },
+  { lv: 10, hp: 153, atk: 29, def: 15, mag: 10, spd: 38, crit: "20.4%", dodge: "16.5%" },
+  { lv: 15, hp: 190, atk: 39, def: 20, mag: 13, spd: 50, crit: "23.4%", dodge: "19.0%" },
+  { lv: 20, hp: 228, atk: 48, def: 25, mag: 16, spd: 62, crit: "26.4%", dodge: "21.5%" },
+  { lv: 25, hp: 265, atk: 58, def: 30, mag: 19, spd: 74, crit: "29.4%", dodge: "24.0%" },
+  { lv: 30, hp: 303, atk: 67, def: 35, mag: 22, spd: 86, crit: "32.4%", dodge: "26.5%" },
+];
 ---
 
 <BaseLayout
-  title="Pixel Lineage Thief Class Guide: Evolutions"
-  description="Complete Pixel Lineage Thief class guide: Lv 1-30 stat growths, speed scaling, Assassin, Rogue, and Corsair Super Class builds on Roblox."
+  title="Thief Class Guide: Stats & Super Classes"
+  description="Complete Pixel Lineage Thief class guide: Lv 1-30 stat growths, Rogue, Assassin, and Beast Tamer Super Classes, speed turn loops, and crit builds."
   canonical="/classes/thief/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container" style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -44,118 +57,331 @@ const jsonLd = [
 
     <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(52, 211, 153, 0.15); border: 1px solid #34d399; color: #34d399; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
-        Archetype Overview · Agility & Critical
+        Core Archetype · Initiative King & Critical Burst
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Thief Class Guide
+        Pixel Lineage Thief Class Guide: Stats & Super Classes
       </h1>
-      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
-        The master of turn priority and burst execution. With 16 base Speed and 15% base Critical strike chance, the Thief consistently strikes first to eliminate key targets.
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        The definitive tactical guide to the Thief archetype in Pixel Lineage on Roblox. Featuring verified Level 1 to 30 attribute progressions, in-depth breakdowns of Rogue, Assassin, and Beast Tamer Super Class evolutions, speed turn queue mechanics, and critical evasion builds.
       </p>
     </header>
 
+    <!-- Hero Image Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/cards/card_thief.webp"
+        alt="Pixel Lineage Thief Class Stealth and High Speed Combat"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
     <article style="line-height: 1.7; color: var(--ink);">
-      <!-- Attribute Progression Matrix -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 36px;">
-        <div style="background: #1d152c; padding: 14px 20px; border-bottom: 1px solid var(--line);">
-          <h2 style="font-size: 1.25rem; color: var(--ink); margin: 0;">Thief Stat Growth Milestones</h2>
+      <!-- Combat Philosophy & Archetype Overview -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.25rem; color: #34d399; margin: 0 0 12px;">Thief Combat Philosophy & Baseline Archetype</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+          The Thief is Pixel Lineage's undisputed ruler of turn economy and initiative manipulation. Starting with 16 Speed (double that of Warriors) and a staggering 15% base Critical Strike chance, Thieves attack first in virtually every combat encounter. Because combat resolution follows an Action Progress bar filled proportionally to Speed, high-level Thieves frequently achieve a 2:1 turn ratio against heavy dungeon bosses.
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+          At Level 15 in Act 2, the Thief awakens into one of three specialized Super Classes at the Trainer's Shrine: <strong>Rogue</strong> (evasion and bleed skirmisher), <strong>Assassin</strong> (stealth one-shot burst executioner), or <strong>Beast Tamer</strong> (companion pet coordination). This decision permanently locks your combat style, requiring careful strategic evaluation.
+        </p>
+      </section>
+
+      <!-- Complete Level 1 to 30 Milestone Growth Table -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
+          <h2 style="font-size: 1.3rem; color: #fff; margin: 0;">Complete Level 1 to 30 Attribute Growth Ledger</h2>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #34d399;">Formula: HP +7.5/lv · SPD +2.4/lv · Crit +0.6%/lv</span>
         </div>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          These milestone statistics reflect pure baseline Thief scaling without gear or talent modifiers. By Level 30, a natural 86 Speed and 26.5% Dodge rate allow complete evasion of heavy attacks:
+        </p>
+
         <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
             <thead>
-              <tr style="border-bottom: 1px solid var(--line); background: #13101c;">
-                <th style="padding: 10px 14px; color: var(--muted);">Level</th>
-                <th style="padding: 10px 14px; color: var(--muted);">HP</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Attack</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Defense</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Speed</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Crit / Dodge</th>
+              <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                <th style="padding: 10px 12px;">Milestone Level</th>
+                <th style="padding: 10px 12px;">HP</th>
+                <th style="padding: 10px 12px;">ATK</th>
+                <th style="padding: 10px 12px;">DEF</th>
+                <th style="padding: 10px 12px;">MAG</th>
+                <th style="padding: 10px 12px;">SPD</th>
+                <th style="padding: 10px 12px;">Crit%</th>
+                <th style="padding: 10px 12px;">Dodge%</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <td style="padding: 10px 14px; font-weight: 700; color: #34d399;">Lv 1 (Starter)</td>
-                <td style="padding: 10px 14px;">85</td>
-                <td style="padding: 10px 14px;">12</td>
-                <td style="padding: 10px 14px;">6</td>
-                <td style="padding: 10px 14px;">16</td>
-                <td style="padding: 10px 14px;">15% / 12%</td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <td style="padding: 10px 14px; font-weight: 700;">Lv 10 (Act 1 Clear)</td>
-                <td style="padding: 10px 14px;">190</td>
-                <td style="padding: 10px 14px;">28</td>
-                <td style="padding: 10px 14px;">14</td>
-                <td style="padding: 10px 14px;">34</td>
-                <td style="padding: 10px 14px;">20% / 16%</td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <td style="padding: 10px 14px; font-weight: 700; color: #c9a227;">Lv 20 (Super Class)</td>
-                <td style="padding: 10px 14px;">340</td>
-                <td style="padding: 10px 14px;">56</td>
-                <td style="padding: 10px 14px;">26</td>
-                <td style="padding: 10px 14px;">62</td>
-                <td style="padding: 10px 14px;">28% / 22%</td>
-              </tr>
-              <tr>
-                <td style="padding: 10px 14px; font-weight: 700; color: #f43f5e;">Lv 30 (Endgame)</td>
-                <td style="padding: 10px 14px;">540</td>
-                <td style="padding: 10px 14px;">92</td>
-                <td style="padding: 10px 14px;">42</td>
-                <td style="padding: 10px 14px;">98</td>
-                <td style="padding: 10px 14px;">38% / 30%</td>
-              </tr>
+              {thiefMilestones.map((m) => (
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 12px; font-weight: 700; color: #fff;">Level {m.lv}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">{m.hp}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">{m.atk}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">{m.def}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">{m.mag}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">{m.spd}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #ea580c;">{m.crit}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #94a3b8;">{m.dodge}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
-      </section>
-
-      <!-- 3 Super Class Paths -->
-      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 32px 0 16px;">Thief Super Class Branching Paths</h2>
-
-      <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 36px;">
-        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 20px;">
-          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #a855f7;">1. Assassin (A-Tier Meta Burst)</h3>
-          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
-            The premier executioner. <strong>Shadow Step</strong> grants 1 turn of complete stealth and forces a guaranteed 100% critical on your next skill. <strong>Throat Slit</strong> deals +50% bonus damage on wounded targets.
-          </p>
-          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>Nightborn</strong> (Shadow Affinity +15% Dungeon damage).</div>
-        </div>
-
-        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 8px; padding: 20px;">
-          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #34d399;">2. Rogue (Poison & Evasion Attrition)</h3>
-          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
-            Focuses on sustained combat through <strong>Venomous Blade</strong> (DoT poison) and <strong>Pocket Sand</strong> (40% accuracy debuff on enemies). Higher survivability than Assassin in drawn-out battles.
-          </p>
-          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>Beastkin</strong> (+8% Dodge chance).</div>
-        </div>
-
-        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #eab308; border-radius: 8px; padding: 20px;">
-          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #eab308;">3. Corsair (Gold Farming & Ranged Utility)</h3>
-          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
-            Generates 15-30% extra Gold from defeated enemies with <strong>Plunder</strong> and wields an unblockable <strong>Flintlock Quickdraw</strong>. Great for financing equipment upgrades at Blacksmith.
-          </p>
-          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>Human</strong> (+5% Gold bonus).</div>
-        </div>
-      </div>
-
-      <!-- Evidence Dossier -->
-      <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
-        <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">Evidence Dossier: Thief Growth Formula</h3>
-        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 8px;">
-          Growth per level formula: <code>HP +11.2 | ATK +1.9 | DEF +0.8 | MAG +0.5 | SPD +2.1</code>.
-        </p>
-        <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">
-          Weapon affinity: Daggers, Dual Blades, Light Leather Tunics, Flintlocks.
+        <p style="color: var(--muted); font-size: 0.82rem; margin-top: 12px;">
+          *For comparative curves across all classes, visit the complete <a href="/classes/stats/" style="color: var(--accent); text-decoration: none;">Class Growth Matrix</a>.
         </p>
       </section>
 
+      <!-- The 3 Super Classes Deep Dive -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The 3 Thief Super Classes: Skills, Multipliers & Builds</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
+          At Level 15 in Act 2, speak to the Shadow Rogue at Trainer's Shrine. Choose wisely, as this permanently sets your endgame skill specialization:
+        </p>
+
+        <!-- 1. Rogue -->
+        <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+            <h3 style="font-size: 1.15rem; color: #34d399; margin: 0;">1. Rogue — Skirmish Evasion & Bleed Master</h3>
+            <span style="font-size: 0.8rem; color: #34d399; background: rgba(52, 211, 153, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Speed Debuffer & Gold Farmer</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
+            The Rogue excels in prolonged sustained combat through evasion stacking and stacking lacerations. Innate passive <em>Elusive Reflexes</em> grants an extra +8% Dodge and generates +15% Gold from all dungeon monsters.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 1: Serrated Twin-Daggers (Cost: 1 EP · 0 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Strikes twice for 75% ATK per hit. Each strike has a 40% chance to apply Bleed dealing 20% ATK for 3 rounds.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 2: Shadow Decoy (Cost: 2 EP · 3 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Drops a decoy that absorbs the next incoming hostile attack, while boosting Rogue Speed by +30% for 2 rounds.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 3: Phantom Flurry (Cost: 3 EP · Ultimate · 4 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Unleashes five rapid strikes dealing 65% ATK each. Consumes all active Bleed stacks on the target to deal 150% instant bonus burst damage.</p>
+            </div>
+          </div>
+          <div style="font-size: 0.85rem; color: #c9a227;">
+            <strong>Tactical Verdict:</strong> Outstanding solo dungeon progression and resource farming. Evasion nullifies incoming damage while bleed DoTs steadily melt tanky bosses.
+          </div>
+        </div>
+
+        <!-- 2. Assassin -->
+        <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+            <h3 style="font-size: 1.15rem; color: #f43f5e; margin: 0;">2. Assassin — Stealth Lethality & Burst Execution</h3>
+            <span style="font-size: 0.8rem; color: #f43f5e; background: rgba(244, 63, 94, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Boss One-Shot Specialist</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
+            The Assassin transforms the Thief into the highest burst damage dealer in the game. Innate passive <em>Shadow Protocol</em> elevates critical multiplier from 1.5x to 2.8x when attacking from stealth.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 1: Vanish into Shadows (Cost: 1 EP · 2 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Enters untargetable Stealth for 2 rounds. Increases the next attack's Critical Strike Chance by a flat +50%.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 2: Deathmark Stabbing (Cost: 2 EP · 2 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Applies Deathmark for 2 rounds, causing target to receive 25% amplified damage from all sources.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 3: Throat Slit (Cost: 3 EP · Ultimate · 5 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Deals 320% physical damage. If striking from Stealth, automatically scores a guaranteed critical hit (dealing over 890% base ATK value).</p>
+            </div>
+          </div>
+          <div style="font-size: 0.85rem; color: #c9a227;">
+            <strong>Tactical Verdict:</strong> Unrivaled boss assassination. Capable of skipping entire boss phase mechanics by deleting over 60% of an Act 2 or Act 3 boss's health pool in one turn.
+          </div>
+        </div>
+
+        <!-- 3. Beast Tamer -->
+        <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #eab308; border-radius: 6px; padding: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+            <h3 style="font-size: 1.15rem; color: #eab308; margin: 0;">3. Beast Tamer — Pack Coordination & Minion Aggro</h3>
+            <span style="font-size: 0.8rem; color: #eab308; background: rgba(234, 179, 8, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Solo Safety & Companion Tanking</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
+            The Beast Tamer solves the Thief's squishiness by summoning a loyal combat companion (Dire Wolf or Shadow Lynx) to absorb boss strikes while coordinating synchronized pack maneuvers.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 1: Call of the Pack (Cost: 1 EP · 3 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Summons a companion wolf possessing 60% of Tamer Max HP and 80% ATK. Companion attacks immediately on turn resolution.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 2: Divert Aggro (Cost: 2 EP · 2 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Commands companion to Taunt target enemy, diverting all single-target boss attacks away from the fragile player character.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 3: Apex Pincer Assault (Cost: 3 EP · Ultimate · 4 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Synchronized strike where player and companion attack simultaneously for 180% and 140% ATK, inflicting 1-round Knockdown.</p>
+            </div>
+          </div>
+          <div style="font-size: 0.85rem; color: #c9a227;">
+            <strong>Tactical Verdict:</strong> The safest progression class for solo players who want Thief speed without the lethal risk of getting caught by true damage boss attacks.
+          </div>
+        </div>
+      </section>
+
+      <!-- Recommended Bloodline & Talent Synergies -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Bloodline & Talent Meta Synergies</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Thief stats multiply dramatically when combined with high-speed or critical-focused racial lineages:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #c9a227;">
+            <strong style="color: #c9a227; font-size: 1rem; display: block; margin-bottom: 6px;">
+              <a href="/races/seraph/" style="color: #c9a227; text-decoration: none;">Seraph Bloodline (S+ Tier)</a>
+            </strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Adds +10% Speed, 8% True Damage on hit, and ground trap immunity (Featherfall). Multi-hit abilities like Phantom Flurry trigger true damage on every single dagger strike.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #22c55e;">
+            <strong style="color: #22c55e; font-size: 1rem; display: block; margin-bottom: 6px;">
+              <a href="/races/elf/" style="color: #22c55e; text-decoration: none;">Elf Bloodline (S Tier)</a>
+            </strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Adds +10% base Critical Strike Chance and +5% Dodge (Forest Stride). Elevates early-game crit rate above 25%, establishing rapid burst kills.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #a855f7;">
+            <strong style="color: #a855f7; font-size: 1rem; display: block; margin-bottom: 6px;">
+              <a href="/races/nightborn/" style="color: #a855f7; text-decoration: none;">Nightborn Bloodline (A+ Tier)</a>
+            </strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Innate 15% critical lifesteal turns the Thief's frequent critical strikes into a continuous health-recovery loop, solving character sustain.
+            </p>
+          </div>
+        </div>
+
+        <h3 style="font-size: 1.1rem; color: #c9a227; margin: 0 0 10px;">Primary & Secondary Talent Pairings</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 12px;">
+          Consult our full <a href="/traits/" style="color: var(--accent); text-decoration: none;">Traits & Drop Rates Guide</a> when rolling. For Thieves, the top three talents are:
+        </p>
+        <ul style="color: var(--muted); font-size: 0.88rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+          <li><strong style="color: #fff;">Keen Eye (+5% Crit & +2% Dodge):</strong> The premier early talent. Combined with Thief scaling, elevates critical probability past 35% by mid-game.</li>
+          <li><strong style="color: #fff;">Bloodthirst (12% Lifesteal on Crit):</strong> Recovers health on every critical strike, allowing Assassins to stay at 100% health between stealth rotations.</li>
+          <li><strong style="color: #fff;">Survivor (+6% HP & Endure Cheat-Death):</strong> The mandatory safety cushion for fragile Assassins facing high-tier Torment boss mechanics.</li>
+        </ul>
+      </section>
+
+      <!-- Solo vs Multiplayer Dynamics -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Solo vs Multiplayer Team Roles & Positioning</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Solo Expedition Strategy</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              In solo play, speed is your primary survival mechanism. High initiative allows you to eliminate enemy archers and spellcasters before they take their first turn. Always keep Vanish or Shadow Decoy ready to drop boss aggro when entering new rooms.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #38bdf8; font-size: 1rem; display: block; margin-bottom: 6px;">Co-Op & Guild Raid Positioning</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              In 4-player co-op, Thieves occupy the Flank Skirmisher tile. Let your Sentinel Warrior draw Turn 1 aggro, then enter Stealth to apply Deathmark on the boss. This allows your team's burst window to deal maximum damage without exposing yourself to frontline cleave attacks.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Power Curve: Early, Mid, End Game -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Power Curve Trajectory: Early vs Mid vs End Game</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399;">Early Game (Levels 1–10): S Tier Speed Clear</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Starting with 16 SPD and 15% Crit makes Act 1 a breeze. You consistently strike twice before forest beasts take a single action, breezing through early leveling chambers.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #eab308;">
+            <strong style="color: #eab308;">Mid Game (Levels 11–20): High Risk Spike</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Act 2 Crypt monsters introduce unavoidable poison grates and wide AoE sweeps. With only 6 base DEF, a single miscalculated dodge can take 50%+ of your health bar. Unlocking Assassin or Beast Tamer is required to manage aggro.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e;">End Game (Levels 21–30): S+ Tier Burst Meta</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              With 86 base Speed and over 32% Crit, the Assassin becomes the ultimate boss killer. In Torment Mode, stealth critical ambushes dealing over 1,200+ damage bypass dangerous boss phase transitions completely.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Best-in-Slot Equipment Synergies -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #34d399;">Weapon: Dual Shadowfangs or Nightfall Stiletto</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Grants +32 ATK, +14 SPD, and +12% Critical Strike Chance. Multi-hit attacks rapidly build energy while triggering bleed stacks.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #38bdf8;">Armor Set: Sylph Shadowgarb (Tier 3 Light Armor)</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Provides +34 DEF, +18 SPD, and +15% Evasion. Combined with base dodge, pushes total character evasion above 40%.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #c9a227;">Accessory: Ring of the Phantom Thief</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Increases critical strike damage multiplier by +35% and restores 1 Energy Point whenever a stealth strike successfully eliminates an enemy.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Frequently Asked Questions -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About the Thief</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does stealth breaking work in Pixel Lineage?</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+              Stealth remains active for 2 full turns or until you take a damaging action against an enemy. Taking indirect environmental trap damage does not break stealth, but being targeted by true AoE boss attacks will reveal you immediately.
+            </p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Is Dodge capped at a specific percentage?</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+              Yes. Pixel Lineage imposes a hard cap of 65.0% on total passive dodge probability. Any additional evasion bonuses stacked past 65% are discarded by the combat engine to prevent complete invulnerability.
+            </p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Should I choose Assassin or Rogue for solo progression?</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+              For beginners, Rogue offers smoother solo progression due to continuous evasion and gold generation. For high-tier players tackling Torment Mode bosses, Assassin is vastly superior due to 2.8x critical burst multipliers that skip dangerous boss enrage phases.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cross Navigation -->
       <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
         <a href="/classes/super-classes/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
-          Compare 18 Super Classes Matrix →
+          Compare All 18 Super Classes →
         </a>
-        <a href="/tier-list/talent-tier-list/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
-          Best Talents for Thief Builds →
+        <a href="/calculator/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+          Simulate Thief in Combat Calculator →
         </a>
       </div>
     </article>

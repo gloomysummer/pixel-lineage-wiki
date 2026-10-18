@@ -97,7 +97,7 @@ const jsonLd = [
         <p style="color: var(--muted); margin: 0 0 12px; font-size: 0.95rem;">
           Interact with the Goblin Merchant by pressing <strong>[E]</strong> (or tapping the dialogue bubble on mobile):
         </p>
-        <ol style="color: var(--muted); padding-left: 20px; margin: 0; font-size: 0.9rem;">
+        <ol style="color: var(--muted); padding-left: 20px; margin: 0 0 16px; font-size: 0.9rem;">
           <li style="margin-bottom: 8px;">Select the <strong>"Redeem Promo Code"</strong> dialogue choice.</li>
           <li style="margin-bottom: 8px;">In the text field that appears, input <code style="color: #34d399; font-weight: 700;">OCTOBER</code>.</li>
           <li style="margin-bottom: 8px;">Press the green <strong>Redeem</strong> button.</li>
@@ -105,16 +105,29 @@ const jsonLd = [
         </ol>
       </section>
 
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+        <h2 style="font-size: 1.3rem; color: #60a5fa; margin: 0 0 16px;">Step 4: Verify Inventory & Spent Tokens</h2>
+        <p style="color: var(--muted); margin: 0 0 12px; font-size: 0.95rem;">
+          Once the redemption banner dismisses, verify that your currency and spin tokens have been properly credited to your account data before leaving the town instance:
+        </p>
+        <ul style="color: var(--muted); padding-left: 20px; margin: 0 0 16px; font-size: 0.9rem;">
+          <li style="margin-bottom: 8px;"><strong>Gold Balance:</strong> Check the gold counter on the top-right HUD. Gold is credited instantaneously and persists across character wipes and Torment deaths.</li>
+          <li style="margin-bottom: 8px;"><strong>Race Spins:</strong> Press <strong>[M]</strong> or tap the Menu icon and select the <strong>Lineage / Race</strong> tab. Your available Race Spin count will update immediately. You can spend them right here or save them for future race updates. Check our <a href="/tier-list/race-tier-list/" style="color: var(--accent);">Race Tier List</a> before rerolling!</li>
+          <li style="margin-bottom: 8px;"><strong>Talent Spins:</strong> Located in the <strong>Talents & Traits</strong> menu tab. Talent spins let you reroll passive traits without resetting your base lineage.</li>
+          <li style="margin-bottom: 8px;"><strong>Sync Verification:</strong> If your spin count does not immediately increment, wait 5 seconds for the server-client sync. Do not spam the redeem button or disconnect prematurely, as Roblox data store writes trigger upon dialogue close.</li>
+        </ul>
+      </section>
+
       <!-- Evidence Dossier Box -->
       <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
         <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">
-          Evidence Dossier: NPC Dialogue & Coordinates
+          Evidence Dossier: Town Hub Compass & NPC Coordinates
         </h3>
         <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 10px;">
-          Empirical location: Town Courtyard coordinates <code>(X: 142, Y: 12, Z: -88)</code>.
+          Empirical location: Town Courtyard coordinates <code>(X: 142, Y: 12, Z: -88)</code>. Directional bearing: Facing East from the Starter Fountain, pass the Blacksmith forge on your left and cross the stone archway into the Commerce Square.
         </p>
         <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">
-          NPC Name: <strong>Goblin Merchant</strong> · Interaction Type: Dialogue Prompt · Requirements: Group 362755399.
+          NPC Name: <strong>Goblin Merchant</strong> · Interaction Type: Proximity Prompt [E] · Social Requirement: Roblox Group 362755399 membership with active like & favorite verification on Place 126256942507957.
         </p>
       </section>
 

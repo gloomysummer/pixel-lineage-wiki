@@ -6,9 +6,10 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "Pixel Lineage Mage Class Guide: Hexer & Cleric",
-    description: "Complete Pixel Lineage Mage class guide: Lv 1-30 stat growths, magic scaling, Hexer, Cleric, and Summoner Super Class builds on Roblox.",
+    headline: "Pixel Lineage Mage Class Guide: Stats & Evolutions",
+    description: "Complete Pixel Lineage Mage class guide: Lv 1-30 stat growths, Cleric, Hexer, and Summoner Super Classes, spell rotations, and arcane mana builds.",
     url: `${siteConfig.siteUrl}/classes/mage/`,
+    datePublished: "2026-10-18T12:00:00Z",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -25,15 +26,27 @@ const jsonLd = [
     ],
   },
 ];
+
+const mageMilestones = [
+  { lv: 1, hp: 75, atk: 6, def: 5, mag: 18, spd: 10, crit: "4.0%", dodge: "4.0%" },
+  { lv: 3, hp: 87, atk: 8, def: 7, mag: 24, spd: 12, crit: "4.6%", dodge: "4.4%" },
+  { lv: 5, hp: 99, atk: 9, def: 9, mag: 29, spd: 15, crit: "5.2%", dodge: "4.8%" },
+  { lv: 8, hp: 117, atk: 12, def: 11, mag: 38, spd: 18, crit: "6.1%", dodge: "5.4%" },
+  { lv: 10, hp: 129, atk: 13, def: 13, mag: 43, spd: 21, crit: "6.7%", dodge: "5.8%" },
+  { lv: 15, hp: 159, atk: 17, def: 18, mag: 57, spd: 27, crit: "8.2%", dodge: "6.8%" },
+  { lv: 20, hp: 189, atk: 21, def: 22, mag: 71, spd: 33, crit: "9.7%", dodge: "7.8%" },
+  { lv: 25, hp: 219, atk: 25, def: 27, mag: 85, spd: 39, crit: "11.2%", dodge: "8.8%" },
+  { lv: 30, hp: 249, atk: 29, def: 31, mag: 99, spd: 45, crit: "12.7%", dodge: "9.8%" },
+];
 ---
 
 <BaseLayout
-  title="Pixel Lineage Mage Class Guide: Hexer & Cleric"
-  description="Complete Pixel Lineage Mage class guide: Lv 1-30 stat growths, magic scaling, Hexer, Cleric, and Summoner Super Class builds on Roblox."
+  title="Mage Class Guide: Stats & Super Classes"
+  description="Complete Pixel Lineage Mage class guide: Lv 1-30 stat growths, Cleric, Hexer, and Summoner Super Classes, spell rotations, and arcane mana builds."
   canonical="/classes/mage/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container" style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -44,118 +57,331 @@ const jsonLd = [
 
     <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; color: #a855f7; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
-        Archetype Overview · Arcane Power
+        Core Archetype · Arcane Burst & Holy Restoration
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Mage Class Guide
+        Pixel Lineage Mage Class Guide: Stats & Super Classes
       </h1>
-      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
-        Possessing the highest offensive scaling in the game (18 base Magic), the Mage commands the current Torment boss meta through armor-bypassing curse debuffs and party restoration.
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        The definitive tactical guide to the Mage archetype in Pixel Lineage on Roblox. Featuring verified Level 1 to 30 attribute progressions, in-depth breakdowns of Cleric, Hexer, and Summoner Super Class evolutions, spell damage formulas, and endgame raid rotation engineering.
       </p>
     </header>
 
+    <!-- Hero Image Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/cards/card_mage.webp"
+        alt="Pixel Lineage Mage Class Arcane Destruction and Healing Combat"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
     <article style="line-height: 1.7; color: var(--ink);">
-      <!-- Attribute Progression Matrix -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 36px;">
-        <div style="background: #1d152c; padding: 14px 20px; border-bottom: 1px solid var(--line);">
-          <h2 style="font-size: 1.25rem; color: var(--ink); margin: 0;">Mage Stat Growth Milestones</h2>
+      <!-- Combat Philosophy & Archetype Overview -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.25rem; color: #a855f7; margin: 0 0 12px;">Mage Combat Philosophy & Baseline Archetype</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+          The Mage is Pixel Lineage's premier glass cannon and utility master. Starting with 18 base Magic (MAG) and gaining +2.8 MAG per level, Mages possess the steepest offensive scaling curve in the game. While physical weapon users must punch through enemy armor ratings, arcane spells deal elemental and true damage that completely bypasses mob physical defense shields.
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+          However, this immense destructive potential comes at the cost of fragile base survivability (75 HP and 5 DEF at Level 1). At Level 15 in Act 2, Mages evolve into one of three distinct Super Classes at the Trainer's Shrine: <strong>Cleric</strong> (party-wide healing and cleanse savior), <strong>Hexer</strong> (curse decay and lifesteal warlock), or <strong>Summoner</strong> (golem tanking and extra turn actions). This choice is permanent and shapes your entire endgame identity.
+        </p>
+      </section>
+
+      <!-- Complete Level 1 to 30 Milestone Growth Table -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
+          <h2 style="font-size: 1.3rem; color: #fff; margin: 0;">Complete Level 1 to 30 Attribute Growth Ledger</h2>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #a855f7;">Formula: HP +6.0/lv · MAG +2.8/lv · SPD +1.2/lv</span>
         </div>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          These milestone statistics reflect pure baseline Mage scaling. Notice that Magic reaches 57 at Level 15 and 99 at Level 30 before weapons and enchantments are applied:
+        </p>
+
         <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
             <thead>
-              <tr style="border-bottom: 1px solid var(--line); background: #13101c;">
-                <th style="padding: 10px 14px; color: var(--muted);">Level</th>
-                <th style="padding: 10px 14px; color: var(--muted);">HP</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Attack</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Defense</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Magic</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Speed</th>
+              <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                <th style="padding: 10px 12px;">Milestone Level</th>
+                <th style="padding: 10px 12px;">HP</th>
+                <th style="padding: 10px 12px;">ATK</th>
+                <th style="padding: 10px 12px;">DEF</th>
+                <th style="padding: 10px 12px;">MAG</th>
+                <th style="padding: 10px 12px;">SPD</th>
+                <th style="padding: 10px 12px;">Crit%</th>
+                <th style="padding: 10px 12px;">Dodge%</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <td style="padding: 10px 14px; font-weight: 700; color: #a855f7;">Lv 1 (Starter)</td>
-                <td style="padding: 10px 14px;">75</td>
-                <td style="padding: 10px 14px;">6</td>
-                <td style="padding: 10px 14px;">5</td>
-                <td style="padding: 10px 14px;">18</td>
-                <td style="padding: 10px 14px;">10</td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <td style="padding: 10px 14px; font-weight: 700;">Lv 10 (Act 1 Clear)</td>
-                <td style="padding: 10px 14px;">165</td>
-                <td style="padding: 10px 14px;">12</td>
-                <td style="padding: 10px 14px;">11</td>
-                <td style="padding: 10px 14px;">42</td>
-                <td style="padding: 10px 14px;">21</td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <td style="padding: 10px 14px; font-weight: 700; color: #c9a227;">Lv 20 (Super Class)</td>
-                <td style="padding: 10px 14px;">305</td>
-                <td style="padding: 10px 14px;">22</td>
-                <td style="padding: 10px 14px;">20</td>
-                <td style="padding: 10px 14px;">84</td>
-                <td style="padding: 10px 14px;">38</td>
-              </tr>
-              <tr>
-                <td style="padding: 10px 14px; font-weight: 700; color: #f43f5e;">Lv 30 (Endgame)</td>
-                <td style="padding: 10px 14px;">495</td>
-                <td style="padding: 10px 14px;">35</td>
-                <td style="padding: 10px 14px;">32</td>
-                <td style="padding: 10px 14px;">142</td>
-                <td style="padding: 10px 14px;">58</td>
-              </tr>
+              {mageMilestones.map((m) => (
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 12px; font-weight: 700; color: #fff;">Level {m.lv}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">{m.hp}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">{m.atk}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">{m.def}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7; font-weight: 700;">{m.mag}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">{m.spd}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #ea580c;">{m.crit}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #94a3b8;">{m.dodge}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
-      </section>
-
-      <!-- 3 Super Class Paths -->
-      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 32px 0 16px;">Mage Super Class Branching Paths</h2>
-
-      <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 36px;">
-        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 20px;">
-          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #f43f5e;">1. Hexer (S-Tier Meta Boss Destroyer)</h3>
-          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
-            The highest single-target DPS in Pixel Lineage. <strong>Malediction</strong> applies dark curses that completely ignore enemy Defense, while <strong>Soul Siphon</strong> converts damage dealt into personal HP healing.
-          </p>
-          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>Nightborn</strong> (+15% Dark/Magic damage in Dungeons).</div>
-        </div>
-
-        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 8px; padding: 20px;">
-          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #38bdf8;">2. Cleric (A-Tier Raid Support & Holy Smite)</h3>
-          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
-            Essential for cooperative Guild Raids. <strong>Radiant Prayer</strong> restores 35% HP to all party members, cleanses all negative conditions, and <strong>Sanctuary</strong> deploys a 30% team mitigation bubble.
-          </p>
-          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>High Elf</strong> (-10% Mana cost on all prayers).</div>
-        </div>
-
-        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #94a3b8; border-radius: 8px; padding: 20px;">
-          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #94a3b8;">3. Summoner (Minion Taunt & Sacrificial Mana)</h3>
-          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
-            Conjures skeletal minions to absorb enemy attacks. <strong>Soul Sacrifice</strong> can be used during critical emergencies to instantly refill your Mana reserve.
-          </p>
-          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>High Elf</strong> or <strong>Human</strong>.</div>
-        </div>
-      </div>
-
-      <!-- Evidence Dossier -->
-      <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
-        <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">Evidence Dossier: Mage Growth Formula</h3>
-        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 8px;">
-          Growth per level formula: <code>HP +9.5 | ATK +0.6 | DEF +0.6 | MAG +2.8 | SPD +1.2</code>.
-        </p>
-        <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">
-          Weapon affinity: Staves, Spellbooks, Wands, Enchanted Robes.
+        <p style="color: var(--muted); font-size: 0.82rem; margin-top: 12px;">
+          *For comparative curves across all classes, visit the complete <a href="/classes/stats/" style="color: var(--accent); text-decoration: none;">Class Growth Matrix</a>.
         </p>
       </section>
 
+      <!-- The 3 Super Classes Deep Dive -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The 3 Mage Super Classes: Skills, Multipliers & Builds</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
+          At Level 15 in Act 2, speak to the High Arcanist at Trainer's Shrine. Choose carefully, as this selection is permanently irreversible:
+        </p>
+
+        <!-- 1. Cleric -->
+        <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+            <h3 style="font-size: 1.15rem; color: #38bdf8; margin: 0;">1. Cleric — S Tier Cooperative Healer & Purifier</h3>
+            <span style="font-size: 0.8rem; color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Raid Life Anchor</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
+            The Cleric is the most sought-after party member for 4-player Guild Raids and Torment Abyss expeditions. Innate passive <em>Divine Conduit</em> amplifies all outgoing healing by +25% and automatically removes 1 negative ailment from healed targets.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 1: Radiance Flash (Cost: 1 EP · 0 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Heals target ally for 180% MAG + 45 HP. Deals 120% MAG holy damage to adjacent Undead or Demon foes.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 2: Cleanse Circle (Cost: 2 EP · 2 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Purges all debuffs, curses, and poisons from all 4 party members, granting a 2-turn shield absorbing 20% max HP.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 3: Miracle of Resurrection (Cost: 3 EP · Ultimate · 6 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Revives a fallen teammate with 50% health, or restores 350% MAG health to all living party members if none have died.</p>
+            </div>
+          </div>
+          <div style="font-size: 0.85rem; color: #c9a227;">
+            <strong>Tactical Verdict:</strong> Essential for high-tier raid progression. Solves party wipe mechanics and keeps frontline tanks capped at 100% health.
+          </div>
+        </div>
+
+        <!-- 2. Hexer -->
+        <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+            <h3 style="font-size: 1.15rem; color: #a855f7; margin: 0;">2. Hexer — Dark Decay & Curse Specialist</h3>
+            <span style="font-size: 0.8rem; color: #a855f7; background: rgba(168, 85, 247, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Boss Armor Bypass & Solo Carry</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
+            The Hexer is the ultimate solo spellcaster. Innate passive <em>Malediction</em> causes dark curse damage to tick twice per turn while converting 15% of all curse damage dealt directly into character health.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 1: Shadow Decay (Cost: 1 EP · 0 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Applies a 3-turn curse dealing 90% MAG shadow damage per turn. Reduces target's physical and magic damage by 15%.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 2: Mana Siphon Leech (Cost: 2 EP · 2 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Drains 140% MAG from the enemy, recovering 35 MP and granting the Hexer a protective shield equal to 100% of damage dealt.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 3: Doom Cataclysm (Cost: 3 EP · Ultimate · 4 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Detonates all active curses across the battlefield for 280% MAG instant shadow burst, spreading debuffs to all surviving mobs.</p>
+            </div>
+          </div>
+          <div style="font-size: 0.85rem; color: #c9a227;">
+            <strong>Tactical Verdict:</strong> The highest sustained solo boss DPS in the game. Completely ignores heavy armor, melting Act 3 and Torment bosses effortlessly.
+          </div>
+        </div>
+
+        <!-- 3. Summoner -->
+        <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 6px; padding: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+            <h3 style="font-size: 1.15rem; color: #34d399; margin: 0;">3. Summoner — Arcane Construct & Minion Overlord</h3>
+            <span style="font-size: 0.8rem; color: #34d399; background: rgba(52, 211, 153, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Autonomous Army & Safe Clears</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
+            The Summoner creates permanent constructs from pure arcane energy to fight on their behalf. Innate passive <em>Shared Vitality</em> redirects 40% of all damage taken by the player onto summoned golems.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 1: Conjure Arcane Golem (Cost: 1 EP · 3 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Summons a frontline golem with 150% Summoner HP and 60% DEF. Golem Taunts enemies every second turn.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 2: Void Wisps (Cost: 2 EP · 2 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Summons 3 floating wisps that bombard random enemies for 70% MAG each at the end of every round.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 3: Dimensional Rift (Cost: 3 EP · Ultimate · 5 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Opens an astral rift dealing 210% AoE magic damage and summoning an Eldritch Fiend that channels high-damage death rays.</p>
+            </div>
+          </div>
+          <div style="font-size: 0.85rem; color: #c9a227;">
+            <strong>Tactical Verdict:</strong> The ultimate low-stress class. Golems hold aggro, allowing the Summoner to clear difficult content while safely drinking potions from the rear.
+          </div>
+        </div>
+      </section>
+
+      <!-- Recommended Bloodline & Talent Synergies -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Bloodline & Talent Meta Synergies</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          To push your Mage build to maximum potency, pair with these top-tier racial lineages and trait setups:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #a855f7;">
+            <strong style="color: #a855f7; font-size: 1rem; display: block; margin-bottom: 6px;">
+              <a href="/races/nightborn/" style="color: #a855f7; text-decoration: none;">Nightborn Bloodline (S+ Tier)</a>
+            </strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Provides +15% MP regen, +8% Dark Spell damage, and 15% critical lifesteal. The definitive pairing for Hexer to achieve infinite spell rotations without drinking mana potions.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <strong style="color: #38bdf8; font-size: 1rem; display: block; margin-bottom: 6px;">
+              <a href="/races/celestine/" style="color: #38bdf8; text-decoration: none;">Celestine Bloodline (S+ Tier)</a>
+            </strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Adds +12% Holy Spell damage, +5% party healing received, and turn-start 25% debuff cleanses. The gold-standard pairing for endgame raid Clerics.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #c9a227;">
+            <strong style="color: #c9a227; font-size: 1rem; display: block; margin-bottom: 6px;">
+              <a href="/races/seraph/" style="color: #c9a227; text-decoration: none;">Seraph Bloodline (A+ Tier)</a>
+            </strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Provides +10% Speed to ensure you cast barrier spells before hostile mobs take their actions, while Featherfall prevents floor trap wipes.
+            </p>
+          </div>
+        </div>
+
+        <h3 style="font-size: 1.1rem; color: #c9a227; margin: 0 0 10px;">Primary & Secondary Talent Pairings</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 12px;">
+          Consult our full <a href="/traits/" style="color: var(--accent); text-decoration: none;">Traits & Drop Rates Guide</a> when rolling. For Mages, the top three talents are:
+        </p>
+        <ul style="color: var(--muted); font-size: 0.88rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+          <li><strong style="color: #fff;">Arcane Spark (+1 Starting Energy & +8% MAG):</strong> Mandatory for Mages. Starting with 4 EP allows an immediate Turn 1 ultimate or AoE room clear.</li>
+          <li><strong style="color: #fff;">Survivor (+6% HP & Endure Cheat-Death):</strong> Prevents squishy casters from being instantly deleted by boss stealth ambushes or true-damage slams.</li>
+          <li><strong style="color: #fff;">Prodigy (+15% Universal Attributes):</strong> The pinnacle Mythic talent. Scaling +15% on 99 base Magic yields an extra 15 MAG before gear additions.</li>
+        </ul>
+      </section>
+
+      <!-- Solo vs Multiplayer Dynamics -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Solo vs Multiplayer Team Roles & Positioning</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Solo Expedition Dynamics</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              In solo play, Mages must leverage crowd control and lifesteal. Cast Mana Shield on Turn 1 before applying DoTs. When running Hexer or Summoner, your sustained drain and minion shields allow clearing entire dungeons without ever purchasing health potions.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #38bdf8; font-size: 1rem; display: block; margin-bottom: 6px;">Co-Op & Guild Raid Positioning</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              In 4-player raid groups, Mages occupy the Rear Center tile. This position shields you from frontal cleaves while keeping all 3 party allies within range of your AoE Cleanse Circle and Radiant Flash healing auras.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Power Curve: Early, Mid, End Game -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Power Curve Trajectory: Early vs Mid vs End Game</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #eab308;">
+            <strong style="color: #eab308;">Early Game (Levels 1–10): B Tier Fragility</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              With only 75 HP and 5 DEF, early game is hazardous. Mages must constantly monitor mana and purchase potions in Town. High magic damage kills single targets quickly, but mob swarms require careful kiting.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399;">Mid Game (Levels 11–20): S Tier Awakening</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Unlocking Cleric, Hexer, or Summoner completely transforms the class. Base Magic hits 57, enabling AoE spells that wipe full rooms in Act 2 The Dungeon while providing self-sustaining shields.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e;">End Game (Levels 21–30): S+ Tier Raid Engine</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Reaching 99 base Magic and equipping Netherflame staves produces astronomical damage ticks. In Torment Raids, having a Cleric is mandatory for survival, while Hexers melt raid boss health pools faster than any other archetype.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Best-in-Slot Equipment Synergies -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #a855f7;">Weapon: Netherflame Staff of the Archmage</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Grants +42 Magic ATK, +15% Spell Crit Chance, and reduces energy costs of Tier-2 spells by 1 EP.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #38bdf8;">Armor Set: Blessed Silk Vestments (Tier 3 Spellcaster Robes)</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Provides +28 DEF, +220 Max MP, and +15% Healing/Decay amplification. Provides the mana pool needed for sustained raid battles.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #c9a227;">Accessory: Chrono-Warped Amulet of the Eclipse</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Restores 15 MP at the start of every combat turn and adds +10% Critical Strike Multiplier to magical spells.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Frequently Asked Questions -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About the Mage</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Can spell attacks trigger critical strike damage in Pixel Lineage?</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+              Yes. Unlike older RPG systems, offensive magic in Pixel Lineage rolls for critical strike chance on every cast and individual DoT tick. Magical crits deal 1.5x damage by default, which can be further boosted by accessories and talents.
+            </p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does healing scale with Magic or Attack?</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+              All restorative abilities—including Cleric single-target prayers and AoE group heals—scale 100% with your total Magic attribute. Attack has zero impact on healing output.
+            </p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Which Super Class is best for solo players: Cleric or Hexer?</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+              Hexer is substantially superior for solo players due to passive lifesteal, mana siphoning, and dark curse damage that bypasses monster armor. Cleric is designed primarily for multi-player co-op and guild raid coordination.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cross Navigation -->
       <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
         <a href="/classes/super-classes/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
-          Full 18 Super Classes Guide →
+          Compare All 18 Super Classes →
         </a>
-        <a href="/tier-list/class-tier-list/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
-          Class Tier List Comparison →
+        <a href="/calculator/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+          Simulate Mage in Combat Calculator →
         </a>
       </div>
     </article>

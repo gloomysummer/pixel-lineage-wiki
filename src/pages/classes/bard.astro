@@ -6,9 +6,10 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "Pixel Lineage Bard Class Guide: Evolutions",
-    description: "Complete Pixel Lineage Bard class guide: Lv 1-30 stat growths, turn order buffs, Minstrel, Pianist, and Troubadour Super Class builds on Roblox.",
+    headline: "Pixel Lineage Bard Class Guide: Stats & Evolutions",
+    description: "Complete Pixel Lineage Bard class guide: Lv 1-30 stat growths, Minstrel, Siren, and Pianist Super Classes, party anthem buffs, and speed builds.",
     url: `${siteConfig.siteUrl}/classes/bard/`,
+    datePublished: "2026-10-18T12:00:00Z",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -25,15 +26,27 @@ const jsonLd = [
     ],
   },
 ];
+
+const bardMilestones = [
+  { lv: 1, hp: 90, atk: 8, def: 7, mag: 12, spd: 11, crit: "6.0%", dodge: "5.0%" },
+  { lv: 3, hp: 107, atk: 10, def: 9, mag: 16, spd: 14, crit: "6.6%", dodge: "5.4%" },
+  { lv: 5, hp: 124, atk: 13, def: 12, mag: 19, spd: 17, crit: "7.2%", dodge: "5.8%" },
+  { lv: 8, hp: 150, atk: 16, def: 15, mag: 25, spd: 22, crit: "8.1%", dodge: "6.4%" },
+  { lv: 10, hp: 167, atk: 19, def: 18, mag: 28, spd: 25, crit: "8.7%", dodge: "6.8%" },
+  { lv: 15, hp: 209, atk: 25, def: 24, mag: 37, spd: 33, crit: "10.2%", dodge: "7.8%" },
+  { lv: 20, hp: 252, atk: 31, def: 30, mag: 46, spd: 41, crit: "11.7%", dodge: "8.8%" },
+  { lv: 25, hp: 294, atk: 37, def: 36, mag: 55, spd: 49, crit: "13.2%", dodge: "9.8%" },
+  { lv: 30, hp: 337, atk: 43, def: 42, mag: 64, spd: 57, crit: "14.7%", dodge: "10.8%" },
+];
 ---
 
 <BaseLayout
-  title="Pixel Lineage Bard Class Guide: Evolutions"
-  description="Complete Pixel Lineage Bard class guide: Lv 1-30 stat growths, turn order buffs, Minstrel, Pianist, and Troubadour Super Class builds on Roblox."
+  title="Bard Class Guide: Stats & Super Classes"
+  description="Complete Pixel Lineage Bard class guide: Lv 1-30 stat growths, Minstrel, Siren, and Pianist Super Classes, party anthem buffs, and speed builds."
   canonical="/classes/bard/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container" style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -44,118 +57,331 @@ const jsonLd = [
 
     <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(234, 179, 8, 0.15); border: 1px solid #eab308; color: #eab308; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
-        Archetype Overview · Support & Resource
+        Core Archetype · Anthem Buffer & Turn Manipulator
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Bard Class Guide
+        Pixel Lineage Bard Class Guide: Stats & Super Classes
       </h1>
-      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
-        The ultimate cooperative catalyst. Armed with anthems and resource duplication songs, the Bard manipulates battle queues and accelerates party Knowledge progression.
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        The definitive tactical guide to the Bard archetype in Pixel Lineage on Roblox. Featuring verified Level 1 to 30 attribute progressions, in-depth breakdowns of Minstrel, Siren, and Pianist Super Class evolutions, anthem buff scaling formulas, and multiplayer raid team synergies.
       </p>
     </header>
 
+    <!-- Hero Image Banner -->
+    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+      <img
+        src="/images/cards/card_bard.webp"
+        alt="Pixel Lineage Bard Class Musical Anthems and Party Buffer Combat"
+        width="1200"
+        height="675"
+        style="width: 100%; height: auto; display: block;"
+        loading="eager"
+      />
+    </div>
+
     <article style="line-height: 1.7; color: var(--ink);">
-      <!-- Attribute Progression Matrix -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 36px;">
-        <div style="background: #1d152c; padding: 14px 20px; border-bottom: 1px solid var(--line);">
-          <h2 style="font-size: 1.25rem; color: var(--ink); margin: 0;">Bard Stat Growth Milestones</h2>
+      <!-- Combat Philosophy & Archetype Overview -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #eab308; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.25rem; color: #eab308; margin: 0 0 12px;">Bard Combat Philosophy & Baseline Archetype</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+          The Bard is Pixel Lineage's master of battlefield harmonization and action meter manipulation. Possessing the most balanced baseline distribution across all 7 stats, Bards do not rely on brute force. Instead, they manipulate the foundational mechanics of combat: accelerating party turn order, amplifying ally damage output by up to 35%, and debuffing enemy resistance.
+        </p>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+          In high-tier Torment dungeons, a party with a Bard consistently acts 30% more frequently than an unbuffed team, effectively granting party members an entire extra turn phase every three rounds. At Level 15 in Act 2, Bards permanently evolve at the Trainer's Shrine into one of three distinct Super Classes: <strong>Minstrel</strong> (offensive war anthems), <strong>Siren</strong> (crowd-control charm and discord), or <strong>Pianist</strong> (complex multi-melody harmony buffers).
+        </p>
+      </section>
+
+      <!-- Complete Level 1 to 30 Milestone Growth Table -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
+          <h2 style="font-size: 1.3rem; color: #fff; margin: 0;">Complete Level 1 to 30 Attribute Growth Ledger</h2>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #eab308;">Formula: HP +8.5/lv · MAG +1.8/lv · SPD +1.6/lv</span>
         </div>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          These milestone statistics reflect pure baseline Bard scaling without gear or bloodline multipliers. Notice how Magic reaches 64 and Speed hits 57 by Level 30, perfectly balancing anthem potency and turn priority:
+        </p>
+
         <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
             <thead>
-              <tr style="border-bottom: 1px solid var(--line); background: #13101c;">
-                <th style="padding: 10px 14px; color: var(--muted);">Level</th>
-                <th style="padding: 10px 14px; color: var(--muted);">HP</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Attack</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Defense</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Magic</th>
-                <th style="padding: 10px 14px; color: var(--muted);">Speed</th>
+              <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                <th style="padding: 10px 12px;">Milestone Level</th>
+                <th style="padding: 10px 12px;">HP</th>
+                <th style="padding: 10px 12px;">ATK</th>
+                <th style="padding: 10px 12px;">DEF</th>
+                <th style="padding: 10px 12px;">MAG</th>
+                <th style="padding: 10px 12px;">SPD</th>
+                <th style="padding: 10px 12px;">Crit%</th>
+                <th style="padding: 10px 12px;">Dodge%</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <td style="padding: 10px 14px; font-weight: 700; color: #eab308;">Lv 1 (Starter)</td>
-                <td style="padding: 10px 14px;">90</td>
-                <td style="padding: 10px 14px;">8</td>
-                <td style="padding: 10px 14px;">7</td>
-                <td style="padding: 10px 14px;">12</td>
-                <td style="padding: 10px 14px;">11</td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <td style="padding: 10px 14px; font-weight: 700;">Lv 10 (Act 1 Clear)</td>
-                <td style="padding: 10px 14px;">195</td>
-                <td style="padding: 10px 14px;">17</td>
-                <td style="padding: 10px 14px;">16</td>
-                <td style="padding: 10px 14px;">28</td>
-                <td style="padding: 10px 14px;">23</td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <td style="padding: 10px 14px; font-weight: 700; color: #c9a227;">Lv 20 (Super Class)</td>
-                <td style="padding: 10px 14px;">350</td>
-                <td style="padding: 10px 14px;">31</td>
-                <td style="padding: 10px 14px;">30</td>
-                <td style="padding: 10px 14px;">54</td>
-                <td style="padding: 10px 14px;">42</td>
-              </tr>
-              <tr>
-                <td style="padding: 10px 14px; font-weight: 700; color: #f43f5e;">Lv 30 (Endgame)</td>
-                <td style="padding: 10px 14px;">550</td>
-                <td style="padding: 10px 14px;">52</td>
-                <td style="padding: 10px 14px;">50</td>
-                <td style="padding: 10px 14px;">90</td>
-                <td style="padding: 10px 14px;">66</td>
-              </tr>
+              {bardMilestones.map((m) => (
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 10px 12px; font-weight: 700; color: #fff;">Level {m.lv}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">{m.hp}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">{m.atk}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">{m.def}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">{m.mag}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0; font-weight: 700;">{m.spd}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #ea580c;">{m.crit}</td>
+                  <td style="padding: 10px 12px; font-family: var(--font-mono); color: #94a3b8;">{m.dodge}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
-      </section>
-
-      <!-- 3 Super Class Paths -->
-      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 32px 0 16px;">Bard Super Class Branching Paths</h2>
-
-      <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 36px;">
-        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #eab308; border-radius: 8px; padding: 20px;">
-          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #eab308;">1. Minstrel (Offensive Team Anthem Buffer)</h3>
-          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
-            The ultimate raid multiplier. <strong>Battle Anthem</strong> grants +25% ATK and +15% SPD to all party members, while <strong>Encore</strong> resets the highest damage cooldown of your strongest ally.
-          </p>
-          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>High Elf</strong> or <strong>Human</strong>.</div>
-        </div>
-
-        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 20px;">
-          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #a855f7;">2. Pianist (Crowd Control & Sonic Resonation)</h3>
-          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
-            Incapacitates enemy waves with <strong>Nocturne</strong> (1-turn Sleep), allowing allies to focus fire single targets down. <strong>Crescendo</strong> amplifies total party damage by +10% every round.
-          </p>
-          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>High Elf</strong> (-10% Mana cost).</div>
-        </div>
-
-        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 8px; padding: 20px;">
-          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #34d399;">3. Troubadour (Knowledge & Mana Engine)</h3>
-          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
-            <strong>Ballad of Knowledge</strong> doubles Knowledge gains from every dungeon battle, drastically shortening the path to endgame awakening. <strong>Inspiring Song</strong> recovers 20% Mana every round.
-          </p>
-          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>Human</strong> (combines for 2.2x total Knowledge).</div>
-        </div>
-      </div>
-
-      <!-- Evidence Dossier -->
-      <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
-        <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">Evidence Dossier: Bard Growth Formula</h3>
-        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 8px;">
-          Growth per level formula: <code>HP +11.8 | ATK +1.1 | DEF +1.0 | MAG +1.9 | SPD +1.3</code>.
-        </p>
-        <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">
-          Weapon affinity: Lutes, Harps, Flutes, Velvet Doublets.
+        <p style="color: var(--muted); font-size: 0.82rem; margin-top: 12px;">
+          *For comparative curves across all classes, visit the complete <a href="/classes/stats/" style="color: var(--accent); text-decoration: none;">Class Growth Matrix</a>.
         </p>
       </section>
 
+      <!-- The 3 Super Classes Deep Dive -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The 3 Bard Super Classes: Skills, Multipliers & Builds</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
+          At Level 15 in Act 2, speak to the Wandering Virtuoso at Trainer's Shrine. Choose carefully, as this sets your permanent anthem mechanics:
+        </p>
+
+        <!-- 1. Minstrel -->
+        <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #eab308; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+            <h3 style="font-size: 1.15rem; color: #eab308; margin: 0;">1. Minstrel — War Anthems & Party Damage Multiplier</h3>
+            <span style="font-size: 0.8rem; color: #eab308; background: rgba(234, 179, 8, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Raid DPS Amplifier</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
+            The Minstrel elevates the combat prowess of all allies. Innate passive <em>Marching Cadence</em> increases party-wide physical and magical damage by +15% and grants 10% damage reflection against melee attacks.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 1: Anthem of Valor (Cost: 1 EP · 0 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Grants all party members +25% Attack and +15% Critical Chance for 2 rounds. Stacks with individual food buffs.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 2: Rondo of Alacrity (Cost: 2 EP · 2 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Accelerates party action gauges by +35%, immediately granting teammates their next action phase ahead of enemies.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 3: Battle Symphony of Triumph (Cost: 3 EP · Ultimate · 4 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Channels an orchestral crescendo dealing 240% MAG sonic damage to all foes while shielding all allies for 250 HP.</p>
+            </div>
+          </div>
+          <div style="font-size: 0.85rem; color: #c9a227;">
+            <strong>Tactical Verdict:</strong> The ultimate multiplayer force multiplier. Having a Minstrel in a 4-player raid group mathematically shortens boss encounter times by over 40%.
+          </div>
+        </div>
+
+        <!-- 2. Siren -->
+        <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+            <h3 style="font-size: 1.15rem; color: #a855f7; margin: 0;">2. Siren — Alluring Charm & Sonic Crowd Control</h3>
+            <span style="font-size: 0.8rem; color: #a855f7; background: rgba(168, 85, 247, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Crowd Disrupter & Armor Shredder</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
+            The Siren turns harmonic frequencies into psychological warfare. Innate passive <em>Enchanting Resonance</em> causes hostile monsters to suffer a 15% chance to miss their attacks and reduces enemy defense by 20%.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 1: Alluring Requiem (Cost: 1 EP · 0 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Sings a hypnotic melody that Charms target foe for 1 round, forcing them to attack their own allies or skip their action.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 2: Discordant Screech (Cost: 2 EP · 2 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Sonic blast dealing 150% MAG AoE damage and shredding 35% of all enemy physical armor ratings for 2 rounds.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 3: Song of the Abyss (Cost: 3 EP · Ultimate · 5 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Puts all non-boss monsters to Sleep for 2 rounds and inflicts Confusion on bosses, causing boss abilities to deal 50% reduced damage.</p>
+            </div>
+          </div>
+          <div style="font-size: 0.85rem; color: #c9a227;">
+            <strong>Tactical Verdict:</strong> Superb mob crowd control. Completely pacifies chaotic dungeon rooms in Act 2 and Act 3, preventing party wipes from add swarms.
+          </div>
+        </div>
+
+        <!-- 3. Pianist -->
+        <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 6px; padding: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+            <h3 style="font-size: 1.15rem; color: #34d399; margin: 0;">3. Pianist — Continuous Multi-Melody Harmony</h3>
+            <span style="font-size: 0.8rem; color: #34d399; background: rgba(52, 211, 153, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Energy Battery & Continuous Sustain</span>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
+            The Pianist plays intricate multi-layered melodies that remain active persistently across battle turns. Innate passive <em>Continuous Polyphony</em> allows two anthems to be active simultaneously.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 1: Staccato Chords (Cost: 1 EP · 0 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Strikes rapid keys dealing 110% MAG damage and restoring 1 Energy Point to the lowest-energy party member.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 2: Nocturne of Renewal (Cost: 2 EP · 2 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Persistent 3-turn anthem restoring 60 HP and 15 MP to all party members at the start of every combat round.</p>
+            </div>
+            <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
+              <strong style="color: #fff;">Skill 3: Grand Concerto Finale (Cost: 3 EP · Ultimate · 4 Turn CD)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Consumes active anthems to deal 320% MAG sonic burst, resetting all party cooldowns by 1 turn.</p>
+            </div>
+          </div>
+          <div style="font-size: 0.85rem; color: #c9a227;">
+            <strong>Tactical Verdict:</strong> The ultimate party battery. Solves energy and cooldown constraints for Mages and Warriors, keeping offensive rotations running non-stop.
+          </div>
+        </div>
+      </section>
+
+      <!-- Recommended Bloodline & Talent Synergies -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Bloodline & Talent Meta Synergies</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Bards benefit enormously from bloodlines that enhance action speed, healing, and crowd-control resistance:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+            <strong style="color: #38bdf8; font-size: 1rem; display: block; margin-bottom: 6px;">
+              <a href="/races/celestine/" style="color: #38bdf8; text-decoration: none;">Celestine Bloodline (S+ Tier)</a>
+            </strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Adds +5% party healing received, +8% magical DR, and automatic debuff cleanses. Turns the Bard into a secondary healer capable of removing deadly raid miasmas.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #c9a227;">
+            <strong style="color: #c9a227; font-size: 1rem; display: block; margin-bottom: 6px;">
+              <a href="/races/seraph/" style="color: #c9a227; text-decoration: none;">Seraph Bloodline (S Tier)</a>
+            </strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Provides +10% Speed to ensure your anthems trigger on Turn 1 before allies take action, while Featherfall keeps you safe from floor spike hazards.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #22c55e;">
+            <strong style="color: #22c55e; font-size: 1rem; display: block; margin-bottom: 6px;">
+              <a href="/races/elf/" style="color: #22c55e; text-decoration: none;">Elf Bloodline (A+ Tier)</a>
+            </strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              Forest Stride evasion (+5%) and +10% critical strike chance allow the Bard to avoid hostile ranged snipers while contributing reliable sonic damage.
+            </p>
+          </div>
+        </div>
+
+        <h3 style="font-size: 1.1rem; color: #c9a227; margin: 0 0 10px;">Primary & Secondary Talent Pairings</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 12px;">
+          Consult our full <a href="/traits/" style="color: var(--accent); text-decoration: none;">Traits & Drop Rates Guide</a> when rolling. For Bards, the top three talents are:
+        </p>
+        <ul style="color: var(--muted); font-size: 0.88rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+          <li><strong style="color: #fff;">Quick Study (+12% XP & +15% Class Mastery):</strong> Accelerates unlocking Bard anthem tiers, reaching Level 15 in half the standard time.</li>
+          <li><strong style="color: #fff;">Survivor (+6% HP & Endure Cheat-Death):</strong> Mandatory insurance against sudden boss true-damage sweeps that target backline supporters.</li>
+          <li><strong style="color: #fff;">Fortune's Favor (+10% Gold & Treasure Multiplier):</strong> Synergizes with the Bard's utility role to maximize dungeon loot yields for the entire party.</li>
+        </ul>
+      </section>
+
+      <!-- Solo vs Multiplayer Dynamics -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Solo vs Multiplayer Team Roles & Positioning</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Solo Expedition Efficacy</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              While solo clear speeds are modest compared to Thieves or Mages, Bards possess immense consistency. Self-buffing Anthem of Valor and Nocturne of Renewal allows you to steadily grind down bosses without ever running out of health or mana resources.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
+            <strong style="color: #38bdf8; font-size: 1rem; display: block; margin-bottom: 6px;">Co-Op & Guild Raid Positioning</strong>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
+              In 4-player co-op, Bards occupy the Mid-Flank grid tile. This keeps your anthem radius covering both the Frontline Warrior and the Rearline Cleric or Mage, guaranteeing 100% team buff coverage throughout raid encounters.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Power Curve: Early, Mid, End Game -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Power Curve Trajectory: Early vs Mid vs End Game</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #eab308;">
+            <strong style="color: #eab308;">Early Game (Levels 1–10): Balanced Progression</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Starting with 90 HP and 8 ATK / 12 MAG, the Bard progresses smoothly through Act 1. Basic sonic strikes deal consistent damage, while early anthem buffs provide reliable combat buffers.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <strong style="color: #34d399;">Mid Game (Levels 11–20): High Group Utility</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Unlocking Minstrel, Siren, or Pianist at Level 15 transforms the Bard into an indispensable asset for group dungeon runs. Rondo of Alacrity allows your team to skip monster turns in Act 2.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
+            <strong style="color: #f43f5e;">End Game (Levels 21–30): S+ Tier Raid Essential</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              In Torment Mode and Abyss Raids, having a Minstrel or Pianist is non-negotiable. Action gauge manipulation and +25% party damage buffs are the only reliable way to break high-tier raid boss enrage timers.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Best-in-Slot Equipment Synergies -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #eab308;">Weapon: Golden Harp of the Virtuoso or Flute of Harmony</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Grants +28 ATK, +36 MAG, and extends the active duration of all anthem songs by 1 additional turn.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #38bdf8;">Armor Set: Troubadour Feathered Tunic (Tier 3 Set)</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Provides +38 DEF, +16 SPD, and +15% Party Anthem Radius. Ensures your songs reach allies across large arena chambers.
+            </p>
+          </div>
+          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
+            <strong style="color: #c9a227;">Accessory: Metronome of the Maestro</strong>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
+              Restores 1 Energy Point to all party members whenever an Ultimate Anthem song is successfully resolved.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Frequently Asked Questions -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About the Bard</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Do Bard anthems stack with warrior and mage buffs?</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+              Yes. Bard anthem buffs occupy a unique "Musical Aura" slot that stacks multiplicatively with warrior battle shouts, food buffs, and mage spell enchantments.
+            </p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Can Bard songs be interrupted if damaged?</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+              Anthem songs that cast instantly resolve immediately on your turn. However, channeling songs like Battle Symphony can be interrupted if the Bard is afflicted with Stun or Silence. Equipping Seraph or Dullahan prevents this hazard.
+            </p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Which Super Class is best for Guild Raids: Minstrel or Pianist?</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+              Minstrel is preferred for speed-running and burst damage teams. Pianist is superior for progression raids where prolonged energy sustainability and team healing are required to survive enrage phases.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cross Navigation -->
       <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
         <a href="/classes/super-classes/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
-          Full 18 Super Classes Matrix →
+          Compare All 18 Super Classes →
         </a>
-        <a href="/tier-list/race-tier-list/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
-          Race Synergies for Bards →
+        <a href="/calculator/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+          Simulate Bard in Combat Calculator →
         </a>
       </div>
     </article>
