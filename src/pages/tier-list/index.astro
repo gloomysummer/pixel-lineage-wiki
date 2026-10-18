@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
 import VideoEmbed from "../../components/VideoEmbed.astro";
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -130,6 +131,9 @@ const jsonLd = [
         Authoritative meta tier list for Pixel Lineage on Roblox. We analyze 6 base classes, 18 Super Classes, racial bloodlines, and talent spin odds based on empirical Act 2 & 3 dungeon clear logs, Torment survival benchmarks, and turn-action efficiency.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Sub-navigation for Tier List Cluster -->
     <div style="display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;">

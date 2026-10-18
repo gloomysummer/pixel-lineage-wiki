@@ -53,6 +53,7 @@ const jsonLd = [
   },
 ];
 
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -87,6 +88,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         The developers of Pixel Lineage have officially committed to a strict weekly update cycle. Track all patch notes, class adjustments, and seasonal event features here.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Developer Commitment Box -->
     <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #6366f1; border-radius: 8px; padding: 20px; margin-bottom: 36px;">

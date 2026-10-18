@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
 import VideoEmbed from "../../components/VideoEmbed.astro";
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -63,6 +64,9 @@ const jsonLd = [
         In-depth guide to the Seraph bloodline in Pixel Lineage on Roblox. We analyze ethereal wing evasion mechanics, true Holy damage conversion, aerial turn speed advantages, and top competitive builds for Torment II and PvP Arena.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Unique Hero Banner -->
     <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">

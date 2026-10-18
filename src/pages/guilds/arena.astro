@@ -54,6 +54,7 @@ const jsonLd = [
   },
 ];
 
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -87,6 +88,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Complete competitive handbook for the Guild Arena in Pixel Lineage on Roblox. We analyze 1v1 turn combat dynamics, rating brackets, Glory Shop rewards, and top duel builds across all 18 Super Classes.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Unique Hero Banner -->
     <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">

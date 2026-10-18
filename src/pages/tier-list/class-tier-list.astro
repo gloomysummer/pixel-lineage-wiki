@@ -158,6 +158,7 @@ const jsonLd = [
   },
 ];
 
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -191,6 +192,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Because Super Class selection at the Trainer's Shrine (Act 2) is permanent and irreversible, picking the right evolution path is the single most critical decision in your run.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Tier Breakdown Sections -->
     <div style="display: flex; flex-direction: column; gap: 32px; margin-bottom: 40px;">

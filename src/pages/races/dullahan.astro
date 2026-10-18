@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
 import VideoEmbed from "../../components/VideoEmbed.astro";
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -63,6 +64,9 @@ const jsonLd = [
         Comprehensive guide to the limited-edition Dullahan race introduced in Pixel Lineage's Halloween Dungeon Evolution update. We detail headless poise mechanics, spectral decay auras, bleed immunity, and optimal heavy melee build pairings.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Unique Hero Banner -->
     <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">

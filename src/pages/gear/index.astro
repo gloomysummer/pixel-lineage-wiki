@@ -65,6 +65,7 @@ const jsonLd = [
   },
 ];
 
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -99,6 +100,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Equipping full 3-piece armor sets activates powerful passive set bonuses that drastically augment your class abilities. Here are the core armor sets and legendary weapons.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Armor Sets Section -->
     <section style="margin-bottom: 40px;">

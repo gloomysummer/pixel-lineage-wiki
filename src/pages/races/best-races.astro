@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
 import VideoEmbed from "../../components/VideoEmbed.astro";
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -103,6 +104,9 @@ const jsonLd = [
         Detailed ranking of every playable race in Pixel Lineage on Roblox. We analyze innate racial passives, spin drop probabilities, and optimal class pairings to help players optimize their race rerolls.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Summary Callout -->
               <!-- Video Showcase (Tactical Walkthrough) -->

@@ -42,6 +42,7 @@ const jsonLd = [
   },
 ];
 
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -72,6 +73,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Unlike menu-based gacha games, Pixel Lineage requires physical interaction with an in-game NPC in the Town hub. Here is the complete visual walkthrough.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">

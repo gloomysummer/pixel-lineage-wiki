@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
 import VideoEmbed from "../../components/VideoEmbed.astro";
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -151,6 +152,9 @@ const jsonLd = [
         Detailed breakdown of all 6 starting character archetypes in Pixel Lineage on Roblox. In this permadeath roguelike RPG, your base class establishes your growth curve, turn initiative, and dictates your 3 permanent Super Class specialization options at the Trainer's Shrine.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Sub-navigation for Classes Cluster -->
     <div style="display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;">

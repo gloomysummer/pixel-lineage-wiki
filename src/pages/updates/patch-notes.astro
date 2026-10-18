@@ -72,6 +72,7 @@ const jsonLd = [
   },
 ];
 
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -105,6 +106,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Chronological archive of all balance updates, content expansions, and hotfixes for Pixel Lineage on Roblox. We track weekly developer commitments, class buff/nerf formulas, and event announcements.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Unique Hero Banner -->
     <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">

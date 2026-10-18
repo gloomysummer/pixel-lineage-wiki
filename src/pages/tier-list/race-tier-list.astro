@@ -83,6 +83,7 @@ const jsonLd = [
   },
 ];
 
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -116,6 +117,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Races in Pixel Lineage provide permanent passive stat multipliers that dramatically amplify your Super Class build. Here is how every lineage ranks in the current meta.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Race Tiers -->
     <div style="display: flex; flex-direction: column; gap: 32px; margin-bottom: 40px;">

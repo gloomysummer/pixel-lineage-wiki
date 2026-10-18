@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteConfig } from "../config/site.config";
 import { CHANNELS } from "../config/channels";
+import VideoEmbed from "../components/VideoEmbed.astro";
 import dossier from "../data/dossier.json";
 
 const liveStats = dossier.liveStats;
@@ -114,6 +115,30 @@ const faqJsonLd = {
           <div style="font-size: 1.7rem; font-weight: 800; color: #a855f7; margin-top: 4px;">{(liveStats.rating * 100).toFixed(1)}% ({liveStats.upVotes.toLocaleString()} ↑)</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Featured Gameplay Showcase (Official YouTube Reference) -->
+  <section style="background: #0d0a14; border-bottom: 1px solid var(--line); padding: 48px 20px;">
+    <div class="container" style="max-width: 1000px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div style="display: inline-block; background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; color: #a855f7; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 10px;">
+          Tactical Walkthrough
+        </div>
+        <h2 style="font-family: var(--font-display); font-size: 1.8rem; margin: 0 0 8px; color: var(--ink);">
+          Official Video Reference: Complete Beginner & Combat Guide
+        </h2>
+        <p style="color: var(--muted); margin: 0; font-size: 0.95rem;">
+          Verified live gameplay walkthrough by OyO demonstrating optimal class starters, dungeon navigation, and fast gold acquisition.
+        </p>
+      </div>
+      <VideoEmbed
+        id="1pdNdjCu7BM"
+        title="Pixel Lineage Beginner Guide - The BEST Start for New Players!"
+        channelTitle="OyO"
+        uploadDate="2026-10-07T00:00:00+00:00"
+        description="Comprehensive Pixel Lineage beginner guide and live combat walkthrough showcasing classes, dungeon routes, and early gold farming."
+      />
     </div>
   </section>
 

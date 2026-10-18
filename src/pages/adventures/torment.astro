@@ -47,6 +47,7 @@ const jsonLd = [
   },
 ];
 
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -80,6 +81,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Torment represents Pixel Lineage's brutal high-tier dungeon modifier system. Activating Torment multiplies enemy statistics and penalizes character death counts, but yields exclusive Ultra Sigil drops and legendary weapon blueprints.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">

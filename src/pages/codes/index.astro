@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
 import VideoEmbed from "../../components/VideoEmbed.astro";
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -84,6 +85,9 @@ const jsonLd = [
         Authoritative promo code database for Pixel Lineage on Roblox (Universe ID: 10767928510). Every code is directly tested in-game at the Goblin Merchant NPC across active live servers to guarantee 100% validity and prevent wasted player runs.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Sub-navigation for Codes Cluster -->
     <div style="display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;">

@@ -26,6 +26,7 @@ const jsonLd = [
   },
 ];
 
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -56,6 +57,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Encountering "Invalid Code" or "Prerequisites Not Met" in Pixel Lineage? Follow this four-step empirical checklist to redeem your rewards successfully.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">

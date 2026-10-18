@@ -557,10 +557,9 @@ main {
   margin: 0 auto;
   padding: 32px 20px 80px;
 }
-/* 文章页放宽容器：guide/[slug].astro 用 class="container container-guide"。
-   缺这条规则会让文章页卡在 --max(1180px)，宽屏下正文列被挤窄、两侧空白过大。 */
-.container.container-guide {
-  max-width: 1440px;
+.container.container-guide,
+.container-guide {
+  max-width: 1440px !important;
 }
 
 /* Hero 通栏区域 (Cinematic Full-Width Banner with Immersive Atmosphere) */

@@ -20,6 +20,7 @@ const jsonLd = [
   },
 ];
 
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -54,6 +55,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Races and Talents represent the primary gacha and customization pillars in Pixel Lineage. They provide permanent stat multipliers that define your viability in Act 2 Torment dungeons.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Sub-Guides Navigation Cards -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px;">

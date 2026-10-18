@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
 import VideoEmbed from "../../components/VideoEmbed.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
+import MobileToc from "../../components/MobileToc.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
@@ -74,6 +75,9 @@ const warriorMilestones = [
             The definitive tactical guide to the Warrior archetype in Pixel Lineage on Roblox. Featuring verified Level 1 to 30 attribute progressions, in-depth breakdowns of Berserk, Sentinel, and Greatsword Super Class evolutions, optimal bloodline pairings, and endgame raid rotation engineering.
           </p>
         </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
         <!-- Hero Image Banner -->
         <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">

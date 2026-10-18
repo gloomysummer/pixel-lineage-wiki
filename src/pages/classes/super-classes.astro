@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
 import VideoEmbed from "../../components/VideoEmbed.astro";
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -258,6 +259,9 @@ const jsonLd = [
         The definitive, verified database for all 18 Super Class evolutions. Includes exact skill damage scaling percentages and the Trainer's Shrine advancement requirements.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Permanent Choice Warning -->
             <!-- Video Showcase (Tactical Walkthrough) -->

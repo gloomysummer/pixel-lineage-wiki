@@ -7,25 +7,28 @@ export interface Props {
   channelTitle?: string;
   channel?: string;
   captionLabel?: string;
+  eager?: boolean;
 }
 
 const {
   id,
   title,
-  description = "Verified Pixel Lineage gameplay walkthrough and showcase footage.",
+  description = "Verified Pixel Lineage gameplay walkthrough and strategy showcase footage.",
   uploadDate = "2026-10-07T00:00:00+00:00",
-  channelTitle = Astro.props.channel || "Official Channel",
-  captionLabel = "Official Video Reference"
+  channelTitle = Astro.props.channel || "OyO",
+  captionLabel = "Official Video Reference",
+  eager = true
 } = Astro.props;
 
-const embedUrl = `https://www.youtube-nocookie.com/embed/${id}`;
-const thumbnailUrl = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
-
-// Google requires a FULL ISO 8601 datetime WITH timezone for VideoObject.uploadDate.
+// Google VideoObject requires full ISO 8601 datetime WITH timezone
 const rawUploadDate = uploadDate;
 const uploadDateIso = /^\d{4}-\d{2}-\d{2}$/.test(rawUploadDate.trim())
   ? `${rawUploadDate.trim()}T00:00:00+00:00`
   : rawUploadDate;
+
+const embedParams = `autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&modestbranding=1&playsinline=1`;
+const embedUrl = `https://www.youtube.com/embed/${id}?${embedParams}`;
+const thumbnailUrl = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
 
 const schema = {
   "@context": "https://schema.org",
@@ -38,63 +41,27 @@ const schema = {
 };
 ---
 
-<div class="video-embed-wrapper">
-  <!-- 16:9 Zero-CLS Aspect Ratio Container with Native Lazy Loading -->
-  <div class="video-embed-container" data-video-id={id} data-video-title={title}>
+<div class="video-embed-wrapper" data-video-id={id} style="margin: 24px 0 32px;">
+  <!-- 16:9 Zero-CLS Aspect Ratio Container with Standard Autoplay -->
+  <div
+    class="video-container"
+    style="position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #000; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);"
+  >
     <iframe
       src={embedUrl}
       title={title}
-      loading="lazy"
       width="100%"
       height="100%"
-      style="border: 0;"
-      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen
+      loading={eager ? "eager" : "lazy"}
     ></iframe>
   </div>
-  <p class="video-embed-caption">
-    {captionLabel}: <span class="video-title">{title}</span> <span class="video-channel">· {channelTitle}</span>
+  <p class="video-embed-caption" style="font-size: 0.82rem; color: var(--muted); margin: 8px 0 0; text-align: center;">
+    {captionLabel}: <span class="video-title" style="color: #f5f3ff; font-weight: 600;">{title}</span> <span class="video-channel" style="color: var(--accent);">· {channelTitle}</span>
   </p>
 
   <!-- VideoObject JSON-LD for Google Rich Snippets -->
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 </div>
-
-<style>
-  .video-embed-wrapper {
-    margin: 1.75rem 0 2rem 0;
-  }
-  .video-embed-container {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid var(--line, #2b2042);
-    background: #000;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  }
-  .video-embed-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-  .video-embed-caption {
-    font-size: 0.78rem;
-    color: var(--muted, #a79fc2);
-    font-family: var(--font-mono, monospace);
-    margin-top: 0.6rem;
-    text-align: center;
-    line-height: 1.4;
-  }
-  .video-title {
-    color: var(--ink, #f5f3ff);
-    font-weight: 600;
-  }
-  .video-channel {
-    color: var(--accent, #a855f7);
-  }
-</style>

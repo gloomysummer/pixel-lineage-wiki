@@ -50,6 +50,7 @@ const jsonLd = [
   },
 ];
 
+import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 
@@ -83,6 +84,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Guild Oaths provide permanent passives and role specializations in Pixel Lineage. Sworn at the Guild Hall altar, each Oath grants potent raid buffs accompanied by tactical trade-offs.
       </p>
     </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
 
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
