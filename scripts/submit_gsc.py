@@ -37,12 +37,13 @@ SITE_URL = detect_site_url()
 SITEMAP_URL = f"{SITE_URL}/sitemap-index.xml"
 PRIORITY_URLS = [
     f"{SITE_URL}/",
-    f"{SITE_URL}/trello/",
     f"{SITE_URL}/codes/",
-    f"{SITE_URL}/raids/shadow-gate/"
+    f"{SITE_URL}/classes/",
+    f"{SITE_URL}/tier-list/",
+    f"{SITE_URL}/classes/super-classes/"
 ]
 CDP_SCRIPT = Path("/Users/kira/Projects/site-updater/gsc_cdp_request_indexing.js")
-GSC_RESOURCE_ID = f"{SITE_URL}/"
+GSC_RESOURCE_ID = f"sc-domain:{urllib.parse.urlparse(SITE_URL).netloc}"
 ENCODED_GSC_RESOURCE_ID = urllib.parse.quote(GSC_RESOURCE_ID, safe="")
 
 

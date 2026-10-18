@@ -8,54 +8,96 @@ const classes = [
     slug: "warrior",
     role: "Frontline Tank & Cleave",
     color: "#ea580c",
-    superEvolutions: ["Berserk", "Sentinel", "Greatsword"],
+    superEvolutions: [
+      { name: "Berserk", role: "High-risk, missing-HP scaling melee executioner. Gains +2% ATK per 1% lost HP." },
+      { name: "Sentinel", role: "Unshakeable fortress tank with 65% physical DR and party-wide damage redirection." },
+      { name: "Greatsword", role: "Colossal poise-breaking cleaver dealing 2.6x heavy sweep damage across all enemy rows." },
+    ],
     stats: { hp: 120, atk: 14, def: 12, mag: 4, spd: 8, crit: "5%", dodge: "3%" },
-    description: "Highest base HP and armor scaling. Relies on heavy physical strikes, shield parries, and cleaving multi-target sweeps.",
+    growthFocus: "+12 HP / +2.2 ATK / +1.8 DEF per level. Unlocks Shield Bash at Lv 5 and Whirlwind at Lv 12.",
+    bestRaces: "Orc (+12% ATK), Dwarf (+15% HP)",
+    bestTalents: "Bloodthirst, Iron Bastion",
+    playstyleSummary: "Highest baseline effective HP pool. Best suited for players who prefer forgiving mistakes and brute-forcing enemy encounters through sustained physical attrition.",
   },
   {
     name: "Thief",
     slug: "thief",
     role: "Speed Burst & Critical Strikes",
     color: "#34d399",
-    superEvolutions: ["Assassin", "Rogue", "Corsair"],
+    superEvolutions: [
+      { name: "Assassin", role: "Guaranteed 100% critical strike from Stealth with 2.8x multiplier and poison weapon coating." },
+      { name: "Rogue", role: "Extreme dodge specialist gaining free counter-attacks whenever evading enemy blows." },
+      { name: "Corsair", role: "Gold siphon duelist that converts stolen dungeon coins into temporary combat stat buffs." },
+    ],
     stats: { hp: 85, atk: 12, def: 6, mag: 5, spd: 16, crit: "15%", dodge: "12%" },
-    description: "Supreme combat initiative and evasion. Executes high-frequency critical chains and gold theft from elite dungeon mobs.",
+    growthFocus: "+7 HP / +1.9 ATK / +2.4 SPD per level. Unlocks Backstab at Lv 4 and Smoke Veil at Lv 10.",
+    bestRaces: "Elf (+10% SPD, +5% Crit), Felis (+8% Dodge)",
+    bestTalents: "Swift Step, Shadow Veil",
+    playstyleSummary: "Highest combat initiative and critical rate. Wins by out-speeding enemies to execute high-priority spellcasters before they can cast in the turn queue.",
   },
   {
     name: "Mage",
     slug: "mage",
     role: "Arcane Spells, Heals & DoT",
     color: "#a855f7",
-    superEvolutions: ["Cleric", "Hexer", "Summoner"],
+    superEvolutions: [
+      { name: "Cleric", role: "Primary raid healer providing 18% max HP team heals and cleansing Torment debuffs." },
+      { name: "Hexer", role: "Unstoppable DoT specialist applying 2.4x MAG decay curses that bypass 40% target magic defense." },
+      { name: "Summoner", role: "Summons spectral elemental beasts that act as secondary combat units absorbing boss hits." },
+    ],
     stats: { hp: 75, atk: 6, def: 5, mag: 18, spd: 10, crit: "4%", dodge: "4%" },
-    description: "Devastating magical scaling. Utilizes elemental burst spells, party restoration prayers, and armor-bypassing curses.",
+    growthFocus: "+6 HP / +2.8 MAG / +1.5 Mana Regen per level. Unlocks Arcane Bolt at Lv 3 and Mana Shield at Lv 8.",
+    bestRaces: "Nightborn (+15% Mana Regen), High Elf (+10% Spell Penetration)",
+    bestTalents: "Arcane Flow, Spellweaver",
+    playstyleSummary: "Supreme burst and elemental coverage. Relies on careful mana pacing and positioning to melt multi-target packs while managing fragile defensive stats.",
   },
   {
     name: "Fist",
     slug: "fist",
     role: "Martial Stun & Poise Break",
     color: "#f43f5e",
-    superEvolutions: ["Monk", "Brawler", "Oni"],
+    superEvolutions: [
+      { name: "Monk", role: "Ki-empowered fighter utilizing inner peace stances to reflect incoming damage as True DMG." },
+      { name: "Brawler", role: "Multi-strike combo striker stacking 15% armor shred per consecutive blow up to 6 hits." },
+      { name: "Oni", role: "Raging brawler that converts debuff stacks into explosive physical shockwaves." },
+    ],
     stats: { hp: 105, atk: 15, def: 8, mag: 6, spd: 12, crit: "8%", dodge: "6%" },
-    description: "Unarmed martial arts master. Inflicts heavy poise damage to interrupt enemy turns and unleash rapid flurry combos.",
+    growthFocus: "+10 HP / +2.4 ATK / +1.4 SPD per level. Unlocks Palm Strike at Lv 4 and Flurry of Blows at Lv 11.",
+    bestRaces: "Orc (+12% ATK), Beastkin (+8% Poise Break)",
+    bestTalents: "Iron Fist, Relentless Momentum",
+    playstyleSummary: "Excels at locking down dangerous elite monsters by breaking poise bars and denying turn actions through heavy concussive strikes.",
   },
   {
     name: "Bard",
     slug: "bard",
     role: "Support Buffs & Turn Control",
     color: "#eab308",
-    superEvolutions: ["Minstrel", "Pianist", "Troubadour"],
+    superEvolutions: [
+      { name: "Troubadour", role: "Inspires allies with songs that advance turn order by 25% and boost ATK by 20%." },
+      { name: "Minstrel", role: "Crowd control maestro playing soothing melodies that put enemy backlines into 2-turn slumber." },
+      { name: "Pianist", role: "Virtuoso who weaves complex harmonic chords dealing AoE sonic reverberation damage." },
+    ],
     stats: { hp: 90, atk: 8, def: 7, mag: 12, spd: 11, crit: "6%", dodge: "5%" },
-    description: "Invaluable cooperative utility. Manipulates turn queues with musical anthems and accelerates team Knowledge gains.",
+    growthFocus: "+8 HP / +1.8 MAG / +1.6 SPD per level. Unlocks Song of Courage at Lv 3 and Harmonic Blast at Lv 9.",
+    bestRaces: "Human (+10% EXP/Knowledge Gain), Elf (+10% SPD)",
+    bestTalents: "Maestro's Tempo, Inspiring Presence",
+    playstyleSummary: "The ultimate team amplifier in multiplayer parties. Elevates lower-geared teams into clearing high-tier Torment content through turn manipulation.",
   },
   {
     name: "Archer",
     slug: "archer",
     role: "Ranged Piercing & Precision",
     color: "#22c55e",
-    superEvolutions: ["Deadeye", "Ranger", "Beast Tamer"],
+    superEvolutions: [
+      { name: "Sniper", role: "Single-target executioner dealing 3.0x precision piercing damage against armored boss weak spots." },
+      { name: "Ranger", role: "Multi-arrow specialist showering the entire enemy formation with elemental status arrows." },
+      { name: "Beast Tamer", role: "Commands a loyal wolf companion that taunts enemies and executes cooperative pincer strikes." },
+    ],
     stats: { hp: 80, atk: 14, def: 5, mag: 5, spd: 13, crit: "12%", dodge: "7%" },
-    description: "Long-range marksman. Pierces through heavy monster carapaces, plants tactical snares, and summons beast companions.",
+    growthFocus: "+7 HP / +2.3 ATK / +1.8 SPD per level. Unlocks Piercing Shot at Lv 3 and Caltrop Trap at Lv 8.",
+    bestRaces: "Elf (+10% SPD, +5% Crit), Avian (+15% Accuracy)",
+    bestTalents: "Eagle Eye, Critical Mastery",
+    playstyleSummary: "Dominates mid-range encounters by picking off glass-cannon enemy units with piercing munitions while keeping safe distance from melee cleaves.",
   },
 ];
 
@@ -64,7 +106,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Pixel Lineage Classes (October 2026)",
-    description: "Guide to all 6 base classes and 18 super class evolutions in Pixel Lineage on Roblox with complete starter attribute matrices.",
+    description: "Guide to all 6 base classes and 18 super class evolutions in Pixel Lineage on Roblox with complete starter attribute matrices and evolution guides.",
     url: `${siteConfig.siteUrl}/classes/`,
   },
   {
@@ -92,101 +134,158 @@ const jsonLd = [
     </nav>
 
     <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; color: #a855f7; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Core Combat Architecture · 6 Classes & 18 Evolutions
+      </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
         Pixel Lineage Classes & Starter Stats
       </h1>
-      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
-        Your choice of base class sets the permanent foundation of your character's stat scaling. Each archetype branches into three specialized Super Classes at the Trainer's Shrine.
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Detailed breakdown of all 6 starting character archetypes in Pixel Lineage on Roblox. In this permadeath roguelike RPG, your base class establishes your growth curve, turn initiative, and dictates your 3 permanent Super Class specialization options at the Trainer's Shrine.
       </p>
     </header>
 
-    <!-- Super Classes Banner -->
-    <div style="background: #1d152c; border: 1px solid #a855f7; border-radius: 8px; padding: 20px; margin-bottom: 36px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-      <div>
-        <div style="color: #c9a227; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Act 2 Evolution Milestone</div>
-        <h2 style="font-size: 1.25rem; color: var(--ink); margin: 4px 0;">Looking for the 18 Advanced Super Classes?</h2>
-        <p style="color: var(--muted); font-size: 0.88rem; margin: 0;">Detailed skill effects, scaling multipliers, and unlock conditions for all 18 evolutions.</p>
-      </div>
-      <a href="/classes/super-classes/" style="background: #a855f7; color: #fff; padding: 10px 20px; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.9rem;">
-        View 18 Super Classes →
+    <!-- Sub-navigation for Classes Cluster -->
+    <div style="display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;">
+      <a href="/classes/" style="background: var(--line); color: var(--ink); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1px solid var(--accent);">
+        All Classes Overview
+      </a>
+      <a href="/classes/super-classes/" style="background: #161022; color: var(--muted); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1px solid var(--line);">
+        18 Super Classes Guide
+      </a>
+      <a href="/tier-list/class-tier-list/" style="background: #161022; color: var(--muted); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1px solid var(--line);">
+        Class Tier Rankings
       </a>
     </div>
 
-    <!-- 6 Classes Roster Cards -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-bottom: 40px;">
-      {classes.map((c) => (
-        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px; display: flex; flex-direction: column;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-            <h3 style={`margin: 0; font-size: 1.3rem; color: ${c.color};`}>
-              <a href={`/classes/${c.slug}/`} style="color: inherit; text-decoration: none;">{c.name}</a>
-            </h3>
-            <span style="font-size: 0.75rem; color: var(--muted); background: #1d152c; padding: 2px 6px; border-radius: 4px;">
-              {c.role}
-            </span>
-          </div>
-
-          <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0 0 16px; flex-grow: 1;">
-            {c.description}
-          </p>
-
-          <div style="background: #1d152c; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 6px; padding: 10px; margin-bottom: 16px; font-size: 0.82rem; font-family: var(--font-mono);">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-              <span>HP: <strong>{c.stats.hp}</strong></span>
-              <span>ATK: <strong>{c.stats.atk}</strong></span>
-              <span>DEF: <strong>{c.stats.def}</strong></span>
-            </div>
-            <div style="display: flex; justify-content: space-between;">
-              <span>MAG: <strong>{c.stats.mag}</strong></span>
-              <span>SPD: <strong>{c.stats.spd}</strong></span>
-              <span>CRIT: <strong>{c.stats.crit}</strong></span>
-            </div>
-          </div>
-
-          <div style="font-size: 0.82rem; color: #f5f3ff; margin-bottom: 12px;">
-            <strong>Evolutions:</strong> {c.superEvolutions.join(", ")}
-          </div>
-
-          <a href={`/classes/${c.slug}/`} style={`color: ${c.color}; font-size: 0.88rem; font-weight: 600; text-decoration: none;`}>
-            Read {c.name} Class Guide →
-          </a>
-        </div>
-      ))}
+    <!-- Critical Permanent Warning Banner -->
+    <div style="background: rgba(244, 63, 94, 0.12); border: 1px solid #f43f5e; border-radius: 8px; padding: 18px 20px; margin-bottom: 36px;">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+        <span style="background: #f43f5e; color: #fff; font-size: 0.75rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">
+          Permanent Decision
+        </span>
+        <strong style="color: #fff; font-size: 1.05rem;">Trainer's Shrine Specialization is 100% Irreversible</strong>
+      </div>
+      <p style="color: #fecdd3; font-size: 0.9rem; line-height: 1.6; margin: 0;">
+        Once your character reaches Level 15 in Act 2: The Dungeon and interacts with the Trainer's Shrine, selecting a Super Class permanently locks your talent tree for the remainder of that lineage run. There are no respec tokens or reset NPCs in Pixel Lineage. Review the skill scalings and stat growths below before committing.
+      </p>
     </div>
 
-    <!-- Lv 1 Comparative Table -->
-    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 40px;">
-      <div style="background: #1d152c; padding: 14px 20px; border-bottom: 1px solid var(--line);">
-        <h2 style="font-size: 1.25rem; color: var(--ink); margin: 0;">Full Lv 1 Comparative Attribute Table</h2>
-      </div>
-      <div style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+    <!-- Level 1 Base Class Stat Matrix Table -->
+    <section style="margin-bottom: 40px;">
+      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Level 1 Baseline Attribute Matrix</h2>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+        Empirical baseline attributes extracted upon initial character spawn prior to any equipment modifiers, racial passives, or talent spin additions:
+      </p>
+      
+      <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
           <thead>
-            <tr style="border-bottom: 1px solid var(--line); background: #13101c;">
-              <th style="padding: 12px 16px; color: var(--muted);">Archetype</th>
-              <th style="padding: 12px 16px; color: var(--muted);">Base HP</th>
-              <th style="padding: 12px 16px; color: var(--muted);">Attack</th>
-              <th style="padding: 12px 16px; color: var(--muted);">Defense</th>
-              <th style="padding: 12px 16px; color: var(--muted);">Magic</th>
-              <th style="padding: 12px 16px; color: var(--muted);">Speed</th>
-              <th style="padding: 12px 16px; color: var(--muted);">Crit / Dodge</th>
+            <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
+              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">Class</th>
+              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">Role</th>
+              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">HP</th>
+              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">ATK</th>
+              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">DEF</th>
+              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">MAG</th>
+              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">SPD</th>
+              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">Crit %</th>
+              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">Dodge %</th>
             </tr>
           </thead>
           <tbody>
             {classes.map((c) => (
               <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                <td style={`padding: 12px 16px; font-weight: 700; color: ${c.color};`}>
-                  <a href={`/classes/${c.slug}/`} style="color: inherit; text-decoration: none;">{c.name}</a>
+                <td style="padding: 14px 16px; font-weight: 700; color: #fff;">
+                  <a href={`/classes/${c.slug}/`} style={`color: ${c.color}; text-decoration: none;`}>
+                    {c.name}
+                  </a>
                 </td>
-                <td style="padding: 12px 16px; font-weight: 600;">{c.stats.hp}</td>
-                <td style="padding: 12px 16px;">{c.stats.atk}</td>
-                <td style="padding: 12px 16px;">{c.stats.def}</td>
-                <td style="padding: 12px 16px;">{c.stats.mag}</td>
-                <td style="padding: 12px 16px;">{c.stats.spd}</td>
-                <td style="padding: 12px 16px; font-family: var(--font-mono); color: var(--muted);">{c.stats.crit} / {c.stats.dodge}</td>
+                <td style="padding: 14px 16px; color: var(--muted);">{c.role}</td>
+                <td style="padding: 14px 16px; color: #34d399; font-weight: 600;">{c.stats.hp}</td>
+                <td style="padding: 14px 16px; color: #f43f5e; font-weight: 600;">{c.stats.atk}</td>
+                <td style="padding: 14px 16px; color: #38bdf8; font-weight: 600;">{c.stats.def}</td>
+                <td style="padding: 14px 16px; color: #a855f7; font-weight: 600;">{c.stats.mag}</td>
+                <td style="padding: 14px 16px; color: #eab308; font-weight: 600;">{c.stats.spd}</td>
+                <td style="padding: 14px 16px; color: var(--muted);">{c.stats.crit}</td>
+                <td style="padding: 14px 16px; color: var(--muted);">{c.stats.dodge}</td>
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <!-- In-Depth Archetype Dossiers -->
+    <section style="margin-bottom: 40px;">
+      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Comprehensive Class Dossiers & Super Evolutions</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        {classes.map((c) => (
+          <div style={`background: #161022; border: 1px solid var(--line); border-left: 4px solid ${c.color}; border-radius: 8px; padding: 24px;`}>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <h3 style={`margin: 0; font-size: 1.35rem; color: ${c.color};`}>
+                  {c.name}
+                </h3>
+                <span style="font-size: 0.85rem; color: var(--muted); background: #0d0a14; padding: 2px 8px; border-radius: 4px;">
+                  {c.role}
+                </span>
+              </div>
+              <a href={`/classes/${c.slug}/`} style="color: var(--accent); font-size: 0.85rem; text-decoration: none; font-weight: 600;">
+                Full Progression Guide →
+              </a>
+            </div>
+
+            <p style="color: var(--ink); font-size: 0.95rem; line-height: 1.6; margin: 0 0 14px;">
+              {c.playstyleSummary}
+            </p>
+
+            <div style="background: #0d0a14; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 6px; padding: 12px 16px; margin-bottom: 16px; font-size: 0.88rem;">
+              <div style="color: var(--muted); margin-bottom: 4px;"><strong style="color: #c9a227;">Stat Growth:</strong> {c.growthFocus}</div>
+              <div style="color: var(--muted);"><strong style="color: #34d399;">Recommended Pairings:</strong> Race: {c.bestRaces} | Talents: {c.bestTalents}</div>
+            </div>
+
+            <h4 style="font-size: 0.95rem; color: var(--ink); margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.05em;">
+              3 Super Class Evolution Options
+            </h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">
+              {c.superEvolutions.map((se) => (
+                <div style="background: #1a1329; border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px;">
+                  <strong style={`color: ${c.color}; font-size: 0.92rem; display: block; margin-bottom: 3px;`}>{se.name}</strong>
+                  <span style="font-size: 0.82rem; color: var(--muted); line-height: 1.4; display: block;">{se.role}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Ultra Sigil Awakening Mechanics -->
+    <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+      <h3 style="margin: 0 0 12px; font-size: 1.2rem; color: #c9a227;">Ultra Sigil & Pinnacle Class Awakening</h3>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+        Beyond the 18 Super Classes lies the legendary <strong style="color: #fff;">Ultra Class</strong> awakening tier. Awakening requires acquiring an <code style="color: #c9a227;">Ultra Sigil</code>, an ultra-rare 0.5% drop from Act 3 Dungeon Pinnacle Bosses or high-ranking Guild Raids.
+      </p>
+      <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0;">
+        Carrying an Ultra Sigil to the ancient monolithic altar in the Torment realm triggers the Trial of Lineage—a brutal 1v1 mirror duel against your own shadow clone. Surviving this encounter unlocks pinnacle skills that transcend standard turn limitations.
+      </p>
+    </section>
+
+    <!-- Cross-cluster linking -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+      <h2 style="font-size: 1.1rem; color: var(--ink); margin: 0 0 12px;">Explore Deeper Class Knowledge</h2>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+          → 18 Super Class Full Skill Multipliers
+        </a>
+        <a href="/tier-list/class-tier-list/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+          → Class Tier List & Solo Clear Rankings
+        </a>
+        <a href="/races/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+          → Race Bloodlines & Synergies
+        </a>
       </div>
     </section>
   </div>

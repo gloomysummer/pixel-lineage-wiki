@@ -1,0 +1,146 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const oaths = [
+  {
+    name: "Oath of the Vanguard",
+    affinity: "Warrior / Fist Archetypes",
+    pledgeCost: "1,500 Gold & 100 Guild Tokens",
+    permanentBuff: "+15% Physical DR when within 2 tiles of guild allies; 10% Chance to counter melee attacks.",
+    drawback: "-10% Movement speed in open exploration maps.",
+  },
+  {
+    name: "Oath of the Arcanum",
+    affinity: "Mage / Bard Archetypes",
+    pledgeCost: "2,000 Gold & 120 Guild Tokens",
+    permanentBuff: "+20% Maximum Mana Pool; spells restore 5% HP to lowest-health ally upon critical cast.",
+    drawback: "Takes 15% increased physical damage from brute enemies.",
+  },
+  {
+    name: "Oath of the Shadowveil",
+    affinity: "Thief / Archer Archetypes",
+    pledgeCost: "1,800 Gold & 110 Guild Tokens",
+    permanentBuff: "+12% Critical Strike Rate and immunity to movement-impairing snares in guild dungeons.",
+    drawback: "Healing received from external potions reduced by 25%.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage Oaths Guide: Guild Pledges & Buffs",
+    description: "Complete Pixel Lineage Oaths guide: pledge costs, permanent character stat buffs, trade-offs, and optimal class alignment in guild raids.",
+    url: `${siteConfig.siteUrl}/guilds/oaths/`,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Guilds", item: `${siteConfig.siteUrl}/guilds/` },
+      { "@type": "ListItem", position: 3, name: "Oaths", item: `${siteConfig.siteUrl}/guilds/oaths/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Oaths Guide: Guild Pledges & Buffs"
+  description="Complete Pixel Lineage Oaths guide: pledge costs, permanent character stat buffs, trade-offs, and optimal class alignment in guild raids."
+  canonical="/guilds/oaths/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/guilds/" style="color: var(--accent); text-decoration: none;">Guilds</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Oaths</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(201, 162, 39, 0.15); border: 1px solid #c9a227; color: #c9a227; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Guild Alignment & Blood Pledges
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Guild Oaths & Pledges Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Guild Oaths provide permanent passives and role specializations in Pixel Lineage. Sworn at the Guild Hall altar, each Oath grants potent raid buffs accompanied by tactical trade-offs.
+      </p>
+    </header>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Mechanics Summary -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+        <h2 style="margin: 0 0 8px; font-size: 1.2rem; color: #c9a227;">How Oaths Function in Guild Warfare</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">
+          Upon reaching Guild Reputation Tier 2, characters can bind their lineage to one of three ancient oaths. Swearing an oath requires contributing gold and raid tokens earned from Castle Sieges and Guild Raids. An oath remains active until explicitly renounced at the Guild Altar for a penalty fee.
+        </p>
+      </section>
+
+      <!-- 3 Oaths Breakdown -->
+      <section style="margin-bottom: 36px;">
+        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">The Three Ancient Guild Oaths</h2>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          {oaths.map((o) => (
+            <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+                <h3 style="font-size: 1.25rem; color: #fff; margin: 0;">{o.name}</h3>
+                <span style="font-size: 0.8rem; background: #0d0a14; color: var(--accent); padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
+                  {o.affinity}
+                </span>
+              </div>
+              <div style="font-size: 0.88rem; color: #c9a227; margin-bottom: 8px;">
+                <strong>Pledge Cost:</strong> {o.pledgeCost}
+              </div>
+              <div style="font-size: 0.92rem; color: #34d399; margin-bottom: 6px;">
+                <strong>Permanent Buff:</strong> {o.permanentBuff}
+              </div>
+              <div style="font-size: 0.88rem; color: #f43f5e; background: #0d0a14; padding: 8px 12px; border-radius: 6px;">
+                <strong>Tactical Drawback:</strong> {o.drawback}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Tactical Advice -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 14px;">Guild Oath Optimization Strategies</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+          To maximize party raid effectiveness, guilds should maintain a balanced distribution of oaths across their 4-player raid teams:
+        </p>
+        <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+          <li><strong>Frontline Tanks:</strong> Sentinel Warriors should pledge Oath of the Vanguard to stack physical damage reduction.</li>
+          <li><strong>Dedicated Healers:</strong> Clerics benefit most from Oath of the Arcanum, as bonus mana extends healing duration against high-HP raid bosses.</li>
+          <li><strong>Burst DPS:</strong> Assassins and Snipers should pledge Oath of the Shadowveil to lock in critical strike thresholds.</li>
+        </ul>
+      </section>
+
+      <!-- Navigation & Links -->
+      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0 0 10px;">Guild System Navigation</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/guilds/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            ← Return to Guilds & Castle Overview
+          </a>
+          <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → 18 Super Class Synergies
+          </a>
+          <a href="/adventures/torment/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Torment Mode Challenge Guide
+          </a>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

@@ -1,0 +1,133 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const legendaryPowers = [
+  {
+    name: "Heart of the Sunken King",
+    itemSlot: "Amulet / Relic",
+    source: "Act 2 Dungeon Warden (0.8% Drop)",
+    powerEffect: "Whenever HP drops below 25%, automatically triggers a holy wave dealing 2.0x MAG damage and granting a 35% Max HP barrier for 2 turns.",
+    synergy: "Essential survivability tool for solo Berserkers and glass-cannon Mages tackling Torment mode.",
+  },
+  {
+    name: "Edge of Oblivion",
+    itemSlot: "Mainhand Weapon",
+    source: "Guild Raid: Shadow Gate (1.2% Drop)",
+    powerEffect: "Attacks ignore 50% of the target's physical and magical armor. Eliminating an enemy with this weapon grants an immediate bonus turn action.",
+    synergy: "Top-in-slot offensive weapon for Assassins, Snipers, and Brawlers aiming for single-turn boss wipe rotations.",
+  },
+  {
+    name: "Crown of the Eclipse",
+    itemSlot: "Head Armor",
+    source: "Torment II Pinnacle Chest (0.5% Drop)",
+    powerEffect: "Converts 20% of all outgoing elemental spell damage into permanent mana pool restoration; increases party critical damage by +25%.",
+    synergy: "The definitive endgame crown for Cleric and Hexer casters supporting high-difficulty dungeon crawls.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage Legendary Powers: Gear & Relics",
+    description: "Complete guide to Pixel Lineage legendary powers: unique weapon effects, drop locations, boss sources, and optimal build synergies.",
+    url: `${siteConfig.siteUrl}/gear/legendary-powers/`,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Gear", item: `${siteConfig.siteUrl}/gear/` },
+      { "@type": "ListItem", position: 3, name: "Legendary Powers", item: `${siteConfig.siteUrl}/gear/legendary-powers/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Legendary Powers: Gear & Relics"
+  description="Complete guide to Pixel Lineage legendary powers: unique weapon effects, drop locations, boss sources, and optimal build synergies."
+  canonical="/gear/legendary-powers/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/gear/" style="color: var(--accent); text-decoration: none;">Gear</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Legendary Powers</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(201, 162, 39, 0.15); border: 1px solid #c9a227; color: #c9a227; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        End-Game Artifact & Weapon System
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Legendary Powers & Gear Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Detailed database of legendary weapon passives, relic triggers, and armor enchantments in Pixel Lineage on Roblox. Learn where to farm each artifact and how to combine effects for build dominance.
+      </p>
+    </header>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Summary Callout -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+        <h2 style="margin: 0 0 8px; font-size: 1.2rem; color: #c9a227;">How Legendary Equipment Modifiers Work</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">
+          Unlike standard rare gear that only provides flat numerical attributes, Legendary Tier items grant unique passive combat mechanics. These powers can trigger counter-attacks, bypass boss defenses, or restore whole health percentages upon hitting turn thresholds.
+        </p>
+      </section>
+
+      <!-- Legendary Powers Breakdown -->
+      <section style="margin-bottom: 36px;">
+        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Top Legendary Artifacts & Unique Effects</h2>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          {legendaryPowers.map((lp) => (
+            <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+                <h3 style="font-size: 1.25rem; color: #fff; margin: 0;">{lp.name}</h3>
+                <span style="font-size: 0.8rem; background: #0d0a14; color: #c9a227; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
+                  {lp.itemSlot}
+                </span>
+              </div>
+              <div style="font-size: 0.88rem; color: var(--muted); margin-bottom: 8px;">
+                <strong>Source:</strong> {lp.source}
+              </div>
+              <div style="font-size: 0.92rem; color: #34d399; margin-bottom: 8px;">
+                <strong>Legendary Power:</strong> {lp.powerEffect}
+              </div>
+              <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0; background: #0d0a14; padding: 10px 14px; border-radius: 6px;">
+                <strong>Build Synergy:</strong> {lp.synergy}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Navigation & Links -->
+      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0 0 10px;">Continue Exploring Equipment</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/gear/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            ← Return to Gear Overview
+          </a>
+          <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → 18 Super Class Evolutions
+          </a>
+          <a href="/adventures/torment/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Torment Dungeon Farming Guide
+          </a>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

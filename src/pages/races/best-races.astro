@@ -1,0 +1,155 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const bestRaces = [
+  {
+    name: "Nightborn",
+    tier: "S-Tier (God Tier for Spellcasters)",
+    spinRarity: "2% Legendary Spin Pool",
+    innatePassives: "+15% Natural Mana Regeneration, +8% Dark & Arcane Spell DMG, 10% Shadow Resistance.",
+    optimalClasses: "Mage (Hexer, Cleric), Bard (Pianist)",
+    analysis: "The uncontested best race for any magic-based build. Turn-based magic expenditure rapidly depletes mana pools; Nightborn's passive regeneration eliminates the need to spend turns drinking mana elixirs.",
+  },
+  {
+    name: "Orc",
+    tier: "S-Tier (God Tier for Melee Brawlers)",
+    spinRarity: "5% Epic Spin Pool",
+    innatePassives: "+12% Physical ATK, +5% Tenacity, 'Undying Rage' (survives fatal blow with 1 HP once per battle).",
+    optimalClasses: "Warrior (Berserk), Fist (Brawler, Oni)",
+    analysis: "Undying Rage creates an unbeatable safety net for Berserkers running low-HP damage builds. Surviving a lethal boss cleave at 1 HP allows players to retaliate with max-boosted Berserk strikes.",
+  },
+  {
+    name: "Elf",
+    tier: "A-Tier (Top Tier for Speed & Crits)",
+    spinRarity: "8% Rare Spin Pool",
+    innatePassives: "+10% Turn Speed, +5% Critical Strike Probability, +10% Bow/Dagger Piercing DMG.",
+    optimalClasses: "Thief (Assassin, Rogue), Archer (Sniper)",
+    analysis: "In turn-based roguelikes, moving first dictates the outcome of battle. Elf guarantees turn priority against most dungeon mobs and elevates critical strike thresholds.",
+  },
+  {
+    name: "Dwarf",
+    tier: "A-Tier (Supreme Defensive Tank)",
+    spinRarity: "12% Uncommon Spin Pool",
+    innatePassives: "+15% Max Health Pool, +10% Flat Physical Damage Reduction, Immunity to Knockback/Poise Break.",
+    optimalClasses: "Warrior (Sentinel, Greatsword), Fist (Monk)",
+    analysis: "Massive health reserves and physical resistance make Dwarf the prime choice for frontline tanks facing Torment mode boss attacks.",
+  },
+  {
+    name: "Human",
+    tier: "B-Tier (Balanced Beginner Baseline)",
+    spinRarity: "Default (45% Base Pool)",
+    innatePassives: "+10% EXP & Knowledge Acquisition, +1 Universal Talent Point at Level 20.",
+    optimalClasses: "All Classes (Beginner Friendly)",
+    analysis: "While lacking late-game combat multipliers, Human accelerates leveling through Act 1 and grants an additional talent point to round out early progression.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Best Races in Pixel Lineage: Tier List & Passives",
+    description: "Discover the best races in Pixel Lineage: complete ranking of racial passives, spin drop rates, survivability traits, and ideal class pairings.",
+    url: `${siteConfig.siteUrl}/races/best-races/`,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Best Races", item: `${siteConfig.siteUrl}/races/best-races/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Best Races in Pixel Lineage: Tier List & Passives"
+  description="Discover the best races in Pixel Lineage: complete ranking of racial passives, spin drop rates, survivability traits, and ideal class pairings."
+  canonical="/races/best-races/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Best Races</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; color: #a855f7; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Bloodline Optimization Guide
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Best Races in Pixel Lineage & Meta Ranking
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Detailed ranking of every playable race in Pixel Lineage on Roblox. We analyze innate racial passives, spin drop probabilities, and optimal class pairings to help players optimize their race rerolls.
+      </p>
+    </header>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Summary Callout -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+        <h2 style="margin: 0 0 8px; font-size: 1.2rem; color: #a855f7;">When Should You Reroll Your Race?</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">
+          All new characters spawn as default Humans with balanced stats. Using a <strong>Race Spin</strong> (obtained via active promo codes or in-game boss achievements) rerolls your character's bloodline permanently. Always align your targeted race with your planned Super Class to avoid wasting rare reroll tokens.
+        </p>
+      </section>
+
+      <!-- Best Races Rankings -->
+      <section style="margin-bottom: 36px;">
+        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Meta Race Rankings & Innate Passives</h2>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          {bestRaces.map((r) => (
+            <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+                <h3 style="font-size: 1.25rem; color: #fff; margin: 0;">{r.name}</h3>
+                <span style="font-size: 0.8rem; background: #0d0a14; color: #c9a227; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
+                  {r.tier}
+                </span>
+              </div>
+              <div style="font-size: 0.88rem; color: var(--muted); margin-bottom: 6px;">
+                <strong>Spin Rarity:</strong> {r.spinRarity}
+              </div>
+              <div style="font-size: 0.92rem; color: #34d399; margin-bottom: 8px;">
+                <strong>Innate Passives:</strong> {r.innatePassives}
+              </div>
+              <div style="font-size: 0.88rem; color: #38bdf8; margin-bottom: 10px;">
+                <strong>Ideal Class Pairings:</strong> {r.optimalClasses}
+              </div>
+              <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0; background: #0d0a14; padding: 10px 14px; border-radius: 6px;">
+                <strong>Meta Evaluation:</strong> {r.analysis}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Navigation & Links -->
+      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0 0 10px;">Explore Related Race Guides</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/races/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            ← Return to Races Overview
+          </a>
+          <a href="/tier-list/race-tier-list/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Race Tier List & Drop Rates
+          </a>
+          <a href="/codes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Claim Free Race Spins via Codes
+          </a>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

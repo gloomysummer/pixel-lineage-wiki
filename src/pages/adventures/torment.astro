@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const tormentLevels = [
+  {
+    level: "Torment I (Unlocked at Lv 20)",
+    enemyBuffs: "+40% Enemy HP, +25% Enemy ATK, Bleed Stacks on Turn End",
+    dropBonuses: "+50% Gold Multiplier, 2.5x Ultra Sigil Fragment Rate",
+    survivalStrategy: "Mandatory Cleanse abilities (Cleric / Potion) to remove bleeding damage before taking boss turns.",
+  },
+  {
+    level: "Torment II (Unlocked at Lv 30)",
+    enemyBuffs: "+90% Enemy HP, +60% Enemy ATK, Enemies gain 1 Turn Priority",
+    dropBonuses: "+120% Gold Multiplier, Guaranteed Legendary Weapon drop on Boss defeat",
+    survivalStrategy: "High SPD builds (Thief / Elf) to interrupt boss charge turns; frontline Sentinel with 65% physical DR.",
+  },
+  {
+    level: "Torment III (The Abyss - Lv 40+)",
+    enemyBuffs: "+200% Enemy HP, +150% Enemy ATK, Permadeath Loss of 2 Character Lives",
+    dropBonuses: "Guaranteed Ultra Sigil on Pinnacle Altar completion, Tier-5 Artifact Cache",
+    survivalStrategy: "Requires 4-player coordinated party synergy: Tank, Healer, Crowd Control, and S-Tier single-target Burst.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage Torment Mode: Difficulty & Rules",
+    description: "Master Pixel Lineage Torment mode rules: enemy stat scalings, permadeath life penalties, loot multiplier tables, and boss strategy.",
+    url: `${siteConfig.siteUrl}/adventures/torment/`,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Adventures", item: `${siteConfig.siteUrl}/adventures/` },
+      { "@type": "ListItem", position: 3, name: "Torment Mode", item: `${siteConfig.siteUrl}/adventures/torment/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Torment Mode: Difficulty & Rules"
+  description="Master Pixel Lineage Torment mode rules: enemy stat scalings, permadeath life penalties, loot multiplier tables, and boss strategy."
+  canonical="/adventures/torment/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/adventures/" style="color: var(--accent); text-decoration: none;">Adventures</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Torment Mode</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(244, 63, 94, 0.15); border: 1px solid #f43f5e; color: #f43f5e; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        High-Risk End-Game Dungeon Engine
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Torment Mode Difficulty Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+        Torment represents Pixel Lineage's brutal high-tier dungeon modifier system. Activating Torment multiplies enemy statistics and penalizes character death counts, but yields exclusive Ultra Sigil drops and legendary weapon blueprints.
+      </p>
+    </header>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Core Mechanics Summary -->
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+        <h2 style="margin: 0 0 8px; font-size: 1.2rem; color: #f43f5e;">What Makes Torment Mode Lethal?</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">
+          In standard adventure acts, falling in combat returns your character to the village at the cost of 1 Life token. In Torment Mode, dungeon hazards impose severe environmental penalties—including permanent burning damage, reduced potion efficacy by 50%, and double life deductions on team wipes.
+        </p>
+      </section>
+
+      <!-- Torment Tier Breakdown -->
+      <section style="margin-bottom: 36px;">
+        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Torment Difficulty Levels & Loot Scalings</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          {tormentLevels.map((t) => (
+            <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+              <h3 style="font-size: 1.2rem; color: #c9a227; margin: 0 0 8px;">{t.level}</h3>
+              <div style="font-size: 0.9rem; color: #f43f5e; margin-bottom: 6px;">
+                <strong>Enemy Modifiers:</strong> {t.enemyBuffs}
+              </div>
+              <div style="font-size: 0.9rem; color: #34d399; margin-bottom: 10px;">
+                <strong>Reward Multipliers:</strong> {t.dropBonuses}
+              </div>
+              <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0; background: #0d0a14; padding: 10px 14px; border-radius: 6px;">
+                <strong>Tactical Key:</strong> {t.survivalStrategy}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Best Torment Builds -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+        <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Recommended Builds for Torment Survival</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Glass-cannon glass builds without defensive contingency layers fail instantly in Torment I and beyond. The most successful solo and group setups include:
+        </p>
+        <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+          <li style="margin-bottom: 8px;"><strong>Sentinel + Dwarf:</strong> Stacks 75% physical mitigation and passive HP pools to absorb Torment boss crits.</li>
+          <li style="margin-bottom: 8px;"><strong>Hexer + Nightborn:</strong> Melts boss HP percentages from a distance while keeping safe from close-range cleave attacks.</li>
+          <li><strong>Cleric + Troubadour:</strong> The definitive support backbone providing constant cleanse pulses and turn-order priority.</li>
+        </ul>
+      </section>
+
+      <!-- Navigation & Links -->
+      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0 0 10px;">Continue Exploring Adventures</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/adventures/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            ← Return to Adventures Overview
+          </a>
+          <a href="/tier-list/class-tier-list/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → View Class Tier Rankings
+          </a>
+          <a href="/gear/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Gear & Armor Sets Guide
+          </a>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>
