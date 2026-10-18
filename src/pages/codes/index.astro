@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
 
 const activeCodes = [
   {
@@ -59,14 +65,15 @@ const jsonLd = [
   canonical="/codes/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Codes</span>
     </nav>
-
-    <header style="margin-bottom: 32px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+      <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(52, 211, 153, 0.15); border: 1px solid #34d399; color: #34d399; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
         Audited Weekly · October 2026 Live
       </div>
@@ -92,8 +99,23 @@ const jsonLd = [
     </div>
 
     <!-- Active Codes Table -->
-    <section style="margin-bottom: 40px;">
-      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Verified Active Codes</h2>
+            <!-- Video Showcase (Tactical Walkthrough) -->
+        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+          <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Codes Guide</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Official Pixel Lineage promo code redemption and weekly spin reward demonstration at the Goblin Merchant.
+          </p>
+          <VideoEmbed
+            id="_Tx_aM0w1bE"
+            title="Pixel Lineage Active Codes Redemption & Free Spins Showcase"
+            channelTitle="OyO"
+            uploadDate="2026-10-07T00:00:00+00:00"
+            description="Official Pixel Lineage promo code redemption and weekly spin reward demonstration at the Goblin Merchant."
+          />
+        </section>
+
+<section style="margin-bottom: 40px;">
+      <h2 id="verified-active-codes" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Verified Active Codes</h2>
       <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
         <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
           <thead>
@@ -126,11 +148,11 @@ const jsonLd = [
 
     <!-- Detailed Code Breakdown Card -->
     <section style="margin-bottom: 40px; background: #161022; border: 1px solid var(--line); border-radius: 10px; padding: 24px;">
-      <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Active Code In-Depth Tactical Analysis</h2>
+      <h2 id="active-code-in-depth-tactical-analysis" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Active Code In-Depth Tactical Analysis</h2>
       
       <div style="background: #0d0a14; border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 8px; padding: 20px; margin-bottom: 20px;">
         <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
-          <h3 style="font-family: var(--font-mono); font-size: 1.4rem; color: #34d399; margin: 0;">Code: OCTOBER</h3>
+          <h3 id="code-october" style="font-family: var(--font-mono); font-size: 1.4rem; color: #34d399; margin: 0;">Code: OCTOBER</h3>
           <span style="font-size: 0.8rem; color: var(--muted);">Verification Date: 2026-10-18 · Build 1.0.3</span>
         </div>
         
@@ -157,7 +179,7 @@ const jsonLd = [
 
     <!-- The 4 Mandatory Prerequisites -->
     <section style="margin-bottom: 40px; background: #161022; border: 1px solid var(--line); border-radius: 10px; padding: 24px;">
-      <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Mandatory Redemption Prerequisites</h2>
+      <h2 id="mandatory-redemption-prerequisites" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Mandatory Redemption Prerequisites</h2>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
         Unlike generic Roblox experiences that permit code redemption via a simple settings screen, Pixel Lineage enforces strict server-side verification checks through the in-game NPC logic. If any of the following 4 conditions are missing, the redemption dialogue will fail immediately:
       </p>
@@ -192,7 +214,7 @@ const jsonLd = [
 
     <!-- 6 Common Redemption Failure Scenarios & Troubleshooting Matrix -->
     <section style="margin-bottom: 40px; background: #161022; border: 1px solid var(--line); border-radius: 10px; padding: 24px;">
-      <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Code Failure Diagnosis: 6 Common Errors & Fixes</h2>
+      <h2 id="code-failure-diagnosis-6-common-errors-fixes" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Code Failure Diagnosis: 6 Common Errors & Fixes</h2>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
         If entering a valid code results in an error prompt, consult this diagnostic matrix to identify and resolve the issue without contacting developer support:
       </p>
@@ -244,7 +266,7 @@ const jsonLd = [
 
     <!-- Expired Codes Archive -->
     <section style="margin-bottom: 40px;">
-      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Historical Expired Codes Ledger</h2>
+      <h2 id="historical-expired-codes-ledger" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Historical Expired Codes Ledger</h2>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
         For transparency and archive auditing, the following promotional codes have been permanently deactivated by the developer. They are listed here to save players from entering defunct keys:
       </p>
@@ -276,7 +298,7 @@ const jsonLd = [
 
     <!-- Currency & Spins Economy Strategy -->
     <section style="margin-bottom: 40px; background: #161022; border: 1px solid var(--line); border-radius: 10px; padding: 24px;">
-      <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Currency & Free Spins Resource Management</h2>
+      <h2 id="currency-free-spins-resource-management" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Currency & Free Spins Resource Management</h2>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
         In a permadeath roguelike RPG, squandering promotional currency on sub-optimal early rolls significantly impedes late-game progression. Here is our tactical guide on how to allocate code payouts:
       </p>
@@ -296,7 +318,7 @@ const jsonLd = [
 
     <!-- Cross-cluster linking -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
-      <h2 style="font-size: 1.1rem; color: var(--ink); margin: 0 0 12px;">Related Guides & Game Databases</h2>
+      <h2 id="related-guides-game-databases" style="font-size: 1.1rem; color: var(--ink); margin: 0 0 12px;">Related Guides & Game Databases</h2>
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
         <a href="/codes/redeem/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
           → Detailed Goblin Merchant Step-by-Step Guide
@@ -309,5 +331,10 @@ const jsonLd = [
         </a>
       </div>
     </section>
+        </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/codes/" />
+    </div>
   </div>
 </BaseLayout>

@@ -69,7 +69,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Weapons: Best Weapon Tier"
@@ -77,7 +83,7 @@ const jsonLd = [
   canonical="/gear/weapons/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -110,10 +116,11 @@ const jsonLd = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <!-- Summary Callout -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #f43f5e; margin: 0 0 12px;">Weapon Scaling Architecture</h2>
+        <h2 id="weapon-scaling-architecture" style="font-size: 1.25rem; color: #f43f5e; margin: 0 0 12px;">Weapon Scaling Architecture</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
           In Pixel Lineage, weapon damage does not simply add flat numbers to your attack sheet. Each weapon belongs to a specific class discipline and scales based on attribute affinities (ATK, MAG, or SPD). Equipping off-class weaponry imposes a severe 40% accuracy penalty, making weapon-class alignment crucial.
         </p>
@@ -121,12 +128,12 @@ const jsonLd = [
 
       <!-- Weapons Master Breakdown -->
       <section style="margin-bottom: 40px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Top Meta Weapons & Unique Affixes</h2>
+        <h2 id="top-meta-weapons-unique-affixes" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Top Meta Weapons & Unique Affixes</h2>
         <div style="display: flex; flex-direction: column; gap: 24px;">
           {weaponTiers.map((w) => (
             <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px;">
               <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-                <h3 style="font-size: 1.3rem; color: #fff; margin: 0;">{w.name}</h3>
+                <h3 id="w-name" style="font-size: 1.3rem; color: #fff; margin: 0;">{w.name}</h3>
                 <span style="font-size: 0.8rem; background: #0d0a14; color: #f43f5e; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line); font-weight: 700;">
                   {w.tier}
                 </span>
@@ -158,7 +165,7 @@ const jsonLd = [
 
       <!-- Upgrading Weapons at the Blacksmith -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Weapon Sharpening & Gem Inscription</h2>
+        <h2 id="weapon-sharpening-gem-inscription" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Weapon Sharpening & Gem Inscription</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Taking any weapon to the Blacksmith allows slotting up to two elemental Rune Gems (Fire, Frost, or Lightning). Inscribing a Lightning Gem grants +8% Poise Break on every physical hit, while Frost Gems reduce enemy Turn Speed by 10%.
         </p>
@@ -169,7 +176,7 @@ const jsonLd = [
 
       <!-- Navigation -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Gear Guides</h3>
+        <h3 id="explore-further-gear-guides" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Gear Guides</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/gear/armor-sets/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             ← Armor Sets & Set Bonuses Guide
@@ -183,5 +190,9 @@ const jsonLd = [
         </div>
       </section>
     </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/gear/weapons/" />
+    </div>
   </div>
 </BaseLayout>

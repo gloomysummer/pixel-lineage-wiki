@@ -49,7 +49,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Oaths Guide: Guild Pledges & Buffs"
@@ -57,7 +63,7 @@ const jsonLd = [
   canonical="/guilds/oaths/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -78,10 +84,11 @@ const jsonLd = [
       </p>
     </header>
 
-    <article style="line-height: 1.7; color: var(--ink);">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <!-- Mechanics Summary -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
-        <h2 style="margin: 0 0 8px; font-size: 1.2rem; color: #c9a227;">How Oaths Function in Guild Warfare</h2>
+        <h2 id="how-oaths-function-in-guild-warfare" style="margin: 0 0 8px; font-size: 1.2rem; color: #c9a227;">How Oaths Function in Guild Warfare</h2>
         <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">
           Upon reaching Guild Reputation Tier 2, characters can bind their lineage to one of three ancient oaths. Swearing an oath requires contributing gold and raid tokens earned from Castle Sieges and Guild Raids. An oath remains active until explicitly renounced at the Guild Altar for a penalty fee.
         </p>
@@ -89,12 +96,12 @@ const jsonLd = [
 
       <!-- 3 Oaths Breakdown -->
       <section style="margin-bottom: 36px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">The Three Ancient Guild Oaths</h2>
+        <h2 id="the-three-ancient-guild-oaths" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">The Three Ancient Guild Oaths</h2>
         <div style="display: flex; flex-direction: column; gap: 20px;">
           {oaths.map((o) => (
             <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
               <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-                <h3 style="font-size: 1.25rem; color: #fff; margin: 0;">{o.name}</h3>
+                <h3 id="o-name" style="font-size: 1.25rem; color: #fff; margin: 0;">{o.name}</h3>
                 <span style="font-size: 0.8rem; background: #0d0a14; color: var(--accent); padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
                   {o.affinity}
                 </span>
@@ -115,7 +122,7 @@ const jsonLd = [
 
       <!-- Tactical Advice -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 14px;">Guild Oath Optimization Strategies</h2>
+        <h2 id="guild-oath-optimization-strategies" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 14px;">Guild Oath Optimization Strategies</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
           To maximize party raid effectiveness, guilds should maintain a balanced distribution of oaths across their 4-player raid teams:
         </p>
@@ -128,7 +135,7 @@ const jsonLd = [
 
       <!-- Navigation & Links -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0 0 10px;">Guild System Navigation</h3>
+        <h3 id="guild-system-navigation" style="font-size: 1.1rem; color: var(--ink); margin: 0 0 10px;">Guild System Navigation</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/guilds/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             ← Return to Guilds & Castle Overview
@@ -142,5 +149,9 @@ const jsonLd = [
         </div>
       </section>
     </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/guilds/oaths/" />
+    </div>
   </div>
 </BaseLayout>

@@ -2386,23 +2386,58 @@ article code {
 }
 
 @media (min-width: 981px) {
+  /* 站长 2026-10-10 定案（方案 2）：rail 独占固定位，目录与侧栏导航随页面滚动。
+     原因：视口 608 高时「目录 334 + rail 600 = 934」> 可用 524 —— 同列只能有一个
+     长期固定的面板，rail 需要 sticky 才能拿满曝光，故目录/wiki 让位。 */
   .sidebar-col-toc,
   .sidebar-col-wiki {
-    position: sticky;
-    top: 84px;
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
+    position: static;
+    max-height: none;
+    overflow-y: visible;
     scrollbar-width: thin;
     scrollbar-color: var(--line-light) transparent;
   }
-  .sidebar-col-toc::-webkit-scrollbar,
-  .sidebar-col-wiki::-webkit-scrollbar {
-    width: 4px;
+}
+
+.sidebar-col-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+  align-self: stretch;
+  flex: 1;
+}
+
+/* 中屏：group 作为 grid 项也需撑满行高，stack 才能继承全篇高度 */
+.article-sidebars-group {
+  align-self: stretch;
+}
+
+.guide-rail-ad {
+  pointer-events: none;
+  /* sticky 的移动范围被限制在其父元素的 padding box 内：
+     父容器只有广告自身高（721）时，rail 固定 ~64px 就被释放（实测）。
+     用 flex:1 让容器撑满 stack 的剩余高度 → rail 的 sticky 覆盖整篇文章。 */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-rail-stick {
+  position: sticky;
+  top: 84px;
+  pointer-events: auto;
+}
+
+@media (max-width: 980px) {
+  .guide-rail-ad {
+    display: none;
   }
-  .sidebar-col-toc::-webkit-scrollbar-thumb,
-  .sidebar-col-wiki::-webkit-scrollbar-thumb {
-    background: var(--line-light);
-    border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guide-rail-stick {
+    position: static;
   }
 }
 
@@ -2597,6 +2632,122 @@ article code {
   margin-top: 18px;
   padding-top: 14px;
   border-top: 1px solid var(--line);
+}
+
+/* ============================================================
+   ACTIVE REWARD CODES Widget (Sidebar)
+   ============================================================ */
+.sidebar-codes-widget {
+  background: linear-gradient(135deg, rgba(22, 16, 34, 0.95) 0%, rgba(29, 21, 44, 0.98) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+.sidebar-codes-widget .widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.sidebar-codes-widget .widget-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #34d399;
+  letter-spacing: 0.06em;
+}
+.sidebar-codes-widget .widget-count-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--muted);
+}
+.sidebar-codes-widget .widget-count-badge.active {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+.sidebar-codes-widget .dot.live.pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 8px #34d399;
+  display: inline-block;
+  animation: codePulse 2s infinite ease-in-out;
+}
+@keyframes codePulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+.widget-code-preview {
+  margin-bottom: 10px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  border: 1px dashed rgba(168, 85, 247, 0.3);
+}
+.code-snippet-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.code-val {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #34d399;
+  letter-spacing: 0.04em;
+}
+.code-reward-text {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.widget-empty-preview {
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  border: 1px dashed var(--line-light);
+}
+.widget-empty-note {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #c9a227;
+  font-weight: 500;
+}
+.widget-sub-note {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.widget-action-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 6px 10px;
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+.widget-action-link:hover {
+  background: rgba(168, 85, 247, 0.2);
 }
 
 /* 移动端折叠目录 */

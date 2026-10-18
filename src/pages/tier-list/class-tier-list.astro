@@ -157,7 +157,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Class Tier List: Best Super Classes"
@@ -165,7 +171,7 @@ const jsonLd = [
   canonical="/tier-list/class-tier-list/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -173,6 +179,9 @@ const jsonLd = [
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Classes</span>
     </nav>
+
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
 
     <header style="margin-bottom: 32px;">
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
@@ -198,7 +207,7 @@ const jsonLd = [
             {t.classes.map((c) => (
               <div style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 14px;">
                 <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; flex-wrap: wrap;">
-                  <h3 style="margin: 0; font-size: 1.15rem; color: var(--ink);">{c.name}</h3>
+                  <h3 id="c-name" style="margin: 0; font-size: 1.15rem; color: var(--ink);">{c.name}</h3>
                   <span style="font-size: 0.8rem; color: var(--accent); background: rgba(168, 85, 247, 0.15); padding: 1px 6px; border-radius: 3px;">
                     Base: {c.base}
                   </span>
@@ -219,7 +228,7 @@ const jsonLd = [
 
     <!-- Comparative Base Class Growth Matrix -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 40px;">
-      <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">
+      <h2 id="lv-1-base-archetype-stat-distribution" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">
         Lv 1 Base Archetype Stat Distribution
       </h2>
       <p style="color: var(--muted); font-size: 0.9rem; margin: 0 0 16px;">
@@ -307,5 +316,10 @@ const jsonLd = [
         Compare Best Races for Classes →
       </a>
     </div>
-  </div>
+  
+      </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/tier-list/class-tier-list/" />
+    </div></div>
 </BaseLayout>

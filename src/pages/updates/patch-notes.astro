@@ -71,7 +71,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Patch Notes: Update Log"
@@ -79,7 +85,7 @@ const jsonLd = [
   canonical="/updates/patch-notes/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -112,10 +118,11 @@ const jsonLd = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <!-- Summary Callout -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #34d399; margin: 0 0 12px;">Developer Commitment: Weekly Content Cycles</h2>
+        <h2 id="developer-commitment-weekly-content-cycles" style="font-size: 1.25rem; color: #34d399; margin: 0 0 12px;">Developer Commitment: Weekly Content Cycles</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
           The official development team maintains an explicit commitment: <em>"Game will be updated weekly. This is a fast turn-based roguelike RPG game, it is not meant to be easy."</em> Every Tuesday evening, server restarts deploy balance adjustments and refresh active promotional code buffers.
         </p>
@@ -123,12 +130,12 @@ const jsonLd = [
 
       <!-- Patches Master Timeline -->
       <section style="margin-bottom: 40px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Complete Version History & Change Logs</h2>
+        <h2 id="complete-version-history-change-logs" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Complete Version History & Change Logs</h2>
         <div style="display: flex; flex-direction: column; gap: 24px;">
           {patches.map((p) => (
             <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px;">
               <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
-                <h3 style="font-size: 1.25rem; color: #fff; margin: 0;">{p.version}</h3>
+                <h3 id="p-version" style="font-size: 1.25rem; color: #fff; margin: 0;">{p.version}</h3>
                 <span style="font-size: 0.8rem; background: #0d0a14; color: #c9a227; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
                   Released: {p.releaseDate}
                 </span>
@@ -153,7 +160,7 @@ const jsonLd = [
 
       <!-- Navigation -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Game Resources</h3>
+        <h3 id="explore-further-game-resources" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Game Resources</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/codes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             → Active Promo Codes Ledger
@@ -167,5 +174,9 @@ const jsonLd = [
         </div>
       </section>
     </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/updates/patch-notes/" />
+    </div>
   </div>
 </BaseLayout>

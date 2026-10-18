@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
 
 const superClassesByBase = [
   {
@@ -234,7 +240,7 @@ const jsonLd = [
   canonical="/classes/super-classes/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -242,8 +248,9 @@ const jsonLd = [
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">18 Super Classes</span>
     </nav>
-
-    <header style="margin-bottom: 32px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+      <header style="margin-bottom: 32px;">
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
         Pixel Lineage 18 Super Classes & Skills
       </h1>
@@ -253,8 +260,23 @@ const jsonLd = [
     </header>
 
     <!-- Permanent Choice Warning -->
-    <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 20px; margin-bottom: 36px;">
-      <h2 style="margin: 0 0 8px; font-size: 1.2rem; color: #f43f5e;">Crucial Rule: Super Class Evolution is Irreversible</h2>
+            <!-- Video Showcase (Tactical Walkthrough) -->
+        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+          <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Super Classes Guide</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Full showcase of all 18 Super Class evolutions, skill multipliers, and Trainer Shrine mechanics.
+          </p>
+          <VideoEmbed
+            id="_Tx_aM0w1bE"
+            title="Pixel Lineage 18 Super Classes & Evolution Paths Showcase"
+            channelTitle="OyO"
+            uploadDate="2026-10-07T00:00:00+00:00"
+            description="Full showcase of all 18 Super Class evolutions, skill multipliers, and Trainer Shrine mechanics."
+          />
+        </section>
+
+<section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 20px; margin-bottom: 36px;">
+      <h2 id="crucial-rule-super-class-evolution-is-irreversible" style="margin: 0 0 8px; font-size: 1.2rem; color: #f43f5e;">Crucial Rule: Super Class Evolution is Irreversible</h2>
       <p style="color: var(--muted); font-size: 0.95rem; margin: 0; line-height: 1.6;">
         Upon completing Act 1 and reaching the <strong>Trainer's Shrine</strong> inside Act 2 The Dungeon, you will be prompted to lock in one of the three Super Class specializations for your base class. There is <strong>no respec token</strong> or undo mechanic. Ensure you study the skill profiles below before interacting with the shrine.
       </p>
@@ -276,7 +298,7 @@ const jsonLd = [
           <div style="padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
             {group.superClasses.map((sc) => (
               <div style="background: #13101c; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 6px; padding: 16px;">
-                <h3 style="margin: 0 0 4px; font-size: 1.15rem; color: var(--ink);">{sc.name}</h3>
+                <h3 id="sc-name" style="margin: 0 0 4px; font-size: 1.15rem; color: var(--ink);">{sc.name}</h3>
                 <div style="font-size: 0.78rem; color: #c9a227; margin-bottom: 12px; font-weight: 600;">Role: {sc.role}</div>
                 <div style="font-size: 0.85rem; color: var(--muted); line-height: 1.5;">
                   <strong style="color: #f5f3ff;">Active Skills:</strong>
@@ -295,7 +317,7 @@ const jsonLd = [
 
     <!-- Ultra Class & Sigil Section -->
     <section style="background: #1d152c; border: 1px solid #a855f7; border-radius: 8px; padding: 24px; margin-bottom: 40px;">
-      <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 12px;">Ultra Class Awakening & Ultra Sigil Requirements</h2>
+      <h2 id="ultra-class-awakening-ultra-sigil-requirements" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 12px;">Ultra Class Awakening & Ultra Sigil Requirements</h2>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
         Beyond Super Classes lies the pinnacle <strong>Ultra Class</strong> tier. Awakening an Ultra Class requires:
       </p>
@@ -317,6 +339,11 @@ const jsonLd = [
       <a href="/tier-list/race-tier-list/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
         Race Synergy Recommendations →
       </a>
+    </div>
+        </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/super-classes/" />
     </div>
   </div>
 </BaseLayout>

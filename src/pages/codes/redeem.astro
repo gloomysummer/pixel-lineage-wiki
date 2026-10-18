@@ -41,7 +41,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="How to Redeem Pixel Lineage Codes: NPC Guide"
@@ -49,7 +55,7 @@ const jsonLd = [
   canonical="/codes/redeem/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -67,9 +73,10 @@ const jsonLd = [
       </p>
     </header>
 
-    <article style="line-height: 1.7; color: var(--ink);">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Step 1: Complete Account Requirements</h2>
+        <h2 id="step-1-complete-account-requirements" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Step 1: Complete Account Requirements</h2>
         <p style="color: var(--muted); margin: 0 0 12px; font-size: 0.95rem;">
           Before launching Pixel Lineage on Roblox, perform these three prerequisites on your web browser or Roblox app:
         </p>
@@ -81,7 +88,7 @@ const jsonLd = [
       </section>
 
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
-        <h2 style="font-size: 1.3rem; color: #a855f7; margin: 0 0 16px;">Step 2: Find the Goblin Merchant NPC</h2>
+        <h2 id="step-2-find-the-goblin-merchant-npc" style="font-size: 1.3rem; color: #a855f7; margin: 0 0 16px;">Step 2: Find the Goblin Merchant NPC</h2>
         <p style="color: var(--muted); margin: 0 0 12px; font-size: 0.95rem;">
           Once loaded into a server:
         </p>
@@ -93,7 +100,7 @@ const jsonLd = [
       </section>
 
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
-        <h2 style="font-size: 1.3rem; color: #34d399; margin: 0 0 16px;">Step 3: Enter the Code & Claim Rewards</h2>
+        <h2 id="step-3-enter-the-code-claim-rewards" style="font-size: 1.3rem; color: #34d399; margin: 0 0 16px;">Step 3: Enter the Code & Claim Rewards</h2>
         <p style="color: var(--muted); margin: 0 0 12px; font-size: 0.95rem;">
           Interact with the Goblin Merchant by pressing <strong>[E]</strong> (or tapping the dialogue bubble on mobile):
         </p>
@@ -106,7 +113,7 @@ const jsonLd = [
       </section>
 
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
-        <h2 style="font-size: 1.3rem; color: #60a5fa; margin: 0 0 16px;">Step 4: Verify Inventory & Spent Tokens</h2>
+        <h2 id="step-4-verify-inventory-spent-tokens" style="font-size: 1.3rem; color: #60a5fa; margin: 0 0 16px;">Step 4: Verify Inventory & Spent Tokens</h2>
         <p style="color: var(--muted); margin: 0 0 12px; font-size: 0.95rem;">
           Once the redemption banner dismisses, verify that your currency and spin tokens have been properly credited to your account data before leaving the town instance:
         </p>
@@ -120,7 +127,7 @@ const jsonLd = [
 
       <!-- Evidence Dossier Box -->
       <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
-        <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">
+        <h3 id="evidence-dossier-town-hub-compass-npc-coordinates" style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">
           Evidence Dossier: Town Hub Compass & NPC Coordinates
         </h3>
         <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 10px;">
@@ -140,5 +147,9 @@ const jsonLd = [
         </a>
       </div>
     </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/codes/redeem/" />
+    </div>
   </div>
 </BaseLayout>

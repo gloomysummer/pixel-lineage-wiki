@@ -49,7 +49,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Legendary Powers: Gear & Relics"
@@ -57,7 +63,7 @@ const jsonLd = [
   canonical="/gear/legendary-powers/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -78,10 +84,11 @@ const jsonLd = [
       </p>
     </header>
 
-    <article style="line-height: 1.7; color: var(--ink);">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <!-- Summary Callout -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
-        <h2 style="margin: 0 0 8px; font-size: 1.2rem; color: #c9a227;">How Legendary Equipment Modifiers Work</h2>
+        <h2 id="how-legendary-equipment-modifiers-work" style="margin: 0 0 8px; font-size: 1.2rem; color: #c9a227;">How Legendary Equipment Modifiers Work</h2>
         <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">
           Unlike standard rare gear that only provides flat numerical attributes, Legendary Tier items grant unique passive combat mechanics. These powers can trigger counter-attacks, bypass boss defenses, or restore whole health percentages upon hitting turn thresholds.
         </p>
@@ -89,12 +96,12 @@ const jsonLd = [
 
       <!-- Legendary Powers Breakdown -->
       <section style="margin-bottom: 36px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Top Legendary Artifacts & Unique Effects</h2>
+        <h2 id="top-legendary-artifacts-unique-effects" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Top Legendary Artifacts & Unique Effects</h2>
         <div style="display: flex; flex-direction: column; gap: 20px;">
           {legendaryPowers.map((lp) => (
             <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
               <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-                <h3 style="font-size: 1.25rem; color: #fff; margin: 0;">{lp.name}</h3>
+                <h3 id="lp-name" style="font-size: 1.25rem; color: #fff; margin: 0;">{lp.name}</h3>
                 <span style="font-size: 0.8rem; background: #0d0a14; color: #c9a227; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
                   {lp.itemSlot}
                 </span>
@@ -115,7 +122,7 @@ const jsonLd = [
 
       <!-- Navigation & Links -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0 0 10px;">Continue Exploring Equipment</h3>
+        <h3 id="continue-exploring-equipment" style="font-size: 1.1rem; color: var(--ink); margin: 0 0 10px;">Continue Exploring Equipment</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/gear/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             ← Return to Gear Overview
@@ -129,5 +136,9 @@ const jsonLd = [
         </div>
       </section>
     </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/gear/legendary-powers/" />
+    </div>
   </div>
 </BaseLayout>

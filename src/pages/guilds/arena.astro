@@ -53,7 +53,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Arena: PvP Dueling Guide"
@@ -61,7 +67,7 @@ const jsonLd = [
   canonical="/guilds/arena/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -94,10 +100,11 @@ const jsonLd = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <!-- Summary Callout -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #eab308; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #eab308; margin: 0 0 12px;">PvP Combat Balance Adjustments</h2>
+        <h2 id="pvp-combat-balance-adjustments" style="font-size: 1.25rem; color: #eab308; margin: 0 0 12px;">PvP Combat Balance Adjustments</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
           The Arena operates under modified combat parameters compared to PvE dungeons. Potion consumables are strictly disabled, Dodge probability is hard-capped at 45.0% (down from 65.0%), and a universal 15% PvP damage dampening aura ensures matches do not end on a single lucky turn-one critical strike.
         </p>
@@ -105,12 +112,12 @@ const jsonLd = [
 
       <!-- Arena Tiers Breakdown -->
       <section style="margin-bottom: 40px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Seasonal Rating Tiers & Rewards</h2>
+        <h2 id="seasonal-rating-tiers-rewards" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Seasonal Rating Tiers & Rewards</h2>
         <div style="display: flex; flex-direction: column; gap: 20px;">
           {arenaTiers.map((t) => (
             <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
               <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
-                <h3 style="font-size: 1.25rem; color: #fff; margin: 0;">{t.tier}</h3>
+                <h3 id="t-tier" style="font-size: 1.25rem; color: #fff; margin: 0;">{t.tier}</h3>
                 <span style="font-size: 0.8rem; background: #0d0a14; color: #34d399; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
                   {t.matchRules}
                 </span>
@@ -128,7 +135,7 @@ const jsonLd = [
 
       <!-- Glory Shop Economy -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">The Arena Glory Shop: Best Purchases</h2>
+        <h2 id="the-arena-glory-shop-best-purchases" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">The Arena Glory Shop: Best Purchases</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Every arena victory awards Glory Points. Speak to the Arena Master at the Guild Castle Grounds to redeem points for high-tier upgrades:
         </p>
@@ -141,7 +148,7 @@ const jsonLd = [
 
       <!-- Navigation -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Related Guild Systems</h3>
+        <h3 id="explore-related-guild-systems" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Related Guild Systems</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/guilds/guild-raids/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             ← 4-Player Guild Raids Strategy Guide
@@ -155,5 +162,9 @@ const jsonLd = [
         </div>
       </section>
     </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/guilds/arena/" />
+    </div>
   </div>
 </BaseLayout>

@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
 
 const jsonLd = [
   {
@@ -34,7 +40,7 @@ const jsonLd = [
   canonical="/races/nightborn/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -42,6 +48,9 @@ const jsonLd = [
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Nightborn</span>
     </nav>
+
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
 
     <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; color: #a855f7; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
@@ -67,10 +76,9 @@ const jsonLd = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
-      <!-- Core Attributes Summary Box -->
+    <!-- Core Attributes Summary Box -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #a855f7; margin: 0 0 12px;">Nightborn Innate Racial Trait Ledger</h2>
+        <h2 id="nightborn-innate-racial-trait-ledger" style="font-size: 1.25rem; color: #a855f7; margin: 0 0 12px;">Nightborn Innate Racial Trait Ledger</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; font-size: 0.9rem;">
           <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
             <span style="color: var(--muted); font-size: 0.75rem; display: block;">Natural Mana Siphon</span>
@@ -89,7 +97,7 @@ const jsonLd = [
 
       <!-- Tactical Deep Dive -->
       <section style="margin-bottom: 36px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Why Nightborn Dominates the Spellcaster Meta</h2>
+        <h2 id="why-nightborn-dominates-the-spellcaster-meta" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Why Nightborn Dominates the Spellcaster Meta</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           In turn-based roguelike combat, action economy is the supreme determinant of survival. Standard spellcasters running Human or Elf bloodlines face severe resource attrition during prolonged Act 2 and Act 3 boss encounters: every third turn must typically be spent consuming a mana potion rather than maintaining offensive pressure.
         </p>
@@ -103,22 +111,22 @@ const jsonLd = [
 
       <!-- Super Class Synergy Matrix -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Optimal Super Class Synergies with Nightborn</h2>
+        <h2 id="optimal-super-class-synergies-with-nightborn" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Optimal Super Class Synergies with Nightborn</h2>
         <div style="display: flex; flex-direction: column; gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #a855f7;">
-            <h3 style="font-size: 1.1rem; color: #a855f7; margin: 0 0 6px;">1. Hexer (Mage Super Class) — S+ Tier Synergy</h3>
+            <h3 id="1-hexer-mage-super-class-s-tier-synergy" style="font-size: 1.1rem; color: #a855f7; margin: 0 0 6px;">1. Hexer (Mage Super Class) — S+ Tier Synergy</h3>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
               Hexer applies heavy 2.4x MAG decay curses that deal sustained shadow damage. Nightborn's +8% Dark Spell DMG applies multiplicatively to both the initial cast and every subsequent damage tick, elevating total damage by over 18% throughout a 5-turn boss rotation.
             </p>
           </div>
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
-            <h3 style="font-size: 1.1rem; color: #34d399; margin: 0 0 6px;">2. Cleric (Mage Super Class) — S Tier Synergy</h3>
+            <h3 id="2-cleric-mage-super-class-s-tier-synergy" style="font-size: 1.1rem; color: #34d399; margin: 0 0 6px;">2. Cleric (Mage Super Class) — S Tier Synergy</h3>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
               Clerics in 4-player Guild Raids burn mana rapidly to keep frontline tanks alive. Nightborn provides the bottomless mana reservoir required to chain AoE Divine Light cleanses without running dry during boss enrage phases.
             </p>
           </div>
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #ea580c;">
-            <h3 style="font-size: 1.1rem; color: #ea580c; margin: 0 0 6px;">3. Berserk (Warrior Super Class) — A+ Niche Synergy</h3>
+            <h3 id="3-berserk-warrior-super-class-a-niche-synergy" style="font-size: 1.1rem; color: #ea580c; margin: 0 0 6px;">3. Berserk (Warrior Super Class) — A+ Niche Synergy</h3>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
               While Nightborn is designed primarily for magic, Berserkers running low-HP setups capitalize intensely on Nightborn's 15% critical lifesteal, stabilizing their health buffer at 25% without ever dropping out of maximum attack multiplier range.
             </p>
@@ -129,7 +137,7 @@ const jsonLd = [
       
       <!-- Level 1 to 30 Milestone Scaling Table -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Nightborn Level 1 to 30 Milestone Progression Ledger</h2>
+        <h2 id="nightborn-level-1-to-30-milestone-progression-ledger" style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Nightborn Level 1 to 30 Milestone Progression Ledger</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Nightborn's passive bonuses scale exponentially as base class attributes increase. Here is the verified stat progression across seven key milestone levels, measured with standard Mage archetype scaling:
         </p>
@@ -210,7 +218,7 @@ const jsonLd = [
 
       <!-- Boss Matchup Strategies -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Dungeon Boss Tactical Matchup Ledger</h2>
+        <h2 id="dungeon-boss-tactical-matchup-ledger" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Dungeon Boss Tactical Matchup Ledger</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
             <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Goblin King (Act 1)</strong>
@@ -237,7 +245,7 @@ const jsonLd = [
 
       <!-- Best-in-Slot Equipment Loadout -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <h2 id="recommended-best-in-slot-equipment-synergies" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
             <strong style="color: #a855f7;">Weapon: Netherflame Focus or Void Scepter</strong>
@@ -262,7 +270,7 @@ const jsonLd = [
 
       <!-- Talent Pairing Synergies & Traps -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing Synergies & Anti-Synergies</h2>
+        <h2 id="talent-pairing-synergies-anti-synergies" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing Synergies & Anti-Synergies</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
             <strong style="color: #34d399; font-size: 0.95rem;">Must-Pick: Arcane Spark + Bloodthirst</strong>
@@ -282,7 +290,7 @@ const jsonLd = [
       
       <!-- Dungeon Exploration & Leveling Route SOP -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Nightborn Exploration & Leveling Route SOP</h2>
+        <h2 id="nightborn-exploration-leveling-route-sop" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Nightborn Exploration & Leveling Route SOP</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           To accelerate your Nightborn character from Level 1 to the Level 30 cap while conserving gold and potions, follow this structured dungeon progression roadmap:
         </p>
@@ -313,7 +321,7 @@ const jsonLd = [
 
       <!-- Multiplayer Combat Turn Rotation Blueprint -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Tactical Turn-by-Turn Combat Rotation Blueprint</h2>
+        <h2 id="tactical-turn-by-turn-combat-rotation-blueprint" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Tactical Turn-by-Turn Combat Rotation Blueprint</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Maximize your party damage output and personal survival by executing this battle rotation during tough boss encounters:
         </p>
@@ -344,7 +352,7 @@ const jsonLd = [
 
       <!-- Reroll Strategy -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">How to Obtain Nightborn: Spin Odds & Cost</h2>
+        <h2 id="how-to-obtain-nightborn-spin-odds-cost" style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">How to Obtain Nightborn: Spin Odds & Cost</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
           Nightborn occupies the Legendary 2.0% tier in the Goblin Merchant race roll table. On average, acquiring Nightborn requires approximately 50 Race Spins.
         </p>
@@ -356,22 +364,22 @@ const jsonLd = [
       
     <!-- Frequently Asked Questions About Nightborn -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-      <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Nightborn</h2>
+      <h2 id="frequently-asked-questions-about-nightborn" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Nightborn</h2>
       <div style="display: flex; flex-direction: column; gap: 16px;">
         <div>
-          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does Nightborn lifesteal apply to spell damage or only physical weapon attacks?</h3>
+          <h3 id="does-nightborn-lifesteal-apply-to-spell-damage-or-only-physical-weapon-attacks" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does Nightborn lifesteal apply to spell damage or only physical weapon attacks?</h3>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
             Nightborn lifesteal applies to ALL critical strikes, including magical spell criticals, decay curse ticks that critically strike, and physical strikes. This makes spellcasters with high critical probability exceptionally durable.
           </p>
         </div>
         <div>
-          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">What are the exact odds of rolling Nightborn from the Goblin Merchant?</h3>
+          <h3 id="what-are-the-exact-odds-of-rolling-nightborn-from-the-goblin-merchant" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">What are the exact odds of rolling Nightborn from the Goblin Merchant?</h3>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
             Nightborn possesses an exact 2.0% spin probability (Legendary tier). On average, you will need approximately 50 race spin tokens to acquire it, though without a hard pity counter, bad luck streaks can exceed 100 spins.
           </p>
         </div>
         <div>
-          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Is Nightborn viable for melee classes like Warrior and Fist?</h3>
+          <h3 id="is-nightborn-viable-for-melee-classes-like-warrior-and-fist" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Is Nightborn viable for melee classes like Warrior and Fist?</h3>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
             Yes. While the Dark Spell damage boost is wasted on pure physical classes, the 15% critical lifesteal and 15% MP regeneration provide huge sustaining value, eliminating the need to consume healing potions between dungeon battles.
           </p>
@@ -381,7 +389,7 @@ const jsonLd = [
 
       <!-- Cross-Linking -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Other Bloodlines & Builds</h3>
+        <h3 id="explore-other-bloodlines-builds" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Other Bloodlines & Builds</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/races/best-races/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             ← Return to Best Races Overview
@@ -394,6 +402,10 @@ const jsonLd = [
           </a>
         </div>
       </section>
-    </article>
+          </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/nightborn/" />
+    </div>
   </div>
 </BaseLayout>

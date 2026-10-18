@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
 
 const jsonLd = [
   {
@@ -46,7 +52,9 @@ const bardMilestones = [
   canonical="/classes/bard/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -79,10 +87,24 @@ const bardMilestones = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
-      <!-- Combat Philosophy & Archetype Overview -->
+            <!-- Video Showcase (Tactical Walkthrough) -->
+        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+          <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Bard Combat & Progression</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Comprehensive Pixel Lineage gameplay walkthrough demonstrating Bard party anthem cycles, tempo boosts, and raid buffs.
+          </p>
+          <VideoEmbed
+            id="1pdNdjCu7BM"
+            title="Pixel Lineage Bard Class Anthem & Buffer Rotation Walkthrough"
+            channelTitle="OyO"
+            uploadDate="2026-10-07T00:00:00+00:00"
+            description="Comprehensive Pixel Lineage gameplay walkthrough demonstrating Bard party anthem cycles, tempo boosts, and raid buffs."
+          />
+        </section>
+
+<!-- Combat Philosophy & Archetype Overview -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #eab308; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #eab308; margin: 0 0 12px;">Bard Combat Philosophy & Baseline Archetype</h2>
+        <h2 id="bard-combat-philosophy-baseline-archetype" style="font-size: 1.25rem; color: #eab308; margin: 0 0 12px;">Bard Combat Philosophy & Baseline Archetype</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
           The Bard is Pixel Lineage's master of battlefield harmonization and action meter manipulation. Possessing the most balanced baseline distribution across all 7 stats, Bards do not rely on brute force. Instead, they manipulate the foundational mechanics of combat: accelerating party turn order, amplifying ally damage output by up to 35%, and debuffing enemy resistance.
         </p>
@@ -94,7 +116,7 @@ const bardMilestones = [
       <!-- Complete Level 1 to 30 Milestone Growth Table -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
         <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
-          <h2 style="font-size: 1.3rem; color: #fff; margin: 0;">Complete Level 1 to 30 Attribute Growth Ledger</h2>
+          <h2 id="complete-level-1-to-30-attribute-growth-ledger" style="font-size: 1.3rem; color: #fff; margin: 0;">Complete Level 1 to 30 Attribute Growth Ledger</h2>
           <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #eab308;">Formula: HP +8.5/lv · MAG +1.8/lv · SPD +1.6/lv</span>
         </div>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
@@ -138,7 +160,7 @@ const bardMilestones = [
 
       <!-- The 3 Super Classes Deep Dive -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The 3 Bard Super Classes: Skills, Multipliers & Builds</h2>
+        <h2 id="the-3-bard-super-classes-skills-multipliers-builds" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The 3 Bard Super Classes: Skills, Multipliers & Builds</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
           At Level 15 in Act 2, speak to the Wandering Virtuoso at Trainer's Shrine. Choose carefully, as this sets your permanent anthem mechanics:
         </p>
@@ -146,7 +168,7 @@ const bardMilestones = [
         <!-- 1. Minstrel -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #eab308; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #eab308; margin: 0;">1. Minstrel — War Anthems & Party Damage Multiplier</h3>
+            <h3 id="1-minstrel-war-anthems-party-damage-multiplier" style="font-size: 1.15rem; color: #eab308; margin: 0;">1. Minstrel — War Anthems & Party Damage Multiplier</h3>
             <span style="font-size: 0.8rem; color: #eab308; background: rgba(234, 179, 8, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Raid DPS Amplifier</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -175,7 +197,7 @@ const bardMilestones = [
         <!-- 2. Siren -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #a855f7; margin: 0;">2. Siren — Alluring Charm & Sonic Crowd Control</h3>
+            <h3 id="2-siren-alluring-charm-sonic-crowd-control" style="font-size: 1.15rem; color: #a855f7; margin: 0;">2. Siren — Alluring Charm & Sonic Crowd Control</h3>
             <span style="font-size: 0.8rem; color: #a855f7; background: rgba(168, 85, 247, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Crowd Disrupter & Armor Shredder</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -204,7 +226,7 @@ const bardMilestones = [
         <!-- 3. Pianist -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 6px; padding: 18px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #34d399; margin: 0;">3. Pianist — Continuous Multi-Melody Harmony</h3>
+            <h3 id="3-pianist-continuous-multi-melody-harmony" style="font-size: 1.15rem; color: #34d399; margin: 0;">3. Pianist — Continuous Multi-Melody Harmony</h3>
             <span style="font-size: 0.8rem; color: #34d399; background: rgba(52, 211, 153, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Energy Battery & Continuous Sustain</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -233,7 +255,7 @@ const bardMilestones = [
 
       <!-- Recommended Bloodline & Talent Synergies -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Bloodline & Talent Meta Synergies</h2>
+        <h2 id="recommended-bloodline-talent-meta-synergies" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Bloodline & Talent Meta Synergies</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Bards benefit enormously from bloodlines that enhance action speed, healing, and crowd-control resistance:
         </p>
@@ -267,7 +289,7 @@ const bardMilestones = [
           </div>
         </div>
 
-        <h3 style="font-size: 1.1rem; color: #c9a227; margin: 0 0 10px;">Primary & Secondary Talent Pairings</h3>
+        <h3 id="primary-secondary-talent-pairings" style="font-size: 1.1rem; color: #c9a227; margin: 0 0 10px;">Primary & Secondary Talent Pairings</h3>
         <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 12px;">
           Consult our full <a href="/traits/" style="color: var(--accent); text-decoration: none;">Traits & Drop Rates Guide</a> when rolling. For Bards, the top three talents are:
         </p>
@@ -280,7 +302,7 @@ const bardMilestones = [
 
       <!-- Solo vs Multiplayer Dynamics -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Solo vs Multiplayer Team Roles & Positioning</h2>
+        <h2 id="solo-vs-multiplayer-team-roles-positioning" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Solo vs Multiplayer Team Roles & Positioning</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
             <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Solo Expedition Efficacy</strong>
@@ -300,7 +322,7 @@ const bardMilestones = [
 
       <!-- Power Curve: Early, Mid, End Game -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Power Curve Trajectory: Early vs Mid vs End Game</h2>
+        <h2 id="power-curve-trajectory-early-vs-mid-vs-end-game" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Power Curve Trajectory: Early vs Mid vs End Game</h2>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #eab308;">
             <strong style="color: #eab308;">Early Game (Levels 1–10): Balanced Progression</strong>
@@ -327,7 +349,7 @@ const bardMilestones = [
 
       <!-- Best-in-Slot Equipment Synergies -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <h2 id="recommended-best-in-slot-equipment-synergies" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
             <strong style="color: #eab308;">Weapon: Golden Harp of the Virtuoso or Flute of Harmony</strong>
@@ -352,22 +374,22 @@ const bardMilestones = [
 
       <!-- Frequently Asked Questions -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About the Bard</h2>
+        <h2 id="frequently-asked-questions-about-the-bard" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About the Bard</h2>
         <div style="display: flex; flex-direction: column; gap: 16px;">
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Do Bard anthems stack with warrior and mage buffs?</h3>
+            <h3 id="do-bard-anthems-stack-with-warrior-and-mage-buffs" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Do Bard anthems stack with warrior and mage buffs?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               Yes. Bard anthem buffs occupy a unique "Musical Aura" slot that stacks multiplicatively with warrior battle shouts, food buffs, and mage spell enchantments.
             </p>
           </div>
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Can Bard songs be interrupted if damaged?</h3>
+            <h3 id="can-bard-songs-be-interrupted-if-damaged" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Can Bard songs be interrupted if damaged?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               Anthem songs that cast instantly resolve immediately on your turn. However, channeling songs like Battle Symphony can be interrupted if the Bard is afflicted with Stun or Silence. Equipping Seraph or Dullahan prevents this hazard.
             </p>
           </div>
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Which Super Class is best for Guild Raids: Minstrel or Pianist?</h3>
+            <h3 id="which-super-class-is-best-for-guild-raids-minstrel-or-pianist" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Which Super Class is best for Guild Raids: Minstrel or Pianist?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               Minstrel is preferred for speed-running and burst damage teams. Pianist is superior for progression raids where prolonged energy sustainability and team healing are required to survive enrage phases.
             </p>
@@ -384,6 +406,10 @@ const bardMilestones = [
           Simulate Bard in Combat Calculator →
         </a>
       </div>
-    </article>
+          </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/bard/" />
+    </div>
   </div>
 </BaseLayout>

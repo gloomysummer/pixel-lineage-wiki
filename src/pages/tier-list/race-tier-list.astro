@@ -82,7 +82,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Race Tier List: Best Races Meta"
@@ -90,7 +96,7 @@ const jsonLd = [
   canonical="/tier-list/race-tier-list/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -98,6 +104,9 @@ const jsonLd = [
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Races</span>
     </nav>
+
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
 
     <header style="margin-bottom: 32px;">
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
@@ -122,7 +131,7 @@ const jsonLd = [
             {rt.races.map((r) => (
               <div style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 16px;">
                 <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; flex-wrap: wrap;">
-                  <h3 style="margin: 0; font-size: 1.2rem; color: var(--ink);">{r.name}</h3>
+                  <h3 id="r-name" style="margin: 0; font-size: 1.2rem; color: var(--ink);">{r.name}</h3>
                   <span style="font-size: 0.8rem; font-family: var(--font-mono); color: #c9a227; background: rgba(201, 162, 39, 0.15); padding: 1px 6px; border-radius: 3px;">
                     {r.rarity}
                   </span>
@@ -142,7 +151,7 @@ const jsonLd = [
 
     <!-- Spin Strategy Guide -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 40px;">
-      <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 12px;">When Should You Reroll Your Race?</h2>
+      <h2 id="when-should-you-reroll-your-race" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 12px;">When Should You Reroll Your Race?</h2>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
         Race Spins are an extremely valuable resource obtained from active promo codes (like <code style="color: #34d399;">OCTOBER</code>) and high-level Guild Raid drops. Follow these guidelines:
       </p>
@@ -162,5 +171,10 @@ const jsonLd = [
         Check Talent Drop Rates →
       </a>
     </div>
-  </div>
+  
+      </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/tier-list/race-tier-list/" />
+    </div></div>
 </BaseLayout>

@@ -53,7 +53,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Guild Raids: Boss Guide"
@@ -61,7 +67,7 @@ const jsonLd = [
   canonical="/guilds/guild-raids/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -94,10 +100,11 @@ const jsonLd = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <!-- Summary Callout -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #a855f7; margin: 0 0 12px;">The Core Rule of 4-Player Guild Warfare</h2>
+        <h2 id="the-core-rule-of-4-player-guild-warfare" style="font-size: 1.25rem; color: #a855f7; margin: 0 0 12px;">The Core Rule of 4-Player Guild Warfare</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
           Guild Raids in Pixel Lineage scale enemy boss HP by 350% and introduce multi-stage enrage timers. Unlike standard solo dungeon crawling where raw damage can overcome boss mechanics, raid bosses execute unblockable party-wide wipe attacks if specific stage phases are ignored.
         </p>
@@ -105,12 +112,12 @@ const jsonLd = [
 
       <!-- Encounters Breakdown -->
       <section style="margin-bottom: 40px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Raid Tiers & Boss Strategy Walkthrough</h2>
+        <h2 id="raid-tiers-boss-strategy-walkthrough" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Raid Tiers & Boss Strategy Walkthrough</h2>
         <div style="display: flex; flex-direction: column; gap: 24px;">
           {raidEncounters.map((r) => (
             <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px;">
               <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-                <h3 style="font-size: 1.3rem; color: #fff; margin: 0;">{r.name}</h3>
+                <h3 id="r-name" style="font-size: 1.3rem; color: #fff; margin: 0;">{r.name}</h3>
                 <span style="font-size: 0.8rem; background: #0d0a14; color: #c9a227; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
                   {r.requiredRank}
                 </span>
@@ -142,7 +149,7 @@ const jsonLd = [
 
       <!-- Raid Tokens & Castle Integration -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Spending Guild Tokens: The Vault Merchant</h2>
+        <h2 id="spending-guild-tokens-the-vault-merchant" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Spending Guild Tokens: The Vault Merchant</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Completing raid encounters awards Guild Tokens to every participating member. These tokens are exchanged at the Guild Castle Vault NPC for exclusive benefits:
         </p>
@@ -155,7 +162,7 @@ const jsonLd = [
 
       <!-- Navigation -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Guild Content</h3>
+        <h3 id="explore-further-guild-content" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Guild Content</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/guilds/oaths/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             ← Guild Oaths & Blood Pledges Guide
@@ -169,5 +176,9 @@ const jsonLd = [
         </div>
       </section>
     </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/guilds/guild-raids/" />
+    </div>
   </div>
 </BaseLayout>

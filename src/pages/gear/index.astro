@@ -64,7 +64,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Gear Guide: Armor Sets & Powers"
@@ -72,12 +78,15 @@ const jsonLd = [
   canonical="/gear/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Gear</span>
     </nav>
+
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
 
     <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #38bdf8; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
@@ -93,12 +102,12 @@ const jsonLd = [
 
     <!-- Armor Sets Section -->
     <section style="margin-bottom: 40px;">
-      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Core Dungeon Armor Sets</h2>
+      <h2 id="core-dungeon-armor-sets" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Core Dungeon Armor Sets</h2>
       <div style="display: flex; flex-direction: column; gap: 20px;">
         {armorSets.map((set) => (
           <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 8px; padding: 20px;">
             <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
-              <h3 style="margin: 0; font-size: 1.2rem; color: var(--ink);">{set.name}</h3>
+              <h3 id="set-name" style="margin: 0; font-size: 1.2rem; color: var(--ink);">{set.name}</h3>
               <span style="font-size: 0.8rem; color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 2px 6px; border-radius: 3px;">
                 {set.tier}
               </span>
@@ -119,11 +128,11 @@ const jsonLd = [
 
     <!-- Legendary Weapons Section -->
     <section style="margin-bottom: 40px;">
-      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Legendary Arsenal Powers</h2>
+      <h2 id="legendary-arsenal-powers" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Legendary Arsenal Powers</h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
         {legendaryWeapons.map((w) => (
           <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px; display: flex; flex-direction: column;">
-            <h3 style="margin: 0 0 4px; font-size: 1.15rem; color: #c9a227;">{w.name}</h3>
+            <h3 id="w-name" style="margin: 0 0 4px; font-size: 1.15rem; color: #c9a227;">{w.name}</h3>
             <span style="font-size: 0.78rem; color: var(--muted); margin-bottom: 10px;">{w.type}</span>
             <div style="font-size: 0.85rem; font-family: var(--font-mono); color: #34d399; margin-bottom: 10px;">
               {w.scaling}
@@ -138,7 +147,7 @@ const jsonLd = [
 
     <!-- Blacksmith Upgrading Rules -->
     <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
-      <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">
+      <h3 id="town-blacksmith-refinement-rules" style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">
         Town Blacksmith Refinement Rules
       </h3>
       <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 10px;">
@@ -158,5 +167,10 @@ const jsonLd = [
         Dungeon Drop Locations →
       </a>
     </div>
-  </div>
+  
+      </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/gear/" />
+    </div></div>
 </BaseLayout>

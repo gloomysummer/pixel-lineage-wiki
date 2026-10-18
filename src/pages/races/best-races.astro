@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
 
 const bestRaces = [
   {
@@ -76,7 +82,7 @@ const jsonLd = [
   canonical="/races/best-races/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -84,8 +90,9 @@ const jsonLd = [
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Best Races</span>
     </nav>
-
-    <header style="margin-bottom: 32px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; color: #a855f7; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
         Bloodline Optimization Guide
       </div>
@@ -97,10 +104,24 @@ const jsonLd = [
       </p>
     </header>
 
-    <article style="line-height: 1.7; color: var(--ink);">
-      <!-- Summary Callout -->
-      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
-        <h2 style="margin: 0 0 8px; font-size: 1.2rem; color: #a855f7;">When Should You Reroll Your Race?</h2>
+    <!-- Summary Callout -->
+              <!-- Video Showcase (Tactical Walkthrough) -->
+        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+          <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Best Races Guide</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Definitive bloodline ranking and spin allocation strategy for solo and multiplayer raid dominance.
+          </p>
+          <VideoEmbed
+            id="_Tx_aM0w1bE"
+            title="Pixel Lineage Best Races & Spin Meta Guide"
+            channelTitle="OyO"
+            uploadDate="2026-10-07T00:00:00+00:00"
+            description="Definitive bloodline ranking and spin allocation strategy for solo and multiplayer raid dominance."
+          />
+        </section>
+
+<section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+        <h2 id="when-should-you-reroll-your-race" style="margin: 0 0 8px; font-size: 1.2rem; color: #a855f7;">When Should You Reroll Your Race?</h2>
         <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">
           All new characters spawn as default Humans with balanced stats. Using a <strong>Race Spin</strong> (obtained via active promo codes or in-game boss achievements) rerolls your character's bloodline permanently. Always align your targeted race with your planned Super Class to avoid wasting rare reroll tokens.
         </p>
@@ -108,12 +129,12 @@ const jsonLd = [
 
       <!-- Best Races Rankings -->
       <section style="margin-bottom: 36px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Meta Race Rankings & Innate Passives</h2>
+        <h2 id="meta-race-rankings-innate-passives" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Meta Race Rankings & Innate Passives</h2>
         <div style="display: flex; flex-direction: column; gap: 20px;">
           {bestRaces.map((r) => (
             <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
               <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-                <h3 style="font-size: 1.25rem; color: #fff; margin: 0;">{r.name}</h3>
+                <h3 id="r-name" style="font-size: 1.25rem; color: #fff; margin: 0;">{r.name}</h3>
                 <span style="font-size: 0.8rem; background: #0d0a14; color: #c9a227; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
                   {r.tier}
                 </span>
@@ -137,7 +158,7 @@ const jsonLd = [
 
       <!-- Navigation & Links -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0 0 10px;">Explore Related Race Guides</h3>
+        <h3 id="explore-related-race-guides" style="font-size: 1.1rem; color: var(--ink); margin: 0 0 10px;">Explore Related Race Guides</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/races/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             ← Return to Races Overview
@@ -150,6 +171,10 @@ const jsonLd = [
           </a>
         </div>
       </section>
-    </article>
+          </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/best-races/" />
+    </div>
   </div>
 </BaseLayout>

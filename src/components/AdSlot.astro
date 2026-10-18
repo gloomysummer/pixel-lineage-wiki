@@ -13,7 +13,7 @@
  */
 import { siteConfig } from '../config/site.config';
 
-export type ZoneKey = 'banner-300x250' | 'banner-728x90' | 'banner-320x50';
+export type ZoneKey = 'banner-300x250' | 'banner-728x90' | 'banner-320x50' | 'banner-160x600';
 
 interface Props {
   zone: ZoneKey;
@@ -27,6 +27,7 @@ const DIMS: Record<ZoneKey, { w: number; h: number }> = {
   'banner-300x250': { w: 300, h: 250 },
   'banner-728x90': { w: 728, h: 90 },
   'banner-320x50': { w: 320, h: 50 },
+  'banner-160x600': { w: 160, h: 600 },
 };
 const dim = DIMS[zone];
 

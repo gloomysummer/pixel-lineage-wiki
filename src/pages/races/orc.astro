@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
 
 const jsonLd = [
   {
@@ -34,7 +40,7 @@ const jsonLd = [
   canonical="/races/orc/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -42,6 +48,9 @@ const jsonLd = [
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Orc</span>
     </nav>
+
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
 
     <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(234, 88, 12, 0.15); border: 1px solid #ea580c; color: #ea580c; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
@@ -67,10 +76,24 @@ const jsonLd = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
-      <!-- Core Attributes Box -->
+            <!-- Video Showcase (Tactical Walkthrough) -->
+        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+          <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Orc Bloodline & Mechanics</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Comprehensive Pixel Lineage gameplay walkthrough analyzing Orc brute attack scaling, death evasion, and frontline melee builds.
+          </p>
+          <VideoEmbed
+            id="1pdNdjCu7BM"
+            title="Pixel Lineage Orc Lineage & Melee Poise Breakdown"
+            channelTitle="OyO"
+            uploadDate="2026-10-07T00:00:00+00:00"
+            description="Comprehensive Pixel Lineage gameplay walkthrough analyzing Orc brute attack scaling, death evasion, and frontline melee builds."
+          />
+        </section>
+
+<!-- Core Attributes Box -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #ea580c; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #ea580c; margin: 0 0 12px;">Orc Innate Racial Trait Ledger</h2>
+        <h2 id="orc-innate-racial-trait-ledger" style="font-size: 1.25rem; color: #ea580c; margin: 0 0 12px;">Orc Innate Racial Trait Ledger</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; font-size: 0.9rem;">
           <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
             <span style="color: var(--muted); font-size: 0.75rem; display: block;">Brute Force</span>
@@ -89,7 +112,7 @@ const jsonLd = [
 
       <!-- Tactical Deep Dive -->
       <section style="margin-bottom: 36px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">The Undying Engine: Melee Supremacy</h2>
+        <h2 id="the-undying-engine-melee-supremacy" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">The Undying Engine: Melee Supremacy</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           The Orc bloodline represents the absolute gold standard for brute-force physical damage dealers in Pixel Lineage. Starting with an innate +12% Physical ATK buff that applies multiplicatively to both base weapons and leveling stat curves, Orc characters consistently output the highest raw single-turn physical damage numbers in the game.
         </p>
@@ -103,22 +126,22 @@ const jsonLd = [
 
       <!-- Super Class Synergy Matrix -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Best Super Class Synergies with Orc</h2>
+        <h2 id="best-super-class-synergies-with-orc" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Best Super Class Synergies with Orc</h2>
         <div style="display: flex; flex-direction: column; gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
-            <h3 style="font-size: 1.1rem; color: #f43f5e; margin: 0 0 6px;">1. Berserk (Warrior Super Class) — S+ God Tier Synergy</h3>
+            <h3 id="1-berserk-warrior-super-class-s-god-tier-synergy" style="font-size: 1.1rem; color: #f43f5e; margin: 0 0 6px;">1. Berserk (Warrior Super Class) — S+ God Tier Synergy</h3>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
               The single most devastating melee combination in Pixel Lineage. Berserk gains +2% ATK per 1% lost HP. When Undying Rage triggers at 1 HP, the Berserker operates at a staggering +98% maximum damage multiplier, delivering colossal 600+ damage critical strikes.
             </p>
           </div>
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #ea580c;">
-            <h3 style="font-size: 1.1rem; color: #ea580c; margin: 0 0 6px;">2. Brawler (Fist Super Class) — S Tier Multi-Hit</h3>
+            <h3 id="2-brawler-fist-super-class-s-tier-multi-hit" style="font-size: 1.1rem; color: #ea580c; margin: 0 0 6px;">2. Brawler (Fist Super Class) — S Tier Multi-Hit</h3>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
               Brawler flurries shred enemy armor by 15% per hit. Orc's baseline +12% ATK elevates each individual strike threshold, allowing full 6-hit combos to delete elite monster health bars before they can act.
             </p>
           </div>
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
-            <h3 style="font-size: 1.1rem; color: #38bdf8; margin: 0 0 6px;">3. Sentinel (Warrior Super Class) — A Tier Off-Tank</h3>
+            <h3 id="3-sentinel-warrior-super-class-a-tier-off-tank" style="font-size: 1.1rem; color: #38bdf8; margin: 0 0 6px;">3. Sentinel (Warrior Super Class) — A Tier Off-Tank</h3>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
               Allows frontline Sentinel tanks to survive unavoidable boss wipe mechanics in Torment dungeons without burdening party healers with emergency resurrections.
             </p>
@@ -129,7 +152,7 @@ const jsonLd = [
       
       <!-- Level 1 to 30 Milestone Scaling Table -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Orc Level 1 to 30 Milestone Progression Ledger</h2>
+        <h2 id="orc-level-1-to-30-milestone-progression-ledger" style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Orc Level 1 to 30 Milestone Progression Ledger</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Orc provides massive raw health and low-HP Berserk scaling. Here is the verified stat progression across seven key milestone levels, measured with standard Fist/Brawler archetype scaling:
         </p>
@@ -210,7 +233,7 @@ const jsonLd = [
 
       <!-- Boss Matchup Strategies -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Dungeon Boss Tactical Matchup Ledger</h2>
+        <h2 id="dungeon-boss-tactical-matchup-ledger" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Dungeon Boss Tactical Matchup Ledger</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
             <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Goblin King (Act 1)</strong>
@@ -237,7 +260,7 @@ const jsonLd = [
 
       <!-- Best-in-Slot Equipment Loadout -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <h2 id="recommended-best-in-slot-equipment-synergies" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
             <strong style="color: #ea580c;">Weapon: Spiked Iron Cestus or Warmonger Greataxe</strong>
@@ -262,7 +285,7 @@ const jsonLd = [
 
       <!-- Talent Pairing Synergies & Traps -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing Synergies & Anti-Synergies</h2>
+        <h2 id="talent-pairing-synergies-anti-synergies" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing Synergies & Anti-Synergies</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
             <strong style="color: #34d399; font-size: 0.95rem;">Must-Pick: Bloodthirst + Survivor</strong>
@@ -282,7 +305,7 @@ const jsonLd = [
       
       <!-- Dungeon Exploration & Leveling Route SOP -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Orc Exploration & Leveling Route SOP</h2>
+        <h2 id="orc-exploration-leveling-route-sop" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Orc Exploration & Leveling Route SOP</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Orc is built for aggressive damage trading. Follow this leveling path to maximize your raw health and berserk power spikes:
         </p>
@@ -313,7 +336,7 @@ const jsonLd = [
 
       <!-- Multiplayer Combat Turn Rotation Blueprint -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Tactical Turn-by-Turn Combat Rotation Blueprint</h2>
+        <h2 id="tactical-turn-by-turn-combat-rotation-blueprint" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Tactical Turn-by-Turn Combat Rotation Blueprint</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Maximize your enraged damage output and health recovery cycles by executing this combat rotation:
         </p>
@@ -345,7 +368,7 @@ const jsonLd = [
       
       <!-- PvP Arena Combat Analysis -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #ea580c; margin: 0 0 14px;">PvP Arena Matchups & Anti-Meta Strategies</h2>
+        <h2 id="pvp-arena-matchups-anti-meta-strategies" style="font-size: 1.3rem; color: #ea580c; margin: 0 0 14px;">PvP Arena Matchups & Anti-Meta Strategies</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Orc characters exploit opponents who lack one-shot execution potential. In the Castle Arena, trading blows actively favors an Orc's escalating attack scaling:
         </p>
@@ -364,7 +387,7 @@ const jsonLd = [
 
       <!-- Spin Economics -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">How to Obtain Orc & Spin Probability</h2>
+        <h2 id="how-to-obtain-orc-spin-probability" style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">How to Obtain Orc & Spin Probability</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
           Orc holds an Epic 5.0% drop probability in the standard Goblin Merchant race reroll pool. Statistically, players have a 1 in 20 chance to spin Orc on any given token.
         </p>
@@ -376,22 +399,22 @@ const jsonLd = [
       
     <!-- Frequently Asked Questions About Orc -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-      <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Orc</h2>
+      <h2 id="frequently-asked-questions-about-orc" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Orc</h2>
       <div style="display: flex; flex-direction: column; gap: 16px;">
         <div>
-          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does the Orc +12% Max HP multiplier interact with gear?</h3>
+          <h3 id="how-does-the-orc-12-max-hp-multiplier-interact-with-gear" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does the Orc +12% Max HP multiplier interact with gear?</h3>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
             The Orc +12% Max HP multiplier applies to both base character health and flat health bonuses granted by equipped armor sets, providing massive exponential value in late-game plate builds.
           </p>
         </div>
         <div>
-          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">What are the spin odds for Orc from the Goblin Merchant?</h3>
+          <h3 id="what-are-the-spin-odds-for-orc-from-the-goblin-merchant" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">What are the spin odds for Orc from the Goblin Merchant?</h3>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
             Orc is an Uncommon/Rare lineage with a 15.0% spin rate. Most players can easily acquire Orc within 5 to 7 race spins, making it the most cost-effective melee lineage in Pixel Lineage.
           </p>
         </div>
         <div>
-          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does the Berserk Rage attack bonus remain active if healed above 30% HP?</h3>
+          <h3 id="does-the-berserk-rage-attack-bonus-remain-active-if-healed-above-30-hp" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does the Berserk Rage attack bonus remain active if healed above 30% HP?</h3>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
             No. The +15% attack bonus dynamically deactivates as soon as current character HP rises above 30.0% of maximum health.
           </p>
@@ -401,7 +424,7 @@ const jsonLd = [
 
       <!-- Navigation -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Related Melee Resources</h3>
+        <h3 id="explore-related-melee-resources" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Related Melee Resources</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/classes/warrior/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             ← Warrior Progression & Berserk Guide
@@ -414,6 +437,10 @@ const jsonLd = [
           </a>
         </div>
       </section>
-    </article>
+          </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/orc/" />
+    </div>
   </div>
 </BaseLayout>

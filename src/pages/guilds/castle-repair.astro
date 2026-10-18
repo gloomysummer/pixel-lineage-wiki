@@ -53,7 +53,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Castle Repair: Priority Order"
@@ -61,7 +67,7 @@ const jsonLd = [
   canonical="/guilds/castle-repair/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -94,10 +100,11 @@ const jsonLd = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <!-- Summary Callout -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #ea580c; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #ea580c; margin: 0 0 12px;">Why Castle Repair Order Dictates Guild Success</h2>
+        <h2 id="why-castle-repair-order-dictates-guild-success" style="font-size: 1.25rem; color: #ea580c; margin: 0 0 12px;">Why Castle Repair Order Dictates Guild Success</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
           Upon forming or claiming a Guild Castle, all interior wings start in ruined states. Repairing castle facilities requires massive communal contributions of Timber, Stone, and Gold. Spending resources on low-priority wings (like the Arena) before securing the Altar or Forge severely slows down your guild's progression through Torment raids.
         </p>
@@ -105,11 +112,11 @@ const jsonLd = [
 
       <!-- Repair Sequence Breakdown -->
       <section style="margin-bottom: 40px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Prescribed Castle Wing Upgrade Order</h2>
+        <h2 id="prescribed-castle-wing-upgrade-order" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Prescribed Castle Wing Upgrade Order</h2>
         <div style="display: flex; flex-direction: column; gap: 24px;">
           {castleWings.map((w) => (
             <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px;">
-              <h3 style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">{w.wing}</h3>
+              <h3 id="w-wing" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">{w.wing}</h3>
               <div style="font-size: 0.88rem; color: #c9a227; margin-bottom: 10px;">
                 <strong>Restoration Cost:</strong> {w.repairCost}
               </div>
@@ -129,7 +136,7 @@ const jsonLd = [
 
       <!-- Material Farming Locations -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Where to Farm Castle Building Materials</h2>
+        <h2 id="where-to-farm-castle-building-materials" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Where to Farm Castle Building Materials</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           To accelerate guild repairs, assign party members to target these specific resource farming hubs:
         </p>
@@ -142,7 +149,7 @@ const jsonLd = [
 
       <!-- Navigation -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Guild Systems</h3>
+        <h3 id="explore-further-guild-systems" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Guild Systems</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/guilds/guild-raids/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             ← 4-Player Guild Raids Guide
@@ -156,5 +163,9 @@ const jsonLd = [
         </div>
       </section>
     </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/guilds/castle-repair/" />
+    </div>
   </div>
 </BaseLayout>

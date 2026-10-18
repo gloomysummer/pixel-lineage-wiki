@@ -43,7 +43,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Adventures: Dungeons & Torment"
@@ -51,12 +57,15 @@ const jsonLd = [
   canonical="/adventures/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Adventures</span>
     </nav>
+
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
 
     <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; color: #f59e0b; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
@@ -75,7 +84,7 @@ const jsonLd = [
       {acts.map((a) => (
         <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
           <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
-            <h2 style="margin: 0; font-size: 1.25rem; color: #f59e0b;">{a.act}</h2>
+            <h2 id="a-act" style="margin: 0; font-size: 1.25rem; color: #f59e0b;">{a.act}</h2>
             <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--muted); background: #1d152c; padding: 2px 6px; border-radius: 3px;">
               Target: {a.levels}
             </span>
@@ -95,7 +104,7 @@ const jsonLd = [
 
     <!-- Torment Difficulty Rules -->
     <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 24px; margin-bottom: 36px; line-height: 1.7;">
-      <h2 style="font-size: 1.3rem; color: #f43f5e; margin: 0 0 12px;">Torment Mode: High Stakes Roguelike Rules</h2>
+      <h2 id="torment-mode-high-stakes-roguelike-rules" style="font-size: 1.3rem; color: #f43f5e; margin: 0 0 12px;">Torment Mode: High Stakes Roguelike Rules</h2>
       <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 12px;">
         Unlocked after beating Act 2 for the first time, Torment Mode alters core combat rules:
       </p>
@@ -116,5 +125,10 @@ const jsonLd = [
         Best Classes for Torment Runs →
       </a>
     </div>
-  </div>
+  
+      </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/adventures/" />
+    </div></div>
 </BaseLayout>

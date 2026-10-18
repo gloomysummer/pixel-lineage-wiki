@@ -46,7 +46,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Torment Mode: Difficulty & Rules"
@@ -54,7 +60,7 @@ const jsonLd = [
   canonical="/adventures/torment/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -75,10 +81,11 @@ const jsonLd = [
       </p>
     </header>
 
-    <article style="line-height: 1.7; color: var(--ink);">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <!-- Core Mechanics Summary -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
-        <h2 style="margin: 0 0 8px; font-size: 1.2rem; color: #f43f5e;">What Makes Torment Mode Lethal?</h2>
+        <h2 id="what-makes-torment-mode-lethal" style="margin: 0 0 8px; font-size: 1.2rem; color: #f43f5e;">What Makes Torment Mode Lethal?</h2>
         <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">
           In standard adventure acts, falling in combat returns your character to the village at the cost of 1 Life token. In Torment Mode, dungeon hazards impose severe environmental penalties—including permanent burning damage, reduced potion efficacy by 50%, and double life deductions on team wipes.
         </p>
@@ -86,11 +93,11 @@ const jsonLd = [
 
       <!-- Torment Tier Breakdown -->
       <section style="margin-bottom: 36px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Torment Difficulty Levels & Loot Scalings</h2>
+        <h2 id="torment-difficulty-levels-loot-scalings" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Torment Difficulty Levels & Loot Scalings</h2>
         <div style="display: flex; flex-direction: column; gap: 16px;">
           {tormentLevels.map((t) => (
             <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-              <h3 style="font-size: 1.2rem; color: #c9a227; margin: 0 0 8px;">{t.level}</h3>
+              <h3 id="t-level" style="font-size: 1.2rem; color: #c9a227; margin: 0 0 8px;">{t.level}</h3>
               <div style="font-size: 0.9rem; color: #f43f5e; margin-bottom: 6px;">
                 <strong>Enemy Modifiers:</strong> {t.enemyBuffs}
               </div>
@@ -107,7 +114,7 @@ const jsonLd = [
 
       <!-- Best Torment Builds -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Recommended Builds for Torment Survival</h2>
+        <h2 id="recommended-builds-for-torment-survival" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Recommended Builds for Torment Survival</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Glass-cannon glass builds without defensive contingency layers fail instantly in Torment I and beyond. The most successful solo and group setups include:
         </p>
@@ -120,7 +127,7 @@ const jsonLd = [
 
       <!-- Navigation & Links -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0 0 10px;">Continue Exploring Adventures</h3>
+        <h3 id="continue-exploring-adventures" style="font-size: 1.1rem; color: var(--ink); margin: 0 0 10px;">Continue Exploring Adventures</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/adventures/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             ← Return to Adventures Overview
@@ -134,5 +141,9 @@ const jsonLd = [
         </div>
       </section>
     </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/adventures/torment/" />
+    </div>
   </div>
 </BaseLayout>

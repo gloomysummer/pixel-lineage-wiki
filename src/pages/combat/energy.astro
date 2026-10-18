@@ -49,7 +49,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Energy: Turn Economy"
@@ -57,7 +63,7 @@ const jsonLd = [
   canonical="/combat/energy/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -88,10 +94,11 @@ const jsonLd = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <!-- Summary Callout -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #38bdf8; margin: 0 0 12px;">Energy: The Core Currency of Battle Turns</h2>
+        <h2 id="energy-the-core-currency-of-battle-turns" style="font-size: 1.25rem; color: #38bdf8; margin: 0 0 12px;">Energy: The Core Currency of Battle Turns</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
           Unlike real-time action games where cooldowns govern skill rotations, Pixel Lineage operates on a discrete <strong>Energy Pool</strong>. Characters begin every standard turn with 3 Energy Points (EP). Every action—from drinking a health potion to casting a 3-cost ultimate spell—deducts points from this pool. Once energy reaches 0, your turn automatically ends.
         </p>
@@ -99,7 +106,7 @@ const jsonLd = [
 
       <!-- Energy Costs Table -->
       <section style="margin-bottom: 40px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Action Costs & Resource Allocation</h2>
+        <h2 id="action-costs-resource-allocation" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Action Costs & Resource Allocation</h2>
         <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
           <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
             <thead>
@@ -124,7 +131,7 @@ const jsonLd = [
 
       <!-- Advanced Turn Manipulation: Action Surges & Refunds -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Mastering Action Economy: Gaining Extra Energy</h2>
+        <h2 id="mastering-action-economy-gaining-extra-energy" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Mastering Action Economy: Gaining Extra Energy</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Top players conquer high-Torment dungeons by manipulating the energy engine to exceed the standard 3-energy cap:
         </p>
@@ -143,7 +150,7 @@ const jsonLd = [
 
       <!-- Navigation -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Combat Systems</h3>
+        <h3 id="explore-further-combat-systems" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Combat Systems</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/calculator/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             → Simulate Action Turn Cycles in Calculator
@@ -157,5 +164,9 @@ const jsonLd = [
         </div>
       </section>
     </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/combat/energy/" />
+    </div>
   </div>
 </BaseLayout>

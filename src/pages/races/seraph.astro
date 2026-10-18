@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
 
 const jsonLd = [
   {
@@ -34,7 +40,7 @@ const jsonLd = [
   canonical="/races/seraph/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -42,6 +48,9 @@ const jsonLd = [
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Seraph</span>
     </nav>
+
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
 
     <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(201, 162, 39, 0.15); border: 1px solid #c9a227; color: #c9a227; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
@@ -67,10 +76,24 @@ const jsonLd = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
-      <!-- Core Attributes Box -->
+            <!-- Video Showcase (Tactical Walkthrough) -->
+        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+          <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Seraph Bloodline & Mechanics</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Comprehensive Pixel Lineage gameplay walkthrough analyzing Seraph holy damage buffs, angel wings mobility, and cleric support meta.
+          </p>
+          <VideoEmbed
+            id="1pdNdjCu7BM"
+            title="Pixel Lineage Seraph Lineage & Holy Ascension Breakdown"
+            channelTitle="OyO"
+            uploadDate="2026-10-07T00:00:00+00:00"
+            description="Comprehensive Pixel Lineage gameplay walkthrough analyzing Seraph holy damage buffs, angel wings mobility, and cleric support meta."
+          />
+        </section>
+
+<!-- Core Attributes Box -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">Seraph Innate Racial Trait Ledger</h2>
+        <h2 id="seraph-innate-racial-trait-ledger" style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">Seraph Innate Racial Trait Ledger</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; font-size: 0.9rem;">
           <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
             <span style="color: var(--muted); font-size: 0.75rem; display: block;">Archangel Flight</span>
@@ -89,7 +112,7 @@ const jsonLd = [
 
       <!-- Tactical Deep Dive -->
       <section style="margin-bottom: 36px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">The Apex Combat Hybrid: Aerial Mastery</h2>
+        <h2 id="the-apex-combat-hybrid-aerial-mastery" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">The Apex Combat Hybrid: Aerial Mastery</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           The Seraph bloodline represents one of the rarest and most coveted character seeds in Pixel Lineage. Endowed with glowing celestial wings, Seraph characters float above the battlefield grid. This aerial state grants complete immunity to floor traps, caltrops, poison puddles, and lava hazards commonly encountered throughout Act 2 and Act 3 dungeons.
         </p>
@@ -103,22 +126,22 @@ const jsonLd = [
 
       <!-- Super Class Synergy Matrix -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Best Super Class Synergies with Seraph</h2>
+        <h2 id="best-super-class-synergies-with-seraph" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Best Super Class Synergies with Seraph</h2>
         <div style="display: flex; flex-direction: column; gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
-            <h3 style="font-size: 1.1rem; color: #f43f5e; margin: 0 0 6px;">1. Monk (Fist Super Class) — S+ Tier Meta</h3>
+            <h3 id="1-monk-fist-super-class-s-tier-meta" style="font-size: 1.1rem; color: #f43f5e; margin: 0 0 6px;">1. Monk (Fist Super Class) — S+ Tier Meta</h3>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
               Monk focuses on Ki-empowered multi-strikes. Because Judgment Brand procs on every individual hit in a flurry, a 6-hit Monk flurry delivers 6 instances of True Holy Damage, melting armored bosses in a single turn rotation.
             </p>
           </div>
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #22c55e;">
-            <h3 style="font-size: 1.1rem; color: #22c55e; margin: 0 0 6px;">2. Sniper (Archer Super Class) — S Tier Burst</h3>
+            <h3 id="2-sniper-archer-super-class-s-tier-burst" style="font-size: 1.1rem; color: #22c55e; margin: 0 0 6px;">2. Sniper (Archer Super Class) — S Tier Burst</h3>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
               Snipers already deal 3.0x precision critical hits. Adding Seraph's speed guarantees backline positioning initiative, allowing the Sniper to eliminate elite enemy casters before they take their first turn.
             </p>
           </div>
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
-            <h3 style="font-size: 1.1rem; color: #34d399; margin: 0 0 6px;">3. Assassin (Thief Super Class) — A+ Tier Speed</h3>
+            <h3 id="3-assassin-thief-super-class-a-tier-speed" style="font-size: 1.1rem; color: #34d399; margin: 0 0 6px;">3. Assassin (Thief Super Class) — A+ Tier Speed</h3>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
               Combines Thief's highest base Speed (16 + 2.4/lv) with Seraph's +14% flight boost, pushing turn initiative beyond 95+ in end-game PvP Arena duels.
             </p>
@@ -129,7 +152,7 @@ const jsonLd = [
       
       <!-- Level 1 to 30 Milestone Scaling Table -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Seraph Level 1 to 30 Milestone Progression Ledger</h2>
+        <h2 id="seraph-level-1-to-30-milestone-progression-ledger" style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Seraph Level 1 to 30 Milestone Progression Ledger</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Seraph represents the pinnacle of aerial speed and true damage. Here is the verified stat progression across seven key milestone levels, measured with standard Archer/Assassin archetype scaling:
         </p>
@@ -210,7 +233,7 @@ const jsonLd = [
 
       <!-- Boss Matchup Strategies -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Dungeon Boss Tactical Matchup Ledger</h2>
+        <h2 id="dungeon-boss-tactical-matchup-ledger" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Dungeon Boss Tactical Matchup Ledger</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
             <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Goblin King (Act 1)</strong>
@@ -237,7 +260,7 @@ const jsonLd = [
 
       <!-- Best-in-Slot Equipment Loadout -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <h2 id="recommended-best-in-slot-equipment-synergies" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
             <strong style="color: #c9a227;">Weapon: Zephyr Longbow or Piercing Rapier</strong>
@@ -262,7 +285,7 @@ const jsonLd = [
 
       <!-- Talent Pairing Synergies & Traps -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing Synergies & Anti-Synergies</h2>
+        <h2 id="talent-pairing-synergies-anti-synergies" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing Synergies & Anti-Synergies</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
             <strong style="color: #34d399; font-size: 0.95rem;">Must-Pick: Keen Eye + Prodigy</strong>
@@ -282,7 +305,7 @@ const jsonLd = [
       
       <!-- Dungeon Exploration & Leveling Route SOP -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Seraph Exploration & Leveling Route SOP</h2>
+        <h2 id="seraph-exploration-leveling-route-sop" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Seraph Exploration & Leveling Route SOP</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Seraph dominates speed progression. Follow this leveling blueprint to leverage your aerial agility and true damage:
         </p>
@@ -313,7 +336,7 @@ const jsonLd = [
 
       <!-- Multiplayer Combat Turn Rotation Blueprint -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Tactical Turn-by-Turn Combat Rotation Blueprint</h2>
+        <h2 id="tactical-turn-by-turn-combat-rotation-blueprint" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Tactical Turn-by-Turn Combat Rotation Blueprint</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Execute this high-tempo rotation to maximize true damage application while evading retaliation:
         </p>
@@ -345,7 +368,7 @@ const jsonLd = [
       
       <!-- PvP Arena Combat Analysis -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">PvP Arena Matchups & Anti-Meta Strategies</h2>
+        <h2 id="pvp-arena-matchups-anti-meta-strategies" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">PvP Arena Matchups & Anti-Meta Strategies</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Speed dictates arena tempo. Because Seraph characters naturally possess the highest initiative values in Pixel Lineage, they dictate the opening engagement phase in Castle Arena duels:
         </p>
@@ -364,7 +387,7 @@ const jsonLd = [
 
       <!-- Spin Economics -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">How to Obtain Seraph: Spin Probability</h2>
+        <h2 id="how-to-obtain-seraph-spin-probability" style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">How to Obtain Seraph: Spin Probability</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
           Seraph holds the ultra-rare Mythic 1.0% designation in the Goblin Merchant race pool. Statistically, players can expect to spend approximately 100 Race Spins to hit this bloodline.
         </p>
@@ -376,22 +399,22 @@ const jsonLd = [
       
     <!-- Frequently Asked Questions About Seraph -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-      <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Seraph</h2>
+      <h2 id="frequently-asked-questions-about-seraph" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Seraph</h2>
       <div style="display: flex; flex-direction: column; gap: 16px;">
         <div>
-          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does Seraph's 8% True Damage calculate on multi-hit abilities?</h3>
+          <h3 id="how-does-seraph-s-8-true-damage-calculate-on-multi-hit-abilities" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does Seraph's 8% True Damage calculate on multi-hit abilities?</h3>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
             Seraph's 8% True Damage applies to the damage value of every single strike within a multi-hit combo. For instance, an Archer's 5-arrow barrage applies 8% unmitigated true damage five consecutive times.
           </p>
         </div>
         <div>
-          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">What are the spin odds for Seraph from the Goblin Merchant?</h3>
+          <h3 id="what-are-the-spin-odds-for-seraph-from-the-goblin-merchant" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">What are the spin odds for Seraph from the Goblin Merchant?</h3>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
             Seraph is a Mythic bloodline with a 0.5% spin probability. Acquiring Seraph requires an average of 200 race spin tokens, making it the rarest and most prestigious offensive lineage in the game.
           </p>
         </div>
         <div>
-          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does Featherfall prevent all dungeon floor trap damage?</h3>
+          <h3 id="does-featherfall-prevent-all-dungeon-floor-trap-damage" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does Featherfall prevent all dungeon floor trap damage?</h3>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
             Yes. Featherfall provides complete immunity to floor spikes, poison grates, and falling rubble staggers throughout Act 1, Act 2, and Act 3 exploration chambers.
           </p>
@@ -401,7 +424,7 @@ const jsonLd = [
 
       <!-- Navigation -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Related Races & Systems</h3>
+        <h3 id="explore-related-races-systems" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Related Races & Systems</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/races/celestine/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             ← Compare with Celestine Holy Race
@@ -414,6 +437,10 @@ const jsonLd = [
           </a>
         </div>
       </section>
-    </article>
+          </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/seraph/" />
+    </div>
   </div>
 </BaseLayout>

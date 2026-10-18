@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
 
 const jsonLd = [
   {
@@ -46,7 +52,7 @@ const warriorMilestones = [
   canonical="/classes/warrior/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -55,34 +61,49 @@ const warriorMilestones = [
       <span class="current">Warrior</span>
     </nav>
 
-    <header style="margin-bottom: 32px;">
-      <div style="display: inline-block; background: rgba(234, 88, 12, 0.15); border: 1px solid #ea580c; color: #ea580c; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
-        Core Archetype · Heavy Frontline & Melee Cleave
-      </div>
-      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Warrior Class Guide: Stats & Super Classes
-      </h1>
-      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
-        The definitive tactical guide to the Warrior archetype in Pixel Lineage on Roblox. Featuring verified Level 1 to 30 attribute progressions, in-depth breakdowns of Berserk, Sentinel, and Greatsword Super Class evolutions, optimal bloodline pairings, and endgame raid rotation engineering.
-      </p>
-    </header>
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(234, 88, 12, 0.15); border: 1px solid #ea580c; color: #ea580c; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            Core Archetype · Heavy Frontline & Melee Cleave
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Warrior Class Guide: Stats & Super Classes
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+            The definitive tactical guide to the Warrior archetype in Pixel Lineage on Roblox. Featuring verified Level 1 to 30 attribute progressions, in-depth breakdowns of Berserk, Sentinel, and Greatsword Super Class evolutions, optimal bloodline pairings, and endgame raid rotation engineering.
+          </p>
+        </header>
 
-    <!-- Hero Image Banner -->
-    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
-      <img
-        src="/images/cards/card_warrior.webp"
-        alt="Pixel Lineage Warrior Class Frontline Tanking and Cleave Combat"
-        width="1200"
-        height="675"
-        style="width: 100%; height: auto; display: block;"
-        loading="eager"
-      />
-    </div>
+        <!-- Hero Image Banner -->
+        <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+          <img
+            src="/images/cards/card_warrior.webp"
+            alt="Pixel Lineage Warrior Class Frontline Tanking and Cleave Combat"
+            width="1200"
+            height="675"
+            style="width: 100%; height: auto; display: block;"
+            loading="eager"
+          />
+        </div>
+            <!-- Video Showcase (Tactical Walkthrough) -->
+      <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Warrior Combat & Progression</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Verified live gameplay walkthrough by OyO demonstrating early-game Warrior progression, melee cleave positioning, and dungeon tanking fundamentals.
+        </p>
+        <VideoEmbed
+          id="1pdNdjCu7BM"
+          title="Pixel Lineage Warrior Class Progression & Combat Mechanics Guide"
+          channelTitle="OyO"
+          uploadDate="2026-10-07T00:00:00+00:00"
+          description="Comprehensive Pixel Lineage beginner guide and live combat walkthrough showcasing Warrior frontline rotations and dungeon survival."
+        />
+      </section>
 
-    <article style="line-height: 1.7; color: var(--ink);">
       <!-- Combat Philosophy & Archetype Overview -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #ea580c; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #ea580c; margin: 0 0 12px;">Warrior Combat Philosophy & Baseline Archetype</h2>
+        <h2 id="warrior-combat-philosophy" style="font-size: 1.25rem; color: #ea580c; margin: 0 0 12px;">Warrior Combat Philosophy & Baseline Archetype</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
           The Warrior is Pixel Lineage's quintessential frontline bastion. Starting with the highest natural health pool in the game (120 HP) and 12 base Defense, Warriors excel at absorbing severe physical punishment while controlling enemy positioning. Unlike squishy agility or arcane classes that depend on RNG dodges and fragile mana barriers, Warriors mitigate damage deterministically through the hyperbolic armor formula <code style="color: #c9a227;">DEF / (DEF + 60)</code>.
         </p>
@@ -94,7 +115,7 @@ const warriorMilestones = [
       <!-- Complete Level 1 to 30 Milestone Growth Table -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
         <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
-          <h2 style="font-size: 1.3rem; color: #fff; margin: 0;">Complete Level 1 to 30 Attribute Growth Ledger</h2>
+          <h2 id="level-growth-ledger" style="font-size: 1.3rem; color: #fff; margin: 0;">Complete Level 1 to 30 Attribute Growth Ledger</h2>
           <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #ea580c;">Formula: HP +12/lv · DEF +1.8/lv · ATK +2.2/lv</span>
         </div>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
@@ -138,7 +159,7 @@ const warriorMilestones = [
 
       <!-- The 3 Super Classes Deep Dive -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The 3 Warrior Super Classes: Skills, Multipliers & Builds</h2>
+        <h2 id="super-class-evolutions" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The 3 Warrior Super Classes: Skills, Multipliers & Builds</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
           At Level 15 in Act 2, speak to the Ancient Knight at Trainer's Shrine. Your selection permanently rewires your skill kit and passive multipliers:
         </p>
@@ -146,7 +167,7 @@ const warriorMilestones = [
         <!-- 1. Berserk -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #f43f5e; margin: 0;">1. Berserk — Low-HP Hypercarry</h3>
+            <h3 id="super-class-berserk" style="font-size: 1.15rem; color: #f43f5e; margin: 0;">1. Berserk — Low-HP Hypercarry</h3>
             <span style="font-size: 0.8rem; color: #34d399; background: rgba(52, 211, 153, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Solo Boss Shredder</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -175,7 +196,7 @@ const warriorMilestones = [
         <!-- 2. Sentinel -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #38bdf8; margin: 0;">2. Sentinel — Unshakable Raid Vanguard</h3>
+            <h3 id="super-class-sentinel" style="font-size: 1.15rem; color: #38bdf8; margin: 0;">2. Sentinel — Unshakable Raid Vanguard</h3>
             <span style="font-size: 0.8rem; color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Raid Main Tank & Protector</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -204,7 +225,7 @@ const warriorMilestones = [
         <!-- 3. Greatsword -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #ea580c; border-radius: 6px; padding: 18px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #ea580c; margin: 0;">3. Greatsword — Wide-Angle AoE Annihilator</h3>
+            <h3 id="super-class-greatsword" style="font-size: 1.15rem; color: #ea580c; margin: 0;">3. Greatsword — Wide-Angle AoE Annihilator</h3>
             <span style="font-size: 0.8rem; color: #ea580c; background: rgba(234, 88, 12, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Mob Wave Sweeper</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -233,7 +254,7 @@ const warriorMilestones = [
 
       <!-- Recommended Race & Talent Synergies -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Bloodline & Talent Meta Synergies</h2>
+        <h2 id="bloodline-synergies" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Bloodline & Talent Meta Synergies</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           To maximize a Warrior's combat efficacy, pair your character with these verified racial lineages and trait combinations:
         </p>
@@ -267,7 +288,7 @@ const warriorMilestones = [
           </div>
         </div>
 
-        <h3 style="font-size: 1.1rem; color: #c9a227; margin: 0 0 10px;">Primary & Secondary Talent Pairings</h3>
+        <h3 id="talent-pairings" style="font-size: 1.1rem; color: #c9a227; margin: 0 0 10px;">Primary & Secondary Talent Pairings</h3>
         <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 12px;">
           Consult our full <a href="/traits/" style="color: var(--accent); text-decoration: none;">Traits & Drop Rates Guide</a> when rolling. For Warriors, the top two talents are:
         </p>
@@ -280,7 +301,7 @@ const warriorMilestones = [
 
       <!-- Solo vs Multiplayer Dynamics -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Solo vs Multiplayer Team Roles & Positioning</h2>
+        <h2 id="team-roles" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Solo vs Multiplayer Team Roles & Positioning</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
             <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Solo Expedition Efficacy</strong>
@@ -300,7 +321,7 @@ const warriorMilestones = [
 
       <!-- Power Curve: Early, Mid, End Game -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Power Curve Trajectory: Early vs Mid vs End Game</h2>
+        <h2 id="power-curve" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Power Curve Trajectory: Early vs Mid vs End Game</h2>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
             <strong style="color: #34d399;">Early Game (Levels 1–10): S Tier Dominance</strong>
@@ -327,7 +348,7 @@ const warriorMilestones = [
 
       <!-- Best-in-Slot Equipment Synergies -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <h2 id="equipment-synergies" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
             <strong style="color: #ea580c;">Weapon: Warmonger Greataxe or Pinnacle Broadsword</strong>
@@ -352,22 +373,22 @@ const warriorMilestones = [
 
       <!-- Frequently Asked Questions -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About the Warrior</h2>
+        <h2 id="frequently-asked-questions" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About the Warrior</h2>
         <div style="display: flex; flex-direction: column; gap: 16px;">
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Can I reset my Super Class if I choose the wrong Warrior evolution?</h3>
+            <h3 id="faq-reset-super-class" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Can I reset my Super Class if I choose the wrong Warrior evolution?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               No. In Pixel Lineage, choosing your Super Class at the Trainer's Shrine is permanently irreversible on that character slot. If you want to switch between Berserk and Sentinel, you must create a new character lineage or use an Ultra Sigil at Level 25.
             </p>
           </div>
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How should I allocate stat points as a Warrior?</h3>
+            <h3 id="faq-stat-allocation" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How should I allocate stat points as a Warrior?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               Prioritize Defense and Attack in a 2:1 ratio until Defense hits 60 (granting 50% physical DR). Afterwards, split points evenly between Attack and Max HP, as stacking Defense past 120 yields diminishing mitigation returns.
             </p>
           </div>
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Is Greatsword viable for solo Torment Mode dungeons?</h3>
+            <h3 id="faq-greatsword-torment" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Is Greatsword viable for solo Torment Mode dungeons?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               Greatsword clears mob rooms faster than any other melee class. However, on single-target Torment bosses, Sentinel or Berserk generally performs better due to specialized boss mitigation and execute mechanics.
             </p>
@@ -385,5 +406,10 @@ const warriorMilestones = [
         </a>
       </div>
     </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/warrior/" />
+    </div>
   </div>
 </BaseLayout>
+

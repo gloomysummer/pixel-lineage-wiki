@@ -52,7 +52,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Updates: Patch Notes & Events"
@@ -60,12 +66,15 @@ const jsonLd = [
   canonical="/updates/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Updates</span>
     </nav>
+
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
 
     <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(99, 102, 241, 0.15); border: 1px solid #6366f1; color: #6366f1; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
@@ -81,7 +90,7 @@ const jsonLd = [
 
     <!-- Developer Commitment Box -->
     <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #6366f1; border-radius: 8px; padding: 20px; margin-bottom: 36px;">
-      <h2 style="margin: 0 0 8px; font-size: 1.15rem; color: #c9a227;">Official Developer Statement</h2>
+      <h2 id="official-developer-statement" style="margin: 0 0 8px; font-size: 1.15rem; color: #c9a227;">Official Developer Statement</h2>
       <blockquote style="margin: 0; color: #e5e0f0; font-size: 0.92rem; font-style: italic; line-height: 1.6;">
         "Inspired by a lot of games, mostly terraria, but enjoy. Game will be updated weekly. This is a fast turn-based roguelike RPG game, it is not meant to be easy."
       </blockquote>
@@ -98,7 +107,7 @@ const jsonLd = [
             <span style="font-size: 0.82rem; font-family: var(--font-mono); color: #34d399; background: rgba(52, 211, 153, 0.15); padding: 2px 8px; border-radius: 4px; font-weight: 700;">
               {u.version}
             </span>
-            <h2 style="margin: 0; font-size: 1.25rem; color: var(--ink);">{u.title}</h2>
+            <h2 id="u-title" style="margin: 0; font-size: 1.25rem; color: var(--ink);">{u.title}</h2>
           </div>
           <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
             {u.changes.map((ch) => (
@@ -111,7 +120,7 @@ const jsonLd = [
 
     <!-- Complete Version History Ledger Table -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-      <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Historical Version & Patch Balance Ledger</h2>
+      <h2 id="historical-version-patch-balance-ledger" style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Historical Version & Patch Balance Ledger</h2>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
         Track how combat numbers, class traits, and game systems have evolved across all server updates since launch:
       </p>
@@ -163,7 +172,7 @@ const jsonLd = [
 
     <!-- Development Roadmap & Weekly Cadence Analysis -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-      <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Development Roadmap & Weekly Cycle Expectations</h2>
+      <h2 id="development-roadmap-weekly-cycle-expectations" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Development Roadmap & Weekly Cycle Expectations</h2>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
         Pixel Lineage updates are pushed on a weekly Tuesday cadence. Because the lead developer prioritizes fast turn-based roguelike mechanics inspired by Terraria, players should expect:
       </p>
@@ -194,16 +203,16 @@ const jsonLd = [
 
     <!-- Frequently Asked Questions About Updates -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-      <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions: Updates & Wipes</h2>
+      <h2 id="frequently-asked-questions-updates-wipes" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions: Updates & Wipes</h2>
       <div style="display: flex; flex-direction: column; gap: 14px;">
         <div>
-          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Do weekly updates reset character levels or equipment?</h3>
+          <h3 id="do-weekly-updates-reset-character-levels-or-equipment" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Do weekly updates reset character levels or equipment?</h3>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
             No. Pixel Lineage does not wipe character progression during weekly updates. All levels, unlocked Super Classes, and gear inventories persist permanently across builds.
           </p>
         </div>
         <div>
-          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">What happens to event currencies like Candy when an event ends?</h3>
+          <h3 id="what-happens-to-event-currencies-like-candy-when-an-event-ends" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">What happens to event currencies like Candy when an event ends?</h3>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
             Event currencies are automatically converted into standard Gold at an exchange rate of 1 Candy = 15 Gold when event dungeons are archived.
           </p>
@@ -220,5 +229,10 @@ const jsonLd = [
         18 Super Classes Guide →
       </a>
     </div>
-  </div>
+  
+      </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/updates/" />
+    </div></div>
 </BaseLayout>

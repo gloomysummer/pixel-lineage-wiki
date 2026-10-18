@@ -76,7 +76,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Talent Tier List & Drop Rates"
@@ -84,7 +90,7 @@ const jsonLd = [
   canonical="/tier-list/talent-tier-list/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -92,6 +98,9 @@ const jsonLd = [
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Talents</span>
     </nav>
+
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
 
     <header style="margin-bottom: 32px;">
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
@@ -105,7 +114,7 @@ const jsonLd = [
     <!-- Talent Probability Table -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 40px;">
       <div style="background: #1d152c; padding: 14px 20px; border-bottom: 1px solid var(--line);">
-        <h2 style="font-size: 1.25rem; color: var(--ink); margin: 0;">Verified Trait Drop Rate Matrix</h2>
+        <h2 id="verified-trait-drop-rate-matrix" style="font-size: 1.25rem; color: var(--ink); margin: 0;">Verified Trait Drop Rate Matrix</h2>
       </div>
       <div style="overflow-x: auto;">
         <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
@@ -141,11 +150,11 @@ const jsonLd = [
 
     <!-- Deep Breakdown of Each Trait -->
     <section style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px;">
-      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0;">Detailed Strategic Analysis</h2>
+      <h2 id="detailed-strategic-analysis" style="font-size: 1.4rem; color: var(--ink); margin: 0;">Detailed Strategic Analysis</h2>
       {talents.map((t) => (
         <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: 20px;">
           <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px;">
-            <h3 style="margin: 0; font-size: 1.2rem; color: var(--ink);">{t.name}</h3>
+            <h3 id="t-name" style="margin: 0; font-size: 1.2rem; color: var(--ink);">{t.name}</h3>
             <span style={`color: ${t.color}; font-weight: 700; font-size: 0.85rem;`}>Tier {t.tier}</span>
             <span style="font-family: var(--font-mono); color: #c9a227; font-size: 0.85rem; margin-left: auto;">
               Probability: {t.dropRate}
@@ -159,7 +168,7 @@ const jsonLd = [
 
     <!-- Evidence Dossier -->
     <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
-      <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">
+      <h3 id="evidence-dossier-talent-verification" style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">
         Evidence Dossier: Talent Verification
       </h3>
       <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 8px;">
@@ -178,5 +187,10 @@ const jsonLd = [
         Class & Super Class Rankings →
       </a>
     </div>
-  </div>
+  
+      </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/tier-list/talent-tier-list/" />
+    </div></div>
 </BaseLayout>

@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
 
 const classes = [
   {
@@ -126,14 +132,15 @@ const jsonLd = [
   canonical="/classes/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Classes</span>
     </nav>
-
-    <header style="margin-bottom: 32px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+      <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; color: #a855f7; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
         Core Combat Architecture · 6 Classes & 18 Evolutions
       </div>
@@ -172,8 +179,23 @@ const jsonLd = [
     </div>
 
     <!-- Level 1 Base Class Stat Matrix Table -->
-    <section style="margin-bottom: 40px;">
-      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Level 1 Baseline Attribute Matrix</h2>
+            <!-- Video Showcase (Tactical Walkthrough) -->
+        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+          <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Classes Guide</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Beginner class archetype breakdown showcasing Warrior, Thief, Mage, Fist, Bard, and Archer mechanics.
+          </p>
+          <VideoEmbed
+            id="1pdNdjCu7BM"
+            title="Pixel Lineage 6 Starting Classes & Progression Overview"
+            channelTitle="OyO"
+            uploadDate="2026-10-07T00:00:00+00:00"
+            description="Beginner class archetype breakdown showcasing Warrior, Thief, Mage, Fist, Bard, and Archer mechanics."
+          />
+        </section>
+
+<section style="margin-bottom: 40px;">
+      <h2 id="level-1-baseline-attribute-matrix" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Level 1 Baseline Attribute Matrix</h2>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
         Empirical baseline attributes extracted upon initial character spawn prior to any equipment modifiers, racial passives, or talent spin additions:
       </p>
@@ -218,7 +240,7 @@ const jsonLd = [
 
     <!-- In-Depth Archetype Dossiers -->
     <section style="margin-bottom: 40px;">
-      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Comprehensive Class Dossiers & Super Evolutions</h2>
+      <h2 id="comprehensive-class-dossiers-super-evolutions" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Comprehensive Class Dossiers & Super Evolutions</h2>
 
       <div style="display: flex; flex-direction: column; gap: 24px;">
         {classes.map((c) => (
@@ -264,7 +286,7 @@ const jsonLd = [
 
     <!-- Ultra Sigil Awakening Mechanics -->
     <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-      <h3 style="margin: 0 0 12px; font-size: 1.2rem; color: #c9a227;">Ultra Sigil & Pinnacle Class Awakening</h3>
+      <h3 id="ultra-sigil-pinnacle-class-awakening" style="margin: 0 0 12px; font-size: 1.2rem; color: #c9a227;">Ultra Sigil & Pinnacle Class Awakening</h3>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
         Beyond the 18 Super Classes lies the legendary <strong style="color: #fff;">Ultra Class</strong> awakening tier. Awakening requires acquiring an <code style="color: #c9a227;">Ultra Sigil</code>, an ultra-rare 0.5% drop from Act 3 Dungeon Pinnacle Bosses or high-ranking Guild Raids.
       </p>
@@ -275,7 +297,7 @@ const jsonLd = [
 
     <!-- Cross-cluster linking -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
-      <h2 style="font-size: 1.1rem; color: var(--ink); margin: 0 0 12px;">Explore Deeper Class Knowledge</h2>
+      <h2 id="explore-deeper-class-knowledge" style="font-size: 1.1rem; color: var(--ink); margin: 0 0 12px;">Explore Deeper Class Knowledge</h2>
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
         <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
           → 18 Super Class Full Skill Multipliers
@@ -288,5 +310,10 @@ const jsonLd = [
         </a>
       </div>
     </section>
+        </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/" />
+    </div>
   </div>
 </BaseLayout>

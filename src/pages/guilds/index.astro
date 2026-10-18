@@ -19,7 +19,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Castle & Guilds: Raids Guide"
@@ -27,12 +33,15 @@ const jsonLd = [
   canonical="/guilds/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Guilds</span>
     </nav>
+
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
 
     <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(236, 72, 153, 0.15); border: 1px solid #ec4899; color: #ec4899; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
@@ -48,7 +57,7 @@ const jsonLd = [
 
     <!-- Castle Restoration Milestones -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-      <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Castle Restoration Milestones</h2>
+      <h2 id="castle-restoration-milestones" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Castle Restoration Milestones</h2>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
         Guild members donate Gold and Stone quarried from dungeons to repair the Castle sectors:
       </p>
@@ -70,21 +79,21 @@ const jsonLd = [
 
     <!-- Lineage Oaths System -->
     <section style="margin-bottom: 36px;">
-      <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Lineage Oaths</h2>
+      <h2 id="lineage-oaths" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Lineage Oaths</h2>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
         Pledging an oath grants exclusive guild-wide passive buffs during multiplayer dungeon exploration:
       </p>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
         <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
-          <h3 style="color: #ea580c; margin: 0 0 6px; font-size: 1.1rem;">Oath of Iron</h3>
+          <h3 id="oath-of-iron" style="color: #ea580c; margin: 0 0 6px; font-size: 1.1rem;">Oath of Iron</h3>
           <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">+10% Party Defense when fighting in the same room. Exceptional for tank-heavy rosters.</p>
         </div>
         <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
-          <h3 style="color: #a855f7; margin: 0 0 6px; font-size: 1.1rem;">Oath of Shadows</h3>
+          <h3 id="oath-of-shadows" style="color: #a855f7; margin: 0 0 6px; font-size: 1.1rem;">Oath of Shadows</h3>
           <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">+12% Critical Strike Damage for all guild members during Act 2 and Act 3 night encounters.</p>
         </div>
         <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
-          <h3 style="color: #34d399; margin: 0 0 6px; font-size: 1.1rem;">Oath of Prosperity</h3>
+          <h3 id="oath-of-prosperity" style="color: #34d399; margin: 0 0 6px; font-size: 1.1rem;">Oath of Prosperity</h3>
           <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">Reduces Goblin Merchant trading fees by 10% and increases shared gold drop yields.</p>
         </div>
       </div>
@@ -99,5 +108,10 @@ const jsonLd = [
         Explore Dungeon Progression →
       </a>
     </div>
-  </div>
+  
+      </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/guilds/" />
+    </div></div>
 </BaseLayout>

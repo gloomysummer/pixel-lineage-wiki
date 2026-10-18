@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
 
 const jsonLd = [
   {
@@ -46,7 +52,9 @@ const fistMilestones = [
   canonical="/classes/fist/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -79,10 +87,24 @@ const fistMilestones = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
-      <!-- Combat Philosophy & Archetype Overview -->
+            <!-- Video Showcase (Tactical Walkthrough) -->
+        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+          <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Fist Combat & Progression</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Comprehensive Pixel Lineage gameplay walkthrough demonstrating Fist martial arts rotations, stance switching, and stun lock mechanics.
+          </p>
+          <VideoEmbed
+            id="1pdNdjCu7BM"
+            title="Pixel Lineage Fist Class Martial Arts & Poise Break Walkthrough"
+            channelTitle="OyO"
+            uploadDate="2026-10-07T00:00:00+00:00"
+            description="Comprehensive Pixel Lineage gameplay walkthrough demonstrating Fist martial arts rotations, stance switching, and stun lock mechanics."
+          />
+        </section>
+
+<!-- Combat Philosophy & Archetype Overview -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #f43f5e; margin: 0 0 12px;">Fist Combat Philosophy & Baseline Archetype</h2>
+        <h2 id="fist-combat-philosophy-baseline-archetype" style="font-size: 1.25rem; color: #f43f5e; margin: 0 0 12px;">Fist Combat Philosophy & Baseline Archetype</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
           The Fist archetype is Pixel Lineage's premier hybrid of overwhelming physical offense, crowd control stagger, and agile melee poise. Starting with 15 base Attack (the highest base ATK at Level 1 across all 6 classes) and a solid 105 HP buffer, Fist brawlers do not merely deal damage—they break enemy poise meters.
         </p>
@@ -94,7 +116,7 @@ const fistMilestones = [
       <!-- Complete Level 1 to 30 Milestone Growth Table -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
         <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
-          <h2 style="font-size: 1.3rem; color: #fff; margin: 0;">Complete Level 1 to 30 Attribute Growth Ledger</h2>
+          <h2 id="complete-level-1-to-30-attribute-growth-ledger" style="font-size: 1.3rem; color: #fff; margin: 0;">Complete Level 1 to 30 Attribute Growth Ledger</h2>
           <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #f43f5e;">Formula: HP +10.0/lv · ATK +2.3/lv · DEF +1.3/lv</span>
         </div>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
@@ -138,7 +160,7 @@ const fistMilestones = [
 
       <!-- The 3 Super Classes Deep Dive -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The 3 Fist Super Classes: Skills, Multipliers & Builds</h2>
+        <h2 id="the-3-fist-super-classes-skills-multipliers-builds" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The 3 Fist Super Classes: Skills, Multipliers & Builds</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
           At Level 15 in Act 2, speak to the Grandmaster at Trainer's Shrine. Choose carefully, as your martial path is permanently locked:
         </p>
@@ -146,7 +168,7 @@ const fistMilestones = [
         <!-- 1. Monk -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #38bdf8; margin: 0;">1. Monk — Spirit Palm & Counter Defense</h3>
+            <h3 id="1-monk-spirit-palm-counter-defense" style="font-size: 1.15rem; color: #38bdf8; margin: 0;">1. Monk — Spirit Palm & Counter Defense</h3>
             <span style="font-size: 0.8rem; color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Fluid Tank & Counter Striker</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -175,7 +197,7 @@ const fistMilestones = [
         <!-- 2. Brawler -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #f43f5e; margin: 0;">2. Brawler — Poise Breaker & Stun Specialist</h3>
+            <h3 id="2-brawler-poise-breaker-stun-specialist" style="font-size: 1.15rem; color: #f43f5e; margin: 0;">2. Brawler — Poise Breaker & Stun Specialist</h3>
             <span style="font-size: 0.8rem; color: #f43f5e; background: rgba(244, 63, 94, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Boss Interrupt & Stagger King</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -204,7 +226,7 @@ const fistMilestones = [
         <!-- 3. Oni -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #ea580c; border-radius: 6px; padding: 18px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #ea580c; margin: 0;">3. Oni — Demonic Rage & Berserk Carnage</h3>
+            <h3 id="3-oni-demonic-rage-berserk-carnage" style="font-size: 1.15rem; color: #ea580c; margin: 0;">3. Oni — Demonic Rage & Berserk Carnage</h3>
             <span style="font-size: 0.8rem; color: #ea580c; background: rgba(234, 88, 12, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Dark Physical Hypercarry</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -233,7 +255,7 @@ const fistMilestones = [
 
       <!-- Recommended Bloodline & Talent Synergies -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Bloodline & Talent Meta Synergies</h2>
+        <h2 id="recommended-bloodline-talent-meta-synergies" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Bloodline & Talent Meta Synergies</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Fist scaling excels when paired with brawler and sustain racial lineages:
         </p>
@@ -267,7 +289,7 @@ const fistMilestones = [
           </div>
         </div>
 
-        <h3 style="font-size: 1.1rem; color: #c9a227; margin: 0 0 10px;">Primary & Secondary Talent Pairings</h3>
+        <h3 id="primary-secondary-talent-pairings" style="font-size: 1.1rem; color: #c9a227; margin: 0 0 10px;">Primary & Secondary Talent Pairings</h3>
         <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 12px;">
           Consult our full <a href="/traits/" style="color: var(--accent); text-decoration: none;">Traits & Drop Rates Guide</a> when rolling. For Fist characters, the top three talents are:
         </p>
@@ -280,7 +302,7 @@ const fistMilestones = [
 
       <!-- Solo vs Multiplayer Dynamics -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Solo vs Multiplayer Team Roles & Positioning</h2>
+        <h2 id="solo-vs-multiplayer-team-roles-positioning" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Solo vs Multiplayer Team Roles & Positioning</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
             <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Solo Expedition Efficacy</strong>
@@ -300,7 +322,7 @@ const fistMilestones = [
 
       <!-- Power Curve: Early, Mid, End Game -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Power Curve Trajectory: Early vs Mid vs End Game</h2>
+        <h2 id="power-curve-trajectory-early-vs-mid-vs-end-game" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Power Curve Trajectory: Early vs Mid vs End Game</h2>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
             <strong style="color: #34d399;">Early Game (Levels 1–10): S Tier Dominance</strong>
@@ -327,7 +349,7 @@ const fistMilestones = [
 
       <!-- Best-in-Slot Equipment Synergies -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <h2 id="recommended-best-in-slot-equipment-synergies" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
             <strong style="color: #f43f5e;">Weapon: Spiked Dragon Knuckles or Asura Cestus</strong>
@@ -352,22 +374,22 @@ const fistMilestones = [
 
       <!-- Frequently Asked Questions -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About the Fist</h2>
+        <h2 id="frequently-asked-questions-about-the-fist" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About the Fist</h2>
         <div style="display: flex; flex-direction: column; gap: 16px;">
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does Poise Damage differ from normal damage?</h3>
+            <h3 id="how-does-poise-damage-differ-from-normal-damage" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does Poise Damage differ from normal damage?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               Normal damage depletes the enemy health bar. Poise Damage depletes an invisible stability gauge above the enemy. When the poise gauge drops to 0, the enemy suffers Poise Break, resulting in a mandatory 1 to 2 turn Stun where they cannot take any action.
             </p>
           </div>
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Can high-tier Torment bosses be stunned?</h3>
+            <h3 id="can-high-tier-torment-bosses-be-stunned" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Can high-tier Torment bosses be stunned?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               Yes. While Torment bosses have high poise thresholds (often requiring 250+ poise damage to break), they are not immune to stagger. A Brawler cycling Skullcracker Stun can reliably break boss poise every three to four rounds.
             </p>
           </div>
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Which Super Class is recommended for beginners: Monk or Brawler?</h3>
+            <h3 id="which-super-class-is-recommended-for-beginners-monk-or-brawler" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Which Super Class is recommended for beginners: Monk or Brawler?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               Brawler is recommended for beginners due to straightforward stun mechanics and heavy damage output. Monk requires precise timing and parry management, rewarding experienced players who understand boss turn queues.
             </p>
@@ -384,6 +406,10 @@ const fistMilestones = [
           Simulate Fist in Combat Calculator →
         </a>
       </div>
-    </article>
+          </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/fist/" />
+    </div>
   </div>
 </BaseLayout>

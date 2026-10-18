@@ -53,7 +53,13 @@ const jsonLd = [
     ],
   },
 ];
+
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Difficulty Guide: Normal to Torment"
@@ -61,7 +67,7 @@ const jsonLd = [
   canonical="/adventures/difficulty/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -94,10 +100,11 @@ const jsonLd = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <!-- Summary Callout -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #f43f5e; margin: 0 0 12px;">The Risk-Reward Calculus in Permadeath RPGs</h2>
+        <h2 id="the-risk-reward-calculus-in-permadeath-rpgs" style="font-size: 1.25rem; color: #f43f5e; margin: 0 0 12px;">The Risk-Reward Calculus in Permadeath RPGs</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
           Increasing difficulty in Pixel Lineage is not purely cosmetic. While higher difficulties severely escalate enemy attack power and turn initiative, they also unlock exclusive drop tiers—such as Ultra Sigils, Mythic weapon blueprints, and Tier-3 armor materials—that are mathematically unobtainable in Normal Mode.
         </p>
@@ -105,12 +112,12 @@ const jsonLd = [
 
       <!-- Difficulties Breakdown -->
       <section style="margin-bottom: 40px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Detailed Difficulty Mode Comparison</h2>
+        <h2 id="detailed-difficulty-mode-comparison" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Detailed Difficulty Mode Comparison</h2>
         <div style="display: flex; flex-direction: column; gap: 24px;">
           {difficultyModes.map((d) => (
             <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px;">
               <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-                <h3 style="font-size: 1.3rem; color: #fff; margin: 0;">{d.name}</h3>
+                <h3 id="d-name" style="font-size: 1.3rem; color: #fff; margin: 0;">{d.name}</h3>
                 <span style="font-size: 0.8rem; background: #0d0a14; color: #34d399; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
                   {d.levelRequirement}
                 </span>
@@ -141,7 +148,7 @@ const jsonLd = [
 
       <!-- Life Tokens & Permadeath Mechanics -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Life Tokens: The Permadeath Safeguard</h2>
+        <h2 id="life-tokens-the-permadeath-safeguard" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Life Tokens: The Permadeath Safeguard</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Characters start with 3 Life Tokens. Every defeat in a dungeon deducts 1 Life Token. When your Life Token count hits 0, the character suffers True Death: the save file is wiped, returning your lineage to the village as a fresh Level 1 descendant.
         </p>
@@ -152,7 +159,7 @@ const jsonLd = [
 
       <!-- Navigation -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Related Adventure Guides</h3>
+        <h3 id="explore-related-adventure-guides" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Related Adventure Guides</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/adventures/torment/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             ← Torment Mode In-Depth Walkthrough
@@ -166,5 +173,9 @@ const jsonLd = [
         </div>
       </section>
     </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/adventures/difficulty/" />
+    </div>
   </div>
 </BaseLayout>

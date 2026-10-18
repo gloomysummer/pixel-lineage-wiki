@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
 
 const milestoneLevels = [1, 3, 5, 8, 10, 15, 20, 25, 30];
 
@@ -153,7 +159,7 @@ const jsonLd = [
   canonical="/classes/stats/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -161,8 +167,9 @@ const jsonLd = [
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Stat Growths</span>
     </nav>
-
-    <header style="margin-bottom: 32px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+      <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(234, 88, 12, 0.15); border: 1px solid #ea580c; color: #ea580c; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
         Proprietary Progression Dataset · 10 Milestones
       </div>
@@ -187,8 +194,23 @@ const jsonLd = [
     </div>
 
     <!-- Methodology Statement -->
-    <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: 20px; margin-bottom: 36px;">
-      <h2 style="font-size: 1.15rem; color: #fff; margin: 0 0 8px;">Attribute Growth Methodology & Source Verification</h2>
+            <!-- Video Showcase (Tactical Walkthrough) -->
+        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+          <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Class Stats Guide</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Complete mathematical analysis of level 1 to 30 stat progressions across all 6 archetypes.
+          </p>
+          <VideoEmbed
+            id="1pdNdjCu7BM"
+            title="Pixel Lineage Level 1 to 30 Class Growth Multipliers"
+            channelTitle="OyO"
+            uploadDate="2026-10-07T00:00:00+00:00"
+            description="Complete mathematical analysis of level 1 to 30 stat progressions across all 6 archetypes."
+          />
+        </section>
+
+<section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: 20px; margin-bottom: 36px;">
+      <h2 id="attribute-growth-methodology-source-verification" style="font-size: 1.15rem; color: #fff; margin: 0 0 8px;">Attribute Growth Methodology & Source Verification</h2>
       <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0;">
         <span style="color: #34d399; font-weight: 600;">[Verified Data Engine]:</span> All statistics presented below represent baseline character values recorded on a standard Human lineage with 0 assigned talent points. Attribute curves follow linear baseline formulas with soft cap thresholds kicking in at Level 20. When planning end-game builds for Torment dungeons or Guild Raids, cross-reference these numbers with our <a href="/calculator/" style="color: var(--accent); text-decoration: none;">Interactive Combat Calculator</a> to simulate full armor, weapon, and racial passive interactions.
       </p>
@@ -259,26 +281,26 @@ const jsonLd = [
 
     <!-- Stat Soft Caps & Diminishing Returns -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-      <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Soft Caps & Diminishing Returns Mechanics</h2>
+      <h2 id="soft-caps-diminishing-returns-mechanics" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Soft Caps & Diminishing Returns Mechanics</h2>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
         Unlike flat linear RPGs, Pixel Lineage applies server-side diminishing returns to prevent infinite evasion and invulnerability builds in PvP Arena and Torment runs:
       </p>
       
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
         <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
-          <h3 style="color: #38bdf8; font-size: 1rem; margin: 0 0 6px;">Defense (DEF) Soft Cap</h3>
+          <h3 id="defense-def-soft-cap" style="color: #38bdf8; font-size: 1rem; margin: 0 0 6px;">Defense (DEF) Soft Cap</h3>
           <p style="color: var(--muted); font-size: 0.86rem; line-height: 1.5; margin: 0;">
             Physical damage reduction follows the formula: <code style="color: #c9a227;">DR% = DEF / (DEF + 60)</code>. At 60 DEF, mitigation reaches exactly 50%. Above 100 DEF, each additional point yields less than 0.15% effective mitigation.
           </p>
         </div>
         <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
-          <h3 style="color: #34d399; font-size: 1rem; margin: 0 0 6px;">Dodge Chance Hard Cap</h3>
+          <h3 id="dodge-chance-hard-cap" style="color: #34d399; font-size: 1rem; margin: 0 0 6px;">Dodge Chance Hard Cap</h3>
           <p style="color: var(--muted); font-size: 0.86rem; line-height: 1.5; margin: 0;">
             Dodge probability is strictly capped at <strong style="color: #fff;">65.0%</strong>. Any additional Dodge gained through Elven racial passives or Thief skills above this threshold is automatically discarded during combat rolls.
           </p>
         </div>
         <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #eab308;">
-          <h3 style="color: #eab308; font-size: 1rem; margin: 0 0 6px;">Turn Speed (SPD) Thresholds</h3>
+          <h3 id="turn-speed-spd-thresholds" style="color: #eab308; font-size: 1rem; margin: 0 0 6px;">Turn Speed (SPD) Thresholds</h3>
           <p style="color: var(--muted); font-size: 0.86rem; line-height: 1.5; margin: 0;">
             Turn order is governed by initiative ticks. Having 1.5x the opponent's Speed triggers an "Action Surge", granting a second move once every 3 turns. Exceeding 2.0x opponent Speed is non-functional.
           </p>
@@ -288,7 +310,7 @@ const jsonLd = [
 
     <!-- Cross-Linking Navigation -->
     <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-      <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Character Mechanics</h3>
+      <h3 id="explore-further-character-mechanics" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Character Mechanics</h3>
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
         <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
           → 18 Super Class Full Skill Multipliers
@@ -301,5 +323,10 @@ const jsonLd = [
         </a>
       </div>
     </section>
+        </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/stats/" />
+    </div>
   </div>
 </BaseLayout>

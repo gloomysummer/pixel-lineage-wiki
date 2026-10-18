@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
 
 const jsonLd = [
   {
@@ -34,7 +40,7 @@ const jsonLd = [
   canonical="/races/dullahan/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -42,6 +48,9 @@ const jsonLd = [
       <span class="separator" style="margin: 0 8px;">/</span>
       <span class="current">Dullahan</span>
     </nav>
+
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
 
     <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(244, 63, 94, 0.15); border: 1px solid #f43f5e; color: #f43f5e; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
@@ -67,10 +76,24 @@ const jsonLd = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
-      <!-- Core Attributes Box -->
+            <!-- Video Showcase (Tactical Walkthrough) -->
+        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+          <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Dullahan Bloodline & Mechanics</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Comprehensive Pixel Lineage gameplay walkthrough analyzing Dullahan headless resilience, cheat death passives, and dark tanking.
+          </p>
+          <VideoEmbed
+            id="1pdNdjCu7BM"
+            title="Pixel Lineage Dullahan Lineage & Death Prevention Breakdown"
+            channelTitle="OyO"
+            uploadDate="2026-10-07T00:00:00+00:00"
+            description="Comprehensive Pixel Lineage gameplay walkthrough analyzing Dullahan headless resilience, cheat death passives, and dark tanking."
+          />
+        </section>
+
+<!-- Core Attributes Box -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #f43f5e; margin: 0 0 12px;">Dullahan Innate Racial Trait Ledger</h2>
+        <h2 id="dullahan-innate-racial-trait-ledger" style="font-size: 1.25rem; color: #f43f5e; margin: 0 0 12px;">Dullahan Innate Racial Trait Ledger</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; font-size: 0.9rem;">
           <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
             <span style="color: var(--muted); font-size: 0.75rem; display: block;">Headless Immortality</span>
@@ -89,7 +112,7 @@ const jsonLd = [
 
       <!-- Tactical Deep Dive -->
       <section style="margin-bottom: 36px;">
-        <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">The Halloween Colossus: Headless Poise Engine</h2>
+        <h2 id="the-halloween-colossus-headless-poise-engine" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">The Halloween Colossus: Headless Poise Engine</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Added as the centerpiece of the mid-October "HOLLOWEEN+RACE EVO" update, Dullahan is an undead spectral knight carrying its flaming pumpkin helm underarm. Because the character possesses no anatomical head, enemy bosses can never land precision headshot critical strikes—a combat feature that normally inflates boss damage by 2.0x in Torment mode.
         </p>
@@ -103,22 +126,22 @@ const jsonLd = [
 
       <!-- Super Class Synergy Matrix -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Best Super Class Synergies with Dullahan</h2>
+        <h2 id="best-super-class-synergies-with-dullahan" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Best Super Class Synergies with Dullahan</h2>
         <div style="display: flex; flex-direction: column; gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #ea580c;">
-            <h3 style="font-size: 1.1rem; color: #ea580c; margin: 0 0 6px;">1. Greatsword (Warrior Super Class) — S+ Tier Meta</h3>
+            <h3 id="1-greatsword-warrior-super-class-s-tier-meta" style="font-size: 1.1rem; color: #ea580c; margin: 0 0 6px;">1. Greatsword (Warrior Super Class) — S+ Tier Meta</h3>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
               Greatsword skills require a 1-turn charge stance that is normally cancelled if stunned. Dullahan's unyielding poise immunity ensures Greatsword sweeps always execute at full 2.6x heavy damage without fail.
             </p>
           </div>
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
-            <h3 style="font-size: 1.1rem; color: #f43f5e; margin: 0 0 6px;">2. Berserk (Warrior Super Class) — S Tier Tank Cleave</h3>
+            <h3 id="2-berserk-warrior-super-class-s-tier-tank-cleave" style="font-size: 1.1rem; color: #f43f5e; margin: 0 0 6px;">2. Berserk (Warrior Super Class) — S Tier Tank Cleave</h3>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
               Dullahan's Soul Harvest shields cushion the Berserk's dangerous low-HP state. Each mob eliminated grants a temporary 10% shield, allowing the player to stay in maximum +70% attack scaling territory.
             </p>
           </div>
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #a855f7;">
-            <h3 style="font-size: 1.1rem; color: #a855f7; margin: 0 0 6px;">3. Oni (Fist Super Class) — A Tier Brawling</h3>
+            <h3 id="3-oni-fist-super-class-a-tier-brawling" style="font-size: 1.1rem; color: #a855f7; margin: 0 0 6px;">3. Oni (Fist Super Class) — A Tier Brawling</h3>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
               Stacks the Oni's counter-shockwaves with Spectral Dread, turning the brawler into an unmovable frontline fortress in 4-player Guild Raids.
             </p>
@@ -129,7 +152,7 @@ const jsonLd = [
       
       <!-- Level 1 to 30 Milestone Scaling Table -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Dullahan Level 1 to 30 Milestone Progression Ledger</h2>
+        <h2 id="dullahan-level-1-to-30-milestone-progression-ledger" style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Dullahan Level 1 to 30 Milestone Progression Ledger</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Dullahan provides unmatched armor scaling and execution thresholds. Here is the verified stat progression across seven key milestone levels, measured with standard Warrior/Tank archetype scaling:
         </p>
@@ -210,7 +233,7 @@ const jsonLd = [
 
       <!-- Boss Matchup Strategies -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Dungeon Boss Tactical Matchup Ledger</h2>
+        <h2 id="dungeon-boss-tactical-matchup-ledger" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Dungeon Boss Tactical Matchup Ledger</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
             <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Goblin King (Act 1)</strong>
@@ -237,7 +260,7 @@ const jsonLd = [
 
       <!-- Best-in-Slot Equipment Loadout -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <h2 id="recommended-best-in-slot-equipment-synergies" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
             <strong style="color: #f43f5e;">Weapon: Executioner's Greatblade or Bonecrusher Maul</strong>
@@ -262,7 +285,7 @@ const jsonLd = [
 
       <!-- Talent Pairing Synergies & Traps -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing Synergies & Anti-Synergies</h2>
+        <h2 id="talent-pairing-synergies-anti-synergies" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing Synergies & Anti-Synergies</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
             <strong style="color: #34d399; font-size: 0.95rem;">Must-Pick: Iron Soul + Survivor</strong>
@@ -282,7 +305,7 @@ const jsonLd = [
       
       <!-- Dungeon Exploration & Leveling Route SOP -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Dullahan Exploration & Leveling Route SOP</h2>
+        <h2 id="dullahan-exploration-leveling-route-sop" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Dullahan Exploration & Leveling Route SOP</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Dullahan is the unstoppable frontline juggernaut. Follow this leveling progression to build an unkillable raid vanguard:
         </p>
@@ -313,7 +336,7 @@ const jsonLd = [
 
       <!-- Multiplayer Combat Turn Rotation Blueprint -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Tactical Turn-by-Turn Combat Rotation Blueprint</h2>
+        <h2 id="tactical-turn-by-turn-combat-rotation-blueprint" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Tactical Turn-by-Turn Combat Rotation Blueprint</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Hold frontline threat and execute wounded targets by executing this rotation:
         </p>
@@ -345,7 +368,7 @@ const jsonLd = [
       
       <!-- PvP Arena Combat Analysis -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #f43f5e; margin: 0 0 14px;">PvP Arena Matchups & Anti-Meta Strategies</h2>
+        <h2 id="pvp-arena-matchups-anti-meta-strategies" style="font-size: 1.3rem; color: #f43f5e; margin: 0 0 14px;">PvP Arena Matchups & Anti-Meta Strategies</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Dullahan serves as the ultimate anti-assassin fortress in competitive Castle Arena matches. The combination of stun immunity and massive armor completely neutralizes physical burst teams:
         </p>
@@ -364,7 +387,7 @@ const jsonLd = [
 
       <!-- Event Availability & Reroll Warning -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Event Availability & Spin Economics</h2>
+        <h2 id="event-availability-spin-economics" style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Event Availability & Spin Economics</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
           Dullahan is restricted to the temporary Halloween Event spin pool (requiring event Candy currency or standard Race Spins during the October patch cycle). Its drop probability is set at 2.5%.
         </p>
@@ -376,22 +399,22 @@ const jsonLd = [
       
     <!-- Frequently Asked Questions About Dullahan -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-      <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Dullahan</h2>
+      <h2 id="frequently-asked-questions-about-dullahan" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Dullahan</h2>
       <div style="display: flex; flex-direction: column; gap: 16px;">
         <div>
-          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Is Dullahan permanently available or limited to the Halloween event?</h3>
+          <h3 id="is-dullahan-permanently-available-or-limited-to-the-halloween-event" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Is Dullahan permanently available or limited to the Halloween event?</h3>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
             Dullahan was introduced as the headline feature of the Halloween Event update. While rollable during the event via Goblin Merchant spins and Candy turn-ins, developers have stated it may become unobtainable once the event concludes.
           </p>
         </div>
         <div>
-          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does Decapitation Strike work on Dungeon Bosses?</h3>
+          <h3 id="does-decapitation-strike-work-on-dungeon-bosses" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does Decapitation Strike work on Dungeon Bosses?</h3>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
             Yes. Decapitation Strike executes all dungeon bosses when their health drops to 15% or below, allowing your party to bypass dangerous enrage and frenzy mechanics.
           </p>
         </div>
         <div>
-          <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does Dullahan's Headless Poise interact with status ailments?</h3>
+          <h3 id="how-does-dullahan-s-headless-poise-interact-with-status-ailments" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does Dullahan's Headless Poise interact with status ailments?</h3>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
             Headless Poise provides complete immunity to physical Stun, Knockdown, and Action Gauge freeze effects. However, it does not prevent damage-over-time ailments like Poison or Burn.
           </p>
@@ -401,7 +424,7 @@ const jsonLd = [
 
       <!-- Navigation -->
       <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Halloween Content</h3>
+        <h3 id="explore-further-halloween-content" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Halloween Content</h3>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
           <a href="/codes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
             → Claim Halloween Promo Codes & Spins
@@ -414,6 +437,10 @@ const jsonLd = [
           </a>
         </div>
       </section>
-    </article>
+          </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/dullahan/" />
+    </div>
   </div>
 </BaseLayout>

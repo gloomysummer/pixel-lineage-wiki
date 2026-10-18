@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
 
 const jsonLd = [
   {
@@ -46,7 +52,9 @@ const thiefMilestones = [
   canonical="/classes/thief/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -79,10 +87,24 @@ const thiefMilestones = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
-      <!-- Combat Philosophy & Archetype Overview -->
+            <!-- Video Showcase (Tactical Walkthrough) -->
+        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+          <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Thief Combat & Progression</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Comprehensive Pixel Lineage gameplay walkthrough demonstrating Thief initiative turns, dagger rotations, and evasion mechanics.
+          </p>
+          <VideoEmbed
+            id="1pdNdjCu7BM"
+            title="Pixel Lineage Thief Class Speed & Crit Combat Walkthrough"
+            channelTitle="OyO"
+            uploadDate="2026-10-07T00:00:00+00:00"
+            description="Comprehensive Pixel Lineage gameplay walkthrough demonstrating Thief initiative turns, dagger rotations, and evasion mechanics."
+          />
+        </section>
+
+<!-- Combat Philosophy & Archetype Overview -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #34d399; margin: 0 0 12px;">Thief Combat Philosophy & Baseline Archetype</h2>
+        <h2 id="thief-combat-philosophy-baseline-archetype" style="font-size: 1.25rem; color: #34d399; margin: 0 0 12px;">Thief Combat Philosophy & Baseline Archetype</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
           The Thief is Pixel Lineage's undisputed ruler of turn economy and initiative manipulation. Starting with 16 Speed (double that of Warriors) and a staggering 15% base Critical Strike chance, Thieves attack first in virtually every combat encounter. Because combat resolution follows an Action Progress bar filled proportionally to Speed, high-level Thieves frequently achieve a 2:1 turn ratio against heavy dungeon bosses.
         </p>
@@ -94,7 +116,7 @@ const thiefMilestones = [
       <!-- Complete Level 1 to 30 Milestone Growth Table -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
         <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
-          <h2 style="font-size: 1.3rem; color: #fff; margin: 0;">Complete Level 1 to 30 Attribute Growth Ledger</h2>
+          <h2 id="complete-level-1-to-30-attribute-growth-ledger" style="font-size: 1.3rem; color: #fff; margin: 0;">Complete Level 1 to 30 Attribute Growth Ledger</h2>
           <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #34d399;">Formula: HP +7.5/lv · SPD +2.4/lv · Crit +0.6%/lv</span>
         </div>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
@@ -138,7 +160,7 @@ const thiefMilestones = [
 
       <!-- The 3 Super Classes Deep Dive -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The 3 Thief Super Classes: Skills, Multipliers & Builds</h2>
+        <h2 id="the-3-thief-super-classes-skills-multipliers-builds" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The 3 Thief Super Classes: Skills, Multipliers & Builds</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
           At Level 15 in Act 2, speak to the Shadow Rogue at Trainer's Shrine. Choose wisely, as this permanently sets your endgame skill specialization:
         </p>
@@ -146,7 +168,7 @@ const thiefMilestones = [
         <!-- 1. Rogue -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #34d399; margin: 0;">1. Rogue — Skirmish Evasion & Bleed Master</h3>
+            <h3 id="1-rogue-skirmish-evasion-bleed-master" style="font-size: 1.15rem; color: #34d399; margin: 0;">1. Rogue — Skirmish Evasion & Bleed Master</h3>
             <span style="font-size: 0.8rem; color: #34d399; background: rgba(52, 211, 153, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Speed Debuffer & Gold Farmer</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -175,7 +197,7 @@ const thiefMilestones = [
         <!-- 2. Assassin -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #f43f5e; margin: 0;">2. Assassin — Stealth Lethality & Burst Execution</h3>
+            <h3 id="2-assassin-stealth-lethality-burst-execution" style="font-size: 1.15rem; color: #f43f5e; margin: 0;">2. Assassin — Stealth Lethality & Burst Execution</h3>
             <span style="font-size: 0.8rem; color: #f43f5e; background: rgba(244, 63, 94, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Boss One-Shot Specialist</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -204,7 +226,7 @@ const thiefMilestones = [
         <!-- 3. Beast Tamer -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #eab308; border-radius: 6px; padding: 18px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #eab308; margin: 0;">3. Beast Tamer — Pack Coordination & Minion Aggro</h3>
+            <h3 id="3-beast-tamer-pack-coordination-minion-aggro" style="font-size: 1.15rem; color: #eab308; margin: 0;">3. Beast Tamer — Pack Coordination & Minion Aggro</h3>
             <span style="font-size: 0.8rem; color: #eab308; background: rgba(234, 179, 8, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Solo Safety & Companion Tanking</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -233,7 +255,7 @@ const thiefMilestones = [
 
       <!-- Recommended Bloodline & Talent Synergies -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Bloodline & Talent Meta Synergies</h2>
+        <h2 id="recommended-bloodline-talent-meta-synergies" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Bloodline & Talent Meta Synergies</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           Thief stats multiply dramatically when combined with high-speed or critical-focused racial lineages:
         </p>
@@ -267,7 +289,7 @@ const thiefMilestones = [
           </div>
         </div>
 
-        <h3 style="font-size: 1.1rem; color: #c9a227; margin: 0 0 10px;">Primary & Secondary Talent Pairings</h3>
+        <h3 id="primary-secondary-talent-pairings" style="font-size: 1.1rem; color: #c9a227; margin: 0 0 10px;">Primary & Secondary Talent Pairings</h3>
         <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 12px;">
           Consult our full <a href="/traits/" style="color: var(--accent); text-decoration: none;">Traits & Drop Rates Guide</a> when rolling. For Thieves, the top three talents are:
         </p>
@@ -280,7 +302,7 @@ const thiefMilestones = [
 
       <!-- Solo vs Multiplayer Dynamics -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Solo vs Multiplayer Team Roles & Positioning</h2>
+        <h2 id="solo-vs-multiplayer-team-roles-positioning" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Solo vs Multiplayer Team Roles & Positioning</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
             <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Solo Expedition Strategy</strong>
@@ -300,7 +322,7 @@ const thiefMilestones = [
 
       <!-- Power Curve: Early, Mid, End Game -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Power Curve Trajectory: Early vs Mid vs End Game</h2>
+        <h2 id="power-curve-trajectory-early-vs-mid-vs-end-game" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Power Curve Trajectory: Early vs Mid vs End Game</h2>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
             <strong style="color: #34d399;">Early Game (Levels 1–10): S Tier Speed Clear</strong>
@@ -327,7 +349,7 @@ const thiefMilestones = [
 
       <!-- Best-in-Slot Equipment Synergies -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <h2 id="recommended-best-in-slot-equipment-synergies" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
             <strong style="color: #34d399;">Weapon: Dual Shadowfangs or Nightfall Stiletto</strong>
@@ -352,22 +374,22 @@ const thiefMilestones = [
 
       <!-- Frequently Asked Questions -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About the Thief</h2>
+        <h2 id="frequently-asked-questions-about-the-thief" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About the Thief</h2>
         <div style="display: flex; flex-direction: column; gap: 16px;">
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does stealth breaking work in Pixel Lineage?</h3>
+            <h3 id="how-does-stealth-breaking-work-in-pixel-lineage" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">How does stealth breaking work in Pixel Lineage?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               Stealth remains active for 2 full turns or until you take a damaging action against an enemy. Taking indirect environmental trap damage does not break stealth, but being targeted by true AoE boss attacks will reveal you immediately.
             </p>
           </div>
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Is Dodge capped at a specific percentage?</h3>
+            <h3 id="is-dodge-capped-at-a-specific-percentage" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Is Dodge capped at a specific percentage?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               Yes. Pixel Lineage imposes a hard cap of 65.0% on total passive dodge probability. Any additional evasion bonuses stacked past 65% are discarded by the combat engine to prevent complete invulnerability.
             </p>
           </div>
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Should I choose Assassin or Rogue for solo progression?</h3>
+            <h3 id="should-i-choose-assassin-or-rogue-for-solo-progression" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Should I choose Assassin or Rogue for solo progression?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               For beginners, Rogue offers smoother solo progression due to continuous evasion and gold generation. For high-tier players tackling Torment Mode bosses, Assassin is vastly superior due to 2.8x critical burst multipliers that skip dangerous boss enrage phases.
             </p>
@@ -384,6 +406,10 @@ const thiefMilestones = [
           Simulate Thief in Combat Calculator →
         </a>
       </div>
-    </article>
+          </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/thief/" />
+    </div>
   </div>
 </BaseLayout>

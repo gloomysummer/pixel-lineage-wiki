@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
 
 const jsonLd = [
   {
@@ -46,7 +52,9 @@ const mageMilestones = [
   canonical="/classes/mage/"
   jsonLd={jsonLd}
 >
-  <div class="container" style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
@@ -79,10 +87,24 @@ const mageMilestones = [
       />
     </div>
 
-    <article style="line-height: 1.7; color: var(--ink);">
-      <!-- Combat Philosophy & Archetype Overview -->
+            <!-- Video Showcase (Tactical Walkthrough) -->
+        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+          <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Mage Combat & Progression</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Comprehensive Pixel Lineage gameplay walkthrough demonstrating Mage spell rotations, MP management, and Cleric/Hexer support.
+          </p>
+          <VideoEmbed
+            id="1pdNdjCu7BM"
+            title="Pixel Lineage Mage Class Arcane & Healing Rotation Walkthrough"
+            channelTitle="OyO"
+            uploadDate="2026-10-07T00:00:00+00:00"
+            description="Comprehensive Pixel Lineage gameplay walkthrough demonstrating Mage spell rotations, MP management, and Cleric/Hexer support."
+          />
+        </section>
+
+<!-- Combat Philosophy & Archetype Overview -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.25rem; color: #a855f7; margin: 0 0 12px;">Mage Combat Philosophy & Baseline Archetype</h2>
+        <h2 id="mage-combat-philosophy-baseline-archetype" style="font-size: 1.25rem; color: #a855f7; margin: 0 0 12px;">Mage Combat Philosophy & Baseline Archetype</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
           The Mage is Pixel Lineage's premier glass cannon and utility master. Starting with 18 base Magic (MAG) and gaining +2.8 MAG per level, Mages possess the steepest offensive scaling curve in the game. While physical weapon users must punch through enemy armor ratings, arcane spells deal elemental and true damage that completely bypasses mob physical defense shields.
         </p>
@@ -94,7 +116,7 @@ const mageMilestones = [
       <!-- Complete Level 1 to 30 Milestone Growth Table -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
         <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
-          <h2 style="font-size: 1.3rem; color: #fff; margin: 0;">Complete Level 1 to 30 Attribute Growth Ledger</h2>
+          <h2 id="complete-level-1-to-30-attribute-growth-ledger" style="font-size: 1.3rem; color: #fff; margin: 0;">Complete Level 1 to 30 Attribute Growth Ledger</h2>
           <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #a855f7;">Formula: HP +6.0/lv · MAG +2.8/lv · SPD +1.2/lv</span>
         </div>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
@@ -138,7 +160,7 @@ const mageMilestones = [
 
       <!-- The 3 Super Classes Deep Dive -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The 3 Mage Super Classes: Skills, Multipliers & Builds</h2>
+        <h2 id="the-3-mage-super-classes-skills-multipliers-builds" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The 3 Mage Super Classes: Skills, Multipliers & Builds</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
           At Level 15 in Act 2, speak to the High Arcanist at Trainer's Shrine. Choose carefully, as this selection is permanently irreversible:
         </p>
@@ -146,7 +168,7 @@ const mageMilestones = [
         <!-- 1. Cleric -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #38bdf8; margin: 0;">1. Cleric — S Tier Cooperative Healer & Purifier</h3>
+            <h3 id="1-cleric-s-tier-cooperative-healer-purifier" style="font-size: 1.15rem; color: #38bdf8; margin: 0;">1. Cleric — S Tier Cooperative Healer & Purifier</h3>
             <span style="font-size: 0.8rem; color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Raid Life Anchor</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -175,7 +197,7 @@ const mageMilestones = [
         <!-- 2. Hexer -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 6px; padding: 18px; margin-bottom: 20px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #a855f7; margin: 0;">2. Hexer — Dark Decay & Curse Specialist</h3>
+            <h3 id="2-hexer-dark-decay-curse-specialist" style="font-size: 1.15rem; color: #a855f7; margin: 0;">2. Hexer — Dark Decay & Curse Specialist</h3>
             <span style="font-size: 0.8rem; color: #a855f7; background: rgba(168, 85, 247, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Boss Armor Bypass & Solo Carry</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -204,7 +226,7 @@ const mageMilestones = [
         <!-- 3. Summoner -->
         <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 6px; padding: 18px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-            <h3 style="font-size: 1.15rem; color: #34d399; margin: 0;">3. Summoner — Arcane Construct & Minion Overlord</h3>
+            <h3 id="3-summoner-arcane-construct-minion-overlord" style="font-size: 1.15rem; color: #34d399; margin: 0;">3. Summoner — Arcane Construct & Minion Overlord</h3>
             <span style="font-size: 0.8rem; color: #34d399; background: rgba(52, 211, 153, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Autonomous Army & Safe Clears</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
@@ -233,7 +255,7 @@ const mageMilestones = [
 
       <!-- Recommended Bloodline & Talent Synergies -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Bloodline & Talent Meta Synergies</h2>
+        <h2 id="recommended-bloodline-talent-meta-synergies" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Bloodline & Talent Meta Synergies</h2>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
           To push your Mage build to maximum potency, pair with these top-tier racial lineages and trait setups:
         </p>
@@ -267,7 +289,7 @@ const mageMilestones = [
           </div>
         </div>
 
-        <h3 style="font-size: 1.1rem; color: #c9a227; margin: 0 0 10px;">Primary & Secondary Talent Pairings</h3>
+        <h3 id="primary-secondary-talent-pairings" style="font-size: 1.1rem; color: #c9a227; margin: 0 0 10px;">Primary & Secondary Talent Pairings</h3>
         <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 12px;">
           Consult our full <a href="/traits/" style="color: var(--accent); text-decoration: none;">Traits & Drop Rates Guide</a> when rolling. For Mages, the top three talents are:
         </p>
@@ -280,7 +302,7 @@ const mageMilestones = [
 
       <!-- Solo vs Multiplayer Dynamics -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Solo vs Multiplayer Team Roles & Positioning</h2>
+        <h2 id="solo-vs-multiplayer-team-roles-positioning" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Solo vs Multiplayer Team Roles & Positioning</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
             <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Solo Expedition Dynamics</strong>
@@ -300,7 +322,7 @@ const mageMilestones = [
 
       <!-- Power Curve: Early, Mid, End Game -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Power Curve Trajectory: Early vs Mid vs End Game</h2>
+        <h2 id="power-curve-trajectory-early-vs-mid-vs-end-game" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Power Curve Trajectory: Early vs Mid vs End Game</h2>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #eab308;">
             <strong style="color: #eab308;">Early Game (Levels 1–10): B Tier Fragility</strong>
@@ -327,7 +349,7 @@ const mageMilestones = [
 
       <!-- Best-in-Slot Equipment Synergies -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
+        <h2 id="recommended-best-in-slot-equipment-synergies" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
             <strong style="color: #a855f7;">Weapon: Netherflame Staff of the Archmage</strong>
@@ -352,22 +374,22 @@ const mageMilestones = [
 
       <!-- Frequently Asked Questions -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About the Mage</h2>
+        <h2 id="frequently-asked-questions-about-the-mage" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About the Mage</h2>
         <div style="display: flex; flex-direction: column; gap: 16px;">
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Can spell attacks trigger critical strike damage in Pixel Lineage?</h3>
+            <h3 id="can-spell-attacks-trigger-critical-strike-damage-in-pixel-lineage" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Can spell attacks trigger critical strike damage in Pixel Lineage?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               Yes. Unlike older RPG systems, offensive magic in Pixel Lineage rolls for critical strike chance on every cast and individual DoT tick. Magical crits deal 1.5x damage by default, which can be further boosted by accessories and talents.
             </p>
           </div>
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does healing scale with Magic or Attack?</h3>
+            <h3 id="does-healing-scale-with-magic-or-attack" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does healing scale with Magic or Attack?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               All restorative abilities—including Cleric single-target prayers and AoE group heals—scale 100% with your total Magic attribute. Attack has zero impact on healing output.
             </p>
           </div>
           <div>
-            <h3 style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Which Super Class is best for solo players: Cleric or Hexer?</h3>
+            <h3 id="which-super-class-is-best-for-solo-players-cleric-or-hexer" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Which Super Class is best for solo players: Cleric or Hexer?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
               Hexer is substantially superior for solo players due to passive lifesteal, mana siphoning, and dark curse damage that bypasses monster armor. Cleric is designed primarily for multi-player co-op and guild raid coordination.
             </p>
@@ -384,6 +406,10 @@ const mageMilestones = [
           Simulate Mage in Combat Calculator →
         </a>
       </div>
-    </article>
+          </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/mage/" />
+    </div>
   </div>
 </BaseLayout>
