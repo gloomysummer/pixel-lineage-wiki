@@ -177,17 +177,18 @@ const brandRest = brandParts.slice(1).join(' ') || 'WIKI';
         </a>
 
         <!-- 移动端汉堡切换按钮 -->
-        <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <button type="button" class="mobile-nav-toggle nav-toggle mobile-menu-btn" id="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
           <svg class="hamburger-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
           <svg class="close-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
 
         <!-- 顶级导航栏：与 CHANNELS 知识树 1:1 对齐 -->
         <nav class="nav-links" id="main-nav" aria-label="Main Navigation">
-          {CHANNELS.map((ch) => {
+          {CHANNELS.map((ch, idx) => {
             const isActive = canonical.startsWith(ch.url) || ch.guides.some((g) => canonical.includes(g.id));
+            const isRightSide = idx >= 4;
             return (
-              <div class="nav-item has-dropdown">
+              <div class={`nav-item has-dropdown ${isRightSide ? 'dropdown-right' : ''}`}>
                 <a href={ch.url} class={`nav-trigger ${isActive ? 'active' : ''}`} aria-haspopup="true">
                   <span>{ch.shortTitle}</span>
                   {ch.id === 'codes' && <span class="nav-pill-badge">ACTIVE</span>}
