@@ -1,0 +1,191 @@
+{
+  "gameName": "Pixel Lineage [DUNGEONS+ HOLLOWEEN+RACE EVO]",
+  "platform": "Roblox",
+  "universeId": "10767928510",
+  "placeId": "126256942507957",
+  "fetchedAt": "2026-10-18T14:17:28.639813+00:00",
+  "metadata": {
+    "name": "Pixel Lineage [DUNGEONS+ HOLLOWEEN+RACE EVO]",
+    "namingNote": "游戏名随版本频繁改名，必须从 API name 字段动态读取，严禁写死",
+    "developer": "Pixel Lineage (Group 362755399)",
+    "creatorGroup": "362755399",
+    "genre_l1": "RPG",
+    "genre_l2": "Turn-based RPG",
+    "created": "2026-09-25T00:17:21.195Z",
+    "publicRelease": "2026-10-01",
+    "maxPlayers": 50,
+    "officialDescription": "Inspired by a lot of games, mostly terraria, but enjoy. Game will be updated weekly.\n\nThis is a fast turn-based roguelike RPG game, it is not meant to be easy.\nBasic controls and information can be found in-game, you will find bugs and game breaking issues with the game in its earliest release.\n\nLike, Favorite and Join the group to redeem codes.\n\nCodes: \n\"OCTOBER\""
+  },
+  "liveStats": {
+    "fetchedAt": "2026-10-18T14:17:28.639813+00:00",
+    "playing": 11980,
+    "peak24h": null,
+    "visits": 10901545,
+    "favoritedCount": 87301,
+    "upVotes": 86176,
+    "downVotes": 1011,
+    "rating": 0.988,
+    "averageSessionMinutes": 13.5
+  },
+  "stats": {
+    "fetchedAt": "2026-10-18T14:17:28.639813+00:00",
+    "playing": 11980,
+    "peak24h": null,
+    "visits": 10901545,
+    "favoritedCount": 87301,
+    "upVotes": 86176,
+    "downVotes": 1011,
+    "rating": 0.988,
+    "averageSessionMinutes": 13.5
+  },
+  "systemRequirements": {},
+  "achievements": [],
+  "announcements": [],
+  "fandomData": {
+    "fandomUrl": "https://pixel-lineage.fandom.com",
+    "entities": [
+      "Adventures",
+      "Archer",
+      "Arena",
+      "Armor Sets",
+      "Assassin",
+      "Bard",
+      "Battle Basics",
+      "Beast Tamer",
+      "Beginner Guide",
+      "Berserk",
+      "Brawler",
+      "Classes",
+      "Cleric",
+      "Codes",
+      "Corsair",
+      "Deadeye",
+      "Fist",
+      "Gear",
+      "Getting Started",
+      "Greatsword",
+      "Guilds",
+      "Hexer",
+      "Legendary Powers",
+      "Mage",
+      "Minstrel",
+      "Monk",
+      "Oni",
+      "Pets",
+      "Pianist",
+      "Pixel Lineage",
+      "Pixel Lineage Wiki",
+      "Races",
+      "Ranger",
+      "Rogue",
+      "Sentinel"
+    ],
+    "categories": [],
+    "curatedTopics": [
+      {
+        "keyword": "codes",
+        "title": "Codes",
+        "pageid": 160
+      },
+      {
+        "keyword": "codes",
+        "title": "Pixel Lineage Wiki",
+        "pageid": 1
+      },
+      {
+        "keyword": "codes",
+        "title": "The Castle",
+        "pageid": 459
+      },
+      {
+        "keyword": "weapons",
+        "title": "Weapons",
+        "pageid": 570
+      },
+      {
+        "keyword": "weapons",
+        "title": "Gear",
+        "pageid": 227
+      },
+      {
+        "keyword": "weapons",
+        "title": "Pixel Lineage Wiki",
+        "pageid": 1
+      },
+      {
+        "keyword": "abilities",
+        "title": "Pets",
+        "pageid": 448
+      },
+      {
+        "keyword": "abilities",
+        "title": "Pixel Lineage Wiki",
+        "pageid": 1
+      },
+      {
+        "keyword": "abilities",
+        "title": "Races",
+        "pageid": 451
+      },
+      {
+        "keyword": "bosses",
+        "title": "Torment",
+        "pageid": 461
+      },
+      {
+        "keyword": "bosses",
+        "title": "Guilds",
+        "pageid": 441
+      },
+      {
+        "keyword": "bosses",
+        "title": "Gear",
+        "pageid": 227
+      },
+      {
+        "keyword": "swords",
+        "title": "Weapons",
+        "pageid": 570
+      },
+      {
+        "keyword": "swords",
+        "title": "Sentinel",
+        "pageid": 454
+      },
+      {
+        "keyword": "swords",
+        "title": "Warrior",
+        "pageid": 463
+      }
+    ]
+  },
+  "searchKeywords": [
+    "pixel lineage best class",
+    "pixel lineage best mage class",
+    "pixel lineage best race",
+    "pixel lineage best super classes",
+    "pixel lineage best trait",
+    "pixel lineage codes",
+    "pixel lineage codes roblox",
+    "pixel lineage discord",
+    "pixel lineage discord server",
+    "pixel lineage how to get ultra class",
+    "pixel lineage how to get ultra sigil",
+    "pixel lineage how to redeem codes",
+    "pixel lineage roblox",
+    "pixel lineage roblox codes",
+    "pixel lineage tier list",
+    "pixel lineage trello",
+    "pixel lineage wiki"
+  ],
+  "media": {
+    "icon": "https://tr.rbxcdn.com/180DAY-a0ac70c6c0081c040134a0dcc5cc9c34/512/512/Image/Png/noFilter",
+    "thumbnails": [
+      "https://tr.rbxcdn.com/180DAY-3bde237112fa94cdaf224f5894139d5f/768/432/Image/Png/noFilter",
+      "https://tr.rbxcdn.com/180DAY-3c279f0efd9c296338ff78786c4c801a/768/432/Image/Png/noFilter",
+      "https://tr.rbxcdn.com/180DAY-be0e5ab388d3711870d2e804dbbdcb36/768/432/Image/Png/noFilter",
+      "https://tr.rbxcdn.com/180DAY-dc9cb00f0efbd5f1dc44bbd01447cbb0/768/432/Image/Png/noFilter"
+    ]
+  },
+  "systems": {}
+}

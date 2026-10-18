@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Pixel Lineage Tier List Hub (October 2026)",
+    description: "Comprehensive meta tier lists for Pixel Lineage covering classes, super evolutions, races, and trait probabilities.",
+    url: `${siteConfig.siteUrl}/tier-list/`,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Tier List", item: `${siteConfig.siteUrl}/tier-list/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Tier List: Class & Race Meta"
+  description="Master tier list rankings for Pixel Lineage on Roblox: comparative tier lists for 6 base classes, 18 super classes, races, and high-tier talent drop rates."
+  canonical="/tier-list/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Tier List</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(244, 63, 94, 0.15); border: 1px solid #f43f5e; color: #f43f5e; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Empirical Meta Evaluation · Weekly Build
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Tier List Hub & Meta Rankings
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        Objective tier rankings based on Act 2 dungeon clear speeds, survivability scaling in Torment mode, and synergy potential between Super Classes and racial passives.
+      </p>
+    </header>
+
+    <!-- 3 Core Tier Categories -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 40px;">
+      <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; display: flex; flex-direction: column;">
+        <span style="color: #a855f7; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Core Combat Engine</span>
+        <h2 style="font-size: 1.3rem; margin: 0 0 12px; color: var(--ink);">Class & Super Class Tier List</h2>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; flex-grow: 1; margin: 0 0 20px;">
+          Rankings for all 6 base archetypes and their 18 irreversible Super Class specializations evaluated across Solo Dungeon and Guild Raid performance.
+        </p>
+        <a href="/tier-list/class-tier-list/" style="background: rgba(168, 85, 247, 0.2); border: 1px solid #a855f7; color: #f5f3ff; padding: 10px 16px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; text-decoration: none; text-align: center;">
+          View Class Tier List →
+        </a>
+      </div>
+
+      <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; display: flex; flex-direction: column;">
+        <span style="color: #c9a227; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Bloodline Synergy</span>
+        <h2 style="font-size: 1.3rem; margin: 0 0 12px; color: var(--ink);">Races & Passives Tier List</h2>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; flex-grow: 1; margin: 0 0 20px;">
+          Detailed breakdown of racial spin rarities and passive trait buffs, highlighting top-tier synergies like Nightborn and Draconic lineages.
+        </p>
+        <a href="/tier-list/race-tier-list/" style="background: rgba(201, 162, 39, 0.2); border: 1px solid #c9a227; color: #f5f3ff; padding: 10px 16px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; text-decoration: none; text-align: center;">
+          View Race Tier List →
+        </a>
+      </div>
+
+      <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; display: flex; flex-direction: column;">
+        <span style="color: #38bdf8; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Drop Rate Mathematics</span>
+        <h2 style="font-size: 1.3rem; margin: 0 0 12px; color: var(--ink);">Talents & Traits Drop Rates</h2>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; flex-grow: 1; margin: 0 0 20px;">
+          Empirical spin probability tables covering common to legendary traits, from Survivor (30%) down to Fortune's Favor (5%) and Prodigy.
+        </p>
+        <a href="/tier-list/talent-tier-list/" style="background: rgba(56, 189, 248, 0.2); border: 1px solid #38bdf8; color: #f5f3ff; padding: 10px 16px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; text-decoration: none; text-align: center;">
+          View Talent Tier List →
+        </a>
+      </div>
+    </div>
+
+    <!-- Tier Methodology Statement -->
+    <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+      <h3 style="margin: 0 0 12px; font-size: 1.2rem; color: #c9a227;">Ranking Methodology & Evidence Criteria</h3>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+        Our meta tiers are not arbitrary community polls. Every tier score reflects four rigorous benchmarks:
+      </p>
+      <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+        <li><strong>Act 2 Clear Speed:</strong> Time elapsed to defeat the Dungeon Warden boss at Trainer's Shrine.</li>
+        <li><strong>Survivability in Torment Mode:</strong> Effective HP, damage mitigation shields, and dodge reliability against fatal enemy crits.</li>
+        <li><strong>Resource Efficiency:</strong> Mana consumption and Potion dependence during extended dungeon runs.</li>
+        <li><strong>Team Utility:</strong> AoE debuff coverage, stun capabilities, and turn order manipulation for cooperative raids.</li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage Codes Not Working: 4 Verified Fixes",
+    description: "Fix Pixel Lineage promo codes not working errors: group verification delay, exact case sensitivity, goblin merchant location, and expired code checks.",
+    url: `${siteConfig.siteUrl}/codes/not-working/`,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Codes", item: `${siteConfig.siteUrl}/codes/` },
+      { "@type": "ListItem", position: 3, name: "Troubleshooting", item: `${siteConfig.siteUrl}/codes/not-working/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Codes Not Working: 4 Fixes"
+  description="Fix Pixel Lineage promo codes not working errors: group verification delay, exact case sensitivity, goblin merchant location, and expired code checks."
+  canonical="/codes/not-working/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/codes/" style="color: var(--accent); text-decoration: none;">Codes</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Troubleshooting</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Codes Not Working Fixes
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        Encountering "Invalid Code" or "Prerequisites Not Met" in Pixel Lineage? Follow this four-step empirical checklist to redeem your rewards successfully.
+      </p>
+    </header>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+        <h2 style="margin: 0 0 8px; font-size: 1.2rem; color: #f43f5e;">Most Common Culprit: Roblox Group API Cache Delay</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">
+          The #1 reason codes fail in Pixel Lineage is Roblox API caching. When you join Group <strong>362755399</strong>, existing live game servers take up to 2 minutes to recognize your new membership status. Rejoining a fresh server instantly forces a re-check.
+        </p>
+      </section>
+
+      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 32px 0 16px;">The 4 Essential Troubleshooting Steps</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 36px;">
+        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+          <h3 style="color: #34d399; margin: 0 0 8px; font-size: 1.15rem;">1. Verify All 3 Mandatory Prerequisites</h3>
+          <p style="color: var(--muted); margin: 0 0 12px; font-size: 0.95rem;">
+            Unlike standard Roblox games where codes work out of the box, Pixel Lineage locks the redemption gate behind three separate account actions:
+          </p>
+          <ul style="color: var(--muted); font-size: 0.9rem; padding-left: 20px; margin: 0;">
+            <li><strong>Join Group:</strong> Must be an active member of the <code>Pixel Lineage</code> group (ID: <code>362755399</code>).</li>
+            <li><strong>Like (Thumbs Up):</strong> Give a positive vote on the official experience page.</li>
+            <li><strong>Favorite:</strong> Click the Star icon on the game page.</li>
+          </ul>
+        </div>
+
+        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+          <h3 style="color: #34d399; margin: 0 0 8px; font-size: 1.15rem;">2. Server Reconnection Protocol</h3>
+          <p style="color: var(--muted); margin: 0; font-size: 0.95rem;">
+            If you completed the three steps while already inside a game session, the local client will keep displaying an error. Disconnect, close the Roblox player, wait 30 seconds, and rejoin. Your group membership will be retrieved on new server handshake.
+          </p>
+        </div>
+
+        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+          <h3 style="color: #34d399; margin: 0 0 8px; font-size: 1.15rem;">3. Strict Case Sensitivity & Whitespace Stripping</h3>
+          <p style="color: var(--muted); margin: 0; font-size: 0.95rem;">
+            All Pixel Lineage codes are strictly uppercase. Typing <code style="color: #f43f5e;">october</code> or <code style="color: #f43f5e;">October</code> will fail. Ensure there are no accidental trailing spaces when copying from mobile clipboards: enter exact code <code style="color: #34d399; font-weight: 700;">OCTOBER</code>.
+          </p>
+        </div>
+
+        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+          <h3 style="color: #34d399; margin: 0 0 8px; font-size: 1.15rem;">4. Distinguish Expired Codes From System Bugs</h3>
+          <p style="color: var(--muted); margin: 0; font-size: 0.95rem;">
+            Codes such as <code style="color: #f43f5e;">RELEASE</code> and <code style="color: #f43f5e;">LINEAGE</code> expired during earlier weekly patch migrations. Always verify against our live <a href="/codes/" style="color: var(--accent);">Active Codes Ledger</a> before assuming your client is bugged.
+          </p>
+        </div>
+      </div>
+
+      <!-- Evidence Dossier -->
+      <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+        <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">Evidence Dossier: Group Membership Verification</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 10px;">
+          Developer group identification: Group Name: <code>Pixel Lineage</code> | Owner Group ID: <code>362755399</code>.
+        </p>
+        <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">
+          Direct group verification endpoint: <code>https://groups.roblox.com/v1/groups/362755399</code>.
+        </p>
+      </section>
+
+      <div style="text-align: center; margin-top: 32px;">
+        <a href="/codes/redeem/" style="background: #34d399; color: #0d0a14; padding: 12px 24px; border-radius: 6px; font-weight: 700; text-decoration: none; display: inline-block;">
+          Go to Step-by-Step Redeem Guide →
+        </a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

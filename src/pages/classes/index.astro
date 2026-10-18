@@ -1,0 +1,193 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const classes = [
+  {
+    name: "Warrior",
+    slug: "warrior",
+    role: "Frontline Tank & Cleave",
+    color: "#ea580c",
+    superEvolutions: ["Berserk", "Sentinel", "Greatsword"],
+    stats: { hp: 120, atk: 14, def: 12, mag: 4, spd: 8, crit: "5%", dodge: "3%" },
+    description: "Highest base HP and armor scaling. Relies on heavy physical strikes, shield parries, and cleaving multi-target sweeps.",
+  },
+  {
+    name: "Thief",
+    slug: "thief",
+    role: "Speed Burst & Critical Strikes",
+    color: "#34d399",
+    superEvolutions: ["Assassin", "Rogue", "Corsair"],
+    stats: { hp: 85, atk: 12, def: 6, mag: 5, spd: 16, crit: "15%", dodge: "12%" },
+    description: "Supreme combat initiative and evasion. Executes high-frequency critical chains and gold theft from elite dungeon mobs.",
+  },
+  {
+    name: "Mage",
+    slug: "mage",
+    role: "Arcane Spells, Heals & DoT",
+    color: "#a855f7",
+    superEvolutions: ["Cleric", "Hexer", "Summoner"],
+    stats: { hp: 75, atk: 6, def: 5, mag: 18, spd: 10, crit: "4%", dodge: "4%" },
+    description: "Devastating magical scaling. Utilizes elemental burst spells, party restoration prayers, and armor-bypassing curses.",
+  },
+  {
+    name: "Fist",
+    slug: "fist",
+    role: "Martial Stun & Poise Break",
+    color: "#f43f5e",
+    superEvolutions: ["Monk", "Brawler", "Oni"],
+    stats: { hp: 105, atk: 15, def: 8, mag: 6, spd: 12, crit: "8%", dodge: "6%" },
+    description: "Unarmed martial arts master. Inflicts heavy poise damage to interrupt enemy turns and unleash rapid flurry combos.",
+  },
+  {
+    name: "Bard",
+    slug: "bard",
+    role: "Support Buffs & Turn Control",
+    color: "#eab308",
+    superEvolutions: ["Minstrel", "Pianist", "Troubadour"],
+    stats: { hp: 90, atk: 8, def: 7, mag: 12, spd: 11, crit: "6%", dodge: "5%" },
+    description: "Invaluable cooperative utility. Manipulates turn queues with musical anthems and accelerates team Knowledge gains.",
+  },
+  {
+    name: "Archer",
+    slug: "archer",
+    role: "Ranged Piercing & Precision",
+    color: "#22c55e",
+    superEvolutions: ["Deadeye", "Ranger", "Beast Tamer"],
+    stats: { hp: 80, atk: 14, def: 5, mag: 5, spd: 13, crit: "12%", dodge: "7%" },
+    description: "Long-range marksman. Pierces through heavy monster carapaces, plants tactical snares, and summons beast companions.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Pixel Lineage Classes (October 2026)",
+    description: "Guide to all 6 base classes and 18 super class evolutions in Pixel Lineage on Roblox with complete starter attribute matrices.",
+    url: `${siteConfig.siteUrl}/classes/`,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Classes", item: `${siteConfig.siteUrl}/classes/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Classes: 6 Archetypes & Stats"
+  description="Complete guide to all 6 base classes in Pixel Lineage: Lv 1 starter stat growths, evolution branches, combat roles, and Trainer's Shrine mechanics."
+  canonical="/classes/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Classes</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Classes & Starter Stats
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        Your choice of base class sets the permanent foundation of your character's stat scaling. Each archetype branches into three specialized Super Classes at the Trainer's Shrine.
+      </p>
+    </header>
+
+    <!-- Super Classes Banner -->
+    <div style="background: #1d152c; border: 1px solid #a855f7; border-radius: 8px; padding: 20px; margin-bottom: 36px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+      <div>
+        <div style="color: #c9a227; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Act 2 Evolution Milestone</div>
+        <h2 style="font-size: 1.25rem; color: var(--ink); margin: 4px 0;">Looking for the 18 Advanced Super Classes?</h2>
+        <p style="color: var(--muted); font-size: 0.88rem; margin: 0;">Detailed skill effects, scaling multipliers, and unlock conditions for all 18 evolutions.</p>
+      </div>
+      <a href="/classes/super-classes/" style="background: #a855f7; color: #fff; padding: 10px 20px; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.9rem;">
+        View 18 Super Classes →
+      </a>
+    </div>
+
+    <!-- 6 Classes Roster Cards -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-bottom: 40px;">
+      {classes.map((c) => (
+        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px; display: flex; flex-direction: column;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <h3 style={`margin: 0; font-size: 1.3rem; color: ${c.color};`}>
+              <a href={`/classes/${c.slug}/`} style="color: inherit; text-decoration: none;">{c.name}</a>
+            </h3>
+            <span style="font-size: 0.75rem; color: var(--muted); background: #1d152c; padding: 2px 6px; border-radius: 4px;">
+              {c.role}
+            </span>
+          </div>
+
+          <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0 0 16px; flex-grow: 1;">
+            {c.description}
+          </p>
+
+          <div style="background: #1d152c; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 6px; padding: 10px; margin-bottom: 16px; font-size: 0.82rem; font-family: var(--font-mono);">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+              <span>HP: <strong>{c.stats.hp}</strong></span>
+              <span>ATK: <strong>{c.stats.atk}</strong></span>
+              <span>DEF: <strong>{c.stats.def}</strong></span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>MAG: <strong>{c.stats.mag}</strong></span>
+              <span>SPD: <strong>{c.stats.spd}</strong></span>
+              <span>CRIT: <strong>{c.stats.crit}</strong></span>
+            </div>
+          </div>
+
+          <div style="font-size: 0.82rem; color: #f5f3ff; margin-bottom: 12px;">
+            <strong>Evolutions:</strong> {c.superEvolutions.join(", ")}
+          </div>
+
+          <a href={`/classes/${c.slug}/`} style={`color: ${c.color}; font-size: 0.88rem; font-weight: 600; text-decoration: none;`}>
+            Read {c.name} Class Guide →
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Lv 1 Comparative Table -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 40px;">
+      <div style="background: #1d152c; padding: 14px 20px; border-bottom: 1px solid var(--line);">
+        <h2 style="font-size: 1.25rem; color: var(--ink); margin: 0;">Full Lv 1 Comparative Attribute Table</h2>
+      </div>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--line); background: #13101c;">
+              <th style="padding: 12px 16px; color: var(--muted);">Archetype</th>
+              <th style="padding: 12px 16px; color: var(--muted);">Base HP</th>
+              <th style="padding: 12px 16px; color: var(--muted);">Attack</th>
+              <th style="padding: 12px 16px; color: var(--muted);">Defense</th>
+              <th style="padding: 12px 16px; color: var(--muted);">Magic</th>
+              <th style="padding: 12px 16px; color: var(--muted);">Speed</th>
+              <th style="padding: 12px 16px; color: var(--muted);">Crit / Dodge</th>
+            </tr>
+          </thead>
+          <tbody>
+            {classes.map((c) => (
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                <td style={`padding: 12px 16px; font-weight: 700; color: ${c.color};`}>
+                  <a href={`/classes/${c.slug}/`} style="color: inherit; text-decoration: none;">{c.name}</a>
+                </td>
+                <td style="padding: 12px 16px; font-weight: 600;">{c.stats.hp}</td>
+                <td style="padding: 12px 16px;">{c.stats.atk}</td>
+                <td style="padding: 12px 16px;">{c.stats.def}</td>
+                <td style="padding: 12px 16px;">{c.stats.mag}</td>
+                <td style="padding: 12px 16px;">{c.stats.spd}</td>
+                <td style="padding: 12px 16px; font-family: var(--font-mono); color: var(--muted);">{c.stats.crit} / {c.stats.dodge}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

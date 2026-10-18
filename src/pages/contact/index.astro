@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: `Contact ${siteConfig.siteName}`,
+    description: `Contact the editorial desk of ${siteConfig.siteName} for data submissions, class balance corrections, and inquiries.`,
+    url: `${siteConfig.siteUrl}/contact/`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.siteUrl },
+      { '@type': 'ListItem', position: 2, name: 'Contact', item: `${siteConfig.siteUrl}/contact/` },
+    ],
+  },
+];
+---
+<BaseLayout
+  title="Contact Pixel Lineage Wiki: Editorial Desk"
+  description="Contact the Pixel Lineage Wiki editorial desk for game data submissions, class balance corrections, code reports, and copyright inquiries."
+  canonical="/contact/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <article>
+      <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+        <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+        <span class="separator" style="margin: 0 8px;">/</span>
+        <span class="current">Contact</span>
+      </nav>
+
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 16px;">Contact Pixel Lineage Wiki Editorial</h1>
+      <div class="meta-bar" style="margin-bottom: 24px; color: var(--muted); font-size: 0.85rem;">
+        <span>Direct Communication · Corrections & Feedback</span>
+      </div>
+
+      <p style="font-size: 1.05rem; line-height: 1.7; color: var(--ink); margin-bottom: 24px;">
+        The <strong>Pixel Lineage Wiki</strong> editorial team maintains verified databases for Roblox players. We welcome reproducible gameplay mechanics submissions, Super Class talent ratios, and code status reports.
+      </p>
+
+      <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin: 28px 0;">
+        <span style="font-size: 0.8rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 8px; font-weight: 700;">Direct Inquiries & Editorial Support</span>
+        <h3 style="margin: 0 0 12px; color: var(--ink); font-size: 1.3rem;">Editorial Team Email</h3>
+        <p style="margin: 0 0 16px; color: var(--muted); font-size: 0.95rem; line-height: 1.6;">
+          For guide corrections, new promo codes discovery, class tier adjustments, or general partnership queries:
+        </p>
+        <a href={`mailto:${siteConfig.contactEmail}`} style="display: inline-flex; align-items: center; gap: 8px; font-size: 1rem; color: #c9a227; background: rgba(201, 162, 39, 0.1); border: 1px solid rgba(201, 162, 39, 0.3); padding: 10px 18px; border-radius: 6px; font-weight: 700; text-decoration: none;">
+          ✉ {siteConfig.contactEmail}
+        </a>
+      </div>
+
+      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 32px 0 12px;">Submitting In-Game Corrections</h2>
+      <p style="color: var(--muted); line-height: 1.7; margin-bottom: 16px;">
+        When submitting class stat growth adjustments or code changes, please specify:
+      </p>
+      <ul style="color: var(--muted); line-height: 1.7; padding-left: 20px; margin-bottom: 24px;">
+        <li>Current weekly patch date or version title from the official Roblox experience.</li>
+        <li>Character base class and exact level during empirical testing.</li>
+        <li>Unedited screenshots showing Trainer's Shrine dialogues or Goblin Merchant notifications.</li>
+      </ul>
+
+      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 32px 0 12px;">Copyright & Intellectual Property</h2>
+      <p style="color: var(--muted); line-height: 1.7;">
+        All game characters, artwork, and trademarks belong to their respective copyright owners (Pixel Lineage Group 362755399). If you are a copyright representative with questions regarding content on this site, email <a href={`mailto:${siteConfig.contactEmail}`} style="color: var(--accent);">{siteConfig.contactEmail}</a> for swift resolution.
+      </p>
+    </article>
+  </div>
+</BaseLayout>

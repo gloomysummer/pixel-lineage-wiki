@@ -1,0 +1,122 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const updates = [
+  {
+    version: "v1.3.0 (October 13, 2026)",
+    title: "DUNGEONS+ HOLLOWEEN+RACE EVO",
+    changes: [
+      "Added limited-time Halloween Event dungeon with Candy currency drops.",
+      "Introduced Race Evolution system: enhanced passives for Nightborn and Draconic.",
+      "Rebalanced Hexer Malediction DoT scaling from 60% down to 50% for boss balance.",
+      "Fixed Goblin Merchant dialogue bug causing code redemption freezing on mobile.",
+      "Released promo code 'OCTOBER' granting free spins and gold.",
+    ],
+  },
+  {
+    version: "v1.2.0 (October 06, 2026)",
+    title: "Trainer's Shrine & Super Classes Launch",
+    changes: [
+      "Implemented Trainer's Shrine in Act 2 The Dungeon for 18 Super Class evolutions.",
+      "Added Ultra Sigil awakening trial for Level 25+ characters.",
+      "Introduced Castle restoration system with initial Great Hall rebuild goal.",
+      "Performance optimizations for turn-based battle particle animations.",
+    ],
+  },
+  {
+    version: "v1.0.0 (September 25, 2026)",
+    title: "Official Public Launch",
+    changes: [
+      "Initial launch of Pixel Lineage on Roblox with 6 base classes.",
+      "Act 1 The Sunken Ruins and Act 2 The Catacombs open for exploration.",
+      "Turn-based combat engine, poise breaks, and elemental magic systems live.",
+    ],
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Pixel Lineage Weekly Updates & Patch Notes",
+    description: "Official weekly changelog, Halloween event notes, and balance patches for Pixel Lineage on Roblox.",
+    url: `${siteConfig.siteUrl}/updates/`,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Updates", item: `${siteConfig.siteUrl}/updates/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Updates: Patch Notes & Events"
+  description="Complete Pixel Lineage weekly update log: Halloween event notes, Race Evolution balances, dungeon expansion changelogs, and developer promises on Roblox."
+  canonical="/updates/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Updates</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(99, 102, 241, 0.15); border: 1px solid #6366f1; color: #6366f1; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Developer Changelog · Weekly Cadence
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Weekly Updates & Notes
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        The developers of Pixel Lineage have officially committed to a strict weekly update cycle. Track all patch notes, class adjustments, and seasonal event features here.
+      </p>
+    </header>
+
+    <!-- Developer Commitment Box -->
+    <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #6366f1; border-radius: 8px; padding: 20px; margin-bottom: 36px;">
+      <h2 style="margin: 0 0 8px; font-size: 1.15rem; color: #c9a227;">Official Developer Statement</h2>
+      <blockquote style="margin: 0; color: #e5e0f0; font-size: 0.92rem; font-style: italic; line-height: 1.6;">
+        "Inspired by a lot of games, mostly terraria, but enjoy. Game will be updated weekly. This is a fast turn-based roguelike RPG game, it is not meant to be easy."
+      </blockquote>
+      <p style="color: var(--muted); font-size: 0.8rem; margin: 8px 0 0;">
+        Source: Official Roblox experience description (Universe ID <code>10767928510</code>).
+      </p>
+    </section>
+
+    <!-- Updates Timeline -->
+    <div style="display: flex; flex-direction: column; gap: 28px; margin-bottom: 40px;">
+      {updates.map((u) => (
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
+            <span style="font-size: 0.82rem; font-family: var(--font-mono); color: #34d399; background: rgba(52, 211, 153, 0.15); padding: 2px 8px; border-radius: 4px; font-weight: 700;">
+              {u.version}
+            </span>
+            <h2 style="margin: 0; font-size: 1.25rem; color: var(--ink);">{u.title}</h2>
+          </div>
+          <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+            {u.changes.map((ch) => (
+              <li style="margin-bottom: 6px;">{ch}</li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+
+    <!-- Navigation -->
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="/codes/" style="background: #34d399; color: #0d0a14; padding: 12px 24px; border-radius: 6px; font-weight: 700; text-decoration: none;">
+        Check Active Codes from Latest Patch →
+      </a>
+      <a href="/classes/super-classes/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+        18 Super Classes Guide →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

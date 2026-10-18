@@ -1,0 +1,162 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const armorSets = [
+  {
+    name: "Ironclad Vanguard Set",
+    tier: "Heavy Plate (Act 1-2)",
+    defense: "+38 Armor, +85 HP",
+    setBonus: "3-Piece Bonus: 15% physical damage reduction against melee boss sweeps.",
+    source: "Crafted at Town Blacksmith or dropped by Act 1 Minotaur boss.",
+  },
+  {
+    name: "Shadowstalker Leather Set",
+    tier: "Light Leather (Act 1-2)",
+    defense: "+18 Armor, +14 Speed, +12% Crit",
+    setBonus: "3-Piece Bonus: 10% chance on critical strike to refund ability energy cost.",
+    source: "Dropped by Act 2 Catacomb Rogues or purchased at Auction House.",
+  },
+  {
+    name: "Netherweave Robes Set",
+    tier: "Cloth Robes (Act 2-3)",
+    defense: "+12 Armor, +32 Magic, +40 Mana",
+    setBonus: "3-Piece Bonus: Increases Dark and Holy spell damage by 20%.",
+    source: "Dropped by Act 2 Warden and Dungeon Crypt Lich.",
+  },
+];
+
+const legendaryWeapons = [
+  {
+    name: "Obsidian Cleaver",
+    type: "Colossal Greatsword",
+    scaling: "Scale A: ATK (28 Base)",
+    special: "Sunder: Crits inflict permanent -15% armor reduction on target.",
+  },
+  {
+    name: "Voidfang Dagger",
+    type: "Dual Daggers",
+    scaling: "Scale S: SPD / A: ATK (22 Base)",
+    special: "Shadow Rend: Bleed stacks tick twice per turn on poisoned enemies.",
+  },
+  {
+    name: "Staff of the Archmagus",
+    type: "Arcane Catalyst",
+    scaling: "Scale S: MAG (34 Base)",
+    special: "Arcane Overload: 20% chance to duplicate single-target spells.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Pixel Lineage Gear & Armor Sets Guide",
+    description: "Complete database of armor sets, weapon scaling, and legendary powers in Pixel Lineage on Roblox.",
+    url: `${siteConfig.siteUrl}/gear/`,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Gear", item: `${siteConfig.siteUrl}/gear/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Gear Guide: Armor Sets & Powers"
+  description="Complete Pixel Lineage gear guide: armor sets, weapon scaling, legendary powers, blacksmith upgrades, and dungeon boss drop locations on Roblox."
+  canonical="/gear/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Gear</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #38bdf8; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Equipment & Arsenal
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Gear & Armor Sets Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        Equipping full 3-piece armor sets activates powerful passive set bonuses that drastically augment your class abilities. Here are the core armor sets and legendary weapons.
+      </p>
+    </header>
+
+    <!-- Armor Sets Section -->
+    <section style="margin-bottom: 40px;">
+      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Core Dungeon Armor Sets</h2>
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        {armorSets.map((set) => (
+          <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 8px; padding: 20px;">
+            <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
+              <h3 style="margin: 0; font-size: 1.2rem; color: var(--ink);">{set.name}</h3>
+              <span style="font-size: 0.8rem; color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 2px 6px; border-radius: 3px;">
+                {set.tier}
+              </span>
+              <span style="font-size: 0.85rem; font-family: var(--font-mono); color: #c9a227; margin-left: auto;">
+                {set.defense}
+              </span>
+            </div>
+            <p style="color: #f5f3ff; font-size: 0.9rem; margin: 0 0 6px;">
+              <strong>Set Effect:</strong> {set.setBonus}
+            </p>
+            <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">
+              <strong>Acquisition:</strong> {set.source}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Legendary Weapons Section -->
+    <section style="margin-bottom: 40px;">
+      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Legendary Arsenal Powers</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        {legendaryWeapons.map((w) => (
+          <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px; display: flex; flex-direction: column;">
+            <h3 style="margin: 0 0 4px; font-size: 1.15rem; color: #c9a227;">{w.name}</h3>
+            <span style="font-size: 0.78rem; color: var(--muted); margin-bottom: 10px;">{w.type}</span>
+            <div style="font-size: 0.85rem; font-family: var(--font-mono); color: #34d399; margin-bottom: 10px;">
+              {w.scaling}
+            </div>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0; flex-grow: 1;">
+              <strong>Unique Trait:</strong> {w.special}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Blacksmith Upgrading Rules -->
+    <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+      <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">
+        Town Blacksmith Refinement Rules
+      </h3>
+      <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 10px;">
+        Weapons and armor pieces can be refined up to +5 at the Town Blacksmith using Gold and Ore ingots gathered from Act 1 and Act 2 dungeon runs.
+      </p>
+      <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">
+        Refinements from +1 to +3 have a 100% success rate. Refinements to +4 and +5 have a chance to downgrade if unassisted by protective runes.
+      </p>
+    </section>
+
+    <!-- Links -->
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="/classes/super-classes/" style="background: rgba(168, 85, 247, 0.2); border: 1px solid #a855f7; color: #f5f3ff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+        Check Weapon Scaling by Class →
+      </a>
+      <a href="/adventures/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+        Dungeon Drop Locations →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

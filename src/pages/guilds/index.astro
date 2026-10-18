@@ -1,0 +1,103 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Pixel Lineage Castle & Guilds System Guide",
+    description: "Guide to guild creation, castle repairs, lineage oaths, and cooperative guild raids in Pixel Lineage on Roblox.",
+    url: `${siteConfig.siteUrl}/guilds/`,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Guilds", item: `${siteConfig.siteUrl}/guilds/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Castle & Guilds: Raids Guide"
+  description="Complete Pixel Lineage Castle and Guilds guide: castle restoration milestones, guild oaths, cooperative boss raids, and Ultra Sigil drops on Roblox."
+  canonical="/guilds/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Guilds</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(236, 72, 153, 0.15); border: 1px solid #ec4899; color: #ec4899; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Community & Castle Progression
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Castle & Guild Raids Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        The mid-to-endgame cooperative pillar. Guilds pool resources to rebuild the ruined Castle, take Lineage Oaths, and access multi-phase raid encounters that drop Ultra Sigils.
+      </p>
+    </header>
+
+    <!-- Castle Restoration Milestones -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+      <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Castle Restoration Milestones</h2>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+        Guild members donate Gold and Stone quarried from dungeons to repair the Castle sectors:
+      </p>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="background: #1d152c; padding: 14px; border-radius: 6px; border-left: 3px solid #34d399;">
+          <strong style="color: #34d399;">Stage 1: Great Hall Rebuilt (50,000 Gold)</strong>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 4px 0 0;">Unlocks guild banking, communal potion storage, and global +5% Knowledge bonus for all members.</p>
+        </div>
+        <div style="background: #1d152c; padding: 14px; border-radius: 6px; border-left: 3px solid #38bdf8;">
+          <strong style="color: #38bdf8;">Stage 2: Training Barracks (150,000 Gold)</strong>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 4px 0 0;">Reduces trainer skill costs by 20% and provides training dummies for exact damage verification.</p>
+        </div>
+        <div style="background: #1d152c; padding: 14px; border-radius: 6px; border-left: 3px solid #c9a227;">
+          <strong style="color: #c9a227;">Stage 3: Apex War Room (350,000 Gold)</strong>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 4px 0 0;">Unlocks weekly Guild Raids and the Apex Shrine where Ultra Sigils can be bound to your character.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lineage Oaths System -->
+    <section style="margin-bottom: 36px;">
+      <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Lineage Oaths</h2>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+        Pledging an oath grants exclusive guild-wide passive buffs during multiplayer dungeon exploration:
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
+        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
+          <h3 style="color: #ea580c; margin: 0 0 6px; font-size: 1.1rem;">Oath of Iron</h3>
+          <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">+10% Party Defense when fighting in the same room. Exceptional for tank-heavy rosters.</p>
+        </div>
+        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
+          <h3 style="color: #a855f7; margin: 0 0 6px; font-size: 1.1rem;">Oath of Shadows</h3>
+          <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">+12% Critical Strike Damage for all guild members during Act 2 and Act 3 night encounters.</p>
+        </div>
+        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
+          <h3 style="color: #34d399; margin: 0 0 6px; font-size: 1.1rem;">Oath of Prosperity</h3>
+          <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">Reduces Goblin Merchant trading fees by 10% and increases shared gold drop yields.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Links -->
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="/classes/super-classes/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+        Ultra Sigil & Awakening Details →
+      </a>
+      <a href="/adventures/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+        Explore Dungeon Progression →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

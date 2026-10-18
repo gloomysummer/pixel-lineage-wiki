@@ -1,0 +1,301 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../config/site.config";
+import { CHANNELS } from "../config/channels";
+import dossier from "../data/dossier.json";
+
+const liveStats = dossier.liveStats;
+const metadata = dossier.metadata;
+
+const faqItems = [
+  {
+    question: "What is Pixel Lineage and what are its core mechanics?",
+    answer: "Pixel Lineage is a fast turn-based roguelike RPG on Roblox inspired by Terraria and classic lineage crawlers. Players pick one of 6 base classes, level up through dungeon acts, and evolve into specialized Super and Ultra classes.",
+  },
+  {
+    question: "Where do you redeem codes in Pixel Lineage?",
+    answer: "Codes are redeemed at the Goblin Merchant NPC. Before redeeming, players must join the official Roblox Group (362755399), like the game, and add it to favorites.",
+  },
+  {
+    question: "Is the Super Class selection permanent?",
+    answer: "Yes. Advancing to a Super Class at Trainer's Shrine in Act 2 The Dungeon is permanent and irreversible for your character run.",
+  },
+  {
+    question: "How do you awaken an Ultra Class?",
+    answer: "Ultra Classes require obtaining an Ultra Sigil from high-tier dungeon bosses or high-rank guild raids, then completing the lineage trial at the pinnacle shrine.",
+  },
+  {
+    question: "What are the six base classes in Pixel Lineage?",
+    answer: "The six base classes are Warrior, Thief, Mage, Fist, Bard, and Archer. Each branches into 3 unique Super Classes for a total of 18 advanced evolutions.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title="Pixel Lineage Wiki: Codes, Classes & Tier List"
+  description="Verified Pixel Lineage wiki covering active promo codes, 18 super classes, base class stats, race rerolls, talent drop rates, and dungeon guides."
+  jsonLd={[faqJsonLd]}
+>
+  <!-- 1. Hero Section -->
+  <section class="hero-wrapper" style="background: radial-gradient(circle at 50% 20%, rgba(168, 85, 247, 0.15) 0%, rgba(13, 10, 20, 0.95) 75%), url('/images/hero/hero_bg.webp') center/cover no-repeat; padding: 64px 20px 48px; border-bottom: 1px solid var(--line);">
+    <div class="container" style="max-width: 1180px; margin: 0 auto;">
+      <div style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
+        <div style="flex: 1 1 540px;">
+          <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+            <span style="background: rgba(201, 162, 39, 0.2); border: 1px solid rgba(201, 162, 39, 0.5); color: #c9a227; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 4px; text-transform: uppercase;">
+              Weekly Updates
+            </span>
+            <span style="background: rgba(168, 85, 247, 0.2); border: 1px solid rgba(168, 85, 247, 0.5); color: #c084fc; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 4px; text-transform: uppercase;">
+              DUNGEONS + RACE EVO
+            </span>
+            <span style="background: rgba(52, 211, 153, 0.2); border: 1px solid rgba(52, 211, 153, 0.5); color: #34d399; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 4px; text-transform: uppercase;">
+              Active Codes Ready
+            </span>
+          </div>
+
+          <h1 style="font-family: var(--font-display); font-size: 2.8rem; line-height: 1.15; margin: 0 0 16px; color: var(--ink);">
+            Pixel Lineage Wiki & Database
+          </h1>
+
+          <p style="font-size: 1.05rem; line-height: 1.6; color: var(--muted); margin: 0 0 28px; max-width: 580px;">
+            The evidence-backed tactical encyclopedia for Roblox's turn-based roguelike RPG. Verified promo codes, 18 Super Class branching trees, base stat scalings, and race tier matrices.
+          </p>
+
+          <!-- Hero CTA: Codes is Primary -->
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="/codes/" style="background: #34d399; color: #0d0a14; padding: 12px 24px; border-radius: 6px; font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 16px rgba(52, 211, 153, 0.35);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Redeem Active Codes</span>
+            </a>
+            <a href="/classes/super-classes/" style="background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; color: #f5f3ff; padding: 12px 24px; border-radius: 6px; font-weight: 600; font-size: 0.95rem; text-decoration: none;">
+              Explore 18 Super Classes →
+            </a>
+          </div>
+        </div>
+
+        <div style="flex: 0 0 320px; text-align: center;">
+          <img src="/images/icon.webp" alt="Pixel Lineage Official Game Icon" width="240" height="240" style="border-radius: 20px; border: 2px solid rgba(168, 85, 247, 0.4); box-shadow: 0 12px 32px rgba(0,0,0,0.8), 0 0 24px rgba(168, 85, 247, 0.25);" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Live Stats Bar (Dynamic from dossier.json) -->
+  <section style="background: #161022; border-bottom: 1px solid var(--line); padding: 20px 0;">
+    <div class="container" style="max-width: 1180px; margin: 0 auto; padding: 0 20px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+        <div style="background: #1d152c; padding: 14px 20px; border-radius: 8px; border: 1px solid var(--line);">
+          <div style="font-size: 0.75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em;">Live Concurrent Players</div>
+          <div style="font-size: 1.7rem; font-weight: 800; color: #34d399; margin-top: 4px;">{liveStats.playing.toLocaleString()}</div>
+        </div>
+        <div style="background: #1d152c; padding: 14px 20px; border-radius: 8px; border: 1px solid var(--line);">
+          <div style="font-size: 0.75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em;">Total Experience Visits</div>
+          <div style="font-size: 1.7rem; font-weight: 800; color: #f5f3ff; margin-top: 4px;">{liveStats.visits.toLocaleString()}</div>
+        </div>
+        <div style="background: #1d152c; padding: 14px 20px; border-radius: 8px; border: 1px solid var(--line);">
+          <div style="font-size: 0.75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em;">Player Favorited Count</div>
+          <div style="font-size: 1.7rem; font-weight: 800; color: #c9a227; margin-top: 4px;">{liveStats.favoritedCount.toLocaleString()}</div>
+        </div>
+        <div style="background: #1d152c; padding: 14px 20px; border-radius: 8px; border: 1px solid var(--line);">
+          <div style="font-size: 0.75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em;">Community Upvote Rating</div>
+          <div style="font-size: 1.7rem; font-weight: 800; color: #a855f7; margin-top: 4px;">{(liveStats.rating * 100).toFixed(1)}% ({liveStats.upVotes.toLocaleString()} ↑)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Core Channels Grid (8 Pillars) -->
+  <section style="padding: 48px 20px;">
+    <div class="container" style="max-width: 1180px; margin: 0 auto;">
+      <div style="margin-bottom: 28px;">
+        <h2 style="font-family: var(--font-display); font-size: 1.8rem; margin: 0 0 8px; color: var(--ink);">
+          Tactical Navigation Channels
+        </h2>
+        <p style="color: var(--muted); margin: 0; font-size: 0.95rem;">
+          Direct access to the 8 core gameplay systems and verified progression databases.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px;">
+        {CHANNELS.map((ch) => (
+          <div style="background: #161022; border: 1px solid var(--line); border-radius: 10px; padding: 20px; transition: transform 0.2s, border-color 0.2s; display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+              <span style={`color: ${ch.color}; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;`}>
+                {ch.shortTitle}
+              </span>
+              <span style="font-size: 0.75rem; color: var(--muted); background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 4px;">
+                {ch.guides.length} Guides
+              </span>
+            </div>
+            <h3 style="font-size: 1.2rem; margin: 0 0 10px; color: var(--ink);">
+              <a href={ch.url} style="color: inherit; text-decoration: none;">{ch.title}</a>
+            </h3>
+            <ul style="list-style: none; padding: 0; margin: 0 0 16px; flex-grow: 1;">
+              {ch.guides.map((g) => (
+                <li style="margin-bottom: 6px;">
+                  <a href={g.url} style="color: var(--muted); font-size: 0.88rem; text-decoration: none; display: flex; align-items: center; gap: 6px;">
+                    <span style="color: var(--accent);">›</span> {g.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a href={ch.url} style={`margin-top: auto; color: ${ch.color}; font-size: 0.85rem; font-weight: 600; text-decoration: none;`}>
+              Open {ch.shortTitle} Hub →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Quick Codes Spotlight & Redemption Box -->
+  <section style="background: #161022; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 48px 20px;">
+    <div class="container" style="max-width: 1180px; margin: 0 auto;">
+      <div style="display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
+        <div style="flex: 1 1 500px;">
+          <span style="color: #34d399; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Active Gift Code</span>
+          <h2 style="font-family: var(--font-display); font-size: 1.8rem; margin: 8px 0 12px; color: var(--ink);">
+            Latest Verified Code: OCTOBER
+          </h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Redeem the code <code style="background: #1d152c; color: #34d399; padding: 3px 8px; border-radius: 4px; font-weight: 700; border: 1px solid rgba(52, 211, 153, 0.3);">OCTOBER</code> at the Goblin Merchant in Town for free spins and gold. Requires joining the official Roblox Group.
+          </p>
+          <div style="display: flex; gap: 12px;">
+            <a href="/codes/" style="background: rgba(52, 211, 153, 0.15); border: 1px solid #34d399; color: #34d399; padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; text-decoration: none;">
+              Full Codes Ledger →
+            </a>
+            <a href="/codes/not-working/" style="color: var(--muted); padding: 10px 18px; font-size: 0.9rem; text-decoration: none;">
+              Code Troubleshooting Guide
+            </a>
+          </div>
+        </div>
+        <div style="flex: 0 0 340px; background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+          <div style="font-size: 0.8rem; color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Redemption Prerequisites</div>
+          <ul style="color: var(--muted); font-size: 0.85rem; line-height: 1.6; padding-left: 18px; margin: 0;">
+            <li>Join Roblox Group: <strong>Pixel Lineage (362755399)</strong></li>
+            <li>Press <strong>Like (Thumbs Up)</strong> on experience page</li>
+            <li>Add game to your <strong>Favorites</strong></li>
+            <li>Talk to <strong>Goblin Merchant</strong> in Town hub</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 6 Base Classes & 18 Super Class Matrix -->
+  <section style="padding: 48px 20px;">
+    <div class="container" style="max-width: 1180px; margin: 0 auto;">
+      <div style="margin-bottom: 24px;">
+        <h2 style="font-family: var(--font-display); font-size: 1.8rem; margin: 0 0 8px; color: var(--ink);">
+          Base Classes & Super Evolutions
+        </h2>
+        <p style="color: var(--muted); margin: 0; font-size: 0.95rem;">
+          Class selection is irreversible at the Trainer's Shrine in Act 2. Choose wisely based on base stat growths.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+          <h3 style="color: #ea580c; margin: 0 0 6px; font-size: 1.15rem;"><a href="/classes/warrior/" style="color: inherit; text-decoration: none;">Warrior</a></h3>
+          <p style="font-size: 0.85rem; color: var(--muted); margin: 0 0 12px;">High HP & Defense scaling. Specializes in frontline mitigation and massive cleave swings.</p>
+          <div style="font-size: 0.8rem; color: #f5f3ff;"><strong>Super Evolutions:</strong> Berserk, Sentinel, Greatsword</div>
+        </div>
+
+        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+          <h3 style="color: #34d399; margin: 0 0 6px; font-size: 1.15rem;"><a href="/classes/thief/" style="color: inherit; text-decoration: none;">Thief</a></h3>
+          <p style="font-size: 0.85rem; color: var(--muted); margin: 0 0 12px;">High Speed, Critical, and Dodge. Excels in rapid multi-strike burst combos and gold theft.</p>
+          <div style="font-size: 0.8rem; color: #f5f3ff;"><strong>Super Evolutions:</strong> Assassin, Rogue, Corsair</div>
+        </div>
+
+        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+          <h3 style="color: #a855f7; margin: 0 0 6px; font-size: 1.15rem;"><a href="/classes/mage/" style="color: inherit; text-decoration: none;">Mage</a></h3>
+          <p style="font-size: 0.85rem; color: var(--muted); margin: 0 0 12px;">Massive Magic scaling with potent elemental spells, healing prayers, and dark curses.</p>
+          <div style="font-size: 0.8rem; color: #f5f3ff;"><strong>Super Evolutions:</strong> Cleric, Hexer, Summoner</div>
+        </div>
+
+        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+          <h3 style="color: #f43f5e; margin: 0 0 6px; font-size: 1.15rem;"><a href="/classes/fist/" style="color: inherit; text-decoration: none;">Fist</a></h3>
+          <p style="font-size: 0.85rem; color: var(--muted); margin: 0 0 12px;">Unarmed martial mastery. High poise damage, stun lock combos, and berserk counterattacks.</p>
+          <div style="font-size: 0.8rem; color: #f5f3ff;"><strong>Super Evolutions:</strong> Monk, Brawler, Oni</div>
+        </div>
+
+        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+          <h3 style="color: #eab308; margin: 0 0 6px; font-size: 1.15rem;"><a href="/classes/bard/" style="color: inherit; text-decoration: none;">Bard</a></h3>
+          <p style="font-size: 0.85rem; color: var(--muted); margin: 0 0 12px;">Support powerhouse with aura songs, party turn manipulation, and Knowledge resource generation.</p>
+          <div style="font-size: 0.8rem; color: #f5f3ff;"><strong>Super Evolutions:</strong> Minstrel, Pianist, Troubadour</div>
+        </div>
+
+        <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+          <h3 style="color: #22c55e; margin: 0 0 6px; font-size: 1.15rem;"><a href="/classes/archer/" style="color: inherit; text-decoration: none;">Archer</a></h3>
+          <p style="font-size: 0.85rem; color: var(--muted); margin: 0 0 12px;">Precision ranged damage. Piercing armor, high critical chance from range, and pet summons.</p>
+          <div style="font-size: 0.8rem; color: #f5f3ff;"><strong>Super Evolutions:</strong> Deadeye, Ranger, Beast Tamer</div>
+        </div>
+      </div>
+      <div style="margin-top: 16px; text-align: center;">
+        <a href="/classes/super-classes/" style="color: var(--accent); font-weight: 600; text-decoration: none;">
+          View Full 18 Super Classes Skills & Awakening Matrix →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Screenshot Gallery -->
+  <section style="background: #161022; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 48px 20px;">
+    <div class="container" style="max-width: 1180px; margin: 0 auto;">
+      <h2 style="font-family: var(--font-display); font-size: 1.8rem; margin: 0 0 20px; color: var(--ink);">
+        Official In-Game Footage
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+        <img src="/images/screenshots/ss_0.webp" alt="Pixel Lineage Dungeon Crawl Encounter" width="768" height="432" style="border-radius: 8px; width: 100%; height: auto; border: 1px solid var(--line);" />
+        <img src="/images/screenshots/ss_1.webp" alt="Pixel Lineage Turn-Based Combat Tactics" width="768" height="432" style="border-radius: 8px; width: 100%; height: auto; border: 1px solid var(--line);" />
+        <img src="/images/screenshots/ss_2.webp" alt="Pixel Lineage Town Hub and Goblin Merchant" width="768" height="432" style="border-radius: 8px; width: 100%; height: auto; border: 1px solid var(--line);" />
+        <img src="/images/screenshots/ss_3.webp" alt="Pixel Lineage Castle and Lineage Progression" width="768" height="432" style="border-radius: 8px; width: 100%; height: auto; border: 1px solid var(--line);" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FAQ Section (FAQPage JSON-LD) -->
+  <section style="padding: 48px 20px;">
+    <div class="container" style="max-width: 860px; margin: 0 auto;">
+      <h2 style="font-family: var(--font-display); font-size: 1.8rem; margin: 0 0 24px; color: var(--ink); text-align: center;">
+        Frequently Asked Questions
+      </h2>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        {faqItems.map((item) => (
+          <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+            <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0 0 8px;">{item.question}</h3>
+            <p style="color: var(--muted); line-height: 1.6; margin: 0; font-size: 0.95rem;">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Evidence & Official Community Links -->
+  <section style="background: #0d0a14; border-top: 1px solid var(--line); padding: 40px 20px; text-align: center;">
+    <div class="container" style="max-width: 800px; margin: 0 auto;">
+      <h2 style="font-family: var(--font-display); font-size: 1.5rem; margin: 0 0 12px; color: var(--ink);">
+        Official Roblox Experience Coordinates
+      </h2>
+      <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 20px;">
+        Universe ID: <code>10767928510</code> | Place ID: <code>126256942507957</code> | Developer: <strong>Pixel Lineage (Group 362755399)</strong>
+      </p>
+      <a href="https://www.roblox.com/games/126256942507957/Pixel-Lineage" target="_blank" rel="noopener noreferrer" style="background: rgba(168, 85, 247, 0.2); border: 1px solid #a855f7; color: #f5f3ff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">
+        Launch Pixel Lineage on Roblox ↗
+      </a>
+    </div>
+  </section>
+</BaseLayout>

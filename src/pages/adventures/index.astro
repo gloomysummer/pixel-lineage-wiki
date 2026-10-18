@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const acts = [
+  {
+    act: "Act 1: The Sunken Ruins",
+    levels: "Lv 1 – 10",
+    boss: "Minotaur Chieftain",
+    mechanic: "Teaches turn-based pacing, parry timing, and basic consumable management.",
+    reward: "Unlocks Act 2 gate and grants your first Lineage Rank token.",
+  },
+  {
+    act: "Act 2: The Catacombs & Dungeon",
+    levels: "Lv 10 – 20",
+    boss: "Dungeon Warden & Crypt Lich",
+    mechanic: "Houses the Trainer's Shrine. High poison and darkness debuffs require torches or Nightborn race.",
+    reward: "Permanent Super Class evolution and rare armor set drop opportunities.",
+  },
+  {
+    act: "Act 3: The Abyssal Spire",
+    levels: "Lv 20 – 30+",
+    boss: "Void Arbiter & Corrupted Archon",
+    mechanic: "Full Torment mechanics: enemies deal +40% true damage and execute enrage timers.",
+    reward: "Ultra Sigil drops, pinnacle equipment, and Legendary power unlocks.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Pixel Lineage Adventures & Dungeon Progression Guide",
+    description: "Guide to acts, Torment difficulty, Lineage Ranks, and dungeon progression in Pixel Lineage on Roblox.",
+    url: `${siteConfig.siteUrl}/adventures/`,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Adventures", item: `${siteConfig.siteUrl}/adventures/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Adventures: Dungeons & Torment"
+  description="Complete Pixel Lineage adventures guide: Act 1-3 progression, Torment difficulty mechanics, Lineage Ranks, energy management, and Warden boss tips on Roblox."
+  canonical="/adventures/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Adventures</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; color: #f59e0b; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Progression & Torment Difficulty
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Adventures & Torment Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        Pixel Lineage is structured around act-based procedural dungeons. Defeating act bosses awards Lineage Ranks and unlocks higher risk-reward Torment difficulty modifiers.
+      </p>
+    </header>
+
+    <!-- Acts Breakdown -->
+    <div style="display: flex; flex-direction: column; gap: 24px; margin-bottom: 40px;">
+      {acts.map((a) => (
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+          <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
+            <h2 style="margin: 0; font-size: 1.25rem; color: #f59e0b;">{a.act}</h2>
+            <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--muted); background: #1d152c; padding: 2px 6px; border-radius: 3px;">
+              Target: {a.levels}
+            </span>
+            <span style="font-size: 0.85rem; color: #f43f5e; margin-left: auto;">
+              Boss: <strong>{a.boss}</strong>
+            </span>
+          </div>
+          <p style="color: #f5f3ff; font-size: 0.9rem; margin: 0 0 8px;">
+            <strong>Hazards & Strategy:</strong> {a.mechanic}
+          </p>
+          <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">
+            <strong>Key Progression Unlock:</strong> {a.reward}
+          </p>
+        </section>
+      ))}
+    </div>
+
+    <!-- Torment Difficulty Rules -->
+    <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 24px; margin-bottom: 36px; line-height: 1.7;">
+      <h2 style="font-size: 1.3rem; color: #f43f5e; margin: 0 0 12px;">Torment Mode: High Stakes Roguelike Rules</h2>
+      <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 12px;">
+        Unlocked after beating Act 2 for the first time, Torment Mode alters core combat rules:
+      </p>
+      <ul style="color: var(--muted); font-size: 0.9rem; padding-left: 20px; margin: 0 0 16px;">
+        <li><strong>Lives Penalty:</strong> Characters start with only 2 Lives. Losing all Lives resets you to the Town Courtyard.</li>
+        <li><strong>Monster Poise:</strong> Normal mobs gain unyielding poise and cannot be interrupted on turn 1.</li>
+        <li><strong>Enrage Timers:</strong> Bosses permanently gain +20% damage every 4 turns, discouraging stalling strategies.</li>
+        <li><strong>Reward Multiplier:</strong> Gold and rare weapon drop rates are boosted by +75%, with increased Ultra Sigil drop chance.</li>
+      </ul>
+    </section>
+
+    <!-- Links -->
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="/classes/super-classes/" style="background: rgba(168, 85, 247, 0.2); border: 1px solid #a855f7; color: #f5f3ff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+        Prepare Super Class for Act 2 →
+      </a>
+      <a href="/tier-list/class-tier-list/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+        Best Classes for Torment Runs →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

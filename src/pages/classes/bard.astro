@@ -1,0 +1,163 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage Bard Class Guide: Evolutions",
+    description: "Complete Pixel Lineage Bard class guide: Lv 1-30 stat growths, turn order buffs, Minstrel, Pianist, and Troubadour Super Class builds on Roblox.",
+    url: `${siteConfig.siteUrl}/classes/bard/`,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Classes", item: `${siteConfig.siteUrl}/classes/` },
+      { "@type": "ListItem", position: 3, name: "Bard", item: `${siteConfig.siteUrl}/classes/bard/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Bard Class Guide: Evolutions"
+  description="Complete Pixel Lineage Bard class guide: Lv 1-30 stat growths, turn order buffs, Minstrel, Pianist, and Troubadour Super Class builds on Roblox."
+  canonical="/classes/bard/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/classes/" style="color: var(--accent); text-decoration: none;">Classes</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Bard</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(234, 179, 8, 0.15); border: 1px solid #eab308; color: #eab308; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Archetype Overview · Support & Resource
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Bard Class Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        The ultimate cooperative catalyst. Armed with anthems and resource duplication songs, the Bard manipulates battle queues and accelerates party Knowledge progression.
+      </p>
+    </header>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Attribute Progression Matrix -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 36px;">
+        <div style="background: #1d152c; padding: 14px 20px; border-bottom: 1px solid var(--line);">
+          <h2 style="font-size: 1.25rem; color: var(--ink); margin: 0;">Bard Stat Growth Milestones</h2>
+        </div>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--line); background: #13101c;">
+                <th style="padding: 10px 14px; color: var(--muted);">Level</th>
+                <th style="padding: 10px 14px; color: var(--muted);">HP</th>
+                <th style="padding: 10px 14px; color: var(--muted);">Attack</th>
+                <th style="padding: 10px 14px; color: var(--muted);">Defense</th>
+                <th style="padding: 10px 14px; color: var(--muted);">Magic</th>
+                <th style="padding: 10px 14px; color: var(--muted);">Speed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 10px 14px; font-weight: 700; color: #eab308;">Lv 1 (Starter)</td>
+                <td style="padding: 10px 14px;">90</td>
+                <td style="padding: 10px 14px;">8</td>
+                <td style="padding: 10px 14px;">7</td>
+                <td style="padding: 10px 14px;">12</td>
+                <td style="padding: 10px 14px;">11</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 10px 14px; font-weight: 700;">Lv 10 (Act 1 Clear)</td>
+                <td style="padding: 10px 14px;">195</td>
+                <td style="padding: 10px 14px;">17</td>
+                <td style="padding: 10px 14px;">16</td>
+                <td style="padding: 10px 14px;">28</td>
+                <td style="padding: 10px 14px;">23</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 10px 14px; font-weight: 700; color: #c9a227;">Lv 20 (Super Class)</td>
+                <td style="padding: 10px 14px;">350</td>
+                <td style="padding: 10px 14px;">31</td>
+                <td style="padding: 10px 14px;">30</td>
+                <td style="padding: 10px 14px;">54</td>
+                <td style="padding: 10px 14px;">42</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 700; color: #f43f5e;">Lv 30 (Endgame)</td>
+                <td style="padding: 10px 14px;">550</td>
+                <td style="padding: 10px 14px;">52</td>
+                <td style="padding: 10px 14px;">50</td>
+                <td style="padding: 10px 14px;">90</td>
+                <td style="padding: 10px 14px;">66</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3 Super Class Paths -->
+      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 32px 0 16px;">Bard Super Class Branching Paths</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 36px;">
+        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #eab308; border-radius: 8px; padding: 20px;">
+          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #eab308;">1. Minstrel (Offensive Team Anthem Buffer)</h3>
+          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
+            The ultimate raid multiplier. <strong>Battle Anthem</strong> grants +25% ATK and +15% SPD to all party members, while <strong>Encore</strong> resets the highest damage cooldown of your strongest ally.
+          </p>
+          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>High Elf</strong> or <strong>Human</strong>.</div>
+        </div>
+
+        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 20px;">
+          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #a855f7;">2. Pianist (Crowd Control & Sonic Resonation)</h3>
+          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
+            Incapacitates enemy waves with <strong>Nocturne</strong> (1-turn Sleep), allowing allies to focus fire single targets down. <strong>Crescendo</strong> amplifies total party damage by +10% every round.
+          </p>
+          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>High Elf</strong> (-10% Mana cost).</div>
+        </div>
+
+        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 8px; padding: 20px;">
+          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #34d399;">3. Troubadour (Knowledge & Mana Engine)</h3>
+          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
+            <strong>Ballad of Knowledge</strong> doubles Knowledge gains from every dungeon battle, drastically shortening the path to endgame awakening. <strong>Inspiring Song</strong> recovers 20% Mana every round.
+          </p>
+          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>Human</strong> (combines for 2.2x total Knowledge).</div>
+        </div>
+      </div>
+
+      <!-- Evidence Dossier -->
+      <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+        <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">Evidence Dossier: Bard Growth Formula</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 8px;">
+          Growth per level formula: <code>HP +11.8 | ATK +1.1 | DEF +1.0 | MAG +1.9 | SPD +1.3</code>.
+        </p>
+        <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">
+          Weapon affinity: Lutes, Harps, Flutes, Velvet Doublets.
+        </p>
+      </section>
+
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="/classes/super-classes/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+          Full 18 Super Classes Matrix →
+        </a>
+        <a href="/tier-list/race-tier-list/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+          Race Synergies for Bards →
+        </a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

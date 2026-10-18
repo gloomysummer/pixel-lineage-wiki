@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: `About ${siteConfig.siteName}`,
+    description: `About the independent, evidence-backed ${siteConfig.siteName} project: verified turn-based roguelike RPG mechanics and factual game data.`,
+    url: `${siteConfig.siteUrl}/about/`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.siteUrl },
+      { '@type': 'ListItem', position: 2, name: 'About', item: `${siteConfig.siteUrl}/about/` },
+    ],
+  },
+];
+---
+<BaseLayout
+  title="About Pixel Lineage Wiki: Fact Methodology"
+  description="Learn about Pixel Lineage Wiki: an independent evidence-backed encyclopedia dedicated to Roblox's roguelike RPG with tested mechanics and verified data."
+  canonical="/about/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <article>
+      <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+        <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+        <span class="separator" style="margin: 0 8px;">/</span>
+        <span class="current">About</span>
+      </nav>
+
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 16px;">About Pixel Lineage Wiki & Editorial</h1>
+      <div class="meta-bar" style="margin-bottom: 24px; color: var(--muted); font-size: 0.85rem;">
+        <span>Editorial Mission · Independent Roblox Encyclopedia</span>
+      </div>
+
+      <p style="font-size: 1.05rem; line-height: 1.7; color: var(--ink); margin-bottom: 24px;">
+        <strong>Pixel Lineage Wiki</strong> (<a href={siteConfig.siteUrl} style="color: var(--accent);">{siteConfig.siteUrl}</a>) is an independent, community-driven database dedicated to providing exact factual mechanics, unbloated promo code status, and verified class progression trees for Roblox's turn-based roguelike RPG <em>Pixel Lineage</em>.
+      </p>
+
+      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 32px 0 12px;">Evidence-Based Fact Discipline</h2>
+      <p style="color: var(--muted); line-height: 1.7; margin-bottom: 16px;">
+        Unlike generic gacha wikis with automated filler text, we enforce strict verification standards:
+      </p>
+      <ul style="color: var(--muted); line-height: 1.7; padding-left: 20px; margin-bottom: 24px;">
+        <li><strong>Official Developer Coordinates</strong>: Live data pulled directly via Roblox API endpoints for Universe ID <code>10767928510</code> and Group <code>362755399</code>.</li>
+        <li><strong>In-Game Verified Testing</strong>: Super Class unlock requirements at Trainer's Shrine, Ultra Sigil awakening steps, and exact Goblin Merchant prerequisites verified in-game.</li>
+        <li><strong>Honest Data Boundaries</strong>: We clearly separate confirmed base stats from community-reported talent drop rates, never fabricating unconfirmed damage formulas.</li>
+      </ul>
+
+      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 32px 0 12px;">Editorial Independence & Disclaimers</h2>
+      <p style="color: var(--muted); line-height: 1.7; margin-bottom: 24px;">
+        This encyclopedia is an independent enthusiast reference. It is not affiliated with, endorsed by, or sponsored by Roblox Corporation or the Pixel Lineage developer group. All character names, logos, and in-game artwork belong to their respective copyright owners.
+      </p>
+
+      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 32px 0 12px;">Contact Editorial Desk</h2>
+      <p style="color: var(--muted); line-height: 1.7;">
+        Found a newly patched class balance change or code expiration? Reach our editorial team directly at <a href={`mailto:${siteConfig.contactEmail}`} style="color: var(--accent);">{siteConfig.contactEmail}</a> or through our <a href="/contact/" style="color: var(--accent);">Contact Page</a>.
+      </p>
+    </article>
+  </div>
+</BaseLayout>

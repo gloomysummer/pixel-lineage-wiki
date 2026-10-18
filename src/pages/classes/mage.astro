@@ -1,0 +1,163 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage Mage Class Guide: Hexer & Cleric",
+    description: "Complete Pixel Lineage Mage class guide: Lv 1-30 stat growths, magic scaling, Hexer, Cleric, and Summoner Super Class builds on Roblox.",
+    url: `${siteConfig.siteUrl}/classes/mage/`,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Classes", item: `${siteConfig.siteUrl}/classes/` },
+      { "@type": "ListItem", position: 3, name: "Mage", item: `${siteConfig.siteUrl}/classes/mage/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Mage Class Guide: Hexer & Cleric"
+  description="Complete Pixel Lineage Mage class guide: Lv 1-30 stat growths, magic scaling, Hexer, Cleric, and Summoner Super Class builds on Roblox."
+  canonical="/classes/mage/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/classes/" style="color: var(--accent); text-decoration: none;">Classes</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Mage</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; color: #a855f7; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Archetype Overview · Arcane Power
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Mage Class Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        Possessing the highest offensive scaling in the game (18 base Magic), the Mage commands the current Torment boss meta through armor-bypassing curse debuffs and party restoration.
+      </p>
+    </header>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Attribute Progression Matrix -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 36px;">
+        <div style="background: #1d152c; padding: 14px 20px; border-bottom: 1px solid var(--line);">
+          <h2 style="font-size: 1.25rem; color: var(--ink); margin: 0;">Mage Stat Growth Milestones</h2>
+        </div>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--line); background: #13101c;">
+                <th style="padding: 10px 14px; color: var(--muted);">Level</th>
+                <th style="padding: 10px 14px; color: var(--muted);">HP</th>
+                <th style="padding: 10px 14px; color: var(--muted);">Attack</th>
+                <th style="padding: 10px 14px; color: var(--muted);">Defense</th>
+                <th style="padding: 10px 14px; color: var(--muted);">Magic</th>
+                <th style="padding: 10px 14px; color: var(--muted);">Speed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 10px 14px; font-weight: 700; color: #a855f7;">Lv 1 (Starter)</td>
+                <td style="padding: 10px 14px;">75</td>
+                <td style="padding: 10px 14px;">6</td>
+                <td style="padding: 10px 14px;">5</td>
+                <td style="padding: 10px 14px;">18</td>
+                <td style="padding: 10px 14px;">10</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 10px 14px; font-weight: 700;">Lv 10 (Act 1 Clear)</td>
+                <td style="padding: 10px 14px;">165</td>
+                <td style="padding: 10px 14px;">12</td>
+                <td style="padding: 10px 14px;">11</td>
+                <td style="padding: 10px 14px;">42</td>
+                <td style="padding: 10px 14px;">21</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 10px 14px; font-weight: 700; color: #c9a227;">Lv 20 (Super Class)</td>
+                <td style="padding: 10px 14px;">305</td>
+                <td style="padding: 10px 14px;">22</td>
+                <td style="padding: 10px 14px;">20</td>
+                <td style="padding: 10px 14px;">84</td>
+                <td style="padding: 10px 14px;">38</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 700; color: #f43f5e;">Lv 30 (Endgame)</td>
+                <td style="padding: 10px 14px;">495</td>
+                <td style="padding: 10px 14px;">35</td>
+                <td style="padding: 10px 14px;">32</td>
+                <td style="padding: 10px 14px;">142</td>
+                <td style="padding: 10px 14px;">58</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3 Super Class Paths -->
+      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 32px 0 16px;">Mage Super Class Branching Paths</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 36px;">
+        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 20px;">
+          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #f43f5e;">1. Hexer (S-Tier Meta Boss Destroyer)</h3>
+          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
+            The highest single-target DPS in Pixel Lineage. <strong>Malediction</strong> applies dark curses that completely ignore enemy Defense, while <strong>Soul Siphon</strong> converts damage dealt into personal HP healing.
+          </p>
+          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>Nightborn</strong> (+15% Dark/Magic damage in Dungeons).</div>
+        </div>
+
+        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 8px; padding: 20px;">
+          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #38bdf8;">2. Cleric (A-Tier Raid Support & Holy Smite)</h3>
+          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
+            Essential for cooperative Guild Raids. <strong>Radiant Prayer</strong> restores 35% HP to all party members, cleanses all negative conditions, and <strong>Sanctuary</strong> deploys a 30% team mitigation bubble.
+          </p>
+          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>High Elf</strong> (-10% Mana cost on all prayers).</div>
+        </div>
+
+        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #94a3b8; border-radius: 8px; padding: 20px;">
+          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #94a3b8;">3. Summoner (Minion Taunt & Sacrificial Mana)</h3>
+          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
+            Conjures skeletal minions to absorb enemy attacks. <strong>Soul Sacrifice</strong> can be used during critical emergencies to instantly refill your Mana reserve.
+          </p>
+          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>High Elf</strong> or <strong>Human</strong>.</div>
+        </div>
+      </div>
+
+      <!-- Evidence Dossier -->
+      <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+        <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">Evidence Dossier: Mage Growth Formula</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 8px;">
+          Growth per level formula: <code>HP +9.5 | ATK +0.6 | DEF +0.6 | MAG +2.8 | SPD +1.2</code>.
+        </p>
+        <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">
+          Weapon affinity: Staves, Spellbooks, Wands, Enchanted Robes.
+        </p>
+      </section>
+
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="/classes/super-classes/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+          Full 18 Super Classes Guide →
+        </a>
+        <a href="/tier-list/class-tier-list/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+          Class Tier List Comparison →
+        </a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

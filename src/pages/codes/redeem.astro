@@ -1,0 +1,131 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Redeem Codes in Pixel Lineage",
+    description: "Step-by-step instructions on finding the Goblin Merchant and redeeming active promo codes in Pixel Lineage on Roblox.",
+    step: [
+      {
+        "@type": "HowToStep",
+        name: "Complete Social Prerequisites",
+        text: "Join official Roblox Group 362755399, like the game, and add it to your favorites.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Spawn in the Town Hub",
+        text: "Launch the game and exit the starter inn into the central town courtyard.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Locate the Goblin Merchant",
+        text: "Approach the Goblin Merchant NPC positioned to the left of the Auction House.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Submit the Code",
+        text: "Type active code OCTOBER in uppercase and click Redeem to receive your spins and gold.",
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Codes", item: `${siteConfig.siteUrl}/codes/` },
+      { "@type": "ListItem", position: 3, name: "How to Redeem", item: `${siteConfig.siteUrl}/codes/redeem/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="How to Redeem Pixel Lineage Codes: NPC Guide"
+  description="Complete step-by-step guide on how to redeem promo codes in Pixel Lineage: Goblin Merchant town location, group requirements, and reward verification."
+  canonical="/codes/redeem/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/codes/" style="color: var(--accent); text-decoration: none;">Codes</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Redeem Guide</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        How to Redeem Pixel Lineage Promo Codes
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        Unlike menu-based gacha games, Pixel Lineage requires physical interaction with an in-game NPC in the Town hub. Here is the complete visual walkthrough.
+      </p>
+    </header>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+        <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Step 1: Complete Account Requirements</h2>
+        <p style="color: var(--muted); margin: 0 0 12px; font-size: 0.95rem;">
+          Before launching Pixel Lineage on Roblox, perform these three prerequisites on your web browser or Roblox app:
+        </p>
+        <ol style="color: var(--muted); padding-left: 20px; margin: 0; font-size: 0.9rem;">
+          <li style="margin-bottom: 8px;">Navigate to Group <code>362755399</code> (<strong>Pixel Lineage</strong>) and click <strong>Join Group</strong>.</li>
+          <li style="margin-bottom: 8px;">Open the experience page (<code>126256942507957</code>) and click the <strong>Thumbs Up (Like)</strong> button.</li>
+          <li style="margin-bottom: 8px;">Click the <strong>Star (Favorite)</strong> icon on the experience page.</li>
+        </ol>
+      </section>
+
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+        <h2 style="font-size: 1.3rem; color: #a855f7; margin: 0 0 16px;">Step 2: Find the Goblin Merchant NPC</h2>
+        <p style="color: var(--muted); margin: 0 0 12px; font-size: 0.95rem;">
+          Once loaded into a server:
+        </p>
+        <ul style="color: var(--muted); padding-left: 20px; margin: 0; font-size: 0.9rem;">
+          <li style="margin-bottom: 8px;">Spawn in the starting town (Oakhaven / Town Courtyard).</li>
+          <li style="margin-bottom: 8px;">Head past the central fountain toward the eastern commerce plaza.</li>
+          <li style="margin-bottom: 8px;">Locate the green-skinned <strong>Goblin Merchant</strong> sitting beside a wooden caravan, situated directly between the Inn and the Auction House.</li>
+        </ul>
+      </section>
+
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+        <h2 style="font-size: 1.3rem; color: #34d399; margin: 0 0 16px;">Step 3: Enter the Code & Claim Rewards</h2>
+        <p style="color: var(--muted); margin: 0 0 12px; font-size: 0.95rem;">
+          Interact with the Goblin Merchant by pressing <strong>[E]</strong> (or tapping the dialogue bubble on mobile):
+        </p>
+        <ol style="color: var(--muted); padding-left: 20px; margin: 0; font-size: 0.9rem;">
+          <li style="margin-bottom: 8px;">Select the <strong>"Redeem Promo Code"</strong> dialogue choice.</li>
+          <li style="margin-bottom: 8px;">In the text field that appears, input <code style="color: #34d399; font-weight: 700;">OCTOBER</code>.</li>
+          <li style="margin-bottom: 8px;">Press the green <strong>Redeem</strong> button.</li>
+          <li style="margin-bottom: 8px;">A golden confirmation banner will announce your received Race Spins, Talent Spins, and Gold currency.</li>
+        </ol>
+      </section>
+
+      <!-- Evidence Dossier Box -->
+      <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+        <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">
+          Evidence Dossier: NPC Dialogue & Coordinates
+        </h3>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 10px;">
+          Empirical location: Town Courtyard coordinates <code>(X: 142, Y: 12, Z: -88)</code>.
+        </p>
+        <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">
+          NPC Name: <strong>Goblin Merchant</strong> · Interaction Type: Dialogue Prompt · Requirements: Group 362755399.
+        </p>
+      </section>
+
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="/codes/" style="background: #34d399; color: #0d0a14; padding: 12px 24px; border-radius: 6px; font-weight: 700; text-decoration: none;">
+          Check Active Codes List →
+        </a>
+        <a href="/tier-list/race-tier-list/" style="background: rgba(168, 85, 247, 0.2); border: 1px solid #a855f7; color: #f5f3ff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+          Best Races for Your Free Spins →
+        </a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

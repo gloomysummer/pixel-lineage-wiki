@@ -1,0 +1,163 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage Archer Class Guide: Deadeye",
+    description: "Complete Pixel Lineage Archer class guide: Lv 1-30 stat growths, ranged piercing, Deadeye, Ranger, and Beast Tamer Super Class builds on Roblox.",
+    url: `${siteConfig.siteUrl}/classes/archer/`,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Classes", item: `${siteConfig.siteUrl}/classes/` },
+      { "@type": "ListItem", position: 3, name: "Archer", item: `${siteConfig.siteUrl}/classes/archer/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Archer Class Guide: Deadeye"
+  description="Complete Pixel Lineage Archer class guide: Lv 1-30 stat growths, ranged piercing, Deadeye, Ranger, and Beast Tamer Super Class builds on Roblox."
+  canonical="/classes/archer/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 860px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/classes/" style="color: var(--accent); text-decoration: none;">Classes</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Archer</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; color: #22c55e; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Archetype Overview · Ranged Precision
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Archer Class Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        Specializing in high-range armor piercing and companion beasts, the Archer excels at picking off high-threat enemy casters and weakening dungeon bosses from safety.
+      </p>
+    </header>
+
+    <article style="line-height: 1.7; color: var(--ink);">
+      <!-- Attribute Progression Matrix -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 36px;">
+        <div style="background: #1d152c; padding: 14px 20px; border-bottom: 1px solid var(--line);">
+          <h2 style="font-size: 1.25rem; color: var(--ink); margin: 0;">Archer Stat Growth Milestones</h2>
+        </div>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--line); background: #13101c;">
+                <th style="padding: 10px 14px; color: var(--muted);">Level</th>
+                <th style="padding: 10px 14px; color: var(--muted);">HP</th>
+                <th style="padding: 10px 14px; color: var(--muted);">Attack</th>
+                <th style="padding: 10px 14px; color: var(--muted);">Defense</th>
+                <th style="padding: 10px 14px; color: var(--muted);">Magic</th>
+                <th style="padding: 10px 14px; color: var(--muted);">Speed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 10px 14px; font-weight: 700; color: #22c55e;">Lv 1 (Starter)</td>
+                <td style="padding: 10px 14px;">80</td>
+                <td style="padding: 10px 14px;">14</td>
+                <td style="padding: 10px 14px;">5</td>
+                <td style="padding: 10px 14px;">5</td>
+                <td style="padding: 10px 14px;">13</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 10px 14px; font-weight: 700;">Lv 10 (Act 1 Clear)</td>
+                <td style="padding: 10px 14px;">180</td>
+                <td style="padding: 10px 14px;">32</td>
+                <td style="padding: 10px 14px;">11</td>
+                <td style="padding: 10px 14px;">11</td>
+                <td style="padding: 10px 14px;">28</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 10px 14px; font-weight: 700; color: #c9a227;">Lv 20 (Super Class)</td>
+                <td style="padding: 10px 14px;">320</td>
+                <td style="padding: 10px 14px;">62</td>
+                <td style="padding: 10px 14px;">22</td>
+                <td style="padding: 10px 14px;">20</td>
+                <td style="padding: 10px 14px;">50</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 700; color: #f43f5e;">Lv 30 (Endgame)</td>
+                <td style="padding: 10px 14px;">500</td>
+                <td style="padding: 10px 14px;">102</td>
+                <td style="padding: 10px 14px;">36</td>
+                <td style="padding: 10px 14px;">32</td>
+                <td style="padding: 10px 14px;">78</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3 Super Class Paths -->
+      <h2 style="font-size: 1.4rem; color: var(--ink); margin: 32px 0 16px;">Archer Super Class Branching Paths</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 36px;">
+        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 20px;">
+          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #f43f5e;">1. Deadeye (A-Tier Armor-Bypassing Sniper)</h3>
+          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
+            The premier physical boss executioner. <strong>Heartseeker</strong> fires a 280% ATK shot with +30% intrinsic critical rate. <strong>Pinning Shot</strong> immobilizes dangerous boss phases.
+          </p>
+          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>Nightborn</strong> or <strong>Beastkin</strong>.</div>
+        </div>
+
+        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #22c55e; border-radius: 8px; padding: 20px;">
+          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #22c55e;">2. Ranger (Trap Strategist & Multi-Shot)</h3>
+          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
+            <strong>Spike Trap</strong> punishes charging melee enemies with heavy Bleed damage. <strong>Volley</strong> peppers all enemies in the room for 115% ATK, clearing swarm encounters efficiently.
+          </p>
+          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>High Elf</strong> (+8% Speed).</div>
+        </div>
+
+        <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #eab308; border-radius: 8px; padding: 20px;">
+          <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #eab308;">3. Beast Tamer (Wolf Companion & Taunt Soak)</h3>
+          <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 10px;">
+            <strong>Call Wolf</strong> summons an independent combat companion that attacks for 85% ATK every round, drawing enemy single-target strikes away from the fragile archer.
+          </p>
+          <div style="font-size: 0.85rem; color: #c9a227;">Best Racial Synergy: <strong>Beastkin</strong>.</div>
+        </div>
+      </div>
+
+      <!-- Evidence Dossier -->
+      <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+        <h3 style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">Evidence Dossier: Archer Growth Formula</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 8px;">
+          Growth per level formula: <code>HP +10.5 | ATK +2.1 | DEF +0.8 | MAG +0.7 | SPD +1.6</code>.
+        </p>
+        <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">
+          Weapon affinity: Recurve Bows, Longbows, Crossbows, Quivers, Camouflage Cloaks.
+        </p>
+      </section>
+
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="/classes/super-classes/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+          Full 18 Super Classes Matrix →
+        </a>
+        <a href="/tier-list/talent-tier-list/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+          Optimal Traits for Archers →
+        </a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

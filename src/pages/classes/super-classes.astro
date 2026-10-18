@@ -1,0 +1,322 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const superClassesByBase = [
+  {
+    base: "Warrior",
+    color: "#ea580c",
+    superClasses: [
+      {
+        name: "Berserk",
+        role: "Low-HP Juggernaut",
+        skills: [
+          "Blood Rage: Increases ATK by +35% when below 40% maximum HP.",
+          "Frenzied Slash: 2-hit strike dealing 160% ATK damage; 10% self-recoil.",
+          "Undying Will: Passive 1-turn immortality upon suffering a lethal blow.",
+        ],
+      },
+      {
+        name: "Sentinel",
+        role: "Impenetrable Fortress",
+        skills: [
+          "Fortress Stance: Reduces all incoming damage by 45% for 2 turns.",
+          "Shield Slam: Deals 120% DEF as physical damage; inflicts 1-turn Stun.",
+          "Spiked Aegis: Reflects 25% of mitigated physical damage back to attacker.",
+        ],
+      },
+      {
+        name: "Greatsword",
+        role: "Colossal Cleave",
+        skills: [
+          "Sweeping Cleave: Hits all enemies in the encounter for 130% ATK.",
+          "Overhead Guillotine: High-poise strike dealing 240% ATK on single target.",
+          "Colossus Poise: Immune to combat knockbacks and stun interruptions.",
+        ],
+      },
+    ],
+  },
+  {
+    base: "Thief",
+    color: "#34d399",
+    superClasses: [
+      {
+        name: "Assassin",
+        role: "Single-Target Executioner",
+        skills: [
+          "Shadow Step: Enter stealth for 1 turn; guaranteed 100% crit on next hit.",
+          "Throat Slit: Deals 220% ATK damage; +50% extra damage against targets below 30% HP.",
+          "Smoke Bomb: 80% Dodge bonus for 1 turn when targeted by multi-hit skills.",
+        ],
+      },
+      {
+        name: "Rogue",
+        role: "Poison & Bleed Stalker",
+        skills: [
+          "Venomous Blade: Applies Poison DoT dealing 40% ATK every turn for 3 turns.",
+          "Pocket Sand: Blinds target, reducing their hit accuracy by 40%.",
+          "Fleetfoot: Passive +15% Speed bonus to consistently seize turn priority.",
+        ],
+      },
+      {
+        name: "Corsair",
+        role: "Swashbuckling Plunderer",
+        skills: [
+          "Plunder: Steals 15-30% extra Gold from defeated enemies.",
+          "Flintlock Quickdraw: Unblockable ranged shot dealing 140% ATK.",
+          "Fortune's Gamble: 50% chance for a 2.5x critical multiplier.",
+        ],
+      },
+    ],
+  },
+  {
+    base: "Mage",
+    color: "#a855f7",
+    superClasses: [
+      {
+        name: "Hexer",
+        role: "Armor-Bypassing DoT",
+        skills: [
+          "Malediction: Applies stacking curse dealing 50% MAG per turn (ignores DEF).",
+          "Soul Siphon: Drains 80% MAG damage as direct HP restoration.",
+          "Doom Sigil: Detonates all active curses for 300% accumulated damage.",
+        ],
+      },
+      {
+        name: "Cleric",
+        role: "Divine Restoration",
+        skills: [
+          "Radiant Prayer: Restores 35% HP to entire party and cleanses debuffs.",
+          "Smite: Holy spell dealing 175% MAG; +50% bonus against undead/demons.",
+          "Sanctuary: Grants 30% damage reduction aura to all allies for 2 turns.",
+        ],
+      },
+      {
+        name: "Summoner",
+        role: "Minion Swarm Tactician",
+        skills: [
+          "Summon Skeleton: Conjures 2 skeletal minions that taunt enemy attacks.",
+          "Arcane Familiar: Passive pet that attacks for 60% MAG each round.",
+          "Soul Sacrifice: Sacrifices a minion to fully restore player's Mana pool.",
+        ],
+      },
+    ],
+  },
+  {
+    base: "Fist",
+    color: "#f43f5e",
+    superClasses: [
+      {
+        name: "Oni",
+        role: "Demonic Berserker",
+        skills: [
+          "Demonic Stomp: Ground slam dealing 150% ATK and breaking enemy shields.",
+          "Ogre Rush: 4-hit flurry dealing 60% ATK per punch with 15% Stun chance.",
+          "Wrath Aura: Increases ATK and SPD by +20% for the rest of the battle.",
+        ],
+      },
+      {
+        name: "Brawler",
+        role: "Counter Striker",
+        skills: [
+          "Counter Cross: Prepares counter stance; retaliates for 200% damage on hit.",
+          "Iron Knuckle: Heavy punch dealing 140% ATK and lowering target DEF by 20%.",
+          "Tough Skin: Passive flat 10-point physical damage reduction on all hits.",
+        ],
+      },
+      {
+        name: "Monk",
+        role: "Ki Channeler",
+        skills: [
+          "Palm Strike: Pushes enemy back in turn order; deals 130% ATK/MAG hybrid.",
+          "Inner Peace: Channel Ki to restore 20% HP and gain 100% debuff immunity.",
+          "Hundred Fists: Rapid barrage dealing 250% total hybrid damage.",
+        ],
+      },
+    ],
+  },
+  {
+    base: "Bard",
+    color: "#eab308",
+    superClasses: [
+      {
+        name: "Minstrel",
+        role: "Anthem Buffer",
+        skills: [
+          "Battle Anthem: +25% ATK and +15% SPD to party for 3 turns.",
+          "Dissonance: Deals 110% MAG and interrupts target's upcoming channel.",
+          "Encore: Resets cooldown of an ally's strongest ability.",
+        ],
+      },
+      {
+        name: "Pianist",
+        role: "Crowd Control Virtuoso",
+        skills: [
+          "Nocturne: Puts non-boss enemies into 1-turn magical Sleep.",
+          "Staccato Chord: Rapid sonic blasts dealing 3x 55% MAG damage.",
+          "Crescendo: Gradually amplifies party damage by +10% each round.",
+        ],
+      },
+      {
+        name: "Troubadour",
+        role: "Resource Generator",
+        skills: [
+          "Ballad of Knowledge: Doubles Knowledge resource yield from the battle.",
+          "Inspiring Song: Restores 20% Mana to all allies every turn.",
+          "Mocking Verse: Taunts enemy boss into attacking the player with highest DEF.",
+        ],
+      },
+    ],
+  },
+  {
+    base: "Archer",
+    color: "#22c55e",
+    superClasses: [
+      {
+        name: "Deadeye",
+        role: "Precision Long-Range Sniper",
+        skills: [
+          "Heartseeker: 280% ATK single-shot snipe with +30% intrinsic Critical rate.",
+          "Eagle Eye: Passive +20% Accuracy; ignores enemy dodge mechanics.",
+          "Pinning Shot: Roots target in place, skipping their next physical attack.",
+        ],
+      },
+      {
+        name: "Ranger",
+        role: "Tactical Trapper",
+        skills: [
+          "Spike Trap: Plants trap that triggers on enemy turn for 140% ATK + Bleed.",
+          "Volley: Rains down arrows on all enemies for 115% ATK damage.",
+          "Camouflage: Cannot be targeted by single-target attacks for 1 round.",
+        ],
+      },
+      {
+        name: "Beast Tamer",
+        role: "Companion Handler",
+        skills: [
+          "Call Wolf: Summons companion wolf that attacks for 85% ATK each turn.",
+          "Pack Tactics: Player and pet deal +15% damage when attacking same target.",
+          "Mend Companion: Restores 50% HP to summoned beast.",
+        ],
+      },
+    ],
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage 18 Super Classes: Skills Matrix",
+    description: "Complete matrix of all 18 super classes in Pixel Lineage: exact skill damage numbers, stat scaling, Trainer's Shrine unlock rules, and Ultra Sigil trials.",
+    url: `${siteConfig.siteUrl}/classes/super-classes/`,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Classes", item: `${siteConfig.siteUrl}/classes/` },
+      { "@type": "ListItem", position: 3, name: "18 Super Classes", item: `${siteConfig.siteUrl}/classes/super-classes/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage 18 Super Classes: Skills Matrix"
+  description="Complete matrix of all 18 super classes in Pixel Lineage: exact skill damage numbers, stat scaling, Trainer's Shrine unlock rules, and Ultra Sigil trials."
+  canonical="/classes/super-classes/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/classes/" style="color: var(--accent); text-decoration: none;">Classes</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">18 Super Classes</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage 18 Super Classes & Skills
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        The definitive, verified database for all 18 Super Class evolutions. Includes exact skill damage scaling percentages and the Trainer's Shrine advancement requirements.
+      </p>
+    </header>
+
+    <!-- Permanent Choice Warning -->
+    <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 20px; margin-bottom: 36px;">
+      <h2 style="margin: 0 0 8px; font-size: 1.2rem; color: #f43f5e;">Crucial Rule: Super Class Evolution is Irreversible</h2>
+      <p style="color: var(--muted); font-size: 0.95rem; margin: 0; line-height: 1.6;">
+        Upon completing Act 1 and reaching the <strong>Trainer's Shrine</strong> inside Act 2 The Dungeon, you will be prompted to lock in one of the three Super Class specializations for your base class. There is <strong>no respec token</strong> or undo mechanic. Ensure you study the skill profiles below before interacting with the shrine.
+      </p>
+    </section>
+
+    <!-- 18 Super Classes Grouped by Base -->
+    <div style="display: flex; flex-direction: column; gap: 36px; margin-bottom: 40px;">
+      {superClassesByBase.map((group) => (
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;">
+          <div style={`background: #1d152c; border-left: 6px solid ${group.color}; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between;`}>
+            <h2 style={`margin: 0; font-size: 1.3rem; color: ${group.color};`}>
+              {group.base} Evolutions (3 Super Classes)
+            </h2>
+            <a href={`/classes/${group.base.toLowerCase()}/`} style="color: var(--muted); font-size: 0.85rem; text-decoration: none;">
+              Base {group.base} Guide →
+            </a>
+          </div>
+
+          <div style="padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+            {group.superClasses.map((sc) => (
+              <div style="background: #13101c; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 6px; padding: 16px;">
+                <h3 style="margin: 0 0 4px; font-size: 1.15rem; color: var(--ink);">{sc.name}</h3>
+                <div style="font-size: 0.78rem; color: #c9a227; margin-bottom: 12px; font-weight: 600;">Role: {sc.role}</div>
+                <div style="font-size: 0.85rem; color: var(--muted); line-height: 1.5;">
+                  <strong style="color: #f5f3ff;">Active Skills:</strong>
+                  <ul style="padding-left: 18px; margin: 6px 0 0; font-size: 0.82rem;">
+                    {sc.skills.map((sk) => (
+                      <li style="margin-bottom: 6px;">{sk}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <!-- Ultra Class & Sigil Section -->
+    <section style="background: #1d152c; border: 1px solid #a855f7; border-radius: 8px; padding: 24px; margin-bottom: 40px;">
+      <h2 style="font-size: 1.3rem; color: #c9a227; margin: 0 0 12px;">Ultra Class Awakening & Ultra Sigil Requirements</h2>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+        Beyond Super Classes lies the pinnacle <strong>Ultra Class</strong> tier. Awakening an Ultra Class requires:
+      </p>
+      <ol style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0 0 16px;">
+        <li>Reaching Level 25+ in your chosen Super Class.</li>
+        <li>Defeating the Act 3 Dungeon Boss or completing a Tier-2 Guild Raid to drop an <strong>Ultra Sigil</strong>.</li>
+        <li>Presenting the Ultra Sigil at the Apex Shrine in the upper Castle courtyard.</li>
+      </ol>
+      <p style="color: var(--muted); font-size: 0.85rem; margin: 0;">
+        Ultra Classes grant a 4th ultimate lineage power and double your primary attribute stat growth.
+      </p>
+    </section>
+
+    <!-- Navigation -->
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="/tier-list/class-tier-list/" style="background: #34d399; color: #0d0a14; padding: 12px 24px; border-radius: 6px; font-weight: 700; text-decoration: none;">
+        Class Tier List Rankings →
+      </a>
+      <a href="/tier-list/race-tier-list/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+        Race Synergy Recommendations →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

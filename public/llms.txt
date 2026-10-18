@@ -1,0 +1,11 @@
+# Pixel Lineage Wiki
+
+> The complete Pixel Lineage wiki: evidence-led guides, verified codes, and databases. Every claim carries its source.
+
+## Guides
+
+- [How to Automate Flower Production](https://pixel-lineage.quest/guide/automate-flowers/): Wet seeds, planter boxes, and stable seed feedback loops.
+
+## Codes
+
+- [Pixel Lineage Codes (September 2026)](https://pixel-lineage.quest/codes/september-2026/): All working redeem codes with rewards and official sources.

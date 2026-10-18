@@ -1,0 +1,311 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const tierData = [
+  {
+    tier: "S",
+    color: "#f43f5e",
+    classes: [
+      {
+        name: "Hexer",
+        base: "Mage",
+        role: "DoT & Debuff Master",
+        scaling: "1.4x Magic / 1.1x Dodge",
+        verdict: "Highest boss DPS in Torment mode. Malediction stacks bypass boss armor and melt Act 2 Warden with ease.",
+      },
+      {
+        name: "Sentinel",
+        base: "Warrior",
+        role: "Ironclad Tank & Mitigation",
+        scaling: "1.5x Defense / 1.3x HP",
+        verdict: "Virtually unkillable in Solo runs. Fortress Stance nullifies 45% incoming damage and reflects physical blows.",
+      },
+      {
+        name: "Oni",
+        base: "Fist",
+        role: "Enraged Burst & Stun Lock",
+        scaling: "1.35x Attack / 1.25x Speed",
+        verdict: "Demonic Frenzy turns turn-based encounters into one-sided stun gauntlets. High burst with zero weapon cost.",
+      },
+    ],
+  },
+  {
+    tier: "A",
+    color: "#a855f7",
+    classes: [
+      {
+        name: "Assassin",
+        base: "Thief",
+        role: "Crit Executioner",
+        scaling: "1.4x Crit / 1.3x Speed",
+        verdict: "Shadow Step grants 100% crit chance on subsequent strike. Melts elite dungeon mobs before they take a turn.",
+      },
+      {
+        name: "Cleric",
+        base: "Mage",
+        role: "Holy Healer & Buffer",
+        scaling: "1.3x Magic / 1.2x HP",
+        verdict: "The backbone of Guild Raids and multiplayer runs. Radiance Prayer cleanses all curses and revives allies.",
+      },
+      {
+        name: "Berserk",
+        base: "Warrior",
+        role: "Low-HP Bleed Juggernaut",
+        scaling: "1.4x Attack / 1.15x HP",
+        verdict: "Bloodlust scales damage inversely with remaining HP. Massive damage output but requires potion management.",
+      },
+      {
+        name: "Deadeye",
+        base: "Archer",
+        role: "Precision Snipe Sniper",
+        scaling: "1.4x Attack / 1.3x Crit",
+        verdict: "Piercing Arrow completely ignores enemy armor rating from long range. Exceptional against armored bosses.",
+      },
+    ],
+  },
+  {
+    tier: "B",
+    color: "#38bdf8",
+    classes: [
+      {
+        name: "Greatsword",
+        base: "Warrior",
+        role: "Heavy Cleave & Poise",
+        scaling: "1.35x Attack / 1.2x Defense",
+        verdict: "Sweeping Cleave hits entire mob waves, but slow attack speed leaves openings against fast rogue enemies.",
+      },
+      {
+        name: "Brawler",
+        base: "Fist",
+        role: "Counter Brawler",
+        scaling: "1.25x Defense / 1.2x Attack",
+        verdict: "Balanced survivability with reliable interrupts, though lacking the extreme damage scaling of Oni.",
+      },
+      {
+        name: "Minstrel",
+        base: "Bard",
+        role: "Aura Support",
+        scaling: "1.25x Speed / 1.2x Magic",
+        verdict: "Battle Anthem boosts team attack by 20% for 3 turns. Outstanding in groups, mediocre in solo play.",
+      },
+      {
+        name: "Summoner",
+        base: "Mage",
+        role: "Minion Swarm",
+        scaling: "1.25x Magic / 1.1x HP",
+        verdict: "Skeleton minions soak boss attacks, though summon animations extend encounter durations.",
+      },
+    ],
+  },
+  {
+    tier: "C",
+    color: "#94a3b8",
+    classes: [
+      {
+        name: "Rogue",
+        base: "Thief",
+        role: "Poison & Stealth",
+        scaling: "1.2x Speed / 1.15x Crit",
+        verdict: "Outclassed by Assassin's instant burst. Poison ticks too slowly against high-tier dungeon mobs.",
+      },
+      {
+        name: "Corsair",
+        base: "Thief",
+        role: "Gold Farming",
+        scaling: "1.2x Gold / 1.1x Attack",
+        verdict: "Great utility for early game gold generation at Goblin Merchant, but falls off in Act 2 combat.",
+      },
+      {
+        name: "Pianist",
+        base: "Bard",
+        role: "Crowd Control Sleep",
+        scaling: "1.15x Magic / 1.1x Speed",
+        verdict: "Lullaby puts enemies to sleep, but boss encounters are immune to sleep effects.",
+      },
+      {
+        name: "Ranger",
+        base: "Archer",
+        role: "Trap Specialist",
+        scaling: "1.2x Speed / 1.15x Attack",
+        verdict: "Trap setup requires prediction that is cumbersome in fast turn-based roguelike encounters.",
+      },
+    ],
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage Class Tier List: Best Super Classes",
+    description: "Definitive Pixel Lineage class tier list: ranking 6 base archetypes and 18 super classes on dungeon clear speed, solo survivability, and boss damage.",
+    url: `${siteConfig.siteUrl}/tier-list/class-tier-list/`,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Tier List", item: `${siteConfig.siteUrl}/tier-list/` },
+      { "@type": "ListItem", position: 3, name: "Classes Tier List", item: `${siteConfig.siteUrl}/tier-list/class-tier-list/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Class Tier List: Best Super Classes"
+  description="Definitive Pixel Lineage class tier list: ranking 6 base archetypes and 18 super classes on dungeon clear speed, solo survivability, and boss damage."
+  canonical="/tier-list/class-tier-list/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/tier-list/" style="color: var(--accent); text-decoration: none;">Tier List</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Classes</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Class & Super Class Tier List
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        Because Super Class selection at the Trainer's Shrine (Act 2) is permanent and irreversible, picking the right evolution path is the single most critical decision in your run.
+      </p>
+    </header>
+
+    <!-- Tier Breakdown Sections -->
+    <div style="display: flex; flex-direction: column; gap: 32px; margin-bottom: 40px;">
+      {tierData.map((t) => (
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;">
+          <div style={`background: #1d152c; border-left: 6px solid ${t.color}; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between;`}>
+            <span style={`font-size: 1.4rem; font-weight: 800; color: ${t.color};`}>
+              {t.tier} TIER — {t.tier === "S" ? "Meta Dominators" : t.tier === "A" ? "Highly Recommended" : t.tier === "B" ? "Viable & Niche" : "Underperforming"}
+            </span>
+            <span style="font-size: 0.8rem; color: var(--muted); text-transform: uppercase;">{t.classes.length} Specializations</span>
+          </div>
+
+          <div style="padding: 20px; display: flex; flex-direction: column; gap: 16px;">
+            {t.classes.map((c) => (
+              <div style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 14px;">
+                <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; flex-wrap: wrap;">
+                  <h3 style="margin: 0; font-size: 1.15rem; color: var(--ink);">{c.name}</h3>
+                  <span style="font-size: 0.8rem; color: var(--accent); background: rgba(168, 85, 247, 0.15); padding: 1px 6px; border-radius: 3px;">
+                    Base: {c.base}
+                  </span>
+                  <span style="font-size: 0.8rem; color: var(--muted);">{c.role}</span>
+                  <span style="font-size: 0.8rem; font-family: var(--font-mono); color: #c9a227; margin-left: auto;">
+                    {c.scaling}
+                  </span>
+                </div>
+                <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+                  {c.verdict}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <!-- Comparative Base Class Growth Matrix -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 40px;">
+      <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">
+        Lv 1 Base Archetype Stat Distribution
+      </h2>
+      <p style="color: var(--muted); font-size: 0.9rem; margin: 0 0 16px;">
+        Empirical starter attributes recorded at Character Creation before racial modifiers:
+      </p>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
+              <th style="padding: 10px 14px; color: var(--muted);">Base Class</th>
+              <th style="padding: 10px 14px; color: var(--muted);">HP</th>
+              <th style="padding: 10px 14px; color: var(--muted);">Attack</th>
+              <th style="padding: 10px 14px; color: var(--muted);">Defense</th>
+              <th style="padding: 10px 14px; color: var(--muted);">Magic</th>
+              <th style="padding: 10px 14px; color: var(--muted);">Speed</th>
+              <th style="padding: 10px 14px; color: var(--muted);">Crit / Dodge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 10px 14px; font-weight: 700; color: #ea580c;"><a href="/classes/warrior/" style="color: inherit; text-decoration: none;">Warrior</a></td>
+              <td style="padding: 10px 14px;">120</td>
+              <td style="padding: 10px 14px;">14</td>
+              <td style="padding: 10px 14px;">12</td>
+              <td style="padding: 10px 14px;">4</td>
+              <td style="padding: 10px 14px;">8</td>
+              <td style="padding: 10px 14px;">5% / 3%</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 10px 14px; font-weight: 700; color: #34d399;"><a href="/classes/thief/" style="color: inherit; text-decoration: none;">Thief</a></td>
+              <td style="padding: 10px 14px;">85</td>
+              <td style="padding: 10px 14px;">12</td>
+              <td style="padding: 10px 14px;">6</td>
+              <td style="padding: 10px 14px;">5</td>
+              <td style="padding: 10px 14px;">16</td>
+              <td style="padding: 10px 14px;">15% / 12%</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 10px 14px; font-weight: 700; color: #a855f7;"><a href="/classes/mage/" style="color: inherit; text-decoration: none;">Mage</a></td>
+              <td style="padding: 10px 14px;">75</td>
+              <td style="padding: 10px 14px;">6</td>
+              <td style="padding: 10px 14px;">5</td>
+              <td style="padding: 10px 14px;">18</td>
+              <td style="padding: 10px 14px;">10</td>
+              <td style="padding: 10px 14px;">4% / 4%</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 10px 14px; font-weight: 700; color: #f43f5e;"><a href="/classes/fist/" style="color: inherit; text-decoration: none;">Fist</a></td>
+              <td style="padding: 10px 14px;">105</td>
+              <td style="padding: 10px 14px;">15</td>
+              <td style="padding: 10px 14px;">8</td>
+              <td style="padding: 10px 14px;">6</td>
+              <td style="padding: 10px 14px;">12</td>
+              <td style="padding: 10px 14px;">8% / 6%</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+              <td style="padding: 10px 14px; font-weight: 700; color: #eab308;"><a href="/classes/bard/" style="color: inherit; text-decoration: none;">Bard</a></td>
+              <td style="padding: 10px 14px;">90</td>
+              <td style="padding: 10px 14px;">8</td>
+              <td style="padding: 10px 14px;">7</td>
+              <td style="padding: 10px 14px;">12</td>
+              <td style="padding: 10px 14px;">11</td>
+              <td style="padding: 10px 14px;">6% / 5%</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 14px; font-weight: 700; color: #22c55e;"><a href="/classes/archer/" style="color: inherit; text-decoration: none;">Archer</a></td>
+              <td style="padding: 10px 14px;">80</td>
+              <td style="padding: 10px 14px;">14</td>
+              <td style="padding: 10px 14px;">5</td>
+              <td style="padding: 10px 14px;">5</td>
+              <td style="padding: 10px 14px;">13</td>
+              <td style="padding: 10px 14px;">12% / 7%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Deep Dive Links -->
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="/classes/super-classes/" style="background: rgba(168, 85, 247, 0.2); border: 1px solid #a855f7; color: #f5f3ff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+        Detailed 18 Super Classes Guide →
+      </a>
+      <a href="/tier-list/race-tier-list/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+        Compare Best Races for Classes →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

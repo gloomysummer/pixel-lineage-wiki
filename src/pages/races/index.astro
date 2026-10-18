@@ -1,0 +1,105 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Pixel Lineage Races & Talents System Guide",
+    description: "Complete guide to race rerolls, spin probabilities, and talent synergies in Pixel Lineage on Roblox.",
+    url: `${siteConfig.siteUrl}/races/`,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Races & Talents: Complete Guide"
+  description="Complete Pixel Lineage races and talents system guide: spin probabilities, reroll mechanics at Goblin Merchant, and top racial trait synergies."
+  canonical="/races/"
+  jsonLd={jsonLd}
+>
+  <div class="container" style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Races</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <div style="display: inline-block; background: rgba(201, 162, 39, 0.15); border: 1px solid #c9a227; color: #c9a227; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+        Core Lineage System
+      </div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Pixel Lineage Races & Talents System
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        Races and Talents represent the primary gacha and customization pillars in Pixel Lineage. They provide permanent stat multipliers that define your viability in Act 2 Torment dungeons.
+      </p>
+    </header>
+
+    <!-- Sub-Guides Navigation Cards -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px;">
+      <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px; display: flex; flex-direction: column;">
+        <h2 style="font-size: 1.25rem; color: #c9a227; margin: 0 0 10px;">Race Tier List & Rankings</h2>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; flex-grow: 1; margin: 0 0 16px;">
+          Empirical tier list of all playable lineages from Legendary Nightborn (2%) down to Human (48%), with full passive breakdowns.
+        </p>
+        <a href="/tier-list/race-tier-list/" style="color: #c9a227; font-weight: 600; font-size: 0.88rem; text-decoration: none;">
+          View Race Tier List →
+        </a>
+      </div>
+
+      <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px; display: flex; flex-direction: column;">
+        <h2 style="font-size: 1.25rem; color: #38bdf8; margin: 0 0 10px;">Talent Drop Rates & Traits</h2>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; flex-grow: 1; margin: 0 0 16px;">
+          Verified drop rates for all traits including Prodigy (+1 all stat growth, 1.5%) and Fortune's Favor (15% Crit, 5%).
+        </p>
+        <a href="/tier-list/talent-tier-list/" style="color: #38bdf8; font-weight: 600; font-size: 0.88rem; text-decoration: none;">
+          Check Talent Drop Rates →
+        </a>
+      </div>
+
+      <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px; display: flex; flex-direction: column;">
+        <h2 style="font-size: 1.25rem; color: #34d399; margin: 0 0 10px;">Free Race & Talent Spins</h2>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; flex-grow: 1; margin: 0 0 16px;">
+          Redeem the active OCTOBER promo code at the Goblin Merchant NPC to secure free spins without spending Robux.
+        </p>
+        <a href="/codes/" style="color: #34d399; font-weight: 600; font-size: 0.88rem; text-decoration: none;">
+          Redeem Active Codes →
+        </a>
+      </div>
+    </div>
+
+    <!-- How the Spin System Works -->
+    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px; line-height: 1.7;">
+      <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">How the Reroll System Works</h2>
+      <p style="color: var(--muted); font-size: 0.95rem; margin: 0 0 12px;">
+        When creating a character or using a <strong>Race Spin</strong> in town:
+      </p>
+      <ul style="color: var(--muted); font-size: 0.9rem; padding-left: 20px; margin: 0 0 16px;">
+        <li>Your current race is immediately replaced by a new random lineage based on the global seed.</li>
+        <li>Racial passives apply automatically to all base stats and Super Class skill calculations.</li>
+        <li>Talent slots unlock as your character gains Lineage Ranks throughout Act 1 and Act 2.</li>
+      </ul>
+      <p style="color: var(--muted); font-size: 0.9rem; margin: 0;">
+        Never overwrite Legendary races (Nightborn or Draconic) unless you possess at least 15+ spare Race Spins.
+      </p>
+    </section>
+
+    <!-- Links -->
+    <div style="text-align: center;">
+      <a href="/classes/super-classes/" style="background: rgba(168, 85, 247, 0.2); border: 1px solid #a855f7; color: #f5f3ff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-block;">
+        Explore Class & Race Synergies →
+      </a>
+    </div>
+  </div>
+</BaseLayout>
