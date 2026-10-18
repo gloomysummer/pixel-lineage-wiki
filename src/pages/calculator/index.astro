@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -33,7 +34,28 @@ const jsonLd = [
     ],
   },
 ];
+
+
+const faqItems = [
+  {
+    "question": "How accurate are the Effective Health Pool calculations in this tool?",
+    "answer": "The calculator implements the exact mathematical formulas used by the game server, computing damage reduction as Defense divided by Defense plus sixty. All milestone stat growths, gear tiers, and talent modifiers match live client memory values and verified character attribute sheets."
+  },
+  {
+    "question": "Why does my in-game damage differ slightly from the calculator output?",
+    "answer": "In-game damage includes a natural plus or minus five percent random roll variance on weapon hits, as well as enemy-specific physical and magical resistances. The calculator displays baseline expected damage against zero-resistance test dummies found in the practice grounds. Real-world combat logs will fluctuate around the calculator mean depending on randomized damage rolls."
+  },
+  {
+    "question": "How does the survival turns metric evaluate boss encounters?",
+    "answer": "The survival metric calculates how many consecutive unmitigated boss hits your character can endure before reaching zero HP. It factors in your Effective Health Pool and physical mitigation against standard Act 2 boss strike values to evaluate frontline stability. Higher survival turn counts grant healers more reaction time to restore player health bars safely."
+  },
+  {
+    "question": "Can I test hybrid talent and race combinations in the calculator?",
+    "answer": "Yes, selecting different archetypes, levels, talent options, and gear tiers dynamically recalculates all output metrics in real time. Use this tool to test whether defensive talent investments or offensive burst setups yield better survival in Torment expeditions. Experimenting with theoretical builds in the simulation engine prevents wasting valuable in-game reroll tokens."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Calculator: Combat & EHP Tool"
@@ -87,7 +109,7 @@ const jsonLd = [
             id="1pdNdjCu7BM"
             title="Pixel Lineage Stat Calculator & Damage Formula Walkthrough"
             channelTitle="OyO"
-            uploadDate="2026-10-07T00:00:00+00:00"
+            uploadDate="2026-10-18T12:00:00+00:00"
             description="Walkthrough of hyperbolic defense scaling, damage formulas, and attribute milestone calculations."
           />
         </section>
@@ -421,7 +443,10 @@ const jsonLd = [
         </a>
       </div>
     </section>
-      </article>
+      
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/calculator/" />

@@ -63,6 +63,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
+    datePublished: "2026-10-18T12:00:00+00:00",
     headline: "Pixel Lineage Race Tier List: Best Races Meta",
     description: "Complete Pixel Lineage race tier list: ranking all lineages, spin rarity probabilities, passive trait buffs, and optimal class synergies on Roblox.",
     url: `${siteConfig.siteUrl}/tier-list/race-tier-list/`,
@@ -86,9 +87,31 @@ const jsonLd = [
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+
+const faqItems = [
+  {
+    "question": "What criteria determine race placement on the Tier List?",
+    "answer": "Racial rankings evaluate passive combat multipliers, defensive cheat-death mechanics, utility perks like dark vision or mana sustain, and synergy versatility across all eighteen Super Classes, balanced against each bloodline's spin probability and accessibility for free-to-play accounts. Bloodlines that offer both offensive multipliers and defensive cheat-death passives consistently claim top rankings."
+  },
+  {
+    "question": "Why is the Human race placed in the lowest F-Tier?",
+    "answer": "Human has a 48% drop rate and offers zero innate stat multipliers, passive abilities, or elemental resistances. It functions purely as a starter baseline that players are intended to reroll at the Goblin Merchant as soon as possible with starter codes."
+  },
+  {
+    "question": "Is rolling for S-Tier Legendary races required to beat Act 2?",
+    "answer": "Rolling Legendary races is not required to complete Act 2 or progress into early Torment levels. Solid A-Tier lineages like Elf, Orc, and Felis provide more than enough combat potency to conquer all standard dungeon bosses without spending Robux. Player mastery of turn mechanics and positioning remains far more decisive than raw gacha luck."
+  },
+  {
+    "question": "How does Dullahan rank compared to Orc for frontline tanking?",
+    "answer": "Dullahan edges out Orc in S-Tier for dedicated tanking because its turn-one stun immunity and raw armor scaling provide consistent mitigation, whereas Orc relies on a one-time cheat-death trigger when lethal damage occurs during dangerous dungeon encounters. Both represent elite tanking choices, but Dullahan offers superior baseline consistency against sustained damage."
+  }
+];
 ---
+
 
 
 <BaseLayout
@@ -176,7 +199,10 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
       </a>
     </div>
   
-      </article>
+      
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/tier-list/race-tier-list/" />

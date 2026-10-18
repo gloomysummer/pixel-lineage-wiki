@@ -6,6 +6,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
+    datePublished: "2026-10-18T12:00:00+00:00",
     headline: "Pixel Lineage Codes Not Working: 4 Verified Fixes",
     description: "Fix Pixel Lineage promo codes not working errors: group verification delay, exact case sensitivity, goblin merchant location, and expired code checks.",
     url: `${siteConfig.siteUrl}/codes/not-working/`,
@@ -29,9 +30,31 @@ const jsonLd = [
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+
+const faqItems = [
+  {
+    "question": "Why does Pixel Lineage say Invalid Code when I type the phrase correctly?",
+    "answer": "Pixel Lineage code redemption is strictly case-sensitive and does not tolerate trailing whitespace or incorrect capitalization. If copying from community message boards, ensure you paste only uppercase alphanumeric characters. Additionally, ensure you exit dialogue and re-interact with the Goblin Merchant if you experienced network latency during the initial check."
+  },
+  {
+    "question": "How long after joining the Roblox Group does code verification take effect?",
+    "answer": "Roblox API group verification generally synchronizes within thirty to sixty seconds after joining Group 362755399. However, during high server load, cache propagation may take up to two minutes. Leaving your current game server and rejoining a fresh server instance instantly forces the group membership handshake."
+  },
+  {
+    "question": "Does private server play prevent code redemption at the Goblin Merchant?",
+    "answer": "Private VIP servers do not prevent code redemption in Pixel Lineage. All active promo codes function identically across public matchmaking hubs and private game servers. As long as your account satisfies group membership, favorites, and game likes, the Goblin Merchant will grant your reward items immediately."
+  },
+  {
+    "question": "What should I do if an active code fails after meeting all requirements?",
+    "answer": "First, completely close the Roblox client and rejoin a freshly spun server instance to bypass stale server memory. Verify that your Roblox privacy settings permit group verification tracking. If the prompt still rejects the code, verify the official Discord announcements channel to ensure the developer has not retired that specific phrase."
+  }
+];
 ---
+
 
 
 <BaseLayout
@@ -184,6 +207,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
           Go to Step-by-Step Redeem Guide →
         </a>
       </div>
+    
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
     </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->

@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -16,7 +17,7 @@ const jsonLd = [
     headline: "Dullahan Race in Pixel Lineage: Stats & Build Meta",
     description: "Complete Pixel Lineage Dullahan race guide: Halloween event headless lineage, poise break resistance, spectral decay passives, and Berserk build synergies.",
     url: `${siteConfig.siteUrl}/races/dullahan/`,
-    datePublished: "2026-10-18T12:00:00Z",
+    datePublished: "2026-10-18T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -33,7 +34,28 @@ const jsonLd = [
     ],
   },
 ];
+
+
+const faqItems = [
+  {
+    "question": "What is the roll probability and rarity tier of Dullahan?",
+    "answer": "Dullahan is an Epic rarity bloodline with a verified 4.0% drop probability from the lineage spin pool at the Goblin Merchant. It is designed around headless spectral armor themes, offering extraordinary defensive resilience and unshakeable poise resistance in challenging endgame dungeon encounters."
+  },
+  {
+    "question": "How does Dullahan's Headless Poise passive protect against stuns?",
+    "answer": "Dullahan characters are entirely immune to standard stun and interrupt effects on turn one of combat rounds. Boss attacks that would normally knock down or cancel player charging actions fail against Dullahan's unshakeable spectral poise, guaranteeing turn execution. This allows tanks to maintain active defensive stances and aggro control without fear of disruption."
+  },
+  {
+    "question": "Which Super Class synergy works best with Dullahan?",
+    "answer": "The Sentinel Warrior Super Class forms an unmatched synergy with Dullahan. The combination of Dullahan's armor amplification and Sentinel's sixty-five percent physical mitigation creates an indestructible raid vanguard that trivializes heavy Torment boss hits and protects vulnerable backline allies. This combination makes long multi-boss dungeon runs significantly more reliable and safe."
+  },
+  {
+    "question": "Does Dullahan suffer from reduced movement speed or initiative?",
+    "answer": "Dullahan possesses a slight -5% penalty to base Speed, which causes it to act later in the turn order during combat rounds. This makes it unsuitable for speed-burst builds like Assassin, but ideal for reactive counter-attackers and heavy frontline tanks."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Dullahan Race Guide: Stats & Synergies"
@@ -90,7 +112,7 @@ const jsonLd = [
             id="1pdNdjCu7BM"
             title="Pixel Lineage Dullahan Lineage & Death Prevention Breakdown"
             channelTitle="OyO"
-            uploadDate="2026-10-07T00:00:00+00:00"
+            uploadDate="2026-10-18T12:00:00+00:00"
             description="Comprehensive Pixel Lineage gameplay walkthrough analyzing Dullahan headless resilience, cheat death passives, and dark tanking."
           />
         </section>
@@ -441,7 +463,10 @@ const jsonLd = [
           </a>
         </div>
       </section>
-          </article>
+          
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/dullahan/" />

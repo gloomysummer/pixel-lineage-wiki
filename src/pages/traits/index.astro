@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -99,7 +100,7 @@ const jsonLd = [
     headline: "Pixel Lineage Traits & Talents: Complete Drop Rates",
     description: "Complete guide to Pixel Lineage traits and talents: exact drop rate percentages, roll mechanics, skill effect numbers, and optimal build combinations.",
     url: `${siteConfig.siteUrl}/traits/`,
-    datePublished: "2026-10-18T12:00:00Z",
+    datePublished: "2026-10-18T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -115,7 +116,28 @@ const jsonLd = [
     ],
   },
 ];
+
+
+const faqItems = [
+  {
+    "question": "How many talent slots can a character equip simultaneously?",
+    "answer": "Characters can equip up to three active talent cards simultaneously. The first slot unlocks at Level 5, the second at Level 15, and the final talent slot unlocks upon achieving Lineage Rank 3 in Act 2 The Dungeon through shrine progression."
+  },
+  {
+    "question": "What is the rarest and most powerful talent card in Pixel Lineage?",
+    "answer": "Prodigy is the rarest and most impactful talent card, featuring a 1.5% drop probability from the Talent Reroll pool. It grants a permanent +1 bonus to all stat growth attributes on every level-up, creating unmatched late-game scaling across all archetypes."
+  },
+  {
+    "question": "Can talent cards be locked while rerolling other slots?",
+    "answer": "Currently, using a Talent Spin rerolls all unlocked talent slots at once; there is no individual slot locking mechanic. Players should avoid rerolling once they secure an S-Tier talent like Prodigy or Fortune's Favor unless they hold abundant rerolls in reserve."
+  },
+  {
+    "question": "How does the Fortune's Favor talent affect critical hit rates?",
+    "answer": "Fortune's Favor (5% drop rate) adds a flat +15% bonus to your character's base Critical Strike Chance. When combined with Thief passives or Archer precision gear, critical rates exceed 60%, drastically accelerating dungeon clear speeds and poise break opportunities. For offensive builds relying on rapid burst windows, this talent card is considered an essential core pickup."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Traits: Drop Rates & Odds"
@@ -169,7 +191,7 @@ const jsonLd = [
             id="_Tx_aM0w1bE"
             title="Pixel Lineage Talents, Traits & Reroll Meta Guide"
             channelTitle="OyO"
-            uploadDate="2026-10-07T00:00:00+00:00"
+            uploadDate="2026-10-18T12:00:00+00:00"
             description="In-depth analysis of talent drop rates, secondary combat perks, and optimal trait builds."
           />
         </section>
@@ -406,7 +428,10 @@ const jsonLd = [
         </a>
       </div>
     </section>
-        </article>
+        
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/traits/" />

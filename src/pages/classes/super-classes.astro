@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -214,6 +215,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
+    datePublished: "2026-10-18T12:00:00+00:00",
     headline: "Pixel Lineage 18 Super Classes: Skills Matrix",
     description: "Complete matrix of all 18 super classes in Pixel Lineage: exact skill damage numbers, stat scaling, Trainer's Shrine unlock rules, and Ultra Sigil trials.",
     url: `${siteConfig.siteUrl}/classes/super-classes/`,
@@ -233,7 +235,28 @@ const jsonLd = [
     ],
   },
 ];
+
+
+const faqItems = [
+  {
+    "question": "At what level and location do I unlock Super Class advancement?",
+    "answer": "Super Class advancement unlocks at Level 10 upon reaching the Trainer's Shrine located within Act 2: The Catacombs & Dungeon. Players must complete the introductory shrine trial and interact with the Trainer NPC to select one of three specialization paths available for their base class."
+  },
+  {
+    "question": "Can I reset or change my Super Class after picking one at the Trainer's Shrine?",
+    "answer": "Super Class selection is permanent and irreversible for your character. Developers designed this decision as a core progression commitment. If you wish to experience a different Super Class branch, you must start a new character run and advance through Act 1 again."
+  },
+  {
+    "question": "What is an Ultra Class and how does it differ from a Super Class?",
+    "answer": "An Ultra Class represents the pinnacle awakening beyond your Super Class, requiring an Ultra Sigil item obtained from Torment III bosses or Guild Raids. Awakening an Ultra Class grants signature ultimate abilities and enhanced stat growth multipliers without altering your chosen Super Class kit."
+  },
+  {
+    "question": "Do Super Classes retain all abilities learned from the base class?",
+    "answer": "Yes, all base class skills, passive growths, and stat investments carry over completely into your Super Class evolution. Advancing to a Super Class simply expands your skill tree with new active spells, enhanced passive masteries, and specialized equipment proficiencies tailored for advanced dungeons."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Pixel Lineage 18 Super Classes: Skills Matrix"
@@ -274,7 +297,7 @@ const jsonLd = [
             id="_Tx_aM0w1bE"
             title="Pixel Lineage 18 Super Classes & Evolution Paths Showcase"
             channelTitle="OyO"
-            uploadDate="2026-10-07T00:00:00+00:00"
+            uploadDate="2026-10-18T12:00:00+00:00"
             description="Full showcase of all 18 Super Class evolutions, skill multipliers, and Trainer Shrine mechanics."
           />
         </section>
@@ -344,7 +367,10 @@ const jsonLd = [
         Race Synergy Recommendations →
       </a>
     </div>
-        </article>
+        
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/super-classes/" />

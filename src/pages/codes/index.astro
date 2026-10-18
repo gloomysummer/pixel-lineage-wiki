@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -58,7 +59,28 @@ const jsonLd = [
     ],
   },
 ];
+
+
+const faqItems = [
+  {
+    "question": "Why do promo codes expire in Pixel Lineage?",
+    "answer": "Promo codes in Pixel Lineage expire when developer update cycles conclude or when server redemption thresholds are reached. The development studio typically issues fresh codes during weekly content drops and holiday events. Expired codes permanently lose their validity in the Goblin Merchant redemption menu once superseded by new version updates."
+  },
+  {
+    "question": "Can I redeem the same promo code multiple times on one Roblox account?",
+    "answer": "Each active code can only be redeemed once per unique Roblox account ID across all server instances. Rerolling your character race, changing your starting class, or resetting your lineage rank does not restore code eligibility. To claim code bonuses again, players must register a separate Roblox account and complete group verification."
+  },
+  {
+    "question": "What prerequisites must be completed before entering codes at the Goblin Merchant?",
+    "answer": "Players must join the official Pixel Lineage Roblox Group (ID 362755399), give the game a thumbs-up like, and add the experience to their favorites list. If these three prerequisites are missing, the Goblin Merchant NPC dialog prompt will reject the submission and display a verification warning."
+  },
+  {
+    "question": "What rewards do active Pixel Lineage codes grant?",
+    "answer": "Active promo codes primarily provide free Race Spins, Talent Rerolls, consumable healing elixirs, and starter Gold currency. During limited seasonal events such as Halloween, active codes additionally grant event-exclusive Candy tokens used to purchase event weapon cosmetics and rare lineage upgrade scrolls."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Codes: Active Spins & Gold"
@@ -113,7 +135,7 @@ const jsonLd = [
             id="_Tx_aM0w1bE"
             title="Pixel Lineage Active Codes Redemption & Free Spins Showcase"
             channelTitle="OyO"
-            uploadDate="2026-10-07T00:00:00+00:00"
+            uploadDate="2026-10-18T12:00:00+00:00"
             description="Official Pixel Lineage promo code redemption and weekly spin reward demonstration at the Goblin Merchant."
           />
         </section>
@@ -335,7 +357,10 @@ const jsonLd = [
         </a>
       </div>
     </section>
-        </article>
+        
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/codes/" />

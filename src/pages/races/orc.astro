@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -16,7 +17,7 @@ const jsonLd = [
     headline: "Orc Race in Pixel Lineage: Stats & Build Meta Guide",
     description: "Complete Pixel Lineage Orc race guide: Undying Rage cheat-death passive, +12% physical attack, tenacity scaling, and Berserk/Brawler build synergies.",
     url: `${siteConfig.siteUrl}/races/orc/`,
-    datePublished: "2026-10-18T12:00:00Z",
+    datePublished: "2026-10-18T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -33,7 +34,28 @@ const jsonLd = [
     ],
   },
 ];
+
+
+const faqItems = [
+  {
+    "question": "What is the exact drop probability of rolling the Orc race?",
+    "answer": "The Orc race possesses a verified drop probability of 5.0% from the Race Spin wheel at the Goblin Merchant, placing it in the Epic rarity tier. On average, players obtain Orc within twenty to twenty-five Race Spins when rolling with active code tokens or Robux."
+  },
+  {
+    "question": "How does the Orc Undying Rage cheat-death passive activate in combat?",
+    "answer": "When an Orc character takes fatal damage that would reduce health to zero, Undying Rage activates automatically, preserving the character at one HP and granting complete invulnerability for one full combat turn. This ability triggers once per dungeon encounter, preventing permadeath resets."
+  },
+  {
+    "question": "Which classes benefit most from Orc racial passives?",
+    "answer": "Warrior, Fist, and melee Thief archetypes benefit most from Orc passives due to the innate +12% physical Attack boost and tenacity resistance against enemy stuns. The missing-health scaling on Berserk Warriors synergizes especially well with Undying Rage during intense boss encounters."
+  },
+  {
+    "question": "Does Orc suffer any penalties to magical damage or mana pools?",
+    "answer": "While Orc suffers no direct penalty to its Magic stat, it receives zero mana bonuses or spell penetration traits. Consequently, choosing Orc on Mage or support Bard builds is suboptimal compared to choosing intelligence-focused lineages like Nightborn or Celestine in high-tier content."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Orc Race Guide: Stats & Undying Rage"
@@ -90,7 +112,7 @@ const jsonLd = [
             id="1pdNdjCu7BM"
             title="Pixel Lineage Orc Lineage & Melee Poise Breakdown"
             channelTitle="OyO"
-            uploadDate="2026-10-07T00:00:00+00:00"
+            uploadDate="2026-10-18T12:00:00+00:00"
             description="Comprehensive Pixel Lineage gameplay walkthrough analyzing Orc brute attack scaling, death evasion, and frontline melee builds."
           />
         </section>
@@ -441,7 +463,10 @@ const jsonLd = [
           </a>
         </div>
       </section>
-          </article>
+          
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/orc/" />

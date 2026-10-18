@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -16,7 +17,7 @@ const jsonLd = [
     headline: "Pixel Lineage Thief Class Guide: Stats & Evolutions",
     description: "Complete Pixel Lineage Thief class guide: Lv 1-30 stat growths, Rogue, Assassin, and Beast Tamer Super Classes, speed turn loops, and crit builds.",
     url: `${siteConfig.siteUrl}/classes/thief/`,
-    datePublished: "2026-10-18T12:00:00Z",
+    datePublished: "2026-10-18T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -45,7 +46,28 @@ const thiefMilestones = [
   { lv: 25, hp: 265, atk: 58, def: 30, mag: 19, spd: 74, crit: "29.4%", dodge: "24.0%" },
   { lv: 30, hp: 303, atk: 67, def: 35, mag: 22, spd: 86, crit: "32.4%", dodge: "26.5%" },
 ];
+
+
+const faqItems = [
+  {
+    "question": "How does turn order initiative work for the Thief class in combat?",
+    "answer": "Turn initiative in Pixel Lineage calculates directly from each combatant's Speed attribute at the beginning of every turn round. Because Thief possesses the highest baseline Speed growth in the game, Thief characters almost always act first, allowing them to eliminate enemy spellcasters or apply crowd control before monsters attack."
+  },
+  {
+    "question": "What is the difference between the Assassin and Rogue Super Classes?",
+    "answer": "Assassin specializes in guaranteed critical strikes from Stealth stance and deadly single-target poison burst damage against priority targets. Rogue, by contrast, focuses on evasive agility and counter-attack triggers that strike back whenever enemy attacks miss, making Rogue significantly safer and superior in chaotic multi-target mob survival scenarios."
+  },
+  {
+    "question": "Does the Corsair Thief Super Class actually earn more gold in dungeons?",
+    "answer": "Yes, Corsair possesses unique pickpocket passives that siphon bonus Gold directly from enemy combatants during turn actions. In Act 2 dungeons and Torment expeditions, a well-geared Corsair generates approximately thirty-five percent more total currency per run than standard combat builds, speeding up town upgrades."
+  },
+  {
+    "question": "Which race provides the highest damage ceiling for a Thief build?",
+    "answer": "Elf and Felis offer the highest performance ceiling for Thief builds across dungeon acts. Elf grants bonus movement speed, higher initiative rolls, and critical strike multipliers, whereas Felis boosts base dodge chance to optimize Rogue counter-attack mechanics and dodge triggers in high-Torment dungeons."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Thief Class Guide: Stats & Super Classes"
@@ -101,7 +123,7 @@ const thiefMilestones = [
             id="1pdNdjCu7BM"
             title="Pixel Lineage Thief Class Speed & Crit Combat Walkthrough"
             channelTitle="OyO"
-            uploadDate="2026-10-07T00:00:00+00:00"
+            uploadDate="2026-10-18T12:00:00+00:00"
             description="Comprehensive Pixel Lineage gameplay walkthrough demonstrating Thief initiative turns, dagger rotations, and evasion mechanics."
           />
         </section>
@@ -410,7 +432,10 @@ const thiefMilestones = [
           Simulate Thief in Combat Calculator →
         </a>
       </div>
-          </article>
+          
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/thief/" />

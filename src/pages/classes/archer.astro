@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -16,7 +17,7 @@ const jsonLd = [
     headline: "Pixel Lineage Archer Class Guide: Stats & Evolutions",
     description: "Complete Pixel Lineage Archer class guide: Lv 1-30 stat growths, Ranger, Deadeye, and Corsair Super Classes, armor piercing, and sniper builds.",
     url: `${siteConfig.siteUrl}/classes/archer/`,
-    datePublished: "2026-10-18T12:00:00Z",
+    datePublished: "2026-10-18T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -45,7 +46,28 @@ const archerMilestones = [
   { lv: 25, hp: 253, atk: 69, def: 27, mag: 17, spd: 56, crit: "24.0%", dodge: "14.2%" },
   { lv: 30, hp: 289, atk: 81, def: 31, mag: 20, spd: 65, crit: "26.5%", dodge: "15.7%" },
 ];
+
+
+const faqItems = [
+  {
+    "question": "How does row targeting work for Archer bows in turn-based combat?",
+    "answer": "Unlike frontline melee fighters who must attack front-row enemies first, Archer ranged attacks bypass enemy tanks to target high-priority spellcasters and healers positioned in the back row. This unique targeting mechanic allows Archer teams to eliminate dangerous enemy supports early in the round."
+  },
+  {
+    "question": "Which Archer Super Class has the highest armor penetration?",
+    "answer": "The Sniper Super Class possesses the highest armor penetration in Pixel Lineage, naturally ignoring fifty percent of enemy physical defense on aimed precision shots. This makes Sniper the optimal choice for tackling heavily armored knight bosses in Act 2 and Torment Mode."
+  },
+  {
+    "question": "Is Ranger better than Deadeye for dungeon trash mob clearing?",
+    "answer": "Ranger is significantly better for clearing dungeon trash mobs because it unlocks Arrow Volley, an ability that showers multiple enemy tiles simultaneously. Deadeye focuses on single-target lethal critical strikes, excelling against lone dungeon bosses rather than large mob packs encountered along dungeon corridors."
+  },
+  {
+    "question": "What talent combination maximizes Archer critical strike damage?",
+    "answer": "The ideal talent combination for Archer builds pairs Fortune's Favor (+15% Crit Chance) with Keen Eye and Prodigy. This setup elevates critical strike probability above sixty percent, triggering massive critical damage multipliers on every standard bow shot and accelerating boss takedowns."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Archer Class Guide: Stats & Super Classes"
@@ -101,7 +123,7 @@ const archerMilestones = [
             id="1pdNdjCu7BM"
             title="Pixel Lineage Archer Class Bow & Armor Piercing Walkthrough"
             channelTitle="OyO"
-            uploadDate="2026-10-07T00:00:00+00:00"
+            uploadDate="2026-10-18T12:00:00+00:00"
             description="Comprehensive Pixel Lineage gameplay walkthrough demonstrating Archer projectile velocity, sniper positioning, and bow kiting."
           />
         </section>
@@ -410,7 +432,10 @@ const archerMilestones = [
           Simulate Archer in Combat Calculator →
         </a>
       </div>
-          </article>
+          
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/archer/" />

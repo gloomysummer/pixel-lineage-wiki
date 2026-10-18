@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -16,7 +17,7 @@ const jsonLd = [
     headline: "Elf Race in Pixel Lineage: Stats & Build Meta Guide",
     description: "Complete Pixel Lineage Elf race guide: +10% turn speed initiative, +5% critical precision, bow/dagger piercing buffs, and Assassin/Sniper synergies.",
     url: `${siteConfig.siteUrl}/races/elf/`,
-    datePublished: "2026-10-18T12:00:00Z",
+    datePublished: "2026-10-18T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -33,7 +34,28 @@ const jsonLd = [
     ],
   },
 ];
+
+
+const faqItems = [
+  {
+    "question": "What stat bonuses does the Elf race provide to characters?",
+    "answer": "The Elf race grants +10% bonus Speed, +5% Critical Strike chance, and enhanced accuracy that ignores enemy dodge ratings. These agile passives ensure Elf combatants almost always take the first turn action in combat rounds, establishing crucial momentum in tough dungeon fights."
+  },
+  {
+    "question": "What is the spin rate for rolling Elf at the Goblin Merchant?",
+    "answer": "Elf has an 8.0% spin probability from the standard lineage gacha, categorizing it as a Rare bloodline. It is relatively easy to obtain compared to Legendary races, making it an excellent target for players utilizing free spins from active promo codes."
+  },
+  {
+    "question": "Why is Elf considered the top bloodline for Archer and Thief?",
+    "answer": "Elf amplifies the natural advantages of Archer and Thief by compounding high turn initiative and critical strike scaling. The +10% Speed ensures that Assassins and Snipers strike before enemy monsters can cast protective barriers, debuffs, or high-damage elemental spells. Their supreme movement initiative dictates the pace of battle from the opening turn."
+  },
+  {
+    "question": "Does Elf provide any survivability or defensive bonuses?",
+    "answer": "Elf provides minimal defensive mitigations or raw health bonuses, leaving characters fragile if cornered by boss attacks. Elf survivability relies entirely on avoiding damage by eliminating enemies first or utilizing high turn speed to deploy evasive smoke screens before enemies counter."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Elf Race Guide: Stats & Precision Meta"
@@ -90,7 +112,7 @@ const jsonLd = [
             id="1pdNdjCu7BM"
             title="Pixel Lineage Elf Lineage & Projectile Speed Breakdown"
             channelTitle="OyO"
-            uploadDate="2026-10-07T00:00:00+00:00"
+            uploadDate="2026-10-18T12:00:00+00:00"
             description="Comprehensive Pixel Lineage gameplay walkthrough analyzing Elf mana efficiency, archer projectile speed, and long-range kiting."
           />
         </section>
@@ -444,7 +466,10 @@ const jsonLd = [
           </a>
         </div>
       </section>
-          </article>
+          
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/elf/" />

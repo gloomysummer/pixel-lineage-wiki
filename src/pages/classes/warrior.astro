@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -16,7 +17,7 @@ const jsonLd = [
     headline: "Pixel Lineage Warrior Class Guide: Stats & Builds",
     description: "Complete Pixel Lineage Warrior class guide: Lv 1-30 stat growth tables, Berserk, Sentinel, and Greatsword Super Classes, and endgame raid builds.",
     url: `${siteConfig.siteUrl}/classes/warrior/`,
-    datePublished: "2026-10-18T12:00:00Z",
+    datePublished: "2026-10-18T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -45,7 +46,28 @@ const warriorMilestones = [
   { lv: 25, hp: 408, atk: 67, def: 55, mag: 16, spd: 27, crit: "9.8%", dodge: "5.4%" },
   { lv: 30, hp: 468, atk: 78, def: 64, mag: 19, spd: 31, crit: "10.8%", dodge: "5.9%" },
 ];
+
+
+const faqItems = [
+  {
+    "question": "Can I change my base class from Warrior to another class later?",
+    "answer": "Base class selection is permanent and irreversible for your character save file in Pixel Lineage. If you choose Warrior at character creation, you cannot swap to Mage, Thief, or Archer without creating a new character slot. You can, however, customize your combat role by selecting one of three distinct Super Classes at level ten."
+  },
+  {
+    "question": "Which Warrior Super Class is best for solo player progression?",
+    "answer": "The Berserk Super Class is widely recognized as the premier solo progression choice due to its aggressive missing-health attack scaling and lifesteal passives. Solo players can defeat Act 2 dungeon bosses quickly without relying on external healing support by maintaining controlled low-health damage bursts."
+  },
+  {
+    "question": "Is the Sentinel Super Class necessary for endgame Guild Raids?",
+    "answer": "Sentinel is virtually mandatory for high-tier Guild Raids because it provides sixty-five percent physical damage mitigation and party-wide taunt mechanics. Without a dedicated Sentinel absorbing heavy boss cleaves, fragile spellcasters and burst rogues get eliminated by unavoidable AoE ground slams in Torment encounters."
+  },
+  {
+    "question": "What is the optimal playable race pairing for a Warrior build?",
+    "answer": "Orc and Dullahan represent the two strongest racial lineages for Warrior characters in the current meta. Orc provides innate bonus attack multipliers and an undying rage cheat-death passive, while Dullahan offers massive baseline poise defenses and armor scaling that synergize perfectly with heavy plate tanking setups in Act 2."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Warrior Class Guide: Stats & Super Classes"
@@ -100,7 +122,7 @@ const warriorMilestones = [
           id="1pdNdjCu7BM"
           title="Pixel Lineage Warrior Class Progression & Combat Mechanics Guide"
           channelTitle="OyO"
-          uploadDate="2026-10-07T00:00:00+00:00"
+          uploadDate="2026-10-18T12:00:00+00:00"
           description="Comprehensive Pixel Lineage beginner guide and live combat walkthrough showcasing Warrior frontline rotations and dungeon survival."
         />
       </section>
@@ -409,6 +431,9 @@ const warriorMilestones = [
           Simulate Warrior in Combat Calculator →
         </a>
       </div>
+    
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
     </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->

@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -16,7 +17,7 @@ const jsonLd = [
     headline: "Celestine Race in Pixel Lineage: Stats & Build Meta",
     description: "Complete Pixel Lineage Celestine race guide: holy spell damage scalings, party radiance cleansing, divine shield passives, and Cleric/Paladin synergies.",
     url: `${siteConfig.siteUrl}/races/celestine/`,
-    datePublished: "2026-10-18T12:00:00Z",
+    datePublished: "2026-10-18T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -33,7 +34,28 @@ const jsonLd = [
     ],
   },
 ];
+
+
+const faqItems = [
+  {
+    "question": "What is the difference between Celestine and Seraph races?",
+    "answer": "While both races embody holy themes, Celestine (3.0% Epic drop rate) focuses on active debuff cleansing and magical defense, whereas Seraph (1.5% Mythic) specializes in party resurrection and raw healing amplification. Celestine is superior for surviving heavy Torment debuffs. Choosing between them depends on whether your team needs ongoing ailment cleansing or clutch revivals."
+  },
+  {
+    "question": "How does Celestine's Divine Ward passive mitigate magic damage?",
+    "answer": "Divine Ward grants an innate +8% magical damage reduction and possesses a 25% chance at the start of every combat turn to automatically cleanse one negative status ailment\u2014such as Bleed, Burn, or Torment Rot\u2014from your character without consuming actions. This automatic cleansing preserves action turns and eliminates the need for expensive consumable curatives."
+  },
+  {
+    "question": "Why is Celestine essential for Act 2 Catacombs progression?",
+    "answer": "Act 2 Catacombs monsters heavily inflict stacking poison and rot curses that drain health rapidly. Celestine's automated turn cleanse removes these debuffs without wasting precious action turns on cleansing potions, preserving party momentum and consumable supplies during long runs. Surviving high-tier Catacomb encounters without constant debuff cleansing is nearly impossible for most parties."
+  },
+  {
+    "question": "What class archetype pairs best with Celestine racial traits?",
+    "answer": "Cleric (Mage Super Class) and Sentinel (Warrior Super Class) pair best with Celestine. Clerics maximize the holy spell bonuses, while Sentinels gain the crucial magical damage resistance that standard heavy plate armor lacks against dungeon spellcasters. Both setups provide outstanding group protection and steady combat rhythm across high-Torment dungeons."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Celestine Race Guide: Stats & Synergies"
@@ -90,7 +112,7 @@ const jsonLd = [
             id="1pdNdjCu7BM"
             title="Pixel Lineage Celestine Lineage & Resource Scaling Breakdown"
             channelTitle="OyO"
-            uploadDate="2026-10-07T00:00:00+00:00"
+            uploadDate="2026-10-18T12:00:00+00:00"
             description="Comprehensive Pixel Lineage gameplay walkthrough analyzing Celestine astral resonance, mana regen, and endgame raid scaling."
           />
         </section>
@@ -441,7 +463,10 @@ const jsonLd = [
           </a>
         </div>
       </section>
-          </article>
+          
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/celestine/" />

@@ -45,9 +45,31 @@ const jsonLd = [
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+
+const faqItems = [
+  {
+    "question": "Where is the Goblin Merchant located in the Pixel Lineage starter hub?",
+    "answer": "The Goblin Merchant NPC stands in the central starter town courtyard coordinates (X: 142, Y: 12, Z: -88), located directly adjacent to the stone archway of the Commerce Square. From the starter spawn fountain, walk east past the Blacksmith forge to spot the green-skinned merchant standing beside his wooden cart."
+  },
+  {
+    "question": "How do mobile touchscreen players interact with the Goblin Merchant?",
+    "answer": "Mobile touchscreen players must approach within three studs of the Goblin Merchant until the circular proximity prompt displays. Tap the prompt button on your screen to open the dialogue window, enter your promotional text into the input field, and tap the green Redeem button to transfer rewards into your bag."
+  },
+  {
+    "question": "Where do claimed Race Spins and Talent Spins appear after redemption?",
+    "answer": "Claimed spins and reroll tokens automatically credit into your character inventory currency ledger rather than dropping onto the ground. Press the Character Menu shortcut or open your bag interface to verify your updated Race Spin and Talent Spin counts before visiting the town lineage altar."
+  },
+  {
+    "question": "Can I trade code reward items to other players in Pixel Lineage?",
+    "answer": "Promo code rewards such as Race Spins, Talent Spins, and starter gold bind permanently to your character profile upon redemption and cannot be dropped or traded to other players. Equipment purchased with redeemed currency through the Auction House can be traded once bound item restrictions expire."
+  }
+];
 ---
+
 
 
 <BaseLayout
@@ -150,6 +172,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
           Best Races for Your Free Spins →
         </a>
       </div>
+    
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
     </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->

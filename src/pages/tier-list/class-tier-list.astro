@@ -138,6 +138,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
+    datePublished: "2026-10-18T12:00:00+00:00",
     headline: "Pixel Lineage Class Tier List: Best Super Classes",
     description: "Definitive Pixel Lineage class tier list: ranking 6 base archetypes and 18 super classes on dungeon clear speed, solo survivability, and boss damage.",
     url: `${siteConfig.siteUrl}/tier-list/class-tier-list/`,
@@ -161,9 +162,31 @@ const jsonLd = [
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+
+const faqItems = [
+  {
+    "question": "Which class ranks highest for solo Torment dungeon clears?",
+    "answer": "The Berserk Warrior and Assassin Thief share the S+ ranking for solo Torment clears. Berserk survives through lifesteal and missing-health scaling, while Assassin eliminates dangerous enemy spellcasters in round one with stealth critical bursts, bypassing complex multi-turn boss gimmicks. Both classes boast top-tier damage multipliers that significantly reduce total combat exposure time."
+  },
+  {
+    "question": "Why does the Bard class rank higher in multiplayer than in solo play?",
+    "answer": "Bard ranks in S-Tier for multiplayer raids because its musical buffs scale across all four party members, multiplying total team damage by 25%. In solo play, however, Bard's lower personal damage output places it in A-Tier due to slower clearing speeds."
+  },
+  {
+    "question": "Do tier list rankings change frequently with weekly developer updates?",
+    "answer": "Rankings shift primarily when the developer rebalances Super Class multipliers or introduces new dungeon mechanics during weekly patches. Our tier list is updated after every patch notes release to reflect current empirical performance data and community raid clears. We continuously test balance adjustments on live servers to ensure our tier rankings remain authoritative."
+  },
+  {
+    "question": "Is Fist viable for endgame raid content compared to Greatsword Warrior?",
+    "answer": "Fist is highly viable in endgame raids due to its unparalleled Poise Break ability. By consistently staggering dungeon bosses and interrupting charge attacks, a skilled Fist player prevents massive party-wide damage spikes that would otherwise wipe raid groups. Many top progression guilds mandate at least one dedicated Fist user specifically for crowd control."
+  }
+];
 ---
+
 
 
 <BaseLayout
@@ -321,7 +344,10 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
       </a>
     </div>
   
-      </article>
+      
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/tier-list/class-tier-list/" />

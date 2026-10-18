@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -16,7 +17,7 @@ const jsonLd = [
     headline: "Nightborn Race in Pixel Lineage: Stats & Build Meta",
     description: "Complete Pixel Lineage Nightborn race guide: 15% mana regeneration, lifesteal mechanics, dark spell multipliers, spin odds, and Hexer/Mage synergies.",
     url: `${siteConfig.siteUrl}/races/nightborn/`,
-    datePublished: "2026-10-18T12:00:00Z",
+    datePublished: "2026-10-18T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -33,7 +34,28 @@ const jsonLd = [
     ],
   },
 ];
+
+
+const faqItems = [
+  {
+    "question": "What makes Nightborn one of the rarest Legendary races in Pixel Lineage?",
+    "answer": "Nightborn features a rare 2.0% spin probability from the Goblin Merchant wheel, ranking it among the most coveted Legendary bloodlines. It offers supreme mana sustain, dark vision in unlit catacombs, and a passive damage buff that intensifies inside deep dungeon acts."
+  },
+  {
+    "question": "How does the Nightborn mana regeneration passive function in combat?",
+    "answer": "Nightborn characters restore 15% of their maximum mana pool at the beginning of each combat round automatically. This constant spirit regeneration allows Mages and Hexers to cast their most demanding spells continuously without pausing to consume mana elixirs or risking resource exhaustion."
+  },
+  {
+    "question": "Is Nightborn viable on physical melee classes like Warrior or Fist?",
+    "answer": "While Nightborn is optimized for magic-casting archetypes, its dark vision and night-scaling damage bonuses still benefit physical classes in dark dungeons. However, players seeking maximum physical DPS are generally better served rolling Orc or Dullahan for heavy attack and defense scaling."
+  },
+  {
+    "question": "Can Nightborn dark vision replace torches in Act 2 Catacombs?",
+    "answer": "Yes, Nightborn characters possess innate night sight that completely removes darkness penalties in Act 2 Catacombs and Torment dungeons. This frees up consumable slots that would otherwise be reserved for torches or illumination lanterns, expanding inventory space for rare dungeon loot."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Nightborn Race Guide: Stats & Synergies"
@@ -406,7 +428,10 @@ const jsonLd = [
           </a>
         </div>
       </section>
-          </article>
+          
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/nightborn/" />

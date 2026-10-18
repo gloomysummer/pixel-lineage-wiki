@@ -57,6 +57,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
+    datePublished: "2026-10-18T12:00:00+00:00",
     headline: "Pixel Lineage Talent Tier List & Drop Rates",
     description: "Complete Pixel Lineage talent tier list: empirical drop rate probabilities, trait spin rerolls, and optimal build combinations on Roblox.",
     url: `${siteConfig.siteUrl}/tier-list/talent-tier-list/`,
@@ -80,9 +81,31 @@ const jsonLd = [
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+
+const faqItems = [
+  {
+    "question": "What are the top three must-have talents in Pixel Lineage?",
+    "answer": "The top three talents are Prodigy (S+ Tier, +1 all stat growth), Fortune's Favor (S Tier, +15% Crit Chance), and Iron Bastion (S Tier, +18% Physical DR). These three cards provide game-changing benefits across every archetype in both solo and multiplayer."
+  },
+  {
+    "question": "Is the Bloodthirst talent effective on magic-casting Mages?",
+    "answer": "Bloodthirst restores health based on physical damage dealt and does not trigger on magic spells. Consequently, Bloodthirst is ranked S-Tier for Warriors and Thieves, but drops to D-Tier when equipped on pure Mage spellcasters who deal exclusively magical damage. Equipping Bloodthirst on pure magic archetypes represents a complete waste of an active talent card slot."
+  },
+  {
+    "question": "How does Swift Step improve dungeon survivability?",
+    "answer": "Swift Step increases character turn initiative and grants an extra five percent base dodge chance. Acting earlier allows players to eliminate high-damage enemy monsters before they can execute their combat turns, substantially reducing incoming damage over a full dungeon run."
+  },
+  {
+    "question": "Should I keep rolling if I land an A-Tier talent like Keen Eye?",
+    "answer": "If you hold fewer than ten Talent Spins, you should stop rolling and lock in an A-Tier talent like Keen Eye. Only attempt to chase 1.5% Prodigy when you have stockpiled sufficient spins to avoid being left with useless traits."
+  }
+];
 ---
+
 
 
 <BaseLayout
@@ -192,7 +215,10 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
       </a>
     </div>
   
-      </article>
+      
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/tier-list/talent-tier-list/" />

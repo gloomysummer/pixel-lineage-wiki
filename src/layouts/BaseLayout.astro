@@ -225,7 +225,10 @@ const brandRest = brandParts.slice(1).join(' ') || 'WIKI';
           </button>
 
           {siteConfig.officialLinks?.roblox && (
-            <a href={siteConfig.officialLinks.roblox} target="_blank" rel="noopener noreferrer" class="steam-link">Play on Roblox ↗</a>
+            <a href={siteConfig.officialLinks.roblox} target="_blank" rel="noopener noreferrer" class="steam-link" aria-label="Play Pixel Lineage on Roblox">
+              <span class="steam-link-full">Play on Roblox ↗</span>
+              <span class="steam-link-short">Play ↗</span>
+            </a>
           )}
         </nav>
       </div>

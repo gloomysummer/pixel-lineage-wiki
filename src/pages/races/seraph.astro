@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -16,7 +17,7 @@ const jsonLd = [
     headline: "Seraph Race in Pixel Lineage: Stats & Build Meta",
     description: "Complete Pixel Lineage Seraph race guide: archangel wing evasion, true holy damage scaling, aerial speed priority, and Monk/Archer build synergies.",
     url: `${siteConfig.siteUrl}/races/seraph/`,
-    datePublished: "2026-10-18T12:00:00Z",
+    datePublished: "2026-10-18T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -33,7 +34,28 @@ const jsonLd = [
     ],
   },
 ];
+
+
+const faqItems = [
+  {
+    "question": "What are the unique racial traits of the Seraph lineage?",
+    "answer": "Seraph is a Mythic bloodline (1.5% spin probability) featuring angelic wings and holy radiance. It grants +15% Holy spell damage, a party-wide aura that boosts incoming healing by 10%, and a resurrection blessing that revives one fallen ally per raid."
+  },
+  {
+    "question": "How does the Seraph Angelic Revival ability work in Guild Raids?",
+    "answer": "If an allied teammate dies during a raid encounter, Seraph can channel a revival prayer that restores the fallen player with thirty percent health. This revive bypasses standard permadeath penalties during that specific raid encounter, preventing devastating party wipes against Torment bosses."
+  },
+  {
+    "question": "Is Seraph restricted to healer classes or can damage dealers use it?",
+    "answer": "While Seraph is the definitive choice for Clerics and support Bards, its +15% Holy amplification also empowers holy-element Greatsword Warrior and paladin-style hybrid builds, combining heavy frontline survivability with self-healing aura support to sustain solo expeditions. This provides exceptional versatility for both solo players and organized guild groups."
+  },
+  {
+    "question": "How many race spins on average does it take to roll Seraph?",
+    "answer": "Due to its 1.5% drop rate, rolling Seraph requires an average of sixty to seventy Race Spins. Players should stockpile spins from multiple active code releases and seasonal events before attempting to roll for this top-tier Mythic lineage at the merchant."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Seraph Race in Pixel Lineage: Stats & Build Meta"
@@ -90,7 +112,7 @@ const jsonLd = [
             id="1pdNdjCu7BM"
             title="Pixel Lineage Seraph Lineage & Holy Ascension Breakdown"
             channelTitle="OyO"
-            uploadDate="2026-10-07T00:00:00+00:00"
+            uploadDate="2026-10-18T12:00:00+00:00"
             description="Comprehensive Pixel Lineage gameplay walkthrough analyzing Seraph holy damage buffs, angel wings mobility, and cleric support meta."
           />
         </section>
@@ -441,7 +463,10 @@ const jsonLd = [
           </a>
         </div>
       </section>
-          </article>
+          
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/seraph/" />

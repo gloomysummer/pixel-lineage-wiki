@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -16,7 +17,7 @@ const jsonLd = [
     headline: "Pixel Lineage Mage Class Guide: Stats & Evolutions",
     description: "Complete Pixel Lineage Mage class guide: Lv 1-30 stat growths, Cleric, Hexer, and Summoner Super Classes, spell rotations, and arcane mana builds.",
     url: `${siteConfig.siteUrl}/classes/mage/`,
-    datePublished: "2026-10-18T12:00:00Z",
+    datePublished: "2026-10-18T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -45,7 +46,28 @@ const mageMilestones = [
   { lv: 25, hp: 219, atk: 25, def: 27, mag: 85, spd: 39, crit: "11.2%", dodge: "8.8%" },
   { lv: 30, hp: 249, atk: 29, def: 31, mag: 99, spd: 45, crit: "12.7%", dodge: "9.8%" },
 ];
+
+
+const faqItems = [
+  {
+    "question": "How do Mage characters manage mana sustain during prolonged boss fights?",
+    "answer": "Mage characters manage mana sustain through innate spirit growth, staff weapon enchantments, and mana potions purchased in town. Inscribing Arcane Runes onto your armor and choosing the Nightborn race grants constant passive mana regeneration, preventing spell exhaustion during extended multi-phase dungeon encounters."
+  },
+  {
+    "question": "Is Cleric viable as a solo leveling archetype or only in party raids?",
+    "answer": "While Cleric excels as the premier party healer in Guild Raids, it is completely viable for solo leveling thanks to holy radiant smites and self-sustain. Clerics deal bonus holy damage against undead dungeon monsters in Act 2, allowing steady progression without purchasing healing consumables."
+  },
+  {
+    "question": "How does the Hexer Super Class bypass boss magical resistances?",
+    "answer": "Hexer applies stacking decay curses that tick during every enemy turn phase while reducing target magic defense by forty percent. Because decay damage scales with true damage percentages, Hexer curses melt high-armor Torment bosses that otherwise resist direct elemental burst spells."
+  },
+  {
+    "question": "Why is Nightborn considered the best race for Mage archetypes?",
+    "answer": "Nightborn grants fifteen percent increased base mana regeneration, dark vision in unlit dungeons, and enhanced magical attack scaling during nighttime phases. These combined passives remove mana starvation bottlenecks completely, enabling spellcasters to execute continuous high-tier spell rotations without pausing for elixirs or losing DPS momentum."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Mage Class Guide: Stats & Super Classes"
@@ -101,7 +123,7 @@ const mageMilestones = [
             id="1pdNdjCu7BM"
             title="Pixel Lineage Mage Class Arcane & Healing Rotation Walkthrough"
             channelTitle="OyO"
-            uploadDate="2026-10-07T00:00:00+00:00"
+            uploadDate="2026-10-18T12:00:00+00:00"
             description="Comprehensive Pixel Lineage gameplay walkthrough demonstrating Mage spell rotations, MP management, and Cleric/Hexer support."
           />
         </section>
@@ -410,7 +432,10 @@ const mageMilestones = [
           Simulate Mage in Combat Calculator →
         </a>
       </div>
-          </article>
+          
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/mage/" />

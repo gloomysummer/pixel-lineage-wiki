@@ -27,6 +27,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
+    datePublished: "2026-10-18T12:00:00+00:00",
     headline: "Pixel Lineage Torment Mode: Difficulty & Rules",
     description: "Master Pixel Lineage Torment mode rules: enemy stat scalings, permadeath life penalties, loot multiplier tables, and boss strategy.",
     url: `${siteConfig.siteUrl}/adventures/torment/`,
@@ -50,9 +51,31 @@ const jsonLd = [
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+
+const faqItems = [
+  {
+    "question": "What happens when a character loses all Lives in Torment Mode?",
+    "answer": "Losing all Lives in Torment Mode results in permadeath for that specific dungeon expedition, resetting your character to the Town Courtyard. While equipment and character levels are retained, all unbanked gold and temporary dungeon floor keys are lost permanently. Players must prepare thoroughly with optimal gear and potions before committing to high-stakes Torment runs."
+  },
+  {
+    "question": "What are the loot bonuses for clearing Torment III The Abyss?",
+    "answer": "Torment III provides a +200% Gold multiplier, guaranteed Ultra Sigil drops upon defeating the Pinnacle Altar Warden, and access to Tier-5 Mythic Artifact Caches containing the highest-attribute weapons in the game for endgame raiders. These exclusive end-game rewards make Torment III the premier farming destination for hardcore raid alliances."
+  },
+  {
+    "question": "How do enemy enrage timers function in Torment boss fights?",
+    "answer": "Torment bosses gain an unremovable +20% damage buff every four combat turns. This stacking enrage mechanic discourages passive stalling strategies, forcing raid teams to bring high-burst damage dealers to burn bosses down quickly before enrage values wipe the party. Teams that fail to meet strict damage per turn thresholds will inevitably get overwhelmed by boosted boss attacks."
+  },
+  {
+    "question": "What party composition is recommended for clearing Torment Mode?",
+    "answer": "The optimal four-player composition consists of one Sentinel Warrior tank, one Cleric healer for debuff cleansing, one Fist or Monk for poise interrupts, and one high-DPS burst specialist like an Assassin Thief or Sniper Archer to manage enrage timers. Coordinated party synergy and balanced role distribution are absolutely essential for surviving high Torment tiers."
+  }
+];
 ---
+
 
 
 <BaseLayout
@@ -144,6 +167,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
           </a>
         </div>
       </section>
+    
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
     </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->

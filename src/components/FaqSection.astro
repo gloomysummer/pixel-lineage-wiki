@@ -1,0 +1,48 @@
+---
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface Props {
+  title?: string;
+  items: FaqItem[];
+}
+
+const { title = "Frequently Asked Questions", items = [] } = Astro.props;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": items.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer,
+    },
+  })),
+};
+---
+
+{items.length > 0 && (
+  <section class="faq-accordion-section" style="margin: 40px 0 32px;">
+    <h2 id="frequently-asked-questions" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px; font-family: var(--font-display);">
+      {title}
+    </h2>
+    <div class="faq-list-wrapper" style="display: flex; flex-direction: column; gap: 12px; margin: 0;">
+      {items.map((item) => (
+        <details class="faq-details-item" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px;">
+          <summary class="faq-summary-heading" style="cursor: pointer; font-weight: 600; font-size: 0.98rem; color: #f5f3ff; list-style: none; display: flex; align-items: center; justify-content: space-between; user-select: none;">
+            <span>{item.question}</span>
+            <span class="faq-chevron" style="color: var(--accent); font-size: 0.85rem; margin-left: 8px;">▼</span>
+          </summary>
+          <p class="faq-answer-p" style="margin: 12px 0 0; font-size: 0.92rem; color: var(--muted); line-height: 1.65; border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 10px;">
+            {item.answer}
+          </p>
+        </details>
+      ))}
+    </div>
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+  </section>
+)}

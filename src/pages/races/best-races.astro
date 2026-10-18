@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -56,6 +57,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
+    datePublished: "2026-10-18T12:00:00+00:00",
     headline: "Best Races in Pixel Lineage: Tier List & Passives",
     description: "Discover the best races in Pixel Lineage: complete ranking of racial passives, spin drop rates, survivability traits, and ideal class pairings.",
     url: `${siteConfig.siteUrl}/races/best-races/`,
@@ -75,7 +77,28 @@ const jsonLd = [
     ],
   },
 ];
+
+
+const faqItems = [
+  {
+    "question": "What is the single best race overall in the Pixel Lineage meta?",
+    "answer": "Nightborn and Seraph share the undisputed S-Tier ranking in the overall meta. Nightborn dominates offensive spellcasting through unmatched mana regeneration, while Seraph commands raid survivability with party resurrection, healing amplification, and radiant damage bonuses that scale across all dungeon acts."
+  },
+  {
+    "question": "Which race is best for brand new players starting their first run?",
+    "answer": "Orc is the most forgiving starter race for new players due to its accessible 5% drop rate, brute Attack bonus, and Undying Rage cheat-death mechanic. This passive prevents frustrating permadeath resets while learning early dungeon attack patterns and turn timing."
+  },
+  {
+    "question": "Should free-to-play players overwrite Common races immediately?",
+    "answer": "Players should immediately reroll Common races like Human (48% spin rate) using starter codes, as Common lineages provide zero combat passives. However, never overwrite Rare or Epic lineages until you have accumulated at least twenty spare spins in reserve. Rolling off Human guarantees an immediate performance upgrade regardless of which bloodline you land on."
+  },
+  {
+    "question": "Do seasonal event races remain available after events conclude?",
+    "answer": "Seasonal event races introduced during holiday updates enter the permanent lineage roll pool at adjusted drop rates once event festivals conclude, ensuring late-joining players can still acquire them through standard Goblin Merchant spins without fearing permanent content lockouts. This fair acquisition policy ensures that new players are never permanently disadvantaged by missing past events."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Best Races in Pixel Lineage: Tier List & Passives"
@@ -119,7 +142,7 @@ const jsonLd = [
             id="_Tx_aM0w1bE"
             title="Pixel Lineage Best Races & Spin Meta Guide"
             channelTitle="OyO"
-            uploadDate="2026-10-07T00:00:00+00:00"
+            uploadDate="2026-10-18T12:00:00+00:00"
             description="Definitive bloodline ranking and spin allocation strategy for solo and multiplayer raid dominance."
           />
         </section>
@@ -175,7 +198,10 @@ const jsonLd = [
           </a>
         </div>
       </section>
-          </article>
+          
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/best-races/" />

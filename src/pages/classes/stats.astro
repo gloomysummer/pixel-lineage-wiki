@@ -5,6 +5,7 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
@@ -135,7 +136,7 @@ const jsonLd = [
     headline: "Pixel Lineage Class Stat Growths: Lv 1-30 Tables",
     description: "Master Pixel Lineage stat progression: complete attribute tables across 10 level milestones, growth curves, soft caps, and build optimizations for all 6 classes.",
     url: `${siteConfig.siteUrl}/classes/stats/`,
-    datePublished: "2026-10-18T12:00:00Z",
+    datePublished: "2026-10-18T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -152,7 +153,28 @@ const jsonLd = [
     ],
   },
 ];
+
+
+const faqItems = [
+  {
+    "question": "How do base attribute points scale when leveling up in Pixel Lineage?",
+    "answer": "Each level-up grants automatic stat increases determined by your base class growth template. For example, Warriors gain +12 HP and +2.2 ATK per level, while Mages receive +2.8 MAG and +1.5 Mana Regen. Racial traits and chosen talents apply multiplicative percentages on top of these base stats."
+  },
+  {
+    "question": "Does physical defense have diminishing returns in Pixel Lineage?",
+    "answer": "Physical damage mitigation follows the standard hyperbolic curve formula where damage reduction equals Defense divided by Defense plus sixty. While early defense points provide sharp survival gains, stacking defense above one hundred points yields smaller percentage increases, making health pool stacking equally vital."
+  },
+  {
+    "question": "What is the hard cap for character levels in the current version?",
+    "answer": "The current level cap in Pixel Lineage is Level 30 for standard progression, expandable to Level 40 upon unlocking Torment difficulty and awakening your Ultra Class. Reaching milestone levels unlocks new skill slots and talent capacity upgrades essential for conquering endgame raids."
+  },
+  {
+    "question": "Can player attribute points be reset or reallocated at town NPCs?",
+    "answer": "Because stat growth occurs automatically according to class and race formulas rather than manual point allocation, there is no manual stat reallocation NPC. To alter your effective stat balance, players reroll racial lineages, adjust talent cards, or equip specialized gear sets."
+  }
+];
 ---
+
 
 <BaseLayout
   title="Pixel Lineage Class Stat Growths: Lv 1-30 Tables"
@@ -208,7 +230,7 @@ const jsonLd = [
             id="1pdNdjCu7BM"
             title="Pixel Lineage Level 1 to 30 Class Growth Multipliers"
             channelTitle="OyO"
-            uploadDate="2026-10-07T00:00:00+00:00"
+            uploadDate="2026-10-18T12:00:00+00:00"
             description="Complete mathematical analysis of level 1 to 30 stat progressions across all 6 archetypes."
           />
         </section>
@@ -327,7 +349,10 @@ const jsonLd = [
         </a>
       </div>
     </section>
-        </article>
+        
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+    </article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/stats/" />

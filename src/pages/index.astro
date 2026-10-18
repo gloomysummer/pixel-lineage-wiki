@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteConfig } from "../config/site.config";
 import { CHANNELS } from "../config/channels";
 import VideoEmbed from "../components/VideoEmbed.astro";
+import FaqSection from "../components/FaqSection.astro";
 import dossier from "../data/dossier.json";
 
 const liveStats = dossier.liveStats;
@@ -11,44 +12,30 @@ const metadata = dossier.metadata;
 const faqItems = [
   {
     question: "What is Pixel Lineage and what are its core mechanics?",
-    answer: "Pixel Lineage is a fast turn-based roguelike RPG on Roblox inspired by Terraria and classic lineage crawlers. Players pick one of 6 base classes, level up through dungeon acts, and evolve into specialized Super and Ultra classes.",
+    answer: "Pixel Lineage is a fast-paced turn-based roguelike RPG on Roblox heavily inspired by Terraria and classic retro lineage crawlers. Players choose from six distinct starter classes, battle through procedurally styled dungeon acts, collect powerful legendary loot, and evolve their characters into advanced Super and Ultra class tiers with unique combat perks.",
   },
   {
     question: "Where do you redeem codes in Pixel Lineage?",
-    answer: "Codes are redeemed at the Goblin Merchant NPC. Before redeeming, players must join the official Roblox Group (362755399), like the game, and add it to favorites.",
+    answer: "Codes are redeemed directly at the Goblin Merchant NPC found in the central town square. Before the merchant will accept promotional phrases, players must join the official Pixel Lineage Roblox Group (362755399), give the game a thumbs-up like, and add the experience to their favorites list to satisfy anti-bot requirements.",
   },
   {
     question: "Is the Super Class selection permanent?",
-    answer: "Yes. Advancing to a Super Class at Trainer's Shrine in Act 2 The Dungeon is permanent and irreversible for your character run.",
+    answer: "Yes, choosing a Super Class at the Trainer's Shrine in Act 2 The Dungeon is permanent and irreversible for your character profile. Once chosen, you cannot refund your progression points to switch to an alternative branch without completely wiping your character lineage or using a rare character reset scroll.",
   },
   {
     question: "How do you awaken an Ultra Class?",
-    answer: "Ultra Classes require obtaining an Ultra Sigil from high-tier dungeon bosses or high-rank guild raids, then completing the lineage trial at the pinnacle shrine.",
+    answer: "Awakening an Ultra Class requires conquering pinnacle dungeon acts or elite guild raids to obtain an Ultra Sigil. Once acquired, take this relic to the lineage altar to unlock immense stat multipliers, awakening passives, and your final class evolution designed for end-game boss battles and Torment difficulty runs.",
   },
   {
     question: "What are the six base classes in Pixel Lineage?",
-    answer: "The six base classes are Warrior, Thief, Mage, Fist, Bard, and Archer. Each branches into 3 unique Super Classes for a total of 18 advanced evolutions.",
+    answer: "The six base classes in Pixel Lineage are Warrior, Thief, Mage, Fist, Bard, and Archer. Each base archetype features three distinct branching Super Classes, creating eighteen specialized evolutions that cater to diverse playstyles including heavy tanking, assassin critical strikes, party anthem buffs, and elemental spellcasting.",
   },
 ];
-
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
-    },
-  })),
-};
 ---
 
 <BaseLayout
   title="Pixel Lineage Wiki: Codes, Classes & Tier List"
   description="Verified Pixel Lineage wiki covering active promo codes, 18 super classes, base class stats, race rerolls, talent drop rates, and dungeon guides."
-  jsonLd={[faqJsonLd]}
 >
   <!-- 1. Hero Section -->
   <section class="hero-wrapper" style="background: radial-gradient(circle at 50% 20%, rgba(168, 85, 247, 0.15) 0%, rgba(13, 10, 20, 0.95) 75%), url('/images/hero/hero_bg.webp') center/cover no-repeat; padding: 64px 20px 48px; border-bottom: 1px solid var(--line);">
@@ -136,7 +123,7 @@ const faqJsonLd = {
         id="1pdNdjCu7BM"
         title="Pixel Lineage Beginner Guide - The BEST Start for New Players!"
         channelTitle="OyO"
-        uploadDate="2026-10-07T00:00:00+00:00"
+        uploadDate="2026-10-18T12:00:00+00:00"
         description="Comprehensive Pixel Lineage beginner guide and live combat walkthrough showcasing classes, dungeon routes, and early gold farming."
       />
     </div>
@@ -292,20 +279,10 @@ const faqJsonLd = {
     </div>
   </section>
 
-  <!-- 7. FAQ Section (FAQPage JSON-LD) -->
+  <!-- 7. FAQ Section (FAQPage JSON-LD + Native Details Accordion) -->
   <section style="padding: 48px 20px;">
     <div class="container" style="max-width: 860px; margin: 0 auto;">
-      <h2 style="font-family: var(--font-display); font-size: 1.8rem; margin: 0 0 24px; color: var(--ink); text-align: center;">
-        Frequently Asked Questions
-      </h2>
-      <div style="display: flex; flex-direction: column; gap: 16px;">
-        {faqItems.map((item) => (
-          <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-            <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0 0 8px;">{item.question}</h3>
-            <p style="color: var(--muted); line-height: 1.6; margin: 0; font-size: 0.95rem;">{item.answer}</p>
-          </div>
-        ))}
-      </div>
+      <FaqSection items={faqItems} />
     </div>
   </section>
 
