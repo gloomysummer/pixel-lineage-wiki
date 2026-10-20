@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
 import { siteConfig } from "../../config/site.config";
 import DualSidebar from "../../components/DualSidebar.astro";
 import FaqSection from "../../components/FaqSection.astro";
@@ -200,6 +201,9 @@ const faqItems = [
           </div>
         </header>
 
+        <!-- 广告位 1（300x250）：H1 与内部链接卡之后、正文首节之前 -->
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
         <!-- Section 1: Overview -->
         <section id="overview" style="margin-bottom: 40px;">
           <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 16px;">
@@ -374,7 +378,13 @@ const faqItems = [
           </h2>
           <FaqSection items={faqItems} />
         </section>
-      </article>
+            <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
+      <div class="ad-slot-footer">
+        <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+        <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+      </div>
+
+</article>
 
       <DualSidebar />
     </div>

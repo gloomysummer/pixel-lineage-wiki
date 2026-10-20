@@ -33,12 +33,25 @@ export const siteConfig = {
    * Adsterra 变现（可选，默认关闭）。
    */
   adsterra: {
-    enabled: false,
+    enabled: true,
+    /**
+     * 每种尺寸一个独立 Zone（Adsterra 对同页同 key 只计一次展示）。
+     * key 必须是 32 位小写 hex，否则 AdSlot 的占位符防御会让整槽不渲染。
+     * 两处必须一致：这里 + public/ads/banner-<size>.html 里的 atOptions.key。
+     *
+     * 后台 placement（pixel-lineage.quest · domain_id 6136749）：
+     *   160x300_1  31828711    160x600_1  31828714
+     *   300x250_1  31828715    320x50_1   31828712
+     *   468x60_1   31828710    728x90_1   31828713
+     * 后台没有 Popunder / SocialBar / NativeBanner —— 符合"弹窗类永久关闭"的既定策略。
+     */
     banners: {
-      "banner-300x250": { key: "", width: 300, height: 250, enabled: true },
-      "banner-728x90": { key: "", width: 728, height: 90, enabled: true },
-      "banner-320x50": { key: "", width: 320, height: 50, enabled: true },
-      "banner-160x600": { key: "", width: 160, height: 600, enabled: true },
+      "banner-468x60": { key: "1e7c4f6780af91eba5543d5562c33b74", width: 468, height: 60, enabled: true },
+      "banner-160x300": { key: "b7b59f059275fd8dccb04bb9f334c18e", width: 160, height: 300, enabled: true },
+      "banner-320x50": { key: "b7e7350fc7e76152d6775e689b8011d0", width: 320, height: 50, enabled: true },
+      "banner-728x90": { key: "18d40b692ecc5a1fd30b02e7de20301d", width: 728, height: 90, enabled: true },
+      "banner-160x600": { key: "f2f35f0d06b8d766feb7ea42aabcd961", width: 160, height: 600, enabled: true },
+      "banner-300x250": { key: "b3e29629ce246f3970006b69e454d496", width: 300, height: 250, enabled: true },
     },
   },
   /** 搜索引擎站长验权 */

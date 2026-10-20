@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
 import { siteConfig } from "../../config/site.config";
 import VideoEmbed from "../../components/VideoEmbed.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
@@ -100,6 +101,8 @@ const faqItems = [
 
         <!-- Mobile Table of Contents (≤980px) -->
         <MobileToc tocHeadings={tocHeadings} />
+
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
         <!-- Hero Image Banner -->
         <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
@@ -434,7 +437,13 @@ const faqItems = [
     
       <!-- Frequently Asked Questions Accordion -->
       <FaqSection items={faqItems} />
-    </article>
+          <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
+      <div class="ad-slot-footer">
+        <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+        <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+      </div>
+
+</article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/warrior/" />

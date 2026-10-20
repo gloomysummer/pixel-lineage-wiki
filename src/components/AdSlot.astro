@@ -13,7 +13,7 @@
  */
 import { siteConfig } from '../config/site.config';
 
-export type ZoneKey = 'banner-300x250' | 'banner-728x90' | 'banner-320x50' | 'banner-160x600';
+export type ZoneKey = 'banner-300x250' | 'banner-728x90' | 'banner-320x50' | 'banner-160x600' | 'banner-160x300' | 'banner-468x60';
 
 interface Props {
   zone: ZoneKey;
@@ -28,6 +28,8 @@ const DIMS: Record<ZoneKey, { w: number; h: number }> = {
   'banner-728x90': { w: 728, h: 90 },
   'banner-320x50': { w: 320, h: 50 },
   'banner-160x600': { w: 160, h: 600 },
+  'banner-160x300': { w: 160, h: 300 },
+  'banner-468x60': { w: 468, h: 60 },
 };
 const dim = DIMS[zone];
 
@@ -167,11 +169,32 @@ const uniqueId = `ad-${zone}-${Math.random().toString(36).substring(2, 9)}`;
   .ad-slot-banner-300x250 .ad-slot-container { width: 300px; height: 250px; }
   .ad-slot-banner-728x90 .ad-slot-container { width: 728px; height: 90px; max-width: 100%; }
   .ad-slot-banner-320x50 .ad-slot-container { width: 320px; height: 50px; max-width: 100%; }
+  .ad-slot-banner-160x600 .ad-slot-container { width: 160px; height: 600px; }
+  .ad-slot-banner-160x300 .ad-slot-container { width: 160px; height: 300px; }
+  .ad-slot-banner-468x60 .ad-slot-container { width: 468px; height: 60px; max-width: 100%; }
+
+  /* 侧栏内的广告槽不要额外留白与边框（由侧栏卡片承载） */
+  .sidebar-col-stack .ad-slot-wrapper,
+  .guide-rail-ad .ad-slot-wrapper {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+  }
+  .guide-rail-ad .ad-slot-header { display: none; }
+
   /* 移动端：728x90 物理放不下（iframe 固定 728px），隐藏整槽防横向溢出与变形。
      调用方应同时挂一个 320x50 窄幅位做切换（见 global.css 的 .ad-slot-footer 编排块）。
      2026-10-14 对标 invokyr.wiki 补齐。 */
   @media (max-width: 768px) {
     .ad-slot-banner-728x90 {
+      display: none;
+    }
+  }
+  /* 468x60 在 <521px 会被裁切（468 + 内边距 > 手机可视宽），直接隐藏。
+     2026-10-20 补，依据 adsterra-ad-layout 技能「468x60 在 <521px 直接隐藏」。 */
+  @media (max-width: 520px) {
+    .ad-slot-banner-468x60 {
       display: none;
     }
   }

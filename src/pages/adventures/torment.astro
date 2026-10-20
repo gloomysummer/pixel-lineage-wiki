@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
 import { siteConfig } from "../../config/site.config";
 
 const tormentLevels = [
@@ -108,6 +109,8 @@ const faqItems = [
         <!-- Mobile Table of Contents (≤980px) -->
         <MobileToc tocHeadings={tocHeadings} />
 
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <!-- Core Mechanics Summary -->
@@ -170,7 +173,13 @@ const faqItems = [
     
       <!-- Frequently Asked Questions Accordion -->
       <FaqSection items={faqItems} />
-    </article>
+          <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
+      <div class="ad-slot-footer">
+        <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+        <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+      </div>
+
+</article>
 
       <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/adventures/torment/" />

@@ -4,6 +4,7 @@ import { siteConfig } from "../config/site.config";
 import { CHANNELS } from "../config/channels";
 import VideoEmbed from "../components/VideoEmbed.astro";
 import FaqSection from "../components/FaqSection.astro";
+import AdSlot from "../components/AdSlot.astro";
 import dossier from "../data/dossier.json";
 
 const liveStats = dossier.liveStats;
@@ -126,6 +127,13 @@ const faqItems = [
         uploadDate="2026-10-18T12:00:00+00:00"
         description="Comprehensive Pixel Lineage beginner guide and live combat walkthrough showcasing classes, dungeon routes, and early gold farming."
       />
+    </div>
+  </section>
+
+  <!-- 广告位 1（300x250）：开场视频与频道导航之间，前后都有内容 -->
+  <section style="padding: 32px 20px 0;">
+    <div class="container" style="max-width: 1180px; margin: 0 auto; display: flex; justify-content: center;">
+      <AdSlot zone="banner-300x250" label="Sponsored Intel" />
     </div>
   </section>
 
@@ -300,4 +308,9 @@ const faqItems = [
       </a>
     </div>
   </section>
+  <!-- 广告位 3：页脚双位（桌面 728x90 / 移动 320x50，宽窄互斥） -->
+  <div class="ad-slot-footer" style="padding: 24px 20px 40px;">
+    <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+    <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+  </div>
 </BaseLayout>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
 import { siteConfig } from "../../config/site.config";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
@@ -368,6 +369,8 @@ const jsonLd = [
         <!-- Mobile Table of Contents (≤980px) -->
         <MobileToc tocHeadings={tocHeadings} />
 
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
         <!-- Section 1: 6+1 Class Comparison Table -->
         <section id="class-comparison-matrix" style="margin-bottom: 40px;">
           <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 16px;">
@@ -524,7 +527,13 @@ const jsonLd = [
           </h2>
           <FaqSection items={faqItems} />
         </section>
-      </article>
+            <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
+      <div class="ad-slot-footer">
+        <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+        <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+      </div>
+
+</article>
 
       <!-- Dual Sidebar V3 -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/tier-list/class-tier-list/" />
