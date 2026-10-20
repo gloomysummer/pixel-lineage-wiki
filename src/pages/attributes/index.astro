@@ -1,0 +1,382 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site.config";
+import DualSidebar from "../../components/DualSidebar.astro";
+import FaqSection from "../../components/FaqSection.astro";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Pixel Lineage Attributes Guide: Stats, Formulas & Respec",
+    description: "Master all 7 Pixel Lineage attributes with exact formulas for DEF, Crit, and Dodge caps, class stat priorities, diminishing returns, and full respec rules.",
+    url: `${siteConfig.siteUrl}/attributes/`,
+    datePublished: "2026-10-20T12:00:00+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Attributes", item: `${siteConfig.siteUrl}/attributes/` },
+    ],
+  },
+];
+
+const attributesList = [
+  {
+    name: "Health Points (HP)",
+    code: "HP",
+    color: "#34d399",
+    formula: "Base Class HP + (Level Growth * Lv) + Flat Armor HP + (1 + Talent HP %)",
+    description: "Determines the total physical and magical damage your adventurer can absorb before dying. Reaching zero HP consumes one Life in standard modes and permanently triggers perma-death in Torment mode. Warriors and Fists possess the highest natural base HP pools, scaling past 450 natural HP at Level 30.",
+    benchmark: "Lv 10 Baseline: 195–228 (Melee) / 129–145 (Ranged/Caster)",
+  },
+  {
+    name: "Attack (ATK)",
+    code: "ATK",
+    color: "#f43f5e",
+    formula: "Base ATK + (ATK Growth * Lv) + Weapon Damage * (1 + Melee Mastery %)",
+    description: "Calculates the raw damage output for all physical melee weapons, daggers, bows, and spear strikes. Fist and Archer scale at the top tier (+2.3 ATK per level), turning high-tier weapon procs into devastating direct strikes. Skill ratios multiply your total effective ATK before enemy defense is deducted.",
+    benchmark: "Lv 30 Baseline: 78–82 (Physical Core) / 29–43 (Caster/Support)",
+  },
+  {
+    name: "Defense (DEF)",
+    code: "DEF",
+    color: "#38bdf8",
+    formula: "Damage Reduction % = DEF / (DEF + 100) * 100",
+    description: "Reduces incoming physical damage on a hyperbolic curve. At 60 DEF, incoming physical damage is reduced by 37.5%; at 140 DEF, reduction reaches 58.3%. Magic damage bypasses standard DEF unless mitigated by elemental resistance gear or specific Sentinel fortress passives.",
+    benchmark: "Effective Caps: 60 (Soft Cap 1), 140 (Soft Cap 2)",
+  },
+  {
+    name: "Magic Power (MAG)",
+    code: "MAG",
+    color: "#c084fc",
+    formula: "Spell Damage = Base Spell Power + (MAG * Spell Coefficient)",
+    description: "The primary damage and healing multiplier for spellcraft, Cleric prayers, and Hexer decay curses. Mage gains an unprecedented +2.8 MAG per level, reaching 99 natural MAG by Level 30. Bard utilizes MAG at a secondary 1.8 scaling factor to amplify party-wide inspiration buffs.",
+    benchmark: "Lv 30 Baseline: 99 (Mage) / 64 (Bard) / 19–26 (Physical)",
+  },
+  {
+    name: "Speed (SPD)",
+    code: "SPD",
+    color: "#facc15",
+    formula: "Action Turn Frequency = SPD / Encounter Turn Threshold (100)",
+    description: "Determines action queue priority and turn frequency in Pixel Lineage's turn-based encounters. Thieves lead the roster with 16 base SPD (+2.4/lv), enabling double-action cycles against slow dungeon bosses. SPD also contributes to Fist poise break calculations.",
+    benchmark: "Lv 30 Baseline: 88 (Thief) / 65 (Archer) / 31 (Warrior)",
+  },
+  {
+    name: "Critical Chance (Crit)",
+    code: "CRIT",
+    color: "#fb923c",
+    formula: "Crit Chance % = Base Crit % + (Crit Rating * 0.08); Multiplier = 150% Base",
+    description: "The percentage chance to deal critical strikes with physical or magical attacks. Critical strikes deal a baseline 150% damage, which can be amplified up to 220% via Assassin and Deadeye passive talents. Base Crit soft caps at 50% before diminishing returns apply.",
+    benchmark: "Soft Cap: 50% (Diminishing returns beyond 50%)",
+  },
+  {
+    name: "Dodge Rate (Dodge)",
+    code: "DODGE",
+    color: "#a3e635",
+    formula: "Avoidance % = Base Dodge % + (SPD * 0.05) + Gear Avoidance %",
+    description: "Grants a direct chance to completely negate incoming single-target physical attacks and arrow projectiles. Due to balance constraints preventing complete immunity in endgame dungeons, Dodge is hard-capped in the game engine at exactly 65%.",
+    benchmark: "Hard Engine Cap: Strictly 65.0% Maximum",
+  },
+];
+
+const classPriorities = [
+  {
+    name: "Warrior",
+    role: "Frontline Tank & Cleave",
+    primary: "HP > DEF > ATK",
+    growth: "HP +12.0 / DEF +1.8 / ATK +2.2",
+    superPath: "Berserk (Offense) / Sentinel (Defense) / Greatsword (Cleave)",
+    verdict: "Prioritize DEF up to the 60-point soft cap first, then maximize raw HP to create an unkillable barrier against high-tier dungeon bosses.",
+  },
+  {
+    name: "Thief",
+    role: "Speed Burst & Critical Strikes",
+    primary: "SPD > Crit > ATK",
+    growth: "SPD +2.4 / Crit +0.6% / ATK +1.9",
+    superPath: "Assassin (Crit Burst) / Trickster (Debuff) / Duelist (Parry)",
+    verdict: "Stack SPD and Crit gear to reach double-action breakpoints and exploit 100% crit execution windows on wounded targets.",
+  },
+  {
+    name: "Mage",
+    role: "Burst Sorcery & Decay Curses",
+    primary: "MAG > SPD > HP",
+    growth: "MAG +2.8 / HP +5.8 / SPD +1.2",
+    superPath: "Hexer (DoT Decay) / Cleric (Radiant Heals) / Summoner (Minions)",
+    verdict: "All equipment slots must prioritize MAG scaling to maximize Hexer Malediction stacks, which bypass physical armor entirely.",
+  },
+  {
+    name: "Fist",
+    role: "Poise Break & Martial Stun",
+    primary: "ATK > SPD > HP",
+    growth: "ATK +2.3 / HP +10.0 / SPD +1.4",
+    superPath: "Oni (Burst Frenzy) / Brawler (Poise Stun) / Monk (Chi Sustain)",
+    verdict: "Poise breaking calculates directly off (ATK * 0.45) + (SPD * 0.2). Maintaining both stats ensures perpetual stun gauntlets.",
+  },
+  {
+    name: "Bard",
+    role: "Party Anthem & Meter Control",
+    primary: "SPD > MAG > DEF",
+    growth: "SPD +1.6 / MAG +1.8 / HP +8.5",
+    superPath: "Troubadour (Anthems) / Minstrel (Tempo) / Dirge (Debuffs)",
+    verdict: "Balanced dual-stat scaling ensures Bard acts before party members to apply 25% ATK anthems and manipulate party action gauges.",
+  },
+  {
+    name: "Archer",
+    role: "Armor-Piercing Long Sniping",
+    primary: "Crit > ATK > SPD",
+    growth: "ATK +2.3 / Crit +0.5% / SPD +1.8",
+    superPath: "Deadeye (Snipe) / Ranger (Traps) / Sharpshooter (Rapid)",
+    verdict: "Combine 26.5% natural Crit with piercing gear to completely ignore enemy armor ratings and execute targets from maximum distance.",
+  },
+  {
+    name: "Spear",
+    role: "Mid-Range Phalanx & Piercing Guard",
+    primary: "ATK > DEF > HP",
+    growth: "ATK +2.1 / DEF +1.5 / HP +11.0",
+    superPath: "Lancer (Charge) / Hoplite (Phalanx Shield) / Dragoon (Aerial)",
+    verdict: "Introduced in the October 20 update, Spear balances physical reach with durable defensive thresholds, excelling in multi-target thrusts.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "How do attributes affect your character build in Pixel Lineage?",
+    answer: "Attributes dictate your combat effectiveness across health, physical attack, defense mitigation, magic potency, turn initiative, critical strike rate, and evasion. While primary attributes grow automatically based on your starting class and race, secondary stats from armor, accessories, and talent rolls scale these baseline metrics through additive and multiplicative modifiers throughout progression."
+  },
+  {
+    question: "How does Defense calculation and diminishing returns work?",
+    answer: "Damage reduction follows the hyperbolic formula: Reduction equals Defense divided by Defense plus one hundred. The first sixty defense provides sharp mitigation up to thirty-seven percent. Between sixty and one hundred forty defense, gains taper toward fifty-eight percent. Past one hundred forty, stacking pure HP yields greater effective health than over-investing into heavy armor defense."
+  },
+  {
+    question: "Can you respec your attributes and class choices in Pixel Lineage?",
+    answer: "You cannot manually reallocate base attribute points because class growths are fixed automatically. However, you can freely respec secondary stats by reforging armor attributes and rerolling talent cards using Talent Spins. Crucially, Super Class specializations chosen at the Trainer's Shrine in Act Two are permanent and cannot be undone without restarting your lineage."
+  },
+  {
+    question: "Are there hard caps on Dodge and Critical Strike chance?",
+    answer: "Yes, Dodge chance is hard-capped at sixty-five percent to prevent infinite evasion exploitation in endgame dungeons. Any dodge rating beyond this threshold provides no additional avoidance. In contrast, Critical Strike chance has a soft cap at fifty percent where subsequent ratings offer diminishing effectiveness, while critical damage starts at a baseline of one hundred fifty percent."
+  }
+];
+---
+
+<BaseLayout
+  title="Pixel Lineage Attributes: Stat Formulas & Respec"
+  description="Master all 7 Pixel Lineage attributes with exact formulas for DEF, Crit, and Dodge caps, class stat priorities, diminishing returns, and full respec rules."
+  canonical="/attributes/"
+  jsonLd={jsonLd}
+>
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current" style="color: var(--ink);">Attributes</span>
+    </nav>
+
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; color: #a855f7; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            Mechanics & Progression Architecture
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Attributes Guide: Stats, Formulas & Respec
+          </h1>
+          <p style="font-size: 1.05rem; color: var(--muted); margin: 0 0 20px;">
+            Complete mathematical breakdown of all 7 attributes in Pixel Lineage: hyperbolic defense formulas, dodge hard caps, class stat priorities, diminishing returns curves, and gear respec rules.
+          </p>
+
+          <!-- High-Visibility Internal Link Callout Banner -->
+          <div style="background: rgba(201, 162, 39, 0.1); border-left: 4px solid #c9a227; padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <p style="margin: 0; font-size: 0.95rem; color: #f0eaf4;">
+              <strong>Looking for exact Level 1 to 30 growth matrices?</strong> Visit the comprehensive <a href="/classes/stats/" style="color: #c9a227; font-weight: 700; text-decoration: underline;">Pixel Lineage Class Base Stats & Milestones Database</a> for 10-milestone tabular data across all classes.
+            </p>
+          </div>
+        </header>
+
+        <!-- Section 1: Overview -->
+        <section id="overview" style="margin-bottom: 40px;">
+          <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 16px;">
+            Overview & Attribute Architecture
+          </h2>
+          <p>
+            In <strong>Pixel Lineage</strong>, character performance is governed by seven foundational attributes. Unlike traditional point-buy RPGs where players allocate free stat points upon every level up, Pixel Lineage calculates your attributes through a strict dual-layer architecture:
+          </p>
+          <ul style="padding-left: 20px; margin-bottom: 16px; color: var(--muted);">
+            <li><strong style="color: var(--ink);">Base Class & Race Archetype:</strong> Sets your starting stat floor and determines fixed linear growth per level (Lv 1–30). For example, a Warrior gains +12 HP and +1.8 DEF per level automatically, whereas a Mage gains +2.8 MAG and only +5.8 HP.</li>
+            <li><strong style="color: var(--ink);">Secondary Equipment & Talents:</strong> Provides flat attribute additions and percentage multipliers through weapon slots, armor sets, accessories, and talent rolls. This is where build customization occurs.</li>
+          </ul>
+          <p>
+            Understanding how diminishing returns, defense curves, and engine hard caps operate allows you to maximize your Effective Health Pool (EHP) and avoid wasting premium gear slots on over-capped stats.
+          </p>
+        </section>
+
+        <!-- Section 2: 7 Attributes -->
+        <section id="the-7-attributes" style="margin-bottom: 40px;">
+          <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 16px;">
+            The 7 Core Attributes Explained
+          </h2>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            {attributesList.map((attr) => (
+              <div style="background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+                  <h3 style="font-size: 1.2rem; color: var(--ink); margin: 0;">
+                    <span style={`color: ${attr.color}; margin-right: 8px;`}>[{attr.code}]</span>
+                    {attr.name}
+                  </h3>
+                  <span style="font-size: 0.8rem; font-family: var(--font-mono); color: #c9a227; background: #0d0a14; padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(201, 162, 39, 0.2);">
+                    {attr.benchmark}
+                  </span>
+                </div>
+                <div style="background: #0d0a14; border: 1px solid rgba(255, 255, 255, 0.05); padding: 8px 12px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.82rem; color: #a855f7; margin-bottom: 12px;">
+                  Formula: {attr.formula}
+                </div>
+                <p style="font-size: 0.92rem; color: var(--muted); margin: 0; line-height: 1.6;">
+                  {attr.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- Section 3: Class Priorities -->
+        <section id="class-priorities" style="margin-bottom: 40px;">
+          <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 16px;">
+            Class Stat Priority Matrix (7 Classes)
+          </h2>
+          <p style="color: var(--muted); margin-bottom: 20px;">
+            Every class archetype prioritizes distinct stat investments to trigger power spikes. Below is the verified stat priority and scaling trajectory for all six classic classes plus the newly launched Spear class:
+          </p>
+          <div class="table-responsive-container" style="overflow-x: auto; margin-bottom: 24px;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; background: var(--panel); border: 1px solid var(--line); border-radius: 8px;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
+                  <th style="padding: 10px 12px; color: var(--muted); font-weight: 600;">Class</th>
+                  <th style="padding: 10px 12px; color: #c9a227; font-weight: 600;">Role</th>
+                  <th style="padding: 10px 12px; color: #34d399; font-weight: 600;">Stat Priority</th>
+                  <th style="padding: 10px 12px; color: #38bdf8; font-weight: 600;">Level Growth Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                {classPriorities.map((cp, idx) => (
+                  <tr style={`border-bottom: 1px solid var(--line); background: ${idx % 2 === 0 ? 'transparent' : 'rgba(255, 255, 255, 0.02)'};`}>
+                    <td style="padding: 10px 12px; font-weight: 700; color: var(--ink); white-space: nowrap;">{cp.name}</td>
+                    <td style="padding: 10px 12px; color: var(--muted);">{cp.role}</td>
+                    <td style="padding: 10px 12px; font-weight: 600; color: #34d399;">{cp.primary}</td>
+                    <td style="padding: 10px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #c084fc;">{cp.growth}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+            {classPriorities.map((cp) => (
+              <div style="background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
+                <h3 style="font-size: 1.05rem; color: var(--ink); margin: 0 0 6px;">
+                  {cp.name} — <span style="font-size: 0.85rem; color: #c9a227; font-weight: normal;">{cp.superPath}</span>
+                </h3>
+                <p style="font-size: 0.88rem; color: var(--muted); margin: 0; line-height: 1.5;">
+                  {cp.verdict}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- Section 4: Diminishing Returns & Caps -->
+        <section id="diminishing-returns" style="margin-bottom: 40px;">
+          <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 16px;">
+            Diminishing Returns & Stat Soft/Hard Caps
+          </h2>
+          <p>
+            Pixel Lineage employs mathematical dampening to prevent degenerate unkillable or infinite-evasion builds in high-tier dungeons. The three critical thresholds every player must track are:
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
+            <div style="background: var(--panel); border-left: 4px solid #38bdf8; padding: 16px 20px; border-radius: 0 8px 8px 0;">
+              <h3 style="font-size: 1.1rem; color: #38bdf8; margin: 0 0 8px;">
+                1. Physical Defense Hyperbolic Curve (Soft Caps at 60 & 140 DEF)
+              </h3>
+              <p style="font-size: 0.92rem; color: var(--muted); margin: 0 0 8px;">
+                Defense follows a classic diminishing return curve calculated as <code style="color: #38bdf8; background: #0d0a14; padding: 2px 6px; border-radius: 4px;">Damage Reduction = DEF / (DEF + 100)</code>:
+              </p>
+              <ul style="font-size: 0.88rem; color: var(--muted); padding-left: 20px; margin: 0;">
+                <li><strong>0 to 60 DEF:</strong> Provides exceptional returns, granting up to 37.5% physical damage reduction. Reaching 60 DEF is the primary survival priority for all classes.</li>
+                <li><strong>60 to 140 DEF:</strong> Reduction increases steadily from 37.5% to 58.3%. This is the standard endgame target for Sentinel Warriors and Hoplite Spearmen.</li>
+                <li><strong>140+ DEF:</strong> Heavy diminishing returns. Adding 40 DEF beyond 140 only grants an extra 5.2% reduction. At this stage, stacking flat HP provides significantly higher Effective Health Pool (EHP).</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--panel); border-left: 4px solid #a3e635; padding: 16px 20px; border-radius: 0 8px 8px 0;">
+              <h3 style="font-size: 1.1rem; color: #a3e635; margin: 0 0 8px;">
+                2. Dodge Hard Engine Cap (Strictly 65.0%)
+              </h3>
+              <p style="font-size: 0.92rem; color: var(--muted); margin: 0;">
+                Unlike Defense which scales hyperbolically, Dodge operates as a linear avoidance probability with a hard cutoff. In the game engine, maximum Dodge is clamped at <strong>65.0%</strong>. Any additional Dodge gained from high-speed Thief passives or Elven racial agility beyond 65% is voided during combat damage calculations.
+              </p>
+            </div>
+
+            <div style="background: var(--panel); border-left: 4px solid #fb923c; padding: 16px 20px; border-radius: 0 8px 8px 0;">
+              <h3 style="font-size: 1.1rem; color: #fb923c; margin: 0 0 8px;">
+                3. Critical Strike Soft Cap (50.0%)
+              </h3>
+              <p style="font-size: 0.92rem; color: var(--muted); margin: 0;">
+                Critical Strike Chance provides full 1:1 value up to 50%. Above 50%, external equipment crit ratings suffer a 50% penalty conversion rate, requiring double the rating to gain an extra percentage. Focus on critical damage multipliers rather than pushing crit chance past 60%.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5: Respec Rules -->
+        <section id="respec-rules" style="margin-bottom: 40px;">
+          <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 16px;">
+            Respec Rules & Allocation Strategy
+          </h2>
+          <p>
+            Before committing resources to your build, understand which character choices can be changed and which decisions are strictly permanent:
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 16px;">
+            <div style="background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 8px; padding: 18px;">
+              <h3 style="font-size: 1.1rem; color: #34d399; margin: 0 0 8px;">
+                ✓ Fully Refundable / Respeccable
+              </h3>
+              <ul style="font-size: 0.9rem; color: var(--muted); padding-left: 18px; margin: 0; line-height: 1.6;">
+                <li><strong>Equipment Secondary Stats:</strong> Reforge armor and weapon rolls at the Blacksmith using Gold and Knowledge.</li>
+                <li><strong>Talent Deck Cards:</strong> Reroll talents using Talent Spins obtained from redemption codes and Goblin Merchant trades.</li>
+                <li><strong>Racial Lineage:</strong> Reroll character race at the Town Fountain using Race Spins.</li>
+              </ul>
+            </div>
+
+            <div style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: 8px; padding: 18px;">
+              <h3 style="font-size: 1.1rem; color: #f43f5e; margin: 0 0 8px;">
+                ✗ Strictly Permanent & Irreversible
+              </h3>
+              <ul style="font-size: 0.9rem; color: var(--muted); padding-left: 18px; margin: 0; line-height: 1.6;">
+                <li><strong>Base Class Selection:</strong> Chosen at character creation; cannot be changed on that slot.</li>
+                <li><strong>Super Class Awakening:</strong> Selected at the Trainer's Shrine in Act 2. This locks your sub-branch permanently.</li>
+                <li><strong>Base Stat Progression:</strong> Linear stat growths per level cannot be redistributed via reset potions.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 6: FAQ -->
+        <section id="faq" style="margin-bottom: 40px;">
+          <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 24px;">
+            Frequently Asked Questions
+          </h2>
+          <FaqSection items={faqItems} />
+        </section>
+      </article>
+
+      <DualSidebar />
+    </div>
+  </div>
+</BaseLayout>

@@ -61,6 +61,7 @@ function buildLastmodMap() {
     { route: '/about/', file: 'src/pages/about/index.astro' },
     { route: '/contact/', file: 'src/pages/contact/index.astro' },
     { route: '/privacy-policy/', file: 'src/pages/privacy-policy/index.astro' },
+    { route: '/attributes/', file: 'src/pages/attributes/index.astro' },
   ];
   for (const { route, file } of staticPages) {
     const fullPath = path.resolve(__dirname, file);
@@ -77,6 +78,9 @@ const lastmodMap = buildLastmodMap();
 export default defineConfig({
   site: 'https://pixel-lineage.quest', // apply-template 时自动替换为新域名
   output: 'static',
+  redirects: {
+    '/attribute': '/attributes/',
+  },
   integrations: [
     sitemap({
       serialize(item) {

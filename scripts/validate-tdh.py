@@ -39,7 +39,16 @@ def validate_dist(dist_dir: Path, strict: bool = True) -> bool:
             continue
         for f in files:
             if f.endswith(".html") and not f.startswith("google") and f != "404.html":
-                html_files.append(Path(root) / f)
+                # Skip redirect stub pages (which have meta refresh / noindex and are not SERP landing pages)
+                fpath = Path(root) / f
+                try:
+                    with open(fpath, "r", encoding="utf-8", errors="ignore") as fp:
+                        content_sample = fp.read(600)
+                        if 'http-equiv="refresh"' in content_sample or 'content="noindex"' in content_sample:
+                            continue
+                except Exception:
+                    pass
+                html_files.append(fpath)
 
     if not html_files:
         print(f"{Colors.YELLOW}[!] Warning: No HTML files found in {dist_dir}.{Colors.END}")

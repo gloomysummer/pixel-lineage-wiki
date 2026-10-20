@@ -199,9 +199,16 @@ const faqItems = [
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
         Pixel Lineage Class Stat Growths & Level Curves
       </h1>
-      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
         Exhaustive mathematical growth tables for all 6 starting classes in Pixel Lineage on Roblox across 10 distinct level milestones (Lv 1 through Lv 30). Extracted through empirical character leveling logs without external equipment or racial trait modifiers.
       </p>
+
+      <!-- Reciprocal Link to Attributes Guide -->
+      <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-top: 16px;">
+        <p style="margin: 0; font-size: 0.95rem; color: #f0eaf4;">
+          <strong>Looking for stat formulas, DEF diminishing returns, or respec rules?</strong> Read our dedicated <a href="/attributes/" style="color: var(--accent); font-weight: 700; text-decoration: underline;">Pixel Lineage Attributes Guide</a> for complete mechanics breakdowns.
+        </p>
+      </div>
     </header>
 
         <!-- Mobile Table of Contents (≤980px) -->
@@ -255,7 +262,7 @@ const faqItems = [
                 Combat Role: {cg.role}
               </span>
             </div>
-            <a href={`/classes/${cg.slug}/`} style="color: var(--accent); font-size: 0.85rem; text-decoration: none; font-weight: 600;">
+            <a href={`/classes/${cg.slug}/`} style="color: var(--accent); font-size: 0.85rem; text-decoration: none; font-weight: 600; min-height: 44px; display: inline-flex; align-items: center;">
               Full Class Progression Guide →
             </a>
           </div>
@@ -264,8 +271,8 @@ const faqItems = [
             Formula: {cg.growthFormula}
           </p>
 
-          <div style="overflow-x: auto; margin-bottom: 16px;">
-            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
+          <div class="table-responsive-wrapper" style="overflow-x: auto; margin-bottom: 16px;">
+            <table class="class-milestone-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
               <thead>
                 <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
                   <th style="padding: 10px 12px; color: var(--muted); font-weight: 600;">Milestone</th>
@@ -281,14 +288,14 @@ const faqItems = [
               <tbody>
                 {cg.milestones.map((m) => (
                   <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                    <td style="padding: 10px 12px; font-weight: 700; color: #fff;">Level {m.lv}</td>
-                    <td style="padding: 10px 12px; color: #34d399;">{m.hp}</td>
-                    <td style="padding: 10px 12px; color: #f43f5e;">{m.atk}</td>
-                    <td style="padding: 10px 12px; color: #38bdf8;">{m.def}</td>
-                    <td style="padding: 10px 12px; color: #a855f7;">{m.mag}</td>
-                    <td style="padding: 10px 12px; color: #eab308;">{m.spd}</td>
-                    <td style="padding: 10px 12px; color: var(--muted);">{m.crit}</td>
-                    <td style="padding: 10px 12px; color: var(--muted);">{m.dodge}</td>
+                    <td data-label="Milestone" style="padding: 10px 12px; font-weight: 700; color: #fff;">Level {m.lv}</td>
+                    <td data-label="HP" style="padding: 10px 12px; color: #34d399;">{m.hp}</td>
+                    <td data-label="ATK" style="padding: 10px 12px; color: #f43f5e;">{m.atk}</td>
+                    <td data-label="DEF" style="padding: 10px 12px; color: #38bdf8;">{m.def}</td>
+                    <td data-label="MAG" style="padding: 10px 12px; color: #a855f7;">{m.mag}</td>
+                    <td data-label="SPD" style="padding: 10px 12px; color: #eab308;">{m.spd}</td>
+                    <td data-label="Crit %" style="padding: 10px 12px; color: var(--muted);">{m.crit}</td>
+                    <td data-label="Dodge %" style="padding: 10px 12px; color: var(--muted);">{m.dodge}</td>
                   </tr>
                 ))}
               </tbody>
@@ -338,13 +345,13 @@ const faqItems = [
     <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
       <h3 id="explore-further-character-mechanics" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Character Mechanics</h3>
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+        <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center; padding: 6px 0;">
           → 18 Super Class Full Skill Multipliers
         </a>
-        <a href="/tier-list/class-tier-list/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+        <a href="/tier-list/class-tier-list/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center; padding: 6px 0;">
           → Class Tier List & Clear Speeds
         </a>
-        <a href="/races/best-races/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+        <a href="/races/best-races/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center; padding: 6px 0;">
           → Best Races & Racial Passives
         </a>
       </div>

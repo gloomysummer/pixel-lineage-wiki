@@ -1,147 +1,299 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
 const tierData = [
   {
-    tier: "S",
-    color: "#f43f5e",
+    tier: "S+",
+    color: "#ff0055",
+    subtitle: "Meta Pinnacle — Encounter-Defining Dominators",
+    rationale: "S+ specializations redefine encounter math. Hexer bypasses boss physical armor with unblockable true-damage decay stacks. Sentinel achieves near invulnerability by reaching the 140 DEF diminishing return threshold while Fortress Stance reflects incoming blows. Assassin exploits guaranteed 100% critical burst windows to eliminate lethal caster mobs in Round 1 before they take an action.",
     classes: [
       {
         name: "Hexer",
         base: "Mage",
-        role: "DoT & Debuff Master",
+        role: "DoT Decay & True Damage",
         scaling: "1.4x Magic / 1.1x Dodge",
-        verdict: "Highest boss DPS in Torment mode. Malediction stacks bypass boss armor and melt Act 2 Warden with ease.",
+        verdict: "The absolute highest boss DPS in Torment difficulty. Malediction stacks ignore enemy defense shields and melt Act 2 Warden and Act 3 Bosses effortlessly.",
       },
       {
         name: "Sentinel",
         base: "Warrior",
         role: "Ironclad Tank & Mitigation",
         scaling: "1.5x Defense / 1.3x HP",
-        verdict: "Virtually unkillable in Solo runs. Fortress Stance nullifies 45% incoming damage and reflects physical blows.",
+        verdict: "Virtually unkillable in solo runs. Fortress Stance nullifies 45% of incoming damage and reflects physical blows back onto attackers with zero gear stress.",
       },
+      {
+        name: "Assassin",
+        base: "Thief",
+        role: "Stealth Crit Executioner",
+        scaling: "1.4x Crit / 1.3x Speed",
+        verdict: "Shadow Step grants a guaranteed 100% critical strike on subsequent strikes. Deletes dangerous elite mob waves before they get a turn in the initiative queue.",
+      },
+    ],
+  },
+  {
+    tier: "S",
+    color: "#f43f5e",
+    subtitle: "Top-Tier Performers — High Impact & Raid Staples",
+    rationale: "S-Tier classes provide elite clear speed and crucial team utility with minimal situational vulnerabilities. Oni locks bosses in perpetual stun loops via poise scaling. Cleric is indispensable for Guild Raids with full-party cleanses. Lancer pierces multi-target ranks with heavy physical thrusts, while Deadeye provides safe, armor-ignoring backline physical snipes.",
+    classes: [
       {
         name: "Oni",
         base: "Fist",
         role: "Enraged Burst & Stun Lock",
         scaling: "1.35x Attack / 1.25x Speed",
-        verdict: "Demonic Frenzy turns turn-based encounters into one-sided stun gauntlets. High burst with zero weapon cost.",
-      },
-    ],
-  },
-  {
-    tier: "A",
-    color: "#a855f7",
-    classes: [
-      {
-        name: "Assassin",
-        base: "Thief",
-        role: "Crit Executioner",
-        scaling: "1.4x Crit / 1.3x Speed",
-        verdict: "Shadow Step grants 100% crit chance on subsequent strike. Melts elite dungeon mobs before they take a turn.",
+        verdict: "Demonic Frenzy turns turn-based encounters into one-sided stun gauntlets. Staggers dungeon bosses every 3 turns with zero weapon purchase cost.",
       },
       {
         name: "Cleric",
         base: "Mage",
-        role: "Holy Healer & Buffer",
+        role: "Holy Healer & Cleanser",
         scaling: "1.3x Magic / 1.2x HP",
-        verdict: "The backbone of Guild Raids and multiplayer runs. Radiance Prayer cleanses all curses and revives allies.",
+        verdict: "The undisputed backbone of Guild Raids and multiplayer runs. Radiance Prayer cleanses all curses, restores party HP, and revives fallen allies.",
       },
       {
-        name: "Berserk",
-        base: "Warrior",
-        role: "Low-HP Bleed Juggernaut",
-        scaling: "1.4x Attack / 1.15x HP",
-        verdict: "Bloodlust scales damage inversely with remaining HP. Massive damage output but requires potion management.",
+        name: "Lancer",
+        base: "Spear",
+        role: "Piercing Charge & Row Cleave",
+        scaling: "1.35x Attack / 1.2x Speed",
+        verdict: "Introduced in the Oct 20 update, Lancer pierces front-and-back enemy lines simultaneously with high-velocity charges that ignore 25% target defense.",
       },
       {
         name: "Deadeye",
         base: "Archer",
         role: "Precision Snipe Sniper",
         scaling: "1.4x Attack / 1.3x Crit",
-        verdict: "Piercing Arrow completely ignores enemy armor rating from long range. Exceptional against armored bosses.",
+        verdict: "Piercing Arrow completely ignores enemy armor rating from long range. Exceptional against armored dungeon golems and heavy knight bosses.",
+      },
+    ],
+  },
+  {
+    tier: "A",
+    color: "#a855f7",
+    subtitle: "Highly Recommended — Reliable & Strong All-Rounders",
+    rationale: "A-Tier classes comfortably clear all current game content, though they require specific potion management, positioning, or support. Berserk deals monstrous damage but risks death at low HP thresholds. Hoplite provides sturdy phalanx defense for dungeon teams. Troubadour transforms team damage output but suffers from weak personal solo clear speed.",
+    classes: [
+      {
+        name: "Berserk",
+        base: "Warrior",
+        role: "Low-HP Bleed Juggernaut",
+        scaling: "1.4x Attack / 1.15x HP",
+        verdict: "Bloodlust scales damage inversely with remaining HP. Delivers massive physical cleave but demands vigilant potion management during boss enrage phases.",
+      },
+      {
+        name: "Hoplite",
+        base: "Spear",
+        role: "Phalanx Wall & Counterthrust",
+        scaling: "1.35x Defense / 1.25x HP",
+        verdict: "Forms an impenetrable spearwall that reduces party frontline damage by 30% while executing guaranteed counterthrusts when guarding.",
+      },
+      {
+        name: "Trickster",
+        base: "Thief",
+        role: "Agility Debuff & Misdirection",
+        scaling: "1.3x Speed / 1.25x Dodge",
+        verdict: "Reaches the 65% engine dodge cap with ease while confusing enemy action order, making dungeon trash waves misdirect critical attacks.",
+      },
+      {
+        name: "Troubadour",
+        base: "Bard",
+        role: "Anthem Buffer & Tempo Control",
+        scaling: "1.3x Speed / 1.25x Magic",
+        verdict: "The gold standard for multiplayer teams. Anthems grant +25% party attack and push ally action bars forward, though solo grinding is sluggish.",
       },
     ],
   },
   {
     tier: "B",
     color: "#38bdf8",
+    subtitle: "Viable & Niche — Gear-Dependent or Slower Clear Speeds",
+    rationale: "B-Tier classes can clear endgame dungeons but suffer from design limitations such as slow animation times, heavy gear reliance, or awkward action priorities. Greatsword's massive cleave is slowed by low turn initiative. Summoner minions soak damage but drag out turn times. Brawler provides steady poise breaks but lacks the raw kill pressure of Oni.",
     classes: [
       {
         name: "Greatsword",
         base: "Warrior",
         role: "Heavy Cleave & Poise",
         scaling: "1.35x Attack / 1.2x Defense",
-        verdict: "Sweeping Cleave hits entire mob waves, but slow attack speed leaves openings against fast rogue enemies.",
+        verdict: "Sweeping Cleave hits entire mob waves, but slow attack speed and low initiative leave openings against fast rogue-type enemies.",
       },
       {
         name: "Brawler",
         base: "Fist",
-        role: "Counter Brawler",
+        role: "Counter Brawler & Guard",
         scaling: "1.25x Defense / 1.2x Attack",
-        verdict: "Balanced survivability with reliable interrupts, though lacking the extreme damage scaling of Oni.",
+        verdict: "Balanced survivability with reliable interrupts, though lacking the extreme damage burst and enrage scaling of the Oni path.",
       },
       {
         name: "Minstrel",
         base: "Bard",
-        role: "Aura Support",
+        role: "Aura Support & Regeneration",
         scaling: "1.25x Speed / 1.2x Magic",
-        verdict: "Battle Anthem boosts team attack by 20% for 3 turns. Outstanding in groups, mediocre in solo play.",
+        verdict: "Provides steady HP regeneration auras. Helpful for beginners in multiplayer, but eclipsed by Cleric's burst heals and Troubadour's buffs.",
       },
       {
         name: "Summoner",
         base: "Mage",
-        role: "Minion Swarm",
+        role: "Minion Swarm & Taunts",
         scaling: "1.25x Magic / 1.1x HP",
-        verdict: "Skeleton minions soak boss attacks, though summon animations extend encounter durations.",
+        verdict: "Skeleton minions soak boss attacks reliably, though lengthy summon animations noticeably extend total dungeon completion times.",
+      },
+      {
+        name: "Dragoon",
+        base: "Spear",
+        role: "Aerial Dive & Impact Burst",
+        scaling: "1.3x Attack / 1.15x Dodge",
+        verdict: "Jump ability dodges all attacks for one turn before landing with heavy area impact, though turn charging can misalign with party buffs.",
       },
     ],
   },
   {
     tier: "C",
     color: "#94a3b8",
+    subtitle: "Underperforming — Narrow Utility & Better Alternatives",
+    rationale: "C-Tier specializations are currently overshadowed by superior sister branches within the same base class. Poison DoTs tick too slowly compared to Hexer decay or Assassin burst, while utility kits like Corsair gold farming provide negligible combat power against scaling dungeon bosses in Act 2 and Torment mode.",
     classes: [
       {
         name: "Rogue",
         base: "Thief",
-        role: "Poison & Stealth",
+        role: "Poison & Dagger Flurry",
         scaling: "1.2x Speed / 1.15x Crit",
-        verdict: "Outclassed by Assassin's instant burst. Poison ticks too slowly against high-tier dungeon mobs.",
+        verdict: "Severely outclassed by Assassin's instant burst. Poison status ticks too slowly against high-tier dungeon mobs with large health pools.",
       },
       {
         name: "Corsair",
         base: "Thief",
-        role: "Gold Farming",
+        role: "Gold Farming & Plunder",
         scaling: "1.2x Gold / 1.1x Attack",
-        verdict: "Great utility for early game gold generation at Goblin Merchant, but falls off in Act 2 combat.",
+        verdict: "Useful for early-game gold generation at the Goblin Merchant, but rapidly falls off in combat viability starting in Act 2 dungeons.",
       },
       {
         name: "Pianist",
         base: "Bard",
         role: "Crowd Control Sleep",
         scaling: "1.15x Magic / 1.1x Speed",
-        verdict: "Lullaby puts enemies to sleep, but boss encounters are immune to sleep effects.",
+        verdict: "Lullaby puts trash mobs to sleep, but dungeon bosses are completely immune to sleep status, rendering primary skills useless in boss rooms.",
       },
       {
         name: "Ranger",
         base: "Archer",
-        role: "Trap Specialist",
+        role: "Trap Specialist & Snare",
         scaling: "1.2x Speed / 1.15x Attack",
-        verdict: "Trap setup requires prediction that is cumbersome in fast turn-based roguelike encounters.",
+        verdict: "Trap placement mechanics require predictive AI movement that is cumbersome and inefficient in fast turn-based roguelike encounters.",
       },
     ],
   },
+];
+
+const classComparison = [
+  {
+    name: "Warrior",
+    role: "Frontline Tank & Cleave",
+    difficulty: "Beginner",
+    soloTier: "S+",
+    groupTier: "S",
+    priority: "HP > DEF > ATK",
+    style: "Extreme physical damage mitigation via Fortress Stance; safe starter with forgiving survival buffer.",
+  },
+  {
+    name: "Thief",
+    role: "Speed Burst & Crit Finisher",
+    difficulty: "Advanced",
+    soloTier: "S+",
+    groupTier: "A",
+    priority: "SPD > Crit > ATK",
+    style: "Turn-1 stealth execution with 100% crit multipliers; double-action breakpoints bypass boss phases.",
+  },
+  {
+    name: "Mage",
+    role: "Sorcery Burst & Decay Curses",
+    difficulty: "Intermediate",
+    soloTier: "S+",
+    groupTier: "S+",
+    priority: "MAG > SPD > HP",
+    style: "True damage DoTs via Hexer that completely bypass defense shields; essential Cleric raid healing.",
+  },
+  {
+    name: "Fist",
+    role: "Poise Break & Martial Stun",
+    difficulty: "Intermediate",
+    soloTier: "S",
+    groupTier: "S",
+    priority: "ATK > SPD > HP",
+    style: "Zero-weapon investment; constant boss stagger lock every 3 turns prevents party-wipe boss ultimates.",
+  },
+  {
+    name: "Bard",
+    role: "Anthem Buffer & Meter Control",
+    difficulty: "Advanced",
+    soloTier: "B",
+    groupTier: "S+",
+    priority: "SPD > MAG > DEF",
+    style: "25% party-wide attack amplification and turn meter acceleration; indispensable for raid parties.",
+  },
+  {
+    name: "Archer",
+    role: "Armor-Piercing Long Sniping",
+    difficulty: "Intermediate",
+    soloTier: "A",
+    groupTier: "A",
+    priority: "Crit > ATK > SPD",
+    style: "Safely executes armored dungeon elites from maximum distance with armor-ignoring precision arrows.",
+  },
+  {
+    name: "Spear",
+    role: "Phalanx Guard & Multi-Thrust",
+    difficulty: "Intermediate",
+    soloTier: "A",
+    groupTier: "S",
+    priority: "ATK > DEF > HP",
+    style: "Added Oct 20; pierces multi-target rows with high physical velocity and sturdy phalanx damage reduction.",
+  },
+];
+
+const starterStats = [
+  { name: "Warrior", slug: "warrior", color: "#ea580c", hp: 120, atk: 14, def: 12, mag: 4, spd: 8, critDodge: "5% / 3%" },
+  { name: "Thief", slug: "thief", color: "#34d399", hp: 85, atk: 12, def: 6, mag: 5, spd: 16, critDodge: "15% / 12%" },
+  { name: "Mage", slug: "mage", color: "#a855f7", hp: 75, atk: 6, def: 5, mag: 18, spd: 10, critDodge: "4% / 4%" },
+  { name: "Fist", slug: "fist", color: "#f43f5e", hp: 105, atk: 15, def: 8, mag: 6, spd: 12, critDodge: "8% / 6%" },
+  { name: "Bard", slug: "bard", color: "#eab308", hp: 90, atk: 8, def: 7, mag: 12, spd: 11, critDodge: "6% / 5%" },
+  { name: "Archer", slug: "archer", color: "#22c55e", hp: 80, atk: 14, def: 5, mag: 5, spd: 13, critDodge: "12% / 7%" },
+  { name: "Spear", slug: "spear", color: "#38bdf8", hp: 110, atk: 13, def: 10, mag: 5, spd: 10, critDodge: "6% / 5%" },
+];
+
+const faqItems = [
+  {
+    question: "Which class ranks highest for solo Torment dungeon clears?",
+    answer: "The Berserk Warrior, Hexer Mage, and Assassin Thief share top billing for solo Torment clears. Hexer neutralizes difficult boss gimmicks by ticking armor-bypassing decay damage every turn, while Assassin eliminates lethal enemy casters before they act. Berserk delivers monstrous physical cleave with missing-health scaling, though it requires strict healing potion management during extended encounters."
+  },
+  {
+    question: "Why does Bard rank higher in multiplayer parties than solo play?",
+    answer: "Bard elevates to S-Tier in multiplayer raids because its musical anthems scale across all four party members simultaneously, multiplying team-wide damage output by twenty-five percent. In solo play, however, Bard lacks individual burst potency and high-impact offensive multipliers, resulting in significantly slower dungeon clear times compared to pure damage dealers like Mage or Thief."
+  },
+  {
+    question: "How viable is the newly introduced Spear class compared to Warrior?",
+    answer: "The Spear class bridges the tactical gap between Warrior and Fist, offering exceptional multi-target thrusts and defensive phalanx stances. While Sentinel Warrior remains the undisputed king of pure damage mitigation, Lancer Spear delivers noticeably higher wave clear speed across clustered dungeon mobs, making it an outstanding hybrid choice for both solo exploration and group raiding."
+  },
+  {
+    question: "Do class tier list rankings shift after weekly game updates?",
+    answer: "Yes, tier rankings shift whenever developers adjust skill multipliers, modify status effect calculations, or introduce new endgame mechanics in weekly patches. Our tier list is actively retested on live servers following every update to ensure players receive empirical, data-backed recommendations before committing permanent Super Class choices at the Trainer Shrine."
+  }
 ];
 
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    datePublished: "2026-10-18T12:00:00+00:00",
     headline: "Pixel Lineage Class Tier List: Best Super Classes",
-    description: "Definitive Pixel Lineage class tier list: ranking 6 base archetypes and 18 super classes on dungeon clear speed, solo survivability, and boss damage.",
+    description: "Definitive Pixel Lineage class tier list: ranking 6+1 base archetypes and 21 super classes on dungeon clear speed, solo survivability, and boss damage.",
     url: `${siteConfig.siteUrl}/tier-list/class-tier-list/`,
+    datePublished: "2026-10-18T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -157,41 +309,24 @@ const jsonLd = [
       { "@type": "ListItem", position: 3, name: "Classes Tier List", item: `${siteConfig.siteUrl}/tier-list/class-tier-list/` },
     ],
   },
-];
-
-import MobileToc from "../../components/MobileToc.astro";
-import DualSidebar from "../../components/DualSidebar.astro";
-import { extractTocFromAstroUrl } from "../../utils/toc";
-import FaqSection from "../../components/FaqSection.astro";
-
-const tocHeadings = extractTocFromAstroUrl(import.meta.url);
-
-
-const faqItems = [
   {
-    "question": "Which class ranks highest for solo Torment dungeon clears?",
-    "answer": "The Berserk Warrior and Assassin Thief share the S+ ranking for solo Torment clears. Berserk survives through lifesteal and missing-health scaling, while Assassin eliminates dangerous enemy spellcasters in round one with stealth critical bursts, bypassing complex multi-turn boss gimmicks. Both classes boast top-tier damage multipliers that significantly reduce total combat exposure time."
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer,
+      },
+    })),
   },
-  {
-    "question": "Why does the Bard class rank higher in multiplayer than in solo play?",
-    "answer": "Bard ranks in S-Tier for multiplayer raids because its musical buffs scale across all four party members, multiplying total team damage by 25%. In solo play, however, Bard's lower personal damage output places it in A-Tier due to slower clearing speeds."
-  },
-  {
-    "question": "Do tier list rankings change frequently with weekly developer updates?",
-    "answer": "Rankings shift primarily when the developer rebalances Super Class multipliers or introduces new dungeon mechanics during weekly patches. Our tier list is updated after every patch notes release to reflect current empirical performance data and community raid clears. We continuously test balance adjustments on live servers to ensure our tier rankings remain authoritative."
-  },
-  {
-    "question": "Is Fist viable for endgame raid content compared to Greatsword Warrior?",
-    "answer": "Fist is highly viable in endgame raids due to its unparalleled Poise Break ability. By consistently staggering dungeon bosses and interrupting charge attacks, a skilled Fist player prevents massive party-wide damage spikes that would otherwise wipe raid groups. Many top progression guilds mandate at least one dedicated Fist user specifically for crowd control."
-  }
 ];
 ---
 
-
-
 <BaseLayout
   title="Pixel Lineage Class Tier List: Best Super Classes"
-  description="Definitive Pixel Lineage class tier list: ranking 6 base archetypes and 18 super classes on dungeon clear speed, solo survivability, and boss damage."
+  description="Definitive Pixel Lineage class tier list: ranking 6+1 base archetypes and 21 super classes on dungeon clear speed, solo survivability, and boss damage."
   canonical="/tier-list/class-tier-list/"
   jsonLd={jsonLd}
 >
@@ -201,155 +336,198 @@ const faqItems = [
       <span class="separator" style="margin: 0 8px;">/</span>
       <a href="/tier-list/" style="color: var(--accent); text-decoration: none;">Tier List</a>
       <span class="separator" style="margin: 0 8px;">/</span>
-      <span class="current">Classes</span>
+      <span class="current" style="color: var(--ink);">Classes</span>
     </nav>
 
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <header style="margin-bottom: 28px;">
+          <div style="display: inline-block; background: rgba(244, 63, 94, 0.15); border: 1px solid #f43f5e; color: #f43f5e; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            Meta Tier List · Updated with Spear Class
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Class & Super Class Tier List
+          </h1>
+          <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0 0 20px;">
+            Because Super Class selection at the Trainer's Shrine (Act 2) is permanent and irreversible, picking the right evolution path is the single most critical decision in your run. Below is our empirical ranking of all 6+1 base archetypes and 21 super class specializations.
+          </p>
 
-    <header style="margin-bottom: 32px;">
-      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Class & Super Class Tier List
-      </h1>
-      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
-        Because Super Class selection at the Trainer's Shrine (Act 2) is permanent and irreversible, picking the right evolution path is the single most critical decision in your run.
-      </p>
-    </header>
+          <!-- Quick Answer Box (3 Lines) -->
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">
+              ⚡ Quick Tactical Answers (Oct 2026 Meta)
+            </div>
+            <ul style="margin: 0; padding-left: 20px; font-size: 0.94rem; color: #f0eaf4; display: flex; flex-direction: column; gap: 6px;">
+              <li><strong>Best Beginner Class:</strong> <span style="color: #ea580c; font-weight: 700;">Warrior (Sentinel path)</span> — Highest starting HP (120) and DEF (12) with forgiving damage mitigation, requiring minimal potion management to conquer Act 1.</li>
+              <li><strong>Best Solo Clear Class:</strong> <span style="color: #a855f7; font-weight: 700;">Mage (Hexer path)</span> / <span style="color: #34d399; font-weight: 700;">Thief (Assassin path)</span> — Hexer melts bosses through unblockable Malediction DoT stacks, while Assassin deletes elite mobs in Round 1 with guaranteed stealth criticals.</li>
+              <li><strong>Best Multiplayer Raid Class:</strong> <span style="color: #eab308; font-weight: 700;">Bard (Troubadour path)</span> / <span style="color: #c084fc; font-weight: 700;">Mage (Cleric path)</span> — Troubadour grants a party-wide 25% ATK anthem and turn meter surge, while Cleric provides essential full-party cleanses and revives.</li>
+            </ul>
+          </div>
+        </header>
 
         <!-- Mobile Table of Contents (≤980px) -->
         <MobileToc tocHeadings={tocHeadings} />
 
-    <!-- Tier Breakdown Sections -->
-    <div style="display: flex; flex-direction: column; gap: 32px; margin-bottom: 40px;">
-      {tierData.map((t) => (
-        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;">
-          <div style={`background: #1d152c; border-left: 6px solid ${t.color}; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between;`}>
-            <span style={`font-size: 1.4rem; font-weight: 800; color: ${t.color};`}>
-              {t.tier} TIER — {t.tier === "S" ? "Meta Dominators" : t.tier === "A" ? "Highly Recommended" : t.tier === "B" ? "Viable & Niche" : "Underperforming"}
-            </span>
-            <span style="font-size: 0.8rem; color: var(--muted); text-transform: uppercase;">{t.classes.length} Specializations</span>
+        <!-- Section 1: 6+1 Class Comparison Table -->
+        <section id="class-comparison-matrix" style="margin-bottom: 40px;">
+          <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 16px;">
+            6+1 Base Class Comparison Matrix
+          </h2>
+          <p style="color: var(--muted); font-size: 0.92rem; margin-bottom: 16px;">
+            Side-by-side comparison of all 7 base archetypes in Pixel Lineage, including difficulty rating, solo clear tier, group raid tier, core stat priorities, and signature playstyles:
+          </p>
+          <div class="table-responsive-wrapper" style="overflow-x: auto; margin-bottom: 24px;">
+            <table class="class-milestone-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; background: var(--panel); border: 1px solid var(--line); border-radius: 8px;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
+                  <th style="padding: 10px 12px; color: var(--muted); font-weight: 600;">Base Class</th>
+                  <th style="padding: 10px 12px; color: #c9a227; font-weight: 600;">Archetype Role</th>
+                  <th style="padding: 10px 12px; color: var(--muted); font-weight: 600;">Difficulty</th>
+                  <th style="padding: 10px 12px; color: #f43f5e; font-weight: 600;">Solo Tier</th>
+                  <th style="padding: 10px 12px; color: #38bdf8; font-weight: 600;">Group Tier</th>
+                  <th style="padding: 10px 12px; color: #34d399; font-weight: 600;">Stat Priority</th>
+                  <th style="padding: 10px 12px; color: var(--muted); font-weight: 600;">Signature Playstyle</th>
+                </tr>
+              </thead>
+              <tbody>
+                {classComparison.map((cc) => (
+                  <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                    <td data-label="Base Class" style="padding: 10px 12px; font-weight: 700; color: #fff;">{cc.name}</td>
+                    <td data-label="Role" style="padding: 10px 12px; color: var(--muted);">{cc.role}</td>
+                    <td data-label="Difficulty" style="padding: 10px 12px; font-size: 0.8rem; color: #c084fc;">{cc.difficulty}</td>
+                    <td data-label="Solo Tier" style="padding: 10px 12px; font-weight: 700; color: #f43f5e;">{cc.soloTier}</td>
+                    <td data-label="Group Tier" style="padding: 10px 12px; font-weight: 700; color: #38bdf8;">{cc.groupTier}</td>
+                    <td data-label="Stat Priority" style="padding: 10px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #34d399;">{cc.priority}</td>
+                    <td data-label="Playstyle" style="padding: 10px 12px; font-size: 0.82rem; color: var(--muted);">{cc.style}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+        </section>
 
-          <div style="padding: 20px; display: flex; flex-direction: column; gap: 16px;">
-            {t.classes.map((c) => (
-              <div style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 14px;">
-                <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; flex-wrap: wrap;">
-                  <h3 id="c-name" style="margin: 0; font-size: 1.15rem; color: var(--ink);">{c.name}</h3>
-                  <span style="font-size: 0.8rem; color: var(--accent); background: rgba(168, 85, 247, 0.15); padding: 1px 6px; border-radius: 3px;">
-                    Base: {c.base}
-                  </span>
-                  <span style="font-size: 0.8rem; color: var(--muted);">{c.role}</span>
-                  <span style="font-size: 0.8rem; font-family: var(--font-mono); color: #c9a227; margin-left: auto;">
-                    {c.scaling}
-                  </span>
+        <!-- Section 2: Detailed Tier Breakdown (S+, S, A, B, C) -->
+        <section id="tier-breakdown" style="margin-bottom: 40px;">
+          <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 24px;">
+            Tactical Tier Breakdown & Rationale
+          </h2>
+
+          <div style="display: flex; flex-direction: column; gap: 32px;">
+            {tierData.map((t) => (
+              <div style="background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden;">
+                <div style={`background: #1d152c; border-left: 6px solid ${t.color}; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;`}>
+                  <div>
+                    <span style={`font-size: 1.35rem; font-weight: 800; color: ${t.color}; margin-right: 12px;`}>
+                      {t.tier} TIER
+                    </span>
+                    <span style="font-size: 0.95rem; color: #fff; font-weight: 600;">
+                      {t.subtitle}
+                    </span>
+                  </div>
+                  <span style="font-size: 0.8rem; color: var(--muted); text-transform: uppercase;">{t.classes.length} Specializations</span>
                 </div>
-                <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
-                  {c.verdict}
-                </p>
+
+                <!-- Tactical Rationale ("Why") -->
+                <div style="padding: 14px 20px; background: rgba(0, 0, 0, 0.2); border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.9rem; color: #f0eaf4; line-height: 1.6;">
+                  <strong style="color: #c9a227; text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.04em; display: block; margin-bottom: 4px;">Tactical Rationale ("Why this tier"):</strong>
+                  {t.rationale}
+                </div>
+
+                <div style="padding: 20px; display: flex; flex-direction: column; gap: 16px;">
+                  {t.classes.map((c) => (
+                    <div style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 14px;">
+                      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; flex-wrap: wrap;">
+                        <h3 style="margin: 0; font-size: 1.15rem; color: var(--ink);">{c.name}</h3>
+                        <span style="font-size: 0.8rem; color: var(--accent); background: rgba(168, 85, 247, 0.15); padding: 1px 6px; border-radius: 3px;">
+                          Base: {c.base}
+                        </span>
+                        <span style="font-size: 0.8rem; color: var(--muted);">{c.role}</span>
+                        <span style="font-size: 0.8rem; font-family: var(--font-mono); color: #c9a227; margin-left: auto;">
+                          {c.scaling}
+                        </span>
+                      </div>
+                      <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+                        {c.verdict}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
         </section>
-      ))}
-    </div>
 
-    <!-- Comparative Base Class Growth Matrix -->
-    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 40px;">
-      <h2 id="lv-1-base-archetype-stat-distribution" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">
-        Lv 1 Base Archetype Stat Distribution
-      </h2>
-      <p style="color: var(--muted); font-size: 0.9rem; margin: 0 0 16px;">
-        Empirical starter attributes recorded at Character Creation before racial modifiers:
-      </p>
-      <div style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
-          <thead>
-            <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
-              <th style="padding: 10px 14px; color: var(--muted);">Base Class</th>
-              <th style="padding: 10px 14px; color: var(--muted);">HP</th>
-              <th style="padding: 10px 14px; color: var(--muted);">Attack</th>
-              <th style="padding: 10px 14px; color: var(--muted);">Defense</th>
-              <th style="padding: 10px 14px; color: var(--muted);">Magic</th>
-              <th style="padding: 10px 14px; color: var(--muted);">Speed</th>
-              <th style="padding: 10px 14px; color: var(--muted);">Crit / Dodge</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-              <td style="padding: 10px 14px; font-weight: 700; color: #ea580c;"><a href="/classes/warrior/" style="color: inherit; text-decoration: none;">Warrior</a></td>
-              <td style="padding: 10px 14px;">120</td>
-              <td style="padding: 10px 14px;">14</td>
-              <td style="padding: 10px 14px;">12</td>
-              <td style="padding: 10px 14px;">4</td>
-              <td style="padding: 10px 14px;">8</td>
-              <td style="padding: 10px 14px;">5% / 3%</td>
-            </tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-              <td style="padding: 10px 14px; font-weight: 700; color: #34d399;"><a href="/classes/thief/" style="color: inherit; text-decoration: none;">Thief</a></td>
-              <td style="padding: 10px 14px;">85</td>
-              <td style="padding: 10px 14px;">12</td>
-              <td style="padding: 10px 14px;">6</td>
-              <td style="padding: 10px 14px;">5</td>
-              <td style="padding: 10px 14px;">16</td>
-              <td style="padding: 10px 14px;">15% / 12%</td>
-            </tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-              <td style="padding: 10px 14px; font-weight: 700; color: #a855f7;"><a href="/classes/mage/" style="color: inherit; text-decoration: none;">Mage</a></td>
-              <td style="padding: 10px 14px;">75</td>
-              <td style="padding: 10px 14px;">6</td>
-              <td style="padding: 10px 14px;">5</td>
-              <td style="padding: 10px 14px;">18</td>
-              <td style="padding: 10px 14px;">10</td>
-              <td style="padding: 10px 14px;">4% / 4%</td>
-            </tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-              <td style="padding: 10px 14px; font-weight: 700; color: #f43f5e;"><a href="/classes/fist/" style="color: inherit; text-decoration: none;">Fist</a></td>
-              <td style="padding: 10px 14px;">105</td>
-              <td style="padding: 10px 14px;">15</td>
-              <td style="padding: 10px 14px;">8</td>
-              <td style="padding: 10px 14px;">6</td>
-              <td style="padding: 10px 14px;">12</td>
-              <td style="padding: 10px 14px;">8% / 6%</td>
-            </tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-              <td style="padding: 10px 14px; font-weight: 700; color: #eab308;"><a href="/classes/bard/" style="color: inherit; text-decoration: none;">Bard</a></td>
-              <td style="padding: 10px 14px;">90</td>
-              <td style="padding: 10px 14px;">8</td>
-              <td style="padding: 10px 14px;">7</td>
-              <td style="padding: 10px 14px;">12</td>
-              <td style="padding: 10px 14px;">11</td>
-              <td style="padding: 10px 14px;">6% / 5%</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px 14px; font-weight: 700; color: #22c55e;"><a href="/classes/archer/" style="color: inherit; text-decoration: none;">Archer</a></td>
-              <td style="padding: 10px 14px;">80</td>
-              <td style="padding: 10px 14px;">14</td>
-              <td style="padding: 10px 14px;">5</td>
-              <td style="padding: 10px 14px;">5</td>
-              <td style="padding: 10px 14px;">13</td>
-              <td style="padding: 10px 14px;">12% / 7%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+        <!-- Section 3: Lv 1 Base Starter Attributes -->
+        <section id="starter-attribute-matrix" style="background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 40px;">
+          <h2 style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">
+            Lv 1 Base Archetype Stat Distribution (7 Classes)
+          </h2>
+          <p style="color: var(--muted); font-size: 0.9rem; margin: 0 0 16px;">
+            Empirical starter attributes recorded at Character Creation before racial passive modifiers or talent card bonuses:
+          </p>
+          <div class="table-responsive-wrapper" style="overflow-x: auto;">
+            <table class="class-milestone-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
+                  <th style="padding: 10px 14px; color: var(--muted);">Base Class</th>
+                  <th style="padding: 10px 14px; color: #34d399;">HP</th>
+                  <th style="padding: 10px 14px; color: #f43f5e;">Attack</th>
+                  <th style="padding: 10px 14px; color: #38bdf8;">Defense</th>
+                  <th style="padding: 10px 14px; color: #c084fc;">Magic</th>
+                  <th style="padding: 10px 14px; color: #facc15;">Speed</th>
+                  <th style="padding: 10px 14px; color: var(--muted);">Crit / Dodge</th>
+                </tr>
+              </thead>
+              <tbody>
+                {starterStats.map((st) => (
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <td data-label="Base Class" style={`padding: 10px 14px; font-weight: 700; color: ${st.color};`}>
+                      {st.slug === "spear" ? (
+                        <span style="color: inherit; min-height: 44px; min-width: 44px; display: inline-flex; align-items: center;">{st.name} <span style="font-size: 0.7rem; color: #a855f7; margin-left: 4px; font-weight: 800;">(NEW)</span></span>
+                      ) : (
+                        <a href={`/classes/${st.slug}/`} style="color: inherit; text-decoration: none; min-height: 44px; min-width: 44px; display: inline-flex; align-items: center;">{st.name}</a>
+                      )}
+                    </td>
+                    <td data-label="HP" style="padding: 10px 14px; color: #34d399;">{st.hp}</td>
+                    <td data-label="Attack" style="padding: 10px 14px; color: #f43f5e;">{st.atk}</td>
+                    <td data-label="Defense" style="padding: 10px 14px; color: #38bdf8;">{st.def}</td>
+                    <td data-label="Magic" style="padding: 10px 14px; color: #c084fc;">{st.mag}</td>
+                    <td data-label="Speed" style="padding: 10px 14px; color: #facc15;">{st.spd}</td>
+                    <td data-label="Crit / Dodge" style="padding: 10px 14px; color: var(--muted);">{st.critDodge}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-    <!-- Deep Dive Links -->
-    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-      <a href="/classes/super-classes/" style="background: rgba(168, 85, 247, 0.2); border: 1px solid #a855f7; color: #f5f3ff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
-        Detailed 18 Super Classes Guide →
-      </a>
-      <a href="/tier-list/race-tier-list/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
-        Compare Best Races for Classes →
-      </a>
-    </div>
-  
-      
-      <!-- Frequently Asked Questions Accordion -->
-      <FaqSection items={faqItems} />
-    </article>
+        <!-- Section 4: Cross-Linking Navigation -->
+        <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 40px;">
+          <h3 style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Character Mechanics</h3>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="/classes/stats/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center; padding: 6px 0;">
+              → Level 1 to 30 Class Growth Tables
+            </a>
+            <a href="/attributes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center; padding: 6px 0;">
+              → Attributes, DEF Formulas & Respec Guide
+            </a>
+            <a href="/races/best-races/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center; padding: 6px 0;">
+              → Best Races & Racial Passives
+            </a>
+          </div>
+        </section>
 
-      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+        <!-- Section 5: Frequently Asked Questions Accordion -->
+        <section id="faq" style="margin-bottom: 40px;">
+          <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 24px;">
+            Frequently Asked Questions
+          </h2>
+          <FaqSection items={faqItems} />
+        </section>
+      </article>
+
+      <!-- Dual Sidebar V3 -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/tier-list/class-tier-list/" />
-    </div></div>
+    </div>
+  </div>
 </BaseLayout>

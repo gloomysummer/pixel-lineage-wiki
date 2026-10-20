@@ -24,7 +24,7 @@ const { tocHeadings = [] } = Astro.props;
       <ul class="mobile-toc-list" style="list-style: none; padding: 0; margin: 0;">
         {tocHeadings.map((h, idx) => (
           <li class={`mobile-toc-item depth-${h.depth}`} style={`margin-bottom: 8px; ${h.depth === 3 ? 'padding-left: 14px;' : ''}`}>
-            <a href={`#${h.slug}`} class="mobile-toc-link" style="color: var(--muted); text-decoration: none; font-size: 0.9rem; display: flex; align-items: baseline; gap: 8px;">
+            <a href={`#${h.slug}`} class="mobile-toc-link" style="color: var(--muted); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 0;">
               <span class="mobile-toc-num" style="color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700;">
                 {String(idx + 1).padStart(2, '0')}.
               </span>
