@@ -9,36 +9,87 @@ import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
-
-const activeCodes = [
+// TIER 1: Verified Working (Corroborated across 3+ independent authoritative sources)
+const verifiedCodes = [
   {
     code: "OCTOBER",
-    rewards: "1x Free Race Spin, 1x Free Talent Spin, 500 Gold",
-    status: "Active & Tested",
-    expiryNotice: "Expected to cycle with the next weekly update",
-    requirements: "Join Roblox Group (362755399), Like & Favorite the game",
-    utility: "Best used immediately for early race rerolls (targeting Nightborn/Elf) or banking talent spins for Act 2.",
+    rewards: "25 Candy (Halloween Event Currency)",
+    requirements: "Join Group 362755399, Like & Favorite",
+    source: "Official Roblox Description + RPS (10-14) + Destructoid (10-19) + Glint (10-15)",
+    tacticalNote: "Candy is the exclusive event currency for the Haunted Harvest seasonal store. Spent directly at the event stall for limited Halloween cosmetics and enhancement scrolls.",
+  },
+  {
+    code: "TORMENT",
+    rewards: "1,000 Gold, 100 Knowledge, 3 Potions, 8 Race Spins, 8 Talent Spins",
+    requirements: "Join Group 362755399, Like & Favorite",
+    source: "Rock Paper Shotgun (10-14) + Destructoid (10-19) + Glint Games (10-15)",
+    tacticalNote: "Primary progression acceleration code. 8 Race Spins provide high probability for top-tier racial passives; 100 Knowledge accelerates mastery toward Act 2 Super Classes.",
+  },
+  {
+    code: "TUTORIAL",
+    rewards: "3 Race Spins, 3 Talent Spins",
+    requirements: "Join Group 362755399, Like & Favorite",
+    source: "Rock Paper Shotgun (10-14) + Destructoid (10-19) + Glint Games (10-15)",
+    tacticalNote: "Starter reroll buffer for early character creation adjustments without spending Robux.",
   },
 ];
 
+// TIER 2: Reported Working (Corroborated across 2 sources — subject to server cycle expiry)
+const reportedCodes = [
+  {
+    code: "0y0",
+    rewards: "10 Race Spins, 10 Talent Spins, 1 Life Token",
+    requirements: "Join Group 362755399, Like & Favorite",
+    source: "RPS (marked NEW) + Glint (cross-referenced with GamesRadar/Pocket Tactics/Beebom)",
+    statusNote: "Recently introduced partner code. May expire rapidly across server restarts.",
+  },
+];
+
+// TIER 3: Unverified / Conflicting Status (Tracker discrepancies or unconfirmed community submissions)
+const conflictingCodes = [
+  {
+    code: "SLOOTH",
+    rewards: "500 Gold, 75 Knowledge, 3 Potions, 3 Talent Spins",
+    conflictDetail: "Destructoid (10-19) reports as active; Rock Paper Shotgun (10-14) and Glint report expired. May have been temporarily revived or reflects tracker latency.",
+  },
+  {
+    code: "LEGENDS",
+    rewards: "2,500 Gold, 100 Knowledge, 5 Potions, 5 Race Spins, 5 Talent Spins, 3 Sunforged Whetstones, 3 Violet Whetstones",
+    conflictDetail: "Listed exclusively by Rock Paper Shotgun (10-14); absent in all other primary trackers. High probability of single-source error.",
+  },
+  {
+    code: "SKYRON",
+    rewards: "10 Race Rerolls, 10 Talent Spins",
+    conflictDetail: "Listed exclusively by Destructoid (10-19, marked NEW). Awaiting secondary tracker corroboration.",
+  },
+  {
+    code: "ARENA",
+    rewards: "1 Life, 15 Race Spins, 10 Talent Spins",
+    conflictDetail: "Listed exclusively by Destructoid (10-19, marked NEW). Unverified across official announcements.",
+  },
+  {
+    code: "SAKURA",
+    rewards: "10 Race Spins, 10 Talent Spins, 1 Life, 1 Renewal Crystal",
+    conflictDetail: "Reported by Beebom and OyO community video; omitted on GamesRadar and Pocket Tactics; explicitly marked unverified on Glint Games.",
+  },
+  {
+    code: "COMMUNITY!",
+    rewards: "5 Race Spins, 5 Talent Spins, 1 Life",
+    conflictDetail: "Reported on Pocket Tactics, Beebom, and OyO video; absent on RPS and Destructoid. Note: String requires trailing exclamation mark.",
+  },
+];
+
+// TIER 4: Confirmed Expired Codes (Permanently deactivated)
 const expiredCodes = [
   {
-    code: "RELEASE",
-    rewards: "1,000 Gold & 2x Starter Health Potions",
-    expiredOn: "October 13, 2026",
-    reason: "Deactivated following the weekly update patch 1.0.2.",
+    code: "EARLY",
+    source: "RPS + Destructoid + Glint consensus",
+    reason: "Deactivated following the transition out of early launch window.",
   },
   {
-    code: "LINEAGE",
-    rewards: "250 Knowledge & 1 Extra Life Token",
-    expiredOn: "October 06, 2026",
-    reason: "Launch milestone code retired after 5M visits reached.",
-  },
-  {
-    code: "DUNGEONTEST",
-    rewards: "1x Talent Spin & 300 Gold",
-    expiredOn: "September 30, 2026",
-    reason: "Closed alpha dungeon stress-test promotion.",
+    code: "THANKYOU",
+    source: "RPS + Destructoid + Glint consensus",
+    reason: "Retired launch celebration milestone reward.",
   },
 ];
 
@@ -46,8 +97,8 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Pixel Lineage Codes (October 2026)",
-    description: "Verified active promo codes ledger for Pixel Lineage on Roblox. Detailed rewards breakdown, redemption prerequisites, and troubleshooting guide.",
+    name: "Pixel Lineage Codes: Verified Halloween & Spins",
+    description: "Verified Pixel Lineage promo codes ledger on Roblox: OCTOBER 25 Candy, Torment spins, redemption prerequisites, and source-checked working status.",
     url: `${siteConfig.siteUrl}/codes/`,
   },
   {
@@ -59,7 +110,6 @@ const jsonLd = [
     ],
   },
 ];
-
 
 const faqItems = [
   {
@@ -81,10 +131,9 @@ const faqItems = [
 ];
 ---
 
-
 <BaseLayout
-  title="Pixel Lineage Codes: Active Spins & Gold"
-  description="Verified active promo codes ledger for Pixel Lineage on Roblox. Detailed rewards breakdown, redemption prerequisites, and troubleshooting guide."
+  title="Pixel Lineage Codes: Verified Halloween & Spins | PL Wiki"
+  description="Verified Pixel Lineage promo codes ledger on Roblox: OCTOBER 25 Candy, Torment spins, redemption prerequisites, and source-checked working status."
   canonical="/codes/"
   jsonLd={jsonLd}
 >
@@ -96,268 +145,367 @@ const faqItems = [
     </nav>
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
-      <header style="margin-bottom: 32px;">
-      <div style="display: inline-block; background: rgba(52, 211, 153, 0.15); border: 1px solid #34d399; color: #34d399; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
-        Audited Weekly · October 2026 Live
-      </div>
-      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Codes & Rewards Ledger
-      </h1>
-      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
-        Authoritative promo code database for Pixel Lineage on Roblox (Universe ID: 10767928510). Every code is directly tested in-game at the Goblin Merchant NPC across active live servers to guarantee 100% validity and prevent wasted player runs.
-      </p>
-    </header>
-
-        <!-- Mobile Table of Contents (≤980px) -->
-        <MobileToc tocHeadings={tocHeadings} />
-
-    <!-- Sub-navigation for Codes Cluster -->
-    <div style="display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;">
-      <a href="/codes/" style="background: var(--line); color: var(--ink); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1px solid var(--accent);">
-        Active Codes
-      </a>
-      <a href="/codes/redeem/" style="background: #161022; color: var(--muted); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1px solid var(--line);">
-        How to Redeem
-      </a>
-      <a href="/codes/not-working/" style="background: #161022; color: var(--muted); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1px solid var(--line);">
-        Codes Not Working?
-      </a>
-    </div>
-
-    <!-- Active Codes Table -->
-            <!-- Video Showcase (Tactical Walkthrough) -->
-        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-          <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Codes Guide</h2>
-          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-            Official Pixel Lineage promo code redemption and weekly spin reward demonstration at the Goblin Merchant.
-          </p>
-          <VideoEmbed
-            id="_Tx_aM0w1bE"
-            title="Pixel Lineage Active Codes Redemption & Free Spins Showcase"
-            channelTitle="OyO"
-            uploadDate="2026-10-18T12:00:00+00:00"
-            description="Official Pixel Lineage promo code redemption and weekly spin reward demonstration at the Goblin Merchant."
-          />
-        </section>
-
-<section style="margin-bottom: 40px;">
-      <h2 id="verified-active-codes" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Verified Active Codes</h2>
-      <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
-        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
-          <thead>
-            <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
-              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">Code</th>
-              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">Rewards Breakdown</th>
-              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">Redeem Requirement</th>
-              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {activeCodes.map((c) => (
-              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                <td style="padding: 14px 16px; font-family: var(--font-mono); font-weight: 700; color: #34d399;">
-                  {c.code}
-                </td>
-                <td style="padding: 14px 16px; color: var(--ink);">{c.rewards}</td>
-                <td style="padding: 14px 16px; color: var(--muted);">{c.requirements}</td>
-                <td style="padding: 14px 16px;">
-                  <span style="background: rgba(52, 211, 153, 0.2); color: #34d399; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">
-                    {c.status}
-                  </span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Detailed Code Breakdown Card -->
-    <section style="margin-bottom: 40px; background: #161022; border: 1px solid var(--line); border-radius: 10px; padding: 24px;">
-      <h2 id="active-code-in-depth-tactical-analysis" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Active Code In-Depth Tactical Analysis</h2>
-      
-      <div style="background: #0d0a14; border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 8px; padding: 20px; margin-bottom: 20px;">
-        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
-          <h3 id="code-october" style="font-family: var(--font-mono); font-size: 1.4rem; color: #34d399; margin: 0;">Code: OCTOBER</h3>
-          <span style="font-size: 0.8rem; color: var(--muted);">Verification Date: 2026-10-18 · Build 1.0.3</span>
+      <header style="margin-bottom: 24px;">
+        <div style="display: inline-block; background: rgba(52, 211, 153, 0.15); border: 1px solid #34d399; color: #34d399; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+          Multi-Source Corroborated · October 2026 Live
         </div>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 16px;">
-          <div style="background: #161022; padding: 12px 16px; border-radius: 6px; border-left: 3px solid #a855f7;">
-            <div style="font-size: 0.8rem; color: var(--muted); text-transform: uppercase;">1x Race Spin</div>
-            <div style="font-size: 0.95rem; color: var(--ink); margin-top: 4px;">Enables rolling off Human base to hunt S-Tier Nightborn (+15% Mana Regen) or Elf (+10% SPD).</div>
-          </div>
-          <div style="background: #161022; padding: 12px 16px; border-radius: 6px; border-left: 3px solid #c9a227;">
-            <div style="font-size: 0.8rem; color: var(--muted); text-transform: uppercase;">1x Talent Spin</div>
-            <div style="font-size: 0.95rem; color: var(--ink); margin-top: 4px;">Rerolls universal character passive talents. Recommended to hold until Act 2 unlocks higher tier pools.</div>
-          </div>
-          <div style="background: #161022; padding: 12px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
-            <div style="font-size: 0.8rem; color: var(--muted); text-transform: uppercase;">500 Gold Currency</div>
-            <div style="font-size: 0.95rem; color: var(--ink); margin-top: 4px;">Covers 5x Minor Health Potions at the Alchemist or 1x Tier-1 weapon sharpening at the Blacksmith.</div>
-          </div>
-        </div>
+        <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+          Pixel Lineage Codes & Rewards Ledger
+        </h1>
+        <p style="color: var(--muted); font-size: 1.02rem; line-height: 1.6; margin: 0;">
+          Authoritative promo codes directory for Pixel Lineage on Roblox (Universe ID: 10767928510). Because codes change during weekly updates and developer announcements, every entry below is cross-referenced against the official Roblox portal and multiple independent tracking indexes.
+        </p>
+      </header>
 
-        <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0;">
-          <strong>Expiry Projection:</strong> The development team has committed to weekly content cycles. The <code style="color: var(--accent);">OCTOBER</code> promo code is tied directly to the mid-October Halloween and Dungeon Evolution patch. Players should claim this reward immediately upon character generation, as server restarts typically purge active promo buffers without advance warning.
+      <!-- Prominent Rotation & Merchant Warning Box -->
+      <div style="background: rgba(201, 162, 39, 0.12); border: 1px solid #c9a227; border-left: 4px solid #c9a227; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+          <span style="color: #c9a227; font-size: 1rem; font-weight: 700;">⚠️ Code Rotation & Redemption Rule</span>
+        </div>
+        <p style="color: #f5f3ff; font-size: 0.92rem; line-height: 1.6; margin: 0;">
+          Codes rotate with weekly updates. <strong>OCTOBER</strong> is the only code printed in the official description right now. If the Goblin Merchant rejects a string, trust the merchant over this page.
         </p>
       </div>
-    </section>
 
-    <!-- The 4 Mandatory Prerequisites -->
-    <section style="margin-bottom: 40px; background: #161022; border: 1px solid var(--line); border-radius: 10px; padding: 24px;">
-      <h2 id="mandatory-redemption-prerequisites" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Mandatory Redemption Prerequisites</h2>
-      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
-        Unlike generic Roblox experiences that permit code redemption via a simple settings screen, Pixel Lineage enforces strict server-side verification checks through the in-game NPC logic. If any of the following 4 conditions are missing, the redemption dialogue will fail immediately:
-      </p>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
-        <div style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
-          <div style="font-family: var(--font-mono); font-size: 1.1rem; color: #a855f7; margin-bottom: 8px;">1. Roblox Group Check</div>
-          <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
-            Your Roblox account must be an active member of the official <strong style="color: var(--ink);">Pixel Lineage Group</strong> (Group ID: <code style="color: var(--accent);">362755399</code>). Pending join requests will not qualify; membership must be confirmed.
-          </p>
+      <!-- Verification Timestamp & Honest Methodology Disclosure -->
+      <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; margin-bottom: 28px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 10px; margin-bottom: 6px;">
+          <span style="font-size: 0.88rem; color: #34d399; font-weight: 700;">Last checked: 2026-10-20</span>
+          <span style="font-size: 0.82rem; color: var(--muted);">Tiers: 3+ Sources (Verified) · 2 Sources (Reported) · Conflicting</span>
         </div>
-        <div style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
-          <div style="font-family: var(--font-mono); font-size: 1.1rem; color: #34d399; margin-bottom: 8px;">2. Game Portal Thumbs-Up</div>
-          <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
-            Click the "Like" button on the official Roblox game details page. The server queries the platform API to confirm your account has submitted a positive rating.
-          </p>
-        </div>
-        <div style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
-          <div style="font-family: var(--font-mono); font-size: 1.1rem; color: #c9a227; margin-bottom: 8px;">3. Game Portal Favorite Star</div>
-          <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
-            Click the "Favorite" star icon on the game page. The in-game Goblin Merchant cross-references both your like and favorite timestamps before enabling redemption.
-          </p>
-        </div>
-        <div style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
-          <div style="font-family: var(--font-mono); font-size: 1.1rem; color: #f43f5e; margin-bottom: 8px;">4. Goblin Merchant Interaction</div>
-          <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
-            Codes cannot be claimed in combat or during active dungeon crawls. You must speak directly to the Goblin Merchant NPC situated at the east plaza of the Starter Village.
-          </p>
-        </div>
+        <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.55; margin: 0;">
+          <strong>Audit Methodology:</strong> Compiled from the official Roblox description and three independent codes trackers on 2026-10-20. Pixel Lineage publishes new codes in its Discord; the official description currently prints only OCTOBER. We report empirical source corroboration tiers rather than claiming internal studio test access.
+        </p>
       </div>
-    </section>
 
-    <!-- 6 Common Redemption Failure Scenarios & Troubleshooting Matrix -->
-    <section style="margin-bottom: 40px; background: #161022; border: 1px solid var(--line); border-radius: 10px; padding: 24px;">
-      <h2 id="code-failure-diagnosis-6-common-errors-fixes" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Code Failure Diagnosis: 6 Common Errors & Fixes</h2>
-      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
-        If entering a valid code results in an error prompt, consult this diagnostic matrix to identify and resolve the issue without contacting developer support:
-      </p>
+      <!-- Mobile Table of Contents (≤980px) -->
+      <MobileToc tocHeadings={tocHeadings} />
 
-      <div style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
-          <thead>
-            <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
-              <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Error Message / Symptom</th>
-              <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Root Cause</th>
-              <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Prescribed Resolution</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-              <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">"Group Not Joined"</td>
-              <td style="padding: 12px 14px; color: var(--ink);">Roblox API caching latency between group membership registration and live game server state.</td>
-              <td style="padding: 12px 14px; color: var(--muted);">Leave the game instance, wait 60 seconds on the Roblox client, and rejoin a fresh server.</td>
-            </tr>
-            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-              <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">"Invalid Code"</td>
-              <td style="padding: 12px 14px; color: var(--ink);">String case mismatch (e.g., typing 'october' instead of exact uppercase 'OCTOBER').</td>
-              <td style="padding: 12px 14px; color: var(--muted);">Redemption string matching is strictly case-sensitive. Always input codes in uppercase exactly as published.</td>
-            </tr>
-            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-              <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">"Hidden Character Error"</td>
-              <td style="padding: 12px 14px; color: var(--ink);">Clipboard copy carrying invisible leading or trailing space characters (e.g. ' OCTOBER ').</td>
-              <td style="padding: 12px 14px; color: var(--muted);">Manually type the letters or verify the cursor is positioned directly after the final letter before submitting.</td>
-            </tr>
-            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-              <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">"Already Claimed"</td>
-              <td style="padding: 12px 14px; color: var(--ink);">Code was previously redeemed on another character slot or prior roguelike run on this Roblox ID.</td>
-              <td style="padding: 12px 14px; color: var(--muted);">Promo codes are tied permanently to your Roblox UserID, not your individual character save file. Codes cannot be reused on permadeath restarts.</td>
-            </tr>
-            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-              <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">"Outdated Server Version"</td>
-              <td style="padding: 12px 14px; color: var(--ink);">Instance is running on a legacy server version deployed prior to the weekly code activation patch.</td>
-              <td style="padding: 12px 14px; color: var(--muted);">Check server age via Roblox console (F9). If the server uptime exceeds 24 hours, rejoin until matching the latest version.</td>
-            </tr>
-            <tr>
-              <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">"Merchant Dialogue Locked"</td>
-              <td style="padding: 12px 14px; color: var(--ink);">Starter tutorial prologue dialog has not been finished with Village Elder.</td>
-              <td style="padding: 12px 14px; color: var(--muted);">Speak with the Village Elder at spawn and select your starting weapon before approaching the Goblin Merchant.</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- Sub-navigation for Codes Cluster -->
+      <div style="display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;">
+        <a href="/codes/" style="background: var(--line); color: var(--ink); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1px solid var(--accent);">
+          Active Codes Ledger
+        </a>
+        <a href="/codes/redeem/" style="background: #161022; color: var(--muted); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1px solid var(--line);">
+          How to Redeem
+        </a>
+        <a href="/codes/not-working/" style="background: #161022; color: var(--muted); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1px solid var(--line);">
+          Codes Not Working?
+        </a>
       </div>
-    </section>
 
-    <!-- Expired Codes Archive -->
-    <section style="margin-bottom: 40px;">
-      <h2 id="historical-expired-codes-ledger" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Historical Expired Codes Ledger</h2>
-      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-        For transparency and archive auditing, the following promotional codes have been permanently deactivated by the developer. They are listed here to save players from entering defunct keys:
-      </p>
-      <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
-        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
-          <thead>
-            <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
-              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">Code</th>
-              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">Historical Rewards</th>
-              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">Deactivation Date</th>
-              <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">Retirement Rationale</th>
-            </tr>
-          </thead>
-          <tbody>
-            {expiredCodes.map((c) => (
-              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); opacity: 0.75;">
-                <td style="padding: 14px 16px; font-family: var(--font-mono); text-decoration: line-through; color: var(--muted);">
-                  {c.code}
-                </td>
-                <td style="padding: 14px 16px; color: var(--muted);">{c.rewards}</td>
-                <td style="padding: 14px 16px; color: var(--muted);">{c.expiredOn}</td>
-                <td style="padding: 14px 16px; color: var(--muted); font-size: 0.85rem;">{c.reason}</td>
+      <!-- Video Showcase (Tactical Walkthrough) -->
+      <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Codes Guide</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          Official Pixel Lineage promo code redemption and weekly spin reward demonstration at the Goblin Merchant.
+        </p>
+        <VideoEmbed
+          id="_Tx_aM0w1bE"
+          title="Pixel Lineage Active Codes Redemption & Free Spins Showcase"
+          channelTitle="OyO"
+          uploadDate="2026-10-18T12:00:00+00:00"
+          description="Official Pixel Lineage promo code redemption and weekly spin reward demonstration at the Goblin Merchant."
+        />
+      </section>
+
+      <!-- Section 1: Verified Working Codes (3+ Independent Sources) -->
+      <section style="margin-bottom: 36px;">
+        <h2 id="verified-active-codes-3-sources" style="font-size: 1.35rem; color: #34d399; margin: 0 0 14px;">
+          ✅ Verified Working Codes (3+ Independent Sources)
+        </h2>
+        <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600; min-width: 120px;">Code</th>
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Rewards Breakdown</th>
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Requirements</th>
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600; min-width: 220px;">Source & Corroboration</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
+            </thead>
+            <tbody>
+              {verifiedCodes.map((c) => (
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                  <td style="padding: 14px 14px; font-family: var(--font-mono); font-weight: 700; color: #34d399; font-size: 1rem;">
+                    {c.code}
+                  </td>
+                  <td style="padding: 14px 14px; color: #f5f3ff; font-weight: 600;">{c.rewards}</td>
+                  <td style="padding: 14px 14px; color: var(--muted); font-size: 0.82rem;">{c.requirements}</td>
+                  <td style="padding: 14px 14px; color: #c9a227; font-size: 0.82rem; line-height: 1.4;">
+                    {c.source}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-    <!-- Currency & Spins Economy Strategy -->
-    <section style="margin-bottom: 40px; background: #161022; border: 1px solid var(--line); border-radius: 10px; padding: 24px;">
-      <h2 id="currency-free-spins-resource-management" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Currency & Free Spins Resource Management</h2>
-      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-        In a permadeath roguelike RPG, squandering promotional currency on sub-optimal early rolls significantly impedes late-game progression. Here is our tactical guide on how to allocate code payouts:
-      </p>
+      <!-- Section 2: Reported Working Codes (2 Sources) -->
+      <section style="margin-bottom: 36px;">
+        <h2 id="reported-working-codes-2-sources" style="font-size: 1.35rem; color: #c9a227; margin: 0 0 14px;">
+          ⚠️ Reported Working Codes (2 Sources — Subject to Server Expiry)
+        </h2>
+        <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600; min-width: 120px;">Code</th>
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Reported Rewards</th>
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Requirements</th>
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600; min-width: 220px;">Source Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reportedCodes.map((c) => (
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                  <td style="padding: 14px 14px; font-family: var(--font-mono); font-weight: 700; color: #c9a227; font-size: 1rem;">
+                    {c.code}
+                  </td>
+                  <td style="padding: 14px 14px; color: #f5f3ff;">{c.rewards}</td>
+                  <td style="padding: 14px 14px; color: var(--muted); font-size: 0.82rem;">{c.requirements}</td>
+                  <td style="padding: 14px 14px; color: var(--muted); font-size: 0.82rem; line-height: 1.4;">
+                    {c.source} <br/><span style="color: #c9a227;">({c.statusNote})</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-      <ul style="color: var(--muted); font-size: 0.92rem; line-height: 1.7; padding-left: 20px; margin: 0;">
-        <li style="margin-bottom: 10px;">
-          <strong style="color: var(--ink);">Race Spins:</strong> Rolling away from the default Human race should only be undertaken if you know your targeted Super Class archetype. If aiming for Mage evolutions (Hexer, Cleric), Nightborn and Elf provide critical Mana Regen. If aiming for Greatsword Warrior, Orc and Dwarf provide unmatched physical DR.
-        </li>
-        <li style="margin-bottom: 10px;">
-          <strong style="color: var(--ink);">Talent Spins:</strong> Do not burn talent spins immediately in Act 1. Talent rolls in the early village pool offer limited stat scaling. Reaching the Trainer's Shrine in Act 2 broadens the available talent seed table, maximizing the statistical value of each spin.
-        </li>
-        <li style="margin-bottom: 10px;">
-          <strong style="color: var(--ink);">Gold:</strong> Early gold is best conserved for purchasing 5x Minor Healing Potions prior to entering Act 1 Dungeon depths. Avoid spending starting gold on vanity cosmetic dyes in the starter inn.
-        </li>
-      </ul>
-    </section>
+      <!-- Section 3: Unverified / Conflicting Codes -->
+      <section style="margin-bottom: 36px;">
+        <h2 id="unverified-conflicting-codes" style="font-size: 1.35rem; color: #f43f5e; margin: 0 0 14px;">
+          ❓ Unverified / Conflicting Status (Source Discrepancies)
+        </h2>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 14px;">
+          The following codes appear in select community trackers but have conflicting reports or lack multi-source corroboration. Enter these with the expectation that the Goblin Merchant may reject them:
+        </p>
+        <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600; min-width: 120px;">Code</th>
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Reported Rewards</th>
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600; min-width: 260px;">Conflict & Corroboration Detail</th>
+              </tr>
+            </thead>
+            <tbody>
+              {conflictingCodes.map((c) => (
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                  <td style="padding: 12px 14px; font-family: var(--font-mono); font-weight: 600; color: #a855f7;">
+                    {c.code}
+                  </td>
+                  <td style="padding: 12px 14px; color: var(--muted);">{c.rewards}</td>
+                  <td style="padding: 12px 14px; color: var(--muted); font-size: 0.82rem; line-height: 1.45;">
+                    {c.conflictDetail}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-    <!-- Cross-cluster linking -->
-    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
-      <h2 id="related-guides-game-databases" style="font-size: 1.1rem; color: var(--ink); margin: 0 0 12px;">Related Guides & Game Databases</h2>
-      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <a href="/codes/redeem/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-          → Detailed Goblin Merchant Step-by-Step Guide
-        </a>
-        <a href="/tier-list/race-tier-list/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-          → Race Tier List & Passive Drop Rates
-        </a>
-        <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-          → 18 Super Class Evolution Tree
-        </a>
-      </div>
-    </section>
+      <!-- Section 4: Confirmed Expired Codes -->
+      <section style="margin-bottom: 36px;">
+        <h2 id="historical-expired-codes-ledger" style="font-size: 1.35rem; color: var(--muted); margin: 0 0 14px;">
+          ❌ Confirmed Expired Codes (Permanently Deactivated)
+        </h2>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 14px;">
+          These promotional phrases have expired and will trigger an immediate "Expired Code" or "Invalid Code" error at the Goblin Merchant:
+        </p>
+        <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600; min-width: 120px;">Code</th>
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Consensus Source</th>
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Historical Deactivation Context</th>
+              </tr>
+            </thead>
+            <tbody>
+              {expiredCodes.map((c) => (
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); opacity: 0.75;">
+                  <td style="padding: 12px 14px; font-family: var(--font-mono); text-decoration: line-through; color: #f43f5e;">
+                    {c.code}
+                  </td>
+                  <td style="padding: 12px 14px; color: var(--muted); font-size: 0.82rem;">{c.source}</td>
+                  <td style="padding: 12px 14px; color: var(--muted); font-size: 0.82rem;">{c.reason}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Detailed Tactical Code Breakdown Card -->
+      <section style="margin-bottom: 36px; background: #161022; border: 1px solid var(--line); border-radius: 10px; padding: 24px;">
+        <h2 id="tactical-reward-allocation-analysis" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">
+          Tactical Reward Allocation Analysis
+        </h2>
         
+        <div style="background: #0d0a14; border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 8px; padding: 20px; margin-bottom: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+            <h3 id="code-october" style="font-family: var(--font-mono); font-size: 1.3rem; color: #34d399; margin: 0;">Code: OCTOBER (25 Candy)</h3>
+            <span style="font-size: 0.8rem; color: var(--muted);">Halloween Seasonal Currency</span>
+          </div>
+          <div style="background: #161022; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #a855f7; margin-bottom: 12px;">
+            <div style="font-size: 0.8rem; color: #c9a227; text-transform: uppercase; font-weight: 700;">Haunted Harvest Economy Strategy</div>
+            <div style="font-size: 0.92rem; color: var(--ink); margin-top: 4px; line-height: 1.55;">
+              Candy is the dedicated seasonal token currency for the Haunted Harvest event. It does not provide base character stat boosts directly, but is exchanged at the town Halloween vendor for event-limited cosmetic weapon variants and rare enhancement scrolls. Because holiday currency cycles out when the event concludes, players should redeem OCTOBER immediately upon starting and spend the candy before the next weekly update clears the seasonal merchant stall.
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #0d0a14; border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 8px; padding: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+            <h3 id="code-torment" style="font-family: var(--font-mono); font-size: 1.3rem; color: #34d399; margin: 0;">Code: TORMENT (Major Progression Pack)</h3>
+            <span style="font-size: 0.8rem; color: var(--muted);">Spins, Gold & Knowledge</span>
+          </div>
+          <div style="background: #161022; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
+            <div style="font-size: 0.8rem; color: #34d399; text-transform: uppercase; font-weight: 700;">Progression Multiplier Value</div>
+            <div style="font-size: 0.92rem; color: var(--ink); margin-top: 4px; line-height: 1.55;">
+              TORMENT offers the highest immediate utility across all verified codes. The 8 Race Spins provide high statistical odds of replacing base Human traits with valuable combat passives like Elf (Speed) or Nightborn (Mana Regen). The 100 Knowledge covers early skill tree masteries, allowing players to reach Act 2 Trainer&#39;s Shrine prerequisites significantly faster.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- The 4 Mandatory Prerequisites -->
+      <section style="margin-bottom: 36px; background: #161022; border: 1px solid var(--line); border-radius: 10px; padding: 24px;">
+        <h2 id="mandatory-redemption-prerequisites" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">
+          Mandatory Redemption Prerequisites
+        </h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
+          Unlike generic Roblox experiences that permit code redemption via a simple settings screen, Pixel Lineage enforces strict server-side verification checks through the in-game NPC logic. If any of the following conditions are missing, the redemption dialogue will fail immediately:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
+          <div style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
+            <div style="font-family: var(--font-mono); font-size: 1.05rem; color: #a855f7; margin-bottom: 8px;">1. Roblox Group Check</div>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Your Roblox account must be an active member of the official <strong style="color: var(--ink);">Pixel Lineage Group</strong> (Group ID: <code style="color: var(--accent);">362755399</code>). Pending join requests will not qualify; membership must be confirmed.
+            </p>
+          </div>
+          <div style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
+            <div style="font-family: var(--font-mono); font-size: 1.05rem; color: #34d399; margin-bottom: 8px;">2. Game Portal Thumbs-Up</div>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Click the &quot;Like&quot; button on the official Roblox game details page. The server queries the platform API to confirm your account has submitted a positive rating.
+            </p>
+          </div>
+          <div style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
+            <div style="font-family: var(--font-mono); font-size: 1.05rem; color: #c9a227; margin-bottom: 8px;">3. Game Portal Favorite Star</div>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Click the &quot;Favorite&quot; star icon on the game page. The in-game Goblin Merchant cross-references both your like and favorite timestamps before enabling redemption.
+            </p>
+          </div>
+          <div style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
+            <div style="font-family: var(--font-mono); font-size: 1.05rem; color: #f43f5e; margin-bottom: 8px;">4. Goblin Merchant Interaction</div>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+              Codes cannot be claimed in combat or during active dungeon crawls. You must speak directly to the Goblin Merchant NPC situated at the east plaza of the Starter Village.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 Common Redemption Errors & Fixes -->
+      <section style="margin-bottom: 36px; background: #161022; border: 1px solid var(--line); border-radius: 10px; padding: 24px;">
+        <h2 id="code-failure-diagnosis-6-common-errors-fixes" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">
+          Code Failure Diagnosis: 6 Common Errors &amp; Fixes
+        </h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
+          If entering a valid code results in an error prompt, consult this diagnostic matrix to identify and resolve the issue:
+        </p>
+
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Error Message / Symptom</th>
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Root Cause</th>
+                <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Prescribed Resolution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Group Not Joined&quot;</td>
+                <td style="padding: 12px 14px; color: var(--ink);">Roblox API caching latency between group membership registration and live game server state.</td>
+                <td style="padding: 12px 14px; color: var(--muted);">Leave the game instance, wait 60 seconds on the Roblox client, and rejoin a fresh server.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Invalid Code&quot;</td>
+                <td style="padding: 12px 14px; color: var(--ink);">String case mismatch (e.g., typing &#39;october&#39; instead of exact uppercase &#39;OCTOBER&#39;).</td>
+                <td style="padding: 12px 14px; color: var(--muted);">Redemption string matching is strictly case-sensitive. Always input codes in uppercase exactly as published.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Hidden Character Error&quot;</td>
+                <td style="padding: 12px 14px; color: var(--ink);">Clipboard copy carrying invisible leading or trailing space characters (e.g. &#39; OCTOBER &#39;).</td>
+                <td style="padding: 12px 14px; color: var(--muted);">Manually type the letters or verify the cursor is positioned directly after the final letter before submitting.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Already Claimed&quot;</td>
+                <td style="padding: 12px 14px; color: var(--ink);">Code was previously redeemed on another character slot or prior run on this Roblox ID.</td>
+                <td style="padding: 12px 14px; color: var(--muted);">Promo codes are tied permanently to your Roblox UserID, not your individual character save file. Codes cannot be reused on permadeath restarts.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Outdated Server Version&quot;</td>
+                <td style="padding: 12px 14px; color: var(--ink);">Instance is running on a legacy server version deployed prior to the weekly code activation patch.</td>
+                <td style="padding: 12px 14px; color: var(--muted);">Check server age via Roblox console (F9). If the server uptime exceeds 24 hours, rejoin until matching the latest version.</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Merchant Dialogue Locked&quot;</td>
+                <td style="padding: 12px 14px; color: var(--ink);">Starter tutorial prologue dialog has not been finished with Village Elder.</td>
+                <td style="padding: 12px 14px; color: var(--muted);">Speak with the Village Elder at spawn and select your starting weapon before approaching the Goblin Merchant.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Currency & Resource Management Strategy -->
+      <section style="margin-bottom: 36px; background: #161022; border: 1px solid var(--line); border-radius: 10px; padding: 24px;">
+        <h2 id="currency-free-spins-resource-management" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">
+          Currency &amp; Free Spins Resource Management
+        </h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+          In a permadeath roguelike RPG, allocating promotional payouts strategically avoids wasted runs:
+        </p>
+
+        <ul style="color: var(--muted); font-size: 0.92rem; line-height: 1.7; padding-left: 20px; margin: 0;">
+          <li style="margin-bottom: 10px;">
+            <strong style="color: var(--ink);">Halloween Candy:</strong> Spend all candy at the event stall before the seasonal cycle concludes. Seasonal tokens do not transfer to general Gold currency.
+          </li>
+          <li style="margin-bottom: 10px;">
+            <strong style="color: var(--ink);">Race Spins:</strong> Rolling away from the default Human race should only be undertaken if you know your targeted Super Class archetype. If aiming for Mage evolutions, Nightborn and Elf provide critical Mana Regen. For heavy melee builds, Orc provides essential physical DR.
+          </li>
+          <li style="margin-bottom: 10px;">
+            <strong style="color: var(--ink);">Talent Spins:</strong> Do not burn talent spins immediately in Act 1. Talent rolls in the early village pool offer limited stat scaling. Reaching the Trainer&#39;s Shrine in Act 2 broadens the available talent seed table.
+          </li>
+          <li style="margin-bottom: 10px;">
+            <strong style="color: var(--ink);">Gold:</strong> Early gold is best conserved for purchasing 5x Minor Healing Potions prior to entering Act 1 Dungeon depths. Avoid vanity cosmetics until core survival gear is secured.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Cross-cluster linking -->
+      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+        <h2 id="related-guides-game-databases" style="font-size: 1.1rem; color: var(--ink); margin: 0 0 12px;">Related Guides &amp; Game Databases</h2>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="/codes/redeem/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Detailed Goblin Merchant Step-by-Step Guide
+          </a>
+          <a href="/tier-list/race-tier-list/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → Race Tier List &amp; Passive Drop Rates
+          </a>
+          <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            → 18 Super Class Evolution Tree
+          </a>
+        </div>
+      </section>
+          
       <!-- Frequently Asked Questions Accordion -->
       <FaqSection items={faqItems} />
     </article>
