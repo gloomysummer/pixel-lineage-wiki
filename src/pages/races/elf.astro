@@ -184,7 +184,7 @@ const faqItems = [
         </p>
 
         <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+          <table class="responsive-card-table class-milestone-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
             <thead>
               <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
                 <th style="padding: 10px 12px;">Level Milestone</th>
@@ -197,60 +197,60 @@ const faqItems = [
             </thead>
             <tbody>
               <tr style="border-bottom: 1px solid var(--line);">
-                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 1 (Novice)</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">12.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">22.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">12 SPD</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">5.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+                <td data-label="Level Milestone" style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 1 (Novice)</td>
+                <td data-label="Base Crit Rate" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">12.0%</td>
+                <td data-label="Elf Crit (+10%)" style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">22.0%</td>
+                <td data-label="Base Speed" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">12 SPD</td>
+                <td data-label="Dodge Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">5.0%</td>
+                <td data-label="Projectile Velocity" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--line);">
-                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 5 (Apprentice)</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">14.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">24.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">19 SPD</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">7.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+                <td data-label="Level Milestone" style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 5 (Apprentice)</td>
+                <td data-label="Base Crit Rate" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">14.0%</td>
+                <td data-label="Elf Crit (+10%)" style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">24.0%</td>
+                <td data-label="Base Speed" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">19 SPD</td>
+                <td data-label="Dodge Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">7.0%</td>
+                <td data-label="Projectile Velocity" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--line);">
-                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 10 (Adept)</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">16.5%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">26.5%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">27 SPD</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">9.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+                <td data-label="Level Milestone" style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 10 (Adept)</td>
+                <td data-label="Base Crit Rate" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">16.5%</td>
+                <td data-label="Elf Crit (+10%)" style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">26.5%</td>
+                <td data-label="Base Speed" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">27 SPD</td>
+                <td data-label="Dodge Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">9.0%</td>
+                <td data-label="Projectile Velocity" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--line);">
-                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 15 (Super Class)</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">19.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">29.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">36 SPD</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">11.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+                <td data-label="Level Milestone" style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 15 (Super Class)</td>
+                <td data-label="Base Crit Rate" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">19.0%</td>
+                <td data-label="Elf Crit (+10%)" style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">29.0%</td>
+                <td data-label="Base Speed" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">36 SPD</td>
+                <td data-label="Dodge Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">11.0%</td>
+                <td data-label="Projectile Velocity" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--line);">
-                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 20 (Master)</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">21.5%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">31.5%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">45 SPD</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">13.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+                <td data-label="Level Milestone" style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 20 (Master)</td>
+                <td data-label="Base Crit Rate" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">21.5%</td>
+                <td data-label="Elf Crit (+10%)" style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">31.5%</td>
+                <td data-label="Base Speed" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">45 SPD</td>
+                <td data-label="Dodge Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">13.0%</td>
+                <td data-label="Projectile Velocity" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--line);">
-                <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 25 (Ultra Class)</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">24.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">34.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">54 SPD</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">15.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+                <td data-label="Level Milestone" style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 25 (Ultra Class)</td>
+                <td data-label="Base Crit Rate" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">24.0%</td>
+                <td data-label="Elf Crit (+10%)" style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">34.0%</td>
+                <td data-label="Base Speed" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">54 SPD</td>
+                <td data-label="Dodge Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">15.0%</td>
+                <td data-label="Projectile Velocity" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
               </tr>
               <tr>
-                <td style="padding: 10px 12px; font-weight: 600; color: #22c55e;">Level 30 (Capstone)</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">26.5%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">36.5%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">63 SPD</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">17.0%</td>
-                <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
+                <td data-label="Level Milestone" style="padding: 10px 12px; font-weight: 600; color: #22c55e;">Level 30 (Capstone)</td>
+                <td data-label="Base Crit Rate" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">26.5%</td>
+                <td data-label="Elf Crit (+10%)" style="padding: 10px 12px; font-family: var(--font-mono); color: #22c55e;">36.5%</td>
+                <td data-label="Base Speed" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">63 SPD</td>
+                <td data-label="Dodge Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">17.0%</td>
+                <td data-label="Projectile Velocity" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+12.0%</td>
               </tr>
             </tbody>
           </table>

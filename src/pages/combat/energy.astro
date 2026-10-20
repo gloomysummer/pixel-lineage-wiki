@@ -112,7 +112,7 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
       <section style="margin-bottom: 40px;">
         <h2 id="action-costs-resource-allocation" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Action Costs & Resource Allocation</h2>
         <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
-          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+          <table class="responsive-card-table class-milestone-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
             <thead>
               <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
                 <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">Combat Action</th>
@@ -123,9 +123,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
             <tbody>
               {energyCosts.map((e) => (
                 <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                  <td style="padding: 14px 16px; font-weight: 700; color: #fff;">{e.action}</td>
-                  <td style="padding: 14px 16px; font-family: var(--font-mono); color: #34d399; font-weight: 700;">{e.cost}</td>
-                  <td style="padding: 14px 16px; color: var(--muted); font-size: 0.88rem;">{e.tacticalUse}</td>
+                  <td data-label="Combat Action" style="padding: 14px 16px; font-weight: 700; color: #fff;">{e.action}</td>
+                  <td data-label="Energy Cost" style="padding: 14px 16px; font-family: var(--font-mono); color: #34d399; font-weight: 700;">{e.cost}</td>
+                  <td data-label="Strategic Purpose" style="padding: 14px 16px; color: var(--muted); font-size: 0.88rem;">{e.tacticalUse}</td>
                 </tr>
               ))}
             </tbody>

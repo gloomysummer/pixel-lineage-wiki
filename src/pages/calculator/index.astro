@@ -310,7 +310,7 @@ const faqItems = [
       </p>
 
       <div style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+        <table class="responsive-card-table class-milestone-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
           <thead>
             <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
               <th style="padding: 10px 12px;">Boss Encounter</th>
@@ -323,36 +323,36 @@ const faqItems = [
           </thead>
           <tbody>
             <tr style="border-bottom: 1px solid var(--line);">
-              <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Goblin King (Act 1 Boss)</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">120 Physical</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">80.0 DMG</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">60.0 DMG</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">40.0 DMG</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">240+ EHP (2 Hits)</td>
+              <td data-label="Boss Encounter" style="padding: 10px 12px; font-weight: 600; color: #fff;">Goblin King (Act 1 Boss)</td>
+              <td data-label="Raw Boss Strike" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">120 Physical</td>
+              <td data-label="DMG at 30 DEF" style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">80.0 DMG</td>
+              <td data-label="DMG at 60 DEF" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">60.0 DMG</td>
+              <td data-label="DMG at 120 DEF" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">40.0 DMG</td>
+              <td data-label="Survival EHP Required" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">240+ EHP (2 Hits)</td>
             </tr>
             <tr style="border-bottom: 1px solid var(--line);">
-              <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Crypt Necromancer (Act 2 Boss)</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">210 Dark Cleave</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">140.0 DMG</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">105.0 DMG</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">70.0 DMG</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">520+ EHP (3 Hits)</td>
+              <td data-label="Boss Encounter" style="padding: 10px 12px; font-weight: 600; color: #fff;">Crypt Necromancer (Act 2 Boss)</td>
+              <td data-label="Raw Boss Strike" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">210 Dark Cleave</td>
+              <td data-label="DMG at 30 DEF" style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">140.0 DMG</td>
+              <td data-label="DMG at 60 DEF" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">105.0 DMG</td>
+              <td data-label="DMG at 120 DEF" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">70.0 DMG</td>
+              <td data-label="Survival EHP Required" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">520+ EHP (3 Hits)</td>
             </tr>
             <tr style="border-bottom: 1px solid var(--line);">
-              <td style="padding: 10px 12px; font-weight: 600; color: #fff;">Abyssal Colossus (Act 3 Boss)</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">360 Slam (20% True)</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">264.0 DMG</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">216.0 DMG</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">168.0 DMG</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">950+ EHP (3 Hits)</td>
+              <td data-label="Boss Encounter" style="padding: 10px 12px; font-weight: 600; color: #fff;">Abyssal Colossus (Act 3 Boss)</td>
+              <td data-label="Raw Boss Strike" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">360 Slam (20% True)</td>
+              <td data-label="DMG at 30 DEF" style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">264.0 DMG</td>
+              <td data-label="DMG at 60 DEF" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">216.0 DMG</td>
+              <td data-label="DMG at 120 DEF" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">168.0 DMG</td>
+              <td data-label="Survival EHP Required" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">950+ EHP (3 Hits)</td>
             </tr>
             <tr>
-              <td style="padding: 10px 12px; font-weight: 600; color: #f43f5e;">Torment Void Dragon (Raid IV)</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">580 Abyssal Breath</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">386.7 DMG</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">290.0 DMG</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">193.3 DMG</td>
-              <td style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">1,800+ EHP (Safe)</td>
+              <td data-label="Boss Encounter" style="padding: 10px 12px; font-weight: 600; color: #f43f5e;">Torment Void Dragon (Raid IV)</td>
+              <td data-label="Raw Boss Strike" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">580 Abyssal Breath</td>
+              <td data-label="DMG at 30 DEF" style="padding: 10px 12px; font-family: var(--font-mono); color: #e2e8f0;">386.7 DMG</td>
+              <td data-label="DMG at 60 DEF" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">290.0 DMG</td>
+              <td data-label="DMG at 120 DEF" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">193.3 DMG</td>
+              <td data-label="Survival EHP Required" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">1,800+ EHP (Safe)</td>
             </tr>
           </tbody>
         </table>

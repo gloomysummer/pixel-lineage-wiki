@@ -28,7 +28,7 @@ const { band, pillClass, title, description, weapons } = Astro.props;
 
     {weapons.length > 0 ? (
       <div class="table-responsive">
-        <table class="data-table" style="margin: 0;">
+        <table class="data-table responsive-card-table class-milestone-table" style="margin: 0;">
           <thead>
             <tr>
               <th>Weapon</th>
@@ -43,29 +43,29 @@ const { band, pillClass, title, description, weapons } = Astro.props;
           <tbody>
             {weapons.map((w) => (
               <tr>
-                <td>
+                <td data-label="Weapon">
                   <a href={`/weapons/${w.slug}/`} style="font-weight: 600; color: var(--ink); text-decoration: none;">
                     {w.name}
                   </a>
                 </td>
-                <td>
+                <td data-label="Rarity">
                   {w.rarity ? (
                     <span class="badge gold">{w.rarity}</span>
                   ) : (
                     <span style="font-size: 0.8rem; color: var(--muted);">Featured</span>
                   )}
                 </td>
-                <td>
+                <td data-label="Acquisition Route">
                   <span style="font-size: 0.88rem;">{w.acquisition.mode}</span>
                 </td>
-                <td>
+                <td data-label="Drop Rate">
                   {w.acquisition.dropRatePercent != null ? (
                     <strong>{w.acquisition.dropRatePercent}%</strong>
                   ) : (
                     <span style="color: var(--muted);">Standard</span>
                   )}
                 </td>
-                <td>
+                <td data-label="Pity Guarantee">
                   {w.acquisition.pity?.runs ? (
                     <span>{w.acquisition.pity.runs} Runs</span>
                   ) : w.rarityPitySpins != null ? (
@@ -74,12 +74,12 @@ const { band, pillClass, title, description, weapons } = Astro.props;
                     <span style="color: var(--muted);">Drop-only</span>
                   )}
                 </td>
-                <td>
+                <td data-label="AD Score">
                   <span style="font-family: var(--font-mono, monospace); font-weight: 700; color: var(--accent);">
                     {w.tierMetric.availabilityIndex}
                   </span>
                 </td>
-                <td>
+                <td data-label="Action">
                   <a href={`/weapons/${w.slug}/`} class="btn btn-secondary" style="font-size: 0.78rem; padding: 4px 10px;">
                     Dossier →
                   </a>

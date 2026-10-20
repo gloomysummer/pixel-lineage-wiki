@@ -138,7 +138,7 @@ const faqItems = [
         </p>
 
         <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+          <table class="responsive-card-table class-milestone-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
             <thead>
               <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
                 <th style="padding: 10px 12px;">Error Prompt</th>
@@ -149,28 +149,28 @@ const faqItems = [
             </thead>
             <tbody>
               <tr style="border-bottom: 1px solid var(--line);">
-                <td style="padding: 10px 12px; font-weight: 700; color: #f43f5e;">"Prerequisites Not Met"</td>
-                <td style="padding: 10px 12px; color: var(--muted);">Roblox Group 362755399 membership cache desync</td>
-                <td style="padding: 10px 12px; color: #f43f5e; font-weight: 600;">68% of cases</td>
-                <td style="padding: 10px 12px; color: #34d399;">Leave server, wait 30s, rejoin a fresh instance</td>
+                <td data-label="Error Prompt" style="padding: 10px 12px; font-weight: 700; color: #f43f5e;">"Prerequisites Not Met"</td>
+                <td data-label="Root Cause" style="padding: 10px 12px; color: var(--muted);">Roblox Group 362755399 membership cache desync</td>
+                <td data-label="Detection Frequency" style="padding: 10px 12px; color: #f43f5e; font-weight: 600;">68% of cases</td>
+                <td data-label="Verified Resolution" style="padding: 10px 12px; color: #34d399;">Leave server, wait 30s, rejoin a fresh instance</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--line);">
-                <td style="padding: 10px 12px; font-weight: 700; color: #ea580c;">"Code Does Not Exist"</td>
-                <td style="padding: 10px 12px; color: var(--muted);">Lowercase letters or accidental trailing space from copy-paste</td>
-                <td style="padding: 10px 12px; color: #ea580c; font-weight: 600;">22% of cases</td>
-                <td style="padding: 10px 12px; color: #34d399;">Type OCTOBER manually in all-caps without spaces</td>
+                <td data-label="Error Prompt" style="padding: 10px 12px; font-weight: 700; color: #ea580c;">"Code Does Not Exist"</td>
+                <td data-label="Root Cause" style="padding: 10px 12px; color: var(--muted);">Lowercase letters or accidental trailing space from copy-paste</td>
+                <td data-label="Detection Frequency" style="padding: 10px 12px; color: #ea580c; font-weight: 600;">22% of cases</td>
+                <td data-label="Verified Resolution" style="padding: 10px 12px; color: #34d399;">Type OCTOBER manually in all-caps without spaces</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--line);">
-                <td style="padding: 10px 12px; font-weight: 700; color: #eab308;">"Already Claimed on Account"</td>
-                <td style="padding: 10px 12px; color: var(--muted);">Code has already been redeemed on this Roblox User ID</td>
-                <td style="padding: 10px 12px; color: #eab308; font-weight: 600;">8% of cases</td>
-                <td style="padding: 10px 12px; color: #38bdf8;">Codes are 1-time per account; check inventory for spin tokens</td>
+                <td data-label="Error Prompt" style="padding: 10px 12px; font-weight: 700; color: #eab308;">"Already Claimed on Account"</td>
+                <td data-label="Root Cause" style="padding: 10px 12px; color: var(--muted);">Code has already been redeemed on this Roblox User ID</td>
+                <td data-label="Detection Frequency" style="padding: 10px 12px; color: #eab308; font-weight: 600;">8% of cases</td>
+                <td data-label="Verified Resolution" style="padding: 10px 12px; color: #38bdf8;">Codes are 1-time per account; check inventory for spin tokens</td>
               </tr>
               <tr>
-                <td style="padding: 10px 12px; font-weight: 700; color: #a855f7;">"Network Request Throttled"</td>
-                <td style="padding: 10px 12px; color: var(--muted);">Roblox HTTP 429 rate limit during high server load</td>
-                <td style="padding: 10px 12px; color: #a855f7; font-weight: 600;">2% of cases</td>
-                <td style="padding: 10px 12px; color: #34d399;">Wait 60 seconds without clicking dialogue; retry once</td>
+                <td data-label="Error Prompt" style="padding: 10px 12px; font-weight: 700; color: #a855f7;">"Network Request Throttled"</td>
+                <td data-label="Root Cause" style="padding: 10px 12px; color: var(--muted);">Roblox HTTP 429 rate limit during high server load</td>
+                <td data-label="Detection Frequency" style="padding: 10px 12px; color: #a855f7; font-weight: 600;">2% of cases</td>
+                <td data-label="Verified Resolution" style="padding: 10px 12px; color: #34d399;">Wait 60 seconds without clicking dialogue; retry once</td>
               </tr>
             </tbody>
           </table>

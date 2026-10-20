@@ -144,7 +144,7 @@ const faqItems = [
         <h2 id="verified-trait-drop-rate-matrix" style="font-size: 1.25rem; color: var(--ink); margin: 0;">Verified Trait Drop Rate Matrix</h2>
       </div>
       <div style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+        <table class="responsive-card-table class-milestone-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
           <thead>
             <tr style="border-bottom: 1px solid var(--line); background: #13101c;">
               <th style="padding: 12px 16px; color: var(--muted);">Trait Name</th>
@@ -156,16 +156,16 @@ const faqItems = [
           <tbody>
             {talents.map((t) => (
               <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                <td style="padding: 14px 16px; font-weight: 700; color: #f5f3ff;">{t.name}</td>
-                <td style="padding: 14px 16px;">
+                <td data-label="Trait Name" style="padding: 14px 16px; font-weight: 700; color: #f5f3ff;">{t.name}</td>
+                <td data-label="Tier" style="padding: 14px 16px;">
                   <span style={`background: rgba(255, 255, 255, 0.05); border: 1px solid ${t.color}; color: ${t.color}; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.8rem;`}>
                     {t.tier}
                   </span>
                 </td>
-                <td style="padding: 14px 16px; font-family: var(--font-mono); color: #c9a227; font-weight: 700;">
+                <td data-label="Drop Rate" style="padding: 14px 16px; font-family: var(--font-mono); color: #c9a227; font-weight: 700;">
                   {t.dropRate}
                 </td>
-                <td style="padding: 14px 16px; color: var(--muted); font-size: 0.85rem; line-height: 1.5;">
+                <td data-label="Mechanical Effect" style="padding: 14px 16px; color: var(--muted); font-size: 0.85rem; line-height: 1.5;">
                   {t.effect}
                 </td>
               </tr>

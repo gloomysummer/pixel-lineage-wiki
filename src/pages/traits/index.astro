@@ -207,7 +207,7 @@ const faqItems = [
     <section style="margin-bottom: 40px;">
       <h2 id="master-traits-probability-mechanics-table" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Master Traits Probability & Mechanics Table</h2>
       <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
-        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+        <table class="responsive-card-table class-milestone-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
           <thead>
             <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
               <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Trait Name</th>
@@ -220,21 +220,21 @@ const faqItems = [
           <tbody>
             {traitsData.map((t) => (
               <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                <td style="padding: 12px 14px; font-weight: 700; color: #fff;">
+                <td data-label="Trait Name" style="padding: 12px 14px; font-weight: 700; color: #fff;">
                   <span style={`color: ${t.color};`}>{t.name}</span>
                 </td>
-                <td style="padding: 12px 14px;">
+                <td data-label="Rarity" style="padding: 12px 14px;">
                   <span style={`background: rgba(255, 255, 255, 0.08); color: ${t.color}; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;`}>
                     {t.rarity}
                   </span>
                 </td>
-                <td style="padding: 12px 14px; font-family: var(--font-mono); color: #34d399; font-weight: 600;">
+                <td data-label="Drop Probability" style="padding: 12px 14px; font-family: var(--font-mono); color: #34d399; font-weight: 600;">
                   {t.dropRate}
                 </td>
-                <td style="padding: 12px 14px; color: var(--ink); font-size: 0.85rem; line-height: 1.4;">
+                <td data-label="Exact Skill Effects" style="padding: 12px 14px; color: var(--ink); font-size: 0.85rem; line-height: 1.4;">
                   {t.effects}
                 </td>
-                <td style="padding: 12px 14px; color: var(--muted); font-size: 0.82rem;">
+                <td data-label="Optimal Archetype" style="padding: 12px 14px; color: var(--muted); font-size: 0.82rem;">
                   {t.bestClasses}
                 </td>
               </tr>
@@ -331,7 +331,7 @@ const faqItems = [
       </p>
       
       <div style="overflow-x: auto; background: #0d0a14; border-radius: 6px; padding: 12px 16px; margin-bottom: 16px;">
-        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+        <table class="responsive-card-table class-milestone-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
           <thead>
             <tr style="border-bottom: 1px solid var(--line); color: var(--muted);">
               <th style="padding: 8px 10px;">Target Trait Rarity</th>
@@ -343,39 +343,39 @@ const faqItems = [
           </thead>
           <tbody>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #94a3b8;">
-              <td style="padding: 8px 10px;">Common (Survivor / Keen Eye)</td>
-              <td style="padding: 8px 10px;">22.0% - 30.0%</td>
-              <td style="padding: 8px 10px;">2 - 3 Spins</td>
-              <td style="padding: 8px 10px;">7 - 9 Spins</td>
-              <td style="padding: 8px 10px;">300 - 600 Gold</td>
+              <td data-label="Target Trait Rarity" style="padding: 8px 10px;">Common (Survivor / Keen Eye)</td>
+              <td data-label="Individual Drop Odds" style="padding: 8px 10px;">22.0% - 30.0%</td>
+              <td data-label="Expected Spins (50% Chance)" style="padding: 8px 10px;">2 - 3 Spins</td>
+              <td data-label="Expected Spins (90% Guarantee)" style="padding: 8px 10px;">7 - 9 Spins</td>
+              <td data-label="Estimated Gold Value" style="padding: 8px 10px;">300 - 600 Gold</td>
             </tr>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #22c55e;">
-              <td style="padding: 8px 10px;">Uncommon (Quick Study / Iron Soul)</td>
-              <td style="padding: 8px 10px;">14.0% - 18.0%</td>
-              <td style="padding: 8px 10px;">4 - 5 Spins</td>
-              <td style="padding: 8px 10px;">12 - 15 Spins</td>
-              <td style="padding: 8px 10px;">800 - 1,200 Gold</td>
+              <td data-label="Target Trait Rarity" style="padding: 8px 10px;">Uncommon (Quick Study / Iron Soul)</td>
+              <td data-label="Individual Drop Odds" style="padding: 8px 10px;">14.0% - 18.0%</td>
+              <td data-label="Expected Spins (50% Chance)" style="padding: 8px 10px;">4 - 5 Spins</td>
+              <td data-label="Expected Spins (90% Guarantee)" style="padding: 8px 10px;">12 - 15 Spins</td>
+              <td data-label="Estimated Gold Value" style="padding: 8px 10px;">800 - 1,200 Gold</td>
             </tr>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #38bdf8;">
-              <td style="padding: 8px 10px;">Rare (Arcane Spark / Fortune's Favor)</td>
-              <td style="padding: 8px 10px;">5.0% - 10.0%</td>
-              <td style="padding: 8px 10px;">7 - 14 Spins</td>
-              <td style="padding: 8px 10px;">22 - 45 Spins</td>
-              <td style="padding: 8px 10px;">2,500 - 4,000 Gold</td>
+              <td data-label="Target Trait Rarity" style="padding: 8px 10px;">Rare (Arcane Spark / Fortune's Favor)</td>
+              <td data-label="Individual Drop Odds" style="padding: 8px 10px;">5.0% - 10.0%</td>
+              <td data-label="Expected Spins (50% Chance)" style="padding: 8px 10px;">7 - 14 Spins</td>
+              <td data-label="Expected Spins (90% Guarantee)" style="padding: 8px 10px;">22 - 45 Spins</td>
+              <td data-label="Estimated Gold Value" style="padding: 8px 10px;">2,500 - 4,000 Gold</td>
             </tr>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #a855f7;">
-              <td style="padding: 8px 10px;">Epic (Bloodthirst)</td>
-              <td style="padding: 8px 10px;">3.5%</td>
-              <td style="padding: 8px 10px;">20 Spins</td>
-              <td style="padding: 8px 10px;">65 Spins</td>
-              <td style="padding: 8px 10px;">6,000 Gold</td>
+              <td data-label="Target Trait Rarity" style="padding: 8px 10px;">Epic (Bloodthirst)</td>
+              <td data-label="Individual Drop Odds" style="padding: 8px 10px;">3.5%</td>
+              <td data-label="Expected Spins (50% Chance)" style="padding: 8px 10px;">20 Spins</td>
+              <td data-label="Expected Spins (90% Guarantee)" style="padding: 8px 10px;">65 Spins</td>
+              <td data-label="Estimated Gold Value" style="padding: 8px 10px;">6,000 Gold</td>
             </tr>
             <tr style="color: #f43f5e;">
-              <td style="padding: 8px 10px;">Mythic (Prodigy)</td>
-              <td style="padding: 8px 10px;">0.5%</td>
-              <td style="padding: 8px 10px;">138 Spins</td>
-              <td style="padding: 8px 10px;">459 Spins</td>
-              <td style="padding: 8px 10px;">25,000+ Gold</td>
+              <td data-label="Target Trait Rarity" style="padding: 8px 10px;">Mythic (Prodigy)</td>
+              <td data-label="Individual Drop Odds" style="padding: 8px 10px;">0.5%</td>
+              <td data-label="Expected Spins (50% Chance)" style="padding: 8px 10px;">138 Spins</td>
+              <td data-label="Expected Spins (90% Guarantee)" style="padding: 8px 10px;">459 Spins</td>
+              <td data-label="Estimated Gold Value" style="padding: 8px 10px;">25,000+ Gold</td>
             </tr>
           </tbody>
         </table>

@@ -4517,42 +4517,77 @@ body {
    Ensures table.getBoundingClientRect().right <= innerWidth + 1.
    ============================================================ */
 @media (max-width: 640px) {
-  .class-milestone-table thead {
-    display: none;
+  .class-milestone-table thead,
+  .responsive-card-table thead,
+  table:has(thead th:nth-child(5)) thead,
+  table:has(td[data-label]) thead {
+    display: none !important;
   }
+
   .class-milestone-table,
   .class-milestone-table tbody,
-  .class-milestone-table tr {
-    display: block;
+  .class-milestone-table tr,
+  .responsive-card-table,
+  .responsive-card-table tbody,
+  .responsive-card-table tr,
+  table:has(thead th:nth-child(5)),
+  table:has(thead th:nth-child(5)) tbody,
+  table:has(thead th:nth-child(5)) tr,
+  table:has(td[data-label]),
+  table:has(td[data-label]) tbody,
+  table:has(td[data-label]) tr {
+    display: block !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
   }
-  .class-milestone-table tr {
-    background: #161022;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    margin-bottom: 14px;
-    padding: 12px 14px;
+
+  .class-milestone-table tr,
+  .responsive-card-table tr,
+  table:has(thead th:nth-child(5)) tr,
+  table:has(td[data-label]) tr {
+    background: #161022 !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 8px !important;
+    margin-bottom: 14px !important;
+    padding: 12px 14px !important;
   }
-  .class-milestone-table td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+  .class-milestone-table td,
+  .responsive-card-table td,
+  table:has(thead th:nth-child(5)) td,
+  table:has(td[data-label]) td {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     padding: 8px 0 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    font-size: 0.88rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    font-size: 0.88rem !important;
+    min-height: 44px !important;
+    box-sizing: border-box !important;
+    word-break: break-word !important;
   }
-  .class-milestone-table td:last-child {
-    border-bottom: none;
+
+  .class-milestone-table td:last-child,
+  .responsive-card-table td:last-child,
+  table:has(thead th:nth-child(5)) td:last-child,
+  table:has(td[data-label]) td:last-child {
+    border-bottom: none !important;
   }
-  .class-milestone-table td::before {
-    content: attr(data-label);
-    font-weight: 600;
-    color: var(--muted);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+
+  .class-milestone-table td::before,
+  .responsive-card-table td::before,
+  table:has(thead th:nth-child(5)) td::before,
+  table:has(td[data-label]) td::before {
+    content: attr(data-label) !important;
+    font-weight: 600 !important;
+    color: var(--muted) !important;
+    font-size: 0.8rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    margin-right: 12px !important;
+    flex-shrink: 0 !important;
+    display: block !important;
   }
 
   table {

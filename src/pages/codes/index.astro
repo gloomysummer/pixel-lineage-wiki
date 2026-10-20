@@ -215,7 +215,7 @@ const faqItems = [
           ✅ Verified Working Codes (3+ Independent Sources)
         </h2>
         <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
-          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+          <table class="responsive-card-table class-milestone-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
             <thead>
               <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
                 <th style="padding: 12px 14px; color: var(--muted); font-weight: 600; min-width: 120px;">Code</th>
@@ -227,12 +227,12 @@ const faqItems = [
             <tbody>
               {verifiedCodes.map((c) => (
                 <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                  <td style="padding: 14px 14px; font-family: var(--font-mono); font-weight: 700; color: #34d399; font-size: 1rem;">
+                  <td data-label="Code" style="padding: 14px 14px; font-family: var(--font-mono); font-weight: 700; color: #34d399; font-size: 1rem;">
                     {c.code}
                   </td>
-                  <td style="padding: 14px 14px; color: #f5f3ff; font-weight: 600;">{c.rewards}</td>
-                  <td style="padding: 14px 14px; color: var(--muted); font-size: 0.82rem;">{c.requirements}</td>
-                  <td style="padding: 14px 14px; color: #c9a227; font-size: 0.82rem; line-height: 1.4;">
+                  <td data-label="Rewards Breakdown" style="padding: 14px 14px; color: #f5f3ff; font-weight: 600;">{c.rewards}</td>
+                  <td data-label="Requirements" style="padding: 14px 14px; color: var(--muted); font-size: 0.82rem;">{c.requirements}</td>
+                  <td data-label="Source & Corroboration" style="padding: 14px 14px; color: #c9a227; font-size: 0.82rem; line-height: 1.4;">
                     {c.source}
                   </td>
                 </tr>
@@ -248,7 +248,7 @@ const faqItems = [
           ⚠️ Reported Working Codes (2 Sources — Subject to Server Expiry)
         </h2>
         <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
-          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+          <table class="responsive-card-table class-milestone-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
             <thead>
               <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
                 <th style="padding: 12px 14px; color: var(--muted); font-weight: 600; min-width: 120px;">Code</th>
@@ -260,12 +260,12 @@ const faqItems = [
             <tbody>
               {reportedCodes.map((c) => (
                 <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                  <td style="padding: 14px 14px; font-family: var(--font-mono); font-weight: 700; color: #c9a227; font-size: 1rem;">
+                  <td data-label="Code" style="padding: 14px 14px; font-family: var(--font-mono); font-weight: 700; color: #c9a227; font-size: 1rem;">
                     {c.code}
                   </td>
-                  <td style="padding: 14px 14px; color: #f5f3ff;">{c.rewards}</td>
-                  <td style="padding: 14px 14px; color: var(--muted); font-size: 0.82rem;">{c.requirements}</td>
-                  <td style="padding: 14px 14px; color: var(--muted); font-size: 0.82rem; line-height: 1.4;">
+                  <td data-label="Reported Rewards" style="padding: 14px 14px; color: #f5f3ff;">{c.rewards}</td>
+                  <td data-label="Requirements" style="padding: 14px 14px; color: var(--muted); font-size: 0.82rem;">{c.requirements}</td>
+                  <td data-label="Source Status" style="padding: 14px 14px; color: var(--muted); font-size: 0.82rem; line-height: 1.4;">
                     {c.source} <br/><span style="color: #c9a227;">({c.statusNote})</span>
                   </td>
                 </tr>
@@ -284,7 +284,7 @@ const faqItems = [
           The following codes appear in select community trackers but have conflicting reports or lack multi-source corroboration. Enter these with the expectation that the Goblin Merchant may reject them:
         </p>
         <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
-          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+          <table class="responsive-card-table class-milestone-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
             <thead>
               <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
                 <th style="padding: 12px 14px; color: var(--muted); font-weight: 600; min-width: 120px;">Code</th>
@@ -295,11 +295,11 @@ const faqItems = [
             <tbody>
               {conflictingCodes.map((c) => (
                 <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                  <td style="padding: 12px 14px; font-family: var(--font-mono); font-weight: 600; color: #a855f7;">
+                  <td data-label="Code" style="padding: 12px 14px; font-family: var(--font-mono); font-weight: 600; color: #a855f7;">
                     {c.code}
                   </td>
-                  <td style="padding: 12px 14px; color: var(--muted);">{c.rewards}</td>
-                  <td style="padding: 12px 14px; color: var(--muted); font-size: 0.82rem; line-height: 1.45;">
+                  <td data-label="Reported Rewards" style="padding: 12px 14px; color: var(--muted);">{c.rewards}</td>
+                  <td data-label="Conflict & Corroboration Detail" style="padding: 12px 14px; color: var(--muted); font-size: 0.82rem; line-height: 1.45;">
                     {c.conflictDetail}
                   </td>
                 </tr>
@@ -318,7 +318,7 @@ const faqItems = [
           These promotional phrases have expired and will trigger an immediate "Expired Code" or "Invalid Code" error at the Goblin Merchant:
         </p>
         <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
-          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+          <table class="responsive-card-table class-milestone-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
             <thead>
               <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
                 <th style="padding: 12px 14px; color: var(--muted); font-weight: 600; min-width: 120px;">Code</th>
@@ -329,11 +329,11 @@ const faqItems = [
             <tbody>
               {expiredCodes.map((c) => (
                 <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); opacity: 0.75;">
-                  <td style="padding: 12px 14px; font-family: var(--font-mono); text-decoration: line-through; color: #f43f5e;">
+                  <td data-label="Code" style="padding: 12px 14px; font-family: var(--font-mono); text-decoration: line-through; color: #f43f5e;">
                     {c.code}
                   </td>
-                  <td style="padding: 12px 14px; color: var(--muted); font-size: 0.82rem;">{c.source}</td>
-                  <td style="padding: 12px 14px; color: var(--muted); font-size: 0.82rem;">{c.reason}</td>
+                  <td data-label="Consensus Source" style="padding: 12px 14px; color: var(--muted); font-size: 0.82rem;">{c.source}</td>
+                  <td data-label="Historical Deactivation Context" style="padding: 12px 14px; color: var(--muted); font-size: 0.82rem;">{c.reason}</td>
                 </tr>
               ))}
             </tbody>
@@ -421,7 +421,7 @@ const faqItems = [
         </p>
 
         <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+          <table class="responsive-card-table class-milestone-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
             <thead>
               <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
                 <th style="padding: 12px 14px; color: var(--muted); font-weight: 600;">Error Message / Symptom</th>
@@ -431,34 +431,34 @@ const faqItems = [
             </thead>
             <tbody>
               <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Group Not Joined&quot;</td>
-                <td style="padding: 12px 14px; color: var(--ink);">Roblox API caching latency between group membership registration and live game server state.</td>
-                <td style="padding: 12px 14px; color: var(--muted);">Leave the game instance, wait 60 seconds on the Roblox client, and rejoin a fresh server.</td>
+                <td data-label="Error Message / Symptom" style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Group Not Joined&quot;</td>
+                <td data-label="Root Cause" style="padding: 12px 14px; color: var(--ink);">Roblox API caching latency between group membership registration and live game server state.</td>
+                <td data-label="Prescribed Resolution" style="padding: 12px 14px; color: var(--muted);">Leave the game instance, wait 60 seconds on the Roblox client, and rejoin a fresh server.</td>
               </tr>
               <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Invalid Code&quot;</td>
-                <td style="padding: 12px 14px; color: var(--ink);">String case mismatch (e.g., typing &#39;october&#39; instead of exact uppercase &#39;OCTOBER&#39;).</td>
-                <td style="padding: 12px 14px; color: var(--muted);">Redemption string matching is strictly case-sensitive. Always input codes in uppercase exactly as published.</td>
+                <td data-label="Error Message / Symptom" style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Invalid Code&quot;</td>
+                <td data-label="Root Cause" style="padding: 12px 14px; color: var(--ink);">String case mismatch (e.g., typing &#39;october&#39; instead of exact uppercase &#39;OCTOBER&#39;).</td>
+                <td data-label="Prescribed Resolution" style="padding: 12px 14px; color: var(--muted);">Redemption string matching is strictly case-sensitive. Always input codes in uppercase exactly as published.</td>
               </tr>
               <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Hidden Character Error&quot;</td>
-                <td style="padding: 12px 14px; color: var(--ink);">Clipboard copy carrying invisible leading or trailing space characters (e.g. &#39; OCTOBER &#39;).</td>
-                <td style="padding: 12px 14px; color: var(--muted);">Manually type the letters or verify the cursor is positioned directly after the final letter before submitting.</td>
+                <td data-label="Error Message / Symptom" style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Hidden Character Error&quot;</td>
+                <td data-label="Root Cause" style="padding: 12px 14px; color: var(--ink);">Clipboard copy carrying invisible leading or trailing space characters (e.g. &#39; OCTOBER &#39;).</td>
+                <td data-label="Prescribed Resolution" style="padding: 12px 14px; color: var(--muted);">Manually type the letters or verify the cursor is positioned directly after the final letter before submitting.</td>
               </tr>
               <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Already Claimed&quot;</td>
-                <td style="padding: 12px 14px; color: var(--ink);">Code was previously redeemed on another character slot or prior run on this Roblox ID.</td>
-                <td style="padding: 12px 14px; color: var(--muted);">Promo codes are tied permanently to your Roblox UserID, not your individual character save file. Codes cannot be reused on permadeath restarts.</td>
+                <td data-label="Error Message / Symptom" style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Already Claimed&quot;</td>
+                <td data-label="Root Cause" style="padding: 12px 14px; color: var(--ink);">Code was previously redeemed on another character slot or prior run on this Roblox ID.</td>
+                <td data-label="Prescribed Resolution" style="padding: 12px 14px; color: var(--muted);">Promo codes are tied permanently to your Roblox UserID, not your individual character save file. Codes cannot be reused on permadeath restarts.</td>
               </tr>
               <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Outdated Server Version&quot;</td>
-                <td style="padding: 12px 14px; color: var(--ink);">Instance is running on a legacy server version deployed prior to the weekly code activation patch.</td>
-                <td style="padding: 12px 14px; color: var(--muted);">Check server age via Roblox console (F9). If the server uptime exceeds 24 hours, rejoin until matching the latest version.</td>
+                <td data-label="Error Message / Symptom" style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Outdated Server Version&quot;</td>
+                <td data-label="Root Cause" style="padding: 12px 14px; color: var(--ink);">Instance is running on a legacy server version deployed prior to the weekly code activation patch.</td>
+                <td data-label="Prescribed Resolution" style="padding: 12px 14px; color: var(--muted);">Check server age via Roblox console (F9). If the server uptime exceeds 24 hours, rejoin until matching the latest version.</td>
               </tr>
               <tr>
-                <td style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Merchant Dialogue Locked&quot;</td>
-                <td style="padding: 12px 14px; color: var(--ink);">Starter tutorial prologue dialog has not been finished with Village Elder.</td>
-                <td style="padding: 12px 14px; color: var(--muted);">Speak with the Village Elder at spawn and select your starting weapon before approaching the Goblin Merchant.</td>
+                <td data-label="Error Message / Symptom" style="padding: 12px 14px; color: #f43f5e; font-family: var(--font-mono);">&quot;Merchant Dialogue Locked&quot;</td>
+                <td data-label="Root Cause" style="padding: 12px 14px; color: var(--ink);">Starter tutorial prologue dialog has not been finished with Village Elder.</td>
+                <td data-label="Prescribed Resolution" style="padding: 12px 14px; color: var(--muted);">Speak with the Village Elder at spawn and select your starting weapon before approaching the Goblin Merchant.</td>
               </tr>
             </tbody>
           </table>

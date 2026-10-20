@@ -205,7 +205,7 @@ const jsonLd = [
       </p>
       
       <div style="overflow-x: auto; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
-        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+        <table class="responsive-card-table class-milestone-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
           <thead>
             <tr style="border-bottom: 1px solid var(--line); background: #1d152c;">
               <th style="padding: 14px 16px; color: var(--muted); font-weight: 600;">Class</th>
@@ -222,19 +222,19 @@ const jsonLd = [
           <tbody>
             {classes.map((c) => (
               <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                <td style="padding: 14px 16px; font-weight: 700; color: #fff;">
+                <td data-label="Class" style="padding: 14px 16px; font-weight: 700; color: #fff;">
                   <a href={`/classes/${c.slug}/`} style={`color: ${c.color}; text-decoration: none;`}>
                     {c.name}
                   </a>
                 </td>
-                <td style="padding: 14px 16px; color: var(--muted);">{c.role}</td>
-                <td style="padding: 14px 16px; color: #34d399; font-weight: 600;">{c.stats.hp}</td>
-                <td style="padding: 14px 16px; color: #f43f5e; font-weight: 600;">{c.stats.atk}</td>
-                <td style="padding: 14px 16px; color: #38bdf8; font-weight: 600;">{c.stats.def}</td>
-                <td style="padding: 14px 16px; color: #a855f7; font-weight: 600;">{c.stats.mag}</td>
-                <td style="padding: 14px 16px; color: #eab308; font-weight: 600;">{c.stats.spd}</td>
-                <td style="padding: 14px 16px; color: var(--muted);">{c.stats.crit}</td>
-                <td style="padding: 14px 16px; color: var(--muted);">{c.stats.dodge}</td>
+                <td data-label="Role" style="padding: 14px 16px; color: var(--muted);">{c.role}</td>
+                <td data-label="HP" style="padding: 14px 16px; color: #34d399; font-weight: 600;">{c.stats.hp}</td>
+                <td data-label="ATK" style="padding: 14px 16px; color: #f43f5e; font-weight: 600;">{c.stats.atk}</td>
+                <td data-label="DEF" style="padding: 14px 16px; color: #38bdf8; font-weight: 600;">{c.stats.def}</td>
+                <td data-label="MAG" style="padding: 14px 16px; color: #a855f7; font-weight: 600;">{c.stats.mag}</td>
+                <td data-label="SPD" style="padding: 14px 16px; color: #eab308; font-weight: 600;">{c.stats.spd}</td>
+                <td data-label="Crit %" style="padding: 14px 16px; color: var(--muted);">{c.stats.crit}</td>
+                <td data-label="Dodge %" style="padding: 14px 16px; color: var(--muted);">{c.stats.dodge}</td>
               </tr>
             ))}
           </tbody>
