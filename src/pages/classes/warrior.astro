@@ -102,7 +102,6 @@ const faqItems = [
         <!-- Mobile Table of Contents (≤980px) -->
         <MobileToc tocHeadings={tocHeadings} />
 
-        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
         <!-- Hero Image Banner -->
         <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
@@ -129,6 +128,10 @@ const faqItems = [
           description="Comprehensive Pixel Lineage beginner guide and live combat walkthrough showcasing Warrior frontline rotations and dungeon survival."
         />
       </section>
+
+        <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
+             对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
       <!-- Combat Philosophy & Archetype Overview -->
       <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #ea580c; border-radius: 8px; padding: 22px; margin-bottom: 36px;">

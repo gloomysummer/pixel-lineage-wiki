@@ -145,12 +145,15 @@ const faqItems = [
         <!-- Mobile Table of Contents (≤980px) -->
         <MobileToc tocHeadings={tocHeadings} />
 
-        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
     <!-- Race Tiers -->
     <div style="display: flex; flex-direction: column; gap: 32px; margin-bottom: 40px;">
       {raceTiers.map((rt) => (
-        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;">
+        
+
+        <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
+             对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" /><section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;">
           <div style={`background: #1d152c; border-left: 6px solid ${rt.color}; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between;`}>
             <span style={`font-size: 1.4rem; font-weight: 800; color: ${rt.color};`}>
               {rt.tier} TIER — {rt.tier === "S" ? "Game-Altering Passives" : rt.tier === "A" ? "Strong Competitive Viability" : "Solid Baseline"}

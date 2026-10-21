@@ -369,10 +369,13 @@ const jsonLd = [
         <!-- Mobile Table of Contents (≤980px) -->
         <MobileToc tocHeadings={tocHeadings} />
 
-        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
         <!-- Section 1: 6+1 Class Comparison Table -->
-        <section id="class-comparison-matrix" style="margin-bottom: 40px;">
+        
+
+        <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
+             对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" /><section id="class-comparison-matrix" style="margin-bottom: 40px;">
           <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 16px;">
             6+1 Base Class Comparison Matrix
           </h2>

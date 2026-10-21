@@ -100,11 +100,14 @@ const faqItems = [
         <!-- Mobile Table of Contents (≤980px) -->
         <MobileToc tocHeadings={tocHeadings} />
 
-        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+      
+
+        <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
+             对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" /><section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
         <h2 id="step-1-complete-account-requirements" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Step 1: Complete Account Requirements</h2>
         <p style="color: var(--muted); margin: 0 0 12px; font-size: 0.95rem;">
           Before launching Pixel Lineage on Roblox, perform these three prerequisites on your web browser or Roblox app:

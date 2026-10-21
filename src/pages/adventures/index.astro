@@ -84,12 +84,15 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         <!-- Mobile Table of Contents (≤980px) -->
         <MobileToc tocHeadings={tocHeadings} />
 
-        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
     <!-- Acts Breakdown -->
     <div style="display: flex; flex-direction: column; gap: 24px; margin-bottom: 40px;">
       {acts.map((a) => (
-        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+        
+
+        <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
+             对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" /><section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
           <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
             <h2 id="a-act" style="margin: 0; font-size: 1.25rem; color: #f59e0b;">{a.act}</h2>
             <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--muted); background: #1d152c; padding: 2px 6px; border-radius: 3px;">

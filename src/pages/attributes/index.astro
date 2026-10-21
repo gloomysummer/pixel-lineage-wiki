@@ -202,10 +202,13 @@ const faqItems = [
         </header>
 
         <!-- 广告位 1（300x250）：H1 与内部链接卡之后、正文首节之前 -->
-        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
         <!-- Section 1: Overview -->
-        <section id="overview" style="margin-bottom: 40px;">
+        
+
+        <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
+             对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" /><section id="overview" style="margin-bottom: 40px;">
           <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 16px;">
             Overview & Attribute Architecture
           </h2>

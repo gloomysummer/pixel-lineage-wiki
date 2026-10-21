@@ -136,7 +136,6 @@ const jsonLd = [
         <!-- Mobile Table of Contents (≤980px) -->
         <MobileToc tocHeadings={tocHeadings} />
 
-        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
     <!-- Sub-navigation for Tier List Cluster -->
     <div style="display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;">
@@ -205,6 +204,10 @@ const jsonLd = [
             description="Verified breakdown of S-tier classes, top bloodline synergies, and high-Torment progression rankings."
           />
         </section>
+
+        <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
+             对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
 <section style="margin-bottom: 40px;">
       <h2 id="comprehensive-meta-tier-justifications-multipliers" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Comprehensive Meta Tier Justifications & Multipliers</h2>

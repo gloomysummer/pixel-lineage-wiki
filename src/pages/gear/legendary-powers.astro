@@ -90,12 +90,15 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         <!-- Mobile Table of Contents (≤980px) -->
         <MobileToc tocHeadings={tocHeadings} />
 
-        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <!-- Summary Callout -->
-      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+      
+
+        <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
+             对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" /><section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
         <h2 id="how-legendary-equipment-modifiers-work" style="margin: 0 0 8px; font-size: 1.2rem; color: #c9a227;">How Legendary Equipment Modifiers Work</h2>
         <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">
           Unlike standard rare gear that only provides flat numerical attributes, Legendary Tier items grant unique passive combat mechanics. These powers can trigger counter-attacks, bypass boss defenses, or restore whole health percentages upon hitting turn thresholds.

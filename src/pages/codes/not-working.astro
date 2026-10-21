@@ -85,11 +85,14 @@ const faqItems = [
         <!-- Mobile Table of Contents (≤980px) -->
         <MobileToc tocHeadings={tocHeadings} />
 
-        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
-      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+      
+
+        <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
+             对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" /><section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
         <h2 id="most-common-culprit-roblox-group-api-cache-delay" style="margin: 0 0 8px; font-size: 1.2rem; color: #f43f5e;">Most Common Culprit: Roblox Group API Cache Delay</h2>
         <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">
           The #1 reason codes fail in Pixel Lineage is Roblox API caching. When you join Group <strong>362755399</strong>, existing live game servers take up to 2 minutes to recognize your new membership status. Rejoining a fresh server instantly forces a re-check.
