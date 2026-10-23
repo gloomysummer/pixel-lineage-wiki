@@ -375,7 +375,30 @@ const jsonLd = [
 
         <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
              对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
-        <AdSlot zone="banner-300x250" label="Sponsored Intel" /><section id="class-comparison-matrix" style="margin-bottom: 40px;">
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <!-- Section 0: Class Tier List at a Glance — direct answer to the `pixel lineage class tier list` query -->
+        <section id="class-tier-list-at-a-glance" style="margin-bottom: 40px;">
+          <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 16px;">
+            Pixel Lineage Class Tier List at a Glance (S+ to C)
+          </h2>
+          <p style="color: var(--muted); font-size: 0.92rem; margin-bottom: 16px;">
+            Every Super Class specialization ranked from the S+ meta pinnacle down to C-tier picks whose sister branches outperform them:
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
+            {tierData.map((t) => (
+              <div style={`display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; background: var(--panel); border: 1px solid var(--line); border-left: 4px solid ${t.color}; border-radius: 6px; padding: 10px 14px;`}>
+                <span style={`font-family: var(--font-mono); font-size: 1.05rem; font-weight: 800; color: ${t.color}; min-width: 44px;`}>{t.tier}</span>
+                <span style="font-weight: 700; color: var(--ink); font-size: 0.92rem;">{t.classes.map((c) => `${c.name} (${c.base})`).join(", ")}</span>
+              </div>
+            ))}
+          </div>
+          <p style="color: var(--muted); font-size: 0.92rem; margin: 0;">
+            The why behind every placement — tactical rationale plus per-class verdicts — is covered in the tier breakdown below.
+          </p>
+        </section>
+
+        <section id="class-comparison-matrix" style="margin-bottom: 40px;">
           <h2 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 16px;">
             6+1 Base Class Comparison Matrix
           </h2>
