@@ -10,47 +10,13 @@ import { extractTocFromAstroUrl } from "../../utils/toc";
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
 
-const classTiers = [
-  {
-    tier: "S-Tier",
-    color: "#f43f5e",
-    classes: ["Hexer (Mage)", "Berserk (Warrior)", "Assassin (Thief)"],
-    summary: "Dominant meta choices with supreme damage scalings, turn-advantage mechanics, or complete damage denial.",
-    scalingDetail: "Hexer applies 2.4x MAG multiplier decay curses while bypassing 40% enemy magic defense. Berserk scales directly with missing HP (+2% ATK per 1% lost HP), enabling sub-5 turn boss deletions. Assassin guarantees 100% critical strikes when attacking from Stealth with 2.8x crit damage.",
-    soloRating: "10/10",
-    raidRating: "9.5/10",
-    tormentViability: "Essential",
-  },
-  {
-    tier: "A-Tier",
-    color: "#a855f7",
-    classes: ["Cleric (Mage)", "Sentinel (Warrior)", "Brawler (Fist)", "Troubadour (Bard)"],
-    summary: "High-consistency pillars with excellent team utility, defensive buffs, or sustained boss damage.",
-    scalingDetail: "Cleric provides team-wide 18% max HP rejuvenation and cleanses Torment bleed stacks. Sentinel features 65% passive physical DR and unbreakable taunts. Brawler delivers 6-hit combo chains generating 15% armor shred per hit.",
-    soloRating: "8.5/10",
-    raidRating: "10/10",
-    tormentViability: "High",
-  },
-  {
-    tier: "B-Tier",
-    color: "#38bdf8",
-    classes: ["Sniper (Archer)", "Monk (Fist)", "Summoner (Mage)", "Ranger (Archer)"],
-    summary: "Viable with specialized gear setups, but suffer from high mana costs or turn setup requirements.",
-    scalingDetail: "Sniper boasts huge 3.0x single-target burst from range, but suffers a 2-turn reload recovery window vulnerable to mob swarms. Summoner minions scale off 45% base MAG, making them fragile in high-tier Act 3 AoE encounters.",
-    soloRating: "7.5/10",
-    raidRating: "8.0/10",
-    tormentViability: "Moderate",
-  },
-  {
-    tier: "C-Tier",
-    color: "#94a3b8",
-    classes: ["Minstrel (Bard)", "Skirmisher (Archer)", "Trickster (Thief)"],
-    summary: "Underperforming kits requiring significant developer buffs or niche multiplayer gimmick compositions.",
-    scalingDetail: "Minstrel buffs lack offensive punch compared to Cleric heals. Trickster trap mechanics require enemies to walk into specific grid cells, rendering them useless against static dungeon bosses.",
-    soloRating: "5.0/10",
-    raidRating: "6.5/10",
-    tormentViability: "Low",
-  },
+// Compact tier summary — canonical per-class rationale lives on /tier-list/class-tier-list/
+const classTierSummary = [
+  { tier: "S+", color: "#ff0055", classes: ["Hexer (Mage)", "Sentinel (Warrior)", "Assassin (Thief)"] },
+  { tier: "S", color: "#f43f5e", classes: ["Oni (Fist)", "Cleric (Mage)", "Lancer (Spear)", "Deadeye (Archer)"] },
+  { tier: "A", color: "#a855f7", classes: ["Berserk (Warrior)", "Hoplite (Spear)", "Trickster (Thief)", "Troubadour (Bard)"] },
+  { tier: "B", color: "#38bdf8", classes: ["Greatsword (Warrior)", "Brawler (Fist)", "Minstrel (Bard)", "Summoner (Mage)", "Dragoon (Spear)"] },
+  { tier: "C", color: "#94a3b8", classes: ["Rogue (Thief)", "Corsair (Thief)", "Pianist (Bard)", "Ranger (Archer)"] },
 ];
 
 const synergyMatrix = [
@@ -210,39 +176,28 @@ const jsonLd = [
         <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
 <section style="margin-bottom: 40px;">
-      <h2 id="comprehensive-meta-tier-justifications-multipliers" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Comprehensive Meta Tier Justifications & Multipliers</h2>
-      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
-        In Pixel Lineage's turn-based roguelike combat, tier placements are not matters of aesthetic preference. Every classification is backed by mathematical damage multipliers, survivability cushions, and resource efficiency ratios:
+      <h2 id="comprehensive-meta-tier-justifications-multipliers" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Class Tier List at a Glance</h2>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+        Quick snapshot of where every Super Class specialization sits in the current meta. Full tier rationales, stat-scaling multipliers, and per-class verdicts live on the dedicated rankings page:
       </p>
 
-      <div style="display: flex; flex-direction: column; gap: 20px;">
-        {classTiers.map((t) => (
-          <div style={`background: #161022; border: 1px solid var(--line); border-left: 4px solid ${t.color}; border-radius: 8px; padding: 20px;`}>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <span style={`font-family: var(--font-mono); font-size: 1.3rem; font-weight: 800; color: ${t.color};`}>
-                  {t.tier}
-                </span>
-                <span style="font-size: 1rem; font-weight: 700; color: var(--ink);">
-                  {t.classes.join(" · ")}
-                </span>
-              </div>
-              <div style="display: flex; gap: 12px; font-size: 0.8rem; font-family: var(--font-mono);">
-                <span style="color: var(--muted);">Solo: <strong style="color: var(--ink);">{t.soloRating}</strong></span>
-                <span style="color: var(--muted);">Raid: <strong style="color: var(--ink);">{t.raidRating}</strong></span>
-                <span style="color: var(--muted);">Torment: <strong style="color: #34d399;">{t.tormentViability}</strong></span>
-              </div>
-            </div>
-
-            <p style="color: var(--ink); font-size: 0.95rem; font-weight: 500; margin: 0 0 10px;">
-              {t.summary}
-            </p>
-            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0; background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
-              <strong style="color: #c9a227;">Damage & Defense Scalings:</strong> {t.scalingDetail}
-            </p>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
+        {classTierSummary.map((t) => (
+          <div style={`display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; background: #161022; border: 1px solid var(--line); border-left: 4px solid ${t.color}; border-radius: 6px; padding: 10px 14px;`}>
+            <span style={`font-family: var(--font-mono); font-size: 1.05rem; font-weight: 800; color: ${t.color}; min-width: 40px;`}>
+              {t.tier}
+            </span>
+            <span style="font-size: 0.95rem; font-weight: 600; color: var(--ink);">
+              {t.classes.join(" · ")}
+            </span>
           </div>
         ))}
       </div>
+
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+        For the reasoning behind each placement — damage scalings, survivability ratings, and Torment viability — read the
+        <a href="/tier-list/class-tier-list/" style="color: var(--accent); font-weight: 600;">full S+ to C class rankings with tactical rationale</a>.
+      </p>
     </section>
 
     <!-- Meta Synergy Combinations Table -->
