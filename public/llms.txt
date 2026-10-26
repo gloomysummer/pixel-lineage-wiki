@@ -1,11 +1,14 @@
 # Pixel Lineage Wiki
 
-> The complete Pixel Lineage wiki: evidence-led guides, verified codes, and databases. Every claim carries its source.
+> The complete Pixel Lineage wiki: evidence-led guides, verified codes, class progression, and database systems. Every claim carries its source.
 
-## Guides
+## Guides & Meta
 
-- [How to Automate Flower Production](https://pixel-lineage.quest/guide/automate-flowers/): Wet seeds, planter boxes, and stable seed feedback loops.
+- [Pixel Lineage Class Tier List](https://pixel-lineage.quest/tier-list/class-tier-list/): Comprehensive ranking of all 6+1 base classes and 21 super classes with damage multipliers and solo viability.
+- [Pixel Lineage Tier List Hub](https://pixel-lineage.quest/tier-list/): Overview of class, race, and talent synergies with optimal Torment builds.
+- [Pixel Lineage Best Races](https://pixel-lineage.quest/races/best-races/): Racial tier rankings, passive bonuses, and roll probabilities.
+- [Pixel Lineage Attributes Guide](https://pixel-lineage.quest/attributes/): Stat scaling formulas, diminishing returns, and respec mechanics.
 
-## Codes
+## Codes & Rewards
 
-- [Pixel Lineage Codes (September 2026)](https://pixel-lineage.quest/codes/september-2026/): All working redeem codes with rewards and official sources.
+- [Pixel Lineage Active Codes](https://pixel-lineage.quest/codes/): All verified active working codes, rewards, and Goblin Merchant redemption guide.

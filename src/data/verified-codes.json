@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "fetchedAt": "2026-10-26T15:00:00Z",
+  "gameName": "Pixel Lineage",
+  "codes": [
+    {
+      "code": "OCTOBER",
+      "rewards": "25 Candy (Halloween Event Currency)",
+      "levelReq": "None",
+      "status": "active",
+      "firstSeen": "2026-10-01",
+      "lastVerified": "2026-10-26",
+      "sourceUrl": "https://www.roblox.com/games/126256942507957/Pixel-Lineage",
+      "sourceType": "T1_OFFICIAL_ROBLOX"
+    },
+    {
+      "code": "TORMENT",
+      "rewards": "1,000 Gold, 100 Knowledge, 3 Potions, 8 Race Spins, 8 Talent Spins",
+      "levelReq": "None",
+      "status": "active",
+      "firstSeen": "2026-10-05",
+      "lastVerified": "2026-10-26",
+      "sourceUrl": "https://www.rockpapershotgun.com/roblox-pixel-lineage-codes",
+      "sourceType": "T2_EDITORIAL_CORROBORATED"
+    },
+    {
+      "code": "TUTORIAL",
+      "rewards": "3 Race Spins, 3 Talent Spins",
+      "levelReq": "None",
+      "status": "active",
+      "firstSeen": "2026-10-01",
+      "lastVerified": "2026-10-26",
+      "sourceUrl": "https://www.rockpapershotgun.com/roblox-pixel-lineage-codes",
+      "sourceType": "T2_EDITORIAL_CORROBORATED"
+    },
+    {
+      "code": "0y0",
+      "rewards": "10 Race Spins, 10 Talent Spins, 1 Life Token",
+      "levelReq": "None",
+      "status": "active",
+      "firstSeen": "2026-10-18",
+      "lastVerified": "2026-10-26",
+      "sourceUrl": "https://www.youtube.com/watch?v=_Tx_aM0w1bE",
+      "sourceType": "T2_COMMUNITY_VERIFIED"
+    },
+    {
+      "code": "SLOOTH",
+      "rewards": "500 Gold, 75 Knowledge, 3 Potions, 3 Talent Spins",
+      "levelReq": "None",
+      "status": "unverified",
+      "firstSeen": "2026-10-19",
+      "lastVerified": "2026-10-26",
+      "sourceUrl": "https://www.destructoid.com/roblox-pixel-lineage-codes",
+      "sourceType": "T2_EDITORIAL_SINGLE"
+    },
+    {
+      "code": "LEGENDS",
+      "rewards": "2,500 Gold, 100 Knowledge, 5 Potions, 5 Race Spins, 5 Talent Spins",
+      "levelReq": "None",
+      "status": "unverified",
+      "firstSeen": "2026-10-14",
+      "lastVerified": "2026-10-26",
+      "sourceUrl": "https://www.rockpapershotgun.com/roblox-pixel-lineage-codes",
+      "sourceType": "T2_EDITORIAL_SINGLE"
+    },
+    {
+      "code": "SKYRON",
+      "rewards": "10 Race Rerolls, 10 Talent Spins",
+      "levelReq": "None",
+      "status": "unverified",
+      "firstSeen": "2026-10-19",
+      "lastVerified": "2026-10-26",
+      "sourceUrl": "https://www.destructoid.com/roblox-pixel-lineage-codes",
+      "sourceType": "T2_EDITORIAL_SINGLE"
+    },
+    {
+      "code": "ARENA",
+      "rewards": "1 Life, 15 Race Spins, 10 Talent Spins",
+      "levelReq": "None",
+      "status": "unverified",
+      "firstSeen": "2026-10-19",
+      "lastVerified": "2026-10-26",
+      "sourceUrl": "https://www.destructoid.com/roblox-pixel-lineage-codes",
+      "sourceType": "T2_EDITORIAL_SINGLE"
+    },
+    {
+      "code": "SAKURA",
+      "rewards": "10 Race Spins, 10 Talent Spins, 1 Life, 1 Renewal Crystal",
+      "levelReq": "None",
+      "status": "unverified",
+      "firstSeen": "2026-10-15",
+      "lastVerified": "2026-10-26",
+      "sourceUrl": "https://beebom.com/pixel-lineage-codes",
+      "sourceType": "T2_COMMUNITY_UNCONFIRMED"
+    },
+    {
+      "code": "COMMUNITY!",
+      "rewards": "5 Race Spins, 5 Talent Spins, 1 Life",
+      "levelReq": "None",
+      "status": "unverified",
+      "firstSeen": "2026-10-15",
+      "lastVerified": "2026-10-26",
+      "sourceUrl": "https://www.pockettactics.com/pixel-lineage-codes",
+      "sourceType": "T2_COMMUNITY_UNCONFIRMED"
+    },
+    {
+      "code": "EARLY",
+      "rewards": "Early Beta Milestone Rewards",
+      "levelReq": "None",
+      "status": "expired",
+      "firstSeen": "2026-10-01",
+      "lastVerified": "2026-10-26",
+      "sourceUrl": "https://www.destructoid.com/roblox-pixel-lineage-codes",
+      "sourceType": "T2_EDITORIAL_CONSENSUS"
+    },
+    {
+      "code": "THANKYOU",
+      "rewards": "Launch Celebration Rewards",
+      "levelReq": "None",
+      "status": "expired",
+      "firstSeen": "2026-10-01",
+      "lastVerified": "2026-10-26",
+      "sourceUrl": "https://www.destructoid.com/roblox-pixel-lineage-codes",
+      "sourceType": "T2_EDITORIAL_CONSENSUS"
+    }
+  ]
+}
