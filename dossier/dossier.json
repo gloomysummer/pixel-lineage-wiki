@@ -3,7 +3,7 @@
   "platform": "Roblox",
   "universeId": "10767928510",
   "placeId": "126256942507957",
-  "fetchedAt": "2026-10-26T15:15:58+00:00",
+  "fetchedAt": "2026-10-26T15:26:41+00:00",
   "metadata": {
     "name": "Pixel Lineage [🎃Spear Class + Dragon Race]",
     "namingNote": "游戏名随版本频繁改名，必须从 API name 字段动态读取，严禁写死",
@@ -17,10 +17,10 @@
     "officialDescription": "Inspired by a lot of games, mostly terraria, but enjoy. Game will be updated weekly.\n\nThis is a fast turn-based roguelike RPG game, it is not meant to be easy.\nBasic controls and information can be found in-game, you will find bugs and game breaking issues with the game in its earliest release.\n\nLike, Favorite and Join the group to redeem codes.\n\nCodes: \n\"OCTOBER\""
   },
   "liveStats": {
-    "fetchedAt": "2026-10-26T15:15:58+00:00",
-    "playing": 4091,
+    "fetchedAt": "2026-10-26T15:26:41+00:00",
+    "playing": 4006,
     "peak24h": null,
-    "visits": 21596413,
+    "visits": 21601826,
     "favoritedCount": 102737,
     "upVotes": 101634,
     "downVotes": 1164,
@@ -28,10 +28,10 @@
     "averageSessionMinutes": 13.5
   },
   "stats": {
-    "fetchedAt": "2026-10-26T15:15:58+00:00",
-    "playing": 4091,
+    "fetchedAt": "2026-10-26T15:26:41+00:00",
+    "playing": 4006,
     "peak24h": null,
-    "visits": 21596413,
+    "visits": 21601826,
     "favoritedCount": 102737,
     "upVotes": 101634,
     "downVotes": 1164,
