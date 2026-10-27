@@ -107,14 +107,30 @@ const classes = [
     bestTalents: "Eagle Eye, Critical Mastery",
     playstyleSummary: "Dominates mid-range encounters by picking off glass-cannon enemy units with piercing munitions while keeping safe distance from melee cleaves.",
   },
+  {
+    name: "Spear",
+    slug: "spear",
+    role: "Phalanx Guard & Row Cleave",
+    color: "#38bdf8",
+    superEvolutions: [
+      { name: "Lancer", role: "Piercing charge striker that hits front-and-back enemies simultaneously with 25% defense ignore." },
+      { name: "Hoplite", role: "Phalanx guardian providing solid multi-target damage reduction and frontline barrier stability." },
+      { name: "Dragoon", role: "Aerial diver that jumps out of turn order to evade attacks before crashing down for heavy AoE impact." },
+    ],
+    stats: { hp: 110, atk: 13, def: 10, mag: 5, spd: 10, crit: "6%", dodge: "5%" },
+    growthFocus: "+10 HP / +2.1 ATK / +1.6 DEF per level. Unlocks Piercing Thrust at Lv 3 and Phalanx Stance at Lv 9.",
+    bestRaces: "Orc (+12% ATK), Dullahan (+Poise Immunity)",
+    bestTalents: "Iron Soul, Bloodthirst",
+    playstyleSummary: "Bridges the tactical gap between Warrior and Fist, delivering exceptional row-piercing thrusts and durable defensive stances across dungeon waves.",
+  },
 ];
 
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Pixel Lineage Classes (October 2026)",
-    description: "Guide to all 6 base classes and 18 super class evolutions in Pixel Lineage on Roblox with complete starter attribute matrices and evolution guides.",
+    name: "Pixel Lineage Classes: 6+1 Archetypes & Stats",
+    description: "Guide to all 6+1 base classes and 21 super class evolutions in Pixel Lineage on Roblox with complete starter attribute matrices and evolution guides.",
     url: `${siteConfig.siteUrl}/classes/`,
   },
   {
@@ -129,8 +145,8 @@ const jsonLd = [
 ---
 
 <BaseLayout
-  title="Pixel Lineage Classes: 6 Archetypes & Stats"
-  description="Complete guide to all 6 base classes in Pixel Lineage: Lv 1 starter stat growths, evolution branches, combat roles, and Trainer's Shrine mechanics."
+  title="Pixel Lineage Classes: Starter Stats & Roles"
+  description="Complete Pixel Lineage classes guide: Lv 1 starter stats, 6+1 base archetypes, Spear class, 21 Super Class evolutions, and Trainer's Shrine progression."
   canonical="/classes/"
   jsonLd={jsonLd}
 >
@@ -144,14 +160,24 @@ const jsonLd = [
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; color: #a855f7; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
-        Core Combat Architecture · 6 Classes & 18 Evolutions
+        Core Combat Architecture · 6+1 Classes & 21 Evolutions
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
         Pixel Lineage Classes & Starter Stats
       </h1>
-      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
-        Detailed breakdown of all 6 starting character archetypes in Pixel Lineage on Roblox. In this permadeath roguelike RPG, your base class establishes your growth curve, turn initiative, and dictates your 3 permanent Super Class specialization options at the Trainer's Shrine.
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+        Detailed breakdown of all 6+1 starting character archetypes in Pixel Lineage on Roblox. In this permadeath roguelike RPG, your base class establishes your growth curve, turn initiative, and dictates your 3 permanent Super Class specialization options at the Trainer's Shrine.
       </p>
+
+      <!-- Direct Answer Summary Box -->
+      <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+        <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+          ⚡ Direct Answer · Class System Summary
+        </div>
+        <p style="margin: 0; font-size: 0.94rem; color: #f0eaf4; line-height: 1.6;">
+          Pixel Lineage features <strong>6+1 base classes</strong>: Warrior, Thief, Mage, Fist, Bard, Archer, and the newly added <strong>Spear</strong> class. Each base class advances into 3 permanent Super Classes (21 total evolutions) at the Trainer's Shrine in Act 2. Warrior (Sentinel) provides the most reliable beginner survivability, while Mage (Hexer) delivers unmatched boss-melting true damage in Torment mode.
+        </p>
+      </div>
     </header>
 
         <!-- Mobile Table of Contents (≤980px) -->

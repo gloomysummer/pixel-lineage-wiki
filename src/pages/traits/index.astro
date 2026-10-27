@@ -98,8 +98,8 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "Pixel Lineage Traits & Talents: Complete Drop Rates",
-    description: "Complete guide to Pixel Lineage traits and talents: exact drop rate percentages, roll mechanics, skill effect numbers, and optimal build combinations.",
+    headline: "Pixel Lineage Traits: Drop Rates & Best Talents",
+    description: "Complete Pixel Lineage traits and talents guide: drop rates from Survivor (30%) to Prodigy (0.5%), spin odds, exact skill effects, and top meta synergies.",
     url: `${siteConfig.siteUrl}/traits/`,
     datePublished: "2026-10-18T12:00:00+00:00",
     publisher: {
@@ -121,12 +121,16 @@ const jsonLd = [
 
 const faqItems = [
   {
+    "question": "What are the top three must-have talents in Pixel Lineage?",
+    "answer": "The top three must-have talents in Pixel Lineage are Prodigy (Mythic, +15% multi-stat scaling across all 7 attributes), Bloodthirst (Epic, 12% critical lifesteal for aggressive low-HP survival), and Fortune's Favor (Rare, +15% Critical Strike and loot multipliers). For early leveling, Survivor (30% drop rate) is essential insurance against boss one-shots."
+  },
+  {
     "question": "How many talent slots can a character equip simultaneously?",
-    "answer": "Characters can equip up to three active talent cards simultaneously. The first slot unlocks at Level 5, the second at Level 15, and the final talent slot unlocks upon achieving Lineage Rank 3 in Act 2 The Dungeon through shrine progression."
+    "answer": "Characters can equip up to two active talent cards simultaneously upon reaching Level 20. The first slot unlocks at Level 5, and the second unlocks at Level 20 through shrine progression, providing substantial stat multipliers in endgame dungeons."
   },
   {
     "question": "What is the rarest and most powerful talent card in Pixel Lineage?",
-    "answer": "Prodigy is the rarest and most impactful talent card, featuring a 1.5% drop probability from the Talent Reroll pool. It grants a permanent +1 bonus to all stat growth attributes on every level-up, creating unmatched late-game scaling across all archetypes."
+    "answer": "Prodigy is the rarest and most impactful talent card, featuring a 0.5% drop probability from the Talent Reroll pool. It grants +15% multi-stat scaling across all 7 core attributes (HP, ATK, DEF, MAG, SPD, Crit, Dodge) and unlocks an extra passive equipment slot, creating unmatched late-game scaling across all archetypes."
   },
   {
     "question": "Can talent cards be locked while rerolling other slots?",
@@ -141,8 +145,8 @@ const faqItems = [
 
 
 <BaseLayout
-  title="Pixel Lineage Traits: Drop Rates & Odds"
-  description="Complete guide to Pixel Lineage traits and talents: exact drop rate percentages, roll mechanics, skill effect numbers, and optimal build combinations."
+  title="Pixel Lineage Traits: Drop Rates & Best Talents"
+  description="Complete Pixel Lineage traits and talents guide: drop rates from Survivor (30%) to Prodigy (0.5%), spin odds, exact skill effects, and top meta synergies."
   canonical="/traits/"
   jsonLd={jsonLd}
 >
@@ -161,9 +165,19 @@ const faqItems = [
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
         Pixel Lineage Traits & Talents Drop Rate Table
       </h1>
-      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
         Authoritative reference for all character traits and passive talents in Pixel Lineage on Roblox. We detail exact drop rates, spin probabilities from Common to Mythic, precise skill effect formulas, and strategic reroll guidelines.
       </p>
+
+      <!-- Direct Answer Summary Box -->
+      <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+        <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+          ⚡ Direct Answer · Traits & Talents Summary
+        </div>
+        <p style="margin: 0; font-size: 0.94rem; color: #f0eaf4; line-height: 1.6;">
+          Traits (talents) in Pixel Lineage are passive character perks obtained via Talent Spins. Drop probabilities range from Common <strong>Survivor</strong> (30.0%) and <strong>Keen Eye</strong> (22.0%) to Rare <strong>Fortune's Favor</strong> (5.0%), Epic <strong>Bloodthirst</strong> (3.5%), and Mythic <strong>Prodigy</strong> (0.5%). Characters equip up to two active talent cards simultaneously at Level 20, providing crucial stat multipliers and survive-death buffers for Torment dungeon clears.
+        </p>
+      </div>
     </header>
 
         <!-- Mobile Table of Contents (≤980px) -->
