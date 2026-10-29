@@ -1,0 +1,302 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import FaqSection from "../../components/FaqSection.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import { siteConfig } from "../../config/site.config";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Roblox Nightborn Codes & Race Spin Guide",
+    description: "Verified Roblox Nightborn promo codes & spin guide. Learn how to get free Race Spins at the Goblin Merchant to roll the Legendary Nightborn race.",
+    url: `${siteConfig.siteUrl}/codes/roblox-nightborn-codes/`,
+    datePublished: "2026-10-29T00:00:00+00:00",
+    dateModified: "2026-10-29T00:00:00+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Codes", item: `${siteConfig.siteUrl}/codes/` },
+      { "@type": "ListItem", position: 3, name: "Roblox Nightborn Codes", item: `${siteConfig.siteUrl}/codes/roblox-nightborn-codes/` },
+    ],
+  },
+];
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+const faqItems = [
+  {
+    question: "Are there promo codes that grant the Nightborn race directly in Pixel Lineage?",
+    answer: "No. In Pixel Lineage on Roblox, there is no promo code that directly awards the Nightborn lineage. Instead, developers release general progression codes (such as TORMENT and TUTORIAL) that grant free Race Spins. Players bring these spins to the Goblin Merchant NPC to roll for the Legendary Nightborn race at a 2.0% drop probability."
+  },
+  {
+    question: "How many Race Spins do I need on average to roll Nightborn?",
+    answer: "Because Nightborn has a 2.0% roll chance in the Legendary tier, the statistical expectation is 50 Race Spins (1 / 0.02). With the 21 free Race Spins provided by currently active codes, players have an approximate 34.6% chance to roll Nightborn without spending any gold or Robux."
+  },
+  {
+    question: "What are the exact active codes that give free Race Spins right now?",
+    answer: "The active verified codes awarding free Race Spins are TORMENT (8 Race Spins, 8 Talent Spins, 1,000 Gold, 100 Knowledge, 3 Potions), 0y0 (10 Race Spins, 10 Talent Spins, 1 Life Token), and TUTORIAL (3 Race Spins, 3 Talent Spins). Together, these provide 21 instant Race Spins."
+  },
+  {
+    question: "Why is Nightborn rated S-tier for Mage and Hexer classes?",
+    answer: "Nightborn grants a constant +15% passive Mana Regeneration, +8% Dark Spell Damage, 15% critical lifesteal across all spells and attacks, and innate dark vision in unlit dungeons. This completely removes mana starvation bottlenecks for mana-heavy classes like Mage, Hexer, and Cleric."
+  },
+  {
+    question: "Where is the Goblin Merchant located for code redemption in Pixel Lineage?",
+    answer: "The Goblin Merchant NPC is located in the starting town courtyard at coordinates (X: 142, Y: 12, Z: -88), positioned between the Inn and the Auction House east of the spawn fountain. Interact with the merchant and select Redeem Promo Code to enter active phrases."
+  }
+];
+---
+
+<BaseLayout
+  title="Roblox Nightborn Codes: Spins & Odds Guide"
+  description="Verified Roblox Nightborn promo codes & spin guide. Learn how to get free Race Spins at the Goblin Merchant to roll the Legendary Nightborn race."
+  canonical="/codes/roblox-nightborn-codes/"
+  jsonLd={jsonLd}
+>
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/codes/" style="color: var(--accent); text-decoration: none;">Codes</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Roblox Nightborn Codes</span>
+    </nav>
+
+    <header style="margin-bottom: 32px;">
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+        Roblox Nightborn Codes & Race Spin Guide
+      </h1>
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
+        Empirical breakdown of active Roblox promo codes for securing the Legendary Nightborn race in Pixel Lineage, roll odds, and disambiguation.
+      </p>
+    </header>
+
+    <!-- Mobile Table of Contents (≤980px) -->
+    <MobileToc tocHeadings={tocHeadings} />
+
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+
+        <!-- Direct Answer / Quick Answer Box -->
+        <div style="background: rgba(52, 211, 153, 0.08); border-left: 4px solid #34d399; padding: 16px 20px; border-radius: 0 8px 8px 0; margin-bottom: 28px;">
+          <div style="font-size: 0.82rem; font-weight: 700; color: #34d399; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
+            Direct Answer: Active Codes & Spin Mechanics
+          </div>
+          <p style="color: #e2e8f0; font-size: 0.98rem; line-height: 1.6; margin: 0;">
+            There are no direct promo codes in Pixel Lineage that instantly grant the Legendary Nightborn race. Instead, active progression codes provide free Race Spins redeemable at the Goblin Merchant. Players use these spins to roll for Nightborn at a 2.0% probability. Below is the verified ledger of active spin codes and rolling probabilities.
+          </p>
+        </div>
+
+        <!-- High-dwell ad slot -->
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <!-- Disambiguation Section -->
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="disambiguation-pixel-lineage-vs-standalone-vampire-rpg" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">
+            Disambiguation: Pixel Lineage vs Standalone Vampire RPG
+          </h2>
+          <p style="color: var(--muted); margin: 0 0 14px; font-size: 0.95rem;">
+            When searching for <code>roblox nightborn codes</code>, players are typically looking for information related to one of two distinct Roblox game contexts:
+          </p>
+          <div style="display: grid; grid-template-columns: 1fr; gap: 14px;">
+            <div style="background: rgba(22, 16, 34, 0.8); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 6px; padding: 16px;">
+              <h3 id="context-1-pixel-lineage-nightborn-race" style="font-size: 1.05rem; color: #a855f7; margin: 0 0 8px;">
+                1. Pixel Lineage (Roblox Turn-Based Roguelike RPG)
+              </h3>
+              <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+                In <a href="/" style="color: var(--accent);">Pixel Lineage</a> (Place ID 126256942507957), <strong>Nightborn</strong> is a Legendary 2.0% bloodline with +15% Mana Regeneration and critical lifesteal. The game does not issue direct code unlocks for individual races. Instead, official Roblox promo codes reward <strong>Race Spins</strong> that players redeem through the town <strong>Goblin Merchant</strong> to roll for the Nightborn bloodline.
+              </p>
+            </div>
+            <div style="background: rgba(22, 16, 34, 0.8); border: 1px solid rgba(96, 165, 250, 0.3); border-radius: 6px; padding: 16px;">
+              <h3 id="context-2-standalone-nightborn-vampire-rpg" style="font-size: 1.05rem; color: #60a5fa; margin: 0 0 8px;">
+                2. Standalone "Nightborn" (Roblox Vampire Action RPG)
+              </h3>
+              <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+                Roblox also hosts a standalone vampire action title named <em>Nightborn</em> developed by an independent team. That game features fledgling vampire progression, nocturnal city hunting, and rooftop movement mechanics. Promo codes in that game (such as THANKSFOR15K and LONGNIGHT) are entered through an in-game GUI Shop window rather than an in-world NPC vendor.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Active Spin Codes Table -->
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="active-pixel-lineage-spin-codes-for-nightborn-rolls" style="font-size: 1.3rem; color: #34d399; margin: 0 0 16px;">
+            Active Pixel Lineage Spin Codes for Nightborn Rolls
+          </h2>
+          <p style="color: var(--muted); margin: 0 0 16px; font-size: 0.95rem;">
+            Redeem these active, verified codes at the Goblin Merchant to claim a cumulative <strong>21 free Race Spins</strong> to roll for the Nightborn lineage:
+          </p>
+
+          <div style="overflow-x: auto; margin-bottom: 20px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.82rem; text-transform: uppercase;">
+                  <th style="padding: 10px 12px;">Promo Code</th>
+                  <th style="padding: 10px 12px;">Race Spins Awarded</th>
+                  <th style="padding: 10px 12px;">Additional Rewards</th>
+                  <th style="padding: 10px 12px;">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 12px;"><code style="color: #34d399; font-weight: 700; font-size: 1rem;">TORMENT</code></td>
+                  <td style="padding: 12px; color: #34d399; font-weight: 700;">8 Race Spins</td>
+                  <td style="padding: 12px; color: var(--muted);">8 Talent Spins, 1,000 Gold, 100 Knowledge, 3 Potions</td>
+                  <td style="padding: 12px;"><span style="background: rgba(52, 211, 153, 0.15); color: #34d399; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">ACTIVE</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 12px;"><code style="color: #34d399; font-weight: 700; font-size: 1rem;">0y0</code></td>
+                  <td style="padding: 12px; color: #34d399; font-weight: 700;">10 Race Spins</td>
+                  <td style="padding: 12px; color: var(--muted);">10 Talent Spins, 1 Life Token</td>
+                  <td style="padding: 12px;"><span style="background: rgba(52, 211, 153, 0.15); color: #34d399; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">ACTIVE</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 12px;"><code style="color: #34d399; font-weight: 700; font-size: 1rem;">TUTORIAL</code></td>
+                  <td style="padding: 12px; color: #34d399; font-weight: 700;">3 Race Spins</td>
+                  <td style="padding: 12px; color: var(--muted);">3 Talent Spins</td>
+                  <td style="padding: 12px;"><span style="background: rgba(52, 211, 153, 0.15); color: #34d399; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">ACTIVE</span></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px;"><code style="color: #f59e0b; font-weight: 700; font-size: 1rem;">OCTOBER</code></td>
+                  <td style="padding: 12px; color: var(--muted);">0 Race Spins</td>
+                  <td style="padding: 12px; color: var(--muted);">25 Candy (Halloween Event Currency)</td>
+                  <td style="padding: 12px;"><span style="background: rgba(52, 211, 153, 0.15); color: #34d399; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">ACTIVE</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p style="color: var(--muted); font-size: 0.85rem; margin: 0; line-height: 1.5;">
+            <strong>Verification Note:</strong> Verified against the official Roblox Place description (Place 126256942507957) and independent editorial tracking on 2026-10-29. Codes must be entered in exact uppercase format at the Goblin Merchant.
+          </p>
+        </section>
+
+        <!-- Drop Probability Math Section -->
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="nightborn-drop-probability-expected-value-math" style="font-size: 1.3rem; color: #a855f7; margin: 0 0 16px;">
+            Nightborn Drop Probability & Expected Value Math
+          </h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 14px;">
+            Nightborn occupies the Legendary tier in the Pixel Lineage race reroll table, sharing the highest rarity bracket alongside Draconic:
+          </p>
+          <ul style="color: var(--muted); padding-left: 20px; margin: 0 0 16px; font-size: 0.92rem; line-height: 1.7;">
+            <li><strong>Exact Drop Probability:</strong> 2.0% (p = 0.02) per Race Spin token.</li>
+            <li><strong>Expected Value (Spins Required):</strong> 50 spins on average (E = 1 / p = 50).</li>
+            <li><strong>Free Code Win Rate (21 Spins):</strong> <code>1 - (1 - 0.02)^21 ≈ 34.6%</code> chance of landing Nightborn purely from active promotional codes without spending in-game currency.</li>
+            <li><strong>Economic Value:</strong> At the Goblin Merchant gold rate of 150 Gold per race reroll token, 21 free spins represent <strong>3,150 Gold</strong> in immediate economy savings.</li>
+          </ul>
+          <p style="color: var(--muted); font-size: 0.9rem; margin: 0; line-height: 1.5;">
+            Consult our comprehensive <a href="/tier-list/race-tier-list/" style="color: var(--accent);">Race Tier List</a> for side-by-side passive comparisons between Nightborn (2%), Celestine (6%), and Elf (14%).
+          </p>
+        </section>
+
+        <!-- Racial Passives Section -->
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="nightborn-racial-passives-combat-synergy" style="font-size: 1.3rem; color: #60a5fa; margin: 0 0 16px;">
+            Nightborn Racial Passives & Combat Synergy
+          </h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 14px;">
+            Rolling the Nightborn lineage permanently upgrades your character with exceptional survivability and resource sustain perks:
+          </p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+            <div style="background: #120e1c; border: 1px solid var(--line); border-radius: 6px; padding: 14px;">
+              <strong style="color: #a855f7; display: block; margin-bottom: 4px;">+15% Mana Regeneration</strong>
+              <span style="color: var(--muted); font-size: 0.88rem; line-height: 1.5;">
+                Innate passive recovery that prevents spell starvation during lengthy turn rotations. Best-in-slot for <a href="/classes/mage/" style="color: var(--accent);">Mage</a> and Hexer evolutions.
+              </span>
+            </div>
+            <div style="background: #120e1c; border: 1px solid var(--line); border-radius: 6px; padding: 14px;">
+              <strong style="color: #f43f5e; display: block; margin-bottom: 4px;">15% Critical Lifesteal</strong>
+              <span style="color: var(--muted); font-size: 0.88rem; line-height: 1.5;">
+                Applies to all critical damage instances, including magical spell bursts, shadow curse ticks, and physical strikes.
+              </span>
+            </div>
+            <div style="background: #120e1c; border: 1px solid var(--line); border-radius: 6px; padding: 14px;">
+              <strong style="color: #c9a227; display: block; margin-bottom: 4px;">+8% Dark Spell Damage</strong>
+              <span style="color: var(--muted); font-size: 0.88rem; line-height: 1.5;">
+                Multiplicative dark magic amplifier that boosts damage on Hexer decay curses and necrotic staff skills.
+              </span>
+            </div>
+            <div style="background: #120e1c; border: 1px solid var(--line); border-radius: 6px; padding: 14px;">
+              <strong style="color: #38bdf8; display: block; margin-bottom: 4px;">Innate Dark Vision</strong>
+              <span style="color: var(--muted); font-size: 0.88rem; line-height: 1.5;">
+                Completely removes the visual occlusion and accuracy penalties in unlit Act 2 and Torment dungeon chambers without carrying torches.
+              </span>
+            </div>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; margin: 0; line-height: 1.5;">
+            Read the dedicated <a href="/races/nightborn/" style="color: var(--accent);">Nightborn Lineage Guide</a> for Level 1–30 equipment loadouts, rune synergies, and leveling route recommendations.
+          </p>
+        </section>
+
+        <!-- Redemption Walkthrough SOP -->
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="how-to-redeem-free-race-spins-at-goblin-merchant" style="font-size: 1.3rem; color: #f59e0b; margin: 0 0 16px;">
+            How to Redeem Free Race Spins at Goblin Merchant
+          </h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 14px;">
+            To claim your free Race Spins in Pixel Lineage, follow this step-by-step procedure:
+          </p>
+          <ol style="color: var(--muted); padding-left: 20px; margin: 0 0 16px; font-size: 0.92rem; line-height: 1.7;">
+            <li><strong>Complete Social Prerequisites:</strong> Join official Roblox Group <code>362755399</code> (Pixel Lineage), like the game page, and add it to your Roblox Favorites.</li>
+            <li><strong>Spawn in Town Courtyard:</strong> Launch Pixel Lineage and exit the starter building into the central town hub.</li>
+            <li><strong>Locate Goblin Merchant:</strong> Walk east toward the Commerce Square coordinates <code>(X: 142, Y: 12, Z: -88)</code> between the Inn and the Auction House.</li>
+            <li><strong>Submit Active Codes:</strong> Press <strong>[E]</strong> (or tap dialogue on mobile), choose <strong>Redeem Promo Code</strong>, paste <code>TORMENT</code>, <code>0y0</code>, and <code>TUTORIAL</code> in uppercase, and submit.</li>
+            <li><strong>Roll for Nightborn:</strong> Press <strong>[M]</strong> to open your character menu, navigate to the <strong>Lineage / Race</strong> tab, and spend your 21 spins rolling for Nightborn.</li>
+          </ol>
+          <p style="color: var(--muted); font-size: 0.9rem; margin: 0; line-height: 1.5;">
+            For full troubleshooting on group membership delays and redemption errors, visit our <a href="/codes/redeem/" style="color: var(--accent);">Redeem Guide</a> and <a href="/codes/not-working/" style="color: var(--accent);">Code Troubleshooting Guide</a>.
+          </p>
+        </section>
+
+        <!-- Evidence Dossier Box -->
+        <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+          <h3 id="evidence-dossier-verified-sources-game-mechanics" style="margin: 0 0 10px; font-size: 1.1rem; color: #c9a227; text-transform: uppercase;">
+            Evidence Dossier: Verified Sources & Game Mechanics
+          </h3>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 10px;">
+            Official Roblox Experience: <code>https://www.roblox.com/games/126256942507957/Pixel-Lineage</code> (Place ID 126256942507957, Universe ID 10767928510). Official Group: <code>362755399</code>.
+          </p>
+          <p style="color: var(--muted); font-size: 0.85rem; margin: 0; line-height: 1.5;">
+            Editorial Corroboration: RockPaperShotgun (Pixel Lineage Codes Ledger), Destructoid (Pixel Lineage Active Codes), Beebom (Pixel Lineage Reroll Tokens). All code statuses documented with timestamped audit records.
+          </p>
+        </section>
+
+        <!-- Action Links -->
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
+          <a href="/codes/" style="background: #34d399; color: #0d0a14; padding: 12px 24px; border-radius: 6px; font-weight: 700; text-decoration: none;">
+            All Pixel Lineage Codes →
+          </a>
+          <a href="/races/nightborn/" style="background: rgba(168, 85, 247, 0.2); border: 1px solid #a855f7; color: #f5f3ff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Nightborn Build & Class Guide →
+          </a>
+        </div>
+
+        <!-- Frequently Asked Questions Accordion -->
+        <FaqSection items={faqItems} />
+
+        <!-- Footer Ad Slots -->
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+
+      </article>
+
+      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/codes/roblox-nightborn-codes/" />
+    </div>
+  </div>
+</BaseLayout>
