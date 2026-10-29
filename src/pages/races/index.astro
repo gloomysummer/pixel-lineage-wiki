@@ -2,13 +2,14 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AdSlot from "../../components/AdSlot.astro";
 import { siteConfig } from "../../config/site.config";
+import FaqSection from "../../components/FaqSection.astro";
 
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Pixel Lineage Races & Talents System Guide",
-    description: "Complete guide to race rerolls, spin probabilities, and talent synergies in Pixel Lineage on Roblox.",
+    name: "Pixel Lineage Bloodlines & Races System Guide",
+    description: "Complete guide to racial bloodlines, spin probabilities, and trait synergies in Pixel Lineage on Roblox.",
     url: `${siteConfig.siteUrl}/races/`,
   },
   {
@@ -21,6 +22,35 @@ const jsonLd = [
   },
 ];
 
+const bloodlines = [
+  { name: "Seraph", rarity: "Mythic", rate: "1.0%", passive: "+15% Holy DMG, Aerial Trap Immunity & 1x Revive", pairing: "Cleric / Paladin / Hexer", color: "#c084fc" },
+  { name: "Nightborn", rarity: "Legendary", rate: "2.0%", passive: "+15% Mana Regen & +8% Dark Spell Damage", pairing: "Mage (Hexer) / Assassin", color: "#a855f7" },
+  { name: "Dullahan", rarity: "Rare", rate: "2.0%", passive: "Headless Poise (Immunity to Boss Stagger & Knockdown)", pairing: "Warrior (Sentinel) / Fist", color: "#38bdf8" },
+  { name: "Celestine", rarity: "Rare", rate: "3.0%", passive: "Divine Ward (+10% All-Party Damage Mitigation)", pairing: "Cleric / Troubadour / Sentinel", color: "#eab308" },
+  { name: "Orc", rarity: "Rare", rate: "15.0%", passive: "+12% Physical ATK & Undying Rage (Survive at 1 HP)", pairing: "Warrior (Berserk) / Fist (Oni)", color: "#f43f5e" },
+  { name: "Elf", rarity: "Uncommon", rate: "12.0%", passive: "+10% Speed & +5% Critical Strike Probability", pairing: "Thief (Assassin) / Archer (Deadeye)", color: "#34d399" },
+  { name: "Human", rarity: "Common", rate: "48.0%", passive: "+5% Baseline XP Gain (No combat multipliers)", pairing: "Early Leveling Only", color: "#94a3b8" },
+];
+
+const faqItems = [
+  {
+    question: "What is a Bloodline in Pixel Lineage?",
+    answer: "A Bloodline is your character's racial heritage in Pixel Lineage. Each bloodline bestows permanent attribute bonuses, unique defensive or offensive passives, and elemental affinities that dictate high-Torment dungeon performance.",
+  },
+  {
+    question: "What is the best Bloodline overall in Pixel Lineage?",
+    answer: "Seraph (Mythic 1.0%) is the best all-around bloodline due to aerial trap immunity and team revive utility. For spellcasters, Nightborn (Legendary 2.0%) ranks highest for mana sustain, while Orc (Rare 15.0%) is optimal for physical melee combatants seeking cheat-death survivability.",
+  },
+  {
+    question: "How do you get free Race Spins to roll Bloodlines?",
+    answer: "Free Race Spins are claimed by redeeming active promotional codes (such as OCTOBER or TORMENT) at the Goblin Merchant NPC in the starter town. Spins are stored directly in your inventory ledger.",
+  },
+  {
+    question: "Does rerolling your Bloodline reset your character level or class?",
+    answer: "No, rerolling your bloodline via a Race Spin only replaces your current race passive and racial stat multipliers. Your character level, equipped gear, talent slots, and Super Class progression remain completely unaffected.",
+  },
+];
+
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
@@ -30,8 +60,8 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
 
 <BaseLayout
-  title="Pixel Lineage Races & Talents: Complete Guide"
-  description="Complete Pixel Lineage races and talents system guide: spin probabilities, reroll mechanics at Goblin Merchant, and top racial trait synergies."
+  title="Pixel Lineage Bloodlines & Races: Guide"
+  description="Complete Pixel Lineage bloodlines & races guide: spin probabilities, Goblin Merchant rerolls, racial passive modifiers, and optimal class pairings."
   canonical="/races/"
   jsonLd={jsonLd}
 >
@@ -50,11 +80,16 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Core Lineage System
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Races & Talents System
+        Pixel Lineage Bloodlines & Races System
       </h1>
       <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
-        Races and Talents represent the primary gacha and customization pillars in Pixel Lineage. They provide permanent stat multipliers that define your viability in Act 2 Torment dungeons.
+        Bloodlines and Talents represent the primary gacha and customization pillars in Pixel Lineage. They provide permanent stat multipliers that define your viability in Act 2 Torment dungeons.
       </p>
+
+      <!-- Direct Answer Box for Pixel Lineage Bloodlines -->
+      <div style="background: rgba(201, 162, 39, 0.08); border: 1px solid rgba(201, 162, 39, 0.35); border-left: 4px solid #c9a227; border-radius: 6px; padding: 14px 18px; margin: 18px 0 0; font-size: 0.92rem; line-height: 1.6; color: var(--ink);">
+        <strong style="color: #c9a227;">Pixel Lineage Bloodlines Summary:</strong> Bloodlines (playable races) grant permanent stat scalings and unique passive abilities in Pixel Lineage. Obtained via Race Spins at the Goblin Merchant NPC in town, bloodlines span from Common Human (48% chance) to Mythic Seraph (1.0%) and Legendary Nightborn (2.0%). Rerolling modifies passive affinities without resetting character level or learned class skills.
+      </div>
     </header>
 
         <!-- Mobile Table of Contents (≤980px) -->
@@ -94,6 +129,41 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
       </div>
     </div>
 
+    <!-- Bloodline Roster & Drop Rates -->
+    <section style="margin-bottom: 40px;">
+      <h2 id="all-racial-bloodlines-spin-rates" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">
+        All Racial Bloodlines & Spin Odds
+      </h2>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+        Pixel Lineage features seven established racial bloodlines rolled via Race Spins at the Goblin Merchant, each granting distinct elemental affinities and passive advantages:
+      </p>
+
+      <div style="overflow-x: auto; margin-bottom: 24px;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; background: #161022; border: 1px solid var(--line); border-radius: 8px;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--line); background: #0d0a14;">
+              <th style="padding: 12px 16px; color: var(--ink); font-weight: 700;">Bloodline</th>
+              <th style="padding: 12px 16px; color: var(--ink); font-weight: 700;">Rarity</th>
+              <th style="padding: 12px 16px; color: var(--ink); font-weight: 700;">Spin %</th>
+              <th style="padding: 12px 16px; color: var(--ink); font-weight: 700;">Core Passive Buff</th>
+              <th style="padding: 12px 16px; color: var(--ink); font-weight: 700;">Optimal Pairings</th>
+            </tr>
+          </thead>
+          <tbody>
+            {bloodlines.map((b) => (
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                <td style={`padding: 12px 16px; font-weight: 700; color: ${b.color};`}>{b.name}</td>
+                <td style="padding: 12px 16px; color: var(--muted);">{b.rarity}</td>
+                <td style="padding: 12px 16px; color: #34d399; font-weight: 600;">{b.rate}</td>
+                <td style="padding: 12px 16px; color: var(--ink);">{b.passive}</td>
+                <td style="padding: 12px 16px; color: var(--muted); font-size: 0.85rem;">{b.pairing}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     
     <!-- 2026-10-20 Weekly Update Note: Dragon Race -->
     
@@ -124,6 +194,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Never overwrite Legendary races (Nightborn or Draconic) unless you possess at least 15+ spare Race Spins.
       </p>
     </section>
+
+    <!-- FAQ Section -->
+    <FaqSection items={faqItems} />
 
     <!-- Links -->
     <div style="text-align: center;">

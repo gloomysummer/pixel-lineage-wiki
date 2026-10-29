@@ -10,15 +10,7 @@ import { extractTocFromAstroUrl } from "../../utils/toc";
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
 
-// Compact tier summary — canonical per-class rationale lives on /tier-list/class-tier-list/
-const classTierSummary = [
-  { tier: "S+", color: "#ff0055", classes: ["Hexer (Mage)", "Sentinel (Warrior)", "Assassin (Thief)"] },
-  { tier: "S", color: "#f43f5e", classes: ["Oni (Fist)", "Cleric (Mage)", "Lancer (Spear)", "Deadeye (Archer)"] },
-  { tier: "A", color: "#a855f7", classes: ["Berserk (Warrior)", "Hoplite (Spear)", "Trickster (Thief)", "Troubadour (Bard)"] },
-  { tier: "B", color: "#38bdf8", classes: ["Greatsword (Warrior)", "Brawler (Fist)", "Minstrel (Bard)", "Summoner (Mage)", "Dragoon (Spear)"] },
-  { tier: "C", color: "#94a3b8", classes: ["Rogue (Thief)", "Corsair (Thief)", "Pianist (Bard)", "Ranger (Archer)"] },
-];
-
+// Master synergy matrix — evaluating tri-system builds across Torment difficulty
 const synergyMatrix = [
   {
     archetype: "Vampiric Berserk",
@@ -94,9 +86,14 @@ const jsonLd = [
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
         Pixel Lineage Tier List Hub & Meta Rankings
       </h1>
-      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
-        Authoritative meta tier list for Pixel Lineage on Roblox. We analyze 6 base classes, 18 Super Classes, racial bloodlines, and talent spin odds based on empirical Act 2 & 3 dungeon clear logs, Torment survival benchmarks, and turn-action efficiency.
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+        Authoritative meta tier list for Pixel Lineage on Roblox. We analyze 6+1 base classes, 21 Super Classes, racial bloodlines, and talent spin odds based on empirical Act 2 & 3 dungeon clear logs, Torment survival benchmarks, and turn-action efficiency.
       </p>
+
+      <!-- Direct Answer Box for Pixel Lineage Tier List -->
+      <div style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.35); border-left: 4px solid #f43f5e; border-radius: 6px; padding: 14px 18px; margin: 0; font-size: 0.92rem; line-height: 1.6; color: var(--ink);">
+        <strong style="color: #f43f5e;">Pixel Lineage Meta Rankings Overview:</strong> Pixel Lineage endgame viability is governed by the tri-system synergy between your irreversible Super Class, racial Bloodline passives, and equipped Talent traits. Solo Torment clears and Guild Raid dominance demand harmonizing survivability buffers (such as Fortress Stance or Undying Rage) with burst multipliers (Assassin stealth crits or Hexer true damage DoTs).
+      </div>
     </header>
 
         <!-- Mobile Table of Contents (≤980px) -->
@@ -175,28 +172,30 @@ const jsonLd = [
              对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
         <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
-<section style="margin-bottom: 40px;">
-      <h2 id="combat-archetype-tier-overview" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Combat Archetype Tier Overview</h2>
+<section style="margin-bottom: 40px; background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+      <h2 id="tri-system-meta-evaluation-framework" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Tri-System Meta Evaluation Framework</h2>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-        High-level overview of where each combat specialization sits across the progression meta. For in-depth stat multipliers and super class choices, consult the dedicated class guide:
+        Unlike standard RPGs where progression relies purely on equipment rarity, Pixel Lineage calculates endgame combat power through three interlocking layers:
       </p>
 
-      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
-        {classTierSummary.map((t) => (
-          <div style={`display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; background: #161022; border: 1px solid var(--line); border-left: 4px solid ${t.color}; border-radius: 6px; padding: 10px 14px;`}>
-            <span style={`font-family: var(--font-mono); font-size: 1.05rem; font-weight: 800; color: ${t.color}; min-width: 40px;`}>
-              {t.tier}
-            </span>
-            <span style="font-size: 0.95rem; font-weight: 600; color: var(--ink);">
-              {t.classes.join(" · ")}
-            </span>
-          </div>
-        ))}
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px;">
+        <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.05);">
+          <strong style="color: #a855f7; display: block; margin-bottom: 6px;">1. Super Class Architecture</strong>
+          <span style="color: var(--muted); font-size: 0.88rem; line-height: 1.5;">21 irreversible combat paths across 6+1 base archetypes defining baseline action turn economy and skill multipliers.</span>
+        </div>
+        <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.05);">
+          <strong style="color: #c9a227; display: block; margin-bottom: 6px;">2. Bloodline Passives</strong>
+          <span style="color: var(--muted); font-size: 0.88rem; line-height: 1.5;">7 racial lineages from Mythic Seraph to Legendary Nightborn providing permanent elemental scaling and cheat-death mechanics.</span>
+        </div>
+        <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.05);">
+          <strong style="color: #38bdf8; display: block; margin-bottom: 6px;">3. Talent Card Modifiers</strong>
+          <span style="color: var(--muted); font-size: 0.88rem; line-height: 1.5;">Empirical roll probabilities from Prodigy (1.5%) to Bloodthirst (12% lifesteal) that finalize sustain in Torment Acts.</span>
+        </div>
       </div>
 
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
-        For the reasoning behind each placement — damage scalings, survivability ratings, and Torment viability — read the
-        <a href="/tier-list/class-tier-list/" style="color: var(--accent); font-weight: 600;">full S+ to C class rankings with tactical rationale</a>.
+        Looking for individual class tier placements, stat scalings, and Torment viability verdicts? Explore our dedicated
+        <a href="/tier-list/class-tier-list/" style="color: var(--accent); font-weight: 600;">Definitive Class & Super Class Tier List</a>.
       </p>
     </section>
 
