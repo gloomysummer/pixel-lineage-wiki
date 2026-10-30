@@ -52,8 +52,8 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Pixel Lineage Gear & Armor Sets Guide",
-    description: "Complete database of armor sets, weapon scaling, and legendary powers in Pixel Lineage on Roblox.",
+    name: "Pixel Lineage Gear Hub: Weapons & Equipment",
+    description: "Complete database of weapons, armor sets, and legendary powers in Pixel Lineage on Roblox.",
     url: `${siteConfig.siteUrl}/gear/`,
   },
   {
@@ -75,8 +75,8 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
 
 <BaseLayout
-  title="Pixel Lineage Gear Guide: Armor Sets & Powers"
-  description="Complete Pixel Lineage gear guide: armor sets, weapon scaling, legendary powers, blacksmith upgrades, and dungeon boss drop locations on Roblox."
+  title="Pixel Lineage Gear Hub: Weapons, Armor & Powers"
+  description="Complete Pixel Lineage gear and equipment guide: weapons, armor sets, legendary item powers, blacksmith upgrade rules, and dungeon boss drop tables on Roblox."
   canonical="/gear/"
   jsonLd={jsonLd}
 >
@@ -95,11 +95,21 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Equipment & Arsenal
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Gear & Armor Sets Guide
+        Pixel Lineage Gear & Equipment Arsenal Hub
       </h1>
-      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
-        Equipping full 3-piece armor sets activates powerful passive set bonuses that drastically augment your class abilities. Here are the core armor sets and legendary weapons.
+      <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0 0 16px;">
+        Equipping tailored weapons and 3-piece armor sets activates crucial passives and stat multipliers across Act 1 to Act 3 dungeons.
       </p>
+
+      <!-- Direct Answer Summary Box -->
+      <div style="background: rgba(56, 189, 248, 0.1); border-left: 4px solid #38bdf8; padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+        <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #38bdf8; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+          ⚡ Direct Answer · Gear & Arsenal Overview
+        </div>
+        <p style="margin: 0; font-size: 0.94rem; color: #f0eaf4; line-height: 1.6;">
+          Equipment in Pixel Lineage centers around three systems: <strong>Weapons</strong> (scaling with ATK, SPD, or MAG), <strong>Armor Sets</strong> (granting 2-piece and 4-piece set bonuses), and <strong>Legendary Item Powers</strong>. Gear is refined up to +5 at the Town Blacksmith. For full armor set stats and crafting costs, visit our dedicated <a href="/gear/armor-sets/" style="color: #38bdf8; text-decoration: underline;">Pixel Lineage Armor Sets Guide</a>.
+        </p>
+      </div>
     </header>
 
         <!-- Mobile Table of Contents (≤980px) -->
@@ -112,7 +122,10 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
              对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
         <AdSlot zone="banner-300x250" label="Sponsored Intel" /><section style="margin-bottom: 40px;">
-      <h2 id="core-dungeon-armor-sets" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Core Dungeon Armor Sets</h2>
+      <h2 id="armor-sets-overview-set-bonuses" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 12px;">Armor Sets Overview & Set Bonuses</h2>
+      <div style="margin-bottom: 16px; background: #0d0a14; border: 1px solid var(--line); border-radius: 6px; padding: 12px 16px; font-size: 0.88rem; color: var(--muted);">
+        Looking for complete crafting costs, material drop routes, and class tier rankings? Check our <a href="/gear/armor-sets/" style="color: #38bdf8; font-weight: 600;">Dedicated Pixel Lineage Armor Sets Database →</a>
+      </div>
       <div style="display: flex; flex-direction: column; gap: 20px;">
         {armorSets.map((set) => (
           <div style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 8px; padding: 20px;">

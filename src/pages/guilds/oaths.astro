@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AdSlot from "../../components/AdSlot.astro";
 import { siteConfig } from "../../config/site.config";
+import FaqSection from "../../components/FaqSection.astro";
 
 const oaths = [
   {
@@ -25,6 +26,25 @@ const oaths = [
     permanentBuff: "+12% Critical Strike Rate and immunity to movement-impairing snares in guild dungeons.",
     drawback: "Healing received from external potions reduced by 25%.",
   },
+];
+
+const faqItems = [
+  {
+    question: "What are Oaths in Pixel Lineage?",
+    answer: "Oaths are permanent guild pledges sworn at the Guild Hall altar upon reaching Reputation Tier 2. Each Oath grants distinct combat passives—like Vanguard's +15% Physical DR or Shadowveil's +12% Crit—at the expense of a tactical drawback."
+  },
+  {
+    question: "Can you change or renounce an Oath in Pixel Lineage?",
+    answer: "Yes. Players can renounce their active Oath at the Guild Altar by paying a renunciation fee of 1,000 Gold. Once renounced, character stats revert to baseline, and you may pledge to a different oath immediately provided you have sufficient tokens."
+  },
+  {
+    question: "How do you earn Guild Tokens to pledge an Oath?",
+    answer: "Guild Tokens are awarded by participating in weekly Guild Raids, completing daily Castle Repair supply turn-ins, and winning ranked matches in the Castle Arena."
+  },
+  {
+    question: "Do Guild Oath buffs apply in solo Torment dungeons?",
+    answer: "Yes. Passive stat bonuses from sworn Oaths remain permanently active across both solo exploration and co-op dungeons, though proximity-based auras like Vanguard require nearby allies to trigger full damage reduction."
+  }
 ];
 
 const jsonLd = [
@@ -82,9 +102,19 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
         Pixel Lineage Guild Oaths & Pledges Guide
       </h1>
-      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
         Guild Oaths provide permanent passives and role specializations in Pixel Lineage. Sworn at the Guild Hall altar, each Oath grants potent raid buffs accompanied by tactical trade-offs.
       </p>
+
+      <!-- Direct Answer Summary Box -->
+      <div style="background: rgba(201, 162, 39, 0.1); border-left: 4px solid #c9a227; padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 8px;">
+        <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+          ⚡ Direct Answer · Guild Oaths Overview
+        </div>
+        <p style="margin: 0; font-size: 0.94rem; color: #f0eaf4; line-height: 1.6;">
+          <strong>Pixel Lineage Oaths</strong> are permanent character pledges sworn at the Guild Hall altar upon reaching Reputation Tier 2. Pledging costs 1,500–2,000 Gold plus 100–120 Guild Tokens. The three oaths (<strong>Vanguard</strong> for physical tanks, <strong>Arcanum</strong> for mana casters, and <strong>Shadowveil</strong> for crit assassins) grant encounter-defining buffs balanced with targeted tactical drawbacks.
+        </p>
+      </div>
     </header>
 
         <!-- Mobile Table of Contents (≤980px) -->
@@ -159,7 +189,10 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
           </a>
         </div>
       </section>
-          <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+
+      <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
       <div class="ad-slot-footer">
         <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
         <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
