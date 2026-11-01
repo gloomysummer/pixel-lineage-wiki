@@ -129,8 +129,8 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Pixel Lineage Classes: 6+1 Archetypes & Stats",
-    description: "Guide to all 6+1 base classes and 21 super class evolutions in Pixel Lineage on Roblox with complete starter attribute matrices and evolution guides.",
+    name: "Pixel Lineage Class Guide & Starter Stats",
+    description: "Complete Pixel Lineage classes guide: Lv 1 starter stats, 6+1 base archetypes, Spear class, 21 Super Class evolutions, and Trainer's Shrine progression.",
     url: `${siteConfig.siteUrl}/classes/`,
   },
   {
@@ -145,7 +145,7 @@ const jsonLd = [
 ---
 
 <BaseLayout
-  title="Pixel Lineage Classes: Starter Stats & Roles"
+  title="Pixel Lineage Class Guide: All Classes & Stats"
   description="Complete Pixel Lineage classes guide: Lv 1 starter stats, 6+1 base archetypes, Spear class, 21 Super Class evolutions, and Trainer's Shrine progression."
   canonical="/classes/"
   jsonLd={jsonLd}
@@ -163,7 +163,7 @@ const jsonLd = [
         Core Combat Architecture · 6+1 Classes & 21 Evolutions
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Classes & Starter Stats
+        Pixel Lineage Class Guide & Starter Stats
       </h1>
       <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
         Detailed breakdown of all 6+1 starting character archetypes in Pixel Lineage on Roblox. In this permadeath roguelike RPG, your base class establishes your growth curve, turn initiative, and dictates your 3 permanent Super Class specialization options at the Trainer's Shrine.
@@ -172,10 +172,13 @@ const jsonLd = [
       <!-- Direct Answer Summary Box -->
       <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
         <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
-          ⚡ Direct Answer · Class System Summary
+          ⚡ Direct Answer · Pixel Lineage Class System Overview
         </div>
-        <p style="margin: 0; font-size: 0.94rem; color: #f0eaf4; line-height: 1.6;">
-          Pixel Lineage features <strong>6+1 base classes</strong>: Warrior, Thief, Mage, Fist, Bard, Archer, and the newly added <strong>Spear</strong> class. Each base class advances into 3 permanent Super Classes (21 total evolutions) at the Trainer's Shrine in Act 2. Warrior (Sentinel) provides the most reliable beginner survivability, while Mage (Hexer) delivers unmatched boss-melting true damage in Torment mode.
+        <p style="margin: 0 0 8px; font-size: 0.94rem; color: #f0eaf4; line-height: 1.6;">
+          In <strong>Pixel Lineage</strong>, players choose from <strong>6+1 base classes</strong> (Warrior, Thief, Mage, Fist, Bard, Archer, and the newly added Spear). Each base class branches into 3 permanent <strong>Super Classes</strong> (21 total evolutions) at the Trainer's Shrine upon reaching Level 15 in Act 2.
+        </p>
+        <p style="margin: 0; font-size: 0.88rem; color: var(--muted); line-height: 1.5;">
+          <strong>Best Starting Class:</strong> <em>Warrior</em> is optimal for beginners due to high starting DEF and HP. <em>Mage (Hexer)</em> is the premier late-game boss killer with true magic damage, while <em>Thief (Assassin)</em> provides the fastest dungeon clear speed.
         </p>
       </div>
     </header>
@@ -190,7 +193,7 @@ const jsonLd = [
         All Classes Overview
       </a>
       <a href="/classes/super-classes/" style="background: #161022; color: var(--muted); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1px solid var(--line);">
-        18 Super Classes Guide
+        21 Super Classes Guide
       </a>
       <a href="/tier-list/class-tier-list/" style="background: #161022; color: var(--muted); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1px solid var(--line);">
         Class Tier Rankings
@@ -255,7 +258,7 @@ const jsonLd = [
             {classes.map((c) => (
               <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
                 <td data-label="Class" style="padding: 14px 16px; font-weight: 700; color: #fff;">
-                  <a href={`/classes/${c.slug}/`} style={`color: ${c.color}; text-decoration: none;`}>
+                  <a href={c.slug === "spear" ? "#spear-class-update-pending" : `/classes/${c.slug}/`} style={`color: ${c.color}; text-decoration: none;`}>
                     {c.name}
                   </a>
                 </td>
@@ -290,8 +293,8 @@ const jsonLd = [
                   {c.role}
                 </span>
               </div>
-              <a href={`/classes/${c.slug}/`} style="color: var(--accent); font-size: 0.85rem; text-decoration: none; font-weight: 600;">
-                Full Progression Guide →
+              <a href={c.slug === "spear" ? "#spear-class-update-pending" : `/classes/${c.slug}/`} style="color: var(--accent); font-size: 0.85rem; text-decoration: none; font-weight: 600;">
+                {c.slug === "spear" ? "Update Details →" : "Full Progression Guide →"}
               </a>
             </div>
 
@@ -347,7 +350,7 @@ const jsonLd = [
       <h2 id="explore-deeper-class-knowledge" style="font-size: 1.1rem; color: var(--ink); margin: 0 0 12px;">Explore Deeper Class Knowledge</h2>
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
         <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-          → 18 Super Class Full Skill Multipliers
+          → 21 Super Class Full Skill Multipliers
         </a>
         <a href="/tier-list/class-tier-list/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
           → Class Tier List & Solo Clear Rankings
