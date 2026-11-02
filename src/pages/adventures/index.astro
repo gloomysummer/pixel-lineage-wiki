@@ -31,8 +31,8 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Pixel Lineage Adventures & Dungeon Progression Guide",
-    description: "Guide to acts, Torment difficulty, Lineage Ranks, and dungeon progression in Pixel Lineage on Roblox.",
+    name: "Pixel Lineage Adventures & Dungeon Acts Guide",
+    description: "Guide to acts, boss strategies, Lineage Ranks, and dungeon progression in Pixel Lineage on Roblox.",
     url: `${siteConfig.siteUrl}/adventures/`,
   },
   {
@@ -54,8 +54,8 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
 
 <BaseLayout
-  title="Pixel Lineage Adventures: Dungeons & Torment"
-  description="Complete Pixel Lineage adventures guide: Act 1-3 progression, Torment difficulty mechanics, Lineage Ranks, energy management, and Warden boss tips on Roblox."
+  title="Pixel Lineage Adventures: Acts & Dungeon Guide"
+  description="Complete Pixel Lineage adventures guide: Act 1 to Act 3 dungeon progression, boss strategies, Lineage Ranks, and dungeon milestone rewards on Roblox."
   canonical="/adventures/"
   jsonLd={jsonLd}
 >
@@ -71,14 +71,19 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
     <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; color: #f59e0b; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
-        Progression & Torment Difficulty
+        Progression & Dungeon Acts
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Adventures & Torment Guide
+        Pixel Lineage Adventures & Dungeon Acts Guide
       </h1>
       <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
-        Pixel Lineage is structured around act-based procedural dungeons. Defeating act bosses awards Lineage Ranks and unlocks higher risk-reward Torment difficulty modifiers.
+        Pixel Lineage is structured around act-based procedural dungeons. Defeating act bosses awards Lineage Ranks, unlocks new trainer shrines, and advances your account progression.
       </p>
+
+      <!-- Dedicated Callout for Torment Mode -->
+      <div style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.35); border-left: 4px solid #f43f5e; border-radius: 6px; padding: 14px 18px; margin: 18px 0 0; font-size: 0.92rem; line-height: 1.6; color: var(--ink);">
+        <strong style="color: #f43f5e;">Looking for Torment Mode?</strong> For detailed Torment I-III difficulty modifiers, lives penalties, enrage timers, and Ultra Sigil loot scaling, visit the dedicated <a href="/adventures/torment/" style="color: #f43f5e; font-weight: 700; text-decoration: underline;">Pixel Lineage Torment Mode Guide →</a>.
+      </div>
     </header>
 
         <!-- Mobile Table of Contents (≤980px) -->
