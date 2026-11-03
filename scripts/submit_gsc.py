@@ -38,6 +38,7 @@ SITEMAP_URL = f"{SITE_URL}/sitemap-index.xml"
 PRIORITY_URLS = [
     f"{SITE_URL}/",
     f"{SITE_URL}/codes/",
+    f"{SITE_URL}/codes/roblox-nightborn-codes/",
     f"{SITE_URL}/classes/",
     f"{SITE_URL}/tier-list/",
     f"{SITE_URL}/classes/super-classes/"

@@ -18,7 +18,9 @@ const bestRaces = [
     spinRarity: "2% Legendary Spin Pool",
     innatePassives: "+15% Natural Mana Regeneration, +8% Dark & Arcane Spell DMG, 10% Shadow Resistance.",
     optimalClasses: "Mage (Hexer, Cleric), Bard (Pianist)",
-    analysis: "The uncontested best race for any magic-based build. Turn-based magic expenditure rapidly depletes mana pools; Nightborn's passive regeneration eliminates the need to spend turns drinking mana elixirs. See our <a href='/codes/roblox-nightborn-codes/' style='color: var(--accent);'>Nightborn Codes & Spin Guide</a> for how to roll it.",
+    analysis: "The uncontested best race for any magic-based build. Turn-based magic expenditure rapidly depletes mana pools; Nightborn's passive regeneration eliminates the need to spend turns drinking mana elixirs.",
+    guideHref: "/codes/roblox-nightborn-codes/",
+    guideLabel: "Nightborn Codes & Spin Guide",
   },
   {
     name: "Orc",
@@ -83,7 +85,7 @@ const jsonLd = [
 const faqItems = [
   {
     "question": "What is the single best race overall in the Pixel Lineage meta?",
-    "answer": "<a href='/codes/roblox-nightborn-codes/' style='color: var(--accent);'>Nightborn</a> and Seraph share the undisputed S-Tier ranking in the overall meta. Nightborn dominates offensive spellcasting through unmatched mana regeneration, while Seraph commands raid survivability with party resurrection, healing amplification, and radiant damage bonuses that scale across all dungeon acts."
+    "answer": "Nightborn and Seraph share the undisputed S-Tier ranking in the overall meta. Nightborn dominates offensive spellcasting through unmatched mana regeneration, while Seraph commands raid survivability through party resurrection, healing amplification, and radiant damage bonuses that scale across all dungeon acts."
   },
   {
     "question": "Which race is best for brand new players starting their first run?",
@@ -183,6 +185,12 @@ const faqItems = [
               </div>
               <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0; background: #0d0a14; padding: 10px 14px; border-radius: 6px;">
                 <strong>Meta Evaluation:</strong> {r.analysis}
+                {r.guideHref && (
+                  <>
+                    {" "}
+                    <a href={r.guideHref} style="color: var(--accent);">See our {r.guideLabel} for how to roll it.</a>
+                  </>
+                )}
               </p>
             </div>
           ))}
