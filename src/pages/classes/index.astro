@@ -6,8 +6,28 @@ import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+const faqItems = [
+  {
+    question: "What is the best starting class in Pixel Lineage?",
+    answer: "For new players, Warrior is the best starting class due to high base HP (120) and physical defense (12), which provides a forgiving learning curve. For aggressive players seeking fast dungeon clear times, Thief offers high speed (16) and critical strike rate (15%).",
+  },
+  {
+    question: "How many base classes and Super Classes are in Pixel Lineage?",
+    answer: "Pixel Lineage features 6+1 base classes (Warrior, Thief, Mage, Fist, Bard, Archer, and Spear). Each base class branches into 3 irreversible Super Classes at the Trainer's Shrine, creating 21 specialized advanced evolutions.",
+  },
+  {
+    question: "Can I change my base class after choosing one in Pixel Lineage?",
+    answer: "No. Your base class choice is locked for the duration of that character lineage. You cannot swap base archetypes without resetting your character or starting a new run after a permadeath wipe.",
+  },
+  {
+    question: "When and where do you unlock Super Classes in Pixel Lineage?",
+    answer: "Super Classes are unlocked upon reaching Level 15 in Act 2: The Dungeon. Interacting with the Trainer's Shrine allows you to select 1 of 3 permanent Super Class evolutions corresponding to your base archetype.",
+  },
+];
 
 
 const classes = [
@@ -145,7 +165,7 @@ const jsonLd = [
 ---
 
 <BaseLayout
-  title="Pixel Lineage Class Guide: All Classes & Stats"
+  title="Pixel Lineage Class Guide: Starter Stats & Meta"
   description="Complete Pixel Lineage classes guide: Lv 1 starter stats, 6+1 base archetypes, Spear class, 21 Super Class evolutions, and Trainer's Shrine progression."
   canonical="/classes/"
   jsonLd={jsonLd}
@@ -163,7 +183,7 @@ const jsonLd = [
         Core Combat Architecture · 6+1 Classes & 21 Evolutions
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Class Guide & Starter Stats
+        Pixel Lineage Class Guide: 6+1 Classes & Starter Stats
       </h1>
       <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
         Detailed breakdown of all 6+1 starting character archetypes in Pixel Lineage on Roblox. In this permadeath roguelike RPG, your base class establishes your growth curve, turn initiative, and dictates your 3 permanent Super Class specialization options at the Trainer's Shrine.
@@ -360,8 +380,12 @@ const jsonLd = [
         </a>
       </div>
     </section>
-              <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
-      <div class="ad-slot-footer">
+
+    <!-- Frequently Asked Questions Accordion -->
+    <FaqSection items={faqItems} />
+
+    <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
+    <div class="ad-slot-footer">
         <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
         <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
       </div>
