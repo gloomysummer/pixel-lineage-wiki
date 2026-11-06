@@ -5,6 +5,17 @@ import { siteConfig } from "../../config/site.config";
 
 const patches = [
   {
+    version: "Update 3 — Trials & Dawn Update (November 07, 2026)",
+    releaseDate: "November 07, 2026",
+    summary: "Official Dawn Update deployment introducing dungeon Trials, balance hotfixes, and experience rebranding to 'Pixel Lineage [Dawn Update]'.",
+    highlights: [
+      "Official experience updated to Pixel Lineage [Dawn Update] with active player baseline reaching 1,104 concurrent users.",
+      "Total experience visits surpassed 26.79M with over 102k community favorites and 98.9% upvote rating.",
+      "Dungeon Trials and encounter balancing rolled out across Act 1 and Act 2 roguelike runs.",
+      "Redemption buffer verified at the Goblin Merchant with active code phrase 'OCTOBER'.",
+    ],
+  },
+  {
     version: "Update (Spear Class + Dragon Race)",
     releaseDate: "October 20, 2026",
     summary: "Major weekly content drop updating experience title to 'Pixel Lineage [🎃Spear Class + Dragon Race]' with the 7th base archetype and Dragon lineage.",
@@ -47,16 +58,6 @@ const patches = [
       "Fixed Auction House listing fees and item duplication exploits.",
     ],
   },
-  {
-    version: "Official Roblox Release (September 25, 2026)",
-    releaseDate: "September 25, 2026",
-    summary: "Initial public launch of Pixel Lineage on Roblox with 6 base classes and 18 Super Classes.",
-    highlights: [
-      "Released Acts 1 and 2 of the dungeon crawling campaign.",
-      "Implemented the permanent Trainer's Shrine specialization mechanic.",
-      "Launched the Goblin Merchant starter promo code redemption system.",
-    ],
-  },
 ];
 
 const jsonLd = [
@@ -93,8 +94,8 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
 
 <BaseLayout
-  title="Pixel Lineage Patch Notes: Update Log"
-  description="Complete Pixel Lineage patch notes archive: weekly updates, Halloween race additions, class balance changes, and bug fixes directly from official logs."
+  title="Pixel Lineage Dawn Update: Patch Notes & Log"
+  description="Complete Pixel Lineage Dawn Update patch notes archive: Update 3 Trials, Spear class additions, balance changes, and bug fixes from official Roblox logs."
   canonical="/updates/patch-notes/"
   jsonLd={jsonLd}
 >
@@ -112,11 +113,24 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Official Development Log & Update Archive
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Patch Notes: Weekly Updates & Changes
+        Pixel Lineage Dawn Update: Patch Notes & Log
       </h1>
-      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
         Chronological archive of all balance updates, content expansions, and hotfixes for Pixel Lineage on Roblox. We track weekly developer commitments, class buff/nerf formulas, and event announcements.
       </p>
+
+      <!-- Direct Answer Summary Box for Dawn Update -->
+      <div style="background: rgba(52, 211, 153, 0.1); border-left: 4px solid #34d399; padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 8px;">
+        <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #34d399; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+          ⚡ Direct Answer · Dawn Update & Patch Notes Overview
+        </div>
+        <p style="margin: 0 0 8px; font-size: 0.94rem; color: #f0eaf4; line-height: 1.6;">
+          <strong>Pixel Lineage Dawn Update (Update 3: Trials)</strong> is the latest official content release on Roblox. It introduces dungeon encounter Trials, balance adjustments for late-game acts, and server stability improvements.
+        </p>
+        <p style="margin: 0; font-size: 0.88rem; color: var(--muted); line-height: 1.5;">
+          <strong>Live Experience Status:</strong> The experience has reached over 26.79M total visits and 1,104 concurrent players. Active codes like <em>OCTOBER</em> remain redeemable at the Goblin Merchant after liking and joining the official Roblox group.
+        </p>
+      </div>
     </header>
 
         <!-- Mobile Table of Contents (≤980px) -->

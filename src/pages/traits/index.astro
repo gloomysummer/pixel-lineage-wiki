@@ -145,7 +145,7 @@ const faqItems = [
 
 
 <BaseLayout
-  title="Pixel Lineage Traits: Drop Rates & Tier List"
+  title="Pixel Lineage Traits: Drop Rates & Best Talents"
   description="Complete Pixel Lineage traits guide: drop rates from Survivor (30%) to Prodigy (0.5%), talent spin odds, skill effects, and best trait tier rankings in Roblox."
   canonical="/traits/"
   jsonLd={jsonLd}
@@ -163,7 +163,7 @@ const faqItems = [
         Empirical Probability Ledger · Verified Rates
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Traits & Talents Guide: Drop Rates
+        Pixel Lineage Traits & Talents: Drop Rates & Tiers
       </h1>
       <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
         Authoritative reference for all character traits and passive talents in Pixel Lineage on Roblox. We detail exact drop rates, spin probabilities from Common to Mythic, precise skill effect formulas, and strategic reroll guidelines.
@@ -175,11 +175,63 @@ const faqItems = [
           ⚡ Direct Answer · Pixel Lineage Traits & Talents Overview
         </div>
         <p style="margin: 0 0 8px; font-size: 0.94rem; color: #f0eaf4; line-height: 1.6;">
-          <strong>Traits (Talents)</strong> in Pixel Lineage are permanent passive perks rolled via Talent Spins at the Goblin Merchant or Trainer's Shrine. Characters unlock their first talent slot at Level 5 and their second at Level 20.
+          <strong>Pixel Lineage Traits (Talents)</strong> are permanent passive perks rolled via Talent Spins at the Goblin Merchant or Trainer's Shrine. Slot 1 unlocks at Level 5 and Slot 2 at Level 20.
         </p>
-        <p style="margin: 0; font-size: 0.88rem; color: var(--muted); line-height: 1.5;">
-          <strong>Best Traits by Category:</strong> <em>Prodigy</em> (Mythic, 0.5%) is the best overall (+15% all-stat growth). <em>Bloodthirst</em> (Epic, 3.5%) is optimal for solo melee sustain (12% critical lifesteal). <em>Fortune's Favor</em> (Rare, 5.0%) boosts gold and critical chance, while <em>Survivor</em> (Common, 30.0%) provides early cheat-death insurance.
+        <p style="margin: 0 0 10px; font-size: 0.88rem; color: var(--muted); line-height: 1.5;">
+          <strong>Top Traits & Drop Rates:</strong> <em>Prodigy</em> (Mythic, 0.5%) is S+ Tier (+15% all stats); <em>Bloodthirst</em> (Epic, 3.5%) is S Tier (12% crit lifesteal); <em>Fortune's Favor</em> (Rare, 5.0%) gives +15% Crit and gold boosts; <em>Survivor</em> (Common, 30.0%) provides early cheat-death.
         </p>
+
+        <!-- Quick Drop Rate Table for Rich Snippet -->
+        <div style="overflow-x: auto; margin-top: 10px;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; background: #0d0a14; border: 1px solid var(--line); border-radius: 6px;">
+            <thead>
+              <tr style="background: #1d152c; border-bottom: 1px solid var(--line); text-align: left;">
+                <th style="padding: 8px 12px; color: #c9a227;">Trait</th>
+                <th style="padding: 8px 12px; color: #f5f3ff;">Rarity</th>
+                <th style="padding: 8px 12px; color: #34d399;">Drop Rate</th>
+                <th style="padding: 8px 12px; color: #f5f3ff;">Core Effect</th>
+                <th style="padding: 8px 12px; color: #a855f7;">Tier</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 8px 12px; font-weight: 700; color: #f43f5e;">Prodigy</td>
+                <td style="padding: 8px 12px; color: #f43f5e;">Mythic</td>
+                <td style="padding: 8px 12px; color: #34d399; font-weight: 700;">0.5%</td>
+                <td style="padding: 8px 12px; color: var(--muted);">+15% All 7 Stats, Extra passive slot</td>
+                <td style="padding: 8px 12px; color: #f43f5e; font-weight: 700;">S+</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 8px 12px; font-weight: 700; color: #a855f7;">Bloodthirst</td>
+                <td style="padding: 8px 12px; color: #a855f7;">Epic</td>
+                <td style="padding: 8px 12px; color: #34d399; font-weight: 700;">3.5%</td>
+                <td style="padding: 8px 12px; color: var(--muted);">12% Crit Lifesteal, +5% Attack Speed</td>
+                <td style="padding: 8px 12px; color: #a855f7; font-weight: 700;">S</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 8px 12px; font-weight: 700; color: #38bdf8;">Fortune's Favor</td>
+                <td style="padding: 8px 12px; color: #38bdf8;">Rare</td>
+                <td style="padding: 8px 12px; color: #34d399; font-weight: 700;">5.0%</td>
+                <td style="padding: 8px 12px; color: var(--muted);">+15% Crit Chance, +10% Gold drop</td>
+                <td style="padding: 8px 12px; color: #38bdf8; font-weight: 700;">A+</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 8px 12px; font-weight: 700; color: #22c55e;">Quick Study</td>
+                <td style="padding: 8px 12px; color: #22c55e;">Uncommon</td>
+                <td style="padding: 8px 12px; color: #34d399; font-weight: 700;">18.0%</td>
+                <td style="padding: 8px 12px; color: var(--muted);">+12% EXP, +15% Faster Super Class</td>
+                <td style="padding: 8px 12px; color: #22c55e; font-weight: 700;">A</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 12px; font-weight: 700; color: #94a3b8;">Survivor</td>
+                <td style="padding: 8px 12px; color: #94a3b8;">Common</td>
+                <td style="padding: 8px 12px; color: #34d399; font-weight: 700;">30.0%</td>
+                <td style="padding: 8px 12px; color: var(--muted);">Survive fatal blow with 1 HP (1/run)</td>
+                <td style="padding: 8px 12px; color: #94a3b8; font-weight: 700;">B+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </header>
 
