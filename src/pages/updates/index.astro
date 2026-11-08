@@ -51,8 +51,8 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Pixel Lineage Weekly Updates & Patch Notes",
-    description: "Official weekly changelog, Halloween event notes, and balance patches for Pixel Lineage on Roblox.",
+    name: "Pixel Lineage Update Schedule & Release Roadmap",
+    description: "Track the official Pixel Lineage update roadmap and release schedule: weekly developer milestones, planned class expansions, and patch calendar.",
     url: `${siteConfig.siteUrl}/updates/`,
   },
   {
@@ -74,8 +74,8 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
 
 <BaseLayout
-  title="Pixel Lineage Updates: Patch Notes & Events"
-  description="Complete Pixel Lineage weekly update log: Halloween event notes, Race Evolution balances, dungeon expansion changelogs, and developer promises on Roblox."
+  title="Pixel Lineage Update Schedule & Release Roadmap"
+  description="Track the official Pixel Lineage update roadmap and release schedule: weekly developer milestones, planned class expansions, and patch calendar."
   canonical="/updates/"
   jsonLd={jsonLd}
 >
@@ -94,11 +94,16 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Developer Changelog · Weekly Cadence
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Weekly Updates & Notes
+        Pixel Lineage Update Schedule & Release Roadmap
       </h1>
       <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
-        The developers of Pixel Lineage have officially committed to a strict weekly update cycle. Track all patch notes, class adjustments, and seasonal event features here.
+        The developers of Pixel Lineage have officially committed to a strict weekly release cadence. Track update schedules, historical patch cadence, and upcoming developmental roadmaps here.
       </p>
+
+      <!-- Dedicated Callout for Detailed Patch Notes -->
+      <div style="background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.35); border-left: 4px solid #6366f1; border-radius: 6px; padding: 14px 18px; margin: 18px 0 0; font-size: 0.92rem; line-height: 1.6; color: var(--ink);">
+        <strong style="color: #6366f1;">Looking for Detailed Patch Notes?</strong> For granular numeric changes, hotfix logs, and official Update 3 Trials notes, consult the dedicated <a href="/updates/patch-notes/" style="color: #6366f1; font-weight: 700; text-decoration: underline;">Pixel Lineage Dawn Update Patch Notes Archive →</a>.
+      </div>
     </header>
 
         <!-- Mobile Table of Contents (≤980px) -->
@@ -141,7 +146,7 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
     <!-- Complete Version History Ledger Table -->
     <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-      <h2 id="historical-version-patch-balance-ledger" style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Historical Version & Patch Balance Ledger</h2>
+      <h2 id="historical-version-update-cadence-ledger" style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Historical Version & Update Cadence Ledger</h2>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
         Track how combat numbers, class traits, and game systems have evolved across all server updates since launch:
       </p>
