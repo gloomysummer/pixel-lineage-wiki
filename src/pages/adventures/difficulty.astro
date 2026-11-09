@@ -21,12 +21,12 @@ const difficultyModes = [
     overview: "Introduces elite mob prefixes (Vampiric, Poise Breaker) requiring elemental potion usage and active shield management.",
   },
   {
-    name: "Torment Mode (Endgame Nightmare)",
+    name: "Heroic & Torment Scaling (Endgame Progression)",
     levelRequirement: "Level 25+ (Act 3 Warden Cleared)",
     enemyModifiers: "+100% to +200% Enemy HP, +60% to +150% Enemy ATK, Permanent Environmental Debuffs",
     lootModifiers: "+120% Gold Multiplier, Ultra Sigil Drops Enabled, Tier-3 Artifacts",
     deathPenalty: "Permadeath loss of 2 Life Tokens; severe gold penalty.",
-    overview: "The supreme test of character synergy. Unlocks Ultra Sigil drops and exclusive endgame armor sets.",
+    overview: "The supreme test of character synergy. For full Torment I-III rules, enrage mechanics, and Ultra Sigil drops, see the dedicated Torment Guide.",
   },
 ];
 
@@ -34,10 +34,11 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "Pixel Lineage Difficulty Guide: Normal to Torment",
-    description: "Complete Pixel Lineage difficulty settings guide: Normal, Hard, Torment I-III scalings, permadeath life penalties, and loot multiplier formulas.",
+    headline: "Pixel Lineage Difficulty Modes: Adventure Scaling",
+    description: "Complete Pixel Lineage difficulty settings guide: Normal, Hard, and Heroic dungeon scaling, enemy stat curves, life penalties, and loot multiplier formulas.",
     url: `${siteConfig.siteUrl}/adventures/difficulty/`,
     datePublished: "2026-10-18T12:00:00+00:00",
+    dateModified: "2026-11-10T05:40:30+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -64,8 +65,8 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
 
 <BaseLayout
-  title="Pixel Lineage Difficulty Guide: Normal to Torment"
-  description="Complete Pixel Lineage difficulty settings guide: Normal, Hard, Torment I-III scalings, permadeath life penalties, and loot multiplier formulas."
+  title="Pixel Lineage Difficulty Modes: Adventure Scaling"
+  description="Complete Pixel Lineage difficulty settings guide: Normal, Hard, and Heroic dungeon scaling, enemy stat curves, life penalties, and loot multiplier formulas."
   canonical="/adventures/difficulty/"
   jsonLd={jsonLd}
 >
@@ -83,11 +84,16 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Dungeon Scaling & Risk-Reward Engine
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Difficulty Guide: Normal to Torment
+        Pixel Lineage Difficulty Modes: Adventure Scaling
       </h1>
       <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
         Comprehensive breakdown of world difficulty tiers in Pixel Lineage on Roblox. We analyze enemy stat multipliers, permadeath Life token mechanics, loot drop bonuses, and when to advance into higher difficulty brackets.
       </p>
+
+      <!-- Dedicated Callout for Torment Mode Guide -->
+      <div style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.35); border-left: 4px solid #f43f5e; border-radius: 6px; padding: 14px 18px; margin: 18px 0 0; font-size: 0.92rem; line-height: 1.6; color: var(--ink);">
+        <strong style="color: #f43f5e;">Looking for Torment Mode Details?</strong> For complete Torment I–III difficulty rules, boss enrage timers (+20% ATK every 4 turns), and Ultra Sigil drops, visit the dedicated <a href="/adventures/torment/" style="color: #f43f5e; font-weight: 700; text-decoration: underline;">Pixel Lineage Torment Mode Guide →</a>.
+      </div>
     </header>
 
         <!-- Mobile Table of Contents (≤980px) -->
