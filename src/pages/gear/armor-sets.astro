@@ -2,47 +2,135 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AdSlot from "../../components/AdSlot.astro";
 import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const TITLE = "Pixel Lineage Armor Sets: All Bonuses & Pieces";
+const DESC = "Every Pixel Lineage armor set with its 3-piece bonus and piece names, from Dragonscale and Bloodmoon up to the four Mythic sets. No partial bonuses.";
 
 const armorSets = [
   {
-    name: "Iron Vanguard Regalia",
-    tier: "Tier 1 (Level 5-12)",
-    defenseRating: "+25 Total DEF, +40 Max HP",
-    setBonus: "2-Piece: +5% Physical Damage Reduction | 4-Piece: +10% Stun Resistance",
-    craftingCost: "120 Iron Ingots & 400 Gold at the Blacksmith",
-    bestFor: "Early Act 1 progression for Warriors and Brawlers.",
+    name: "Dragonscale",
+    cls: "Warrior",
+    rarity: "Common → Legendary",
+    bonusName: "Dragon's Breath",
+    bonus: "Your first hit each battle inflicts Burning for 3 turns. Attack +5%, DEF +8%.",
+    pieces: "Dragonscale Helm · Dragonscale Warplate · Dragonscale Greaves",
+    color: "#f97316",
   },
   {
-    name: "Shadowstalker Leathers",
-    tier: "Tier 1 (Level 5-12)",
-    defenseRating: "+14 Total DEF, +8 Turn Speed, +6% Crit",
-    setBonus: "2-Piece: +4% Dodge Probability | 4-Piece: 10% Chance to refund 1 Energy on critical hit",
-    craftingCost: "80 Cured Leather & 350 Gold at the Blacksmith",
-    bestFor: "Thieves and Archers seeking turn initiative and evasion.",
+    name: "Sunforged",
+    cls: "Warrior",
+    rarity: "Common → Legendary",
+    bonusName: "Sun Ward",
+    bonus: "Start each battle with a shield absorbing damage equal to 15% of max HP. DEF +6%, Max HP +6%.",
+    pieces: "Sunforged Helm · Sunforged Cuirass · Sunforged Sabatons",
+    color: "#fbbf24",
   },
   {
-    name: "Arcane Weaver Silks",
-    tier: "Tier 2 (Level 12-22)",
-    defenseRating: "+18 Total DEF, +32 MAG, +6% Spell Crit",
-    setBonus: "2-Piece: +8% Elemental Spell Power | 4-Piece: +12% Spell Critical Strike Multiplier",
-    craftingCost: "60 Astral Thread & 850 Gold at the Blacksmith",
-    bestFor: "Mages and Bards transitioning into Act 2 Dungeon Depths.",
+    name: "Bloodmoon",
+    cls: "Thief",
+    rarity: "Common → Legendary",
+    bonusName: "Blood Moon",
+    bonus: "Critical hits restore HP equal to 15% of the damage dealt. Crit +5%, Attack +4%.",
+    pieces: "Bloodmoon Mask · Bloodmoon Shroud · Bloodmoon Treads",
+    color: "#f43f5e",
   },
   {
-    name: "Dwarven Colossus Plate",
-    tier: "Tier 2 (Level 15-25)",
-    defenseRating: "+65 Total DEF, +120 Max HP, -4 SPD",
-    setBonus: "2-Piece: +12% Armor Hardening | 4-Piece: 'Impenetrable Bastion' (absorbs 1 fatal strike every 5 turns)",
-    craftingCost: "200 Mithril Ore & 1,500 Gold at the Blacksmith",
-    bestFor: "Sentinel Warriors and tanking frontline builds.",
+    name: "Frostborn",
+    cls: "Mage",
+    rarity: "Common → Legendary",
+    bonusName: "Winter's Grasp",
+    bonus: "Hits have a 30% chance to apply Chill for 2 turns. Crit +3%, Magic +8%.",
+    pieces: "Frostborn Crown · Frostborn Mantle · Frostborn Striders",
+    color: "#38bdf8",
   },
   {
-    name: "Eclipse Netherplate",
-    tier: "Tier 3 Endgame (Level 25-30+)",
-    defenseRating: "+110 Total DEF, +220 Max HP, +25 ATK/MAG",
-    setBonus: "2-Piece: +15% All Attribute Scaling | 4-Piece: 'Abyssal Dominance' (25% outgoing damage converted to True Damage)",
-    craftingCost: "Torment II Pinnacle Boss Drop / 5,000 Gold + 2 Ultra Sigil Shards",
-    bestFor: "Endgame Torment III and competitive Guild Raids.",
+    name: "Stormcaller",
+    cls: "Fist",
+    rarity: "Common → Legendary",
+    bonusName: "Static Charge",
+    bonus: "Every fourth hit Dazes the target — against bosses it applies Weaken for 2 turns instead.",
+    pieces: "Piece names not published yet",
+    color: "#a855f7",
+  },
+  {
+    name: "Verdant",
+    cls: "Bard",
+    rarity: "Common → Legendary",
+    bonusName: "Green Melody",
+    bonus: "Restores 4% of max HP at the start of your turns. Magic +4%, Max HP +8%.",
+    pieces: "Verdant Laurel · Verdant Coat · Verdant Boots",
+    color: "#34d399",
+  },
+  {
+    name: "Seraph",
+    cls: "All classes (Mythic)",
+    rarity: "Legendary or Secret",
+    bonusName: "Guardian Angel",
+    bonus: "Once per battle, an attack that would knock you out drops you to 1 HP instead, then heals 25% and applies Blessing for 3 turns. Magic +6%, Max HP +10%.",
+    pieces: "Seraph's Halo · Seraph's Aegis · Seraph's Greaves",
+    color: "#c084fc",
+  },
+  {
+    name: "Phoenix",
+    cls: "All classes (Mythic)",
+    rarity: "Legendary or Secret",
+    bonusName: "Phoenix Fire",
+    bonus: "Every hit has a 40% chance to inflict Burn for 2 turns. Defeating an enemy restores 8% HP. Attack +7%, Magic +7%.",
+    pieces: "Phoenix Crown · Phoenix Mantle · Phoenix Talons",
+    color: "#ef4444",
+  },
+  {
+    name: "Abyssal",
+    cls: "All classes (Mythic)",
+    rarity: "Legendary or Secret",
+    bonusName: "Void Hunter",
+    bonus: "Deal 30% more damage to enemies below 35% HP. Crit +4%, Attack +8%.",
+    pieces: "Abyssal Visage · Abyssal Carapace · Abyssal Greaves",
+    color: "#8b5cf6",
+  },
+  {
+    name: "Sovereign",
+    cls: "All classes (Mythic)",
+    rarity: "Legendary or Secret",
+    bonusName: "Arcane Overflow",
+    bonus: "Gain +1 Energy every third turn, and start each battle with +1 Energy. Magic +10%.",
+    pieces: "Arcane Sovereign's Crown · Arcane Sovereign's Robe · Arcane Sovereign's Slippers",
+    color: "#c9a227",
+  },
+];
+
+const faqItems = [
+  {
+    "question": "How many armor pieces do you need for a set bonus in Pixel Lineage?",
+    "answer": "All three. A set is a helmet, a chest piece and leg armor, and the bonus only activates when all three come from the same set. There is no partial bonus for wearing two of the three — when all three are equipped the gear panel shows the set name followed by 3/3 ON."
+  },
+  {
+    "question": "Is there a 2-piece or 4-piece set bonus?",
+    "answer": "No, and it is physically impossible. There are only three armor slots per set, so there is nothing for a fourth piece to occupy. Any guide quoting 2-piece or 4-piece armor bonuses for Pixel Lineage is describing a different game."
+  },
+  {
+    "question": "Do class armor sets only work on that class?",
+    "answer": "They work on every class, but the intended class gets 20% more benefit from each piece. So a Dragonscale set on a Warrior outperforms the same Dragonscale set on a Mage — not because the bonus changes, but because the per-piece stats are amplified."
+  },
+  {
+    "question": "What makes Mythic armor different from class armor?",
+    "answer": "Mythic sets are winged armor usable by all classes, always roll Legendary or Secret rarity, count as attuned for every class, and carry an additional 10% bonus on top. The four Mythic sets are Seraph, Phoenix, Abyssal and Sovereign."
+  },
+  {
+    "question": "Does armor rarity change the set bonus?",
+    "answer": "No. The set bonus is fixed regardless of the rarity of the individual pieces — a Common Dragonscale piece contributes to the same Dragon's Breath bonus as a Legendary one. Rarity affects each piece's own stats, not the set effect, so a mixed-rarity full set still works."
+  },
+  {
+    "question": "Can you change how armor looks without losing the stats?",
+    "answer": "Yes. Open the GEAR menu and use the VANITY (LOOKS) tab — you can swap the appearance of your helmet, chest and legs without touching the stats. Useful once you find a set whose bonus you want but whose look you do not."
+  },
+  {
+    "question": "What do the armor sparkle colours mean?",
+    "answer": "They mark rarity: Epic pieces sparkle purple, Legendary gold, and Secret pink. Mythic chest pieces additionally show wings behind your character."
   },
 ];
 
@@ -50,10 +138,11 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "Pixel Lineage Armor Sets: Stats & Tier Bonus Guide",
-    description: "Complete Pixel Lineage armor sets guide: defense ratings, set bonuses, crafting materials at the Blacksmith, and optimal gear progression for all 6 classes.",
+    headline: TITLE,
+    description: DESC,
     url: `${siteConfig.siteUrl}/gear/armor-sets/`,
     datePublished: "2026-10-18T12:00:00+00:00",
+    dateModified: "2026-11-10T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -71,143 +160,179 @@ const jsonLd = [
   },
 ];
 
-import MobileToc from "../../components/MobileToc.astro";
-import DualSidebar from "../../components/DualSidebar.astro";
-import { extractTocFromAstroUrl } from "../../utils/toc";
-
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
 
-
-<BaseLayout
-  title="Pixel Lineage Armor Sets & Set Bonuses"
-  description="Complete Pixel Lineage armor sets guide: defense ratings, set bonuses, crafting materials at the Blacksmith, and optimal gear progression for all 6 classes."
-  canonical="/gear/armor-sets/"
-  jsonLd={jsonLd}
->
+<BaseLayout title={TITLE} description={DESC} canonical="/gear/armor-sets/" jsonLd={jsonLd}>
   <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
-    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
-      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
-      <span class="separator" style="margin: 0 8px;">/</span>
-      <a href="/gear/" style="color: var(--accent); text-decoration: none;">Gear</a>
-      <span class="separator" style="margin: 0 8px;">/</span>
-      <span class="current">Armor Sets</span>
-    </nav>
-
-    <header style="margin-bottom: 32px;">
-      <div style="display: inline-block; background: rgba(201, 162, 39, 0.15); border: 1px solid #c9a227; color: #c9a227; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
-        Equipment Progression & Crafting Ledger
-      </div>
-      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Armor Sets: Stats & Tier Bonus Guide
-      </h1>
-      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
-        Exhaustive database of armor sets in Pixel Lineage on Roblox. We analyze 2-piece and 4-piece set bonuses, damage reduction formulas at the Blacksmith forge, material acquisition routes, and class-specific armor optimization.
-      </p>
-    </header>
-
-        <!-- Mobile Table of Contents (≤980px) -->
-        <MobileToc tocHeadings={tocHeadings} />
-
-
-    <!-- Unique Hero Banner -->
-    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
-      <img
-        src="/images/features/feature_armor.webp"
-        alt="Pixel Lineage Armor Sets Defense Ratings and Crafting Material Costs"
-        width="1200"
-        height="675"
-        style="width: 100%; height: auto; display: block;"
-        loading="eager"
-      />
-    </div>
-
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
-      <!-- Summary Callout -->
-      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 id="how-set-bonuses-reshape-turn-combat" style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">How Set Bonuses Reshape Turn Combat</h2>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
-          Wearing matching equipment pieces activates powerful synergistic passives called Set Bonuses. While single legendary pieces offer high standalone stats, completing a 4-piece armor set activates game-changing mechanics—such as energy refunds on critical hits, fatal strike absorption, and true damage conversions.
-        </p>
-      </section>
+        <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+          <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <a href="/gear/" style="color: var(--accent); text-decoration: none;">Gear</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <span class="current">Armor Sets</span>
+        </nav>
 
-      <!-- Armor Sets Master Breakdown -->
-      <section style="margin-bottom: 40px;">
-        <h2 id="tier-1-to-tier-3-armor-progression-sets" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Tier 1 to Tier 3 Armor Progression Sets</h2>
-        <div style="display: flex; flex-direction: column; gap: 24px;">
-          {armorSets.map((a) => (
-            <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px;">
-              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-                <h3 id="a-name" style="font-size: 1.3rem; color: #fff; margin: 0;">{a.name}</h3>
-                <span style="font-size: 0.8rem; background: #0d0a14; color: #38bdf8; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
-                  {a.tier}
-                </span>
-              </div>
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(201, 162, 39, 0.15); border: 1px solid #c9a227; color: #c9a227; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            3 Pieces Per Set · 6 Class Sets + 4 Mythic Sets
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Armor Sets: All Bonuses &amp; Pieces
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            An armor set is exactly three pieces — helmet, chest and legs — and the set bonus only wakes up when all three match. There is no two-piece bonus and no four-piece bonus, because there is no fourth slot. Below is every set with its real bonus name, effect and piece names.
+          </p>
 
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 14px; font-size: 0.88rem;">
-                <div style="background: #0d0a14; padding: 10px 12px; border-radius: 6px;">
-                  <span style="color: var(--muted); font-size: 0.75rem; display: block;">Base Defense Pool</span>
-                  <strong style="color: #34d399;">{a.defenseRating}</strong>
-                </div>
-                <div style="background: #0d0a14; padding: 10px 12px; border-radius: 6px;">
-                  <span style="color: var(--muted); font-size: 0.75rem; display: block;">Crafting & Upgrade Cost</span>
-                  <strong style="color: #c9a227;">{a.craftingCost}</strong>
-                </div>
-              </div>
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer
+            </div>
+            <p style="margin: 0; font-size: 0.94rem; color: #e8e2f2; line-height: 1.6;">
+              <strong>Three pieces or nothing.</strong> Class sets are <strong>Dragonscale and Sunforged (Warrior), Bloodmoon (Thief), Frostborn (Mage), Stormcaller (Fist) and Verdant (Bard)</strong>; the four <strong>Mythic</strong> sets — <strong>Seraph, Phoenix, Abyssal and Sovereign</strong> — work on every class, always roll Legendary or Secret, and add a further 10%. Class pieces give <strong>20% more</strong> to their intended class. Rarity changes a piece's own stats but <strong>never</strong> the set bonus.
+            </p>
+          </div>
+        </header>
 
-        <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
-             对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
+        <MobileToc tocHeadings={tocHeadings} />
+
         <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
-              <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px; margin-bottom: 10px; font-size: 0.9rem;">
-                <strong style="color: #38bdf8; display: block; margin-bottom: 4px;">Set Bonus Thresholds:</strong>
-                <span style="color: var(--ink); line-height: 1.5;">{a.setBonus}</span>
-              </div>
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="how-armor-sets-work" style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">How Armor Sets Work</h2>
+          <ul style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+            <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">Three slots, three pieces.</strong> Helmet, chest, legs. Equip all three from the same set and the gear panel shows the set name with <code>3/3 ON</code>.</li>
+            <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">No partial bonus.</strong> Two pieces give you nothing but their own stats. There is no 2-piece tier and no 4-piece tier.</li>
+            <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">Rarity is per piece, not per set.</strong> Two pieces of the same set can roll different rarities and different stats, and the set bonus is identical either way.</li>
+            <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">Class attunement gives +20%.</strong> Any class can wear any set, but the intended class gets 20% more out of each piece.</li>
+            <li><strong style="color: #f5f3ff;">Look is separate from stats.</strong> The <em>VANITY (LOOKS)</em> tab in the GEAR menu swaps appearance without changing anything numeric.</li>
+          </ul>
+        </section>
 
-              <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
-                <strong style="color: #fff;">Tactical Fit:</strong> {a.bestFor}
-              </p>
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="all-armor-sets-and-bonuses" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">All Armor Sets &amp; Bonuses</h2>
+
+          {armorSets.map((s) => (
+            <div style={`background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid ${s.color}; border-radius: 6px; padding: 18px; margin-bottom: 16px;`}>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+                <h3 style={`margin: 0; font-size: 1.12rem; color: ${s.color};`}>{s.name} Set</h3>
+                <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--muted);">{s.cls} · {s.rarity}</span>
+              </div>
+              <div style="color: #f5f3ff; font-size: 0.9rem; margin-bottom: 6px;">
+                <strong>Set bonus — {s.bonusName}:</strong> <span style="color: var(--muted);">{s.bonus}</span>
+              </div>
+              <div style="color: var(--muted); font-size: 0.86rem;">
+                <strong style="color: #c9a227;">Pieces:</strong> {s.pieces}
+              </div>
             </div>
           ))}
-        </div>
-      </section>
 
-      <!-- Blacksmith Upgrading Mechanics -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 id="the-blacksmith-forge-reinforcement-durability" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">The Blacksmith Forge: Reinforcement & Durability</h2>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-          The Blacksmith NPC is located in the west forge of the Starter Village. Every armor piece can be reinforced up to +5 Quality using Refined Ore and Gold. Each reinforcement rank increases flat DEF by +10% without altering character weight or speed penalties.
-        </p>
-        <div style="background: #0d0a14; border: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 16px; border-radius: 6px; font-size: 0.88rem; color: var(--muted);">
-          <strong style="color: #f43f5e;">Permadeath Durability Rule:</strong> Falling in combat degrades armor durability by 20%. If an armor set reaches 0% durability, its set bonus deactivates until repaired at the Blacksmith anvil.
-        </div>
-      </section>
+          <p style="color: var(--muted); font-size: 0.85rem; margin: 8px 0 0;">
+            Stormcaller's three piece names are not published anywhere we could verify, so we list the bonus only rather than invent names to fill the row. Gear beyond armor is on the <a href="/gear/weapons/" style="color: var(--accent); text-decoration: none;">weapons tier list</a> and <a href="/gear/legendary-powers/" style="color: var(--accent); text-decoration: none;">legendary powers</a> pages.
+          </p>
+        </section>
 
-      <!-- Navigation -->
-      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 id="explore-further-equipment-resources" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Equipment Resources</h3>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="/gear/weapons/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            → Best Weapons Tier List & Scaling Guide
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="class-armor-vs-mythic-armor" style="font-size: 1.25rem; color: #a855f7; margin: 0 0 12px;">Class Armor vs Mythic Armor</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;"></th>
+                  <th style="padding: 10px 12px;">Class sets</th>
+                  <th style="padding: 10px 12px;">Mythic sets</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Property" style="padding: 10px 12px; font-weight: 700; color: #fff;">Usable by</td>
+                  <td data-label="Class sets" style="padding: 10px 12px; color: var(--muted);">Any class; +20% per piece for the attuned class</td>
+                  <td data-label="Mythic sets" style="padding: 10px 12px; color: #34d399;">All classes, counts as attuned for everyone</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Property" style="padding: 10px 12px; font-weight: 700; color: #fff;">Rarity roll</td>
+                  <td data-label="Class sets" style="padding: 10px 12px; color: var(--muted);">Common through Legendary, per piece</td>
+                  <td data-label="Mythic sets" style="padding: 10px 12px; color: #34d399;">Always Legendary or Secret</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Property" style="padding: 10px 12px; font-weight: 700; color: #fff;">Extra bonus</td>
+                  <td data-label="Class sets" style="padding: 10px 12px; color: var(--muted);">None</td>
+                  <td data-label="Mythic sets" style="padding: 10px 12px; color: #34d399;">+10% on top, plus wings on the chest piece</td>
+                </tr>
+                <tr>
+                  <td data-label="Property" style="padding: 10px 12px; font-weight: 700; color: #fff;">Look</td>
+                  <td data-label="Class sets" style="padding: 10px 12px; color: var(--muted);">Epic sparkles purple, Legendary gold</td>
+                  <td data-label="Mythic sets" style="padding: 10px 12px; color: #34d399;">Secret sparkles pink</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="which-set-should-you-wear" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Which Set Should You Wear?</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Pick by the problem you are actually losing to, not by rarity. Each set answers one:
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">If you are losing to…</th>
+                  <th style="padding: 10px 12px;">Wear</th>
+                  <th style="padding: 10px 12px;">Why</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Problem" style="padding: 10px 12px; color: #fff;">A single burst turn</td>
+                  <td data-label="Set" style="padding: 10px 12px; color: #c084fc;">Seraph</td>
+                  <td data-label="Why" style="padding: 10px 12px; color: var(--muted);">Guardian Angel converts one lethal hit into 1 HP plus a 25% heal — the strongest anti-death effect in the game.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Problem" style="padding: 10px 12px; color: #fff;">Slow, grindy fights</td>
+                  <td data-label="Set" style="padding: 10px 12px; color: #ef4444;">Phoenix</td>
+                  <td data-label="Why" style="padding: 10px 12px; color: var(--muted);">40% Burn per hit plus 8% heal on every kill — damage and sustain from the same trigger.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Problem" style="padding: 10px 12px; color: #fff;">Bosses that survive at low HP</td>
+                  <td data-label="Set" style="padding: 10px 12px; color: #8b5cf6;">Abyssal</td>
+                  <td data-label="Why" style="padding: 10px 12px; color: var(--muted);">+30% damage below 35% HP turns the last phase into the fast phase.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Problem" style="padding: 10px 12px; color: #fff;">Running out of Energy</td>
+                  <td data-label="Set" style="padding: 10px 12px; color: #c9a227;">Sovereign</td>
+                  <td data-label="Why" style="padding: 10px 12px; color: var(--muted);">+1 Energy at start and every third turn is the only set that fixes the resource rather than the health bar.</td>
+                </tr>
+                <tr>
+                  <td data-label="Problem" style="padding: 10px 12px; color: #fff;">Nothing specific yet</td>
+                  <td data-label="Set" style="padding: 10px 12px; color: #fbbf24;">Sunforged</td>
+                  <td data-label="Why" style="padding: 10px 12px; color: var(--muted);">A 15%-of-max-HP shield at the start of every battle is the most forgiving early set, and it is farmable rather than Mythic.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <FaqSection items={faqItems} />
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <a href="/gear/weapons/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Weapons Tier List →
           </a>
-          <a href="/gear/legendary-powers/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            → Legendary Artifacts & Unique Effects
-          </a>
-          <a href="/calculator/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            → Test Armor EHP in Interactive Calculator
+          <a href="/gear/legendary-powers/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Legendary Powers &amp; Affixes →
           </a>
         </div>
-      </section>
-          <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
-      <div class="ad-slot-footer">
-        <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
-        <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
-      </div>
 
-</article>
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+      </article>
 
-      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/gear/armor-sets/" />
     </div>
   </div>
