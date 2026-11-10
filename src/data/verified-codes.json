@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "fetchedAt": "2026-10-26T15:00:00Z",
+  "fetchedAt": "2026-11-10T08:00:00Z",
   "gameName": "Pixel Lineage",
   "codes": [
     {
@@ -122,6 +122,50 @@
       "lastVerified": "2026-10-26",
       "sourceUrl": "https://www.destructoid.com/roblox-pixel-lineage-codes",
       "sourceType": "T2_EDITORIAL_CONSENSUS"
+    },
+    {
+      "code": "ByeForNow",
+      "rewards": "Reward not published by the developer",
+      "levelReq": "None",
+      "status": "unverified",
+      "firstSeen": "2026-11-08",
+      "lastVerified": "2026-11-10",
+      "sourceUrl": "https://pixellineage.club/",
+      "sourceType": "T2_OFFICIAL_LISTING_TRANSCRIPTION",
+      "note": "Newest official listing; new servers only. Not redemption-tested."
+    },
+    {
+      "code": "Panda",
+      "rewards": "Reward not published by the developer",
+      "levelReq": "None",
+      "status": "unverified",
+      "firstSeen": "2026-11-08",
+      "lastVerified": "2026-11-10",
+      "sourceUrl": "https://pixellineage.club/",
+      "sourceType": "T2_OFFICIAL_LISTING_TRANSCRIPTION",
+      "note": "Listed in official code listing. Not redemption-tested."
+    },
+    {
+      "code": "Sorryfordelay",
+      "rewards": "Reward not published by the developer",
+      "levelReq": "None",
+      "status": "unverified",
+      "firstSeen": "2026-11-08",
+      "lastVerified": "2026-11-10",
+      "sourceUrl": "https://pixellineage.club/",
+      "sourceType": "T2_OFFICIAL_LISTING_TRANSCRIPTION",
+      "note": "Compensation code after a delayed update. Case-sensitive."
+    },
+    {
+      "code": "UpdateWhen",
+      "rewards": "Reward not published by the developer",
+      "levelReq": "None",
+      "status": "unverified",
+      "firstSeen": "2026-11-08",
+      "lastVerified": "2026-11-10",
+      "sourceUrl": "https://pixellineage.club/",
+      "sourceType": "T2_OFFICIAL_LISTING_TRANSCRIPTION",
+      "note": "Listed alongside weekly update codes. Not redemption-tested."
     }
   ]
 }

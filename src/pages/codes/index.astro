@@ -15,6 +15,7 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 const LAST_CHECKED_ISO = "2026-11-10";
 const LAST_CHECKED_HUMAN = "November 10, 2026";
 const MONTH_LABEL = "November 2026";
+const SHORT_MONTH = "Nov 2026";
 
 // TIER 1: Verified Working (Corroborated across 3+ independent authoritative sources)
 const verifiedCodes = [
@@ -177,8 +178,8 @@ const faqItems = [
 ---
 
 <BaseLayout
-  title={`Pixel Lineage Codes: All Working Codes (${MONTH_LABEL})`}
-  description={`All working Pixel Lineage codes for ${MONTH_LABEL}, last checked ${LAST_CHECKED_HUMAN}. Copy each code, see its exact reward, and redeem it at the Goblin Merchant.`}
+  title={`Pixel Lineage Codes: Working Codes, ${SHORT_MONTH}`}
+  description={`All working Pixel Lineage codes for ${MONTH_LABEL}, last checked ${LAST_CHECKED_HUMAN}. Copy a code, see its exact reward, redeem at the Goblin Merchant.`}
   canonical="/codes/"
   jsonLd={jsonLd}
 >
