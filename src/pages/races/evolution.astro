@@ -1,0 +1,358 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+const TITLE = "Pixel Lineage Heirloom & Heartblood Locations (All Races)";
+const DESC = "Every Pixel Lineage Heirloom and Heartblood location: which Act and difficulty drops each race's Stage 1 Kindled item and its Exalted Heartblood, plus the bosses to farm.";
+
+const LAST_CHECKED = "November 10, 2026";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: TITLE,
+    description: DESC,
+    url: `${siteConfig.siteUrl}/races/evolution/`,
+    datePublished: "2026-11-10T12:00:00+00:00",
+    dateModified: "2026-11-10T12:00:00+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Race Evolution", item: `${siteConfig.siteUrl}/races/evolution/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is the difference between an Heirloom and a Heartblood in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "An Heirloom evolves your race from its base form to Stage 1, called Kindled. A Heartblood then takes Kindled to Stage 2, Exalted, and is also the material used for Stage 3. Both items must match your current race — a Nightborne Heirloom does nothing for a Vesper character.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How many Heartbloods do you need to max a race in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "One Heirloom for Kindled, then Heartbloods for Exalted and the final Stage 3 form. Stage 3 also has race-specific requirements on top of the Heartblood, so budget more than two Heartbloods if you intend to finish the line.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can you buy Heirlooms and Heartbloods instead of farming them?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Both items appear in the Auction House under the Bloodline category, sold by other players for gold. Prices are usually high, so farming the listed Act is normally cheaper if you can clear it reliably.",
+        },
+      },
+    ],
+  },
+];
+
+// Heirloom → Kindled (Stage 1). Sources agree on Act + difficulty.
+const heirlooms = [
+  { race: "Human", act: "Act 1 (Sunmeadow Wilds) / Act 2 (Dungeon)", diff: "Normal", diffClass: "normal" },
+  { race: "Dwarf", act: "Act 2 (Dungeon)", diff: "Hard", diffClass: "hard" },
+  { race: "Goblin", act: "Act 2 (Dungeon) / Act 3 (Cursed Forest)", diff: "Hard", diffClass: "hard" },
+  { race: "Ashborn", act: "Act 4 (Moonstone Rise)", diff: "Hard", diffClass: "hard" },
+  { race: "Slime", act: "Act 4 (Moonstone Rise)", diff: "Nightmare", diffClass: "nightmare" },
+  { race: "Stonekin", act: "Act 5 (Underworld)", diff: "Hard", diffClass: "hard" },
+  { race: "Sylvan", act: "Act 6 (Withered Meadow)", diff: "Hard", diffClass: "hard" },
+  { race: "Vesper", act: "Act 6 (Withered Meadow)", diff: "Nightmare", diffClass: "nightmare" },
+  { race: "Mushroom", act: "Act 7 (Drowned Cathedral)", diff: "Hard", diffClass: "hard" },
+  { race: "Dullahan", act: "Act 7 (Drowned Cathedral)", diff: "Nightmare", diffClass: "nightmare" },
+  { race: "Tideborn", act: "Act 8 (Glass Wastes)", diff: "Nightmare", diffClass: "nightmare" },
+  { race: "Celestine", act: "Act 9 (Hollow Sky)", diff: "Nightmare", diffClass: "nightmare" },
+  { race: "Nightborne", act: "Act 9 (Hollow Sky)", diff: "Nightmare", diffClass: "nightmare" },
+  { race: "Seraph", act: "Act 10 (Heart of Blight)", diff: "Nightmare", diffClass: "nightmare" },
+];
+
+// Heartblood → Exalted (Stage 2) and Stage 3
+const heartbloods = [
+  { race: "Human", act: "Act 3 (Cursed Forest)", boss: "Mother Blight" },
+  { race: "Sylvan", act: "Act 2 (Cursed Forest)", boss: "Mother Blight" },
+  { race: "Celestine", act: "Act 1 (Sunmeadow Wilds)", boss: "Slime King" },
+  { race: "Dwarf", act: "Act 1 (Sunmeadow Wilds)", boss: "Slime King" },
+  { race: "Nightborne", act: "Act 2 (Dungeon)", boss: "Crypt Lord" },
+  { race: "Seraph", act: "Act 4 (Moonstone Rise)", boss: "—" },
+  { race: "Ashborn", act: "Act 5 (Underworld)", boss: "Mallgrath, the Lord Below" },
+  { race: "Goblin", act: "Act 5 (Underworld)", boss: "Mallgrath, the Lord Below" },
+  { race: "Mushroom", act: "Act 6 (Withered Meadow)", boss: "—" },
+  { race: "Vesper", act: "Act 7 (Drowned Cathedral)", boss: "The Tolling Bell" },
+  { race: "Tideborn", act: "Act 7 (Drowned Cathedral)", boss: "The Tolling Bell" },
+  { race: "Stonekin", act: "Act 8 (Glass Wastes)", boss: "—" },
+  { race: "Dullahan", act: "Act 9 (Hollow Sky)", boss: "—" },
+  { race: "Slime", act: "Act 10 (Heart of Blight)", boss: "—" },
+];
+
+const sharedBosses = [
+  { boss: "Slime King", act: "Act 1 — Sunmeadow Wilds", races: "Dwarf + Celestine" },
+  { boss: "Mother Blight", act: "Act 3 — Cursed Forest", races: "Human + Sylvan" },
+  { boss: "Mallgrath, the Lord Below", act: "Act 5 — Underworld", races: "Ashborn + Goblin" },
+  { boss: "The Tolling Bell", act: "Act 7 — Drowned Cathedral", races: "Vesper + Tideborn" },
+];
+
+const diffColor = (k: string) => (k === "normal" ? "#34d399" : k === "hard" ? "#c9a227" : "#f43f5e");
+
+const faqItems = [
+  {
+    "question": "What is the difference between an Heirloom and a Heartblood in Pixel Lineage?",
+    "answer": "An Heirloom evolves your race from its base form to Stage 1, called Kindled. A Heartblood then takes Kindled to Stage 2, Exalted, and is also the material used for Stage 3. Both must match your current race — a Nightborne Heirloom does nothing for a Vesper character."
+  },
+  {
+    "question": "How many Heartbloods do you need to max a race in Pixel Lineage?",
+    "answer": "One Heirloom for Kindled, then Heartbloods for Exalted and the final Stage 3 form. Stage 3 carries race-specific requirements on top of the Heartblood, so if you plan to finish a bloodline, budget more than two Heartbloods rather than assuming one is enough."
+  },
+  {
+    "question": "Can you buy Heirlooms and Heartbloods instead of farming them?",
+    "answer": "Yes. Both items are listed in the Auction House under the Bloodline category, sold by other players for gold. Prices are usually high, so farming the listed Act is normally cheaper — provided you can clear it reliably without burning all three Lives."
+  },
+  {
+    "question": "Do Heirloom drops depend on difficulty setting?",
+    "answer": "Yes, and this is the most common waste of time. Set the difficulty on the map selection screen before you start: Human's Heirloom only drops on Normal, most early and mid-tier races need Hard, and the rarer bloodlines (Vesper, Slime, Tideborn, Celestine, Nightborne, Seraph, Dullahan) require Nightmare."
+  },
+  {
+    "question": "Which boss should you farm for two races at once?",
+    "answer": "Four bosses each drop Heartbloods for two different races: Slime King in Sunmeadow Wilds (Dwarf and Celestine), Mother Blight in Cursed Forest (Human and Sylvan), Mallgrath the Lord Below in Underworld (Ashborn and Goblin), and The Tolling Bell in Drowned Cathedral (Vesper and Tideborn). If someone in your party needs the other race, farm those together."
+  },
+  {
+    "question": "How do you actually apply an Heirloom or Heartblood?",
+    "answer": "Open the Gear menu and consume the item — that is what triggers the evolution. Before consuming, it is safer to bank the run: on the node map choose Return Home, which gets you to town without spending a Life and keeps the drop secure."
+  },
+];
+---
+
+<BaseLayout title={TITLE} description={DESC} canonical="/races/evolution/" jsonLd={jsonLd}>
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+          <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <span class="current">Race Evolution</span>
+        </nav>
+
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(201, 162, 39, 0.15); border: 1px solid #c9a227; color: #c9a227; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            Race Evolution · Heirloom &amp; Heartblood · Cross-checked {LAST_CHECKED}
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Heirloom &amp; Heartblood Locations: All Races
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            Every race in Pixel Lineage evolves through the same two-item chain: an <strong>Heirloom</strong> takes your race to Stage 1 (Kindled), then a <strong>Heartblood</strong> takes it to Stage 2 (Exalted) and onward to Stage 3. Below is the Act, difficulty and boss for all fourteen races, plus the four bosses that drop two races' Heartbloods at once.
+          </p>
+
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer
+            </div>
+            <p style="margin: 0; font-size: 0.94rem; color: #e8e2f2; line-height: 1.6;">
+              <strong>Heirloom → Kindled (Stage 1). Heartblood → Exalted (Stage 2) and Stage 3.</strong> The items must match your race or they do nothing. Human's Heirloom only drops on <strong>Normal</strong>, most mid-tier races need <strong>Hard</strong>, and Vesper, Slime, Dullahan, Tideborn, Celestine, Nightborne and Seraph all require <strong>Nightmare</strong>. Consume the item from the Gear menu to evolve, and use <strong>Return Home</strong> first so a bad run does not cost you a Life.
+            </p>
+          </div>
+        </header>
+
+        <MobileToc tocHeadings={tocHeadings} />
+
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="how-race-evolution-works" style="font-size: 1.25rem; color: #34d399; margin: 0 0 12px;">How Race Evolution Works</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Stage</th>
+                  <th style="padding: 10px 12px;">Required Item</th>
+                  <th style="padding: 10px 12px;">What Changes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Stage" style="padding: 10px 12px; font-weight: 700; color: #fff;">Base</td>
+                  <td data-label="Required Item" style="padding: 10px 12px; color: var(--muted);">None — starting race</td>
+                  <td data-label="What Changes" style="padding: 10px 12px; color: var(--muted);">Base racial passive and stats</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Stage" style="padding: 10px 12px; font-weight: 700; color: #34d399;">Stage 1 · Kindled</td>
+                  <td data-label="Required Item" style="padding: 10px 12px; color: #34d399;">Matching race Heirloom</td>
+                  <td data-label="What Changes" style="padding: 10px 12px; color: var(--muted);">Improved racial stats and abilities</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Stage" style="padding: 10px 12px; font-weight: 700; color: #c9a227;">Stage 2 · Exalted</td>
+                  <td data-label="Required Item" style="padding: 10px 12px; color: #c9a227;">Matching race Heartblood</td>
+                  <td data-label="What Changes" style="padding: 10px 12px; color: var(--muted);">Further passive or ability upgrades</td>
+                </tr>
+                <tr>
+                  <td data-label="Stage" style="padding: 10px 12px; font-weight: 700; color: #a855f7;">Stage 3 · Final</td>
+                  <td data-label="Required Item" style="padding: 10px 12px; color: #a855f7;">Additional Heartblood + race-specific requirements</td>
+                  <td data-label="What Changes" style="padding: 10px 12px; color: var(--muted);">Advanced race form with stronger effects</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            The naming is the part people get wrong: <strong style="color: #f5f3ff;">Kindled is Stage 1 and comes from an Heirloom</strong>, not a Heartblood. An evolved race keeps working with the class you already picked — this system is for upgrading the roll you have instead of burning Race Spins hoping for a better one.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="all-heirloom-locations-stage-1-kindled" style="font-size: 1.3rem; color: #34d399; margin: 0 0 12px;">All Heirloom Locations — Stage 1 (Kindled)</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Set the difficulty on the map selection screen <em>before</em> starting the run. Farming a Nightmare-only Heirloom on Hard is the single most common way players waste a session.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Race</th>
+                  <th style="padding: 10px 12px;">Heirloom Location</th>
+                  <th style="padding: 10px 12px;">Difficulty</th>
+                </tr>
+              </thead>
+              <tbody>
+                {heirlooms.map((h) => (
+                  <tr style="border-bottom: 1px solid var(--line);">
+                    <td data-label="Race" style="padding: 10px 12px; font-weight: 700; color: #fff;">{h.race}</td>
+                    <td data-label="Heirloom Location" style="padding: 10px 12px; color: var(--muted);">{h.act}</td>
+                    <td data-label="Difficulty" style="padding: 10px 12px; font-weight: 700; color: {diffColor(h.diffClass)};">{h.diff}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.85rem; margin: 12px 0 0;">
+            Dragonborn's Heirloom is not in any published location table yet — the race shipped on 2026-10-20 and its Stage 1 route has not been documented by the sources we cross-checked. Treat it as unconfirmed rather than guessing at an Act.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="all-heartblood-locations-stage-2-exalted" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 12px;">All Heartblood Locations — Stage 2 (Exalted)</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Heartbloods drop from named bosses rather than from a general Act clear, so match the boss to your race before you commit a run.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Race</th>
+                  <th style="padding: 10px 12px;">Heartblood Act</th>
+                  <th style="padding: 10px 12px;">Source Boss</th>
+                </tr>
+              </thead>
+              <tbody>
+                {heartbloods.map((h) => (
+                  <tr style="border-bottom: 1px solid var(--line);">
+                    <td data-label="Race" style="padding: 10px 12px; font-weight: 700; color: #fff;">{h.race}</td>
+                    <td data-label="Heartblood Act" style="padding: 10px 12px; color: var(--muted);">{h.act}</td>
+                    <td data-label="Source Boss" style="padding: 10px 12px; color: #c9a227;">{h.boss}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="bosses-that-drop-two-races-heartblood" style="font-size: 1.25rem; color: #a855f7; margin: 0 0 12px;">Four Bosses Drop Two Races' Heartbloods</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            If you are farming with someone else — or if you have two characters — these four bosses cover two bloodlines each, which halves the number of runs you need.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Boss</th>
+                  <th style="padding: 10px 12px;">Act</th>
+                  <th style="padding: 10px 12px;">Drops For</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sharedBosses.map((b) => (
+                  <tr style="border-bottom: 1px solid var(--line);">
+                    <td data-label="Boss" style="padding: 10px 12px; font-weight: 700; color: #fff;">{b.boss}</td>
+                    <td data-label="Act" style="padding: 10px 12px; color: var(--muted);">{b.act}</td>
+                    <td data-label="Drops For" style="padding: 10px 12px; color: #34d399;">{b.races}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="farming-route-and-practical-rules" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Farming Route &amp; Practical Rules</h2>
+          <ol style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; padding-left: 20px; margin: 0 0 16px;">
+            <li style="margin-bottom: 10px;"><strong style="color: #f5f3ff;">Check your race first.</strong> Character menu → confirm the race. Farm only that race's items; other bloodlines' materials have no effect on you.</li>
+            <li style="margin-bottom: 10px;"><strong style="color: #f5f3ff;">Two destinations, not one.</strong> Note the Heirloom's Act and difficulty, and the Heartblood's Act and boss. You can switch Acts as soon as Stage 1 is done.</li>
+            <li style="margin-bottom: 10px;"><strong style="color: #f5f3ff;">Clear on the listed difficulty until it drops.</strong> Consume the Heirloom from the Gear menu to reach Kindled.</li>
+            <li style="margin-bottom: 10px;"><strong style="color: #f5f3ff;">Use the Ancient Portal.</strong> Once unlocked in your castle town it jumps straight to Acts you have already reached, instead of replaying the whole route.</li>
+            <li style="margin-bottom: 10px;"><strong style="color: #f5f3ff;">Bank the item before doing anything else.</strong> As soon as the Heartblood drops, stop advancing and pick <em>Return Home</em> on the node map — that reaches town without spending a Life.</li>
+          </ol>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            For drop-farming efficiency, raise your loot bonus before the run — the <a href="/gear/legendary-powers/" style="color: var(--accent); text-decoration: none;">Lucky and loot affixes</a> section covers the gear side, and <a href="/adventures/torment/" style="color: var(--accent); text-decoration: none;">Nightmare Torment</a> is the recommended farming difficulty once your build can clear it reliably.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="buying-instead-of-farming" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Buying Instead of Farming</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Both Heirlooms and Heartbloods are tradeable and listed in the Auction House under the <strong style="color: #f5f3ff;">Bloodline</strong> category, sold by players for gold. Listings show seller, quantity, time remaining and current bid. Prices are typically high, so clearing the Act yourself is usually cheaper — but if you are stuck at Act 8 Nightmare for a Tideborn Heirloom and have gold sitting idle, buying is the faster route. Check the <a href="/guilds/arena/" style="color: var(--accent); text-decoration: none;">gold-farming routes</a> if you need to fund it.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="which-race-is-worth-evolving" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 12px;">Which Race Is Worth Evolving?</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Evolution changes the calculus on low-rarity rolls. Rare and Uncommon races become usable once they reach Kindled or Exalted, which means a Stonekin or Sylvan roll you were about to reroll may be worth keeping.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Rule of thumb: if your race already matches your class, evolve it before spending more Race Spins. If it does not, reroll first — evolving a race that fights your build just locks in the mismatch. See the <a href="/races/best-races/" style="color: var(--accent); text-decoration: none;">best races ranking</a> and the <a href="/races/" style="color: var(--accent); text-decoration: none;">full race index</a>.
+          </p>
+        </section>
+
+        <FaqSection items={faqItems} />
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <a href="/races/best-races/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Best Races &amp; Spin Meta →
+          </a>
+          <a href="/codes/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Free Race Spins via Codes →
+          </a>
+        </div>
+
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+      </article>
+
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/evolution/" />
+    </div>
+  </div>
+</BaseLayout>

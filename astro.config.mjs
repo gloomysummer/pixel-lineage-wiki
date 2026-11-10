@@ -80,6 +80,10 @@ export default defineConfig({
   output: 'static',
   redirects: {
     '/attribute': '/attributes/',
+    // 「Elf」「Orc」不是 Pixel Lineage 里存在的族裔（真实 14 族裔见 /races/）。
+    // 保留 301 而非 404：这两页合计仍有约 160 次/月的展示，把权重回流到族裔索引。
+    '/races/elf': '/races/',
+    '/races/orc': '/races/',
   },
   integrations: [
     sitemap({

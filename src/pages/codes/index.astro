@@ -10,6 +10,12 @@ import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
+// ↓ 单一来源的时效口径：换码时只改这两个常量，Title / description / H1 / 徽章 / 正文全部同步，
+//   避免出现「数据文件 10-26、页面写 10-29」这类站内自相矛盾。
+const LAST_CHECKED_ISO = "2026-11-10";
+const LAST_CHECKED_HUMAN = "November 10, 2026";
+const MONTH_LABEL = "November 2026";
+
 // TIER 1: Verified Working (Corroborated across 3+ independent authoritative sources)
 const verifiedCodes = [
   {
@@ -43,6 +49,36 @@ const reportedCodes = [
     requirements: "Join Group 362755399, Like & Favorite",
     source: "RPS (marked NEW) + Glint (cross-referenced with GamesRadar/Pocket Tactics/Beebom)",
     statusNote: "Recently introduced partner code. May expire rapidly across server restarts.",
+  },
+  // ↓ 2026-11 新增：来自官方 Discord 公告的口径（PlayerTome 于 11-08 复核），我们未做兑换实测。
+  //   放在 Reported 层而不是 Verified 层，因为唯一来源是官方公告的转述。
+  {
+    code: "ByeForNow",
+    rewards: "Reward not published by the developer",
+    requirements: "New servers only",
+    source: "Official code listing via Discord, reviewed 2026-11-08 (PlayerTome)",
+    statusNote: "Newest officially listed string. Only valid on recently started servers — if it fails on an old server, hop to a fresh one before assuming it is dead.",
+  },
+  {
+    code: "Panda",
+    rewards: "Reward not published by the developer",
+    requirements: "Join Group 362755399, Like & Favorite",
+    source: "Official code listing via Discord, reviewed 2026-11-08 (PlayerTome)",
+    statusNote: "Listed as active in the official code listing. Not independently redemption-tested.",
+  },
+  {
+    code: "Sorryfordelay",
+    rewards: "Reward not published by the developer",
+    requirements: "Join Group 362755399, Like & Favorite",
+    source: "Official code listing via Discord, reviewed 2026-11-08 (PlayerTome)",
+    statusNote: "Compensation code issued after a delayed update. Case-sensitive — paste it exactly.",
+  },
+  {
+    code: "UpdateWhen",
+    rewards: "Reward not published by the developer",
+    requirements: "Join Group 362755399, Like & Favorite",
+    source: "Official code listing via Discord, reviewed 2026-11-08 (PlayerTome)",
+    statusNote: "Listed alongside the weekly update codes. Not independently redemption-tested.",
   },
 ];
 
@@ -141,8 +177,8 @@ const faqItems = [
 ---
 
 <BaseLayout
-  title="Pixel Lineage Codes: All Working Active Codes"
-  description="Verified Pixel Lineage promo codes ledger on Roblox: OCTOBER 25 Candy, Torment spins, redemption prerequisites, and source-checked working status."
+  title={`Pixel Lineage Codes: All Working Codes (${MONTH_LABEL})`}
+  description={`All working Pixel Lineage codes for ${MONTH_LABEL}, last checked ${LAST_CHECKED_HUMAN}. Copy each code, see its exact reward, and redeem it at the Goblin Merchant.`}
   canonical="/codes/"
   jsonLd={jsonLd}
 >
@@ -156,10 +192,10 @@ const faqItems = [
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <header style="margin-bottom: 24px;">
         <div style="display: inline-block; background: rgba(52, 211, 153, 0.15); border: 1px solid #34d399; color: #34d399; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
-          Multi-Source Corroborated · October 2026 Live
+          Multi-Source Corroborated · {MONTH_LABEL} Live
         </div>
         <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-          Pixel Lineage Codes: All Working Active Codes & Rewards
+          Pixel Lineage Codes: All Working Codes ({MONTH_LABEL})
         </h1>
         <p style="color: var(--muted); font-size: 1.02rem; line-height: 1.6; margin: 0 0 16px;">
           Authoritative promo codes directory for Pixel Lineage on Roblox (Universe ID: 10767928510). Because codes change during weekly updates and developer announcements, every entry below is cross-referenced against the official Roblox portal and multiple independent tracking indexes.
@@ -171,7 +207,7 @@ const faqItems = [
             ⚡ Direct Answer · Active Codes Summary
           </div>
           <p style="margin: 0; font-size: 0.94rem; color: #f0eaf4; line-height: 1.6;">
-            The headline active promo code in Pixel Lineage is <strong>OCTOBER</strong>, awarding 25 Candy event currency in the Haunted Harvest event. Additional active progression codes include <strong>TORMENT</strong> (1,000 Gold, 100 Knowledge, 8 Race Spins, 8 Talent Spins), <strong>TUTORIAL</strong> (3 Race Spins, 3 Talent Spins), and <strong>0y0</strong> (10 Race Spins, 10 Talent Spins, 1 Life Token), redeemable at the Goblin Merchant in the central hub.
+            Pixel Lineage codes worth trying right now (last cross-checked <strong>{LAST_CHECKED_HUMAN}</strong>): <strong>ByeForNow</strong> (newest official listing — new servers only), <strong>Panda</strong>, <strong>Sorryfordelay</strong>, <strong>UpdateWhen</strong>, then the older progression codes <strong>TUTORIAL</strong> (3 Race Spins, 3 Talent Spins), <strong>0y0</strong> (10 Race Spins, 10 Talent Spins, 1 Life Token), <strong>TORMENT</strong> (1,000 Gold, 100 Knowledge, 8 Race + 8 Talent Spins) and <strong>OCTOBER</strong> (25 Candy event currency). Six more strings — <strong>SLOOTH</strong>, <strong>LEGENDS</strong>, <strong>SKYRON</strong>, <strong>ARENA</strong>, <strong>SAKURA</strong> and <strong>COMMUNITY!</strong> — are reported by trackers but not corroborated across three independent sources; they are listed in full below with their exact source status. Redeem everything at the <strong>Goblin Merchant</strong>.
           </p>
         </div>
       </header>
@@ -189,11 +225,11 @@ const faqItems = [
       <!-- Verification Timestamp & Honest Methodology Disclosure -->
       <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; margin-bottom: 28px;">
         <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 10px; margin-bottom: 6px;">
-          <span style="font-size: 0.88rem; color: #34d399; font-weight: 700;">Last checked: 2026-10-29 (Update 3 Active)</span>
+          <span style="font-size: 0.88rem; color: #34d399; font-weight: 700;">Last checked: {LAST_CHECKED_ISO}</span>
           <span style="font-size: 0.82rem; color: var(--muted);">Tiers: 3+ Sources (Verified) · 2 Sources (Reported) · Conflicting</span>
         </div>
         <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.55; margin: 0;">
-          <strong>Audit Methodology:</strong> Compiled from the official Roblox experience description (Update 3: 3,121 active players, 23.2M visits) and three independent code trackers on 2026-10-29. Pixel Lineage publishes new codes in its Discord; the official description currently prints only OCTOBER. We report empirical source corroboration tiers rather than claiming internal studio test access.
+          <strong>Audit Methodology:</strong> Compiled from the official Roblox experience description plus four independent code trackers, cross-checked on {LAST_CHECKED_HUMAN}. Pixel Lineage publishes new codes in its Discord; the official description currently prints only OCTOBER. We report empirical source corroboration tiers rather than claiming internal studio test access.
         </p>
       </div>
 
@@ -514,6 +550,22 @@ const faqItems = [
         </ul>
       </section>
 
+      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+        <h2 id="where-to-find-new-codes-first" style="font-size: 1.2rem; color: #34d399; margin: 0 0 12px;">Where to Find New Pixel Lineage Codes First</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 14px;">
+          There is <strong style="color: #f5f3ff;">no official Pixel Lineage Trello board</strong>. Players search for one because most Roblox games have them, but this developer does not run one — so any "Pixel Lineage Trello link" you find is either a fan-made copy or a scam. The real channels, in the order codes actually appear:
+        </p>
+        <ol style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; padding-left: 20px; margin: 0 0 14px;">
+          <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">Official Discord</strong> — codes drop here first, usually within minutes of an update. This is the single fastest source.</li>
+          <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">The Roblox experience description</strong> — the developer prints one code at a time there. Right now it lists only OCTOBER.</li>
+          <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">The Roblox group announcements</strong> — group ID <code>362755399</code>. Patch notes and milestone codes go out here.</li>
+          <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">This page</strong> — we re-check after every weekly update, and every entry above carries its source and status so you can judge it yourself.</li>
+        </ol>
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+          Related: how to actually redeem these at the merchant — <a href="/codes/redeem/" style="color: var(--accent); text-decoration: none;">Goblin Merchant step-by-step</a>. If a code is rejecting, see <a href="/codes/not-working/" style="color: var(--accent); text-decoration: none;">why codes stop working</a>.
+        </p>
+      </section>
+
       <!-- Cross-cluster linking -->
       <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
         <h2 id="related-guides-game-databases" style="font-size: 1.1rem; color: var(--ink); margin: 0 0 12px;">Related Guides &amp; Game Databases</h2>
@@ -525,7 +577,7 @@ const faqItems = [
             → Race Tier List &amp; Passive Drop Rates
           </a>
           <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            → 18 Super Class Evolution Tree
+            → 21 Super Class Evolution Tree
           </a>
         </div>
       </section>

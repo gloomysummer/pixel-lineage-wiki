@@ -210,6 +210,43 @@ const superClassesByBase = [
       },
     ],
   },
+  {
+    base: "Spear",
+    color: "#38bdf8",
+    addedIn: "Spear class added 2026-10-20 (Update: Spear Class + Dragon Race)",
+    superClasses: [
+      {
+        name: "Halberdier",
+        role: "Reach Control / Cleave",
+        ultra: "Warbringer",
+        skills: [
+          "Hook and Spike — unlocks on choosing the Super Class.",
+          "Halberd Cleave — unlocks at level 10.",
+          "Headsman's Swing — unlocks at level 14.",
+        ],
+      },
+      {
+        name: "Valkyrie",
+        role: "Aerial Support / Buff",
+        ultra: "Valhalla",
+        skills: [
+          "Winged Dive — unlocks on choosing the Super Class.",
+          "Battle Hymn — unlocks at level 10.",
+          "Thunder Spear — unlocks at level 14.",
+        ],
+      },
+      {
+        name: "Dragoon",
+        role: "Single-Target Burst / Dragonlord path",
+        ultra: "Dragonlord",
+        skills: [
+          "Jump — unlocks on choosing the Super Class.",
+          "Dragon Lance — unlocks at level 10.",
+          "Highwind — unlocks at level 14.",
+        ],
+      },
+    ],
+  },
 ];
 
 const jsonLd = [
@@ -217,8 +254,8 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "Article",
     datePublished: "2026-10-18T12:00:00+00:00",
-    headline: "Pixel Lineage 18 Super Classes: Skills Matrix",
-    description: "Complete matrix of all 18 super classes in Pixel Lineage: exact skill damage numbers, stat scaling, Trainer's Shrine unlock rules, and Ultra Sigil trials.",
+    headline: "Pixel Lineage Super Classes: All 21 Evolutions & Best Picks",
+    description: "Complete matrix of all 21 super classes in Pixel Lineage: exact skill damage numbers, stat scaling, Trainer's Shrine unlock rules, and Ultra Sigil trials.",
     url: `${siteConfig.siteUrl}/classes/super-classes/`,
     publisher: {
       "@type": "Organization",
@@ -232,7 +269,7 @@ const jsonLd = [
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
       { "@type": "ListItem", position: 2, name: "Classes", item: `${siteConfig.siteUrl}/classes/` },
-      { "@type": "ListItem", position: 3, name: "18 Super Classes", item: `${siteConfig.siteUrl}/classes/super-classes/` },
+      { "@type": "ListItem", position: 3, name: "21 Super Classes", item: `${siteConfig.siteUrl}/classes/super-classes/` },
     ],
   },
 ];
@@ -260,8 +297,8 @@ const faqItems = [
 
 
 <BaseLayout
-  title="Pixel Lineage 18 Super Classes: Skills Matrix"
-  description="Complete matrix of all 18 super classes in Pixel Lineage: exact skill damage numbers, stat scaling, Trainer's Shrine unlock rules, and Ultra Sigil trials."
+  title="Pixel Lineage Super Classes: All 21 Evolutions & Best Picks"
+  description="All 21 Pixel Lineage Super Classes with their Ultra Class path, skill unlock levels and which ones are actually worth picking, including the three new Spear branches."
   canonical="/classes/super-classes/"
   jsonLd={jsonLd}
 >
@@ -271,16 +308,16 @@ const faqItems = [
       <span class="separator" style="margin: 0 8px;">/</span>
       <a href="/classes/" style="color: var(--accent); text-decoration: none;">Classes</a>
       <span class="separator" style="margin: 0 8px;">/</span>
-      <span class="current">18 Super Classes</span>
+      <span class="current">21 Super Classes</span>
     </nav>
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
       <header style="margin-bottom: 32px;">
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage 18 Super Classes & Skills
+        Pixel Lineage Super Classes: All 21 Evolutions &amp; Best Picks
       </h1>
       <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
-        The definitive, verified database for all 18 Super Class evolutions. Includes exact skill damage scaling percentages and the Trainer's Shrine advancement requirements.
+        Every base class in Pixel Lineage splits into exactly three Super Classes at the Trainer's Shrine in Act 2 — seven classes, twenty-one evolutions. Below is each branch with its Ultra Class, its skill unlock levels, and where it sits in the tier list.
       </p>
     </header>
 
@@ -290,17 +327,17 @@ const faqItems = [
 
     <!-- Permanent Choice Warning -->
             <!-- Video Showcase (Tactical Walkthrough) -->
-        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
           <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Super Classes Guide</h2>
           <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-            Full showcase of all 18 Super Class evolutions, skill multipliers, and Trainer Shrine mechanics.
+            Full showcase of all 21 Super Class evolutions, skill multipliers, and Trainer Shrine mechanics.
           </p>
           <VideoEmbed
             id="_Tx_aM0w1bE"
-            title="Pixel Lineage 18 Super Classes & Evolution Paths Showcase"
+            title="Pixel Lineage 21 Super Classes & Evolution Paths Showcase"
             channelTitle="OyO"
             uploadDate="2026-10-18T12:00:00+00:00"
-            description="Full showcase of all 18 Super Class evolutions, skill multipliers, and Trainer Shrine mechanics."
+            description="Full showcase of all 21 Super Class evolutions, skill multipliers, and Trainer Shrine mechanics."
           />
         </section>
 
@@ -315,7 +352,7 @@ const faqItems = [
       </p>
     </section>
 
-    <!-- 18 Super Classes Grouped by Base -->
+    <!-- 21 Super Classes Grouped by Base -->
     <div style="display: flex; flex-direction: column; gap: 36px; margin-bottom: 40px;">
       {superClassesByBase.map((group) => (
         <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;">
@@ -331,8 +368,11 @@ const faqItems = [
           <div style="padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
             {group.superClasses.map((sc) => (
               <div style="background: #13101c; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 6px; padding: 16px;">
-                <h3 id="sc-name" style="margin: 0 0 4px; font-size: 1.15rem; color: var(--ink);">{sc.name}</h3>
-                <div style="font-size: 0.78rem; color: #c9a227; margin-bottom: 12px; font-weight: 600;">Role: {sc.role}</div>
+                <h3 id={`sc-${sc.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`} style="margin: 0 0 4px; font-size: 1.15rem; color: var(--ink);">{sc.name}</h3>
+                <div style="font-size: 0.78rem; color: #c9a227; margin-bottom: 4px; font-weight: 600;">Role: {sc.role}</div>
+                {sc.ultra && (
+                  <div style="font-size: 0.78rem; color: #a855f7; margin-bottom: 10px; font-weight: 600;">Ultra Class: {sc.ultra}</div>
+                )}
                 <div style="font-size: 0.85rem; color: var(--muted); line-height: 1.5;">
                   <strong style="color: #f5f3ff;">Active Skills:</strong>
                   <ul style="padding-left: 18px; margin: 6px 0 0; font-size: 0.82rem;">

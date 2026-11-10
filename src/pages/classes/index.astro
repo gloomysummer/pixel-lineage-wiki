@@ -43,7 +43,7 @@ const classes = [
     ],
     stats: { hp: 120, atk: 14, def: 12, mag: 4, spd: 8, crit: "5%", dodge: "3%" },
     growthFocus: "+12 HP / +2.2 ATK / +1.8 DEF per level. Unlocks Shield Bash at Lv 5 and Whirlwind at Lv 12.",
-    bestRaces: "Orc (+12% ATK), Dwarf (+15% HP)",
+    bestRaces: "Ashborn (+6% ATK, +8% HP), Dwarf (+15% HP, +6% DEF)",
     bestTalents: "Bloodthirst, Iron Bastion",
     playstyleSummary: "Highest baseline effective HP pool. Best suited for players who prefer forgiving mistakes and brute-forcing enemy encounters through sustained physical attrition.",
   },
@@ -59,7 +59,7 @@ const classes = [
     ],
     stats: { hp: 85, atk: 12, def: 6, mag: 5, spd: 16, crit: "15%", dodge: "12%" },
     growthFocus: "+7 HP / +1.9 ATK / +2.4 SPD per level. Unlocks Backstab at Lv 4 and Smoke Veil at Lv 10.",
-    bestRaces: "Elf (+10% SPD, +5% Crit), Felis (+8% Dodge)",
+    bestRaces: "Sylvan (+12% Nature DMG), Vesper (+8% Magic, ability evasion)",
     bestTalents: "Swift Step, Shadow Veil",
     playstyleSummary: "Highest combat initiative and critical rate. Wins by out-speeding enemies to execute high-priority spellcasters before they can cast in the turn queue.",
   },
@@ -75,7 +75,7 @@ const classes = [
     ],
     stats: { hp: 75, atk: 6, def: 5, mag: 18, spd: 10, crit: "4%", dodge: "4%" },
     growthFocus: "+6 HP / +2.8 MAG / +1.5 Mana Regen per level. Unlocks Arcane Bolt at Lv 3 and Mana Shield at Lv 8.",
-    bestRaces: "Nightborn (+15% Mana Regen), High Elf (+10% Spell Penetration)",
+    bestRaces: "Celestine (+6% Crit, +6% Magic), Vesper (+8% Magic)",
     bestTalents: "Arcane Flow, Spellweaver",
     playstyleSummary: "Supreme burst and elemental coverage. Relies on careful mana pacing and positioning to melt multi-target packs while managing fragile defensive stats.",
   },
@@ -91,7 +91,7 @@ const classes = [
     ],
     stats: { hp: 105, atk: 15, def: 8, mag: 6, spd: 12, crit: "8%", dodge: "6%" },
     growthFocus: "+10 HP / +2.4 ATK / +1.4 SPD per level. Unlocks Palm Strike at Lv 4 and Flurry of Blows at Lv 11.",
-    bestRaces: "Orc (+12% ATK), Beastkin (+8% Poise Break)",
+    bestRaces: "Ashborn (+6% ATK, +8% HP), Stonekin (+20 HP, +15% Fist)",
     bestTalents: "Iron Fist, Relentless Momentum",
     playstyleSummary: "Excels at locking down dangerous elite monsters by breaking poise bars and denying turn actions through heavy concussive strikes.",
   },
@@ -107,7 +107,7 @@ const classes = [
     ],
     stats: { hp: 90, atk: 8, def: 7, mag: 12, spd: 11, crit: "6%", dodge: "5%" },
     growthFocus: "+8 HP / +1.8 MAG / +1.6 SPD per level. Unlocks Song of Courage at Lv 3 and Harmonic Blast at Lv 9.",
-    bestRaces: "Human (+10% EXP/Knowledge Gain), Elf (+10% SPD)",
+    bestRaces: "Human (+10% XP, +10% Class Mastery), Sylvan (+12% Nature DMG)",
     bestTalents: "Maestro's Tempo, Inspiring Presence",
     playstyleSummary: "The ultimate team amplifier in multiplayer parties. Elevates lower-geared teams into clearing high-tier Torment content through turn manipulation.",
   },
@@ -123,7 +123,7 @@ const classes = [
     ],
     stats: { hp: 80, atk: 14, def: 5, mag: 5, spd: 13, crit: "12%", dodge: "7%" },
     growthFocus: "+7 HP / +2.3 ATK / +1.8 SPD per level. Unlocks Piercing Shot at Lv 3 and Caltrop Trap at Lv 8.",
-    bestRaces: "Elf (+10% SPD, +5% Crit), Avian (+15% Accuracy)",
+    bestRaces: "Celestine (+6% Crit, +4% Dodge), Human (+10% XP, +10% Class Mastery)",
     bestTalents: "Eagle Eye, Critical Mastery",
     playstyleSummary: "Dominates mid-range encounters by picking off glass-cannon enemy units with piercing munitions while keeping safe distance from melee cleaves.",
   },
@@ -133,13 +133,13 @@ const classes = [
     role: "Phalanx Guard & Row Cleave",
     color: "#38bdf8",
     superEvolutions: [
-      { name: "Lancer", role: "Piercing charge striker that hits front-and-back enemies simultaneously with 25% defense ignore." },
-      { name: "Hoplite", role: "Phalanx guardian providing solid multi-target damage reduction and frontline barrier stability." },
-      { name: "Dragoon", role: "Aerial diver that jumps out of turn order to evade attacks before crashing down for heavy AoE impact." },
+      { name: "Halberdier", role: "Reach control branch — Hook and Spike, Halberd Cleave (Lv 10), Headsman's Swing (Lv 14). Evolves into Warbringer." },
+      { name: "Valkyrie", role: "Aerial support branch — Winged Dive, Battle Hymn (Lv 10), Thunder Spear (Lv 14). Evolves into Valhalla." },
+      { name: "Dragoon", role: "Single-target burst branch — Jump, Dragon Lance (Lv 10), Highwind (Lv 14). Evolves into Dragonlord." },
     ],
     stats: { hp: 110, atk: 13, def: 10, mag: 5, spd: 10, crit: "6%", dodge: "5%" },
     growthFocus: "+10 HP / +2.1 ATK / +1.6 DEF per level. Unlocks Piercing Thrust at Lv 3 and Phalanx Stance at Lv 9.",
-    bestRaces: "Orc (+12% ATK), Dullahan (+Poise Immunity)",
+    bestRaces: "Dragonborn (pairs with Dragonlord), Human (+10% XP, +10% Class Mastery)",
     bestTalents: "Iron Soul, Bloodthirst",
     playstyleSummary: "Bridges the tactical gap between Warrior and Fist, delivering exceptional row-piercing thrusts and durable defensive stances across dungeon waves.",
   },
@@ -347,7 +347,7 @@ const jsonLd = [
     <section style="background: #1d152c; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
       <h3 id="ultra-sigil-pinnacle-class-awakening" style="margin: 0 0 12px; font-size: 1.2rem; color: #c9a227;">Ultra Sigil & Pinnacle Class Awakening</h3>
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
-        Beyond the 18 Super Classes lies the legendary <strong style="color: #fff;">Ultra Class</strong> awakening tier. Awakening requires acquiring an <code style="color: #c9a227;">Ultra Sigil</code>, an ultra-rare 0.5% drop from Act 3 Dungeon Pinnacle Bosses or high-ranking Guild Raids.
+        Beyond the 21 Super Classes lies the legendary <strong style="color: #fff;">Ultra Class</strong> awakening tier. Awakening requires acquiring an <code style="color: #c9a227;">Ultra Sigil</code>, an ultra-rare 0.5% drop from Act 3 Dungeon Pinnacle Bosses or high-ranking Guild Raids.
       </p>
       <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0;">
         Carrying an Ultra Sigil to the ancient monolithic altar in the Torment realm triggers the Trial of Lineage—a brutal 1v1 mirror duel against your own shadow clone. Surviving this encounter unlocks pinnacle skills that transcend standard turn limitations.

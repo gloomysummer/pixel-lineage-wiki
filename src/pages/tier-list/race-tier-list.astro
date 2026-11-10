@@ -7,54 +7,125 @@ const raceTiers = [
   {
     tier: "S",
     color: "#f43f5e",
+    note: "All three are 0.72% Mythic rolls except Celestine. If you roll one, keep it.",
     races: [
       {
-        name: "Nightborn",
-        rarity: "Legendary (2% Spin Chance)",
-        passives: "Shadow Affinity (+15% Magic & Dark damage in Dungeons), Night Sight (Immune to Darkness blind debuff).",
-        synergy: "God-tier for Mage (Hexer) and Thief (Assassin). Turns Act 2 dungeon hallways into massive damage zones.",
+        name: "Seraph",
+        rarity: "Mythic · 0.72%",
+        passives: "Angelic Blessing — on the first turn all allies take 10% less damage, and healing is 25% stronger for 2 rounds.",
+        synergy: "The support pick. Best on Cleric and anything with party healing; its value scales with party size, not with its own damage.",
       },
       {
-        name: "Draconic",
-        rarity: "Legendary (3% Spin Chance)",
-        passives: "Dragon Scales (+12% Physical Defense, 25% Fire resistance), Dragon Breath (5% chance on hit to apply Burn DoT).",
-        synergy: "Unstoppable frontline pairing with Warrior (Sentinel/Berserk) and Fist (Oni).",
+        name: "Nightborne",
+        rarity: "Mythic · 0.72%",
+        passives: "Bloodthirst — each attack heals you for 15% of the damage dealt, capped at roughly 7% of maximum HP per move.",
+        synergy: "Strongest all-round race. Makes Mage and Hexer self-sustaining, and stabilises low-HP Berserk builds. Players also spell it \"Nightborn\".",
+      },
+      {
+        name: "Dragonborn",
+        rarity: "Mythic · 0.72%",
+        passives: "Scaled Hide (+15% max HP, -30% Fire damage taken, -20% damage from Burn-afflicted enemies) plus Dragonfire, an AoE Burn attack.",
+        synergy: "Defensive Mythic. Documented pairing is the Dragonlord Ultra Class, since Dragonlord applies Burn that Scaled Hide then resists.",
       },
     ],
   },
   {
     tier: "A",
     color: "#a855f7",
+    note: "Worth keeping on a fresh character. Both improve noticeably once evolved to Kindled.",
     races: [
       {
-        name: "High Elf",
-        rarity: "Epic (10% Spin Chance)",
-        passives: "Arcane Flow (-10% Mana cost on all spells), Nimble Step (+8% Combat Speed).",
-        synergy: "Top-tier for Cleric, Mage, and Archer. Allows sustained spell rotations without chugging potions.",
+        name: "Celestine",
+        rarity: "Mythic · 1.44%",
+        passives: "+6% Critical chance, +4% Dodge, +6% Magic.",
+        synergy: "The offensive Mythic. Best on Mage, and the race most players chase after Seraph because 1.44% is twice the odds of the 0.72% tier.",
       },
       {
-        name: "Dwarf",
-        rarity: "Epic (12% Spin Chance)",
-        passives: "Stout Frame (+10% Maximum HP, +8% Poise stability), Smithing Blood (15% Gold discount at Blacksmith).",
-        synergy: "Exceptional for Greatsword Warriors and Brawlers who trade blows in close quarters.",
+        name: "Tideborn",
+        rarity: "Mythic · 0.72%",
+        passives: "Tidal Grace — restores 5% of maximum HP at the start of each of your turns.",
+        synergy: "Sustain race for long Torment runs. Weaker than Nightborne on damage races but far more forgiving on a fresh save.",
       },
     ],
   },
   {
     tier: "B",
     color: "#38bdf8",
+    note: "These are the races evolution actually rescues — a Kindled Stonekin or Sylvan plays above its rarity.",
     races: [
       {
-        name: "Beastkin",
-        rarity: "Rare (25% Spin Chance)",
-        passives: "Feral Instincts (+8% Dodge chance, +5% Movement speed during combat).",
-        synergy: "Solid defensive baseline for Thief (Rogue) and Archer (Ranger).",
+        name: "Stonekin",
+        rarity: "Uncommon · 7.91%",
+        passives: "+20 maximum HP, and Fist attacks deal +15% damage.",
+        synergy: "The only race with a direct Fist bonus. Best-in-slot for Fist, mediocre for everything else.",
       },
       {
+        name: "Sylvan",
+        rarity: "Rare · 7.19%",
+        passives: "+12% Nature damage, and unlocks Call Sylph — summons a fairy ally that fights and heals.",
+        synergy: "Magic and support builds. The free summon adds a body that most races do not get.",
+      },
+      {
+        name: "Slime",
+        rarity: "Rare · 6.47%",
+        passives: "Resistant to physical attacks, restores extra HP after combat. Takes increased Fire damage.",
+        synergy: "Low-risk physical-content race. Avoid it against fire-heavy bosses — which is exactly what Dragonborn resists.",
+      },
+      {
+        name: "Vesper",
+        rarity: "Rare · 5.76%",
+        passives: "+8% Magic damage, a small Energy boost, and a chance to evade ability attacks.",
+        synergy: "The budget magic race. Fills the same slot as Celestine at eight times the drop rate.",
+      },
+      {
+        name: "Dullahan",
+        rarity: "Event race · 10,000 Candy, not in the spin pool",
+        passives: "+5% max HP, +5% DEF, +3% Crit. Unlocks Headless Ride — 4 Energy, 5-turn cooldown, deals 50% more damage to enemies at or below 30% HP.",
+        synergy: "Halloween event pick bought from the Candy Witch shop. Cannot be rolled, so treat it as a purchase decision, not a reroll.",
+      },
+    ],
+  },
+  {
+    tier: "C",
+    color: "#c9a227",
+    note: "Functionally filler. Keep only if it matches your class; otherwise reroll while you still have free spins.",
+    races: [
+      {
+        name: "Ashborn",
+        rarity: "Uncommon · 9.35%",
+        passives: "+8% max HP, +6% Attack.",
+        synergy: "Bland but usable on Warrior and Thief. No mechanic, just stats.",
+      },
+      {
+        name: "Goblin",
+        rarity: "Uncommon · 8.63%",
+        passives: "+8% Gold earned, 6% chance of bonus loot.",
+        synergy: "Farming race, not a combat race. Worth keeping on a dedicated farm character and nothing else.",
+      },
+      {
+        name: "Dwarf",
+        rarity: "Uncommon · 8.63%",
+        passives: "+15% max HP, +6% DEF.",
+        synergy: "Identical drop rate to Goblin but built for surviving rather than farming. Fine on Warrior and Fist.",
+      },
+      {
+        name: "Mushroom",
+        rarity: "Rare · 4.32%",
+        passives: "16% chance to poison an attacker with spores when hit.",
+        synergy: "Reactive defensive race for long fights. Its value depends entirely on how often you get hit.",
+      },
+    ],
+  },
+  {
+    tier: "D",
+    color: "#94a3b8",
+    note: "The default roll. Nothing wrong with it, nothing to build around either.",
+    races: [
+      {
         name: "Human",
-        rarity: "Common (48% Spin Chance)",
-        passives: "Adaptable (+10% Bonus Knowledge from mobs, +5% Gold earned from all encounters).",
-        synergy: "Universal beginner baseline. Accelerates early talent unlocks and Goblin Merchant purchases.",
+        rarity: "Common · ~37%",
+        passives: "+10% XP and +10% Class Mastery from battles.",
+        synergy: "Leveling race. Genuinely useful on a first character because Class Mastery gates Super Class progress — then reroll it once you are established.",
       },
     ],
   },
@@ -65,8 +136,8 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "Article",
     datePublished: "2026-10-18T12:00:00+00:00",
-    headline: "Pixel Lineage Race Tier List: Best Races Meta",
-    description: "Complete Pixel Lineage race tier list: ranking all lineages, spin rarity probabilities, passive trait buffs, and optimal class synergies on Roblox.",
+    headline: "Pixel Lineage Race Tier List: All 14 Races Ranked",
+    description: "All 14 Pixel Lineage races ranked with exact roll odds and passive numbers, from 0.72% Mythic bloodlines down to Human.",
     url: `${siteConfig.siteUrl}/tier-list/race-tier-list/`,
     publisher: {
       "@type": "Organization",
@@ -95,20 +166,24 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
 const faqItems = [
   {
-    "question": "What criteria determine race placement on the Tier List?",
-    "answer": "Racial rankings evaluate passive combat multipliers, defensive cheat-death mechanics, utility perks like dark vision or mana sustain, and synergy versatility across all eighteen Super Classes, balanced against each bloodline's spin probability and accessibility for free-to-play accounts. Bloodlines that offer both offensive multipliers and defensive cheat-death passives consistently claim top rankings."
+    "question": "How are races tiered in Pixel Lineage?",
+    "answer": "By three things: the passive's actual numbers, how the passive interacts with class mechanics, and the roll chance you have to beat to get it. Rarity alone is not the ranking — Celestine at 1.44% out-damages Seraph at 0.72% in a solo Mage build, and Stonekin at 7.91% is the best race in the game for one specific class."
   },
   {
-    "question": "Why is the Human race placed in the lowest F-Tier?",
-    "answer": "Human has a 48% drop rate and offers zero innate stat multipliers, passive abilities, or elemental resistances. It functions purely as a starter baseline that players are intended to reroll at the Goblin Merchant as soon as possible with starter codes."
+    "question": "Why is Human at the bottom if the drop rate is the most common?",
+    "answer": "Human gives +10% XP and +10% Class Mastery — no combat stat at all. That makes it genuinely useful on a first character, because Class Mastery gates Super Class progress, but once you are past that gate there is no reason to keep it. It is a leveling race, not a weak race."
   },
   {
-    "question": "Is rolling for S-Tier Legendary races required to beat Act 2?",
-    "answer": "Rolling Legendary races is not required to complete Act 2 or progress into early Torment levels. Solid A-Tier lineages like Elf, Orc, and Felis provide more than enough combat potency to conquer all standard dungeon bosses without spending Robux. Player mastery of turn mechanics and positioning remains far more decisive than raw gacha luck."
+    "question": "Do you need a Mythic race to clear Act 2 or Torment?",
+    "answer": "No. Race evolution closes most of the gap: a Kindled or Exalted Uncommon race plays well above its roll rarity, which is why a Stonekin or Sylvan roll is often worth keeping instead of rerolling. Turn mechanics, class choice and talent rolls matter far more than gacha luck in this game."
   },
   {
-    "question": "How does Dullahan rank compared to Orc for frontline tanking?",
-    "answer": "Dullahan edges out Orc in S-Tier for dedicated tanking because its turn-one stun immunity and raw armor scaling provide consistent mitigation, whereas Orc relies on a one-time cheat-death trigger when lethal damage occurs during dangerous dungeon encounters. Both represent elite tanking choices, but Dullahan offers superior baseline consistency against sustained damage."
+    "question": "How many times do you need to spin for a 0.72% Mythic race?",
+    "answer": "Roughly 96 spins for a coin-flip chance at any single 0.72% race — and there are four of them. Bank Race Spins from codes before spending Robux, and remember that the same spins also fund Talent Spins through most code rewards."
+  },
+  {
+    "question": "Is Dullahan better than the Mythic races for tanking?",
+    "answer": "Not better, different. Dullahan gives +5% max HP, +5% DEF and +3% Crit plus Headless Ride, and it is a guaranteed 10,000 Candy purchase during the Halloween event rather than a roll. Dragonborn resists fire and Burn but gives no DEF; Stonekin gives raw HP and a Fist bonus at eight times Dullahan's accessibility."
   }
 ];
 ---
@@ -116,8 +191,8 @@ const faqItems = [
 
 
 <BaseLayout
-  title="Pixel Lineage Race Tier List: Best Races Meta"
-  description="Complete Pixel Lineage race tier list: ranking all lineages, spin rarity probabilities, passive trait buffs, and optimal class synergies on Roblox."
+  title="Pixel Lineage Race Tier List: All 14 Races Ranked (Nov 2026)"
+  description="All 14 Pixel Lineage races ranked with exact roll odds and passive numbers, from 0.72% Mythic bloodlines down to Human, plus which class each one actually fits."
   canonical="/tier-list/race-tier-list/"
   jsonLd={jsonLd}
 >
@@ -135,10 +210,13 @@ const faqItems = [
 
     <header style="margin-bottom: 32px;">
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Race Tier List & Passives
+        Pixel Lineage Race Tier List: All 14 Races Ranked
       </h1>
       <p style="color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0;">
-        Races in Pixel Lineage provide permanent passive stat multipliers that dramatically amplify your Super Class build. Here is how every lineage ranks in the current meta.
+        Every race in Pixel Lineage is a permanent passive that either amplifies or fights your class choice. There are fourteen rollable bloodlines plus the event-only Dullahan, and the gaps between them are smaller than the rarity labels suggest — which is why this list ranks by the passive's real numbers, not by the colour of the roll.
+      </p>
+      <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 12px 0 0;">
+        Roll odds below are the published bloodline chances. Race evolution (Heirloom then Heartblood) lifts almost every race one or two tiers, so read the <a href="/races/evolution/" style="color: var(--accent); text-decoration: none;">Heirloom &amp; Heartblood locations</a> page before you decide to reroll anything.
       </p>
     </header>
 
@@ -156,15 +234,20 @@ const faqItems = [
         <AdSlot zone="banner-300x250" label="Sponsored Intel" /><section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;">
           <div style={`background: #1d152c; border-left: 6px solid ${rt.color}; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between;`}>
             <span style={`font-size: 1.4rem; font-weight: 800; color: ${rt.color};`}>
-              {rt.tier} TIER — {rt.tier === "S" ? "Game-Altering Passives" : rt.tier === "A" ? "Strong Competitive Viability" : "Solid Baseline"}
+              {rt.tier} TIER — {rt.tier === "S" ? "Game-Altering Passives" : rt.tier === "A" ? "Strong Competitive Viability" : rt.tier === "B" ? "Evolution Rescues These" : rt.tier === "C" ? "Filler Until You Reroll" : "The Default Roll"}
             </span>
           </div>
+          {rt.note && (
+            <p style="margin: 0; padding: 10px 20px; background: #0d0a14; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; line-height: 1.5;">
+              {rt.note}
+            </p>
+          )}
 
           <div style="padding: 20px; display: flex; flex-direction: column; gap: 20px;">
             {rt.races.map((r) => (
               <div style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 16px;">
                 <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; flex-wrap: wrap;">
-                  <h3 id="r-name" style="margin: 0; font-size: 1.2rem; color: var(--ink);">{r.name}</h3>
+                  <h3 id={`race-${r.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`} style="margin: 0; font-size: 1.2rem; color: var(--ink);">{r.name}</h3>
                   <span style="font-size: 0.8rem; font-family: var(--font-mono); color: #c9a227; background: rgba(201, 162, 39, 0.15); padding: 1px 6px; border-radius: 3px;">
                     {r.rarity}
                   </span>
@@ -189,9 +272,10 @@ const faqItems = [
         Race Spins are an extremely valuable resource obtained from active promo codes (like <code style="color: #34d399;">TORMENT</code>) and high-level Guild Raid drops. Follow these guidelines:
       </p>
       <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
-        <li><strong>Never reroll away from <a href="/codes/roblox-nightborn-codes/" style="color: var(--accent);">Nightborn</a> or Draconic:</strong> With only a 2-3% roll rate, keeping a Legendary race guarantees endgame supremacy.</li>
-        <li><strong>Keep High Elf if playing Mage or Cleric:</strong> The 10% Mana reduction prevents spell lockouts in long boss battles.</li>
-        <li><strong>Reroll Human once you enter Act 2:</strong> While the 10% bonus Knowledge helps early level progression, Human provides no combat stat scaling in Torment mode.</li>
+        <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">Never reroll a Mythic.</strong> Seraph, Nightborne, Dragonborn and Tideborn are all 0.72%; Celestine is 1.44%. Anything in that band stays.</li>
+        <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">Check evolution before rerolling an Uncommon or Rare.</strong> A Stonekin or Sylvan that reaches Kindled plays above its roll rarity, so the Adam-and-eve answer is usually "keep and evolve", not "spin again" — see <a href="/races/evolution/" style="color: var(--accent); text-decoration: none;">Heirloom &amp; Heartblood locations</a>.</li>
+        <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">Reroll Human once you are past Act 2.</strong> Its +10% XP and +10% Class Mastery gate Super Class progress early, but it contributes no combat stat once that gate is behind you.</li>
+        <li><strong style="color: #f5f3ff;">Match the race to the class you actually play.</strong> Stonekin only pays off on Fist; Vesper only pays off on magic. A "better" race that fights your kit is worse than a mediocre one that amplifies it.</li>
       </ul>
     </section>
 

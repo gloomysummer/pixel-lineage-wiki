@@ -1,0 +1,311 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+const TITLE = "Pixel Lineage Spear Class: Halberdier, Valkyrie & Dragoon";
+const DESC = "Pixel Lineage Spear class guide: all three Super Classes (Halberdier, Valkyrie, Dragoon), their skill unlock levels, and the Dragonlord Ultra Class path.";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: TITLE,
+    description: DESC,
+    url: `${siteConfig.siteUrl}/classes/spear/`,
+    datePublished: "2026-11-10T12:00:00+00:00",
+    dateModified: "2026-11-10T12:00:00+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Classes", item: `${siteConfig.siteUrl}/classes/` },
+      { "@type": "ListItem", position: 3, name: "Spear", item: `${siteConfig.siteUrl}/classes/spear/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What are the three Spear Super Classes in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The Spear base class splits into Halberdier, Valkyrie and Dragoon at the Trainer's Shrine in Act 2. Halberdier evolves into the Warbringer Ultra Class, Valkyrie into Valhalla, and Dragoon into Dragonlord.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How do you unlock the Dragonlord Ultra Class?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Pick Dragoon as your Spear Super Class first, then obtain the Sigil of Dragonlord, which drops exclusively from Act 8, and collect Tomes of Dragonlord from Act 6 to unlock each Dragonlord skill.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can you switch to the Spear class on an existing save?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. Your base class is locked once a run starts. To play Spear you must start a new save — either wipe by losing all three lives, or buy an additional save slot for 100 Robux from the character select screen.",
+        },
+      },
+    ],
+  },
+];
+
+const spearSuperClasses = [
+  {
+    name: "Halberdier",
+    ultra: "Warbringer",
+    role: "Reach control and multi-target cleave",
+    color: "#38bdf8",
+    skills: [
+      { name: "Hook and Spike", unlock: "Unlocks on choosing the Super Class" },
+      { name: "Halberd Cleave", unlock: "Requires level 10" },
+      { name: "Headsman's Swing", unlock: "Requires level 14" },
+    ],
+  },
+  {
+    name: "Valkyrie",
+    ultra: "Valhalla",
+    role: "Aerial dive and party buffing",
+    color: "#a855f7",
+    skills: [
+      { name: "Winged Dive", unlock: "Unlocks on choosing the Super Class" },
+      { name: "Battle Hymn", unlock: "Requires level 10" },
+      { name: "Thunder Spear", unlock: "Requires level 14" },
+    ],
+  },
+  {
+    name: "Dragoon",
+    ultra: "Dragonlord",
+    role: "Single-target burst on the Dragonlord path",
+    color: "#c9a227",
+    skills: [
+      { name: "Jump", unlock: "Unlocks on choosing the Super Class" },
+      { name: "Dragon Lance", unlock: "Requires level 10" },
+      { name: "Highwind", unlock: "Requires level 14" },
+    ],
+  },
+];
+
+const dragonlordSkills = [
+  { name: "Dragon Dive", effect: "Inflicts the Burn debuff on enemies for 2 turns.", scaling: "Strength", energy: "6" },
+  { name: "Wyrm Impaler", effect: "Deals damage while piercing through 30% of the target's armor.", scaling: "Strength", energy: "7" },
+  { name: "Dragon's Blood", effect: "Grants the Inspire buff for 3 turns: restores up to 20% of maximum HP and increases damage by 70%.", scaling: "Faith", energy: "4" },
+];
+
+const faqItems = [
+  {
+    "question": "What are the three Spear Super Classes in Pixel Lineage?",
+    "answer": "The Spear base class splits into exactly three Super Classes at the Trainer's Shrine in Act 2: Halberdier, Valkyrie and Dragoon. Each one has a matching Ultra Class — Warbringer, Valhalla and Dragonlord respectively. Dragoon into Dragonlord is the path most players chase, because Dragonlord is currently one of the strongest classes in the game."
+  },
+  {
+    "question": "How do you unlock the Dragonlord Ultra Class?",
+    "answer": "You need Dragoon as your Spear Super Class, then the Sigil of Dragonlord. That Sigil drops exclusively from Act 8 and is not a guaranteed drop. Once you have the Sigil you still need multiple Tomes of Dragonlord — those drop from Act 6 — to unlock every Dragonlord skill."
+  },
+  {
+    "question": "Can you switch to the Spear class on an existing save?",
+    "answer": "No. Pixel Lineage locks your base class when a run starts. To play Spear you either wipe your current save by losing all three lives, or buy an additional save slot for 100 Robux from the character select screen. Materials, Race and Traits carry over on a reset; the class itself does not."
+  },
+  {
+    "question": "When was the Spear class added to Pixel Lineage?",
+    "answer": "Spear was added in the October 20, 2026 update, which shipped alongside the Dragonborn race. That update is why the total Super Class count moved from 18 to 21 — seven base classes times three branches each."
+  },
+  {
+    "question": "What is the Spear class good at?",
+    "answer": "Spear sits between single-target damage and support rather than committing to either. Its value is mostly the Dragoon into Dragonlord line, which is a Strength-scaling burst path with one Faith-scaling self-sustain skill (Dragon's Blood). If you are not going for Dragonlord, Halberdier and Valkyrie are the weaker two branches."
+  },
+];
+---
+
+<BaseLayout
+  title={TITLE}
+  description={DESC}
+  canonical="/classes/spear/"
+  jsonLd={jsonLd}
+>
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+          <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <a href="/classes/" style="color: var(--accent); text-decoration: none;">Classes</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <span class="current">Spear</span>
+        </nav>
+
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #38bdf8; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            7th Base Class · Added 2026-10-20 · Single-Target / Support
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Spear Class: Halberdier, Valkyrie &amp; Dragoon
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            The Spear is Pixel Lineage's seventh base class, added in the October 20, 2026 update. It branches into three Super Classes at the Trainer's Shrine in Act 2 — <strong>Halberdier</strong>, <strong>Valkyrie</strong> and <strong>Dragoon</strong> — each with a matching Ultra Class. This page covers every branch, the exact skill unlock levels, and the materials you need for the Dragonlord endgame.
+          </p>
+
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer · Spear Class Summary
+            </div>
+            <p style="margin: 0; font-size: 0.94rem; color: #e8e2f2; line-height: 1.6;">
+              At Act 2's Trainer's Shrine the <strong>Spear</strong> splits into <strong>Halberdier → Warbringer</strong>, <strong>Valkyrie → Valhalla</strong> and <strong>Dragoon → Dragonlord</strong>. Each branch unlocks three skills: one immediately, one at level 10, one at level 14. <strong>Dragoon is the branch worth taking</strong>, because Dragonlord is currently one of the strongest classes in the game — but it requires the Sigil of Dragonlord from <strong>Act 8</strong> plus Tomes of Dragonlord from <strong>Act 6</strong>. Base class is permanent: switching to Spear means a new save.
+            </p>
+          </div>
+        </header>
+
+        <MobileToc tocHeadings={tocHeadings} />
+
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+          <h2 id="how-to-unlock-the-spear-class" style="font-size: 1.25rem; color: #38bdf8; margin: 0 0 12px;">How to Unlock the Spear Class</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Spear is a base class, so it is chosen in the character creator when you start a run — it is not something you unlock mid-save. That has one uncomfortable consequence most guides skip: <strong>you cannot switch an existing character to Spear.</strong>
+          </p>
+          <ul style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; padding-left: 20px; margin: 0 0 12px;">
+            <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">Wipe the save</strong> — die three times. Only what you left at the Inn, plus paid cosmetics and the Dullahan race, survive.</li>
+            <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">Buy another slot</strong> — 100 Robux from the character select screen, which keeps your current run intact.</li>
+          </ul>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Materials, Race and Traits carry across a reset. Class Mastery and level progress do not.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+          <h2 id="the-three-spear-super-classes" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">The Three Spear Super Classes</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
+            Reaching Act 2 opens the Trainer's Shrine, where every base class chooses between three Super Classes. This choice is permanent for the character. Spear's three branches and their skill unlock levels:
+          </p>
+
+          {spearSuperClasses.map((sc) => (
+            <div style={`background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid ${sc.color}; border-radius: 6px; padding: 18px; margin-bottom: 18px;`}>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+                <h3 style={`margin: 0; font-size: 1.15rem; color: ${sc.color};`}>{sc.name}</h3>
+                <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #a855f7;">Ultra: {sc.ultra}</span>
+              </div>
+              <p style="color: var(--muted); font-size: 0.88rem; margin: 0 0 12px;">{sc.role}</p>
+              <div style="overflow-x: auto;">
+                <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.86rem; text-align: left;">
+                  <thead>
+                    <tr style="background: #13101c; border-bottom: 2px solid var(--line); color: #c9a227;">
+                      <th style="padding: 9px 12px;">Skill</th>
+                      <th style="padding: 9px 12px;">Unlock</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sc.skills.map((sk) => (
+                      <tr style="border-bottom: 1px solid var(--line);">
+                        <td data-label="Skill" style="padding: 9px 12px; font-weight: 700; color: #fff;">{sk.name}</td>
+                        <td data-label="Unlock" style="padding: 9px 12px; color: var(--muted);">{sk.unlock}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ))}
+
+          <p style="color: var(--muted); font-size: 0.85rem; margin: 4px 0 0;">
+            The passive for each Spear Super Class has not been published at the time of writing. We list skill names and unlock levels only rather than guessing at passives — see the full <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none;">Super Class matrix</a> for the 18 branches whose passives are documented.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+          <h2 id="dragonlord-ultra-class-path" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 12px;">The Dragonlord Ultra Class Path</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 14px;">
+            Dragonlord is the reason to pick Spear at all. It sits behind two separate farm gates, and the first one is not guaranteed:
+          </p>
+          <ol style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; padding-left: 20px; margin: 0 0 18px;">
+            <li style="margin-bottom: 8px;">Choose <strong style="color: #f5f3ff;">Dragoon</strong> at the Trainer's Shrine in Act 2.</li>
+            <li style="margin-bottom: 8px;">Obtain the <strong style="color: #f5f3ff;">Sigil of Dragonlord</strong> — drops only from Act 8, and it is not a guaranteed drop.</li>
+            <li style="margin-bottom: 8px;">Collect multiple <strong style="color: #f5f3ff;">Tomes of Dragonlord</strong> from Act 6 to unlock each Dragonlord skill individually.</li>
+          </ol>
+
+          <h3 id="dragonlord-skill-ledger" style="font-size: 1.05rem; color: #fff; margin: 0 0 10px;">Dragonlord Skill Ledger</h3>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.86rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Skill</th>
+                  <th style="padding: 10px 12px;">Effect</th>
+                  <th style="padding: 10px 12px;">Scaling</th>
+                  <th style="padding: 10px 12px;">Energy</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dragonlordSkills.map((s) => (
+                  <tr style="border-bottom: 1px solid var(--line);">
+                    <td data-label="Skill" style="padding: 10px 12px; font-weight: 700; color: #fff;">{s.name}</td>
+                    <td data-label="Effect" style="padding: 10px 12px; color: var(--muted);">{s.effect}</td>
+                    <td data-label="Scaling" style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">{s.scaling}</td>
+                    <td data-label="Energy" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">{s.energy}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.85rem; margin: 12px 0 0;">
+            Two of three Dragonlord skills scale with Strength, so a Strength-heavy build carries the path. Budget the <a href="/combat/energy/" style="color: var(--accent); text-decoration: none;">Energy system</a> around Dragon's Blood at 4 energy — the +70% damage window is worth more than one extra attack.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+          <h2 id="best-race-and-super-class-pairings" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Best Race Pairings for Spear</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            <strong style="color: #f5f3ff;">Dragonborn</strong> is the documented pairing for the Dragonlord path — it works well with it but is not required. It is a Mythic roll at 0.72%, and it evolves into Kindled (needs a Heartblood) and Exalted (needs an Heirloom); its third form is not in the game yet.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            For the other two branches, race choice is mostly a stat question rather than a synergy question. See the <a href="/races/best-races/" style="color: var(--accent); text-decoration: none;">best races ranking</a> and the <a href="/races/dragonborn/" style="color: var(--accent); text-decoration: none;">Dragonborn race guide</a> for the roll odds and evolution materials.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+          <h2 id="is-the-spear-class-worth-it" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Is the Spear Class Worth It?</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Yes, but only if you intend to finish the Dragonlord path. Dragonlord is currently one of the strongest classes in Pixel Lineage, and it is the only reason Spear exists as a competitive pick.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            If you are not going to farm Act 8 for the Sigil of Dragonlord, Spear is a mid-tier pick: it balances single-target damage and support without excelling at either, and Warrior or Archer will get you further per hour. See the <a href="/tier-list/class-tier-list/" style="color: var(--accent); text-decoration: none;">class tier list</a> for where each branch currently sits.
+          </p>
+        </section>
+
+        <FaqSection items={faqItems} />
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <a href="/classes/super-classes/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Compare All 21 Super Classes →
+          </a>
+          <a href="/codes/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Free Race &amp; Talent Spins via Codes →
+          </a>
+        </div>
+
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+      </article>
+
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/classes/spear/" />
+    </div>
+  </div>
+</BaseLayout>

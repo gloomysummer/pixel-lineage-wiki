@@ -1,0 +1,258 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+const TITLE = "Pixel Lineage Dragonborn Race: Scaled Hide & Dragonfire";
+const DESC = "Dragonborn race in Pixel Lineage: 0.72% Mythic roll odds, the Scaled Hide passive (+15% max HP, -30% fire damage) and Dragonfire AoE Burn, plus the Dragonlord pairing.";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: TITLE,
+    description: DESC,
+    url: `${siteConfig.siteUrl}/races/dragonborn/`,
+    datePublished: "2026-11-10T12:00:00+00:00",
+    dateModified: "2026-11-10T12:00:00+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Dragonborn", item: `${siteConfig.siteUrl}/races/dragonborn/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is the Dragonborn race roll chance in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Dragonborn is a Mythic race at 0.72%, the same tier as Seraph, Nightborne and Tideborn. It was added in the October 20, 2026 update alongside the Spear class.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What does Scaled Hide do in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Scaled Hide increases maximum HP by 15%, reduces damage taken from Fire attacks by 30%, and reduces damage taken from enemies affected by the Burn debuff by 20%. The race also unlocks Dragonfire, which breathes fire on all enemies to apply Burn.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is Dragonborn required for the Dragonlord class?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. Dragonborn pairs well with the Dragonlord Ultra Class but is not required for it. Dragonlord is reached through the Spear base class into Dragoon, then the Sigil of Dragonlord from Act 8.",
+        },
+      },
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    "question": "What is the Dragonborn race roll chance in Pixel Lineage?",
+    "answer": "Dragonborn is a Mythic race at 0.72% — the same tier as Seraph, Nightborne and Tideborn. It was added in the October 20, 2026 update, alongside the Spear class."
+  },
+  {
+    "question": "What does Scaled Hide do in Pixel Lineage?",
+    "answer": "Scaled Hide raises maximum HP by 15%, cuts damage taken from Fire attacks by 30%, and cuts damage taken from enemies affected by the Burn debuff by 20%. Dragonborn also unlocks Dragonfire, which breathes fire on all enemies to apply Burn — the race is the only one whose kit is built around a damage-over-time debuff."
+  },
+  {
+    "question": "Is Dragonborn required for the Dragonlord class?",
+    "answer": "No. Dragonborn pairs well with Dragonlord but is not required. Dragonlord comes from the Spear base class into Dragoon, then the Sigil of Dragonlord, which drops only in Act 8 and is not guaranteed."
+  },
+  {
+    "question": "How does Dragonborn evolve?",
+    "answer": "The two evolution stages are Kindled and Exalted. Sources disagree on which item gates which stage for Dragonborn specifically — one outlet describes Kindled as needing a Heartblood, which contradicts the Heirloom-then-Heartblood order used by every other race. There is also a third, Dragonborn-exclusive evolution that has not been added to the game yet. We are not publishing an Act location for the Dragonborn Heirloom until it is verifiable in-game."
+  },
+  {
+    "question": "Is Dragonborn good for solo play or only in a party?",
+    "answer": "Dragonborn is a defensive value pick rather than a carry. The 15% max HP and stacked fire resistance make it forgiving in Nightmare-tier content where other races get deleted by Burn-heavy bosses, and Dragonfire's AoE Burn gives a solo player crowd damage that most defensive races lack."
+  },
+];
+---
+
+<BaseLayout title={TITLE} description={DESC} canonical="/races/dragonborn/" jsonLd={jsonLd}>
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+          <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <span class="current">Dragonborn</span>
+        </nav>
+
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(234, 88, 12, 0.15); border: 1px solid #ea580c; color: #ea580c; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            Mythic Bloodline · 0.72% Roll · Added 2026-10-20
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Dragonborn Race: Scaled Hide &amp; Dragonfire
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            The Dragonborn is one of the two things the October 20, 2026 update added — the other being the <a href="/classes/spear/" style="color: var(--accent); text-decoration: none;">Spear class</a>. It is a Mythic bloodline built around fire resistance and a Burn-based damage-over-time kit, and it is the documented pairing for the Dragonlord Ultra Class.
+          </p>
+
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer
+            </div>
+            <p style="margin: 0; font-size: 0.94rem; color: #e8e2f2; line-height: 1.6;">
+              <strong>Dragonborn</strong> is a <strong>Mythic race at 0.72%</strong>. Its passive <strong>Scaled Hide</strong> gives <strong>+15% max HP</strong>, <strong>-30% Fire damage taken</strong> and <strong>-20% damage from Burn-afflicted enemies</strong>, and it unlocks <strong>Dragonfire</strong>, an AoE attack that applies Burn to every enemy. It pairs with the Dragonlord Ultra Class but is not required for it. Roll it if you are already heading down the Spear → Dragoon path; otherwise it is a defensive pick, not a damage carry.
+            </p>
+          </div>
+        </header>
+
+        <MobileToc tocHeadings={tocHeadings} />
+
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #ea580c; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="innate-racial-trait-ledger" style="font-size: 1.25rem; color: #ea580c; margin: 0 0 12px;">Innate Racial Trait Ledger</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Trait / Skill</th>
+                  <th style="padding: 10px 12px;">Exact Effect</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Trait" style="padding: 10px 12px; font-weight: 700; color: #fff;">Scaled Hide <span style="color: var(--muted); font-weight: 400;">(passive)</span></td>
+                  <td data-label="Effect" style="padding: 10px 12px; color: var(--muted);">Maximum HP +15%. Damage taken from Fire attacks −30%. Damage taken from enemies inflicted with Burn −20%.</td>
+                </tr>
+                <tr>
+                  <td data-label="Trait" style="padding: 10px 12px; font-weight: 700; color: #fff;">Dragonfire <span style="color: var(--muted); font-weight: 400;">(active)</span></td>
+                  <td data-label="Effect" style="padding: 10px 12px; color: var(--muted);">Breathes fire on all enemies, inflicting the Burn debuff on each target.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            The passive is the valuable half. Three separate damage-reduction clauses — flat HP, Fire resistance, and Burn resistance — make Dragonborn the most forgiving Mythic race against fire-heavy bosses, at the cost of having no offensive stat buff of its own. Dragonfire supplies the missing damage as a debuff rather than a nuke. Compare with <a href="/races/seraph/" style="color: var(--accent); text-decoration: none;">Seraph</a>, which trades that survivability for party-wide healing.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="how-to-obtain-spin-odds" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">How to Obtain — Spin Odds</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Dragonborn comes from the Race Spin pool like every other rolled bloodline — it is not an event purchase, unlike Dullahan. At 0.72% it sits in the rarest band:
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Mythic Race</th>
+                  <th style="padding: 10px 12px;">Roll Chance</th>
+                  <th style="padding: 10px 12px;">Kit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Race" style="padding: 10px 12px; font-weight: 700; color: #ea580c;">Dragonborn</td>
+                  <td data-label="Roll Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">0.72%</td>
+                  <td data-label="Kit" style="padding: 10px 12px; color: var(--muted);">Defensive + AoE Burn</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Race" style="padding: 10px 12px; font-weight: 700; color: #fff;"><a href="/races/seraph/" style="color: #fff; text-decoration: none;">Seraph</a></td>
+                  <td data-label="Roll Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">0.72%</td>
+                  <td data-label="Kit" style="padding: 10px 12px; color: var(--muted);">Party damage reduction + healing</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Race" style="padding: 10px 12px; font-weight: 700; color: #fff;"><a href="/races/nightborn/" style="color: #fff; text-decoration: none;">Nightborne</a></td>
+                  <td data-label="Roll Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">0.72%</td>
+                  <td data-label="Kit" style="padding: 10px 12px; color: var(--muted);">Lifesteal on attack</td>
+                </tr>
+                <tr>
+                  <td data-label="Race" style="padding: 10px 12px; font-weight: 700; color: #fff;">Tideborn</td>
+                  <td data-label="Roll Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">0.72%</td>
+                  <td data-label="Kit" style="padding: 10px 12px; color: var(--muted);">Per-turn HP regeneration</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 12px 0 0;">
+            At 0.72% you need roughly 96 spins for a coin-flip chance at any single Mythic race. Bank Race Spins from <a href="/codes/" style="color: var(--accent); text-decoration: none;">active codes</a> before you start buying spins with Robux — most code rewards bundle Race and Talent Spins together.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="race-evolution-kindled-and-exalted" style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">Race Evolution: Kindled &amp; Exalted</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Dragonborn follows the standard two-stage evolution — <strong style="color: #f5f3ff;">Kindled</strong>, then <strong style="color: #f5f3ff;">Exalted</strong> — plus a third, Dragonborn-exclusive form that has <strong>not been added to the game yet</strong>.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            For every other race the order is fixed: an <strong>Heirloom</strong> produces Kindled, a <strong>Heartblood</strong> produces Exalted. One published source describes Dragonborn the other way round (Kindled from a Heartblood). We are flagging the conflict instead of picking a side, and we are not printing an Act location for the Dragonborn Heirloom until it can be confirmed in game.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            The general mechanics, and the confirmed Act and difficulty for all fourteen other races, are on the <a href="/races/evolution/" style="color: var(--accent); text-decoration: none;">Heirloom &amp; Heartblood locations page</a>. Start there rather than farming blind.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="best-class-pairings" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Best Class Pairings</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            <strong style="color: #f5f3ff;">Dragonlord</strong> (Spear → Dragoon → Ultra) is the documented synergy, and it is the only one specifically called out for this race. The reasoning is structural rather than statistical: Dragonlord's Dragon Dive already applies Burn, and Scaled Hide reduces incoming damage from Burn-afflicted enemies — so the race both feeds and survives the class's own debuff window.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Outside Dragonlord, treat Dragonborn as a generic defensive race — the +15% max HP is class-agnostic. Passives for the three Spear Super Classes are not yet published, so any claim about Halberdier or Valkyrie synergy with this race is speculation. See the <a href="/classes/spear/" style="color: var(--accent); text-decoration: none;">Spear class guide</a> and the <a href="/tier-list/race-tier-list/" style="color: var(--accent); text-decoration: none;">race tier list</a>.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="should-you-reroll-it" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Should You Reroll It?</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            <strong style="color: #34d399;">Keep it</strong> if you are already on, or planning, the Spear → Dragoon → Dragonlord line. That is the one case where the pairing is explicit.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            <strong style="color: #c9a227;">Keep it anyway</strong> as a defensive body if you play Nightmare-tier content and are dying to fire damage rather than running out of damage output.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            <strong style="color: #f43f5e;">Reroll</strong> if you are chasing a damage race. Seraph, Nightborne and Celestine all do more for a damage build, and a 0.72% Mythic is a bad use of a slot purely as a tank when Uncommon Stonekin gives +20 max HP and a Fist bonus at 7.91%.
+          </p>
+        </section>
+
+        <FaqSection items={faqItems} />
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <a href="/races/evolution/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Heirloom &amp; Heartblood Locations →
+          </a>
+          <a href="/races/best-races/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Best Races &amp; Spin Meta →
+          </a>
+        </div>
+
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+      </article>
+
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/dragonborn/" />
+    </div>
+  </div>
+</BaseLayout>
