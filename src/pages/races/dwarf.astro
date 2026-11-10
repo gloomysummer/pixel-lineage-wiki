@@ -1,0 +1,209 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+const TITLE = "Dwarf Race in Pixel Lineage: +15% HP, +6% DEF";
+const DESC = "Dwarf in Pixel Lineage: 8.63% roll, +15% maximum HP and +6% DEF, plus why it beats Goblin for survival rather than farming.";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: TITLE,
+    description: DESC,
+    url: `${siteConfig.siteUrl}/races/dwarf/`,
+    datePublished: "2026-11-10T12:00:00+00:00",
+    dateModified: "2026-11-10T12:00:00+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Dwarf", item: `${siteConfig.siteUrl}/races/dwarf/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What does the Dwarf race give in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Dwarf provides an innate +15% Maximum HP and +6% Defense, offering one of the most cost-effective defensive baselines in the game.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where do you farm the Dwarf Heirloom and Heartblood?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The Dwarf Heirloom drops in Act 2 (Dungeon) on Hard difficulty for Stage 1 Kindled. The Dwarf Heartblood drops from the Slime King in Act 1 (Sunmeadow Wilds) for Stage 2 Exalted.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How does Dwarf compare to Goblin in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Both share the same 8.63% roll probability, but Dwarf is built for frontline survival (+15% HP and +6% DEF), while Goblin provides gold and loot farming utility.",
+        },
+      },
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    question: "What does the Dwarf race give in Pixel Lineage?",
+    answer: "Dwarf grants +15% Maximum HP and +6% Defense, significantly increasing effective health against heavy physical hits in early and mid-tier dungeons."
+  },
+  {
+    question: "Where do you farm the Dwarf Heirloom and Heartblood?",
+    answer: "The Dwarf Heirloom drops in Act 2 (Dungeon) on Hard difficulty to reach Stage 1 Kindled. The Dwarf Heartblood drops from the Slime King boss in Act 1 (Sunmeadow Wilds) to reach Stage 2 Exalted."
+  },
+  {
+    question: "How does Dwarf compare to Goblin in Pixel Lineage?",
+    answer: "In the goblin vs dwarf comparison at an identical 8.63% roll chance, Dwarf is dedicated to tanking and survivability, whereas Goblin prioritizes gold generation and bonus item drops."
+  },
+];
+---
+
+<BaseLayout title={TITLE} description={DESC} canonical="/races/dwarf/" jsonLd={jsonLd}>
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+          <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <span class="current">Dwarf</span>
+        </nav>
+
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(201, 162, 39, 0.15); border: 1px solid #c9a227; color: #c9a227; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            Uncommon Bloodline · 8.63% Roll · Grade C
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Dwarf Race &amp; Survival Guide
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            The Dwarf bloodline in Pixel Lineage is designed for resilient frontline combat, supplying a substantial +15% Maximum HP bonus and +6% Defense mitigation.
+          </p>
+
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer
+            </div>
+            <p style="margin: 0; font-size: 0.94rem; color: #e8e2f2; line-height: 1.6;">
+              <strong>Dwarf</strong> is an <strong>8.63% Uncommon race</strong> that grants <strong>+15% Max HP</strong> and <strong>+6% DEF</strong>. Evolve to Stage 1 (Kindled) with the <strong>Dwarf Heirloom in Act 2 (Dungeon) on Hard</strong>, and Stage 2 (Exalted) with the <strong>Heartblood from the Slime King in Act 1</strong>. It is an exceptional early-to-midgame tanking race.
+            </p>
+          </div>
+        </header>
+
+        <MobileToc tocHeadings={tocHeadings} />
+
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="innate-racial-trait-ledger" style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">Innate Racial Trait Ledger</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Parameter</th>
+                  <th style="padding: 10px 12px;">Stat Value</th>
+                  <th style="padding: 10px 12px;">Combat Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Parameter" style="padding: 10px 12px; font-weight: 700; color: #fff;">Roll Odds</td>
+                  <td data-label="Value" style="padding: 10px 12px; color: #34d399; font-family: var(--font-mono);">8.63%</td>
+                  <td data-label="Role" style="padding: 10px 12px; color: var(--muted);">Uncommon tier at the Goblin Merchant wheel.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Parameter" style="padding: 10px 12px; font-weight: 700; color: #fff;">Sturdy Frame</td>
+                  <td data-label="Value" style="padding: 10px 12px; color: #c9a227; font-family: var(--font-mono);">+15% Max HP</td>
+                  <td data-label="Role" style="padding: 10px 12px; color: var(--muted);">Expands the character's health buffer to prevent lethal one-shots.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Parameter" style="padding: 10px 12px; font-weight: 700; color: #fff;">Iron Skin</td>
+                  <td data-label="Value" style="padding: 10px 12px; color: #c9a227; font-family: var(--font-mono);">+6% DEF</td>
+                  <td data-label="Role" style="padding: 10px 12px; color: var(--muted);">Flat percentage defense reduction applied to all physical incoming hits.</td>
+                </tr>
+                <tr>
+                  <td data-label="Parameter" style="padding: 10px 12px; font-weight: 700; color: #fff;">Evolution Items</td>
+                  <td data-label="Value" style="padding: 10px 12px; color: #f5f3ff;">Act 2 &amp; Act 1</td>
+                  <td data-label="Role" style="padding: 10px 12px; color: var(--muted);">Heirloom in Act 2 Hard; Heartblood from Slime King in Act 1 (shared with Celestine).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            Review all drop requirements on the <a href="/races/evolution/" style="color: var(--accent); text-decoration: none;">Heirloom &amp; Heartblood guide</a>.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="best-class-pairings" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Best Class Pairings</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Dwarf fits well with frontline defense specialists:
+          </p>
+          <ul style="color: var(--muted); font-size: 0.92rem; padding-left: 20px; margin: 0;">
+            <li><strong><a href="/classes/warrior/" style="color: var(--accent); text-decoration: none;">Warrior</a> (Sentinel)</strong>: Stacks shield absorption and defense, turning your character into an immovable barrier.</li>
+            <li><strong>Fist (Monk)</strong>: Benefits from the +15% HP pool to sustain close-range counterattack trades.</li>
+            <li><strong>Spear (Halberdier)</strong>: Offsets mid-range reach vulnerability with pure physical defense.</li>
+          </ul>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="should-you-reroll-it" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Should You Reroll It?</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            In the <a href="/races/goblin/" style="color: var(--accent); text-decoration: none;">goblin vs dwarf</a> comparison, both share the exact same 8.63% roll chance, but Dwarf is focused on sheer survival while Goblin concentrates on gold farming.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            <strong style="color: #34d399;">Keep on your main tank</strong>: The +15% HP and +6% DEF baseline is competitive with high-tier races for general dungeon progression.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            <strong style="color: #f43f5e;">Reroll when hunting specialized DPS</strong>: Dwarf lacks damage multipliers. If you are building an offensive carry, use spins from <a href="/codes/" style="color: var(--accent); text-decoration: none;">active codes</a> to target Mythic races on the <a href="/races/best-races/" style="color: var(--accent); text-decoration: none;">best races meta ranking</a> and <a href="/tier-list/race-tier-list/" style="color: var(--accent); text-decoration: none;">race tier list</a>.
+          </p>
+        </section>
+
+        <FaqSection items={faqItems} />
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <a href="/races/evolution/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Heirloom &amp; Heartblood Locations →
+          </a>
+          <a href="/races/best-races/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Best Races &amp; Spin Meta →
+          </a>
+        </div>
+
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+      </article>
+
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/dwarf/" />
+    </div>
+  </div>
+</BaseLayout>

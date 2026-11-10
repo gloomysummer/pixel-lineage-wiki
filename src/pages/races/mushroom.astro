@@ -1,0 +1,243 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+const TITLE = "Mushroom Race in Pixel Lineage: 16% Poison";
+const DESC = "Mushroom in Pixel Lineage: 4.32% roll and a 16% chance to poison any attacker, a defensive race that rewards long fights.";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: TITLE,
+    description: DESC,
+    url: `${siteConfig.siteUrl}/races/mushroom/`,
+    datePublished: "2026-11-10T12:00:00+00:00",
+    dateModified: "2026-11-10T12:00:00+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Mushroom", item: `${siteConfig.siteUrl}/races/mushroom/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What does the Mushroom race passive do in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "When struck by an enemy attack, the Mushroom race has an innate 16% chance to inflict the Poison debuff on the attacker, applying damage over time.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is the roll chance for Mushroom in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Mushroom is a Rare bloodline with a 4.32% roll chance at the Goblin Merchant.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where do you farm the Mushroom Heirloom and Heartblood?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The Mushroom Heirloom drops in Act 7 (Drowned Cathedral) on Hard difficulty for Stage 1 Kindled. The Mushroom Heartblood drops in Act 6 (Withered Meadow) for Stage 2 Exalted.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Which classes pair well with the Mushroom race?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Mushroom fits well with tanky defensive classes like Warrior (Sentinel) and status-inflicting archetypes like Thief (Rogue) and Mage (Hexer).",
+        },
+      },
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    question: "What does the Mushroom race passive do in Pixel Lineage?",
+    answer: "Whenever you take damage from an attack, Spore Defense grants a 16% chance to automatically inflict Poison onto the attacker, whittling down enemy health pools over multiple turns."
+  },
+  {
+    question: "What is the roll chance for Mushroom in Pixel Lineage?",
+    answer: "Mushroom has a 4.32% drop rate in the Rare category at the town spin vendor."
+  },
+  {
+    question: "Where do you farm the Mushroom Heirloom and Heartblood?",
+    answer: "The Mushroom Heirloom drops in Act 7 (Drowned Cathedral) on Hard difficulty to reach Stage 1 Kindled. The Mushroom Heartblood drops in Act 6 (Withered Meadow) to reach Stage 2 Exalted."
+  },
+  {
+    question: "Which classes pair well with the Mushroom race?",
+    answer: "Mushroom fits well with frontline defenders like Sentinel and attrition-focused archetypes like Rogue and Hexer that benefit from passive counter-damage."
+  },
+];
+---
+
+<BaseLayout title={TITLE} description={DESC} canonical="/races/mushroom/" jsonLd={jsonLd}>
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+          <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <span class="current">Mushroom</span>
+        </nav>
+
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(52, 211, 153, 0.15); border: 1px solid #34d399; color: #34d399; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            Rare Bloodline · 4.32% Roll · Grade B
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Mushroom Race &amp; Poison Guide
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            The Mushroom race in Pixel Lineage features reactive status punishment: whenever hit, it possesses an innate 16% chance to inflict Poison on attackers.
+          </p>
+
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer
+            </div>
+            <p style="margin: 0; font-size: 0.94rem; color: #e8e2f2; line-height: 1.6;">
+              <strong>Mushroom</strong> is a <strong>4.32% Rare race</strong>. It features a <strong>16% chance to poison attackers upon being hit</strong>. Farm the <strong>Mushroom Heirloom in Act 7 (Drowned Cathedral) on Hard</strong> for Stage 1 (Kindled), and the <strong>Heartblood in Act 6 (Withered Meadow)</strong> for Stage 2 (Exalted).
+            </p>
+          </div>
+        </header>
+
+        <MobileToc tocHeadings={tocHeadings} />
+
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="innate-racial-trait-ledger" style="font-size: 1.25rem; color: #34d399; margin: 0 0 12px;">Innate Racial Trait Ledger</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Trait Name</th>
+                  <th style="padding: 10px 12px;">Trigger</th>
+                  <th style="padding: 10px 12px;">Debuff Effect</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Trait" style="padding: 10px 12px; font-weight: 700; color: #fff;">Spore Retaliation</td>
+                  <td data-label="Trigger" style="padding: 10px 12px; color: #34d399;">On Taking Damage</td>
+                  <td data-label="Effect" style="padding: 10px 12px; color: var(--muted);">16% chance to inflict Poison on the attacking enemy, dealing damage over consecutive rounds.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            Compare counter-mechanics on the <a href="/races/best-races/" style="color: var(--accent); text-decoration: none;">best races meta hub</a>.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="how-to-obtain-spin-odds" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">How to Obtain — Spin Odds</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Mushroom rolls at a 4.32% rate in the Rare category from the Goblin Merchant spin pool.
+          </p>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 0;">
+            Stockpile spins through <a href="/codes/" style="color: var(--accent); text-decoration: none;">active promo codes</a>.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="race-evolution-heirloom-and-heartblood" style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">Race Evolution: Heirloom &amp; Heartblood Locations</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Mushroom follows the universal chain: <strong>Heirloom for Kindled (Stage 1)</strong> and <strong>Heartblood for Exalted (Stage 2)</strong>.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Stage</th>
+                  <th style="padding: 10px 12px;">Required Catalyst</th>
+                  <th style="padding: 10px 12px;">Dungeon &amp; Difficulty</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Stage" style="padding: 10px 12px; font-weight: 700; color: #f5f3ff;">Stage 1: Kindled</td>
+                  <td data-label="Item" style="padding: 10px 12px; color: #c9a227;">Mushroom Heirloom</td>
+                  <td data-label="Location" style="padding: 10px 12px; color: var(--muted);">Act 7 (Drowned Cathedral) on Hard difficulty</td>
+                </tr>
+                <tr>
+                  <td data-label="Stage" style="padding: 10px 12px; font-weight: 700; color: #f5f3ff;">Stage 2: Exalted</td>
+                  <td data-label="Item" style="padding: 10px 12px; color: #f43f5e;">Mushroom Heartblood</td>
+                  <td data-label="Location" style="padding: 10px 12px; color: var(--muted);">Act 6 (Withered Meadow)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 12px 0 0;">
+            Check the complete 14-race breakdown on the <a href="/races/evolution/" style="color: var(--accent); text-decoration: none;">Race Evolution guide</a>.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="best-class-synergies" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Best Class Synergies</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Mushroom fits well with high-durability and debuff-focused classes:
+          </p>
+          <ul style="color: var(--muted); font-size: 0.92rem; padding-left: 20px; margin: 0;">
+            <li><strong>Warrior (Sentinel)</strong>: Absorbs multiple hits with shields, triggering repeated 16% poison rolls against attacking mobs.</li>
+            <li><strong><a href="/classes/thief/" style="color: var(--accent); text-decoration: none;">Thief</a> (Rogue)</strong>: Complements tripwire and poison-coating strategies.</li>
+            <li><strong>Mage (Hexer)</strong>: Stacks damage-over-time debuffs to melt high-HP dungeon bosses.</li>
+          </ul>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="talent-and-gear-priority" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Talent &amp; Gear Priority</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Focus on defensive armor sets that increase effective HP and damage mitigation to survive multiple hits and maximize reactive poison procs.
+          </p>
+        </section>
+
+        <FaqSection items={faqItems} />
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <a href="/races/evolution/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Heirloom &amp; Heartblood Locations →
+          </a>
+          <a href="/races/best-races/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Best Races &amp; Spin Meta →
+          </a>
+        </div>
+
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+      </article>
+
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/mushroom/" />
+    </div>
+  </div>
+</BaseLayout>

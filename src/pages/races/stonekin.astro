@@ -1,0 +1,247 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+const TITLE = "Stonekin Race: +20 Max HP, +15% Fist Damage";
+const DESC = "Stonekin in Pixel Lineage: 7.91% roll, +20 maximum HP and +15% Fist attack damage, plus its Heirloom and Heartblood locations.";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: TITLE,
+    description: DESC,
+    url: `${siteConfig.siteUrl}/races/stonekin/`,
+    datePublished: "2026-11-10T12:00:00+00:00",
+    dateModified: "2026-11-10T12:00:00+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Stonekin", item: `${siteConfig.siteUrl}/races/stonekin/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What does the Stonekin race do in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Stonekin grants a flat +20 bonus to maximum HP and increases all Fist class attack damage by +15%, making it the dedicated martial arts race in Pixel Lineage.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is the roll chance for Stonekin in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Stonekin has a 7.91% roll probability in the Uncommon rarity bracket at the Goblin Merchant.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where do you get the Stonekin Heirloom and Heartblood?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The Stonekin Heirloom drops in Act 5 (Underworld) on Hard difficulty for Stage 1 Kindled. The Stonekin Heartblood drops in Act 8 (Glass Wastes) for Stage 2 Exalted.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Which class is best for Stonekin?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The Fist base class (evolving into Monk, Brawler, or Oni) is the premier pairing for Stonekin, directly leveraging its +15% Fist damage bonus.",
+        },
+      },
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    question: "What does the Stonekin race do in Pixel Lineage?",
+    answer: "Stonekin provides +20 flat maximum HP and increases all Fist category damage by +15%, offering unmatched early and mid-game scaling for martial artists."
+  },
+  {
+    question: "What is the roll chance for Stonekin in Pixel Lineage?",
+    answer: "Stonekin has an accessible 7.91% roll probability in the Uncommon bracket at the Goblin Merchant."
+  },
+  {
+    question: "Where do you get the Stonekin Heirloom and Heartblood?",
+    answer: "The Stonekin Heirloom drops in Act 5 (Underworld) on Hard difficulty to reach Stage 1 Kindled. The Stonekin Heartblood drops in Act 8 (Glass Wastes) to reach Stage 2 Exalted."
+  },
+  {
+    question: "Which class is best for Stonekin?",
+    answer: "The Fist base class and its Super Classes (Monk, Brawler, Oni) represent the dedicated pairing, fully benefiting from the +15% Fist multiplier."
+  },
+];
+---
+
+<BaseLayout title={TITLE} description={DESC} canonical="/races/stonekin/" jsonLd={jsonLd}>
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+          <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <span class="current">Stonekin</span>
+        </nav>
+
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(201, 162, 39, 0.15); border: 1px solid #c9a227; color: #c9a227; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            Uncommon Bloodline · 7.91% Roll · Grade B
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Stonekin Race &amp; Fist Guide
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            Stonekin is the premier brawler bloodline in Pixel Lineage, combining a flat +20 maximum HP buffer with a +15% damage bonus to all Fist attacks.
+          </p>
+
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer
+            </div>
+            <p style="margin: 0; font-size: 0.94rem; color: #e8e2f2; line-height: 1.6;">
+              <strong>Stonekin</strong> is a <strong>7.91% Uncommon race</strong>. It grants <strong>+20 Max HP</strong> and <strong>+15% Fist damage</strong>. Farm the <strong>Stonekin Heirloom in Act 5 (Underworld) on Hard</strong> for Stage 1 (Kindled), and farm the <strong>Heartblood in Act 8 (Glass Wastes)</strong> for Stage 2 (Exalted).
+            </p>
+          </div>
+        </header>
+
+        <MobileToc tocHeadings={tocHeadings} />
+
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="innate-racial-trait-ledger" style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">Innate Racial Trait Ledger</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Trait Name</th>
+                  <th style="padding: 10px 12px;">Type</th>
+                  <th style="padding: 10px 12px;">In-Game Multiplier</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Trait" style="padding: 10px 12px; font-weight: 700; color: #fff;">Stone Heart</td>
+                  <td data-label="Type" style="padding: 10px 12px; color: #c9a227;">Health Buff</td>
+                  <td data-label="Multiplier" style="padding: 10px 12px; color: var(--muted);">Grants a permanent flat bonus of +20 Maximum HP.</td>
+                </tr>
+                <tr>
+                  <td data-label="Trait" style="padding: 10px 12px; font-weight: 700; color: #fff;">Granite Strike</td>
+                  <td data-label="Type" style="padding: 10px 12px; color: #c9a227;">Damage Modifier</td>
+                  <td data-label="Multiplier" style="padding: 10px 12px; color: var(--muted);">Increases all Fist weapon and martial arts skill damage by +15%.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            Compare against other options on the <a href="/races/best-races/" style="color: var(--accent); text-decoration: none;">best races meta ranking</a>.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="how-to-obtain-spin-odds" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">How to Obtain — Spin Odds</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Stonekin sits in the Uncommon tier with a 7.91% spin chance, making it frequently accessible from code spins.
+          </p>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 0;">
+            Redeem bonus spins with <a href="/codes/" style="color: var(--accent); text-decoration: none;">Pixel Lineage codes</a>.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="race-evolution-heirloom-and-heartblood" style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">Race Evolution: Heirloom &amp; Heartblood Locations</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Stonekin evolves through the universal pattern: <strong>Heirloom for Kindled (Stage 1)</strong> and <strong>Heartblood for Exalted (Stage 2)</strong>.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Evolution Tier</th>
+                  <th style="padding: 10px 12px;">Required Material</th>
+                  <th style="padding: 10px 12px;">Farming Location</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Tier" style="padding: 10px 12px; font-weight: 700; color: #f5f3ff;">Stage 1: Kindled</td>
+                  <td data-label="Item" style="padding: 10px 12px; color: #c9a227;">Stonekin Heirloom</td>
+                  <td data-label="Location" style="padding: 10px 12px; color: var(--muted);">Act 5 (Underworld) on Hard difficulty</td>
+                </tr>
+                <tr>
+                  <td data-label="Tier" style="padding: 10px 12px; font-weight: 700; color: #f5f3ff;">Stage 2: Exalted</td>
+                  <td data-label="Item" style="padding: 10px 12px; color: #f43f5e;">Stonekin Heartblood</td>
+                  <td data-label="Location" style="padding: 10px 12px; color: var(--muted);">Act 8 (Glass Wastes)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 12px 0 0;">
+            Review all drop nodes on the <a href="/races/evolution/" style="color: var(--accent); text-decoration: none;">Race Evolution guide</a>.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="best-class-synergies" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Best Class Synergies</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Stonekin fits well with martial melee fighters:
+          </p>
+          <ul style="color: var(--muted); font-size: 0.92rem; padding-left: 20px; margin: 0;">
+            <li><strong><a href="/classes/fist/" style="color: var(--accent); text-decoration: none;">Fist</a> (Monk / Brawler / Oni)</strong>: The direct beneficiary of the +15% Fist damage modifier.</li>
+            <li><strong>Warrior (Sentinel)</strong>: Utilizes the flat +20 HP to augment early Act 1-3 dungeon survivability.</li>
+          </ul>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="talent-and-gear-priority" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Talent &amp; Gear Priority</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Stack physical attack power, critical strike chance, and gauntlets with high base damage to scale the +15% Fist bonus.
+          </p>
+        </section>
+
+        <FaqSection items={faqItems} />
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <a href="/races/evolution/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Heirloom &amp; Heartblood Locations →
+          </a>
+          <a href="/races/best-races/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Best Races &amp; Spin Meta →
+          </a>
+        </div>
+
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+      </article>
+
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/stonekin/" />
+    </div>
+  </div>
+</BaseLayout>

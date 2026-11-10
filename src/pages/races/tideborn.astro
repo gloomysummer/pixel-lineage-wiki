@@ -1,0 +1,316 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+const TITLE = "Tideborn Race in Pixel Lineage: 5% HP Per Turn";
+const DESC = "Tideborn in Pixel Lineage: 0.72% Mythic roll and Tidal Grace, restoring 5% max HP every turn, plus Heirloom and Heartblood locations.";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: TITLE,
+    description: DESC,
+    url: `${siteConfig.siteUrl}/races/tideborn/`,
+    datePublished: "2026-11-10T12:00:00+00:00",
+    dateModified: "2026-11-10T12:00:00+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Tideborn", item: `${siteConfig.siteUrl}/races/tideborn/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What does Tidal Grace do in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Tidal Grace restores 5% of your maximum HP at the beginning of each of your own turns. Because the heal scales with your total HP pool, it becomes stronger as your character levels and equips higher-tier armor.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is the roll chance for Tideborn in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Tideborn is a Mythic bloodline with a 0.72% roll chance at the Goblin Merchant spin wheel, sharing the rarest tier with Seraph, Nightborne, and Dragonborn.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where do you get the Tideborn Heirloom and Heartblood?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The Tideborn Heirloom for Stage 1 Kindled drops in Act 8 (Glass Wastes) on Nightmare difficulty. The Tideborn Heartblood for Stage 2 Exalted drops from The Tolling Bell boss in Act 7 (Drowned Cathedral).",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Which classes pair best with the Tideborn race?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Tideborn fits well with durable frontliners like Warrior (Sentinel or Berserk) and Fist (Monk), as their massive HP pools amplify Tidal Grace's 5% per-turn regeneration.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Should you reroll Tideborn if you get it?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Never reroll Tideborn on an active run unless you already have a duplicate Mythic character. At a 0.72% drop chance, its passive sustain is unmatched for clearing high-difficulty Nightmare and Torment dungeons.",
+        },
+      },
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    question: "What does Tidal Grace do in Pixel Lineage?",
+    answer: "Tidal Grace restores 5% of your maximum HP at the start of each of your own turns. Because it scales off your current maximum health pool rather than flat healing, stacking high HP equipment exponentially increases its sustain value."
+  },
+  {
+    question: "What is the roll chance for Tideborn in Pixel Lineage?",
+    answer: "Tideborn is in the Mythic tier at 0.72% probability, sharing the exact same baseline odds as Seraph, Nightborne, and Dragonborn."
+  },
+  {
+    question: "Where do you get the Tideborn Heirloom and Heartblood?",
+    answer: "The Tideborn Heirloom drops in Act 8 (Glass Wastes) on Nightmare difficulty to unlock Stage 1 Kindled. The Tideborn Heartblood drops from The Tolling Bell boss in Act 7 (Drowned Cathedral) for Stage 2 Exalted."
+  },
+  {
+    question: "Which classes pair best with the Tideborn race?",
+    answer: "Tideborn fits well with durable melee archetypes including Warrior (Sentinel or Berserk) and Fist (Monk or Brawler). It also serves as a resilient solo engine for Bard or Spear builds that need sustained recovery during long boss fights."
+  },
+  {
+    question: "Should you reroll Tideborn if you get it?",
+    answer: "Keep it under almost every circumstance. A 0.72% Mythic roll requires roughly 96 spins for an even statistical chance, making it one of the most reliable endgame attrition bloodlines in Pixel Lineage."
+  },
+  {
+    question: "Does The Tolling Bell drop Heartbloods for other races?",
+    answer: "Yes. The Tolling Bell in Act 7 (Drowned Cathedral) is a dual-drop boss that yields Heartbloods for both Vesper and Tideborn, making it efficient for cooperative farming parties."
+  },
+];
+---
+
+<BaseLayout title={TITLE} description={DESC} canonical="/races/tideborn/" jsonLd={jsonLd}>
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+          <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <span class="current">Tideborn</span>
+        </nav>
+
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #38bdf8; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            Mythic Bloodline · 0.72% Roll · Grade A
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Tideborn Race &amp; Bloodline Guide
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            Tideborn is an elite Mythic bloodline in Pixel Lineage celebrated for its unyielding turn-based self-healing. Anchored by the <strong>Tidal Grace</strong> passive, it provides continuous 5% maximum health regeneration on every turn.
+          </p>
+
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer
+            </div>
+            <p style="margin: 0; font-size: 0.94rem; color: #e8e2f2; line-height: 1.6;">
+              <strong>Tideborn</strong> is a <strong>0.72% Mythic race</strong>. Its signature passive <strong>Tidal Grace</strong> restores <strong>5% of maximum HP</strong> at the beginning of each personal turn. To evolve Tideborn, farm the <strong>Heirloom</strong> in <strong>Act 8 (Glass Wastes) on Nightmare</strong> for Stage 1 (Kindled), and farm the <strong>Heartblood</strong> from <strong>The Tolling Bell in Act 7 (Drowned Cathedral)</strong> for Stage 2 (Exalted). It fits well with high-HP tanks and solo dungeon grinders.
+            </p>
+          </div>
+        </header>
+
+        <MobileToc tocHeadings={tocHeadings} />
+
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="innate-racial-trait-ledger" style="font-size: 1.25rem; color: #38bdf8; margin: 0 0 12px;">Innate Racial Trait Ledger</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Trait Name</th>
+                  <th style="padding: 10px 12px;">Category</th>
+                  <th style="padding: 10px 12px;">Exact Mechanics</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Trait" style="padding: 10px 12px; font-weight: 700; color: #fff;">Tidal Grace</td>
+                  <td data-label="Category" style="padding: 10px 12px; color: #38bdf8;">Innate Passive</td>
+                  <td data-label="Mechanics" style="padding: 10px 12px; color: var(--muted);">Restores 5% of maximum HP at the beginning of every turn taken by this character.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            Unlike races requiring kill triggers or active potion use, Tidal Grace ticks automatically every single turn. Check the <a href="/races/best-races/" style="color: var(--accent); text-decoration: none;">best races meta ranking</a> to see how Tideborn compares against other top-tier options.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="how-to-obtain-spin-odds" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">How to Obtain — Spin Odds &amp; Reroll Cost</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Tideborn is pulled via Race Spins at the Goblin Merchant in town. Sitting in the 0.72% Mythic bracket, it shares equal baseline rarity with the other premier end-game bloodlines:
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Mythic Bloodline</th>
+                  <th style="padding: 10px 12px;">Spin Probability</th>
+                  <th style="padding: 10px 12px;">Core Combat Identity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Bloodline" style="padding: 10px 12px; font-weight: 700; color: #38bdf8;">Tideborn</td>
+                  <td data-label="Spin Probability" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">0.72%</td>
+                  <td data-label="Combat Identity" style="padding: 10px 12px; color: var(--muted);">Consistent 5% max HP regeneration per turn</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Bloodline" style="padding: 10px 12px; font-weight: 700; color: #c084fc;"><a href="/races/seraph/" style="color: #c084fc; text-decoration: none;">Seraph</a></td>
+                  <td data-label="Spin Probability" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">0.72%</td>
+                  <td data-label="Combat Identity" style="padding: 10px 12px; color: var(--muted);">Team-wide damage mitigation &amp; cheat death</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Bloodline" style="padding: 10px 12px; font-weight: 700; color: #a855f7;"><a href="/races/nightborn/" style="color: #a855f7; text-decoration: none;">Nightborne</a></td>
+                  <td data-label="Spin Probability" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">0.72%</td>
+                  <td data-label="Combat Identity" style="padding: 10px 12px; color: var(--muted);">Offensive lifesteal sustain &amp; execution bonuses</td>
+                </tr>
+                <tr>
+                  <td data-label="Bloodline" style="padding: 10px 12px; font-weight: 700; color: #ea580c;"><a href="/races/dragonborn/" style="color: #ea580c; text-decoration: none;">Dragonborn</a></td>
+                  <td data-label="Spin Probability" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">0.72%</td>
+                  <td data-label="Combat Identity" style="padding: 10px 12px; color: var(--muted);">+15% HP, -30% Fire damage taken &amp; AoE Burn</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 12px 0 0;">
+            Claim spins from <a href="/codes/" style="color: var(--accent); text-decoration: none;">active redeem codes</a> before committing Robux.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="race-evolution-heirloom-and-heartblood" style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">Race Evolution: Heirloom &amp; Heartblood Locations</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Like all bloodlines, Tideborn evolves through the standard universal sequence: an <strong>Heirloom produces Stage 1 (Kindled)</strong>, followed by a <strong>Heartblood for Stage 2 (Exalted)</strong> and Stage 3.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Evolution Stage</th>
+                  <th style="padding: 10px 12px;">Required Catalyst</th>
+                  <th style="padding: 10px 12px;">Confirmed Drop Location &amp; Encounter</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Stage" style="padding: 10px 12px; font-weight: 700; color: #f5f3ff;">Stage 1: Kindled</td>
+                  <td data-label="Item" style="padding: 10px 12px; color: #c9a227;">Tideborn Heirloom</td>
+                  <td data-label="Location" style="padding: 10px 12px; color: var(--muted);">Act 8 (Glass Wastes) on Nightmare difficulty</td>
+                </tr>
+                <tr>
+                  <td data-label="Stage" style="padding: 10px 12px; font-weight: 700; color: #f5f3ff;">Stage 2: Exalted</td>
+                  <td data-label="Item" style="padding: 10px 12px; color: #f43f5e;">Tideborn Heartblood</td>
+                  <td data-label="Location" style="padding: 10px 12px; color: var(--muted);">Act 7 (Drowned Cathedral) from The Tolling Bell boss</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 12px 0 0;">
+            Note that The Tolling Bell drops Heartbloods for both Tideborn and <a href="/races/vesper/" style="color: var(--accent); text-decoration: none;">Vesper</a>. For full drop tables across all 14 bloodlines, review the <a href="/races/evolution/" style="color: var(--accent); text-decoration: none;">Heirloom &amp; Heartblood locations guide</a>.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="best-class-synergies" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Best Class Synergies</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Tideborn fits well with bulky archetypes that naturally push their HP totals high:
+          </p>
+          <ul style="color: var(--muted); font-size: 0.92rem; padding-left: 20px; margin: 0 0 12px;">
+            <li><strong>Warrior (Sentinel / Berserk)</strong>: High defense and health scalings multiply the recovery value of Tidal Grace each round.</li>
+            <li><strong>Fist (Monk / Brawler)</strong>: Close-range brawlers benefit from passive turn-start recovery while stacking combo hits.</li>
+            <li><strong>Spear (Dragoon / Valkyrie)</strong>: Provides safety nets during aerial jump windows and boss endurance phases.</li>
+          </ul>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 0;">
+            Check our <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none;">Super Classes directory</a> for optimal skill trees.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="dungeon-and-boss-matchup" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Dungeon &amp; Boss Matchup</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            In deep <a href="/adventures/torment/" style="color: var(--accent); text-decoration: none;">Torment adventure runs</a>, chip damage and environmental hazards will gradually drain player life bars. Tideborn excels here by neutralizing attrition without forcing you to consume limited potion inventories. Against multi-phase encounters in Act 7 and Act 8, the turn-by-turn recovery keeps you out of one-shot lethal thresholds.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="talent-and-gear-priority" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Talent &amp; Gear Priority</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            When optimizing gear for Tideborn:
+          </p>
+          <ul style="color: var(--muted); font-size: 0.92rem; padding-left: 20px; margin: 0;">
+            <li><strong>Health Multipliers</strong>: Prioritize armor and traits offering percentage Max HP. A 500 HP character heals 25 per turn; an 800 HP character heals 40.</li>
+            <li><strong>Damage Mitigation</strong>: High defense and physical resistance ensure that incoming attacks deal less than the regeneration tick.</li>
+          </ul>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="should-you-reroll-it" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Should You Reroll It?</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            <strong style="color: #34d399;">Keep it immediately</strong>. As a 0.72% Mythic bloodline, rerolling Tideborn is almost never advised unless you already possess a dedicated defensive character and need a specific offensive race like Nightborne or Celestine.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Compare tier placements on the <a href="/tier-list/race-tier-list/" style="color: var(--accent); text-decoration: none;">Race Tier List</a>.
+          </p>
+        </section>
+
+        <FaqSection items={faqItems} />
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <a href="/races/evolution/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Heirloom &amp; Heartblood Locations →
+          </a>
+          <a href="/races/best-races/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Best Races &amp; Spin Meta →
+          </a>
+        </div>
+
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+      </article>
+
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/tideborn/" />
+    </div>
+  </div>
+</BaseLayout>

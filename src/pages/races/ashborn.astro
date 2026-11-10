@@ -1,0 +1,209 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+const TITLE = "Ashborn Race in Pixel Lineage: +8% HP, +6% ATK";
+const DESC = "Ashborn in Pixel Lineage: 9.35% roll, +8% maximum HP and +6% Attack, with its Heirloom and Heartblood farm locations.";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: TITLE,
+    description: DESC,
+    url: `${siteConfig.siteUrl}/races/ashborn/`,
+    datePublished: "2026-11-10T12:00:00+00:00",
+    dateModified: "2026-11-10T12:00:00+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Ashborn", item: `${siteConfig.siteUrl}/races/ashborn/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What does the Ashborn race passive give in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ashborn provides an innate +8% Maximum HP and +6% Attack, serving as a balanced hybrid offensive and defensive bloodline.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where do you farm the Ashborn Heirloom and Heartblood?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The Ashborn Heirloom drops in Act 4 (Moonstone Rise) on Hard difficulty for Stage 1 Kindled. The Ashborn Heartblood drops from Mallgrath, the Lord Below in Act 5 (Underworld) for Stage 2 Exalted.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "When should you reroll Ashborn?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Keep Ashborn throughout early Act 1-4 leveling. Reroll once you have banked 10+ Race Spins and are aiming for a specialized Rare or 0.72% Mythic race like Tideborn or Dragonborn.",
+        },
+      },
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    question: "What does the Ashborn race passive give in Pixel Lineage?",
+    answer: "Ashborn grants +8% Maximum HP and +6% Attack, giving physical damage dealers a solid dual bonus to both baseline survivability and raw offensive output."
+  },
+  {
+    question: "Where do you farm the Ashborn Heirloom and Heartblood?",
+    answer: "The Ashborn Heirloom drops in Act 4 (Moonstone Rise) on Hard difficulty for Stage 1 Kindled. The Ashborn Heartblood drops from Mallgrath, the Lord Below in Act 5 (Underworld) for Stage 2 Exalted."
+  },
+  {
+    question: "When should you reroll Ashborn?",
+    answer: "Keep Ashborn during early and mid-game dungeon progression. Reroll only when you have saved 10+ Race Spins to fish for top-tier Rare or Mythic bloodlines."
+  },
+];
+---
+
+<BaseLayout title={TITLE} description={DESC} canonical="/races/ashborn/" jsonLd={jsonLd}>
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+          <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <span class="current">Ashborn</span>
+        </nav>
+
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(201, 162, 39, 0.15); border: 1px solid #c9a227; color: #c9a227; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            Uncommon Bloodline · 9.35% Roll · Grade C
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Ashborn Race &amp; Reroll Guide
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            Ashborn is a dependable Uncommon bloodline in Pixel Lineage, granting +8% Maximum HP and +6% Attack to physical combatants without demanding high reroll investments.
+          </p>
+
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer
+            </div>
+            <p style="margin: 0; font-size: 0.94rem; color: #e8e2f2; line-height: 1.6;">
+              <strong>Ashborn</strong> is a <strong>9.35% Uncommon race</strong> that grants <strong>+8% Max HP</strong> and <strong>+6% Attack</strong>. Evolve to Stage 1 (Kindled) with the <strong>Heirloom in Act 4 (Moonstone Rise) on Hard</strong>, and Stage 2 (Exalted) with the <strong>Heartblood from Mallgrath in Act 5 (Underworld)</strong>. It is a solid leveling hold that you can safely reroll once you bank 10+ spins.
+            </p>
+          </div>
+        </header>
+
+        <MobileToc tocHeadings={tocHeadings} />
+
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="innate-racial-trait-ledger" style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">Innate Racial Trait Ledger</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Trait / Parameter</th>
+                  <th style="padding: 10px 12px;">Value</th>
+                  <th style="padding: 10px 12px;">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Parameter" style="padding: 10px 12px; font-weight: 700; color: #fff;">Roll Chance</td>
+                  <td data-label="Value" style="padding: 10px 12px; color: #34d399; font-family: var(--font-mono);">9.35%</td>
+                  <td data-label="Description" style="padding: 10px 12px; color: var(--muted);">Uncommon rarity tier at the Goblin Merchant.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Parameter" style="padding: 10px 12px; font-weight: 700; color: #fff;">Health Buff</td>
+                  <td data-label="Value" style="padding: 10px 12px; color: #c9a227; font-family: var(--font-mono);">+8% Max HP</td>
+                  <td data-label="Description" style="padding: 10px 12px; color: var(--muted);">Permanent scaling health multiplier across all dungeon acts.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Parameter" style="padding: 10px 12px; font-weight: 700; color: #fff;">Attack Buff</td>
+                  <td data-label="Value" style="padding: 10px 12px; color: #c9a227; font-family: var(--font-mono);">+6% Attack</td>
+                  <td data-label="Description" style="padding: 10px 12px; color: var(--muted);">Applies to physical weapon strikes and martial class skills.</td>
+                </tr>
+                <tr>
+                  <td data-label="Parameter" style="padding: 10px 12px; font-weight: 700; color: #fff;">Evolution Items</td>
+                  <td data-label="Value" style="padding: 10px 12px; color: #f5f3ff;">Act 4 / Act 5</td>
+                  <td data-label="Description" style="padding: 10px 12px; color: var(--muted);">Heirloom: Act 4 Hard; Heartblood: Act 5 Mallgrath (shared with <a href="/races/goblin/" style="color: var(--accent); text-decoration: none;">Goblin</a>).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            Review all drop requirements on the <a href="/races/evolution/" style="color: var(--accent); text-decoration: none;">Heirloom &amp; Heartblood locations guide</a>.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="best-class-pairings" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Best Class Pairings</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Ashborn fits well with physical martial archetypes:
+          </p>
+          <ul style="color: var(--muted); font-size: 0.92rem; padding-left: 20px; margin: 0;">
+            <li><strong><a href="/classes/warrior/" style="color: var(--accent); text-decoration: none;">Warrior</a> (Berserk / Sentinel)</strong>: The +8% HP and +6% Attack bonuses scale both offensive cleaves and defensive shields.</li>
+            <li><strong>Spear (Halberdier)</strong>: Amplifies initial reach strikes and provides durability in mid-range combat.</li>
+            <li><strong>Fist (Brawler)</strong>: Provides early bulk before rare martial bloodlines like Stonekin are rolled.</li>
+          </ul>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="should-you-reroll-it" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Should You Reroll It?</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            <strong style="color: #34d399;">Keep during leveling</strong>: Ashborn is strictly better than Common Human for combat, providing free offensive and defensive scaling through Acts 1–4.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            <strong style="color: #c9a227;">When to reroll</strong>: Reroll Ashborn once you have saved 10+ Race Spins from <a href="/codes/" style="color: var(--accent); text-decoration: none;">promo codes</a>. Chasing specialized races like Stonekin (+15% Fist), Sylvan (+12% Nature), or 0.72% Mythics is where true endgame scaling lies.
+          </p>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 0;">
+            Compare tier placements on the <a href="/races/best-races/" style="color: var(--accent); text-decoration: none;">best races meta ranking</a> and <a href="/tier-list/race-tier-list/" style="color: var(--accent); text-decoration: none;">race tier list</a>.
+          </p>
+        </section>
+
+        <FaqSection items={faqItems} />
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <a href="/races/evolution/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Heirloom &amp; Heartblood Locations →
+          </a>
+          <a href="/races/best-races/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Best Races &amp; Spin Meta →
+          </a>
+        </div>
+
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+      </article>
+
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/ashborn/" />
+    </div>
+  </div>
+</BaseLayout>

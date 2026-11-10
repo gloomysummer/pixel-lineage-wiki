@@ -1,0 +1,248 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+const TITLE = "Sylvan Race in Pixel Lineage: +12% Nature & Sylph";
+const DESC = "Sylvan in Pixel Lineage: 7.19% roll, +12% Nature damage and the Call Sylph summon, plus its Heirloom and Heartblood locations.";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: TITLE,
+    description: DESC,
+    url: `${siteConfig.siteUrl}/races/sylvan/`,
+    datePublished: "2026-11-10T12:00:00+00:00",
+    dateModified: "2026-11-10T12:00:00+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Sylvan", item: `${siteConfig.siteUrl}/races/sylvan/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What does the Sylvan race do in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sylvan grants +12% Nature damage and unlocks the Call Sylph skill, which summons a fairy companion that deals offensive damage and restores health to your party.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is the roll chance for Sylvan in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sylvan is a Rare bloodline with a 7.19% spin chance at the Goblin Merchant wheel in the starter town.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where do you farm the Sylvan Heirloom and Heartblood?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The Sylvan Heirloom drops in Act 6 (Withered Meadow) on Hard difficulty. The Sylvan Heartblood drops from Mother Blight in Act 2 (Cursed Forest).",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Which classes work well with Sylvan?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sylvan fits well with spellcasters like Mage (Summoner or Cleric) and support-oriented Bard builds that capitalize on hybrid healing and Nature elemental scalings.",
+        },
+      },
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    question: "What does the Sylvan race do in Pixel Lineage?",
+    answer: "Sylvan provides an innate +12% Nature damage modifier and gives access to the Call Sylph active ability, summoning a supportive fairy ally that actively strikes enemies and provides team heals."
+  },
+  {
+    question: "What is the roll chance for Sylvan in Pixel Lineage?",
+    answer: "Sylvan occupies the Rare tier with a 7.19% pull probability, making it a reliable early-game roll from free code spins."
+  },
+  {
+    question: "Where do you farm the Sylvan Heirloom and Heartblood?",
+    answer: "The Sylvan Heirloom (Stage 1 Kindled) drops in Act 6 (Withered Meadow) on Hard difficulty. The Sylvan Heartblood (Stage 2 Exalted) drops from the Mother Blight boss in Act 2 (Cursed Forest)."
+  },
+  {
+    question: "Which classes work well with Sylvan?",
+    answer: "Sylvan fits well with Mage (especially Summoner and Cleric) and Bard archetypes, blending companion action economy with Nature spell amplification."
+  },
+];
+---
+
+<BaseLayout title={TITLE} description={DESC} canonical="/races/sylvan/" jsonLd={jsonLd}>
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+          <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <span class="current">Sylvan</span>
+        </nav>
+
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(52, 211, 153, 0.15); border: 1px solid #34d399; color: #34d399; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            Rare Bloodline · 7.19% Roll · Grade B
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Sylvan Race &amp; Fairy Summon Guide
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            The Sylvan bloodline in Pixel Lineage combines offensive elemental potency with supplementary healing through its signature <strong>Call Sylph</strong> summon and +12% Nature damage bonus.
+          </p>
+
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer
+            </div>
+            <p style="margin: 0; font-size: 0.94rem; color: #e8e2f2; line-height: 1.6;">
+              <strong>Sylvan</strong> is a <strong>7.19% Rare race</strong>. It grants <strong>+12% Nature damage</strong> and the <strong>Call Sylph</strong> skill to summon an ally that attacks and heals. Farm the <strong>Sylvan Heirloom in Act 6 (Withered Meadow) on Hard</strong> for Stage 1 (Kindled), and farm the <strong>Heartblood from Mother Blight in Act 2 (Cursed Forest)</strong> for Stage 2 (Exalted).
+            </p>
+          </div>
+        </header>
+
+        <MobileToc tocHeadings={tocHeadings} />
+
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="innate-racial-trait-ledger" style="font-size: 1.25rem; color: #34d399; margin: 0 0 12px;">Innate Racial Trait Ledger</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Trait / Ability</th>
+                  <th style="padding: 10px 12px;">Type</th>
+                  <th style="padding: 10px 12px;">Exact In-Game Effect</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Trait" style="padding: 10px 12px; font-weight: 700; color: #fff;">Nature Affinity</td>
+                  <td data-label="Type" style="padding: 10px 12px; color: #34d399;">Passive</td>
+                  <td data-label="Effect" style="padding: 10px 12px; color: var(--muted);">Increases all Nature elemental damage by +12%.</td>
+                </tr>
+                <tr>
+                  <td data-label="Trait" style="padding: 10px 12px; font-weight: 700; color: #fff;">Call Sylph</td>
+                  <td data-label="Type" style="padding: 10px 12px; color: #a855f7;">Active Skill</td>
+                  <td data-label="Effect" style="padding: 10px 12px; color: var(--muted);">Summons a supportive fairy ally that attacks enemies and casts healing spells.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            Compare Sylvan's hybrid utility on the <a href="/races/best-races/" style="color: var(--accent); text-decoration: none;">best races ranking</a>.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="how-to-obtain-spin-odds" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">How to Obtain — Spin Odds</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Sylvan sits in the Rare rarity tier at a 7.19% pull rate at the Goblin Merchant. While less elusive than 0.72% Mythics like Tideborn, its dedicated summon makes it one of the most mechanically distinct Rare bloodlines.
+          </p>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 0;">
+            Redeem free spins with <a href="/codes/" style="color: var(--accent); text-decoration: none;">Pixel Lineage codes</a> before using gems.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="race-evolution-heirloom-and-heartblood" style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">Race Evolution: Heirloom &amp; Heartblood Locations</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Sylvan evolves using the universal progression pattern: <strong>Heirloom for Kindled (Stage 1)</strong> and <strong>Heartblood for Exalted (Stage 2)</strong>.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Tier</th>
+                  <th style="padding: 10px 12px;">Item</th>
+                  <th style="padding: 10px 12px;">Drop Location &amp; Encounter</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Tier" style="padding: 10px 12px; font-weight: 700; color: #f5f3ff;">Stage 1: Kindled</td>
+                  <td data-label="Item" style="padding: 10px 12px; color: #c9a227;">Sylvan Heirloom</td>
+                  <td data-label="Location" style="padding: 10px 12px; color: var(--muted);">Act 6 (Withered Meadow) on Hard difficulty</td>
+                </tr>
+                <tr>
+                  <td data-label="Tier" style="padding: 10px 12px; font-weight: 700; color: #f5f3ff;">Stage 2: Exalted</td>
+                  <td data-label="Item" style="padding: 10px 12px; color: #f43f5e;">Sylvan Heartblood</td>
+                  <td data-label="Location" style="padding: 10px 12px; color: var(--muted);">Act 2 (Cursed Forest) from Mother Blight</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 12px 0 0;">
+            Mother Blight drops Heartbloods for both Sylvan and <a href="/races/human/" style="color: var(--accent); text-decoration: none;">Human</a>. View the full cross-race chart on the <a href="/races/evolution/" style="color: var(--accent); text-decoration: none;">Race Evolution guide</a>.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="best-class-synergies" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Best Class Synergies</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Sylvan fits well with spellcasting and summon-oriented classes:
+          </p>
+          <ul style="color: var(--muted); font-size: 0.92rem; padding-left: 20px; margin: 0;">
+            <li><strong>Mage (Summoner)</strong>: Stacks minion action economy, overwhelming enemy turn order.</li>
+            <li><strong>Mage (Cleric)</strong>: Combines racial fairy heals with party-wide restoration spells.</li>
+            <li><strong>Bard (Minstrel / Siren)</strong>: Augments party buffs while Call Sylph supplies passive chip damage.</li>
+          </ul>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="talent-and-gear-priority" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Talent &amp; Gear Priority</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Equip gear prioritizing <strong>Magic Damage</strong> and <strong>Energy Sustain</strong> to maintain uninterrupted spell rotations while your Sylph operates on the battlefield.
+          </p>
+        </section>
+
+        <FaqSection items={faqItems} />
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <a href="/races/evolution/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Heirloom &amp; Heartblood Locations →
+          </a>
+          <a href="/races/best-races/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Best Races &amp; Spin Meta →
+          </a>
+        </div>
+
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+      </article>
+
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/sylvan/" />
+    </div>
+  </div>
+</BaseLayout>

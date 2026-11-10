@@ -1,0 +1,208 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+const TITLE = "Human Race in Pixel Lineage: +10% XP & Mastery";
+const DESC = "Human in Pixel Lineage: 37.41% roll and the most common race, giving +10% XP and +10% Class Mastery from every battle.";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: TITLE,
+    description: DESC,
+    url: `${siteConfig.siteUrl}/races/human/`,
+    datePublished: "2026-11-10T12:00:00+00:00",
+    dateModified: "2026-11-10T12:00:00+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Human", item: `${siteConfig.siteUrl}/races/human/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What does the Human race do in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Human grants +10% XP gains and +10% Class Mastery from all battles, making it the fastest leveling race for unlocking early Super Classes.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is the roll chance for Human in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Human sits at 37.41% in the Common tier. Prior to the October 20, 2026 update which added Dragonborn (0.72%), the roll chance was 37.68%.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where do you get the Human Heirloom and Heartblood?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The Human Heirloom drops in Act 1 (Sunmeadow Wilds) or Act 2 (Dungeon) on Normal difficulty for Stage 1 Kindled. The Human Heartblood drops from Mother Blight in Act 3 (Cursed Forest) for Stage 2 Exalted.",
+        },
+      },
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    question: "What does the Human race do in Pixel Lineage?",
+    answer: "Human provides +10% XP and +10% Class Mastery bonuses from encounters, accelerating progression toward Level 15 and the Trainer's Shrine Super Class evolution."
+  },
+  {
+    question: "What is the roll chance for Human in Pixel Lineage?",
+    answer: "Human has a 37.41% roll chance (prior to the October 20, 2026 addition of Dragonborn, this baseline was 37.68%)."
+  },
+  {
+    question: "Where do you get the Human Heirloom and Heartblood?",
+    answer: "The Human Heirloom drops in Act 1 (Sunmeadow Wilds) or Act 2 (Dungeon) on Normal difficulty for Stage 1 Kindled. The Human Heartblood drops from Mother Blight in Act 3 (Cursed Forest) for Stage 2 Exalted."
+  },
+];
+---
+
+<BaseLayout title={TITLE} description={DESC} canonical="/races/human/" jsonLd={jsonLd}>
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+          <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <span class="current">Human</span>
+        </nav>
+
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(148, 163, 184, 0.15); border: 1px solid #94a3b8; color: #94a3b8; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            Common Bloodline · 37.41% Roll · Grade C
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Human Race &amp; Leveling Guide
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            The default Common bloodline in Pixel Lineage, Human provides accelerated account progression through +10% XP and +10% Class Mastery buffs.
+          </p>
+
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer
+            </div>
+            <p style="margin: 0; font-size: 0.94rem; color: #e8e2f2; line-height: 1.6;">
+              <strong>Human</strong> is a <strong>37.41% Common race</strong> (was 37.68% prior to the Oct 20 Dragonborn patch). It grants <strong>+10% XP</strong> and <strong>+10% Class Mastery</strong>. Farm the <strong>Heirloom in Act 1 or Act 2 on Normal</strong> for Stage 1 (Kindled), and the <strong>Heartblood from Mother Blight in Act 3</strong> for Stage 2 (Exalted). Keep it for rapid early leveling, then reroll for combat passives.
+            </p>
+          </div>
+        </header>
+
+        <MobileToc tocHeadings={tocHeadings} />
+
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #94a3b8; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="innate-racial-trait-ledger" style="font-size: 1.25rem; color: #94a3b8; margin: 0 0 12px;">Innate Racial Trait Ledger</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Parameter</th>
+                  <th style="padding: 10px 12px;">Value</th>
+                  <th style="padding: 10px 12px;">Mechanic Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Parameter" style="padding: 10px 12px; font-weight: 700; color: #fff;">Roll Odds</td>
+                  <td data-label="Value" style="padding: 10px 12px; color: #34d399; font-family: var(--font-mono);">37.41%</td>
+                  <td data-label="Details" style="padding: 10px 12px; color: var(--muted);">Common rarity (adjusted down from 37.68% after Dragonborn release).</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Parameter" style="padding: 10px 12px; font-weight: 700; color: #fff;">Experience Boost</td>
+                  <td data-label="Value" style="padding: 10px 12px; color: #94a3b8; font-family: var(--font-mono);">+10% XP</td>
+                  <td data-label="Details" style="padding: 10px 12px; color: var(--muted);">Accelerates base level growth to unlock Act progression.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Parameter" style="padding: 10px 12px; font-weight: 700; color: #fff;">Mastery Boost</td>
+                  <td data-label="Value" style="padding: 10px 12px; color: #94a3b8; font-family: var(--font-mono);">+10% Class Mastery</td>
+                  <td data-label="Details" style="padding: 10px 12px; color: var(--muted);">Accelerates weapon and class skill unlocking thresholds.</td>
+                </tr>
+                <tr>
+                  <td data-label="Parameter" style="padding: 10px 12px; font-weight: 700; color: #fff;">Evolution Items</td>
+                  <td data-label="Value" style="padding: 10px 12px; color: #f5f3ff;">Act 1/2 &amp; Act 3</td>
+                  <td data-label="Details" style="padding: 10px 12px; color: var(--muted);">Heirloom: Act 1/2 on Normal; Heartblood: Act 3 Mother Blight (shared with <a href="/races/sylvan/" style="color: var(--accent); text-decoration: none;">Sylvan</a>).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            Compare all drop locations on the <a href="/races/evolution/" style="color: var(--accent); text-decoration: none;">Heirloom &amp; Heartblood guide</a>.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="best-class-pairings" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Best Class Pairings</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Human fits well with any newly unlocked archetype that requires fast leveling:
+          </p>
+          <ul style="color: var(--muted); font-size: 0.92rem; padding-left: 20px; margin: 0;">
+            <li><strong>Beginner Archetypes</strong>: Speeds up the journey to Level 15 to visit the Trainer's Shrine and unlock your chosen <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none;">Super Class</a>.</li>
+            <li><strong>Weapon Testing</strong>: Mastery gain allows rapid skill testing on alt builds.</li>
+          </ul>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="should-you-reroll-it" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Should You Reroll It?</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            <strong style="color: #34d399;">Keep until Level 15</strong>: The +10% XP and Mastery boost saves substantial early grinding time.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            <strong style="color: #f43f5e;">Reroll once you enter Act 2/3 Torment content</strong>: Human has zero in-combat damage multipliers or defensive damage reduction. Once your level and class skills are stabilized, reroll using spins from <a href="/codes/" style="color: var(--accent); text-decoration: none;">redeem codes</a> to acquire combat-relevant bloodlines.
+          </p>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 0;">
+            Compare tier placements on the <a href="/races/best-races/" style="color: var(--accent); text-decoration: none;">best races meta ranking</a> and <a href="/tier-list/race-tier-list/" style="color: var(--accent); text-decoration: none;">race tier list</a>.
+          </p>
+        </section>
+
+        <FaqSection items={faqItems} />
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <a href="/races/evolution/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Heirloom &amp; Heartblood Locations →
+          </a>
+          <a href="/races/best-races/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Best Races &amp; Spin Meta →
+          </a>
+        </div>
+
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+      </article>
+
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/human/" />
+    </div>
+  </div>
+</BaseLayout>
