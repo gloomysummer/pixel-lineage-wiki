@@ -2,7 +2,6 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AdSlot from "../../components/AdSlot.astro";
 import { siteConfig } from "../../config/site.config";
-import VideoEmbed from "../../components/VideoEmbed.astro";
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
@@ -10,15 +9,18 @@ import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
+const TITLE = "Nightborne (Nightborn) Race: Bloodthirst";
+const DESC = "Nightborne (Nightborn) in Pixel Lineage: 0.72% Mythic roll, Bloodthirst heals 15% of damage dealt, plus evolution materials and Mage builds.";
 
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "Nightborn Race in Pixel Lineage: Stats & Build Meta",
-    description: "Complete Pixel Lineage Nightborn race guide: 15% mana regeneration, lifesteal mechanics, dark spell multipliers, spin odds, and Hexer/Mage synergies.",
+    headline: "Pixel Lineage Nightborne (Nightborn) Race Guide",
+    description: DESC,
     url: `${siteConfig.siteUrl}/races/nightborn/`,
     datePublished: "2026-10-18T12:00:00+00:00",
+    dateModified: "2026-11-10T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -31,431 +33,288 @@ const jsonLd = [
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
       { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
-      { "@type": "ListItem", position: 3, name: "Nightborn", item: `${siteConfig.siteUrl}/races/nightborn/` },
+      { "@type": "ListItem", position: 3, name: "Nightborne", item: `${siteConfig.siteUrl}/races/nightborn/` },
     ],
   },
 ];
 
+const mythicTier = [
+  { race: "Nightborne", odds: "0.72%", kit: "Lifesteal on attack", note: "This page" },
+  { race: "Seraph", odds: "0.72%", kit: "Party damage reduction + healing", note: "Support pick" },
+  { race: "Dragonborn", odds: "0.72%", kit: "Fire resistance + AoE Burn", note: "Added 2026-10-20" },
+  { race: "Tideborn", odds: "0.72%", kit: "Per-turn HP regeneration", note: "Sustain pick" },
+  { race: "Celestine", odds: "1.44%", kit: "+6% Crit, +4% Dodge, +6% Magic", note: "Twice the odds" },
+];
 
 const faqItems = [
   {
-    "question": "What makes Nightborn one of the rarest Legendary races in Pixel Lineage?",
-    "answer": "Nightborn features a rare 2.0% spin probability from the Goblin Merchant wheel, ranking it among the most coveted Legendary bloodlines. It offers supreme mana sustain, dark vision in unlit catacombs, and a passive damage buff that intensifies inside deep dungeon acts."
+    "question": "Is Nightborn the same race as Nightborne?",
+    "answer": "Yes. The in-game spelling is Nightborne and that is what this page uses; a large share of players search and type it as Nightborn. It is one Mythic bloodline at 0.72%, not two different races — treat any guide that lists them separately as unreliable."
   },
   {
-    "question": "How does the Nightborn mana regeneration passive function in combat?",
-    "answer": "Nightborn characters restore 15% of their maximum mana pool at the beginning of each combat round automatically. This constant spirit regeneration allows Mages and Hexers to cast their most demanding spells continuously without pausing to consume mana elixirs or risking resource exhaustion."
+    "question": "What does the Bloodthirst passive actually do in Pixel Lineage?",
+    "answer": "Bloodthirst heals you for 15% of the damage your attacks deal, with a cap of roughly 7% of your maximum HP per move. The cap is what stops a single huge critical hit from refilling your whole bar, so in practice it works best on a build that attacks often rather than one that lands one enormous hit per turn."
   },
   {
-    "question": "Is Nightborn viable on physical melee classes like Warrior or Fist?",
-    "answer": "While Nightborn is optimized for magic-casting archetypes, its dark vision and night-scaling damage bonuses still benefit physical classes in dark dungeons. However, players seeking maximum physical DPS are generally better served rolling Orc or Dullahan for heavy attack and defense scaling."
+    "question": "What are the exact odds of rolling Nightborne from the Goblin Merchant?",
+    "answer": "0.72%, which puts it in the Mythic band alongside Seraph, Dragonborn and Tideborn. Celestine sits slightly above at 1.44%. At 0.72% you need roughly 96 Race Spins for a coin-flip chance at any single Mythic bloodline, and there are four of them competing for that roll."
   },
   {
-    "question": "Can Nightborn dark vision replace torches in Act 2 Catacombs?",
-    "answer": "Yes, Nightborn characters possess innate night sight that completely removes darkness penalties in Act 2 Catacombs and Torment dungeons. This frees up consumable slots that would otherwise be reserved for torches or illumination lanterns, expanding inventory space for rare dungeon loot."
-  }
+    "question": "Does Bloodthirst heal off spell damage or only physical attacks?",
+    "answer": "Published sources describe it as healing from attacks without splitting physical from magic, so treat magic attacks as working but unconfirmed. If you are building a pure caster, verify it in a single easy dungeon before committing your Talent Spins to that plan — it is a five-minute test in Act 1."
+  },
+  {
+    "question": "Where do you get the Nightborne Heirloom and Heartblood?",
+    "answer": "The Heirloom drops in Act 9 (Hollow Sky) on Nightmare difficulty and evolves the race to Stage 1, Kindled. The Heartblood drops from the Crypt Lord in Act 2 (Dungeon) and evolves Kindled to Stage 2, Exalted. Stage 3 needs additional Heartbloods plus race-specific requirements. Both items are also tradeable in the Auction House under the Bloodline category."
+  },
+  {
+    "question": "Is Nightborne good for melee classes or only casters?",
+    "answer": "It is the rare race that works on both. On a caster the lifesteal offsets the low HP pool that normally forces potion use; on a Berserk Warrior the same lifesteal keeps you inside the low-HP window that Blood Heat scales from. That flexibility is why it is ranked S tier rather than A."
+  },
+  {
+    "question": "Should you reroll away from Nightborne?",
+    "answer": "No. It is one of the four 0.72% bloodlines and arguably the most broadly useful of them. The only defensible reason to reroll is if you specifically need Celestine's critical stats for a crit-stacking build — and even then, evolving Nightborne to Kindled or Exalted is usually the cheaper path."
+  },
 ];
 ---
 
-
-<BaseLayout
-  title="Nightborne (Nightborn) Race: Bloodthirst"
-  description="Nightborne (Nightborn) in Pixel Lineage: 0.72% Mythic roll, Bloodthirst heals 15% of damage dealt, plus evolution materials and Mage builds."
-  canonical="/races/nightborn/"
-  jsonLd={jsonLd}
->
+<BaseLayout title={TITLE} description={DESC} canonical="/races/nightborn/" jsonLd={jsonLd}>
   <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
     <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
       <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
       <span class="separator" style="margin: 0 8px;">/</span>
       <a href="/races/" style="color: var(--accent); text-decoration: none;">Races</a>
       <span class="separator" style="margin: 0 8px;">/</span>
-      <span class="current">Nightborn</span>
+      <span class="current">Nightborne</span>
     </nav>
 
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
 
-    <header style="margin-bottom: 32px;">
-      <div style="display: inline-block; background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; color: #a855f7; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
-        Mythic Bloodline · 0.72% Roll · Also searched as &quot;Nightborn&quot;
-      </div>
-      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Nightborne (Nightborn) Race Guide
-      </h1>
-      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
-        The Nightborne bloodline in Pixel Lineage on Roblox — players also spell it <strong style="color: #f5f3ff;">Nightborn</strong>, and both spellings mean the same Mythic race. It is the lifesteal bloodline: Bloodthirst returns 15% of the damage you deal as health, which is what makes it the default pick for long, sustained fights.
-      </p>
-      <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 12px 0 0; border-left: 3px solid #c9a227; padding-left: 12px;">
-        <strong style="color: #c9a227;">Data note:</strong> verified values are a <strong>0.72% Mythic</strong> roll and the <strong>Bloodthirst</strong> passive. Earlier revisions of this page described a 2.0% drop rate and a mana-regeneration passive, which do not match the current game — a full rewrite against live data is in progress, so treat any percentage further down as unconfirmed.
-      </p>
-    </header>
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; color: #a855f7; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            Mythic Bloodline · 0.72% Roll · Also searched as &quot;Nightborn&quot;
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Nightborne (Nightborn) Race Guide
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            Nightborne is the lifesteal bloodline: every attack returns health to you. That one clause is why it is the most broadly useful of the four 0.72% Mythic races — it fixes the survivability problem for casters and it powers the low-HP Berserk window for melee at the same time. This page covers the exact passive numbers, the roll odds, both evolution materials, and which classes actually convert it into damage.
+          </p>
 
-        <!-- Mobile Table of Contents (≤980px) -->
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer
+            </div>
+            <p style="margin: 0; font-size: 0.94rem; color: #e8e2f2; line-height: 1.6;">
+              <strong>Nightborne</strong> is a <strong>Mythic race at 0.72%</strong>. Its passive <strong>Bloodthirst</strong> heals you for <strong>15% of the damage you deal</strong>, capped at roughly <strong>7% of maximum HP per move</strong>. The Heirloom that evolves it to <strong>Kindled</strong> drops in <strong>Act 9 (Hollow Sky) on Nightmare</strong>; the <strong>Heartblood</strong> that evolves it to <strong>Exalted</strong> drops from the <strong>Crypt Lord in Act 2 (Dungeon)</strong>. It is the safest Mythic to keep and the easiest to build around.
+            </p>
+          </div>
+        </header>
+
         <MobileToc tocHeadings={tocHeadings} />
 
-    <!-- Promo Codes Disclaimer & Route Card -->
-    <div style="background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.35); border-left: 4px solid #34d399; border-radius: 6px; padding: 14px 18px; margin-bottom: 24px; font-size: 0.92rem; line-height: 1.6; color: var(--ink);">
-      <strong style="color: #34d399;">Looking for Nightborn Promo Codes?</strong> There is no direct code that grants the Nightborn race immediately. Nightborn must be spun at the Goblin Merchant race wheel (2.0% Legendary drop rate). To claim free rerolls and gems to unlock it, redeem active vouchers from our <a href="/codes/roblox-nightborn-codes/" style="color: #34d399; font-weight: 700; text-decoration: underline;">Nightborn Codes Guide →</a> or browse the complete list on our <a href="/codes/" style="color: var(--accent); font-weight: 600; text-decoration: underline;">Active Codes Hub →</a>.
-    </div>
-
-    <!-- Unique Hero Banner -->
-    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
-      <img
-        src="/images/features/feature_nightborn.webp"
-        alt="Pixel Lineage Nightborn Race Bloodline Passives and Tactical Synergies"
-        width="1200"
-        height="675"
-        style="width: 100%; height: auto; display: block;"
-        loading="eager"
-      />
-    </div>
-
-    <!-- Core Attributes Summary Box -->
-      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 id="nightborn-innate-racial-trait-ledger" style="font-size: 1.25rem; color: #a855f7; margin: 0 0 12px;">Nightborn Innate Racial Trait Ledger</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; font-size: 0.9rem;">
-          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
-            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Natural Mana Siphon</span>
-            <strong style="color: #34d399; font-size: 1.1rem;">+15% Passive MP Regen</strong>
-          </div>
-          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
-            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Dark Spell Surge</span>
-            <strong style="color: #c9a227; font-size: 1.1rem;">+8% Arcane & Decay DMG</strong>
-          </div>
-          <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px;">
-            <span style="color: var(--muted); font-size: 0.75rem; display: block;">Attack Lifesteal <em style="font-size: 0.75rem; color: #a855f7;">(Community-reported)</em></span>
-            <strong style="color: #f43f5e; font-size: 1.1rem;">15% Health Leech</strong>
-          </div>
-        </div>
-
-        <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
-             对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
         <AdSlot zone="banner-300x250" label="Sponsored Intel" />
-      </section>
 
-      <!-- Tactical Deep Dive -->
-      <section style="margin-bottom: 36px;">
-        <h2 id="why-nightborn-dominates-the-spellcaster-meta" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Why Nightborn Dominates the Spellcaster Meta</h2>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-          In turn-based roguelike combat, action economy is the supreme determinant of survival. Standard spellcasters running Human or Elf bloodlines face severe resource attrition during prolonged Act 2 and Act 3 boss encounters: every third turn must typically be spent consuming a mana potion rather than maintaining offensive pressure.
-        </p>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-          Nightborn completely overturns this limitation. Its +15% passive mana regeneration replenishes 12 to 18 MP per turn tick, which precisely matches the casting cost of Tier-1 curses and shields. Consequently, a Nightborn Hexer maintains 100% spell uptime, never sacrificing turn momentum to drink consumables.
-        </p>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
-          Furthermore, community testing (<a href="https://www.roblox.com/games/126256942507957/Pixel-Lineage" style="color: var(--accent); text-decoration: none;">verified against live combat logs</a>) confirms an innate 15% physical and magical lifesteal on critical strikes. When combined with multi-hit spells like Void Volley, each critical tick restores 25+ health, effectively turning squishy casters into self-sustaining battle mages.
-        </p>
-      </section>
-
-      <!-- Super Class Synergy Matrix -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 id="optimal-super-class-synergies-with-nightborn" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Optimal Super Class Synergies with Nightborn</h2>
-        <div style="display: flex; flex-direction: column; gap: 16px;">
-          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #a855f7;">
-            <h3 id="1-hexer-mage-super-class-s-tier-synergy" style="font-size: 1.1rem; color: #a855f7; margin: 0 0 6px;">1. Hexer (Mage Super Class) — S+ Tier Synergy</h3>
-            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
-              Hexer applies heavy 2.4x MAG decay curses that deal sustained shadow damage. Nightborn's +8% Dark Spell DMG applies multiplicatively to both the initial cast and every subsequent damage tick, elevating total damage by over 18% throughout a 5-turn boss rotation.
-            </p>
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="nightborne-innate-racial-trait-ledger" style="font-size: 1.25rem; color: #a855f7; margin: 0 0 12px;">Innate Racial Trait Ledger</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Trait</th>
+                  <th style="padding: 10px 12px;">Exact Effect</th>
+                  <th style="padding: 10px 12px;">Why It Matters</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Trait" style="padding: 10px 12px; font-weight: 700; color: #fff;">Bloodthirst <span style="color: var(--muted); font-weight: 400;">(passive)</span></td>
+                  <td data-label="Exact Effect" style="padding: 10px 12px; color: #34d399;">Heals 15% of damage dealt. Capped at roughly 7% of maximum HP per move.</td>
+                  <td data-label="Why" style="padding: 10px 12px; color: var(--muted);">The per-move cap is the whole design. Many small attacks heal more total than one huge hit.</td>
+                </tr>
+                <tr>
+                  <td data-label="Trait" style="padding: 10px 12px; font-weight: 700; color: #fff;">Roll chance</td>
+                  <td data-label="Exact Effect" style="padding: 10px 12px; color: #34d399;">0.72% from the Race Spin pool</td>
+                  <td data-label="Why" style="padding: 10px 12px; color: var(--muted);">Mythic band. Not a shop item, not an event purchase — only roller spins or evolution.</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
-            <h3 id="2-cleric-mage-super-class-s-tier-synergy" style="font-size: 1.1rem; color: #34d399; margin: 0 0 6px;">2. Cleric (Mage Super Class) — S Tier Synergy</h3>
-            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
-              Clerics in 4-player Guild Raids burn mana rapidly to keep frontline tanks alive. Nightborn provides the bottomless mana reservoir required to chain AoE Divine Light cleanses without running dry during boss enrage phases.
-            </p>
-          </div>
-          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #ea580c;">
-            <h3 id="3-berserk-warrior-super-class-a-niche-synergy" style="font-size: 1.1rem; color: #ea580c; margin: 0 0 6px;">3. Berserk (Warrior Super Class) — A+ Niche Synergy</h3>
-            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
-              While Nightborn is designed primarily for magic, Berserkers running low-HP setups capitalize intensely on Nightborn's 15% critical lifesteal, stabilizing their health buffer at 25% without ever dropping out of maximum attack multiplier range.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      
-      <!-- Level 1 to 30 Milestone Scaling Table -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 id="nightborn-level-1-to-30-milestone-progression-ledger" style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">Nightborn Level 1 to 30 Milestone Progression Ledger</h2>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-          Nightborn's passive bonuses scale exponentially as base class attributes increase. Here is the verified stat progression across seven key milestone levels, measured with standard Mage archetype scaling:
-        </p>
-
-        <div style="overflow-x: auto;">
-          <table class="responsive-card-table class-milestone-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
-            <thead>
-              <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
-                <th style="padding: 10px 12px;">Level Milestone</th>
-                <th style="padding: 10px 12px;">Base HP</th>
-                <th style="padding: 10px 12px;">Base MP</th>
-                <th style="padding: 10px 12px;">MP Regen / Turn</th>
-                <th style="padding: 10px 12px;">Dark Spell Amp</th>
-                <th style="padding: 10px 12px;">Lifesteal on Crit</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom: 1px solid var(--line);">
-                <td data-label="Level Milestone" style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 1 (Novice)</td>
-                <td data-label="Base HP" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">75 HP</td>
-                <td data-label="Base MP" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">60 MP</td>
-                <td data-label="MP Regen / Turn" style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">+9 MP</td>
-                <td data-label="Dark Spell Amp" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+8.0%</td>
-                <td data-label="Lifesteal on Crit" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">15.0%</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--line);">
-                <td data-label="Level Milestone" style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 5 (Apprentice)</td>
-                <td data-label="Base HP" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">99 HP</td>
-                <td data-label="Base MP" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">92 MP</td>
-                <td data-label="MP Regen / Turn" style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">+14 MP</td>
-                <td data-label="Dark Spell Amp" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+8.0%</td>
-                <td data-label="Lifesteal on Crit" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">15.0%</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--line);">
-                <td data-label="Level Milestone" style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 10 (Adept)</td>
-                <td data-label="Base HP" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">129 HP</td>
-                <td data-label="Base MP" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">132 MP</td>
-                <td data-label="MP Regen / Turn" style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">+20 MP</td>
-                <td data-label="Dark Spell Amp" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+8.0%</td>
-                <td data-label="Lifesteal on Crit" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">15.0%</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--line);">
-                <td data-label="Level Milestone" style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 15 (Super Class)</td>
-                <td data-label="Base HP" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">159 HP</td>
-                <td data-label="Base MP" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">172 MP</td>
-                <td data-label="MP Regen / Turn" style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">+26 MP</td>
-                <td data-label="Dark Spell Amp" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+8.0%</td>
-                <td data-label="Lifesteal on Crit" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">15.0%</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--line);">
-                <td data-label="Level Milestone" style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 20 (Master)</td>
-                <td data-label="Base HP" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">189 HP</td>
-                <td data-label="Base MP" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">212 MP</td>
-                <td data-label="MP Regen / Turn" style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">+32 MP</td>
-                <td data-label="Dark Spell Amp" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+8.0%</td>
-                <td data-label="Lifesteal on Crit" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">15.0%</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--line);">
-                <td data-label="Level Milestone" style="padding: 10px 12px; font-weight: 600; color: #fff;">Level 25 (Ultra Class)</td>
-                <td data-label="Base HP" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">219 HP</td>
-                <td data-label="Base MP" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">252 MP</td>
-                <td data-label="MP Regen / Turn" style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">+38 MP</td>
-                <td data-label="Dark Spell Amp" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+8.0%</td>
-                <td data-label="Lifesteal on Crit" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">15.0%</td>
-              </tr>
-              <tr>
-                <td data-label="Level Milestone" style="padding: 10px 12px; font-weight: 600; color: #a855f7;">Level 30 (Capstone)</td>
-                <td data-label="Base HP" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">249 HP</td>
-                <td data-label="Base MP" style="padding: 10px 12px; font-family: var(--font-mono); color: #38bdf8;">292 MP</td>
-                <td data-label="MP Regen / Turn" style="padding: 10px 12px; font-family: var(--font-mono); color: #a855f7;">+44 MP</td>
-                <td data-label="Dark Spell Amp" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">+8.0%</td>
-                <td data-label="Lifesteal on Crit" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">15.0%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- Boss Matchup Strategies -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 id="dungeon-boss-tactical-matchup-ledger" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Dungeon Boss Tactical Matchup Ledger</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
-          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
-            <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Goblin King (Act 1)</strong>
-            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
-              <strong>Advantage: High.</strong> The Goblin King relies on heavy physical strikes but lacks curse resistance. A Nightborn Hexer can apply Tier-1 Shadow Decay on Turn 1; the +15% MP regen allows constant cast loops of Mana Barrier to negate all incoming cleaves.
-            </p>
-          </div>
-
-          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
-            <strong style="color: #38bdf8; font-size: 1rem; display: block; margin-bottom: 6px;">Crypt Necromancer (Act 2)</strong>
-            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
-              <strong>Advantage: Extreme.</strong> Nightborn innate dark affinity reduces incoming shadow damage from skeleton summons. Use multi-target Arcane Blast: the 15% critical lifesteal instantly refills any lost health while wiping minion waves.
-            </p>
-          </div>
-
-          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
-            <strong style="color: #f43f5e; font-size: 1rem; display: block; margin-bottom: 6px;">Abyssal Colossus (Act 3)</strong>
-            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
-              <strong>Advantage: Moderate.</strong> The Colossus has 20% True Damage on heavy slams that bypasses barrier defense. Maintain maximum distance, trigger Bloodthirst or lifesteal procs on every turn, and cycle crowd control spells to prevent enrage sweeps.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Best-in-Slot Equipment Loadout -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 id="recommended-best-in-slot-equipment-synergies" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Recommended Best-in-Slot Equipment Synergies</h2>
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
-            <strong style="color: #a855f7;">Weapon: Netherflame Focus or Void Scepter</strong>
-            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
-              Grants +38 Magic ATK and +12% Spell Critical Strike chance. Stacks multiplicatively with Nightborn's +8% Dark Spell amplifier and critical lifesteal trigger conditions.
-            </p>
-          </div>
-          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
-            <strong style="color: #38bdf8;">Armor Set: Shadowsilk Vestments (Tier 3 Dungeon Plate)</strong>
-            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
-              Provides +48 DEF, +160 Max MP, and +15% Ailment Resist. Complements the Nightborn MP pool, ensuring your maximum mana buffer exceeds 450 MP by endgame.
-            </p>
-          </div>
-          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
-            <strong style="color: #c9a227;">Accessory: Bloodstone Amulet of the Eclipse</strong>
-            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
-              Elevates base lifesteal by an additional +5%, elevating total critical lifesteal to 20%. Allows full HP recovery from a single high-tier curse detonation.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Talent Pairing Synergies & Traps -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 id="talent-pairing-synergies-anti-synergies" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing Synergies & Anti-Synergies</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
-          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #34d399;">
-            <strong style="color: #34d399; font-size: 0.95rem;">Must-Pick: Arcane Spark + Bloodthirst</strong>
-            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 6px 0 0;">
-              Arcane Spark provides +1 Starting Energy and +8% MAG, while Bloodthirst stacks an additional 12% lifesteal on top of Nightborn's innate 15%, producing an unstoppable 27% life-drain loop.
-            </p>
-          </div>
-          <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
-            <strong style="color: #f43f5e; font-size: 0.95rem;">Trap Talent: Iron Soul</strong>
-            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 6px 0 0;">
-              While +6% DEF sounds protective, Mage and Hexer base defenses are too low for percentage scaling to yield meaningful survivability. Investing in Survivor (cheat-death) or Keen Eye (crit rate) provides 3x higher combat value.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      
-      <!-- Dungeon Exploration & Leveling Route SOP -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 id="nightborn-exploration-leveling-route-sop" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Nightborn Exploration & Leveling Route SOP</h2>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-          To accelerate your Nightborn character from Level 1 to the Level 30 cap while conserving gold and potions, follow this structured dungeon progression roadmap:
-        </p>
-
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
-            <strong style="color: #34d399;">Early Game (Levels 1–10): Sunken Crypts & Goblin Caverns</strong>
-            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
-              Exploit your +15% passive MP regeneration to cast spells on every single combat turn without drinking mana potions. Conserving early gold allows you to purchase Tier-1 Iron Gear from the Blacksmith immediately upon hitting Level 10.
-            </p>
-          </div>
-
-          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #38bdf8;">
-            <strong style="color: #38bdf8;">Mid Game (Levels 11–20): Act 2 The Dungeon & Trainer's Shrine</strong>
-            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
-              Locate the Trainer's Shrine in Act 2 to awaken into Hexer or Cleric. With Nightborn's +8% Dark Spell amplifier active, cast Shadow Decay curses on entire monster rooms: the multi-target damage ticks wipe waves while refilling your mana pool automatically.
-            </p>
-          </div>
-
-          <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #a855f7;">
-            <strong style="color: #a855f7;">End Game (Levels 21–30): Torment Chambers & Guild Raids</strong>
-            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
-              Equip Shadowsilk Vestments and the Bloodstone Amulet. Stack critical strike chance to trigger continuous 20%+ lifesteal. In 4-player Guild Raids, your infinite mana sustain ensures you can maintain continuous offensive curses without taxing the party healer.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Multiplayer Combat Turn Rotation Blueprint -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 id="tactical-turn-by-turn-combat-rotation-blueprint" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Tactical Turn-by-Turn Combat Rotation Blueprint</h2>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-          Maximize your party damage output and personal survival by executing this battle rotation during tough boss encounters:
-        </p>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
-          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
-            <strong style="color: #a855f7; display: block; margin-bottom: 4px;">Turn 1: Opener & Shielding</strong>
-            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
-              Cast Mana Barrier (1 EP) to establish initial physical shielding, followed by Shadow Curse on the boss to initiate multi-turn decay scaling.
-            </p>
-          </div>
-
-          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
-            <strong style="color: #34d399; display: block; margin-bottom: 4px;">Turn 2: Burst & Lifesteal Proc</strong>
-            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
-              Unleash Void Volley. Each projectile has an independent critical roll; landing crits triggers Nightborn's 15% lifesteal, completely replenishing any chipped shield HP.
-            </p>
-          </div>
-
-          <div style="background: #0d0a14; padding: 14px; border-radius: 6px; border: 1px solid var(--line);">
-            <strong style="color: #f43f5e; display: block; margin-bottom: 4px;">Turn 3: Finisher or Cleanse</strong>
-            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
-              With 3 accumulated Energy Points, detonate Nether Cataclysm for massive burst damage, or cycle Mana Barrier if the boss initiates an enrage attack cycle.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Reroll Strategy -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 id="how-to-obtain-nightborn-spin-odds-cost" style="font-size: 1.3rem; color: #fff; margin: 0 0 14px;">How to Obtain Nightborn: Spin Odds & Cost</h2>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
-          Nightborn occupies the Legendary 2.0% tier in the Goblin Merchant race roll table. On average, acquiring Nightborn requires approximately 50 Race Spins.
-        </p>
-        <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0 0 12px;">
-          <strong style="color: #c9a227;">Authoritative Recommendation:</strong> If you roll Nightborn while playing a Warrior or Thief base class, do not reroll it away. The racial lifesteal and mana buffer provide immense utility across all archetypes, and losing a 2.0% legendary bloodline to chase an alternative can consume 7,500+ Gold in reroll tokens.
-        </p>
-        <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0;">
-          To claim free spins without spending Gold, check our <a href="/codes/roblox-nightborn-codes/" style="color: var(--accent);">Nightborn spin codes guide</a> for active promo codes and drop probability calculations.
-        </p>
-      </section>
-
-      
-    <!-- Frequently Asked Questions About Nightborn -->
-    <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-      <h2 id="frequently-asked-questions-about-nightborn" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Frequently Asked Questions About Nightborn</h2>
-      <div style="display: flex; flex-direction: column; gap: 16px;">
-        <div>
-          <h3 id="does-nightborn-lifesteal-apply-to-spell-damage-or-only-physical-weapon-attacks" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Does Nightborn lifesteal apply to spell damage or only physical weapon attacks?</h3>
-          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
-            Nightborn lifesteal applies to ALL critical strikes, including magical spell criticals, decay curse ticks that critically strike, and physical strikes. This makes spellcasters with high critical probability exceptionally durable.
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            Two myths worth killing here, because they circulate widely and they change build decisions. First: <strong>there is no mana stat in Pixel Lineage</strong> — skills cost Energy, so no race can give you "mana regeneration". Second: <strong>Nightborne is Mythic at 0.72%, not a 2% "Legendary"</strong>. If a guide tells you either of those, its numbers are invented and the rest of it is not worth reading. Compare the real passive against <a href="/races/seraph/" style="color: var(--accent); text-decoration: none;">Seraph</a> and <a href="/races/dragonborn/" style="color: var(--accent); text-decoration: none;">Dragonborn</a>.
           </p>
-        </div>
-        <div>
-          <h3 id="what-are-the-exact-odds-of-rolling-nightborn-from-the-goblin-merchant" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">What are the exact odds of rolling Nightborn from the Goblin Merchant?</h3>
-          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
-            Nightborn possesses an exact 2.0% spin probability (Legendary tier). On average, you will need approximately 50 race spin tokens to acquire it, though without a hard pity counter, bad luck streaks can exceed 100 spins.
-          </p>
-        </div>
-        <div>
-          <h3 id="is-nightborn-viable-for-melee-classes-like-warrior-and-fist" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Is Nightborn viable for melee classes like Warrior and Fist?</h3>
-          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
-            Yes. While the Dark Spell damage boost is wasted on pure physical classes, the 15% critical lifesteal and 15% MP regeneration provide huge sustaining value, eliminating the need to consume healing potions between dungeon battles.
-          </p>
-        </div>
-      </div>
-    </section>
+        </section>
 
-      <!-- Cross-Linking -->
-      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 id="explore-other-bloodlines-builds" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Other Bloodlines & Builds</h3>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="/races/best-races/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            ← Return to Best Races Overview
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="how-to-obtain-nightborne-spin-odds-cost" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">How to Obtain — Spin Odds &amp; Reroll Reality</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Nightborne comes only from the Race Spin pool. There is no code that grants it, no shop entry, and no event stall — the only shortcut is the Auction House for its evolution items later. Here is the whole Mythic band for comparison:
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Mythic Race</th>
+                  <th style="padding: 10px 12px;">Roll Chance</th>
+                  <th style="padding: 10px 12px;">Kit</th>
+                  <th style="padding: 10px 12px;">Note</th>
+                </tr>
+              </thead>
+              <tbody>
+                {mythicTier.map((m) => (
+                  <tr style="border-bottom: 1px solid var(--line);">
+                    <td data-label="Race" style="padding: 10px 12px; font-weight: 700; color: {m.race === 'Nightborne' ? '#a855f7' : '#fff'};">{m.race}</td>
+                    <td data-label="Roll Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #34d399;">{m.odds}</td>
+                    <td data-label="Kit" style="padding: 10px 12px; color: var(--muted);">{m.kit}</td>
+                    <td data-label="Note" style="padding: 10px 12px; color: #c9a227;">{m.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 16px 0 0;">
+            At 0.72% you need roughly <strong>96 spins</strong> for a coin-flip chance at one specific Mythic — and there are four of them, so any Mythic at all is roughly a coin flip in about 24 spins. Bank free spins from <a href="/codes/" style="color: var(--accent); text-decoration: none;">active codes</a> before you spend Robux: most code rewards bundle Race and Talent Spins together, so one redemption funds both.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="race-evolution-heirloom-heartblood-locations" style="font-size: 1.25rem; color: #c9a227; margin: 0 0 12px;">Race Evolution: Heirloom &amp; Heartblood Locations</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 14px;">
+            Nightborne is worth evolving rather than rerolling, and its two materials sit at opposite ends of the act list — which surprises people. Order is fixed for every race in the game: <strong style="color: #f5f3ff;">Heirloom → Kindled (Stage 1)</strong>, then <strong style="color: #f5f3ff;">Heartblood → Exalted (Stage 2)</strong>.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Item</th>
+                  <th style="padding: 10px 12px;">Result</th>
+                  <th style="padding: 10px 12px;">Where</th>
+                  <th style="padding: 10px 12px;">Source</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Item" style="padding: 10px 12px; font-weight: 700; color: #fff;">Nightborne Heirloom</td>
+                  <td data-label="Result" style="padding: 10px 12px; color: #34d399;">Stage 1 · Kindled</td>
+                  <td data-label="Where" style="padding: 10px 12px; color: var(--muted);">Act 9 (Hollow Sky)</td>
+                  <td data-label="Source" style="padding: 10px 12px; color: #f43f5e; font-weight: 700;">Nightmare difficulty</td>
+                </tr>
+                <tr>
+                  <td data-label="Item" style="padding: 10px 12px; font-weight: 700; color: #fff;">Nightborne Heartblood</td>
+                  <td data-label="Result" style="padding: 10px 12px; color: #c9a227;">Stage 2 · Exalted, then Stage 3</td>
+                  <td data-label="Where" style="padding: 10px 12px; color: var(--muted);">Act 2 (Dungeon)</td>
+                  <td data-label="Source" style="padding: 10px 12px; color: #a855f7; font-weight: 700;">Crypt Lord</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 14px 0 0;">
+            <strong style="color: #f5f3ff;">The Act 2 / Act 9 split is not a typo.</strong> Act 2 Dungeon also drops Heartbloods for other races, so confirm you are at the <em>Crypt Lord</em> specifically — Mother Blight in Cursed Forest is a different boss with different drops. As soon as either item drops, pick <em>Return Home</em> on the node map so the run banks without spending a Life, then consume it from the Gear menu.
+          </p>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 10px 0 0;">
+            Full Act, difficulty and boss table for all fourteen races on the <a href="/races/evolution/" style="color: var(--accent); text-decoration: none;">Heirloom &amp; Heartblood locations page</a>.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="best-class-synergies-with-nightborne" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 16px;">Best Class Synergies</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 18px;">
+            Bloodthirst is class-agnostic — it does not care what generated the damage. That makes the "best" class a question of which class benefits most from not having to spend turns healing. Three answer that differently:
+          </p>
+
+          <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 6px; padding: 18px; margin-bottom: 16px;">
+            <h3 id="1-hexer-mage-s-tier-synergy" style="margin: 0 0 6px; font-size: 1.1rem; color: #a855f7;">1. Hexer (Mage) — the damage conversion</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+              Hexer opens every battle by applying <strong style="color: #f5f3ff;">Weakened</strong> to enemies (−15% damage for 2 turns), which buys exactly the two turns a low-HP caster needs to stabilise. Bloodthirst then refunds the health those turns cost. This is the pairing most players mean when they say Nightborne is a "mage race" — it is the cheapest way to make an Energy-hungry caster survive Act 2 without potion spam. See the <a href="/classes/mage/" style="color: var(--accent); text-decoration: none;">Mage class guide</a>.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 6px; padding: 18px; margin-bottom: 16px;">
+            <h3 id="2-cleric-mage-s-tier-synergy" style="margin: 0 0 6px; font-size: 1.1rem; color: #34d399;">2. Cleric (Mage) — the over-heal stack</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+              Cleric's <strong style="color: #f5f3ff;">Quiet Grace</strong> makes you less likely to be targeted while partied, and Smite / Mending Light let you trade damage and healing on the same turn. With Bloodthirst running, the healing half mostly becomes free — which turns Cleric into a genuine damage slot instead of a pure support tax. Its Ultra Class is Seraph, which is also a race name, so do not confuse the two.
+            </p>
+          </div>
+
+          <div style="background: #0d0a14; border: 1px solid var(--line); border-left: 4px solid #ea580c; border-radius: 6px; padding: 18px;">
+            <h3 id="3-berserk-warrior-a-niche-but-real-synergy" style="margin: 0 0 6px; font-size: 1.1rem; color: #ea580c;">3. Berserk (Warrior) — the low-HP engine</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+              Berserk's <strong style="color: #f5f3ff;">Blood Heat</strong> scales sword damage as your HP drops, up to +20%. Most races cannot hold that window without dying. Bloodthirst can: the 7%-of-max-HP-per-move cap lets you hover at low HP, healing just enough to survive the next hit while staying inside the damage band. This is the highest-ceiling Nightborne build and the easiest one to get wrong — see the <a href="/classes/warrior/" style="color: var(--accent); text-decoration: none;">Warrior class guide</a> for the Berserk skill list.
+            </p>
+          </div>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="talent-pairing-synergies-anti-synergies" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Talent Pairing</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Talent</th>
+                  <th style="padding: 10px 12px;">Roll Chance</th>
+                  <th style="padding: 10px 12px;">Why it fits Nightborne</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Talent" style="padding: 10px 12px; font-weight: 700; color: #fff;">Prodigy</td>
+                  <td data-label="Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">Mythic · 1%</td>
+                  <td data-label="Why" style="padding: 10px 12px; color: var(--muted);">+5% to four stats plus +2% Crit, +10% XP and Mastery. The only talent that improves the lifesteal on both axes — more damage in, more XP out.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Talent" style="padding: 10px 12px; font-weight: 700; color: #fff;">Arcane Spark</td>
+                  <td data-label="Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">Rare · 10%</td>
+                  <td data-label="Why" style="padding: 10px 12px; color: var(--muted);">+1 starting Energy and +8% Magic. The realistic target for a caster build — 10% is ten times Prodigy's odds.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Talent" style="padding: 10px 12px; font-weight: 700; color: #fff;">Iron Soul</td>
+                  <td data-label="Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">Uncommon · 14%</td>
+                  <td data-label="Why" style="padding: 10px 12px; color: var(--muted);">+6% DEF and a 30% chance to ignore a debuff. Directly protects the Berserk low-HP window from a stun that would end the run.</td>
+                </tr>
+                <tr>
+                  <td data-label="Talent" style="padding: 10px 12px; font-weight: 700; color: #fff;">Quick Study</td>
+                  <td data-label="Chance" style="padding: 10px 12px; font-family: var(--font-mono); color: #f43f5e;">Uncommon · 18%</td>
+                  <td data-label="Why" style="padding: 10px 12px; color: var(--muted);">+12% XP and +15% Class Mastery. Take it on a fresh Nightborne to reach Kindled content faster, then reroll it later.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 12px 0 0;">
+            Full roll chances and tiering for all seven talents on the <a href="/tier-list/talent-tier-list/" style="color: var(--accent); text-decoration: none;">talent tier list</a>. Note the trap: <strong>Fortune's Favor</strong> (+10% Gold, +8% loot) is a farming talent, not a combat one — do not hold it on your Nightborne main.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="should-you-reroll-it" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Should You Reroll It?</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            <strong style="color: #34d399;">Keep it.</strong> Four of the fourteen bloodlines roll at 0.72%, and Nightborne is the one that works on both a caster and a melee build. Rerolling a 0.72% Mythic to chase a 1.44% Celestine is a bad trade in expected value — you would be spending ~96 spins to improve a build that was already fine.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            <strong style="color: #c9a227;">The one exception:</strong> a dedicated crit-stacking build where Celestine's +6% Crit and +6% Magic compound into something Nightborne's lifesteal cannot match. Even then, evolve Nightborne first and compare before spending the spins.
+          </p>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            See where it sits against the rest on the <a href="/tier-list/race-tier-list/" style="color: var(--accent); text-decoration: none;">race tier list</a> and the <a href="/races/best-races/" style="color: var(--accent); text-decoration: none;">best races &amp; spin meta</a> page.
+          </p>
+        </section>
+
+        <FaqSection items={faqItems} />
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <a href="/races/evolution/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Heirloom &amp; Heartblood Locations →
           </a>
-          <a href="/classes/mage/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            → Mage Level 1-30 Progression Guide
-          </a>
-          <a href="/calculator/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            → Simulate Nightborn Build in Calculator
+          <a href="/codes/roblox-nightborn-codes/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Free Race Spins via Codes →
           </a>
         </div>
-      </section>
-          
-      <!-- Frequently Asked Questions Accordion -->
-      <FaqSection items={faqItems} />
-          <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
-      <div class="ad-slot-footer">
-        <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
-        <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
-      </div>
 
-</article>
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+      </article>
 
-      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/races/nightborn/" />
     </div>
   </div>
