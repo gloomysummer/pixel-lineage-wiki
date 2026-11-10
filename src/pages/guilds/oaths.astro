@@ -16,7 +16,7 @@ const oaths = [
     name: "Oath of the Arcanum",
     affinity: "Mage / Bard Archetypes",
     pledgeCost: "2,000 Gold & 120 Guild Tokens",
-    permanentBuff: "+20% Maximum Mana Pool; spells restore 5% HP to lowest-health ally upon critical cast.",
+    permanentBuff: "+15% Magic Damage Scaling; spells restore 5% HP to lowest-health ally upon critical cast.",
     drawback: "Takes 15% increased physical damage from brute enemies.",
   },
   {
@@ -112,7 +112,7 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
           ⚡ Direct Answer · Guild Oaths Overview
         </div>
         <p style="margin: 0 0 10px; font-size: 0.94rem; color: #f0eaf4; line-height: 1.6;">
-          <strong>Pixel Lineage Oaths</strong> are permanent character pledges sworn at the Guild Hall altar upon reaching Reputation Tier 2. Pledging costs 1,500–2,000 Gold plus 100–120 Guild Tokens. The three oaths (<strong>Vanguard</strong> for physical tanks, <strong>Arcanum</strong> for mana casters, and <strong>Shadowveil</strong> for crit assassins) grant encounter-defining buffs balanced with targeted tactical drawbacks.
+          <strong>Pixel Lineage Oaths</strong> are permanent character pledges sworn at the Guild Hall altar upon reaching Reputation Tier 2. Pledging costs 1,500–2,000 Gold plus 100–120 Guild Tokens. The three oaths (<strong>Vanguard</strong> for physical tanks, <strong>Arcanum</strong> for spellcasters, and <strong>Shadowveil</strong> for crit assassins) grant encounter-defining buffs balanced with targeted tactical drawbacks.
         </p>
 
         <!-- Quick Reference Table for Snippet Optimization -->
@@ -139,7 +139,7 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
                 <td style="padding: 8px 12px; font-weight: 700; color: #fff; white-space: nowrap;">Oath of the Arcanum</td>
                 <td style="padding: 8px 12px; color: var(--muted);">Mage / Bard</td>
                 <td style="padding: 8px 12px; color: var(--muted); white-space: nowrap;">2,000g + 120 Tokens</td>
-                <td style="padding: 8px 12px; color: #34d399;">+20% Max Mana & Crits heal lowest ally 5% HP</td>
+                <td style="padding: 8px 12px; color: #34d399;">+15% Magic Damage & Crits heal lowest ally 5% HP</td>
                 <td style="padding: 8px 12px; color: #f43f5e;">+15% Physical damage taken from brutes</td>
               </tr>
               <tr>
@@ -207,7 +207,7 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         </p>
         <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
           <li><strong>Frontline Tanks:</strong> Sentinel Warriors should pledge Oath of the Vanguard to stack physical damage reduction.</li>
-          <li><strong>Dedicated Healers:</strong> Clerics benefit most from Oath of the Arcanum, as bonus mana extends healing duration against high-HP raid bosses.</li>
+          <li><strong>Dedicated Healers:</strong> Clerics benefit most from Oath of the Arcanum, as boosted magic scaling enhances healing output against high-HP raid bosses.</li>
           <li><strong>Burst DPS:</strong> Assassins and Corsairs should pledge Oath of the Shadowveil to lock in critical strike thresholds.</li>
         </ul>
       </section>

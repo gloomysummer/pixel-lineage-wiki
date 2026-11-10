@@ -23,13 +23,21 @@ const jsonLd = [
 ];
 
 const bloodlines = [
-  { name: "Seraph", rarity: "Mythic", rate: "1.0%", passive: "+15% Holy DMG, Aerial Trap Immunity & 1x Revive", pairing: "Cleric / Paladin / Hexer", color: "#c084fc" },
+  { name: "Seraph", rarity: "Mythic", rate: "0.72%", passive: "Angelic Blessing — all allies take 10% less damage on turn one, healing +25% for 2 rounds", pairing: "Cleric / anything with party healing", color: "#c084fc" },
   { name: "Nightborne", rarity: "Mythic", rate: "0.72%", passive: "Bloodthirst — heals 15% of damage dealt (cap ~7% max HP per move)", pairing: "Mage (Hexer) / Warrior (Berserk)", color: "#a855f7" },
-  { name: "Dullahan", rarity: "Rare", rate: "2.0%", passive: "Headless Poise (Immunity to Boss Stagger & Knockdown)", pairing: "Warrior (Sentinel) / Fist", color: "#38bdf8" },
-  { name: "Celestine", rarity: "Rare", rate: "3.0%", passive: "Divine Ward (+10% All-Party Damage Mitigation)", pairing: "Cleric / Siren / Sentinel", color: "#eab308" },
-  { name: "Orc", rarity: "Rare", rate: "15.0%", passive: "+12% Physical ATK & Undying Rage (Survive at 1 HP)", pairing: "Warrior (Berserk) / Fist (Oni)", color: "#f43f5e" },
-  { name: "Elf", rarity: "Uncommon", rate: "12.0%", passive: "+10% Speed & +5% Critical Strike Probability", pairing: "Thief (Assassin) / Archer (Deadeye)", color: "#34d399" },
-  { name: "Human", rarity: "Common", rate: "48.0%", passive: "+5% Baseline XP Gain (No combat multipliers)", pairing: "Early Leveling Only", color: "#94a3b8" },
+  { name: "Dragonborn", rarity: "Mythic", rate: "0.72%", passive: "Scaled Hide (+15% max HP, -30% Fire damage, -20% from Burned enemies) + Dragonfire AoE Burn", pairing: "Spear (Dragoon → Dragonlord)", color: "#ea580c" },
+  { name: "Tideborn", rarity: "Mythic", rate: "0.72%", passive: "Tidal Grace — restores 5% of max HP at the start of each of your turns", pairing: "Warrior / Bard, long Torment runs", color: "#22d3ee" },
+  { name: "Celestine", rarity: "Mythic", rate: "1.44%", passive: "+6% Crit, +4% Dodge, +6% Magic", pairing: "Mage / Archer, crit-stacking builds", color: "#eab308" },
+  { name: "Sylvan", rarity: "Rare", rate: "7.19%", passive: "+12% Nature Damage & Call Sylph Companion", pairing: "Archer (Ranger) / Bard (Siren)", color: "#34d399" },
+  { name: "Vesper", rarity: "Rare", rate: "5.76%", passive: "+8% Magic, small Energy boost, chance to evade ability attacks", pairing: "Mage (Hexer) / Bard", color: "#818cf8" },
+  { name: "Slime", rarity: "Rare", rate: "6.47%", passive: "Physical resistance and extra healing after battle; takes increased Fire damage", pairing: "Warrior, physical-heavy content", color: "#4ade80" },
+  { name: "Mushroom", rarity: "Rare", rate: "4.32%", passive: "16% chance to poison an attacker when hit", pairing: "Defensive builds, long fights", color: "#fb7185" },
+  { name: "Stonekin", rarity: "Uncommon", rate: "7.91%", passive: "+20 Max HP & +15% Fist attack damage", pairing: "Fist (Monk / Brawler / Oni)", color: "#a3e635" },
+  { name: "Ashborn", rarity: "Uncommon", rate: "9.35%", passive: "+8% Max HP & +6% Attack", pairing: "Warrior (Berserk) / Thief", color: "#f43f5e" },
+  { name: "Goblin", rarity: "Uncommon", rate: "8.63%", passive: "+8% Gold earned & 6% bonus loot chance", pairing: "Farming runs, any class", color: "#fbbf24" },
+  { name: "Dwarf", rarity: "Uncommon", rate: "8.63%", passive: "+15% Max HP & +6% DEF", pairing: "Warrior (Sentinel) / Fist", color: "#94a3b8" },
+  { name: "Dullahan", rarity: "Event only", rate: "10,000 Candy", passive: "+5% Max HP, +5% DEF, +3% Crit + Headless Ride (4 Energy, 5-turn cooldown)", pairing: "Warrior (Sentinel) / Fist", color: "#38bdf8" },
+  { name: "Human", rarity: "Common", rate: "37.41%", passive: "+10% XP & +10% Class Mastery from battles", pairing: "First character, leveling only", color: "#cbd5e1" },
 ];
 
 const faqItems = [
@@ -39,7 +47,7 @@ const faqItems = [
   },
   {
     question: "What is the best Bloodline overall in Pixel Lineage?",
-    answer: "Seraph (Mythic 1.0%) is the best all-around bloodline due to aerial trap immunity and team revive utility. For spellcasters, Nightborn (Legendary 2.0%) ranks highest for mana sustain, while Orc (Rare 15.0%) is optimal for physical melee combatants seeking cheat-death survivability.",
+    answer: "Seraph (Mythic 0.72%) is the best all-around support bloodline thanks to its party-wide damage reduction on turn one. For spellcasters and aggressive bruisers, Nightborne (0.72%) ranks highest for lifesteal sustain, while Ashborn (15.0%) is optimal for physical melee combatants seeking raw offensive and health scaling.",
   },
   {
     question: "How do you get free Race Spins to roll Bloodlines?",
