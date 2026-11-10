@@ -51,8 +51,8 @@ const mageMilestones = [
 
 const faqItems = [
   {
-    "question": "How do Mage characters manage mana sustain during prolonged boss fights?",
-    "answer": "Mage characters manage mana sustain through innate spirit growth, staff weapon enchantments, and mana potions purchased in town. Inscribing Arcane Runes onto your armor and choosing the Nightborn race grants constant passive mana regeneration, preventing spell exhaustion during extended multi-phase dungeon encounters."
+    "question": "How do Mage characters manage Energy sustain during prolonged boss fights?",
+    "answer": "Mage characters manage Energy sustain through staff weapon enchantments, tactical turn pacing, and Energy management. Pairing with the Vesper race provides an expanded Energy pool, while Nightborne grants lifesteal sustain during extended dungeon encounters."
   },
   {
     "question": "Is Cleric viable as a solo leveling archetype or only in party raids?",
@@ -60,11 +60,11 @@ const faqItems = [
   },
   {
     "question": "How does the Hexer Super Class bypass boss magical resistances?",
-    "answer": "Hexer applies stacking decay curses that tick during every enemy turn phase while reducing target magic defense by forty percent. Because decay damage scales with true damage percentages, Hexer curses melt high-armor Torment bosses that otherwise resist direct elemental burst spells."
+    "answer": "Hexer applies stacking decay curses that tick during every enemy turn phase while reducing target magic defense. Because decay damage bypasses mob armor, Hexer curses melt high-armor Torment bosses that otherwise resist direct elemental burst spells."
   },
   {
-    "question": "Why is Nightborn considered the best race for Mage archetypes?",
-    "answer": "Nightborn grants fifteen percent increased base mana regeneration, dark vision in unlit dungeons, and enhanced magical attack scaling during nighttime phases. These combined passives remove mana starvation bottlenecks completely, enabling spellcasters to execute continuous high-tier spell rotations without pausing for elixirs or losing DPS momentum."
+    "question": "Which races pair best with Mage archetypes in Pixel Lineage?",
+    "answer": "Vesper and Celestine represent top racial synergies for Mages. Vesper provides +8% Magic damage, an expanded Energy pool, and skill evasion. Celestine provides +6% Crit, +4% Dodge, and +6% Magic. Nightborne also offers valuable lifesteal sustain."
   }
 ];
 ---
@@ -95,7 +95,7 @@ const faqItems = [
         Pixel Lineage Mage Class Guide: Stats & Super Classes
       </h1>
       <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
-        The definitive tactical guide to the Mage archetype in Pixel Lineage on Roblox. Featuring verified Level 1 to 30 attribute progressions, in-depth breakdowns of Cleric, Hexer, and Summoner Super Class evolutions, spell damage formulas, and endgame raid rotation engineering.
+        The definitive tactical guide to the Mage archetype in Pixel Lineage on Roblox. Featuring community-reported Level 1 to 30 attribute progressions (verify in game), in-depth breakdowns of Cleric, Hexer, and Summoner Super Class evolutions, and endgame raid rotation engineering.
       </p>
     </header>
 
@@ -116,17 +116,17 @@ const faqItems = [
     </div>
 
             <!-- Video Showcase (Tactical Walkthrough) -->
-        <section id="official-video-showcase" style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px; margin-bottom: 36px;">
           <h2 id="official-video-showcase" style="font-size: 1.25rem; color: #fff; margin: 0 0 8px;">Official Video Reference: Mage Combat & Progression</h2>
           <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-            Comprehensive Pixel Lineage gameplay walkthrough demonstrating Mage spell rotations, MP management, and Cleric/Hexer support.
+            Comprehensive Pixel Lineage gameplay walkthrough demonstrating Mage spell rotations, Energy management, and Cleric/Hexer support.
           </p>
           <VideoEmbed
             id="1pdNdjCu7BM"
             title="Pixel Lineage Mage Class Arcane & Healing Rotation Walkthrough"
             channelTitle="OyO"
             uploadDate="2026-10-18T12:00:00+00:00"
-            description="Comprehensive Pixel Lineage gameplay walkthrough demonstrating Mage spell rotations, MP management, and Cleric/Hexer support."
+            description="Comprehensive Pixel Lineage gameplay walkthrough demonstrating Mage spell rotations, Energy management, and Cleric/Hexer support."
           />
         </section>
 
@@ -152,7 +152,7 @@ const faqItems = [
           <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #a855f7;">Formula: HP +6.0/lv · MAG +2.8/lv · SPD +1.2/lv</span>
         </div>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-          These milestone statistics reflect pure baseline Mage scaling. Notice that Magic reaches 57 at Level 15 and 99 at Level 30 before weapons and enchantments are applied:
+          These milestone statistics reflect baseline Mage scaling based on community reports (verify in game). Magic progression reaches notable thresholds at Level 15 and Level 30:
         </p>
 
         <div style="overflow-x: auto;">
@@ -186,7 +186,7 @@ const faqItems = [
           </table>
         </div>
         <p style="color: var(--muted); font-size: 0.82rem; margin-top: 12px;">
-          *For comparative curves across all classes, visit the complete <a href="/classes/stats/" style="color: var(--accent); text-decoration: none;">Class Growth Matrix</a>.
+          *Level 1 to 30 attribute progressions are community-reported; verify in game. For comparative curves across all classes, visit the complete <a href="/classes/stats/" style="color: var(--accent); text-decoration: none;">Class Growth Matrix</a>.
         </p>
       </section>
 
@@ -204,25 +204,25 @@ const faqItems = [
             <span style="font-size: 0.8rem; color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Raid Life Anchor</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
-            The Cleric is the most sought-after party member for 4-player Guild Raids and Torment Abyss expeditions. Innate passive <em>Divine Conduit</em> amplifies all outgoing healing by +25% and automatically removes 1 negative ailment from healed targets.
+            The Cleric is the premier cooperative healer for group expeditions. Innate passive <em>Quiet Grace</em> lowers the chance of being targeted by enemies while fighting in a party.
           </p>
 
           <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
             <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
-              <strong style="color: #fff;">Skill 1: Radiance Flash (Cost: 1 EP · 0 Turn CD)</strong>
-              <p style="color: var(--muted); margin: 3px 0 0;">Heals target ally for 180% MAG + 45 HP. Deals 120% MAG holy damage to adjacent Undead or Demon foes.</p>
+              <strong style="color: #fff;">Skill 1: Smite (Unlocks on choosing Super Class)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Calls down holy radiance to strike a target enemy, dealing bonus damage against Undead or Demon foes.</p>
             </div>
             <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
-              <strong style="color: #fff;">Skill 2: Cleanse Circle (Cost: 2 EP · 2 Turn CD)</strong>
-              <p style="color: var(--muted); margin: 3px 0 0;">Purges all debuffs, curses, and poisons from all 4 party members, granting a 2-turn shield absorbing 20% max HP.</p>
+              <strong style="color: #fff;">Skill 2: Mending Light (Unlocks at Level 10)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Restores health to target party member and purges active status debuffs.</p>
             </div>
             <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
-              <strong style="color: #fff;">Skill 3: Miracle of Resurrection (Cost: 3 EP · Ultimate · 6 Turn CD)</strong>
-              <p style="color: var(--muted); margin: 3px 0 0;">Revives a fallen teammate with 50% health, or restores 350% MAG health to all living party members if none have died.</p>
+              <strong style="color: #fff;">Skill 3: Judgement (Unlocks at Level 14)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Calls down divine wrath upon hostile ranks, unleashing party-wide holy magic damage.</p>
             </div>
           </div>
           <div style="font-size: 0.85rem; color: #c9a227;">
-            <strong>Tactical Verdict:</strong> Essential for high-tier raid progression. Solves party wipe mechanics and keeps frontline tanks capped at 100% health.
+            <strong>Tactical Verdict:</strong> Essential for cooperative raid progression. Keeps frontline tanks alive and sustains the team through heavy incoming damage phases.
           </div>
         </div>
 
@@ -233,25 +233,25 @@ const faqItems = [
             <span style="font-size: 0.8rem; color: #a855f7; background: rgba(168, 85, 247, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Boss Armor Bypass & Solo Carry</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
-            The Hexer is the ultimate solo spellcaster. Innate passive <em>Malediction</em> causes dark curse damage to tick twice per turn while converting 15% of all curse damage dealt directly into character health.
+            The Hexer is an attrition-focused solo spellcaster. Innate passive <em>Ill Omen</em> causes enemies to start battles with the Weakened debuff for 2 turns, reducing enemy damage by 15%.
           </p>
 
           <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
             <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
-              <strong style="color: #fff;">Skill 1: Shadow Decay (Cost: 1 EP · 0 Turn CD)</strong>
-              <p style="color: var(--muted); margin: 3px 0 0;">Applies a 3-turn curse dealing 90% MAG shadow damage per turn. Reduces target's physical and magic damage by 15%.</p>
+              <strong style="color: #fff;">Skill 1: Hex Bind (Unlocks on choosing Super Class)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Binds the target in dark energy, restricting mobility and inflicting steady curse decay.</p>
             </div>
             <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
-              <strong style="color: #fff;">Skill 2: Mana Siphon Leech (Cost: 2 EP · 2 Turn CD)</strong>
-              <p style="color: var(--muted); margin: 3px 0 0;">Drains 140% MAG from the enemy, recovering 35 MP and granting the Hexer a protective shield equal to 100% of damage dealt.</p>
+              <strong style="color: #fff;">Skill 2: Hex Bolt (Unlocks at Level 10)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Fires a concentrated missile of dark energy, dealing direct magic damage and stacking curse affliction.</p>
             </div>
             <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
-              <strong style="color: #fff;">Skill 3: Doom Cataclysm (Cost: 3 EP · Ultimate · 4 Turn CD)</strong>
-              <p style="color: var(--muted); margin: 3px 0 0;">Detonates all active curses across the battlefield for 280% MAG instant shadow burst, spreading debuffs to all surviving mobs.</p>
+              <strong style="color: #fff;">Skill 3: Doom (Unlocks at Level 14)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Places a catastrophic doom countdown on the target, triggering massive shadow burst damage when it expires.</p>
             </div>
           </div>
           <div style="font-size: 0.85rem; color: #c9a227;">
-            <strong>Tactical Verdict:</strong> The highest sustained solo boss DPS in the game. Completely ignores heavy armor, melting Act 3 and Torment bosses effortlessly.
+            <strong>Tactical Verdict:</strong> High sustained solo boss damage. Debuffs bypass physical armor, allowing consistent boss clears.
           </div>
         </div>
 
@@ -262,25 +262,25 @@ const faqItems = [
             <span style="font-size: 0.8rem; color: #34d399; background: rgba(52, 211, 153, 0.1); padding: 2px 8px; border-radius: 4px;">Role: Autonomous Army & Safe Clears</span>
           </div>
           <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 0 14px;">
-            The Summoner creates permanent constructs from pure arcane energy to fight on their behalf. Innate passive <em>Shared Vitality</em> redirects 40% of all damage taken by the player onto summoned golems.
+            The Summoner commands arcane entities to fight on their behalf. Innate passive mechanics are not yet published in official sources.
           </p>
 
           <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 14px;">
             <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
-              <strong style="color: #fff;">Skill 1: Conjure Arcane Golem (Cost: 1 EP · 3 Turn CD)</strong>
-              <p style="color: var(--muted); margin: 3px 0 0;">Summons a frontline golem with 150% Summoner HP and 60% DEF. Golem Taunts enemies every second turn.</p>
+              <strong style="color: #fff;">Skill 1: Arcane Familiar (Unlocks on choosing Super Class)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Conjures an ethereal familiar to support the caster with ranged offensive projectiles.</p>
             </div>
             <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
-              <strong style="color: #fff;">Skill 2: Void Wisps (Cost: 2 EP · 2 Turn CD)</strong>
-              <p style="color: var(--muted); margin: 3px 0 0;">Summons 3 floating wisps that bombard random enemies for 70% MAG each at the end of every round.</p>
+              <strong style="color: #fff;">Skill 2: Stone Guardian (Unlocks at Level 10)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Summons a resilient stone guardian to the frontline to intercept incoming physical damage.</p>
             </div>
             <div style="background: #161022; padding: 10px 12px; border-radius: 4px;">
-              <strong style="color: #fff;">Skill 3: Dimensional Rift (Cost: 3 EP · Ultimate · 5 Turn CD)</strong>
-              <p style="color: var(--muted); margin: 3px 0 0;">Opens an astral rift dealing 210% AoE magic damage and summoning an Eldritch Fiend that channels high-damage death rays.</p>
+              <strong style="color: #fff;">Skill 3: Phoenix Call (Unlocks at Level 14)</strong>
+              <p style="color: var(--muted); margin: 3px 0 0;">Calls forth an astral phoenix that bombards enemy lines with fiery arcane strikes.</p>
             </div>
           </div>
           <div style="font-size: 0.85rem; color: #c9a227;">
-            <strong>Tactical Verdict:</strong> The ultimate low-stress class. Golems hold aggro, allowing the Summoner to clear difficult content while safely drinking potions from the rear.
+            <strong>Tactical Verdict:</strong> Controlled, low-stress playstyle. Minions draw enemy attention, giving the Summoner room to cast safely.
           </div>
         </div>
       </section>
@@ -295,10 +295,10 @@ const faqItems = [
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px;">
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #a855f7;">
             <strong style="color: #a855f7; font-size: 1rem; display: block; margin-bottom: 6px;">
-              <a href="/races/nightborn/" style="color: #a855f7; text-decoration: none;">Nightborn Bloodline (S+ Tier)</a>
+              <a href="/races/vesper/" style="color: #a855f7; text-decoration: none;">Vesper Bloodline (S+ Tier)</a>
             </strong>
             <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
-              Provides +15% MP regen, +8% Dark Spell damage, and 15% critical lifesteal. The definitive pairing for Hexer to achieve infinite spell rotations without drinking mana potions. Check the verified <a href="/codes/roblox-nightborn-codes/" style="color: var(--accent);">Nightborn codes & free Race Spins list</a> to obtain spins for rolling this lineage.
+              Provides +8% Magic damage, an expanded Energy pool, and skill evasion. The definitive pairing for spellcasters to sustain continuous high-tier spell rotations.
             </p>
           </div>
 
@@ -307,16 +307,16 @@ const faqItems = [
               <a href="/races/celestine/" style="color: #38bdf8; text-decoration: none;">Celestine Bloodline (S+ Tier)</a>
             </strong>
             <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
-              Adds +12% Holy Spell damage, +5% party healing received, and turn-start 25% debuff cleanses. The gold-standard pairing for endgame raid Clerics.
+              Adds +6% Magic, +6% Crit, and +4% Dodge. The gold-standard pairing for high-critical spellcasters and raid Clerics.
             </p>
           </div>
 
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border-left: 3px solid #c9a227;">
             <strong style="color: #c9a227; font-size: 1rem; display: block; margin-bottom: 6px;">
-              <a href="/races/seraph/" style="color: #c9a227; text-decoration: none;">Seraph Bloodline (A+ Tier)</a>
+              <a href="/races/sylvan/" style="color: #c9a227; text-decoration: none;">Sylvan Bloodline (A+ Tier)</a>
             </strong>
             <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
-              Provides +10% Speed to ensure you cast barrier spells before hostile mobs take their actions, while Featherfall prevents floor trap wipes.
+              Provides +12% Nature damage and the Call Sylph companion summon, adding passive team healing and chip damage.
             </p>
           </div>
         </div>
@@ -326,9 +326,9 @@ const faqItems = [
           Consult our full <a href="/traits/" style="color: var(--accent); text-decoration: none;">Traits & Drop Rates Guide</a> when rolling. For Mages, the top three talents are:
         </p>
         <ul style="color: var(--muted); font-size: 0.88rem; line-height: 1.6; padding-left: 20px; margin: 0;">
-          <li><strong style="color: #fff;">Arcane Spark (+1 Starting Energy & +8% MAG):</strong> Mandatory for Mages. Starting with 4 EP allows an immediate Turn 1 ultimate or AoE room clear.</li>
+          <li><strong style="color: #fff;">Arcane Spark (+1 Starting Energy & +8% MAG):</strong> Mandatory for Mages. Starting with extra EP allows an immediate Turn 1 high-tier spell cast.</li>
           <li><strong style="color: #fff;">Survivor (+6% HP & Endure Cheat-Death):</strong> Prevents squishy casters from being instantly deleted by boss stealth ambushes or true-damage slams.</li>
-          <li><strong style="color: #fff;">Prodigy (+15% Universal Attributes):</strong> The pinnacle Mythic talent. Scaling +15% on 99 base Magic yields an extra 15 MAG before gear additions.</li>
+          <li><strong style="color: #fff;">Prodigy (+15% Universal Attributes):</strong> The pinnacle Mythic talent. Scaling +15% on base Magic yields significant MAG before gear additions.</li>
         </ul>
       </section>
 
@@ -339,14 +339,14 @@ const faqItems = [
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
             <strong style="color: #34d399; font-size: 1rem; display: block; margin-bottom: 6px;">Solo Expedition Dynamics</strong>
             <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
-              In solo play, Mages must leverage crowd control and lifesteal. Cast Mana Shield on Turn 1 before applying DoTs. When running Hexer or Summoner, your sustained drain and minion shields allow clearing entire dungeons without ever purchasing health potions.
+              In solo play, Mages must leverage crowd control and positioning. Open with debuffs on Turn 1 before applying DoTs. When running Hexer or Summoner, your sustained curse decay and minion shields allow clearing entire dungeons safely.
             </p>
           </div>
 
           <div style="background: #0d0a14; padding: 16px; border-radius: 6px; border: 1px solid var(--line);">
             <strong style="color: #38bdf8; font-size: 1rem; display: block; margin-bottom: 6px;">Co-Op & Guild Raid Positioning</strong>
             <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 0;">
-              In 4-player raid groups, Mages occupy the Rear Center tile. This position shields you from frontal cleaves while keeping all 3 party allies within range of your AoE Cleanse Circle and Radiant Flash healing auras.
+              In 4-player raid groups, Mages occupy the Rear Center tile. This position shields you from frontal cleaves while keeping all 3 party allies within range of your group support abilities.
             </p>
           </div>
         </div>
@@ -359,21 +359,21 @@ const faqItems = [
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #eab308;">
             <strong style="color: #eab308;">Early Game (Levels 1–10): B Tier Fragility</strong>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
-              With only 75 HP and 5 DEF, early game is hazardous. Mages must constantly monitor mana and purchase potions in Town. High magic damage kills single targets quickly, but mob swarms require careful kiting.
+              With only 75 HP and 5 DEF, early game is hazardous. Mages must carefully manage Energy and positioning. High magic damage kills single targets quickly, but mob swarms require careful kiting.
             </p>
           </div>
 
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #34d399;">
             <strong style="color: #34d399;">Mid Game (Levels 11–20): S Tier Awakening</strong>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
-              Unlocking Cleric, Hexer, or Summoner completely transforms the class. Base Magic hits 57, enabling AoE spells that wipe full rooms in Act 2 The Dungeon while providing self-sustaining shields.
+              Unlocking Cleric, Hexer, or Summoner completely transforms the class. Base Magic hits 57, enabling AoE spells that wipe full rooms in Act 2 The Dungeon while providing self-sustaining utility.
             </p>
           </div>
 
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px; border-left: 3px solid #f43f5e;">
             <strong style="color: #f43f5e;">End Game (Levels 21–30): S+ Tier Raid Engine</strong>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
-              Reaching 99 base Magic and equipping Netherflame staves produces astronomical damage ticks. In Torment Raids, having a Cleric is mandatory for survival, while Hexers melt raid boss health pools faster than any other archetype.
+              Reaching 99 base Magic and equipping high-tier staves produces massive damage ticks. In Torment Raids, having a Cleric is essential for survival, while Hexers melt raid boss health pools consistently.
             </p>
           </div>
         </div>
@@ -386,22 +386,25 @@ const faqItems = [
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
             <strong style="color: #a855f7;">Weapon: Netherflame Staff of the Archmage</strong>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
-              Grants +42 Magic ATK, +15% Spell Crit Chance, and reduces energy costs of Tier-2 spells by 1 EP.
+              Grants Magic ATK, Spell Crit Chance, and reduces Energy costs of Tier-2 spells by 1 EP.
             </p>
           </div>
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
             <strong style="color: #38bdf8;">Armor Set: Blessed Silk Vestments (Tier 3 Spellcaster Robes)</strong>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
-              Provides +28 DEF, +220 Max MP, and +15% Healing/Decay amplification. Provides the mana pool needed for sustained raid battles.
+              Provides +28 DEF, +220 Max HP, and Healing/Decay amplification. Provides the defensive bulk needed for sustained raid battles.
             </p>
           </div>
           <div style="background: #0d0a14; padding: 14px 16px; border-radius: 6px;">
             <strong style="color: #c9a227;">Accessory: Chrono-Warped Amulet of the Eclipse</strong>
             <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 4px 0 0;">
-              Restores 15 MP at the start of every combat turn and adds +10% Critical Strike Multiplier to magical spells.
+              Restores Energy at the start of every combat turn and adds Critical Strike Multiplier to magical spells.
             </p>
           </div>
         </div>
+        <p style="color: var(--muted); font-size: 0.82rem; margin-top: 12px;">
+          *Equipment synergies and statistics are community-reported, verify in game.
+        </p>
       </section>
 
       <!-- Frequently Asked Questions -->
@@ -423,7 +426,7 @@ const faqItems = [
           <div>
             <h3 id="which-super-class-is-best-for-solo-players-cleric-or-hexer" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 6px;">Which Super Class is best for solo players: Cleric or Hexer?</h3>
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0;">
-              Hexer is substantially superior for solo players due to passive lifesteal, mana siphoning, and dark curse damage that bypasses monster armor. Cleric is designed primarily for multi-player co-op and guild raid coordination.
+              Hexer is substantially superior for solo players due to passive lifesteal and dark curse decay that bypasses monster armor. Cleric is designed primarily for multi-player co-op and guild raid coordination.
             </p>
           </div>
         </div>
