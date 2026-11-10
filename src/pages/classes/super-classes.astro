@@ -18,6 +18,7 @@ const superClassesByBase = [
     superClasses: [
       {
         name: "Berserk",
+        ultra: "Bloodreaver",
         role: "Low-HP Juggernaut",
         skills: [
           "Blood Rage: Increases ATK by +35% when below 40% maximum HP.",
@@ -27,6 +28,7 @@ const superClassesByBase = [
       },
       {
         name: "Sentinel",
+        ultra: "Aegis",
         role: "Impenetrable Fortress",
         skills: [
           "Fortress Stance: Reduces all incoming damage by 45% for 2 turns.",
@@ -36,6 +38,7 @@ const superClassesByBase = [
       },
       {
         name: "Greatsword",
+        ultra: "Worldcleaver",
         role: "Colossal Cleave",
         skills: [
           "Sweeping Cleave: Hits all enemies in the encounter for 130% ATK.",
@@ -51,6 +54,7 @@ const superClassesByBase = [
     superClasses: [
       {
         name: "Assassin",
+        ultra: "Reaper",
         role: "Single-Target Executioner",
         skills: [
           "Shadow Step: Enter stealth for 1 turn; guaranteed 100% crit on next hit.",
@@ -60,6 +64,7 @@ const superClassesByBase = [
       },
       {
         name: "Rogue",
+        ultra: "Shadowbroker",
         role: "Poison & Bleed Stalker",
         skills: [
           "Venomous Blade: Applies Poison DoT dealing 40% ATK every turn for 3 turns.",
@@ -68,12 +73,13 @@ const superClassesByBase = [
         ],
       },
       {
-        name: "Corsair",
-        role: "Swashbuckling Plunderer",
+        name: "Beast Tamer",
+        role: "Companion Handler",
+        ultra: "Beastlord",
         skills: [
-          "Plunder: Steals 15-30% extra Gold from defeated enemies.",
-          "Flintlock Quickdraw: Unblockable ranged shot dealing 140% ATK.",
-          "Fortune's Gamble: 50% chance for a 2.5x critical multiplier.",
+          "Wolf Pack — unlocks on choosing the Super Class.",
+          "Viper Strike — unlocks at level 10.",
+          "Bear Maul — unlocks at level 14.",
         ],
       },
     ],
@@ -84,6 +90,7 @@ const superClassesByBase = [
     superClasses: [
       {
         name: "Hexer",
+        ultra: "Doomcaller",
         role: "Armor-Bypassing DoT",
         skills: [
           "Malediction: Applies stacking curse dealing 50% MAG per turn (ignores DEF).",
@@ -93,6 +100,7 @@ const superClassesByBase = [
       },
       {
         name: "Cleric",
+        ultra: "Seraph",
         role: "Divine Restoration",
         skills: [
           "Radiant Prayer: Restores 35% HP to entire party and cleanses debuffs.",
@@ -102,6 +110,7 @@ const superClassesByBase = [
       },
       {
         name: "Summoner",
+        ultra: "Archon",
         role: "Minion Swarm Tactician",
         skills: [
           "Summon Skeleton: Conjures 2 skeletal minions that taunt enemy attacks.",
@@ -117,6 +126,7 @@ const superClassesByBase = [
     superClasses: [
       {
         name: "Oni",
+        ultra: "Shura",
         role: "Demonic Berserker",
         skills: [
           "Demonic Stomp: Ground slam dealing 150% ATK and breaking enemy shields.",
@@ -126,6 +136,7 @@ const superClassesByBase = [
       },
       {
         name: "Brawler",
+        ultra: "Undisputed",
         role: "Counter Striker",
         skills: [
           "Counter Cross: Prepares counter stance; retaliates for 200% damage on hit.",
@@ -135,6 +146,7 @@ const superClassesByBase = [
       },
       {
         name: "Monk",
+        ultra: "Transcendent",
         role: "Ki Channeler",
         skills: [
           "Palm Strike: Pushes enemy back in turn order; deals 130% ATK/MAG hybrid.",
@@ -150,6 +162,7 @@ const superClassesByBase = [
     superClasses: [
       {
         name: "Minstrel",
+        ultra: "Songweaver",
         role: "Anthem Buffer",
         skills: [
           "Battle Anthem: +25% ATK and +15% SPD to party for 3 turns.",
@@ -159,6 +172,7 @@ const superClassesByBase = [
       },
       {
         name: "Pianist",
+        ultra: "Virtuoso",
         role: "Crowd Control Virtuoso",
         skills: [
           "Nocturne: Puts non-boss enemies into 1-turn magical Sleep.",
@@ -167,7 +181,8 @@ const superClassesByBase = [
         ],
       },
       {
-        name: "Troubadour",
+        name: "Siren",
+        ultra: "Banshee",
         role: "Resource Generator",
         skills: [
           "Ballad of Knowledge: Doubles Knowledge resource yield from the battle.",
@@ -183,7 +198,8 @@ const superClassesByBase = [
     superClasses: [
       {
         name: "Deadeye",
-        role: "Precision Long-Range Sniper",
+        ultra: "Godshot",
+        role: "Precision Long-Range Corsair",
         skills: [
           "Heartseeker: 280% ATK single-shot snipe with +30% intrinsic Critical rate.",
           "Eagle Eye: Passive +20% Accuracy; ignores enemy dodge mechanics.",
@@ -192,6 +208,7 @@ const superClassesByBase = [
       },
       {
         name: "Ranger",
+        ultra: "Stormhawk",
         role: "Tactical Trapper",
         skills: [
           "Spike Trap: Plants trap that triggers on enemy turn for 140% ATK + Bleed.",
@@ -200,12 +217,14 @@ const superClassesByBase = [
         ],
       },
       {
-        name: "Beast Tamer",
-        role: "Companion Handler",
+        name: "Corsair",
+        role: "Mobile Dual-Crossbow Skirmisher",
+        ultra: "Dread Captain",
         skills: [
-          "Call Wolf: Summons companion wolf that attacks for 85% ATK each turn.",
-          "Pack Tactics: Player and pet deal +15% damage when attacking same target.",
-          "Mend Companion: Restores 50% HP to summoned beast.",
+          "Flintlock — unlocks on choosing the Super Class.",
+          "Parley — unlocks at level 10.",
+          "Powder Keg — unlocks at level 14.",
+          "Cannon Barrage — reportedly the third-tier unlock.",
         ],
       },
     ],

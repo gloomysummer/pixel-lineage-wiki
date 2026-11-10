@@ -47,11 +47,12 @@
       "code": "SLOOTH",
       "rewards": "500 Gold, 75 Knowledge, 3 Potions, 3 Talent Spins",
       "levelReq": "None",
-      "status": "unverified",
+      "status": "expired",
       "firstSeen": "2026-10-19",
-      "lastVerified": "2026-10-26",
+      "lastVerified": "2026-11-10",
       "sourceUrl": "https://www.destructoid.com/roblox-pixel-lineage-codes",
-      "sourceType": "T2_EDITORIAL_SINGLE"
+      "sourceType": "T2_EDITORIAL_SINGLE",
+      "note": "Reported expired by Rock Paper Shotgun and Glint; confirmed retired in the 2026-11 audit."
     },
     {
       "code": "LEGENDS",
