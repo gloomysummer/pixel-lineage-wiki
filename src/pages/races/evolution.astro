@@ -106,6 +106,21 @@ const heartbloods = [
   { race: "Slime", act: "Act 10 (Heart of Blight)", boss: "—" },
 ];
 
+// Stage 1/2/3 的具体效果（来源：Gamezebo 族裔进化表，2026-10-15）
+// 未收录：Celestine / Seraph / Slime / Dragonborn —— 公开来源尚未列出这三条线的阶段效果
+const evolutionStages = [
+  { race: "Human", s1: "ATK, MAG, DEF and Max HP all +6%", s2: "Unlocks Rallying Cry — Inspires the whole party for 2 turns", s3: "Paragon — Rallying Cry Fortifies the party for 2 turns; the stat boost rises from 6% to 10%" },
+  { race: "Ashborn", s1: "Not documented", s2: "20% chance to inflict Burn on hit; take 15% less Fire DMG", s3: "Cinderlord — survive one finishing blow per fight at 25% HP and Burn every enemy" },
+  { race: "Goblin", s1: "+15% Gold, +5% loot, +4% Crit", s2: "Unlocks Cheap Shot — +20% DMG to Stunned, Dazed, Blinded or Weakened enemies; take 15% less Fire DMG", s3: "Hoardlord — first hit of a battle Blinds; Cheap Shot rises to +30%; Jackpot chance +4%" },
+  { race: "Stonekin", s1: "+20 HP, +10% Max HP, +20% Fist DMG, take 10% less Blunt DMG", s2: "Take 10% less DMG from all attacks; 25% chance to ignore Stun and Daze", s3: "Obsidian Titan — +10% Blunt DMG, Blunt crits have a 35% chance to Daze, take 15% less DMG" },
+  { race: "Sylvan", s1: "Nature DMG +20%", s2: "Call Sylph costs half the Energy", s3: "Eldergrove — Sylph heals the entire party and inflicts Poison on enemies" },
+  { race: "Vesper", s1: "Magic DMG rises from 6% to 12%", s2: "After evading, your next skill costs 2 less", s3: "Veil Weaver — start battles with +1 Energy and counterstrike after a successful evade" },
+  { race: "Mushroom", s1: "Spores trigger 24% of the time and Poison for 3 turns", s2: "Unlocks Spore Cloud — Poisoned enemies deal 10% less DMG", s3: "Myceliarch — Spores hit all foes; Mushroomling power +40%" },
+  { race: "Nightborne", s1: "Bloodthirst replenishes 25% of DMG dealt, up from 15%", s2: "Deal 25% more DMG to enemies below 50% HP", s3: "Nightlord — Bloodthirst healing also grants a Shield worth up to 25% of Max HP" },
+  { race: "Tideborn", s1: "Tidal Grace scales off 6.5% of Max HP", s2: "Every 3 turns, Grace also removes a debuff", s3: "Leviathan — every 3 turns the Leviathan is summoned and crashes into all foes" },
+  { race: "Dullahan", s1: "Headless Ride deals 25% more DMG with a 75% chance to Weaken", s2: "Headless Ride cooldown drops from 5 turns to 4", s3: "Pale Rider — Headless Ride deals +100% DMG to enemies below 30% HP" },
+];
+
 const sharedBosses = [
   { boss: "Slime King", act: "Act 1 — Sunmeadow Wilds", races: "Dwarf + Celestine" },
   { boss: "Mother Blight", act: "Act 3 — Cursed Forest", races: "Human + Sylvan" },
@@ -275,6 +290,38 @@ const faqItems = [
               </tbody>
             </table>
           </div>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="what-each-evolution-stage-actually-does" style="font-size: 1.3rem; color: #a855f7; margin: 0 0 12px;">What Each Stage Actually Does</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            The locations above tell you where to farm. This table tells you whether it is worth it — the concrete effect each stage grants, per race. Note that Stage 3 is not a bigger version of Stage 2 in most cases; it usually changes the ability rather than scaling it.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Race</th>
+                  <th style="padding: 10px 12px;">Stage 1 · Kindled</th>
+                  <th style="padding: 10px 12px;">Stage 2 · Exalted</th>
+                  <th style="padding: 10px 12px;">Stage 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                {evolutionStages.map((e) => (
+                  <tr style="border-bottom: 1px solid var(--line);">
+                    <td data-label="Race" style="padding: 10px 12px; font-weight: 700; color: #fff;">{e.race}</td>
+                    <td data-label="Stage 1" style="padding: 10px 12px; color: #34d399;">{e.s1}</td>
+                    <td data-label="Stage 2" style="padding: 10px 12px; color: #c9a227;">{e.s2}</td>
+                    <td data-label="Stage 3" style="padding: 10px 12px; color: #a855f7;">{e.s3}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.85rem; margin: 12px 0 0;">
+            Celestine, Seraph, Slime and Dragonborn are not in this table because no published source has listed their stage effects yet — we are not filling those cells with guesses. Nightborne's Stage 1 line is the clearest read on how much one evolution is worth: Bloodthirst goes from healing 15% of damage dealt to 25%.
+          </p>
         </section>
 
         <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 22px; margin-bottom: 32px;">

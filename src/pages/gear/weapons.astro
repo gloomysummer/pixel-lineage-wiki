@@ -2,47 +2,148 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AdSlot from "../../components/AdSlot.astro";
 import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const TITLE = "Pixel Lineage Weapons Tier List: T1 to Mythic";
+const DESC = "Every Pixel Lineage weapon from T1 to T4 plus the six Mythic class weapons, with exact forge materials and gold costs for each tier.";
+
+const mythicWeapons = [
+  { name: "Seraph's Oath", cls: "Warrior", type: "Sword" },
+  { name: "Nightfang", cls: "Thief", type: "Dagger" },
+  { name: "Astral Sceptre", cls: "Mage", type: "Staff" },
+  { name: "Phoenix Knuckles", cls: "Fist", type: "Gauntlet" },
+  { name: "Aurora Lute", cls: "Bard", type: "Lute" },
+  { name: "Celestial Bow", cls: "Archer", type: "Bow" },
+];
 
 const weaponTiers = [
   {
-    name: "Sunken Cleaver of Torment",
-    weaponType: "Colossal Greatsword (Warrior / Berserk)",
-    tier: "S-Tier (Mythic Raid)",
-    baseStats: "+75 ATK, +150 HP, +8% Critical Strike",
-    uniqueAffix: "Executes non-boss targets below 15% HP instantly; increases cleave sweep radius to all adjacent grid tiles.",
-    source: "Act 3 Pinnacle Warden (0.4% Drop) / Ultra Crafting",
+    tier: "S",
+    color: "#f43f5e",
+    label: "Mythic + top T4 — endgame targets",
+    weapons: [
+      { name: "Seraph's Oath", cls: "Warrior", grade: "Mythic", note: "Unforgeable. Always rolls Legendary or Secret rarity with a 10% attuned bonus." },
+      { name: "Nightfang", cls: "Thief", grade: "Mythic", note: "Unforgeable, same rarity rule as every Mythic weapon." },
+      { name: "Astral Sceptre", cls: "Mage", grade: "Mythic", note: "Unforgeable." },
+      { name: "Phoenix Knuckles", cls: "Fist", grade: "Mythic", note: "Unforgeable." },
+      { name: "Aurora Lute", cls: "Bard", grade: "Mythic", note: "Unforgeable." },
+      { name: "Celestial Bow", cls: "Archer", grade: "Mythic", note: "Unforgeable." },
+      { name: "Voidreaver", cls: "Warrior", grade: "T4", note: "Highest craftable tier, and the legendary roll is rarer than on T3." },
+      { name: "Voidcaller", cls: "Mage", grade: "T4", note: "T4 craft." },
+      { name: "Thunder Fists", cls: "Fist", grade: "T4", note: "T4 craft." },
+      { name: "Nightsong Lute", cls: "Bard", grade: "T4", note: "T4 craft." },
+      { name: "Voidstring", cls: "Archer", grade: "T4", note: "T4 craft." },
+    ],
   },
   {
-    name: "Voidspire Staff of Ruin",
-    weaponType: "Arcane Stave (Mage / Hexer)",
-    tier: "S-Tier (Mythic Raid)",
-    baseStats: "+85 MAG, +8% Spell Crit, +12% Spell Piercing",
-    uniqueAffix: "DoT curses tick twice per enemy turn phase; critical spell casts refund 1 Energy Point.",
-    source: "Guild Raid: Shadow Gate Final Cache",
+    tier: "A",
+    color: "#a855f7",
+    label: "Secondary — strong and versatile long-term picks",
+    weapons: [
+      { name: "Dragonfang Cleaver", cls: "Warrior", grade: "T4", note: "T4 craft." },
+      { name: "Phoenix Rod", cls: "Mage", grade: "T4", note: "T4 craft." },
+      { name: "Emberclaw", cls: "Thief", grade: "T4", note: "T4 craft." },
+      { name: "Emberwing Bow", cls: "Archer", grade: "T4", note: "T4 craft." },
+      { name: "Jade Dragon Wraps", cls: "Fist", grade: "T3", note: "T3 craft that holds up into late game." },
+      { name: "Sunburst Lute", cls: "Bard", grade: "T3", note: "T3 craft." },
+      { name: "Lightborne", cls: "Warrior", grade: "Blueprint", note: "Blueprint drop. A-tier rather than S because the legendary roll is rarer and the damage ceiling is lower." },
+      { name: "Cursed Staff", cls: "Mage", grade: "Blueprint", note: "Blueprint drop." },
+    ],
   },
   {
-    name: "Whispering Fang Daggers",
-    weaponType: "Dual Daggers (Thief / Assassin)",
-    tier: "S-Tier (Endgame Dungeon)",
-    baseStats: "+62 ATK, +16 SPD, +15% Critical Chance",
-    uniqueAffix: "Attacking from Stealth inflicts 'Neurotoxin', dealing 1.8x ATK poison damage and reducing enemy Turn Speed by 30%.",
-    source: "Torment I Act 2 Secret Vault Chest",
+    tier: "B",
+    color: "#38bdf8",
+    label: "Bridges early and late game",
+    weapons: [
+      { name: "Skull Axe", cls: "Warrior", grade: "Blueprint", note: "" },
+      { name: "Frostbrand", cls: "Warrior", grade: "T3", note: "" },
+      { name: "Heroic Sword", cls: "Warrior", grade: "Blueprint", note: "" },
+      { name: "Sunforged Blade", cls: "Warrior", grade: "T2", note: "" },
+      { name: "Blood Sword", cls: "Warrior", grade: "Blueprint", note: "" },
+      { name: "Titan Gauntlet", cls: "Fist", grade: "T2", note: "" },
+      { name: "Crescent Moonstaff", cls: "Mage", grade: "T3", note: "" },
+      { name: "Viper's Kiss", cls: "Thief", grade: "T3", note: "" },
+      { name: "Verdant Lyre", cls: "Bard", grade: "T2", note: "" },
+      { name: "Stormcaller Bow", cls: "Archer", grade: "T3", note: "" },
+      { name: "Elven Longbow", cls: "Archer", grade: "T2", note: "This is its in-game item name only — Elf is not a playable race in Pixel Lineage." },
+      { name: "Stone Scythe", cls: "Thief", grade: "Blueprint", note: "" },
+      { name: "Iron Staff", cls: "Mage", grade: "Blueprint", note: "" },
+      { name: "Skull Staff", cls: "Mage", grade: "Blueprint", note: "" },
+      { name: "Cleric Staff", cls: "Mage", grade: "Blueprint", note: "" },
+    ],
   },
   {
-    name: "Celestial Longbow of the Seraph",
-    weaponType: "Composite Bow (Archer / Corsair)",
-    tier: "A-Tier (High Dungeon)",
-    baseStats: "+68 ATK, +10 SPD, +10% Armor Penetration",
-    uniqueAffix: "Pierces through front-row defenders to strike high-value backline spellcasters directly without damage falloff.",
-    source: "Act 2 Boss Chest / Blacksmith Masterwork",
+    tier: "C",
+    color: "#c9a227",
+    label: "Solid early upgrades — forge once, don't re-roll",
+    weapons: [
+      { name: "Verdant Warden", cls: "Warrior", grade: "T2", note: "" },
+      { name: "Worldtree Staff", cls: "Mage", grade: "T2", note: "" },
+      { name: "Shadowstep Kunai", cls: "Thief", grade: "T2", note: "" },
+      { name: "Star Stiletto", cls: "Thief", grade: "T2", note: "" },
+      { name: "Leather Hand Wraps", cls: "Fist", grade: "T1", note: "" },
+      { name: "Traveller's Lute", cls: "Bard", grade: "T1", note: "" },
+      { name: "Hunting Bow", cls: "Archer", grade: "T1", note: "" },
+      { name: "Bone Staff", cls: "Mage", grade: "Blueprint", note: "" },
+    ],
   },
   {
-    name: "Dragonbone Cestus",
-    weaponType: "Martial Fist Wraps (Fist / Brawler)",
-    tier: "A-Tier (High Dungeon)",
-    baseStats: "+70 ATK, +8 DEF, +14% Poise Break Chance",
-    uniqueAffix: "Every 4th consecutive hit triggers a concussive shockwave that interrupts enemy charging turn actions.",
-    source: "Act 2 Mountain Dragon Lair",
+    tier: "D",
+    color: "#94a3b8",
+    label: "Starter gear — replace within the first hour",
+    weapons: [
+      { name: "Iron Sword", cls: "Warrior", grade: "T1", note: "Starter." },
+      { name: "Bone Sword", cls: "Warrior", grade: "Blueprint", note: "Starter-adjacent." },
+      { name: "Iron Dagger", cls: "Thief", grade: "T1", note: "Starter." },
+      { name: "Steel Dagger", cls: "Thief", grade: "Blueprint", note: "Starter-adjacent." },
+      { name: "Oak Staff", cls: "Mage", grade: "T1", note: "Starter." },
+    ],
+  },
+];
+
+const forgeTiers = [
+  { tier: "T1", gold: "120", mats: "2× Salvaged Metal, 1× Moss Wolf Pelt" },
+  { tier: "T2", gold: "400", mats: "3× Bone Fragments, 1× Cursed Essence" },
+  { tier: "T3", gold: "900", mats: "3× Wisp Dust, 2× Runed Stone Shards, 1× Cursed Essence" },
+  { tier: "T4", gold: "1,800", mats: "4× Living Cinder, 3× Runed Stone Shards, 2× Cursed Essence" },
+];
+
+const perClass = [
+  { cls: "Warrior", endgame: "Seraph's Oath (Mythic)", step: "Voidreaver (T4) → Dragonfang Cleaver (T4) → Lightborne (blueprint)" },
+  { cls: "Thief", endgame: "Nightfang (Mythic)", step: "Emberclaw (T4) → Viper's Kiss (T3)" },
+  { cls: "Mage", endgame: "Astral Sceptre (Mythic)", step: "Voidcaller (T4) → Phoenix Rod (T4) → Cursed Staff (blueprint)" },
+  { cls: "Fist", endgame: "Phoenix Knuckles (Mythic)", step: "Thunder Fists (T4) → Jade Dragon Wraps (T3)" },
+  { cls: "Bard", endgame: "Aurora Lute (Mythic)", step: "Nightsong Lute (T4) → Sunburst Lute (T3)" },
+  { cls: "Archer", endgame: "Celestial Bow (Mythic)", step: "Voidstring (T4) → Emberwing Bow (T4) → Stormcaller Bow (T3)" },
+];
+
+const faqItems = [
+  {
+    "question": "Are Mythic weapons craftable in Pixel Lineage?",
+    "answer": "No. The six Mythic weapons — Seraph's Oath, Nightfang, Astral Sceptre, Phoenix Knuckles, Aurora Lute and Celestial Bow — are unforgeable. They always come out as Legendary or Secret rarity with a 10% attuned bonus, which is why they lead every class list ahead of the best T4 crafts."
+  },
+  {
+    "question": "What are the forging tiers and what do they cost?",
+    "answer": "Four tiers, all forged at the Blacksmith after you repair it in the village. T1 is 120 Gold plus 2 Salvaged Metal and 1 Moss Wolf Pelt; T2 is 400 Gold plus 3 Bone Fragments and 1 Cursed Essence; T3 is 900 Gold plus 3 Wisp Dust, 2 Runed Stone Shards and 1 Cursed Essence; T4 is 1,800 Gold plus 4 Living Cinder, 3 Runed Stone Shards and 2 Cursed Essence."
+  },
+  {
+    "question": "Why does the same weapon appear with different rarity?",
+    "answer": "Because weapon quality is rolled separately after the metal cools. A forged weapon rolls its rarity like a drop, and higher tiers are consequently rarer — so two T4 Voidreavers made from the same materials can differ substantially. That is also why T4 is not automatically better than a lucky T3 roll."
+  },
+  {
+    "question": "Can a class use another class's weapon?",
+    "answer": "No. Each class equips only its own weapon type — Warrior swords and axes, Thief daggers, Mage staves, Fist gauntlets, Bard lutes, Archer bows. That is why this tier list is read as one ranking per class rather than a single global ladder."
+  },
+  {
+    "question": "Does the Spear class have its own weapon line?",
+    "answer": "Not documented yet. Spear was added on October 20, 2026, and every published weapon list still covers six classes and six Mythic weapons — no Spear polearm has been listed anywhere. Assume Spear shares an existing weapon type until a dedicated one is confirmed in game."
+  },
+  {
+    "question": "What should a new player forge first?",
+    "answer": "Skip T1 if you can. T1 exists mainly as the starter tier you replace within the first hour, so the efficient path is to accumulate Salvaged Metal and Moss Wolf Pelts from the first zone's elite mobs, then spend on T2 for the class you intend to keep. Save Cursed Essence for T3 and T4, because both tiers need it and it drops more slowly than the tier-specific materials."
   },
 ];
 
@@ -50,10 +151,11 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "Pixel Lineage Best Weapons: Tier List & Stats Guide",
-    description: "Complete Pixel Lineage weapons guide: weapon scalings, drop sources, base attack numbers, legendary weapon passives, and class weapon rankings.",
+    headline: TITLE,
+    description: DESC,
     url: `${siteConfig.siteUrl}/gear/weapons/`,
     datePublished: "2026-10-18T12:00:00+00:00",
+    dateModified: "2026-11-10T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -71,143 +173,194 @@ const jsonLd = [
   },
 ];
 
-import MobileToc from "../../components/MobileToc.astro";
-import DualSidebar from "../../components/DualSidebar.astro";
-import { extractTocFromAstroUrl } from "../../utils/toc";
-
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
 
-
-<BaseLayout
-  title="Pixel Lineage Weapons: Best Weapon Tier"
-  description="Complete Pixel Lineage weapons guide: weapon scalings, drop sources, base attack numbers, legendary weapon passives, and class weapon rankings."
-  canonical="/gear/weapons/"
-  jsonLd={jsonLd}
->
+<BaseLayout title={TITLE} description={DESC} canonical="/gear/weapons/" jsonLd={jsonLd}>
   <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
-    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
-      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
-      <span class="separator" style="margin: 0 8px;">/</span>
-      <a href="/gear/" style="color: var(--accent); text-decoration: none;">Gear</a>
-      <span class="separator" style="margin: 0 8px;">/</span>
-      <span class="current">Weapons</span>
-    </nav>
-
-    <header style="margin-bottom: 32px;">
-      <div style="display: inline-block; background: rgba(244, 63, 94, 0.15); border: 1px solid #f43f5e; color: #f43f5e; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
-        Arsenal Directory & Damage Multipliers
-      </div>
-      <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
-        Pixel Lineage Best Weapons: Tier List & Stats Guide
-      </h1>
-      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
-        Authoritative tier rankings and attribute database for every major weapon type in Pixel Lineage on Roblox. We analyze base attack values, critical scalings, weapon passives, and drop sources across all 6 core classes.
-      </p>
-    </header>
-
-        <!-- Mobile Table of Contents (≤980px) -->
-        <MobileToc tocHeadings={tocHeadings} />
-
-
-    <!-- Unique Hero Banner -->
-    <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
-      <img
-        src="/images/features/feature_weapons.webp"
-        alt="Pixel Lineage Weapons Tier List and Legendary Weapon Damage Scalings"
-        width="1200"
-        height="675"
-        style="width: 100%; height: auto; display: block;"
-        loading="eager"
-      />
-    </div>
-
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
-      <!-- Summary Callout -->
-      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 id="weapon-scaling-architecture" style="font-size: 1.25rem; color: #f43f5e; margin: 0 0 12px;">Weapon Scaling Architecture</h2>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
-          In Pixel Lineage, weapon damage does not simply add flat numbers to your attack sheet. Each weapon belongs to a specific class discipline and scales based on attribute affinities (ATK, MAG, or SPD). Equipping off-class weaponry imposes a severe 40% accuracy penalty, making weapon-class alignment crucial.
-        </p>
-      </section>
+        <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+          <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <a href="/gear/" style="color: var(--accent); text-decoration: none;">Gear</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <span class="current">Weapons</span>
+        </nav>
 
-      <!-- Weapons Master Breakdown -->
-      <section style="margin-bottom: 40px;">
-        <h2 id="top-meta-weapons-unique-affixes" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Top Meta Weapons & Unique Affixes</h2>
-        <div style="display: flex; flex-direction: column; gap: 24px;">
-          {weaponTiers.map((w) => (
-            <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px;">
-              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-                <h3 id="w-name" style="font-size: 1.3rem; color: #fff; margin: 0;">{w.name}</h3>
-                <span style="font-size: 0.8rem; background: #0d0a14; color: #f43f5e; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line); font-weight: 700;">
-                  {w.tier}
-                </span>
-              </div>
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(244, 63, 94, 0.15); border: 1px solid #f43f5e; color: #f43f5e; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            T1 → T4 Crafting · 6 Mythic Weapons
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Weapons Tier List: T1 to Mythic
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            Every class equips exactly one weapon type, and weapons come from three places only: starter gear, the Blacksmith's four forge tiers, and blueprint or Mythic drops. Below is the full ranking with the real weapon names, plus the exact gold and materials each forge tier costs.
+          </p>
 
-              <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 12px;">
-                Discipline: <strong style="color: var(--accent);">{w.weaponType}</strong>
-              </div>
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer
+            </div>
+            <p style="margin: 0; font-size: 0.94rem; color: #e8e2f2; line-height: 1.6;">
+              There are <strong>six Mythic weapons</strong> — Seraph's Oath (Warrior), Nightfang (Thief), Astral Sceptre (Mage), Phoenix Knuckles (Fist), Aurora Lute (Bard), Celestial Bow (Archer) — and they are <strong>unforgeable</strong>: they always roll Legendary or Secret rarity. Behind them sit the <strong>T4 crafts</strong> (Voidreaver, Voidcaller, Thunder Fists, Nightsong Lute, Voidstring). Forging runs <strong>T1 120g → T2 400g → T3 900g → T4 1,800g</strong>, and weapon rarity is <strong>rolled separately after the metal cools</strong>, so one recipe can produce very different weapons.
+            </p>
+          </div>
+        </header>
 
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 14px; font-size: 0.88rem;">
-                <div style="background: #0d0a14; padding: 10px 12px; border-radius: 6px;">
-                  <span style="color: var(--muted); font-size: 0.75rem; display: block;">Base Attribute Scalings</span>
-                  <strong style="color: #34d399;">{w.baseStats}</strong>
-                </div>
-                <div style="background: #0d0a14; padding: 10px 12px; border-radius: 6px;">
-                  <span style="color: var(--muted); font-size: 0.75rem; display: block;">Drop Source Location</span>
-                  <strong style="color: #c9a227;">{w.source}</strong>
-                </div>
-              </div>
+        <MobileToc tocHeadings={tocHeadings} />
 
-        <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
-             对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
         <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
-              <div style="background: #0d0a14; padding: 12px 14px; border-radius: 6px; font-size: 0.9rem;">
-                <strong style="color: #f43f5e; display: block; margin-bottom: 4px;">Legendary Weapon Affix:</strong>
-                <span style="color: var(--ink); line-height: 1.5;">{w.uniqueAffix}</span>
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="how-weapons-work" style="font-size: 1.25rem; color: #f43f5e; margin: 0 0 12px;">How Weapons Work</h2>
+          <ul style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; padding-left: 20px; margin: 0 0 14px;">
+            <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">One weapon type per class.</strong> Warrior swords and axes, Thief daggers, Mage staves, Fist gauntlets, Bard lutes, Archer bows. Nothing is shared.</li>
+            <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">Forging unlocks after you repair the Blacksmith</strong> in the village. Until then you are on starter gear.</li>
+            <li style="margin-bottom: 8px;"><strong style="color: #f5f3ff;">Quality is rolled at creation, not fixed by the recipe.</strong> The metal cools, then rarity rolls like a drop — which is why two identical crafts are not identical weapons.</li>
+            <li><strong style="color: #f5f3ff;">Higher tier is not guaranteed better.</strong> T4 has a lower legendary roll chance than T3 and costs four times as much, so a lucky T3 can beat an unlucky T4.</li>
+          </ul>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+            Armor and affixes live on the <a href="/gear/armor-sets/" style="color: var(--accent); text-decoration: none;">armor sets</a> and <a href="/gear/legendary-powers/" style="color: var(--accent); text-decoration: none;">legendary powers</a> pages.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="the-six-mythic-weapons" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 12px;">The Six Mythic Weapons</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Mythic weapons cannot be forged. They always roll <strong style="color: #f5f3ff;">Legendary or Secret</strong> rarity with a 10% attuned bonus, which is the mechanical reason they sit above even the best T4 craft rather than beside it.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Weapon</th>
+                  <th style="padding: 10px 12px;">Class</th>
+                  <th style="padding: 10px 12px;">Type</th>
+                  <th style="padding: 10px 12px;">Rarity rule</th>
+                </tr>
+              </thead>
+              <tbody>
+                {mythicWeapons.map((w) => (
+                  <tr style="border-bottom: 1px solid var(--line);">
+                    <td data-label="Weapon" style="padding: 10px 12px; font-weight: 700; color: #f43f5e;">{w.name}</td>
+                    <td data-label="Class" style="padding: 10px 12px; color: var(--muted);">{w.cls}</td>
+                    <td data-label="Type" style="padding: 10px 12px; color: var(--muted);">{w.type}</td>
+                    <td data-label="Rarity" style="padding: 10px 12px; color: #34d399;">Unforgeable · Legendary or Secret</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="full-weapon-tier-list" style="font-size: 1.3rem; color: #fff; margin: 0 0 16px;">Full Weapon Tier List</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 20px;">
+            Ranked the way the game is actually played: against other weapons of the same class, weighting obtainability as well as raw output. A weapon you cannot realistically get at your level does not belong at the top.
+          </p>
+
+          {weaponTiers.map((t) => (
+            <div style="margin-bottom: 26px;">
+              <div style={`background: #1d152c; border-left: 6px solid ${t.color}; padding: 10px 16px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;`}>
+                <span style={`font-size: 1.2rem; font-weight: 800; color: ${t.color};`}>{t.tier} TIER</span>
+                <span style="color: var(--muted); font-size: 0.85rem;">{t.label}</span>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.86rem; text-align: left;">
+                  <thead>
+                    <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                      <th style="padding: 9px 12px;">Weapon</th>
+                      <th style="padding: 9px 12px;">Class</th>
+                      <th style="padding: 9px 12px;">Source</th>
+                      <th style="padding: 9px 12px;">Note</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {t.weapons.map((w) => (
+                      <tr style="border-bottom: 1px solid var(--line);">
+                        <td data-label="Weapon" style="padding: 9px 12px; font-weight: 700; color: #fff;">{w.name}</td>
+                        <td data-label="Class" style="padding: 9px 12px; color: var(--muted);">{w.cls}</td>
+                        <td data-label="Source" style="padding: 9px 12px; color: {t.color}; font-weight: 600;">{w.grade}</td>
+                        <td data-label="Note" style="padding: 9px 12px; color: var(--muted); font-size: 0.82rem;">{w.note}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           ))}
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="forge-costs-and-materials" style="font-size: 1.25rem; color: #34d399; margin: 0 0 12px;">Forge Costs &amp; Materials</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Tier</th>
+                  <th style="padding: 10px 12px;">Gold</th>
+                  <th style="padding: 10px 12px;">Materials</th>
+                </tr>
+              </thead>
+              <tbody>
+                {forgeTiers.map((f) => (
+                  <tr style="border-bottom: 1px solid var(--line);">
+                    <td data-label="Tier" style="padding: 10px 12px; font-weight: 700; color: #fff;">{f.tier}</td>
+                    <td data-label="Gold" style="padding: 10px 12px; font-family: var(--font-mono); color: #c9a227;">{f.gold}</td>
+                    <td data-label="Materials" style="padding: 10px 12px; color: var(--muted);">{f.mats}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 14px 0 0;">
+            <strong style="color: #f5f3ff;">Cursed Essence is the real bottleneck.</strong> T2, T3 and T4 all need it and it drops more slowly than the tier-specific materials, so bank it early. Salvaged Metal and Moss Wolf Pelts come from the first zone's elite mobs; the higher-tier materials come from the acts that follow. See <a href="/adventures/" style="color: var(--accent); text-decoration: none;">adventures</a> for act-by-act routing.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="which-weapon-to-chase" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Which Weapon to Chase, per Class</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Class</th>
+                  <th style="padding: 10px 12px;">Endgame target</th>
+                  <th style="padding: 10px 12px;">Realistic step before it</th>
+                </tr>
+              </thead>
+              <tbody>
+                {perClass.map((p) => (
+                  <tr style="border-bottom: 1px solid var(--line);">
+                    <td data-label="Class" style="padding: 10px 12px; font-weight: 700; color: #fff;">{p.cls}</td>
+                    <td data-label="Endgame" style="padding: 10px 12px; color: #f43f5e;">{p.endgame}</td>
+                    <td data-label="Step" style="padding: 10px 12px; color: var(--muted);">{p.step}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <FaqSection items={faqItems} />
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <a href="/classes/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Class Guides &amp; Super Classes →
+          </a>
+          <a href="/gear/armor-sets/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Armor Sets &amp; Defense Buffs →
+          </a>
         </div>
-      </section>
 
-      <!-- Upgrading Weapons at the Blacksmith -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 id="weapon-sharpening-gem-inscription" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Weapon Sharpening & Gem Inscription</h2>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-          Taking any weapon to the Blacksmith allows slotting up to two elemental Rune Gems (Fire, Frost, or Lightning). Inscribing a Lightning Gem grants +8% Poise Break on every physical hit, while Frost Gems reduce enemy Turn Speed by 10%.
-        </p>
-        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">
-          <strong style="color: #34d399;">Pro Tip:</strong> For speedrunning Act 2 dungeons, prioritize slotting Lightning Gems into fast-hitting dual daggers or fist wraps to repeatedly interrupt enemy boss spell animations.
-        </p>
-      </section>
-
-      <!-- Navigation -->
-      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 id="explore-further-gear-guides" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Further Gear Guides</h3>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="/gear/armor-sets/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            ← Armor Sets & Set Bonuses Guide
-          </a>
-          <a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            → 21 Super Class Evolutions Guide
-          </a>
-          <a href="/calculator/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            → Simulate Weapon Damage in Calculator
-          </a>
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
         </div>
-      </section>
-          <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
-      <div class="ad-slot-footer">
-        <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
-        <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
-      </div>
+      </article>
 
-</article>
-
-      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/gear/weapons/" />
     </div>
   </div>
