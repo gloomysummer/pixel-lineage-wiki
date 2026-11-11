@@ -2,6 +2,13 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AdSlot from "../../components/AdSlot.astro";
 import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const TITLE = "Pixel Lineage Difficulty Modes: Adventure Scaling";
+const DESC = "Complete Pixel Lineage difficulty settings guide: Normal, Hard, and Nightmare scaling, enemy multipliers, Life token penalties, and Torment overview.";
 
 const difficultyModes = [
   {
@@ -21,12 +28,31 @@ const difficultyModes = [
     overview: "Introduces elite mob prefixes (Vampiric, Poise Breaker) requiring elemental potion usage and active shield management.",
   },
   {
-    name: "Heroic & Torment Scaling (Endgame Progression)",
-    levelRequirement: "Level 25+ (Act 3 Warden Cleared)",
-    enemyModifiers: "+100% to +200% Enemy HP, +60% to +150% Enemy ATK, Permanent Environmental Debuffs",
-    lootModifiers: "+120% Gold Multiplier, Ultra Sigil Drops Enabled, Tier-3 Artifacts",
-    deathPenalty: "Permadeath loss of 2 Life Tokens; severe gold penalty.",
-    overview: "The supreme test of character synergy. For full Torment I-III rules, enrage mechanics, and Ultra Sigil drops, see the dedicated Torment Guide.",
+    name: "Nightmare Mode (Elite Dungeon Scaling)",
+    levelRequirement: "Level 20+ (Act 3 Warden Cleared)",
+    enemyModifiers: "+100% Enemy HP, +60% Enemy ATK, Permanent Environmental Debuffs",
+    lootModifiers: "+100% Gold Multiplier, High-Tier Heirloom & Heartblood Drops Enabled",
+    deathPenalty: "Lose 1 Life Token; 30% Gold deduction on retreat.",
+    overview: "Endgame adventure setting required to farm elite race evolution items (such as Celestine, Nightborne, and Seraph Heirlooms in late Acts).",
+  },
+];
+
+const faqItems = [
+  {
+    question: "What are the main difficulty settings in Pixel Lineage?",
+    answer: "Pixel Lineage features three standard adventure difficulty tiers: Normal (Level 1+), Hard (Level 15+), and Nightmare (Level 20+). Each step increases enemy health, attack, and speed while unlocking higher-tier loot and rare race evolution Heirlooms.",
+  },
+  {
+    question: "What is the difference between Nightmare Mode and Torment Mode?",
+    answer: "Nightmare Mode is an adventure campaign difficulty used to farm high-tier race Heirlooms (such as Celestine in Act 9). Torment Mode is a separate high-stakes endgame modifier system with strict 2-Life limits, boss enrage timers, and Ultra Sigil farming. To learn how to unlock Torment, read our dedicated Torment Mode guide.",
+  },
+  {
+    question: "How do you unlock Hard and Nightmare difficulties?",
+    answer: "Hard difficulty unlocks after clearing Act 1 and visiting the Trainer's Shrine in Act 2 at Level 15+. Nightmare difficulty unlocks after defeating the Pinnacle Warden in Act 3 on Hard difficulty.",
+  },
+  {
+    question: "What happens when a character runs out of Life Tokens?",
+    answer: "Characters start with 3 Life Tokens. Every defeat in an adventure deducts 1 Life. If your token count hits zero, your character suffers permadeath: your current run resets to Level 1, though account-wide Lineage Rank buffs remain permanent.",
   },
 ];
 
@@ -34,11 +60,11 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "Pixel Lineage Difficulty Modes: Adventure Scaling",
-    description: "Complete Pixel Lineage difficulty settings guide: Normal, Hard, and Heroic dungeon scaling, enemy stat curves, life penalties, and loot multiplier formulas.",
+    headline: TITLE,
+    description: DESC,
     url: `${siteConfig.siteUrl}/adventures/difficulty/`,
     datePublished: "2026-10-18T12:00:00+00:00",
-    dateModified: "2026-11-10T05:40:30+00:00",
+    dateModified: "2026-11-12T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -56,17 +82,12 @@ const jsonLd = [
   },
 ];
 
-import MobileToc from "../../components/MobileToc.astro";
-import DualSidebar from "../../components/DualSidebar.astro";
-import { extractTocFromAstroUrl } from "../../utils/toc";
-
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
 
-
 <BaseLayout
-  title="Pixel Lineage Difficulty Modes: Adventure Scaling"
-  description="Complete Pixel Lineage difficulty settings guide: Normal, Hard, and Heroic dungeon scaling, enemy stat curves, life penalties, and loot multiplier formulas."
+  title={TITLE}
+  description={DESC}
   canonical="/adventures/difficulty/"
   jsonLd={jsonLd}
 >
@@ -86,25 +107,24 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
         Pixel Lineage Difficulty Modes: Adventure Scaling
       </h1>
-      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">
+      <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
         Comprehensive breakdown of world difficulty tiers in Pixel Lineage on Roblox. We analyze enemy stat multipliers, permadeath Life token mechanics, loot drop bonuses, and when to advance into higher difficulty brackets.
       </p>
 
       <!-- Dedicated Callout for Torment Mode Guide -->
       <div style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.35); border-left: 4px solid #f43f5e; border-radius: 6px; padding: 14px 18px; margin: 18px 0 0; font-size: 0.92rem; line-height: 1.6; color: var(--ink);">
-        <strong style="color: #f43f5e;">Looking for Torment Mode Details?</strong> For complete Torment I–III difficulty rules, boss enrage timers (+20% ATK every 4 turns), and Ultra Sigil drops, visit the dedicated <a href="/adventures/torment/" style="color: #f43f5e; font-weight: 700; text-decoration: underline;">Pixel Lineage Torment Mode Guide →</a>.
+        <strong style="color: #f43f5e;">Looking to Unlock Torment Mode?</strong> Torment is a dedicated high-risk endgame system with boss enrage timers and Ultra Sigil drops. For full unlock steps and rules, visit our dedicated <a href="/adventures/torment/" style="color: #f43f5e; font-weight: 700; text-decoration: underline;">Pixel Lineage Torment Mode Guide →</a>.
       </div>
     </header>
 
-        <!-- Mobile Table of Contents (≤980px) -->
-        <MobileToc tocHeadings={tocHeadings} />
-
+    <!-- Mobile Table of Contents (≤980px) -->
+    <MobileToc tocHeadings={tocHeadings} />
 
     <!-- Unique Hero Banner -->
     <div style="margin-bottom: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
       <img
         src="/images/features/feature_difficulty.webp"
-        alt="Pixel Lineage Difficulty Modes Normal Hard and Torment Stat Multipliers"
+        alt="Pixel Lineage Difficulty Modes Normal Hard and Nightmare Stat Multipliers"
         width="1200"
         height="675"
         style="width: 100%; height: auto; display: block;"
@@ -114,89 +134,99 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
-      <!-- Summary Callout -->
-      <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
-        <h2 id="the-risk-reward-calculus-in-permadeath-rpgs" style="font-size: 1.25rem; color: #f43f5e; margin: 0 0 12px;">The Risk-Reward Calculus in Permadeath RPGs</h2>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
-          Increasing difficulty in Pixel Lineage is not purely cosmetic. While higher difficulties severely escalate enemy attack power and turn initiative, they also unlock exclusive drop tiers—such as Ultra Sigils, Mythic weapon blueprints, and Tier-3 armor materials—that are mathematically unobtainable in Normal Mode.
-        </p>
-      </section>
+        <!-- Summary Callout -->
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 22px; margin-bottom: 36px;">
+          <h2 id="the-risk-reward-calculus-in-permadeath-rpgs" style="font-size: 1.25rem; color: #f43f5e; margin: 0 0 12px;">
+            The Risk-Reward Calculus in Permadeath RPGs
+          </h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Increasing difficulty in Pixel Lineage is essential for character evolution. Higher difficulty tiers escalate enemy attack power and turn initiative, but unlock exclusive drop tiers—including Stage 1 race Heirlooms, high-tier weapon blueprints, and superior gold multipliers.
+          </p>
+        </section>
 
-      <!-- Difficulties Breakdown -->
-      <section style="margin-bottom: 40px;">
-        <h2 id="detailed-difficulty-mode-comparison" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">Detailed Difficulty Mode Comparison</h2>
-        <div style="display: flex; flex-direction: column; gap: 24px;">
-          {difficultyModes.map((d) => (
-            <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px;">
-              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-                <h3 id="d-name" style="font-size: 1.3rem; color: #fff; margin: 0;">{d.name}</h3>
-                <span style="font-size: 0.8rem; background: #0d0a14; color: #34d399; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
-                  {d.levelRequirement}
-                </span>
-              </div>
-
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 12px; font-size: 0.85rem;">
-                <div style="background: #0d0a14; padding: 10px 12px; border-radius: 6px;">
-                  <span style="color: var(--muted); font-size: 0.75rem; display: block;">Enemy Multipliers</span>
-                  <strong style="color: #f43f5e;">{d.enemyModifiers}</strong>
-                </div>
-                <div style="background: #0d0a14; padding: 10px 12px; border-radius: 6px;">
-                  <span style="color: var(--muted); font-size: 0.75rem; display: block;">Loot & Gold Multiplier</span>
-                  <strong style="color: #c9a227;">{d.lootModifiers}</strong>
-                </div>
-              </div>
-
-        <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
-             对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
+        <!-- In-Content Ad -->
         <AdSlot zone="banner-300x250" label="Sponsored Intel" />
 
-              <div style="background: #0d0a14; padding: 10px 14px; border-radius: 6px; margin-bottom: 12px; font-size: 0.88rem;">
-                <strong style="color: #f43f5e;">Death & Wipe Penalty:</strong> <span style="color: var(--muted);">{d.deathPenalty}</span>
+        <!-- Difficulties Breakdown -->
+        <section style="margin-bottom: 40px;">
+          <h2 id="detailed-difficulty-mode-comparison" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 20px;">
+            Detailed Difficulty Mode Comparison
+          </h2>
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            {difficultyModes.map((d) => (
+              <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 22px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+                  <h3 style="font-size: 1.3rem; color: #fff; margin: 0;">{d.name}</h3>
+                  <span style="font-size: 0.8rem; background: #0d0a14; color: #34d399; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--line);">
+                    {d.levelRequirement}
+                  </span>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 12px; font-size: 0.85rem;">
+                  <div style="background: #0d0a14; padding: 10px 12px; border-radius: 6px;">
+                    <span style="color: var(--muted); font-size: 0.75rem; display: block;">Enemy Multipliers</span>
+                    <strong style="color: #f43f5e;">{d.enemyModifiers}</strong>
+                  </div>
+                  <div style="background: #0d0a14; padding: 10px 12px; border-radius: 6px;">
+                    <span style="color: var(--muted); font-size: 0.75rem; display: block;">Loot & Gold Multiplier</span>
+                    <strong style="color: #c9a227;">{d.lootModifiers}</strong>
+                  </div>
+                </div>
+
+                <div style="background: #0d0a14; padding: 10px 14px; border-radius: 6px; margin-bottom: 12px; font-size: 0.88rem;">
+                  <strong style="color: #f43f5e;">Death & Wipe Penalty:</strong> <span style="color: var(--muted);">{d.deathPenalty}</span>
+                </div>
+
+                <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
+                  <strong style="color: #fff;">Strategic Advice:</strong> {d.overview}
+                </p>
               </div>
+            ))}
+          </div>
+        </section>
 
-              <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
-                <strong style="color: #fff;">Strategic Advice:</strong> {d.overview}
-              </p>
-            </div>
-          ))}
+        <!-- Life Tokens & Permadeath Mechanics -->
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+          <h2 id="life-tokens-the-permadeath-safeguard" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">
+            Life Tokens: The Permadeath Safeguard
+          </h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Characters start with 3 Life Tokens. Every defeat in a dungeon deducts 1 Life Token. When your Life Token count hits 0, the character suffers True Death: the save file is wiped, returning your lineage to the village as a fresh Level 1 descendant.
+          </p>
+          <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+            <strong style="color: #34d399;">Replenishing Lives:</strong> Life Tokens can be replenished by purchasing Restoration Elixirs from the Village Alchemist for 2,500 Gold or by completing weekly Guild Raid milestones.
+          </p>
+        </section>
+
+        <!-- Navigation -->
+        <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 36px;">
+          <h3 id="explore-related-adventure-guides" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">
+            Explore Related Adventure Guides
+          </h3>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="/adventures/torment/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center;">
+              ← Torment Mode In-Depth Walkthrough
+            </a>
+            <a href="/adventures/lineage-ranks/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center;">
+              → Lineage Ranks & Account Progression Guide
+            </a>
+            <a href="/races/evolution/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center;">
+              → Race Evolution Heirloom Drops
+            </a>
+          </div>
+        </section>
+
+        <!-- Frequently Asked Questions Accordion -->
+        <FaqSection items={faqItems} />
+
+        <!-- Footer Ads -->
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
         </div>
-      </section>
+      </article>
 
-      <!-- Life Tokens & Permadeath Mechanics -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 id="life-tokens-the-permadeath-safeguard" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 14px;">Life Tokens: The Permadeath Safeguard</h2>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-          Characters start with 3 Life Tokens. Every defeat in a dungeon deducts 1 Life Token. When your Life Token count hits 0, the character suffers True Death: the save file is wiped, returning your lineage to the village as a fresh Level 1 descendant.
-        </p>
-        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">
-          <strong style="color: #34d399;">Replenishing Lives:</strong> Life Tokens can be replenished by purchasing Restoration Elixirs from the Village Alchemist for 2,500 Gold or by completing weekly Guild Raid milestones.
-        </p>
-      </section>
-
-      <!-- Navigation -->
-      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 id="explore-related-adventure-guides" style="font-size: 1.1rem; color: #fff; margin: 0 0 10px;">Explore Related Adventure Guides</h3>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="/adventures/torment/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            ← Torment Mode In-Depth Walkthrough
-          </a>
-          <a href="/adventures/lineage-ranks/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            → Lineage Ranks & Account Progression Guide
-          </a>
-          <a href="/calculator/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            → Simulate Boss Survival in Calculator
-          </a>
-        </div>
-      </section>
-          <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
-      <div class="ad-slot-footer">
-        <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
-        <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
-      </div>
-
-</article>
-
-      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <!-- Dual Sidebar V3 -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/adventures/difficulty/" />
     </div>
   </div>

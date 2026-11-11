@@ -2,6 +2,13 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AdSlot from "../../components/AdSlot.astro";
 import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const TITLE = "Pixel Lineage Torment Mode: How to Unlock & Loot";
+const DESC = "Complete guide to unlocking Torment mode in Pixel Lineage: Act 2 clear requirements, Level 20 capstone, enemy multipliers, enrage timers, and Ultra Sigil loot.";
 
 const tormentLevels = [
   {
@@ -24,14 +31,38 @@ const tormentLevels = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "How do you unlock Torment Mode in Pixel Lineage?",
+    answer: "To unlock Torment Mode in Pixel Lineage, you must complete Act 1 (Sunmeadow Wilds) and Act 2 (The Dungeon) on Normal difficulty, reach character Level 20, and unlock your permanent Super Class at the Trainer's Shrine. Once these prerequisites are met, interact with the expedition map at the castle gates and toggle difficulty from Normal to Torment.",
+  },
+  {
+    question: "What happens when a character loses all Lives in Torment Mode?",
+    answer: "Losing all Lives in Torment Mode results in permadeath for that specific dungeon expedition, resetting your character to the Town Courtyard. While equipment and character levels are retained, all unbanked gold and temporary dungeon floor keys are lost permanently. Players must prepare thoroughly with optimal gear and potions before committing to high-stakes Torment runs.",
+  },
+  {
+    question: "What are the loot bonuses for clearing Torment III The Abyss?",
+    answer: "Torment III provides a +200% Gold multiplier, guaranteed Ultra Sigil drops upon defeating the Pinnacle Altar Warden, and access to Tier-5 Mythic Artifact Caches containing the highest-attribute weapons in the game for endgame raiders. These exclusive end-game rewards make Torment III the premier farming destination for hardcore raid alliances.",
+  },
+  {
+    question: "How do enemy enrage timers function in Torment boss fights?",
+    answer: "Torment bosses gain an unremovable +20% damage buff every four combat turns. This stacking enrage mechanic discourages passive stalling strategies, forcing raid teams to bring high-burst damage dealers to burn bosses down quickly before enrage values wipe the party. Teams that fail to meet strict damage per turn thresholds will inevitably get overwhelmed by boosted boss attacks.",
+  },
+  {
+    question: "What party composition is recommended for clearing Torment Mode?",
+    answer: "The optimal four-player composition consists of one Sentinel Warrior tank, one Cleric healer for debuff cleansing, one Fist or Monk for poise interrupts, and one high-DPS burst specialist like an Assassin Thief or Corsair Archer to manage enrage timers. Coordinated party synergy and balanced role distribution are absolutely essential for surviving high Torment tiers.",
+  },
+];
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    datePublished: "2026-10-18T12:00:00+00:00",
-    headline: "Pixel Lineage Torment Mode: Difficulty & Loot Guide",
-    description: "Complete Pixel Lineage Torment mode guide: unlock requirements, enemy HP/ATK multipliers, permadeath lives penalty, and Ultra Sigil loot drops on Roblox.",
+    headline: TITLE,
+    description: DESC,
     url: `${siteConfig.siteUrl}/adventures/torment/`,
+    datePublished: "2026-10-18T12:00:00+00:00",
+    dateModified: "2026-11-12T12:00:00+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -49,39 +80,12 @@ const jsonLd = [
   },
 ];
 
-import MobileToc from "../../components/MobileToc.astro";
-import DualSidebar from "../../components/DualSidebar.astro";
-import { extractTocFromAstroUrl } from "../../utils/toc";
-import FaqSection from "../../components/FaqSection.astro";
-
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
-
-
-const faqItems = [
-  {
-    "question": "What happens when a character loses all Lives in Torment Mode?",
-    "answer": "Losing all Lives in Torment Mode results in permadeath for that specific dungeon expedition, resetting your character to the Town Courtyard. While equipment and character levels are retained, all unbanked gold and temporary dungeon floor keys are lost permanently. Players must prepare thoroughly with optimal gear and potions before committing to high-stakes Torment runs."
-  },
-  {
-    "question": "What are the loot bonuses for clearing Torment III The Abyss?",
-    "answer": "Torment III provides a +200% Gold multiplier, guaranteed Ultra Sigil drops upon defeating the Pinnacle Altar Warden, and access to Tier-5 Mythic Artifact Caches containing the highest-attribute weapons in the game for endgame raiders. These exclusive end-game rewards make Torment III the premier farming destination for hardcore raid alliances."
-  },
-  {
-    "question": "How do enemy enrage timers function in Torment boss fights?",
-    "answer": "Torment bosses gain an unremovable +20% damage buff every four combat turns. This stacking enrage mechanic discourages passive stalling strategies, forcing raid teams to bring high-burst damage dealers to burn bosses down quickly before enrage values wipe the party. Teams that fail to meet strict damage per turn thresholds will inevitably get overwhelmed by boosted boss attacks."
-  },
-  {
-    "question": "What party composition is recommended for clearing Torment Mode?",
-    "answer": "The optimal four-player composition consists of one Sentinel Warrior tank, one Cleric healer for debuff cleansing, one Fist or Monk for poise interrupts, and one high-DPS burst specialist like an Assassin Thief or Corsair Archer to manage enrage timers. Coordinated party synergy and balanced role distribution are absolutely essential for surviving high Torment tiers."
-  }
-];
 ---
 
-
-
 <BaseLayout
-  title="Pixel Lineage Torment Mode: Difficulty Guide"
-  description="Complete Pixel Lineage Torment mode guide: unlock requirements, enemy HP/ATK multipliers, permadeath lives penalty, and Ultra Sigil loot drops on Roblox."
+  title={TITLE}
+  description={DESC}
   canonical="/adventures/torment/"
   jsonLd={jsonLd}
 >
@@ -108,99 +112,133 @@ const faqItems = [
       <!-- Direct Answer Summary Box -->
       <div style="background: rgba(244, 63, 94, 0.1); border-left: 4px solid #f43f5e; padding: 14px 18px; border-radius: 0 8px 8px 0; margin-top: 18px;">
         <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #f43f5e; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
-          ⚡ Direct Answer · Torment Mode System Summary
+          ⚡ Direct Answer · How to Unlock & Torment System Summary
         </div>
         <p style="margin: 0 0 8px; font-size: 0.94rem; color: #f0eaf4; line-height: 1.6;">
-          <strong>Torment Mode</strong> is the pinnacle high-risk endgame system in <strong>Pixel Lineage</strong>, unlocked after clearing Act 2 (The Catacombs). Players choose across 3 difficulty tiers: <strong>Torment I (Lv 20)</strong>, <strong>Torment II (Lv 30)</strong>, and <strong>Torment III The Abyss (Lv 40+)</strong> to farm exclusive endgame loot.
+          <strong>How to Unlock Torment:</strong> Clear <strong>Act 1 (Sunmeadow Wilds)</strong> and <strong>Act 2 (The Dungeon)</strong>, unlock your <strong>Super Class at the Trainer's Shrine</strong>, and reach <strong>character Level 20</strong>. Then toggle the difficulty selector on the Castle Expedition Map from Normal to Torment.
         </p>
         <p style="margin: 0 0 8px; font-size: 0.88rem; color: var(--muted); line-height: 1.5;">
-          <strong>Enrage Timers & Penalty Rules:</strong> Bosses gain an unremovable +20% damage buff every 4 combat turns to stop stalling. Expeditions restrict you to 2 Lives, and team wipes forfeit unbanked dungeon gold. Potion recovery is reduced by 50%.
+          <strong>Tiers & Enrage Rules:</strong> Progression spans <strong>Torment I (Lv 20)</strong>, <strong>Torment II (Lv 30)</strong>, and <strong>Torment III The Abyss (Lv 40+)</strong>. Bosses gain an unremovable +20% damage buff every 4 combat turns. Expeditions restrict you to 2 Lives, and potion healing is cut by 50%.
         </p>
         <p style="margin: 0; font-size: 0.88rem; color: var(--muted); line-height: 1.5;">
-          <strong>Torment Loot Multipliers:</strong> Yields +50% to +200% gold multipliers, guaranteed <em>Ultra Sigil</em> drops from Pinnacle Altar Wardens, and Tier-5 Mythic weapon blueprints for legendary equipment crafting.
+          <strong>Exclusive Rewards:</strong> Torment is the primary source for <strong>Ultra Sigils</strong> (required to awaken Ultra Classes) and Tier-5 Mythic weapon blueprints.
         </p>
       </div>
     </header>
 
-        <!-- Mobile Table of Contents (≤980px) -->
-        <MobileToc tocHeadings={tocHeadings} />
-
+    <!-- Mobile Table of Contents (≤980px) -->
+    <MobileToc tocHeadings={tocHeadings} />
 
     <div class="article-layout has-dual-sidebar">
       <article class="article-main" style="line-height: 1.7; color: var(--ink);">
-      <!-- Core Mechanics Summary -->
+        <!-- In-Content Ad -->
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <!-- Section 1: How to Unlock Torment in Pixel Lineage -->
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="how-to-unlock-torment-in-pixel-lineage" style="margin: 0 0 12px; font-size: 1.3rem; color: #f43f5e;">
+            How to Unlock Torment in Pixel Lineage
+          </h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Torment difficulty is locked behind specific campaign milestones to prevent low-level characters from suffering immediate permadeath wipes. Complete these 4 mandatory steps to unlock Torment:
+          </p>
+
+          <ol style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; padding-left: 20px; margin: 0 0 16px;">
+            <li style="margin-bottom: 8px;">
+              <strong style="color: #fff;">Clear Act 1 (Sunmeadow Wilds):</strong> Defeat the 10th-floor boss on Normal difficulty to open the pathway to Act 2.
+            </li>
+            <li style="margin-bottom: 8px;">
+              <strong style="color: #fff;">Clear Act 2 (The Dungeon):</strong> Navigate the Catacombs and locate the <em>Trainer's Shrine</em> route card (Forgotten Dojo).
+            </li>
+            <li style="margin-bottom: 8px;">
+              <strong style="color: #fff;">Awaken Your Super Class (Level 15+):</strong> Speak to the Ancient Knight at the Trainer's Shrine to choose 1 of 3 permanent Super Class evolutions.
+            </li>
+            <li style="margin-bottom: 8px;">
+              <strong style="color: #fff;">Reach Character Level 20:</strong> Level 20 serves as the hard gating threshold for Torment I.
+            </li>
+            <li>
+              <strong style="color: #fff;">Toggle Torment at Castle Gates:</strong> Return to the town courtyard, interact with the Expedition Map, and switch the difficulty slider from Normal/Hard to Torment.
+            </li>
+          </ol>
+        </section>
+
+        <!-- Section 2: What Makes Torment Mode Lethal -->
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+          <h2 id="what-makes-torment-mode-lethal" style="margin: 0 0 8px; font-size: 1.2rem; color: #fff;">
+            What Makes Torment Mode Lethal?
+          </h2>
+          <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">
+            In standard adventure acts, falling in combat returns your character to the village at the cost of 1 Life token. In Torment Mode, dungeon hazards impose severe environmental penalties—including permanent burning damage, reduced potion efficacy by 50%, and double life deductions on team wipes.
+          </p>
+        </section>
+
+        <!-- Section 3: Torment Tier Breakdown -->
+        <section style="margin-bottom: 36px;">
+          <h2 id="torment-difficulty-levels-loot-scalings" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">
+            Torment Difficulty Levels & Loot Scalings
+          </h2>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            {tormentLevels.map((t) => (
+              <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
+                <h3 style="font-size: 1.2rem; color: #c9a227; margin: 0 0 8px;">{t.level}</h3>
+                <div style="font-size: 0.9rem; color: #f43f5e; margin-bottom: 6px;">
+                  <strong>Enemy Modifiers:</strong> {t.enemyBuffs}
+                </div>
+                <div style="font-size: 0.9rem; color: #34d399; margin-bottom: 10px;">
+                  <strong>Reward Multipliers:</strong> {t.dropBonuses}
+                </div>
+                <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0; background: #0d0a14; padding: 10px 14px; border-radius: 6px;">
+                  <strong>Tactical Key:</strong> {t.survivalStrategy}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- Best Torment Builds -->
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
+          <h2 id="recommended-builds-for-torment-survival" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">
+            Recommended Builds for Torment Survival
+          </h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Glass-cannon glass builds without defensive contingency layers fail instantly in Torment I and beyond. The most successful solo and group setups include:
+          </p>
+          <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
+            <li style="margin-bottom: 8px;"><strong>Sentinel + Dwarf:</strong> Stacks 75% physical mitigation and passive HP pools to absorb Torment boss crits.</li>
+            <li style="margin-bottom: 8px;"><strong>Hexer + Nightborn:</strong> Melts boss HP percentages from a distance while keeping safe from close-range cleave attacks.</li>
+            <li><strong>Cleric + Siren:</strong> The definitive support backbone providing constant cleanse pulses and turn-order priority.</li>
+          </ul>
+        </section>
+
+        <!-- Navigation & Links -->
+        <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 36px;">
+          <h3 id="continue-exploring-adventures" style="font-size: 1.1rem; color: var(--ink); margin: 0 0 10px;">
+            Continue Exploring Adventures
+          </h3>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="/adventures/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center;">
+              ← Return to Adventures Overview
+            </a>
+            <a href="/adventures/difficulty/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center;">
+              → Adventure Difficulty Scaling (Normal/Hard/Nightmare)
+            </a>
+            <a href="/tier-list/class-tier-list/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center;">
+              → View Class Tier Rankings
+            </a>
+          </div>
+        </section>
       
+        <!-- Frequently Asked Questions Accordion -->
+        <FaqSection items={faqItems} />
 
-        <!-- 广告位 1（300x250）：高停留内容锚点后置投放 —— 速查/视频之后、正文之前
-             对标 invokyr.wiki src/pages/guide/[slug].astro:441 -->
-        <AdSlot zone="banner-300x250" label="Sponsored Intel" /><section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #f43f5e; border-radius: 8px; padding: 20px; margin-bottom: 32px;">
-        <h2 id="what-makes-torment-mode-lethal" style="margin: 0 0 8px; font-size: 1.2rem; color: #f43f5e;">What Makes Torment Mode Lethal?</h2>
-        <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">
-          In standard adventure acts, falling in combat returns your character to the village at the cost of 1 Life token. In Torment Mode, dungeon hazards impose severe environmental penalties—including permanent burning damage, reduced potion efficacy by 50%, and double life deductions on team wipes.
-        </p>
-      </section>
-
-      <!-- Torment Tier Breakdown -->
-      <section style="margin-bottom: 36px;">
-        <h2 id="torment-difficulty-levels-loot-scalings" style="font-size: 1.4rem; color: var(--ink); margin: 0 0 16px;">Torment Difficulty Levels & Loot Scalings</h2>
-        <div style="display: flex; flex-direction: column; gap: 16px;">
-          {tormentLevels.map((t) => (
-            <div style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-              <h3 id="t-level" style="font-size: 1.2rem; color: #c9a227; margin: 0 0 8px;">{t.level}</h3>
-              <div style="font-size: 0.9rem; color: #f43f5e; margin-bottom: 6px;">
-                <strong>Enemy Modifiers:</strong> {t.enemyBuffs}
-              </div>
-              <div style="font-size: 0.9rem; color: #34d399; margin-bottom: 10px;">
-                <strong>Reward Multipliers:</strong> {t.dropBonuses}
-              </div>
-              <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0; background: #0d0a14; padding: 10px 14px; border-radius: 6px;">
-                <strong>Tactical Key:</strong> {t.survivalStrategy}
-              </p>
-            </div>
-          ))}
+        <!-- Footer Ads -->
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
         </div>
-      </section>
+      </article>
 
-      <!-- Best Torment Builds -->
-      <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 36px;">
-        <h2 id="recommended-builds-for-torment-survival" style="font-size: 1.3rem; color: var(--ink); margin: 0 0 16px;">Recommended Builds for Torment Survival</h2>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
-          Glass-cannon glass builds without defensive contingency layers fail instantly in Torment I and beyond. The most successful solo and group setups include:
-        </p>
-        <ul style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 20px; margin: 0;">
-          <li style="margin-bottom: 8px;"><strong>Sentinel + Dwarf:</strong> Stacks 75% physical mitigation and passive HP pools to absorb Torment boss crits.</li>
-          <li style="margin-bottom: 8px;"><strong>Hexer + Nightborn:</strong> Melts boss HP percentages from a distance while keeping safe from close-range cleave attacks.</li>
-          <li><strong>Cleric + Siren:</strong> The definitive support backbone providing constant cleanse pulses and turn-order priority.</li>
-        </ul>
-      </section>
-
-      <!-- Navigation & Links -->
-      <section style="background: #0d0a14; border: 1px solid var(--line); border-radius: 8px; padding: 20px;">
-        <h3 id="continue-exploring-adventures" style="font-size: 1.1rem; color: var(--ink); margin: 0 0 10px;">Continue Exploring Adventures</h3>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="/adventures/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            ← Return to Adventures Overview
-          </a>
-          <a href="/tier-list/class-tier-list/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            → View Class Tier Rankings
-          </a>
-          <a href="/gear/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
-            → Gear & Armor Sets Guide
-          </a>
-        </div>
-      </section>
-    
-      <!-- Frequently Asked Questions Accordion -->
-      <FaqSection items={faqItems} />
-          <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
-      <div class="ad-slot-footer">
-        <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
-        <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
-      </div>
-
-</article>
-
-      <!-- Dual Sidebar V3 (ON THIS PAGE + EXPLORE THE WIKI) -->
+      <!-- Dual Sidebar V3 -->
       <DualSidebar tocHeadings={tocHeadings} currentUrl="/adventures/torment/" />
     </div>
   </div>
