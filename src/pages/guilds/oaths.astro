@@ -30,6 +30,10 @@ const oaths = [
 
 const faqItems = [
   {
+    question: "Which is the best Oath in Pixel Lineage?",
+    answer: "The best Oath depends on your archetype: Oath of the Vanguard is best for Warrior and Fist tanks (+15% Physical DR and counter-attack); Oath of the Arcanum is best for Mage and Bard (+15% Magic Damage and ally critical healing); and Oath of the Shadowveil is best for Thief and Archer (+12% Critical Rate and dungeon snare immunity)."
+  },
+  {
     question: "What are Oaths in Pixel Lineage?",
     answer: "Oaths are permanent guild pledges sworn at the Guild Hall altar upon reaching Reputation Tier 2. Each Oath grants distinct combat passives—like Vanguard's +15% Physical DR or Shadowveil's +12% Crit—at the expense of a tactical drawback."
   },
@@ -52,8 +56,8 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "Article",
     datePublished: "2026-10-18T12:00:00+00:00",
-    headline: "Pixel Lineage Oaths Guide: Guild Pledges & Buffs",
-    description: "Complete Pixel Lineage Oaths guide: pledge costs, permanent character stat buffs, trade-offs, and optimal class alignment in guild raids.",
+    headline: "Pixel Lineage Oaths: Best Guild Pledges & Buffs",
+    description: "Complete Pixel Lineage Oaths guide: pledge costs, best guild oaths for every class, Vanguard/Arcanum/Shadowveil buffs, drawbacks, and how to renounce.",
     url: `${siteConfig.siteUrl}/guilds/oaths/`,
     publisher: {
       "@type": "Organization",
@@ -81,8 +85,8 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
 
 <BaseLayout
-  title="Pixel Lineage Oaths Guide: Guild Pledges & Buffs"
-  description="Complete Pixel Lineage Oaths guide: pledge costs, permanent character stat buffs, trade-offs, and optimal class alignment in guild raids."
+  title="Pixel Lineage Oaths: Best Guild Pledges & Buffs"
+  description="Complete Pixel Lineage Oaths guide: pledge costs, best guild oaths for every class, Vanguard/Arcanum/Shadowveil buffs, drawbacks, and how to renounce."
   canonical="/guilds/oaths/"
   jsonLd={jsonLd}
 >
