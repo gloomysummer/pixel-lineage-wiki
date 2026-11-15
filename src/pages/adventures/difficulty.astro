@@ -8,7 +8,7 @@ import { extractTocFromAstroUrl } from "../../utils/toc";
 import FaqSection from "../../components/FaqSection.astro";
 
 const TITLE = "Pixel Lineage Difficulty Modes: Adventure Scaling";
-const DESC = "Complete Pixel Lineage difficulty settings guide: Normal, Hard, and Nightmare scaling, enemy multipliers, Life token penalties, and Torment overview.";
+const DESC = "Complete Pixel Lineage difficulty settings guide: Normal, Hard, and Nightmare scaling, enemy multipliers, Life token penalties, and permadeath mechanics.";
 
 const difficultyModes = [
   {
@@ -43,8 +43,8 @@ const faqItems = [
     answer: "Pixel Lineage features three standard adventure difficulty tiers: Normal (Level 1+), Hard (Level 15+), and Nightmare (Level 20+). Each step increases enemy health, attack, and speed while unlocking higher-tier loot and rare race evolution Heirlooms.",
   },
   {
-    question: "What is the difference between Nightmare Mode and Torment Mode?",
-    answer: "Nightmare Mode is an adventure campaign difficulty used to farm high-tier race Heirlooms (such as Celestine in Act 9). Torment Mode is a separate high-stakes endgame modifier system with strict 2-Life limits, boss enrage timers, and Ultra Sigil farming. To learn how to unlock Torment, read our dedicated Torment Mode guide.",
+    question: "How does Nightmare difficulty differ from standard campaign runs?",
+    answer: "Nightmare Mode escalates enemy health (+100%) and attack power (+60%) while applying permanent environmental debuffs. It is the premier adventure difficulty required to farm high-tier race evolution Heirlooms (such as Celestine, Nightborne, and Seraph) across late-act dungeons.",
   },
   {
     question: "How do you unlock Hard and Nightmare difficulties?",
@@ -111,9 +111,9 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
         Comprehensive breakdown of world difficulty tiers in Pixel Lineage on Roblox. We analyze enemy stat multipliers, permadeath Life token mechanics, loot drop bonuses, and when to advance into higher difficulty brackets.
       </p>
 
-      <!-- Dedicated Callout for Torment Mode Guide -->
-      <div style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.35); border-left: 4px solid #f43f5e; border-radius: 6px; padding: 14px 18px; margin: 18px 0 0; font-size: 0.92rem; line-height: 1.6; color: var(--ink);">
-        <strong style="color: #f43f5e;">Looking to Unlock Torment Mode?</strong> Torment is a dedicated high-risk endgame system with boss enrage timers and Ultra Sigil drops. For full unlock steps and rules, visit our dedicated <a href="/adventures/torment/" style="color: #f43f5e; font-weight: 700; text-decoration: underline;">Pixel Lineage Torment Mode Guide →</a>.
+      <!-- Direct Answer Box for Adventure Difficulties -->
+      <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-left: 4px solid #f59e0b; border-radius: 6px; padding: 14px 18px; margin: 18px 0 0; font-size: 0.92rem; line-height: 1.6; color: var(--ink);">
+        <strong style="color: #f59e0b;">Adventure Difficulty Summary:</strong> Pixel Lineage features three progressive dungeon difficulties: <strong>Normal</strong> (Lv 1+, standard loot and 1.0x stats), <strong>Hard</strong> (Lv 15+, +35% enemy HP, +40% gold), and <strong>Nightmare</strong> (Lv 20+, +100% enemy HP, unlocks high-tier race Heirlooms). Each wipe consumes 1 of your 3 shared Life Tokens.
       </div>
     </header>
 
@@ -204,8 +204,8 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
             Explore Related Adventure Guides
           </h3>
           <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-            <a href="/adventures/torment/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center;">
-              ← Torment Mode In-Depth Walkthrough
+            <a href="/adventures/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center;">
+              ← All Dungeon Acts Progression Guide
             </a>
             <a href="/adventures/lineage-ranks/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; min-height: 44px; display: inline-flex; align-items: center;">
               → Lineage Ranks & Account Progression Guide

@@ -93,16 +93,6 @@ export const CHANNELS: Channel[] = [
     ],
   },
   {
-    id: "pets",
-    title: "Pets & Ranch",
-    shortTitle: "Pets",
-    url: "/pets/",
-    color: "#38bdf8",
-    guides: [
-      { id: "pets-hub", title: "Pets, Eggs & Fusing", url: "/pets/" },
-    ],
-  },
-  {
     id: "gear",
     title: "Arsenal & Gear",
     shortTitle: "Gear",
@@ -113,6 +103,7 @@ export const CHANNELS: Channel[] = [
       { id: "weapons", title: "Weapons & Scaling Ranks", url: "/gear/weapons/" },
       { id: "armor-sets", title: "Armor Sets & Defense Buffs", url: "/gear/armor-sets/" },
       { id: "legendary-powers", title: "Legendary Powers & Affixes", url: "/gear/legendary-powers/" },
+      { id: "pets", title: "Pets, Eggs & Fusing", url: "/pets/" },
     ],
   },
   {
@@ -174,6 +165,9 @@ export function getChannelByGuideUrl(currentUrl: string): Channel {
   }
   if (norm.startsWith('/combat/')) {
     return CHANNELS.find((c) => c.id === 'adventures') || CHANNELS[0];
+  }
+  if (norm.startsWith('/pets/')) {
+    return CHANNELS.find((c) => c.id === 'gear') || CHANNELS[0];
   }
   return CHANNELS[0];
 }
