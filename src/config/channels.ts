@@ -93,6 +93,16 @@ export const CHANNELS: Channel[] = [
     ],
   },
   {
+    id: "pets",
+    title: "Pets & Ranch",
+    shortTitle: "Pets",
+    url: "/pets/",
+    color: "#38bdf8",
+    guides: [
+      { id: "pets-hub", title: "Pets, Eggs & Fusing", url: "/pets/" },
+    ],
+  },
+  {
     id: "gear",
     title: "Arsenal & Gear",
     shortTitle: "Gear",

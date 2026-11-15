@@ -1,0 +1,412 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+const TITLE = "Pixel Lineage Pets: Eggs, Rarity & Fusing";
+const DESC = "Pixel Lineage pets hatch from eggs at The Ranch. All 8 families, 24 pets, 5 rarity tiers, the 6 abilities, fusing rules and the 3-charge battle cycle.";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: TITLE,
+    description: DESC,
+    url: `${siteConfig.siteUrl}/pets/`,
+    datePublished: "2026-11-16T01:20:00+00:00",
+    dateModified: "2026-11-16T01:20:00+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Pets", item: `${siteConfig.siteUrl}/pets/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How do you get pets in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Eggs drop while adventuring — from fights, elites, bosses and treasure — and hatch at The Ranch just outside the castle wall. Each egg carries one family, and a random pet of that family climbs out with three abilities rolled from its family pool.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How many pets are in Pixel Lineage?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Eight families with three pets each, twenty-four pets in total: Canine, Feline, Avian, Reptile, Aquatic, Spooky, Woodland and Automaton.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How do you get Legendary and Divine pets?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Only by fusing. Two pets of the same family and the same rarity fuse into one pet of the next rarity up, so a Divine pet is the end of a fusion chain rather than an egg drop.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How many pets can you equip at once?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "One pet per hero. The pet cannot be targeted and never dies, which makes it a free damage and utility slot rather than a liability.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What do the egg patterns mean?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The egg's markings show its rarity before you hatch it: spots for Common, green stripes for Uncommon, and a blue zigzag for Rare.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What happens at 3 charges in battle?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Every round the pet bites your target and gains 1 charge. At 3 charges it spends them on one of its unlocked abilities instead of biting, or pounces for double bite damage.",
+        },
+      },
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    question: "How do you get pets in Pixel Lineage?",
+    answer: "Eggs drop while adventuring from fights, elites, bosses and treasure, then hatch at The Ranch outside the castle wall. Each egg carries one family and produces a random pet of that family with three rolled abilities.",
+  },
+  {
+    question: "How many pets are in Pixel Lineage?",
+    answer: "Eight families with three pets each — twenty-four pets total: Canine, Feline, Avian, Reptile, Aquatic, Spooky, Woodland and Automaton.",
+  },
+  {
+    question: "How do you get Legendary and Divine pets?",
+    answer: "Only through fusing. Two pets of the same family and rarity fuse into the next rarity, so the top two tiers never come straight out of an egg.",
+  },
+  {
+    question: "How many pets can you equip at once?",
+    answer: "One per hero. The pet cannot be hit and never dies, so it costs you nothing in survivability.",
+  },
+  {
+    question: "What do the egg patterns mean?",
+    answer: "Spots mean Common, green stripes mean Uncommon, and a blue zigzag means Rare. You can read the rarity before hatching.",
+  },
+  {
+    question: "What happens at 3 charges in battle?",
+    answer: "The pet bites each round for 1 charge. At 3 charges it uses one of its unlocked abilities instead, or pounces for double bite damage.",
+  },
+];
+
+const rarityRows = [
+  { tier: "Common", maxLevel: "30", abilities: "1", color: "#9ca3af" },
+  { tier: "Uncommon", maxLevel: "50", abilities: "2", color: "#34d399" },
+  { tier: "Rare", maxLevel: "70", abilities: "2", color: "#38bdf8" },
+  { tier: "Legendary", maxLevel: "90", abilities: "3", color: "#c9a227" },
+  { tier: "Divine", maxLevel: "100", abilities: "3", color: "#f43f5e" },
+];
+
+const families = [
+  { name: "Canine", pets: "Scruffy Pup · Wolf Cub · Frost Hound", abilities: "Attack, Savage, Decoy, Heal" },
+  { name: "Feline", pets: "Tabby Kitten · Shadow Cat · Sabre Lynx", abilities: "Attack, Savage, Electric, Decoy" },
+  { name: "Avian", pets: "Robin · Owlet · Phoenix Chick", abilities: "Heal, Energy Heal, Attack, Electric" },
+  { name: "Reptile", pets: "Gecko · Snap Turtle · Wyrmling", abilities: "Savage, Decoy, Attack, Heal" },
+  { name: "Aquatic", pets: "Bubblefish · Axolotl · Baby Kraken", abilities: "Heal, Energy Heal, Electric, Decoy" },
+  { name: "Spooky", pets: "Ghostie · Batling · Pumpkin Jack", abilities: "Energy Heal, Electric, Savage, Attack" },
+  { name: "Woodland", pets: "Bunny · Hedgehog · Moss Fawn", abilities: "Heal, Energy Heal, Decoy, Savage" },
+  { name: "Automaton", pets: "Clock Beetle · Tin Bot · Gear Golem", abilities: "Electric, Attack, Decoy, Energy Heal" },
+];
+
+const abilities = [
+  { name: "Heal", effect: "Patches you up when you are hurt.", role: "Sustain" },
+  { name: "Energy Heal", effect: "Gives you +1 Energy, sometimes +2.", role: "Tempo" },
+  { name: "Attack", effect: "Its bites hit much harder.", role: "Damage" },
+  { name: "Electric", effect: "A shock that may STUN the enemy.", role: "Control" },
+  { name: "Decoy", effect: "Draws the enemy's eye — you are FORTIFIED this round.", role: "Defense" },
+  { name: "Savage", effect: "A vicious strike that may POISON the enemy.", role: "Damage over time" },
+];
+---
+
+<BaseLayout title={TITLE} description={DESC} canonical="/pets/" jsonLd={jsonLd}>
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+          <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+          <span class="separator" style="margin: 0 8px;">/</span>
+          <span class="current">Pets</span>
+        </nav>
+
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #38bdf8; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            8 Families · 24 Pets · 5 Rarity Tiers
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Pets: Eggs, Rarity &amp; Fusing
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            Pets hatch from eggs at The Ranch and fight beside your hero without ever taking a hit. Here is the whole system: the eight families, all twenty-four pets, what each rarity unlocks, and how fusing turns duplicates into Divine pets.
+          </p>
+
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer
+            </div>
+            <p style="margin: 0; font-size: 0.94rem; color: #e8e2f2; line-height: 1.6;">
+              <strong>Eggs drop while adventuring</strong> and hatch at <strong>The Ranch</strong> outside the castle wall. There are <strong>8 families × 3 pets = 24 pets</strong> across <strong>5 rarity tiers</strong> (Common 30, Uncommon 50, Rare 70, Legendary 90, Divine 100). Equip <strong>one pet per hero</strong>; it bites for 1 charge a round and spends <strong>3 charges</strong> on an ability. <strong>Legendary and Divine only come from fusing</strong> two pets of the same family and rarity.
+            </p>
+          </div>
+        </header>
+
+        <MobileToc tocHeadings={tocHeadings} />
+
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="how-the-pet-loop-works" style="font-size: 1.3rem; color: #38bdf8; margin: 0 0 12px;">How the Pet Loop Works</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 14px;">
+            Four steps, in order. Skipping the third one is the most common reason people stall with a full egg inventory and no strong pet.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Step</th>
+                  <th style="padding: 10px 12px;">Where</th>
+                  <th style="padding: 10px 12px;">What You Get</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Step" style="padding: 10px 12px; font-weight: 700; color: #fff;">1. Collect eggs</td>
+                  <td data-label="Where" style="padding: 10px 12px; color: var(--muted);">Adventures — fights, elites, bosses, treasure</td>
+                  <td data-label="Result" style="padding: 10px 12px; color: var(--muted);">An egg with one <strong>family</strong> and one <strong>rarity</strong></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Step" style="padding: 10px 12px; font-weight: 700; color: #fff;">2. Hatch</td>
+                  <td data-label="Where" style="padding: 10px 12px; color: var(--muted);">The Ranch, outside the castle wall</td>
+                  <td data-label="Result" style="padding: 10px 12px; color: var(--muted);">A random pet of that family, <strong>3 abilities rolled</strong> from the family pool</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Step" style="padding: 10px 12px; font-weight: 700; color: #fff;">3. Fuse</td>
+                  <td data-label="Where" style="padding: 10px 12px; color: var(--muted);">The Ranch</td>
+                  <td data-label="Result" style="padding: 10px 12px; color: var(--muted);">Two same-family, same-rarity pets become <strong>one pet of the next rarity</strong></td>
+                </tr>
+                <tr>
+                  <td data-label="Step" style="padding: 10px 12px; font-weight: 700; color: #fff;">4. Feed</td>
+                  <td data-label="Where" style="padding: 10px 12px; color: var(--muted);">The Ranch</td>
+                  <td data-label="Result" style="padding: 10px 12px; color: var(--muted);">Spare gear and materials go in. Equipped pets also earn XP from every win</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            Eggs are a by-product of <a href="/adventures/" style="color: var(--accent); text-decoration: none;">dungeon runs</a> — if you are short on them, push deeper acts rather than re-clearing easy rooms.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #c9a227; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="rarity-tiers-and-what-they-unlock" style="font-size: 1.3rem; color: #c9a227; margin: 0 0 12px;">Rarity Tiers: What Each One Unlocks</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 14px;">
+            Rarity does two things at once — it raises the level ceiling and it unlocks more of the three abilities the pet rolled. A Common pet with a great ability roll is still capped at one ability.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Rarity</th>
+                  <th style="padding: 10px 12px;">Max Level</th>
+                  <th style="padding: 10px 12px;">Abilities Unlocked</th>
+                  <th style="padding: 10px 12px;">How You Get It</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rarityRows.map((r) => (
+                  <tr style="border-bottom: 1px solid var(--line);">
+                    <td data-label="Rarity" style={`padding: 10px 12px; font-weight: 700; color: ${r.color};`}>{r.tier}</td>
+                    <td data-label="Max Level" style="padding: 10px 12px; color: var(--muted);">{r.maxLevel}</td>
+                    <td data-label="Abilities" style="padding: 10px 12px; color: var(--muted);">{r.abilities} of 3</td>
+                    <td data-label="Source" style="padding: 10px 12px; color: var(--muted);">{r.tier === "Legendary" || r.tier === "Divine" ? "Fusing only — never an egg drop" : "Eggs of that rarity"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            The gap that matters: Rare (70, 2 abilities) to Legendary (90, 3 abilities) adds both 20 levels and a third ability slot — which is why fusing past Rare is the pivot point of the whole system.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="all-eight-pet-families" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">All Eight Pet Families &amp; Their 24 Pets</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 14px;">
+            Every family has exactly three pets and its own egg pool, and a pet can only roll abilities from its own family's list. That is why fusing within a family is the only way to chase a specific ability set.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Family</th>
+                  <th style="padding: 10px 12px;">Pets</th>
+                  <th style="padding: 10px 12px;">Possible Abilities</th>
+                </tr>
+              </thead>
+              <tbody>
+                {families.map((f) => (
+                  <tr style="border-bottom: 1px solid var(--line);">
+                    <td data-label="Family" style="padding: 10px 12px; font-weight: 700; color: #fff;">{f.name}</td>
+                    <td data-label="Pets" style="padding: 10px 12px; color: var(--muted);">{f.pets}</td>
+                    <td data-label="Abilities" style="padding: 10px 12px; color: #38bdf8;">{f.abilities}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            Reading a family at a glance: <strong>Canine and Reptile</strong> lean physical, <strong>Avian and Aquatic</strong> lean healing and energy, <strong>Feline and Spooky</strong> lean burst and status, <strong>Woodland</strong> is the balanced roll, and <strong>Automaton</strong> is the only family with Electric plus Energy Heal in the same pool.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #a855f7; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="the-six-pet-abilities" style="font-size: 1.3rem; color: #a855f7; margin: 0 0 12px;">The Six Pet Abilities</h2>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Ability</th>
+                  <th style="padding: 10px 12px;">What It Does</th>
+                  <th style="padding: 10px 12px;">Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                {abilities.map((a) => (
+                  <tr style="border-bottom: 1px solid var(--line);">
+                    <td data-label="Ability" style="padding: 10px 12px; font-weight: 700; color: #fff;">{a.name}</td>
+                    <td data-label="Effect" style="padding: 10px 12px; color: var(--muted);">{a.effect}</td>
+                    <td data-label="Role" style="padding: 10px 12px; color: #a855f7;">{a.role}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            Which to keep: <strong>Electric</strong> and <strong>Decoy</strong> are the two abilities that change an outcome rather than trim it — stun and fortify both buy you a turn. <strong>Attack</strong> and <strong>Savage</strong> are damage; <strong>Heal</strong> and <strong>Energy Heal</strong> are comfort unless you are running long fights.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="how-pets-fight-the-three-charge-cycle" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">How Pets Fight: The 3-Charge Cycle</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 14px;">
+            Pets are an automatic, untargetable damage slot. You never spend a turn on them, and they never cost you a turn either.
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Rule</th>
+                  <th style="padding: 10px 12px;">Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Rule" style="padding: 10px 12px; font-weight: 700; color: #fff;">One per hero</td>
+                  <td data-label="Detail" style="padding: 10px 12px; color: var(--muted);">You equip a single pet per hero — there is no stacking a second one on the same character.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Rule" style="padding: 10px 12px; font-weight: 700; color: #fff;">Untargetable</td>
+                  <td data-label="Detail" style="padding: 10px 12px; color: var(--muted);">It cannot be hit and never dies, so enemy AI never removes it from the board.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Rule" style="padding: 10px 12px; font-weight: 700; color: #fff;">+1 charge per round</td>
+                  <td data-label="Detail" style="padding: 10px 12px; color: var(--muted);">Each round it bites your current target and banks 1 CHARGE.</td>
+                </tr>
+                <tr>
+                  <td data-label="Rule" style="padding: 10px 12px; font-weight: 700; color: #fff;">3 charges = ability or pounce</td>
+                  <td data-label="Detail" style="padding: 10px 12px; color: var(--muted);">At 3 CHARGES it spends them on one of its unlocked abilities instead of biting, or pounces for double bite damage.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 14px 0 0;">
+            The tactical reading: on a long boss fight, three charges is roughly every third round, so a pet with an ability you want fires it about once per three rounds. That timing is why starting a fight with charges already banked matters — see the <a href="/combat/energy/" style="color: var(--accent); text-decoration: none;">combat energy system</a> for how it fits the round economy.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="fusing-strategy-what-to-fuse-and-what-to-feed" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">Fusing Strategy: What to Fuse, What to Feed</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Fusion is the only route to Legendary and Divine, and it is deliberately lossy — you spend two pets to get one. Three rules that keep you from wasting eggs:
+          </p>
+          <ol style="color: var(--muted); font-size: 0.92rem; padding-left: 20px; margin: 0 0 12px; line-height: 1.7;">
+            <li><strong style="color: #fff;">Fuse duplicates, never your best pet.</strong> Two Common of the same family become one Uncommon. Only do it with pets you are not equipping.</li>
+            <li><strong style="color: #fff;">Stay inside one family.</strong> Same family and same rarity is the requirement, so pick the family whose ability list you actually want and fuse only there.</li>
+            <li><strong style="color: #fff;">Feed everything else.</strong> Spare gear and materials convert into pet levels at the Ranch — a fed Rare beats a neglected Legendary for a long stretch of the game.</li>
+          </ol>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 0;">
+            Eggs and <a href="/codes/" style="color: var(--accent); text-decoration: none;">active codes</a> rarely overlap, so do not expect promo rewards to fund a Divine pet — the chain is egg volume plus fusion discipline.
+          </p>
+        </section>
+
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="reading-egg-patterns-before-you-hatch" style="font-size: 1.3rem; color: #34d399; margin: 0 0 12px;">Reading Egg Patterns Before You Hatch</h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            The egg's surface tells you the rarity before you commit it to the hatcher, which lets you sort a stacked inventory without opening everything:
+          </p>
+          <ul style="color: var(--muted); font-size: 0.92rem; padding-left: 20px; margin: 0; line-height: 1.8;">
+            <li><strong style="color: #fff;">Spots</strong> — Common</li>
+            <li><strong style="color: #34d399;">Green stripes</strong> — Uncommon</li>
+            <li><strong style="color: #38bdf8;">Blue zigzag</strong> — Rare</li>
+          </ul>
+          <p style="color: var(--muted); font-size: 0.88rem; margin: 12px 0 0;">
+            Rare eggs are the ones worth hoarding for a fusion push; Common and Uncommon shells are your fusion fodder.
+          </p>
+        </section>
+
+        <section style="background: rgba(201, 162, 39, 0.08); border: 1px solid rgba(201, 162, 39, 0.35); border-radius: 8px; padding: 18px; margin-bottom: 32px;">
+          <h2 id="source-note-and-verification-status" style="font-size: 1.05rem; color: #c9a227; margin: 0 0 8px;">Source Note &amp; Verification Status</h2>
+          <p style="color: var(--muted); font-size: 0.86rem; line-height: 1.6; margin: 0;">
+            Family rosters, ability lists, rarity caps and the charge cycle on this page are taken from the community-maintained <a href="https://pixel-lineage.fandom.com/wiki/Pets" target="_blank" rel="noopener noreferrer nofollow" style="color: var(--accent); text-decoration: none;">Pixel Lineage Wiki Pets page</a>, whose own reference stamp is 21 October 2026. That reference explicitly does not certify current-build drop rates or sale prices, and neither do we: <strong>no drop percentages are published here, because no dated source exists for them</strong>. If a number is not on this page, it is because nobody has published it — not because it was cut for length.
+          </p>
+        </section>
+
+        <FaqSection items={faqItems} />
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+          <a href="/adventures/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Where Eggs Drop: Adventures →
+          </a>
+          <a href="/races/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Bloodlines &amp; Races Hub →
+          </a>
+        </div>
+
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+      </article>
+
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/pets/" />
+    </div>
+  </div>
+</BaseLayout>
