@@ -18,10 +18,10 @@
     "updated": "2026-11-10T05:40:30.000Z"
   },
   "liveStats": {
-    "fetchedAt": "2026-11-16T05:40:29+00:00",
-    "playing": 735,
+    "fetchedAt": "2026-11-17T05:40:32+00:00",
+    "playing": 477,
     "peak24h": null,
-    "visits": 28847694,
+    "visits": 28958755,
     "favoritedCount": 102737,
     "upVotes": 101634,
     "downVotes": 1164,
@@ -29,10 +29,10 @@
     "averageSessionMinutes": 13.5
   },
   "stats": {
-    "fetchedAt": "2026-11-16T05:40:29+00:00",
-    "playing": 735,
+    "fetchedAt": "2026-11-17T05:40:32+00:00",
+    "playing": 477,
     "peak24h": null,
-    "visits": 28847694,
+    "visits": 28958755,
     "favoritedCount": 102737,
     "upVotes": 101634,
     "downVotes": 1164,

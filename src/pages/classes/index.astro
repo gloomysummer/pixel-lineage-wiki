@@ -149,7 +149,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Pixel Lineage Class Guide & Starter Stats",
+    name: "Pixel Lineage Class Guide: 6+1 Starter Classes",
     description: "Complete Pixel Lineage classes guide: Lv 1 starter stats, 6+1 base archetypes, Spear class, 21 Super Class evolutions, and Trainer's Shrine progression.",
     url: `${siteConfig.siteUrl}/classes/`,
   },
@@ -161,11 +161,23 @@ const jsonLd = [
       { "@type": "ListItem", position: 2, name: "Classes", item: `${siteConfig.siteUrl}/classes/` },
     ],
   },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer,
+      },
+    })),
+  },
 ];
 ---
 
 <BaseLayout
-  title="Pixel Lineage Class Guide: Starter Stats & Meta"
+  title="Pixel Lineage Class Guide: 6+1 Starter Classes"
   description="Complete Pixel Lineage classes guide: Lv 1 starter stats, 6+1 base archetypes, Spear class, 21 Super Class evolutions, and Trainer's Shrine progression."
   canonical="/classes/"
   jsonLd={jsonLd}
