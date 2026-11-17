@@ -7,38 +7,16 @@ import FaqSection from "../../components/FaqSection.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 import { siteConfig } from "../../config/site.config";
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: "Nightborn Roblox Codes & Race Spins: Pixel Lineage",
-    description: "Verified Nightborn Roblox codes guide: active promo codes for free Race Spins at the Goblin Merchant, 0.72% roll odds, and Nightborne race builds in Pixel Lineage.",
-    url: `${siteConfig.siteUrl}/codes/roblox-nightborn-codes/`,
-    datePublished: "2026-10-29T00:00:00+00:00",
-    dateModified: "2026-11-04T00:00:00+00:00",
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.siteName,
-      url: siteConfig.siteUrl,
-    },
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
-      { "@type": "ListItem", position: 2, name: "Codes", item: `${siteConfig.siteUrl}/codes/` },
-      { "@type": "ListItem", position: 3, name: "Roblox Nightborn Codes", item: `${siteConfig.siteUrl}/codes/roblox-nightborn-codes/` },
-    ],
-  },
-];
-
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
 const faqItems = [
   {
     question: "Are there promo codes that grant the Nightborn race directly in Pixel Lineage?",
     answer: "No. In Pixel Lineage on Roblox, there is no promo code that directly awards the Nightborn lineage. Instead, developers release general progression codes (such as TORMENT and TUTORIAL) that grant free Race Spins. Players bring these spins to the Goblin Merchant NPC to roll for the Mythic Nightborne race at a 0.72% drop probability."
+  },
+  {
+    question: "Are there separate Nightborne codes roblox or Night Born codes?",
+    answer: "No. 'Nightborne codes roblox', 'nightborn codes', and 'night born codes' all refer to the same search for promo codes that give free Race Spins to roll the Mythic Nightborne (Nightborn) race in Pixel Lineage on Roblox."
   },
   {
     question: "How many Race Spins do I need on average to roll Nightborn?",
@@ -56,6 +34,44 @@ const faqItems = [
     question: "Where is the Goblin Merchant located for code redemption in Pixel Lineage?",
     answer: "The Goblin Merchant NPC is located in the starting town courtyard at coordinates (X: 142, Y: 12, Z: -88), positioned between the Inn and the Auction House east of the spawn fountain. Interact with the merchant and select Redeem Promo Code to enter active phrases."
   }
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Nightborn Roblox Codes & Race Spins: Pixel Lineage",
+    description: "Verified Nightborn Roblox codes guide: active promo codes for free Race Spins at the Goblin Merchant, 0.72% roll odds, and Nightborne race builds in Pixel Lineage.",
+    url: `${siteConfig.siteUrl}/codes/roblox-nightborn-codes/`,
+    datePublished: "2026-10-29T00:00:00+00:00",
+    dateModified: "2026-11-18T05:40:30+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Codes", item: `${siteConfig.siteUrl}/codes/` },
+      { "@type": "ListItem", position: 3, name: "Roblox Nightborn Codes", item: `${siteConfig.siteUrl}/codes/roblox-nightborn-codes/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  },
 ];
 ---
 
@@ -95,7 +111,7 @@ const faqItems = [
             ⚡ Direct Answer · Nightborn Roblox Codes & Spins
           </div>
           <p style="color: #e2e8f0; font-size: 0.98rem; line-height: 1.6; margin: 0 0 8px;">
-            There are <strong>no promo codes that directly grant the Nightborn race</strong> in Pixel Lineage on Roblox. Instead, official developer codes (like <code>TORMENT</code>, <code>0y0</code>, and <code>TUTORIAL</code>) award <strong>21+ free Race Spins</strong> redeemable at the Goblin Merchant in town.
+            There are <strong>no promo codes that directly grant the Nightborn race</strong> in Pixel Lineage on Roblox. Whether searched as <strong>Nightborne codes roblox</strong>, <strong>nightborn codes</strong>, or <strong>night born codes</strong>, all active official developer codes (like <code>TORMENT</code>, <code>0y0</code>, and <code>TUTORIAL</code>) award <strong>21+ free Race Spins</strong> redeemable at the Goblin Merchant in town.
           </p>
           <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0;">
             <strong>Rolling Nightborne:</strong> Nightborne has a <strong>0.72% spin probability</strong> (Mythic tier). 21 code spins give roughly a <strong>14% cumulative chance</strong> of rolling Nightborne (Bloodthirst: heals 15% of damage dealt, capped ~7% max HP per move) without spending Gold or Robux.

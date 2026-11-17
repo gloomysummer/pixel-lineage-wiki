@@ -131,38 +131,12 @@ const raceTiers = [
   },
 ];
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    datePublished: "2026-10-18T12:00:00+00:00",
-    headline: "Pixel Lineage Race Tier List: All 14 Races Ranked",
-    description: "All 14 Pixel Lineage races ranked with exact roll odds and passive numbers, from 0.72% Mythic bloodlines down to Human.",
-    url: `${siteConfig.siteUrl}/tier-list/race-tier-list/`,
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.siteName,
-      url: siteConfig.siteUrl,
-    },
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
-      { "@type": "ListItem", position: 2, name: "Tier List", item: `${siteConfig.siteUrl}/tier-list/` },
-      { "@type": "ListItem", position: 3, name: "Races Tier List", item: `${siteConfig.siteUrl}/tier-list/race-tier-list/` },
-    ],
-  },
-];
-
 import MobileToc from "../../components/MobileToc.astro";
 import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
-
 
 const faqItems = [
   {
@@ -186,13 +160,51 @@ const faqItems = [
     "answer": "Not better, different. Dullahan gives +5% max HP, +5% DEF and +3% Crit plus Headless Ride, and it is a guaranteed 10,000 Candy purchase during the Halloween event rather than a roll. Dragonborn resists fire and Burn but gives no DEF; Stonekin gives raw HP and a Fist bonus at eight times Dullahan's accessibility."
   }
 ];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    datePublished: "2026-10-18T12:00:00+00:00",
+    dateModified: "2026-11-18T05:40:30+00:00",
+    headline: "Pixel Lineage Race Tier List: Best Bloodlines",
+    description: "All 14 Pixel Lineage races ranked with exact roll odds and passive numbers, from 0.72% Mythic bloodlines down to Human.",
+    url: `${siteConfig.siteUrl}/tier-list/race-tier-list/`,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Tier List", item: `${siteConfig.siteUrl}/tier-list/` },
+      { "@type": "ListItem", position: 3, name: "Races Tier List", item: `${siteConfig.siteUrl}/tier-list/race-tier-list/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  },
+];
 ---
 
 
 
 <BaseLayout
-  title="Pixel Lineage Race Tier List: All 14 Races"
-description="All 14 Pixel Lineage races ranked with exact roll odds and passive numbers, from 0.72% Mythic bloodlines down to Human, and which class each fits."
+  title="Pixel Lineage Race Tier List: Best Bloodlines"
+  description="All 14 Pixel Lineage races ranked with exact roll odds and passive numbers, from 0.72% Mythic bloodlines down to Human, and which class each fits."
   canonical="/tier-list/race-tier-list/"
   jsonLd={jsonLd}
 >
@@ -218,6 +230,19 @@ description="All 14 Pixel Lineage races ranked with exact roll odds and passive 
       <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 12px 0 0;">
         Roll odds below are the published bloodline chances. Race evolution (Heirloom then Heartblood) lifts almost every race one or two tiers, so read the <a href="/races/evolution/" style="color: var(--accent); text-decoration: none;">Heirloom &amp; Heartblood locations</a> page before you decide to reroll anything.
       </p>
+
+      <!-- Direct Answer Summary Box -->
+      <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-top: 18px;">
+        <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+          ⚡ Direct Answer · Best Races in Pixel Lineage
+        </div>
+        <p style="margin: 0 0 8px; font-size: 0.94rem; color: #f0eaf4; line-height: 1.6;">
+          <strong>Best Races Overall:</strong> The top S-Tier races in Pixel Lineage are <strong>Nightborne</strong> (0.72% Mythic, best all-round lifesteal on hit), <strong>Seraph</strong> (0.72% Mythic, best raid party DR & healing), and <strong>Dragonborn</strong> (0.72% Mythic, best fire defense and AoE Burn). <strong>Celestine</strong> (1.44% Mythic) leads A-Tier for pure critical burst.
+        </p>
+        <p style="margin: 0; font-size: 0.88rem; color: var(--muted); line-height: 1.5;">
+          <strong>Best Budget & Class-Specific Picks:</strong> <em>Stonekin</em> (Uncommon, +20 HP and +15% Fist damage) is best-in-slot for Fist fighters, while <em>Sylvan</em> (Rare) provides a free fairy summon for support builds.
+        </p>
+      </div>
     </header>
 
         <!-- Mobile Table of Contents (≤980px) -->
