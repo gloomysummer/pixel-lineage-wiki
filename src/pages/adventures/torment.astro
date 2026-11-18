@@ -7,7 +7,7 @@ import DualSidebar from "../../components/DualSidebar.astro";
 import { extractTocFromAstroUrl } from "../../utils/toc";
 import FaqSection from "../../components/FaqSection.astro";
 
-const TITLE = "Pixel Lineage Torment Mode: How to Unlock & Loot";
+const TITLE = "Pixel Lineage Torment Mode: Unlock & Loot Guide";
 const DESC = "Complete guide to unlocking Torment mode in Pixel Lineage: Act 2 clear requirements, Level 20 capstone, enemy multipliers, enrage timers, and Ultra Sigil loot.";
 
 const tormentLevels = [
@@ -62,7 +62,7 @@ const jsonLd = [
     description: DESC,
     url: `${siteConfig.siteUrl}/adventures/torment/`,
     datePublished: "2026-10-18T12:00:00+00:00",
-    dateModified: "2026-11-12T12:00:00+00:00",
+    dateModified: "2026-11-19T05:40:31+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -77,6 +77,18 @@ const jsonLd = [
       { "@type": "ListItem", position: 2, name: "Adventures", item: `${siteConfig.siteUrl}/adventures/` },
       { "@type": "ListItem", position: 3, name: "Torment Mode", item: `${siteConfig.siteUrl}/adventures/torment/` },
     ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
   },
 ];
 

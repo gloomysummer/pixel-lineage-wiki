@@ -29,6 +29,7 @@ export const CHANNELS: Channel[] = [
       { id: "active-codes", title: "Active Promo Codes", url: "/codes/" },
       { id: "codes-not-working", title: "Code Troubleshooting", url: "/codes/not-working/" },
       { id: "how-to-redeem", title: "Goblin Merchant Redeem", url: "/codes/redeem/" },
+      { id: "trello", title: "Trello Board & Links", url: "/trello/" },
     ],
   },
   {
@@ -168,6 +169,9 @@ export function getChannelByGuideUrl(currentUrl: string): Channel {
   }
   if (norm.startsWith('/pets/')) {
     return CHANNELS.find((c) => c.id === 'gear') || CHANNELS[0];
+  }
+  if (norm.startsWith('/trello/')) {
+    return CHANNELS.find((c) => c.id === 'codes') || CHANNELS[0];
   }
   return CHANNELS[0];
 }

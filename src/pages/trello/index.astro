@@ -1,0 +1,258 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const TITLE = "Pixel Lineage Trello: Board Links & Guide";
+const DESC = "Looking for the official Pixel Lineage Trello board? Get verified links, developer Discord and Roblox group info, plus complete race and class databases.";
+
+const tocHeadings = extractTocFromAstroUrl(import.meta.url);
+
+const faqItems = [
+  {
+    question: "Is there an official Pixel Lineage Trello board?",
+    answer: "No official public Trello board is currently maintained by the Pixel Lineage development team (LY* / Another Lyt Project). Official announcements, patch notes, and promo codes are shared exclusively through the Roblox group and official community Discord server. This wiki provides the full empirical database that players typically seek on Trello."
+  },
+  {
+    question: "Where can I find official Pixel Lineage update announcements and patch notes?",
+    answer: "Official update announcements are published in the game description and developer Discord server. You can also view comprehensive breakdowns of hotfixes, balance patches, and new classes on our Weekly Patch Notes Ledger."
+  },
+  {
+    question: "What is the official Roblox group for Pixel Lineage?",
+    answer: "The official developer group is Another Lyt Project (Group ID 861404864). Joining the group, liking the game, and favoriting the experience are required prerequisites before the Goblin Merchant NPC in the town courtyard will accept promo codes."
+  },
+  {
+    question: "Are third-party or fan-made Pixel Lineage Trello boards reliable?",
+    answer: "Most third-party Trello boards created by fans contain outdated or speculative figures—such as citing 2.0% Mythic odds when the game code enforces an exact 0.72% drop rate. Players should cross-reference any unverified board data with our data-mined tables and verified in-game tests."
+  },
+  {
+    question: "Where can I check complete race drop rates and class trees without Trello?",
+    answer: "You can inspect complete race roll probabilities (from 0.72% Mythics down to 37% Human) on our Races Hub, check all 21 Super Class skill trees on our Super Classes Guide, and view current rankings on our Meta Tier Lists."
+  }
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: TITLE,
+    description: DESC,
+    url: `${siteConfig.siteUrl}/trello/`,
+    datePublished: "2026-11-19T05:40:31+00:00",
+    dateModified: "2026-11-19T05:40:31+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Codes", item: `${siteConfig.siteUrl}/codes/` },
+      { "@type": "ListItem", position: 3, name: "Trello Guide", item: `${siteConfig.siteUrl}/trello/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  },
+];
+---
+
+<BaseLayout title={TITLE} description={DESC} canonical="/trello/" jsonLd={jsonLd}>
+  <div class="container container-guide" style="margin: 0 auto; padding: 40px 20px;">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs" style="margin-bottom: 20px; font-size: 0.85rem; color: var(--muted);">
+      <a href="/" style="color: var(--accent); text-decoration: none;">Home</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <a href="/codes/" style="color: var(--accent); text-decoration: none;">Codes</a>
+      <span class="separator" style="margin: 0 8px;">/</span>
+      <span class="current">Trello</span>
+    </nav>
+
+    <div class="article-layout has-dual-sidebar">
+      <article class="article-main" style="line-height: 1.7; color: var(--ink);">
+        <header style="margin-bottom: 32px;">
+          <div style="display: inline-block; background: rgba(52, 211, 153, 0.15); border: 1px solid #34d399; color: #34d399; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
+            Community &amp; Official Resource Directory
+          </div>
+          <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
+            Pixel Lineage Trello: Official Links &amp; Wiki Guide
+          </h1>
+          <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0 0 16px;">
+            Many players searching for <strong>Pixel Lineage Trello</strong> are seeking official drop rates, class progression trees, and active promo codes. Below is our definitive breakdown of official developer links and our comprehensive database directory.
+          </p>
+
+          <!-- Direct Answer Summary Box -->
+          <div style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;">
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #c9a227; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+              ⚡ Direct Answer · Pixel Lineage Trello Status
+            </div>
+            <p style="margin: 0 0 8px; font-size: 0.94rem; color: #f0eaf4; line-height: 1.6;">
+              <strong>Is there an official Pixel Lineage Trello?</strong> The developers of Pixel Lineage (LY* / Another Lyt Project) <strong>do not maintain an official public Trello board</strong>. Official announcements and code drops occur strictly via the <strong style="color: #38bdf8;">Roblox Group (Another Lyt Project)</strong> and the official community Discord.
+            </p>
+            <p style="margin: 0; font-size: 0.88rem; color: var(--muted); line-height: 1.5;">
+              <strong>Where to Find Trello-Style Information:</strong> This wiki serves as the community's primary database. Use the directory below to access verified <a href="/races/" style="color: var(--accent);">race roll odds (0.72% Mythics)</a>, <a href="/classes/super-classes/" style="color: var(--accent);">21 Super Class skill trees</a>, and <a href="/codes/" style="color: var(--accent);">active promo codes</a>.
+            </p>
+          </div>
+        </header>
+
+        <!-- Mobile Table of Contents (≤980px) -->
+        <MobileToc tocHeadings={tocHeadings} />
+
+        <!-- Ad Slot -->
+        <AdSlot zone="banner-300x250" label="Sponsored Intel" />
+
+        <!-- Section 1: Official Developer Channels -->
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #38bdf8; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="official-developer-channels-and-links" style="font-size: 1.3rem; color: #38bdf8; margin: 0 0 12px;">
+            Official Developer Channels &amp; Links
+          </h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            Because there is no active public Trello board, the development team publishes all first-party notices, maintenance warnings, and redeemable codes through two verified platforms:
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+            <div style="background: #0d0a14; border: 1px solid var(--line); border-radius: 6px; padding: 18px;">
+              <div style="color: #34d399; font-weight: 700; font-size: 1rem; margin-bottom: 6px;">1. Official Roblox Group</div>
+              <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0 0 8px;">
+                <strong>Another Lyt Project</strong> (Group ID <code>861404864</code>) is the primary developer group. You must join this group, like the game, and add it to your favorites before the Goblin Merchant in town will allow code redemption.
+              </p>
+            </div>
+            <div style="background: #0d0a14; border: 1px solid var(--line); border-radius: 6px; padding: 18px;">
+              <div style="color: #a855f7; font-weight: 700; font-size: 1rem; margin-bottom: 6px;">2. Community Discord Server</div>
+              <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5; margin: 0 0 8px;">
+                The official Discord server hosts developer sneak peeks, balance adjustments, server downtime alerts, and community trade discussions. Links to the Discord are available directly on the official Roblox experience page.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2: Trello vs Wiki Directory Table -->
+        <section style="background: #161022; border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+          <h2 id="trello-vs-wiki-database-directory" style="font-size: 1.3rem; color: #fff; margin: 0 0 12px;">
+            Trello vs. Wiki: Complete Database Directory
+          </h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 16px;">
+            In other Roblox RPGs, Trello boards are primarily used to look up card drops, evolution items, and weapon scaling. In Pixel Lineage, our data-backed wiki provides complete, verified replacements for every typical Trello category:
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="responsive-card-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="background: #0d0a14; border-bottom: 2px solid var(--line); color: #c9a227;">
+                  <th style="padding: 10px 12px;">Information Type</th>
+                  <th style="padding: 10px 12px;">Wiki Guide Page</th>
+                  <th style="padding: 10px 12px;">What You Will Find</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Category" style="padding: 10px 12px; font-weight: 700; color: #fff;">Race Drop Rates &amp; Odds</td>
+                  <td data-label="Guide" style="padding: 10px 12px;"><a href="/races/" style="color: var(--accent); text-decoration: none;">Races &amp; Bloodlines Hub</a></td>
+                  <td data-label="Content" style="padding: 10px 12px; color: var(--muted);">Exact 0.72% Mythic roll odds, Bloodthirst lifesteal, Scaled Hide fire mitigation, and Common to Rare tables.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Category" style="padding: 10px 12px; font-weight: 700; color: #fff;">Super Class Evolutions</td>
+                  <td data-label="Guide" style="padding: 10px 12px;"><a href="/classes/super-classes/" style="color: var(--accent); text-decoration: none;">21 Super Classes Guide</a></td>
+                  <td data-label="Content" style="padding: 10px 12px; color: var(--muted);">Trainer's Shrine Lv 20 requirements, 3 evolution branches per class, and Ultra Class awakening paths.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Category" style="padding: 10px 12px; font-weight: 700; color: #fff;">Active Promo Codes</td>
+                  <td data-label="Guide" style="padding: 10px 12px;"><a href="/codes/" style="color: var(--accent); text-decoration: none;">Working Codes Ledger</a></td>
+                  <td data-label="Content" style="padding: 10px 12px; color: var(--muted);">Verified active codes granting 21+ free Race Spins, Goblin Merchant instructions, and expiration alerts.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Category" style="padding: 10px 12px; font-weight: 700; color: #fff;">Meta Rankings &amp; Tiers</td>
+                  <td data-label="Guide" style="padding: 10px 12px;"><a href="/tier-list/" style="color: var(--accent); text-decoration: none;">Meta Tier Lists Hub</a></td>
+                  <td data-label="Content" style="padding: 10px 12px; color: var(--muted);">S+ to C rankings for solo dungeon clears, Guild Raids, and tournament PvP performance.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td data-label="Category" style="padding: 10px 12px; font-weight: 700; color: #fff;">Torment &amp; Dungeons</td>
+                  <td data-label="Guide" style="padding: 10px 12px;"><a href="/adventures/torment/" style="color: var(--accent); text-decoration: none;">Torment Mode Guide</a></td>
+                  <td data-label="Content" style="padding: 10px 12px; color: var(--muted);">Act 1 &amp; 2 unlock requirements, boss enrage timers, and Ultra Sigil fragment drop mechanics.</td>
+                </tr>
+                <tr>
+                  <td data-label="Category" style="padding: 10px 12px; font-weight: 700; color: #fff;">Guild Oaths &amp; Buffs</td>
+                  <td data-label="Guide" style="padding: 10px 12px;"><a href="/guilds/oaths/" style="color: var(--accent); text-decoration: none;">Guild Oaths Guide</a></td>
+                  <td data-label="Content" style="padding: 10px 12px; color: var(--muted);">Vanguard, Arcanum, and Shadowveil oath costs, permanent stat buffs, and combat drawbacks.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 3: Verified Codes & Drop Rates -->
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #34d399; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="how-to-find-verified-codes-and-drop-rates" style="font-size: 1.3rem; color: #34d399; margin: 0 0 12px;">
+            How to Find Verified Codes &amp; Drop Rates
+          </h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            One of the primary drivers behind Trello searches in Pixel Lineage is verifying promotional phrases and their reward yields. Players can verify all current codes directly on our <a href="/codes/" style="color: var(--accent); text-decoration: none;">Codes Hub</a>:
+          </p>
+          <ul style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0 0 12px; padding-left: 20px;">
+            <li><strong>TORMENT:</strong> Grants 8 Race Spins, 8 Talent Spins, 1,000 Gold, 100 Knowledge, and 3 Potions.</li>
+            <li><strong>0y0:</strong> Awards 10 Race Spins, 10 Talent Spins, and 1 Life Token.</li>
+            <li><strong>TUTORIAL:</strong> Grants 3 Race Spins and 3 Talent Spins.</li>
+          </ul>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Combined, these active codes grant 21 instant Race Spins at the Goblin Merchant, giving roughly a 14% cumulative chance to roll a 0.72% Mythic bloodline like Nightborne or Seraph.
+          </p>
+        </section>
+
+        <!-- Section 4: Avoiding Fake Trello Boards -->
+        <section style="background: #161022; border: 1px solid var(--line); border-left: 4px solid #ea580c; border-radius: 8px; padding: 22px; margin-bottom: 32px;">
+          <h2 id="avoiding-fake-and-outdated-trello-boards" style="font-size: 1.3rem; color: #ea580c; margin: 0 0 12px;">
+            Avoiding Fake &amp; Outdated Trello Boards
+          </h2>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px;">
+            Be cautious of community-made or cloned Trello boards circulating on social media. Common inaccuracies observed on unverified boards include:
+          </p>
+          <ul style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0 0 12px; padding-left: 20px;">
+            <li><strong>Fabricated Gacha Odds:</strong> Outdated boards claim Mythic races roll at 2.0% or 1.5%, which inflates expectations. The verified code base confirms 0.72% for Nightborne, Seraph, Dragonborn, and Tideborn.</li>
+            <li><strong>Fallen Lineage Confusion:</strong> Many fan boards copy cards from older or related titles like <em>Fallen Lineage</em> or <em>Rogue Lineage</em>, confusing game mechanics and weapon skills.</li>
+            <li><strong>Expired Code Lists:</strong> Static boards rarely update expiration flags, leading players to waste time typing inactive phrases.</li>
+          </ul>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Always consult our verified guides or the official developer Discord when planning permanent character choices.
+          </p>
+        </section>
+
+        <!-- FAQ Section Component -->
+        <FaqSection items={faqItems} />
+
+        <!-- Navigation Buttons -->
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+          <a href="/codes/" style="background: #34d399; color: #0d0a14; padding: 12px 24px; border-radius: 6px; font-weight: 700; text-decoration: none;">
+            Active Codes Ledger →
+          </a>
+          <a href="/classes/super-classes/" style="background: #a855f7; color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            21 Super Classes Guide →
+          </a>
+          <a href="/races/" style="background: #161022; border: 1px solid var(--line); color: var(--ink); padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+            Races &amp; Roll Odds →
+          </a>
+        </div>
+
+        <div class="ad-slot-footer">
+          <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
+          <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
+        </div>
+      </article>
+
+      <DualSidebar tocHeadings={tocHeadings} currentUrl="/trello/" />
+    </div>
+  </div>
+</BaseLayout>

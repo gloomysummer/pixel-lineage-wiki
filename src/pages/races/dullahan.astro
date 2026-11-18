@@ -10,34 +10,6 @@ import FaqSection from "../../components/FaqSection.astro";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
-
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: "Dullahan in Pixel Lineage: Race Stats & Builds",
-    description: "Complete Dullahan race guide in Pixel Lineage: 4% roll rate, Headless Poise stun immunity, female avatar builds, and Sentinel Warrior synergies.",
-    url: `${siteConfig.siteUrl}/races/dullahan/`,
-    datePublished: "2026-10-18T12:00:00+00:00",
-    dateModified: "2026-11-16T05:40:29+00:00",
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.siteName,
-      url: siteConfig.siteUrl,
-    },
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
-      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
-      { "@type": "ListItem", position: 3, name: "Dullahan", item: `${siteConfig.siteUrl}/races/dullahan/` },
-    ],
-  },
-];
-
-
 const faqItems = [
   {
     "question": "What is the roll probability and rarity tier of Dullahan?",
@@ -67,6 +39,44 @@ const faqItems = [
     "question": "How does the Dullahan race in Pixel Lineage differ from Dullahan in AAC?",
     "answer": "While both Pixel Lineage and An Average Campaign (AAC) are turn-based Roblox RPGs with Halloween-themed Dullahan races, their obtainment methods differ completely. In Pixel Lineage, Dullahan is an Epic bloodline rolled at the Goblin Merchant spin wheel with a 4.0% drop probability. In An Average Campaign (AAC), Dullahan is an achievement milestone awarded for completing all objectives in the Cauldro's Return event alongside the Royal Dullahan's Plate."
   }
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Dullahan in Pixel Lineage: Race Stats & Builds",
+    description: "Complete Dullahan race guide in Pixel Lineage: 4% roll rate, Headless Poise stun immunity, female avatar builds, and Sentinel Warrior synergies.",
+    url: `${siteConfig.siteUrl}/races/dullahan/`,
+    datePublished: "2026-10-18T12:00:00+00:00",
+    dateModified: "2026-11-19T05:40:31+00:00",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.siteName,
+      url: siteConfig.siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Races", item: `${siteConfig.siteUrl}/races/` },
+      { "@type": "ListItem", position: 3, name: "Dullahan", item: `${siteConfig.siteUrl}/races/dullahan/` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  },
 ];
 ---
 
