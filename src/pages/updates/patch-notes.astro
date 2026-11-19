@@ -2,17 +2,24 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AdSlot from "../../components/AdSlot.astro";
 import { siteConfig } from "../../config/site.config";
+import MobileToc from "../../components/MobileToc.astro";
+import DualSidebar from "../../components/DualSidebar.astro";
+import { extractTocFromAstroUrl } from "../../utils/toc";
+import FaqSection from "../../components/FaqSection.astro";
+
+const TITLE = "Pixel Lineage Dawn Update: Patch Notes & Logs";
+const DESC = "Official Pixel Lineage Dawn Update patch notes: Update 3 Trials, 29.18M+ visits, balance adjustments, Spear class changelogs, and verified Roblox patch logs.";
 
 const patches = [
   {
-    version: "Update 3 — Trials & Dawn Update (November 16, 2026)",
-    releaseDate: "November 16, 2026",
-    summary: "Official Dawn Update maintenance baseline holding 735 concurrent players and 28.84M+ total visits with dungeon Trials and encounter balance.",
+    version: "Update 3 — Trials & Dawn Update (November 20, 2026)",
+    releaseDate: "November 20, 2026",
+    summary: "Official Dawn Update maintenance baseline holding 276 concurrent players and 29.18M+ total visits with dungeon Trials and encounter balance.",
     highlights: [
-      "Official Roblox experience title: Pixel Lineage [Dawn Update] holding 735 active concurrent players and 28,847,694 total visits.",
+      "Official Roblox experience title: Pixel Lineage [Dawn Update] holding 276 active concurrent players and 29,189,509 total visits.",
       "Player community ratings hold strong at 102k+ favorites and 98.9% positive approval rating.",
       "Roguelike dungeon Trials, poise balancing, and Act 1 & 2 encounter pacing verified on live servers.",
-      "Roblox Group 861404864 (Another Lyt Project) and Group 362755399 verification active at Goblin Merchant with promo code OCTOBER.",
+      "Roblox Group 861404864 (Another Lyt Project) verification active at Goblin Merchant with promo code OCTOBER.",
     ],
   },
   {
@@ -60,15 +67,34 @@ const patches = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "What is the Pixel Lineage Dawn Update?",
+    answer: "The Dawn Update (Update 3: Trials) is the current official content release for Pixel Lineage on Roblox. It introduces dungeon encounter Trials, balance adjustments across Acts 1 and 2, and stability improvements, with total experience visits surpassing 29.18 million."
+  },
+  {
+    question: "When was the Spear class and Dragon race added to Pixel Lineage?",
+    answer: "The Spear base class (the 7th playable archetype) and the Mythic Dragonborn race (0.72% roll chance) were added in the October 20, 2026 content update."
+  },
+  {
+    question: "Does the Dawn Update wipe character progression or inventory?",
+    answer: "No. Updates in Pixel Lineage do not wipe character levels, inventory, or unlocked Lineage Ranks. Character saves and unlocked Super Classes carry forward permanently across patches."
+  },
+  {
+    question: "How often does Pixel Lineage receive official updates and patches?",
+    answer: "The developer (Another Lyt Project) follows a weekly release cadence on Roblox, with hotfixes and balance tuning rolling out mid-week and seasonal expansions deployed monthly."
+  }
+];
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "Pixel Lineage Dawn Update: Official Patch Notes",
-    description: "Official Pixel Lineage Dawn Update patch notes: Update 3 Trials, 735 concurrent players, 28.84M visits, Spear class, and live balance logs for Roblox.",
+    headline: TITLE,
+    description: DESC,
     url: `${siteConfig.siteUrl}/updates/patch-notes/`,
     datePublished: "2026-10-18T12:00:00+00:00",
-    dateModified: "2026-11-16T05:40:29+00:00",
+    dateModified: "2026-11-20T05:40:30+00:00",
     publisher: {
       "@type": "Organization",
       name: siteConfig.siteName,
@@ -84,19 +110,26 @@ const jsonLd = [
       { "@type": "ListItem", position: 3, name: "Patch Notes", item: `${siteConfig.siteUrl}/updates/patch-notes/` },
     ],
   },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  },
 ];
-
-import MobileToc from "../../components/MobileToc.astro";
-import DualSidebar from "../../components/DualSidebar.astro";
-import { extractTocFromAstroUrl } from "../../utils/toc";
 
 const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 ---
 
-
 <BaseLayout
-  title="Pixel Lineage Dawn Update: Official Patch Notes"
-  description="Official Pixel Lineage Dawn Update patch notes: Update 3 Trials, 735 concurrent players, 28.84M visits, Spear class, and live balance logs for Roblox."
+  title={TITLE}
+  description={DESC}
   canonical="/updates/patch-notes/"
   jsonLd={jsonLd}
 >
@@ -111,7 +144,7 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
 
     <header style="margin-bottom: 32px;">
       <div style="display: inline-block; background: rgba(52, 211, 153, 0.15); border: 1px solid #34d399; color: #34d399; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 12px;">
-        Official Development Log & Update Archive
+        Official Development Log &amp; Update Archive
       </div>
       <h1 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin: 0 0 12px;">
         Pixel Lineage Dawn Update: Official Patch Notes
@@ -123,13 +156,13 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
       <!-- Direct Answer Summary Box for Dawn Update -->
       <div style="background: rgba(52, 211, 153, 0.1); border-left: 4px solid #34d399; padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 8px;">
         <div style="font-size: 0.82rem; font-family: var(--font-mono); color: #34d399; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
-          ⚡ Direct Answer · Dawn Update & Patch Notes Overview
+          ⚡ Direct Answer · Dawn Update &amp; Patch Notes Overview
         </div>
         <p style="margin: 0 0 8px; font-size: 0.94rem; color: #f0eaf4; line-height: 1.6;">
           <strong>Pixel Lineage Dawn Update (Update 3: Trials)</strong> is the latest official content release on Roblox. It introduces dungeon encounter Trials, balance adjustments for late-game acts, and server stability improvements.
         </p>
         <p style="margin: 0; font-size: 0.88rem; color: var(--muted); line-height: 1.5;">
-          <strong>Live Experience Status:</strong> The experience has reached over 28.84M total visits (28,847,694) with 735 concurrent players. Active codes like <em>OCTOBER</em> remain redeemable at the Goblin Merchant after liking and joining official Roblox Group 362755399.
+          <strong>Live Experience Status:</strong> The experience has reached over 29.18M total visits (29,189,509) with 276 concurrent players. Active codes like <em>OCTOBER</em> remain redeemable at the Goblin Merchant after liking and joining official Roblox Group 861404864 (Another Lyt Project).
         </p>
       </div>
     </header>
@@ -209,7 +242,10 @@ const tocHeadings = extractTocFromAstroUrl(import.meta.url);
           </a>
         </div>
       </section>
-          <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
+      <!-- Frequently Asked Questions Accordion -->
+      <FaqSection items={faqItems} />
+
+      <!-- 页脚广告双位：桌面 728x90 / 移动 320x50，靠 .ad-slot-footer 做宽窄互斥 -->
       <div class="ad-slot-footer">
         <AdSlot zone="banner-728x90" className="ad-slot-wide" label="Sponsored Intel" />
         <AdSlot zone="banner-320x50" className="ad-slot-narrow" label="Sponsored Intel" />
